@@ -2,9 +2,12 @@
   "version": 2,
   "projects": {
     "api": "apps/api",
-    "login-api-feature": "libs/login/api/feature",
-    "login-repository-data-access": "libs/login/repository/data-access",
-    "login-service-feature": "libs/login/service/feature",
-    "shared-services-prisma": "libs/shared/services/prisma"
+    "client": "apps/client",
+    "client-e2e": "apps/client-e2e",
+    "client-login": "libs/client/login",
+    "login-api-feature": "libs/api/login/api/feature",
+    "login-repository-data-access": "libs/api/login/repository/data-access",
+    "login-service-feature": "libs/api/login/service/feature",
+    "shared-services-prisma": "libs/api/shared/services/prisma"
   }
 }

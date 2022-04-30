@@ -1,0 +1,23 @@
+{
+  "root": "libs/client/login",
+  "sourceRoot": "libs/client/login/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/client/login/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/client/login"],
+      "options": {
+        "jestConfig": "libs/client/login/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

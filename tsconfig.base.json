@@ -15,17 +15,18 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@charity-spot/login/api/feature": [
-        "libs/login/api/feature/src/index.ts"
+      "@charity-spot/client/login": ["libs/client/login/src/index.ts"],
+      "@charity-spot/api/login/api/feature": [
+        "libs/api/login/api/feature/src/index.ts"
       ],
-      "@charity-spot/login/repository/data-access": [
-        "libs/login/repository/data-access/src/index.ts"
+      "@charity-spot/api/login/repository/data-access": [
+        "libs/api/login/repository/data-access/src/index.ts"
       ],
-      "@charity-spot/login/service/feature": [
-        "libs/login/service/feature/src/index.ts"
+      "@charity-spot/api/login/service/feature": [
+        "libs/api/login/service/feature/src/index.ts"
       ],
-      "@charity-spot/shared/services/prisma": [
-        "libs/shared/services/prisma/src/index.ts"
+      "@charity-spot/api/shared/services/prisma": [
+        "libs/api/shared/services/prisma/src/index.ts"
       ]
     }
   },
