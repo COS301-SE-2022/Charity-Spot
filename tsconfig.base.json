@@ -15,7 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@charity-spot/client/login": ["libs/client/login/src/index.ts"],
       "@charity-spot/api/login/api/feature": [
         "libs/api/login/api/feature/src/index.ts"
       ],
@@ -27,7 +26,11 @@
       ],
       "@charity-spot/api/shared/services/prisma": [
         "libs/api/shared/services/prisma/src/index.ts"
-      ]
+      ],
+      "@charity-spot/client-mobile/login-mobile": [
+        "libs/client-mobile/login-mobile/src/index.ts"
+      ],
+      "@charity-spot/client/login": ["libs/client/login/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
