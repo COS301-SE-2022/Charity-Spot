@@ -1,0 +1,14 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["filterJson"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model user {
+  name           String    @id 
+  password     String
+}

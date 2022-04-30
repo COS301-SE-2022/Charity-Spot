@@ -14,7 +14,17 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@charity-spot/login/api/feature": [
+        "libs/login/api/feature/src/index.ts"
+      ],
+      "@charity-spot/login/repository/data-access": [
+        "libs/login/repository/data-access/src/index.ts"
+      ],
+      "@charity-spot/login/service/feature": [
+        "libs/login/service/feature/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
