@@ -1,0 +1,22 @@
+{
+  "root": "libs/shared/services/prisma",
+  "sourceRoot": "libs/shared/services/prisma/src",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/shared/services/prisma/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/shared/services/prisma"],
+      "options": {
+        "jestConfig": "libs/shared/services/prisma/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

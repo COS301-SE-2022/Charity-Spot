@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { LoginEntity } from './login.entity';
+import { PrismaService } from '@charity-spot/shared/services/prisma';
+
 
 @Module({
   controllers: [],
-  providers: [LoginEntity],
-  exports: [LoginEntity],
+  providers: [PrismaService]
 })
 export class LoginServiceFeatureModule {}

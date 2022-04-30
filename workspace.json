@@ -4,6 +4,7 @@
     "api": "apps/api",
     "login-api-feature": "libs/login/api/feature",
     "login-repository-data-access": "libs/login/repository/data-access",
-    "login-service-feature": "libs/login/service/feature"
+    "login-service-feature": "libs/login/service/feature",
+    "shared-services-prisma": "libs/shared/services/prisma"
   }
 }

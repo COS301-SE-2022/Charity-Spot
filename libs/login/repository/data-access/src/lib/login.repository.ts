@@ -1,9 +1,15 @@
 import { Injectable } from '@nestjs/common';
+import { PrismaService } from '@charity-spot/shared/services/prisma';
 
 @Injectable()
-export class StudentExploreRepository {
-  constructor() {}
+export class LoginRepository {
+  constructor(private prisma: PrismaService) {}
 
-  getNames(){}
+  async getNames(){
+
+    const users = await this.prisma.user.findMany();
+
+    return users;
+  }
 
 }

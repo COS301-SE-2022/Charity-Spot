@@ -23,6 +23,9 @@
       ],
       "@charity-spot/login/service/feature": [
         "libs/login/service/feature/src/index.ts"
+      ],
+      "@charity-spot/shared/services/prisma": [
+        "libs/shared/services/prisma/src/index.ts"
       ]
     }
   },
