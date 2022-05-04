@@ -1,0 +1,24 @@
+{
+  "root": "libs/api/organisation-profile/service/feature",
+  "sourceRoot": "libs/api/organisation-profile/service/feature/src",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/api/organisation-profile/service/feature/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/api/organisation-profile/service/feature"],
+      "options": {
+        "jestConfig": "libs/api/organisation-profile/service/feature/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

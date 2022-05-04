@@ -1,0 +1,22 @@
+{
+  "root": "libs/api/registration/repository/feature",
+  "sourceRoot": "libs/api/registration/repository/feature/src",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/api/registration/repository/feature/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/api/registration/repository/feature"],
+      "options": {
+        "jestConfig": "libs/api/registration/repository/feature/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

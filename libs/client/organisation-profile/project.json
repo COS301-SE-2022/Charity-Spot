@@ -1,0 +1,25 @@
+{
+  "root": "libs/client/organisation-profile",
+  "sourceRoot": "libs/client/organisation-profile/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/client/organisation-profile/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/client/organisation-profile"],
+      "options": {
+        "jestConfig": "libs/client/organisation-profile/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

@@ -24,13 +24,34 @@
       "@charity-spot/api/login/service/feature": [
         "libs/api/login/service/feature/src/index.ts"
       ],
+      "@charity-spot/api/organisation-profile/api/feature": [
+        "libs/api/organisation-profile/api/feature/src/index.ts"
+      ],
+      "@charity-spot/api/organisation-profile/repository/feature": [
+        "libs/api/organisation-profile/repository/feature/src/index.ts"
+      ],
+      "@charity-spot/api/organisation-profile/service/feature": [
+        "libs/api/organisation-profile/service/feature/src/index.ts"
+      ],
+      "@charity-spot/api/registration/api/feature": [
+        "libs/api/registration/api/feature/src/index.ts"
+      ],
+      "@charity-spot/api/registration/repository/feature": [
+        "libs/api/registration/repository/feature/src/index.ts"
+      ],
+      "@charity-spot/api/registration/service/feature": [
+        "libs/api/registration/service/feature/src/index.ts"
+      ],
       "@charity-spot/api/shared/services/prisma": [
         "libs/api/shared/services/prisma/src/index.ts"
       ],
-      "@charity-spot/client-mobile/login-mobile": [
-        "libs/client-mobile/login-mobile/src/index.ts"
+      "@charity-spot/client/login": ["libs/client/login/src/index.ts"],
+      "@charity-spot/client/organisation-profile": [
+        "libs/client/organisation-profile/src/index.ts"
       ],
-      "@charity-spot/client/login": ["libs/client/login/src/index.ts"]
+      "@charity-spot/client/registration": [
+        "libs/client/registration/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
