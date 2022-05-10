@@ -22,7 +22,7 @@ model Organisation {
   OrgName       String  @map("organisation_id")
   NGONum        String? @unique @map("ngo_number")
   Description   String  @map("description")
-  Location      String  @map("location")
+  AddressID      String  @map("address_id")
 
   @@map("organisation")
 }
@@ -35,4 +35,12 @@ model Rating {
 
   @@id([OrgID,ClientID])
   @@map("rating")
+}
+
+model AddressID {
+  Address_ID  String  @id @map("address_id")
+  Address     String  @map("address")
+  Address2    String  @map("address2")
+  City        String  @map("city")
+  Province    String  @map("province")
 }
