@@ -8,7 +8,39 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model user {
-  name           String    @id 
-  password     String
+model User {
+  UserID        String  @id @default(cuid()) @map("user_id")
+  email         String? @unique
+  password      String
+  passwordSalt  String
+
+  @@map("user")
+}
+
+model Organisation {
+  UserID        String  @id @map("user_id")
+  OrgName       String  @map("organisation_id")
+  NGONum        String? @unique @map("ngo_number")
+  Description   String  @map("description")
+  AddressID      String  @map("address_id")
+
+  @@map("organisation")
+}
+
+model Rating {
+  OrgID     String  @map("organisation_id")
+  ClientID  String  @map("client_id")
+  rating    Int     @map("rating")
+  Comment   String  @map("comment")
+
+  @@id([OrgID,ClientID])
+  @@map("rating")
+}
+
+model AddressID {
+  Address_ID  String  @id @map("address_id")
+  Address     String  @map("address")
+  Address2    String  @map("address2")
+  City        String  @map("city")
+  Province    String  @map("province")
 }
