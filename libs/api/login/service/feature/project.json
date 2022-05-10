@@ -1,6 +1,6 @@
 {
-  "root": "libs/login/service/feature",
-  "sourceRoot": "libs/login/service/feature/src",
+  "root": "libs/api/login/service/feature",
+  "sourceRoot": "libs/api/login/service/feature/src",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
@@ -13,7 +13,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/login/service/feature"],
       "options": {
-        "jestConfig": "libs/login/service/feature/jest.config.ts",
+        "jestConfig": "libs/api/login/service/feature/jest.config.ts",
         "passWithNoTests": true
       }
     }

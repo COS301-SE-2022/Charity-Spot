@@ -1,6 +1,6 @@
 module.exports = {
   displayName: 'login-service-feature',
-  preset: '../../../../jest.preset.ts',
+  preset: '../../../../../jest.preset.ts',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',

@@ -24,4 +24,8 @@ export class LoginService {
         
     }
 
+    sum(i,j){
+        return i+j;
+    }
+
 }
