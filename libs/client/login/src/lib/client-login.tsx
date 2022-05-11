@@ -89,7 +89,7 @@ export function ClientLogin() {
               value={passval}
               onChange ={(e)=>{setPassval(e.target.value)}}
               /><br/>
-             <Link to ='/'><button type='submit' id='sub_butt' >Log in</button></Link>
+             <Link to ='/profile'><button type='submit' id='sub_butt' >Log in</button></Link>
           </form>
           <div className='foot'>
             <p>Dont have an account yet?<Link to ='/register' className='Link'> click to Register</Link></p>
