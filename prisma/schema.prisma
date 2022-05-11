@@ -21,8 +21,8 @@ model Organisation {
   UserID        String  @id @map("user_id")
   OrgName       String  @map("organisation_id")
   NGONum        String? @unique @map("ngo_number")
-  Description   String  @map("description")
-  AddressID      String  @map("address_id")
+  Description   String?  @map("description")
+  AddressID     String?  @map("address_id")
 
   @@map("organisation")
 }
@@ -37,8 +37,8 @@ model Rating {
   @@map("rating")
 }
 
-model AddressID {
-  Address_ID  String  @id @map("address_id")
+model Address {
+  AddressID  String  @id @default(cuid()) @map("address_id")
   Address     String  @map("address")
   Address2    String  @map("address2")
   City        String  @map("city")

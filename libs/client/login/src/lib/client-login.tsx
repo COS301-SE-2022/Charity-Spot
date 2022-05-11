@@ -91,7 +91,7 @@ import {Link} from 'react-router-dom';
 //import Bgpic from '../assets/Bgpic.png'
 
 import Seallogin from '../../../shared/assets/Seallogin.png'
-import CS from '../../../shared/assets/Seallogin.png'
+import CS from '../../../shared/assets/CS.png'
 import Bgpic from '../../../shared/assets/Bgpic.png'
 import './login.css'
 
