@@ -1,8 +1,10 @@
 import React from 'react'
-import '../styles/profile.css'
-import userprofile from'../assets/userprofile.png'
+import './profile.css'
+//import userprofile from'../assets/userprofile.png'
+import userprofile from '../../../shared/assets/userprofile.png'
+
 import ListGroup from 'react-bootstrap/esm/ListGroup';
-function Home() {
+export function Home() {
 
   const hanndlesubmit = (event: { preventDefault: () => void; }) =>{
     event.preventDefault();

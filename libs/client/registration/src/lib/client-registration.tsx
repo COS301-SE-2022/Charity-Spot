@@ -1,12 +1,14 @@
 import React,{useState} from 'react'
 import {Link} from 'react-router-dom'
-import CS from '../assets/CS.png'
-import Sealregister from '../assets/Sealregister.png'
-import Bgpic from '../assets/Bgpic.png'
-import '../styles/register.css';
+
+import Sealregister from '../../../shared/assets/Sealregister.png'
+import CS from '../../../shared/assets/Seallogin.png'
+import Bgpic from '../../../shared/assets/Bgpic.png'
+
+import './register.css';
 
 
-function Register() {
+export function Register() {
   const [typeval,setTypeval] = useState('');
   const [nameval,setNameval] = useState('');
   const [emailval,setEmailval] = useState('');

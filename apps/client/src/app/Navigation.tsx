@@ -1,14 +1,11 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {Navbar,Nav} from 'react-bootstrap'
-//import CS from './assets/CS.png'
 import CS from '../../../../libs/client/shared/assets/CS.png'
 
 function Navigation() {
   return (
     <div>
-
-   
     <Navbar expand="lg" style={{ backgroundColor: '#dcdfe3', height: '80px' }}>
     <div className='logo-class'>
             <img src={CS} alt='' id='logo-nav-id'/>
