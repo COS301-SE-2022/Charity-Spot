@@ -1,7 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {Navbar,Nav} from 'react-bootstrap'
-import CS from 'assets/CS.png'
+//import CS from './assets/CS.png'
+import CS from '../../../../libs/client/shared/assets/CS.png'
 
 function Navigation() {
   return (
@@ -12,7 +13,7 @@ function Navigation() {
     <div className='logo-class'>
             <img src={CS} alt='' id='logo-nav-id'/>
      </div>
-      {/* <Navbar.Brand style={{ color: '#1458b3', }} as={Link} to = {"/"} >Charity-Spot</Navbar.Brand> */}
+      <Navbar.Brand style={{ color: '#1458b3', }} as={Link} to = {"/"} >Charity-Spot</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ backgroundColor: '#dcdfe3', }}className="me-auto">      

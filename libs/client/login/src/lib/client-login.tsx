@@ -62,15 +62,8 @@
 //       <div>
 //         <h1>This is the Client Login Page</h1>
 
-<<<<<<< HEAD
-        <h3>Enter your username</h3>
-        <input type="text" name="username" onChange={ (i) => setText(i.target.value)}></input><br></br>
-
-        <input type="text" name="testname" onChange={ (i) => setText(i.target.value)}></input>
-=======
 //         <h3>Enter your username</h3>
 //         <input type="text" onChange={ (i) => setText(i.target.value)}></input>
->>>>>>> fd080139bf8378b667d83143cc9e8bc241c4d754
 
 //       </div><br></br>
 
@@ -92,17 +85,23 @@
 
 import React,{useState} from 'react';
 import {Link} from 'react-router-dom';
-import Seallogin from '../assets/Seallogin.png';
-import CS from '../assets/CS.png';
-import Bgpic from '../assets/Bgpic.png'
-import '../styles/login.css';
 
-function ClientLogin() {
+//import Seallogin from '../assets/Seallogin.png';
+//import CS from '../assets/CS.png';
+//import Bgpic from '../assets/Bgpic.png'
+
+import Seallogin from '../../../shared/assets/Seallogin.png'
+import CS from '../../../shared/assets/Seallogin.png'
+import Bgpic from '../../../shared/assets/Bgpic.png'
+import './login.css'
+
+export function ClientLogin() {
   
   const [emailval,setEmailval] = useState('');
   const [passval,setPassval] = useState('');
   const hanndlesubmit = (event: { preventDefault: () => void; }) =>{
       event.preventDefault();
+      console.log(Seallogin);
   }
   return (
     <div className = "main-login" style ={{backgroundImage:`url(${Bgpic})`}}>
@@ -144,4 +143,4 @@ function ClientLogin() {
   )
 }
 
-export default ClientLogin
+export default ClientLogin;
