@@ -7,12 +7,26 @@ export class RegistrationRepository {
 
   async addUser(email : string,password: string, PasswordSalt:string)
   {
-    const u = this.prisma.user.create({
+    const u = await this.prisma.user.create({
       data:
       {
         email: email,
         password:password,
         passwordSalt:PasswordSalt
+      }
+    })
+
+    return u.UserID;
+  }
+
+  //Only OrgName and userID are compulsory. others may be empty string. null will be insert then
+  async addOrg(userID : string,OrgName: string, PasswordSalt:string)
+  {
+    const o = await this.prisma.organisation.create({
+      data:
+      {
+        UserID: userID,
+        OrgName:OrgName
       }
     })
   }
