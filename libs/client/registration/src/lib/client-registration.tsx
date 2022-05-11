@@ -12,6 +12,7 @@ export function Register() {
   const [typeval,setTypeval] = useState('');
   const [nameval,setNameval] = useState('');
   const [emailval,setEmailval] = useState('');
+  const [Locationval,setLocationval] = useState('');
   const [passval,setPassval] = useState('');
   const [confpassval,setConfPassval] = useState('');
 
@@ -45,6 +46,11 @@ export function Register() {
               <input placeholder='Enter your email...' type ='email' id="emil1"  className='rgInput'
                value={emailval}
                onChange ={(e)=>{setEmailval(e.target.value)}}/>
+
+            <label htmlFor ='lct11' className='rglabel'>Location</label>
+              <input placeholder='Enter your location...' type ='text' id="lct1"  className='rgInput'
+               value={Locationval}
+               onChange ={(e)=>{setLocationval(e.target.value)}}/>              
 
             <label htmlFor ='rgpwd1' className='rglabel'>Password</label>              
               <input placeholder='Enter password...' type ='password' id="rgpwd1" className='rgInput'
