@@ -21,8 +21,8 @@ model Organisation {
   UserID        String  @id @map("user_id")
   OrgName       String  @map("organisation_id")
   NGONum        String? @unique @map("ngo_number")
-  Description   String  @map("description")
-  AddressID      String  @map("address_id")
+  Description   String?  @map("description")
+  AddressID     String?  @map("address_id")
 
   @@map("organisation")
 }
