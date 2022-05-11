@@ -16,7 +16,7 @@ export class RegistrationRepository {
       }
     })
 
-    return u.UserID;
+    return u;
   }
 
   //Only OrgName and userID are compulsory. others may be empty string. null will be insert then
