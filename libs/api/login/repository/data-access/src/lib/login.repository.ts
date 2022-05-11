@@ -28,6 +28,7 @@ export class LoginRepository {
         select:
         {
           UserID: true,
+          email: true
         },
         where:
         {

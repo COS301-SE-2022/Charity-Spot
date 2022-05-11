@@ -4,4 +4,7 @@ import { Field, ID, ObjectType } from '@nestjs/graphql';
 export class LoginEntity {
     @Field({ nullable: true })
     Name: string;
+
+    @Field({ nullable: true })
+    UserID: string;
 }

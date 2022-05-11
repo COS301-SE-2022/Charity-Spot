@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import {Link} from 'react-router-dom'
 
 import Sealregister from '../../../shared/assets/Sealregister.png'
-import CS from '../../../shared/assets/Seallogin.png'
+import CS from '../../../shared/assets/CS.png'
 import Bgpic from '../../../shared/assets/Bgpic.png'
 
 import './register.css';
