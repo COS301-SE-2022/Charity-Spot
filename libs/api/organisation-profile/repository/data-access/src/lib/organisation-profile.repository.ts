@@ -38,7 +38,7 @@ export class LoginRepository {
 
   async getAdress(addressID : string)
   {
-    return await this.prisma.Address.findFirst({
+    return await this.prisma.address.findFirst({
       where:
       {
         AddressID:addressID
@@ -55,7 +55,7 @@ export class LoginRepository {
 
   async getRating(OrgID : string)
   {
-    return await this.prisma.Rating.findMany({
+    return await this.prisma.rating.findMany({
       where:
       {
         OrgID:OrgID

@@ -16,9 +16,8 @@ import { useNavigate } from "react-router-dom";
 async function APICall(email: string, password: string){
 
   const query = `query{
-    LoginUser(email: "`+email+`", password: "`+password+`",){
-      Name,
-      UserID
+    login(email: "`+email+`", password: "`+password+`",){
+      ID
     }
   }`;
 
@@ -53,14 +52,19 @@ export function ClientLogin() {
       
       const response = JSON.parse(await APICall(emailval, passval));
 
-      if(response.data.LoginUser.length == 0){
+
+      if(response.data.login.length == 0){
         alert("Invalid credentials");
       }
       else{
-        let userID = response.data.LoginUser[0].UserID;
-        document.cookie = "username="+userID;
-        window.location.href = '/'
-        console.log(response.data.LoginUser);
+        let ID = response.data.login.ID;
+        if(ID == null){
+          alert("error");
+          return;
+        }
+        document.cookie = "ID="+ID;
+        window.location.href = '/';
+        console.log(response.data.login);
       }
 
       

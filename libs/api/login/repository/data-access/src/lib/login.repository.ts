@@ -36,7 +36,7 @@ export class LoginRepository {
           password: password
         }
     });
-    if(u == null)
+    if(u.length == 0)
     {
       return null;
     }
