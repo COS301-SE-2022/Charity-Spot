@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '@charity-spot/libs/api/shared/services/prisma';
+import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 
 @Injectable()
 export class LoginRepository {

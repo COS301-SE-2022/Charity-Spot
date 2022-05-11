@@ -1,6 +1,5 @@
 yarn start client
 yarn start api
-npx nx run-android client-mobile
 
 yarn prisma studio
 yarn prisma generate
