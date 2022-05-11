@@ -30,6 +30,7 @@ export function Home() {
             <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px', color: '#104283' }}>Email: Company1@gmail.com</ListGroup.Item>
             <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Name: Company One</ListGroup.Item>
             <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Date Registered: 05 May 2022</ListGroup.Item>
+            <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Location: 5 Bekker strt Pretoria</ListGroup.Item>
           </ListGroup>
           </div>
       </div>
