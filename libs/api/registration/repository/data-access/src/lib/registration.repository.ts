@@ -20,7 +20,7 @@ export class RegistrationRepository {
   }
 
   //Only OrgName and userID are compulsory. others may be empty string. null will be insert then
-  async addOrg(userID : string,OrgName: string, PasswordSalt:string)
+  async addOrg(userID : string,OrgName: string)
   {
     const o = await this.prisma.organisation.create({
       data:
