@@ -46,7 +46,7 @@ export class LoginRepository {
     const salt = await this.prisma.user.fidnFirst({
       select:
       {
-        email:email
+        PasswordSalt : true
       },
       where:
       {
