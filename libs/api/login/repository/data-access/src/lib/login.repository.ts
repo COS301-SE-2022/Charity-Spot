@@ -39,14 +39,14 @@ export class LoginRepository {
     {
       return null;
     }
-    return u.userID;
+    return u;
   }
 
   async getSalt(email:string){
     const salt = await this.prisma.user.fidnFirst({
       select:
       {
-        PasswordSalt : true
+        passwordSalt : true
       },
       where:
       {
