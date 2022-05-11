@@ -1,1 +1,1 @@
-export * from './lib/api-registration-api-feature.module';
+export * from './lib/registration-api-feature.module';
