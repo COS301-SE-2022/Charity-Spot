@@ -5,7 +5,7 @@
     /* background: linear-gradient(to right, #ffff 50%,#4dd6b6); */
 }
 .register-contain{
-    height: 600px auto;
+    height: 650px auto;
     width: 90%;
 
     background: linear-gradient(to right bottom, rgba(228, 228, 228, 0.7),rgba(191, 190, 190, 0.4));
@@ -22,7 +22,7 @@
 }
 .rgleft-side{
     margin: 2rem;
-    height: 450px;
+    height: 550px;
     width: 45%;    
     /* background-color: rgba(207, 207, 207, 0.4); */
 
@@ -38,7 +38,7 @@
 }
 .rgright-side{
     margin: 2rem;
-    height: 450px;
+    height: 550px;
     width: 45%;
 
 
@@ -147,10 +147,10 @@ label.rglabel{
     }
     .rgleft-side{
       width: 84%;
-      height: 450px;
+      height: 550px;
     }
     .register-contain{
-      height: 520px;
+      height: 650px;
       flex-flow: wrap;
     }
     #rgwel-img-id{
@@ -182,10 +182,10 @@ label.rglabel{
       /* object-fit: cover; */
     }
     .rgright-side{
-      height: 580px;
+      height: 670px;
     }
     .rgleft-side{
-      height: 580px;
+      height: 670px;
     }
     input.rgInput{
       height: 2.5rem;
