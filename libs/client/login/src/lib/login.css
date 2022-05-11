@@ -1,0 +1,186 @@
+.main-login{
+    min-height: 100vh;
+    min-width: 100vw;
+    overflow-x: hidden;
+    /* background: linear-gradient(to right, #ffff 50%,#4dd6b6); */
+}
+.login-contain{
+    height: 550px auto;
+    width: 90%;
+
+    background: linear-gradient(to right bottom, rgba(228, 228, 228, 0.7),rgba(191, 190, 190, 0.4));
+    border-radius: 1rem;
+    margin: 1.5rem auto;
+    box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0);
+
+
+     /* text-align: center; */
+     display: flex;
+     flex-direction: row;
+     justify-content: space-around;
+     /* flex-flow: wrap; */
+}
+.left-side{
+    margin: 2rem;
+    height: 450px;
+    width: 45%;    
+    /* background-color: rgba(207, 207, 207, 0.4); */
+
+    box-sizing: border-box;
+    /* display: inline-block; */
+     /* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(58 ,57 , 57);  */
+     border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.right-side{
+    margin: 2rem;
+    height: 450px;
+    width: 45%;
+
+
+    /* display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center; */
+    text-align: center;
+    
+}
+#wel-img-id{
+  display: block;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  height: 450px;
+  width: 60%;
+
+  /* object-fit: cover; */
+}
+#logo-img-id{
+  height: 150px;
+}
+#logo-nav-id{
+  height: 70px;
+}
+input.lgInput{
+    display: block;
+    border: none;
+    height: 2.5rem;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 1.5rem;
+    padding: 0.2rem 1rem;
+    color: gray;
+    transition: all 0.2s ease-in-out;
+    border-radius: 5px;
+}
+input.lgInput:focus{
+    outline: none;
+    border: none;
+}
+input:hover{
+    box-shadow: 2px 2px 6px -1px black;    
+    outline: 0.5px solid #1458b3; 
+}
+label.lgLabel{
+    display: block;
+    margin: auto;
+    float: left;
+    width: 70%;
+    font-size: large;
+    color:#1458b3;
+    text-align: left;
+    width: 78%;
+    margin-bottom: 0.5rem;
+}
+#sub_butt{
+    width: 100%;
+    background: #1458b3 ;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0.7rem 1rem;
+    transition: all 0.3 ease;
+    border-radius: 5px;
+}
+#sub_butt:hover{
+   box-shadow: 0.5px 0.5px 6px -1px black; 
+   /* transform: translate(-5px); */
+}
+.Link{
+    color: #1458b3;
+    text-decoration: none;
+}
+.welcomeImg{
+  height: 50%;
+  width: 70%;
+  text-align: center;
+  background-color: darkgreen;
+}
+
+
+  @media screen and (max-width: 1000px) {
+    .left-side{
+      width: 84%;
+      height: 500px;
+    }
+    .right-side{
+      width: 0%;
+      display: none;
+    }
+    .login-contain{
+      height: 550px;
+      flex-flow: wrap;
+    }
+    #wel-img-id{
+
+      height: 0px;
+      width: 0%;
+      visibility: hidden;
+      /* object-fit: cover; */
+    }
+    .welcomeNote{
+      visibility: hidden;
+    }
+    #welid{
+      visibility: hidden;
+    }
+    label.lgLabel{
+      margin-bottom: 0.1rem;
+  }
+  input.lgInput{
+    height: 2.2rem;
+    margin-bottom: 0.5rem;
+
+}
+  }
+
+  @media screen and (min-width: 1600px) {
+    .login-contain{
+      height: 650px;
+      flex-flow: wrap;
+    }
+    #wel-img-id{
+
+      height: 480px;
+      width: 65%;
+    
+      /* object-fit: cover; */
+    }
+    .right-side{
+      height: 550px;
+    }
+    .left-side{
+      height: 550px;
+    }
+    .welcomeNote{
+      visibility: visible;
+    }
+    #welid{
+      visibility: visible;
+    }
+  }
