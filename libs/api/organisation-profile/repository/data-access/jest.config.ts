@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'api-organisation-profile-repository-feature',
+  displayName: 'organisation-profile-repository-data-access',
   preset: '../../../../../jest.preset.ts',
   globals: {
     'ts-jest': {
@@ -12,5 +12,5 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory:
-    '../../../../../coverage/libs/api/organisation-profile/repository/feature',
+    '../../../../../coverage/libs/api/organisation-profile/repository/data-access',
 };
