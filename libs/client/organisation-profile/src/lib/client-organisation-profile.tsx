@@ -1,16 +1,40 @@
-import styles from './client-organisation-profile.module.css';
+import React from 'react'
+import './profile.css'
+//import userprofile from'../assets/userprofile.png'
+import userprofile from '../../../shared/assets/userprofile.png'
 
-/* eslint-disable-next-line */
-export interface ClientOrganisationProfileProps {}
+import ListGroup from 'react-bootstrap/esm/ListGroup';
+export function Home() {
 
-export function ClientOrganisationProfile(
-  props: ClientOrganisationProfileProps
-) {
+  const hanndlesubmit = (event: { preventDefault: () => void; }) =>{
+    event.preventDefault();
+}
   return (
-    <div className={styles['container']}>
-      <h1>Welcome to ClientOrganisationProfile!</h1>
+    <div className='profile-page'>
+      <br/>
+        <h1 style ={{color: '#1458b3'}}>Profile</h1>
+        <div className='profile-main'>
+
+          <div className='user-left'>
+          <div className='prof-pic'>
+            <img src={userprofile} alt="" id="profile-pic"/>
+          </div>
+          <form onSubmit={hanndlesubmit}>
+              <button type='submit' id='logout1'>Log out</button>
+          </form>
+          </div>
+          <div className='user-right'>
+            <br/><br/>
+          <ListGroup variant="flush" >
+            <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px', color: '#104283' }}>Type: Organisation</ListGroup.Item>
+            <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px', color: '#104283' }}>Email: Company1@gmail.com</ListGroup.Item>
+            <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Name: Company One</ListGroup.Item>
+            <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Date Registered: 05 May 2022</ListGroup.Item>
+          </ListGroup>
+          </div>
+      </div>
     </div>
-  );
+  )
 }
 
-export default ClientOrganisationProfile;
+export default Home

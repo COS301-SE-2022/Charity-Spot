@@ -1,46 +1,32 @@
-import styles from './app.module.css';
+import React, { useState } from 'react';
 
-import { Route, Routes, Link } from 'react-router-dom';
+import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
+import Navigation from './Navigation';
+//import ClientLogin from './pages/ClientLogin';
+//import Home from './pages/Home';
+//import Register from './pages/register';
+//import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+
+//import { Route, Routes, Link } from 'react-router-dom';
 
 import {ClientLogin} from '@charity-spot/client/login';
+import {Register} from '@charity-spot/client/registration';
+import {Home} from '@charity-spot/client/organisation-profile';
 
-export function App() {
+function App() {
   return (
-    <>
-      
-      <div role="navigation">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/page-2">Page 2</Link>
-          </li>
-        </ul>
-      </div>
-      <Routes>
-
-        <Route
-          path="/"
-          element={
-            <div>
-              This is the root
-            </div>
-          }
-        />
-
-        <Route
-          path="/page-2"
-          element={
-            <div>
-              <ClientLogin></ClientLogin>
-            </div>
-          }
-        />
-
-      </Routes>
-      
-    </>
+    <div className="App">
+      <Router>
+      <Navigation/>
+        <Routes>
+          <Route path ="/" element = { <Home/>}/>
+          <Route path = "/login" element = {<ClientLogin/>}/>
+          <Route path = "/register" element ={<Register/>}/>
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
