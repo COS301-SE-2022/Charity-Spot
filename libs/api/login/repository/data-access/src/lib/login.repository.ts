@@ -27,7 +27,7 @@ export class LoginRepository {
     const u = await this.prisma.user.findMany({
         select:
         {
-          userID: true,
+          UserID: true,
         },
         where:
         {
@@ -43,7 +43,7 @@ export class LoginRepository {
   }
 
   async getSalt(email:string){
-    const salt = await this.prisma.user.fidnFirst({
+    const salt = await this.prisma.user.findFirst({
       select:
       {
         passwordSalt : true

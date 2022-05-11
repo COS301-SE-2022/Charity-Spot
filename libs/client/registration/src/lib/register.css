@@ -1,0 +1,204 @@
+.main-register{
+    min-height: 100vh;
+    min-width: 100vw;
+    overflow-x: hidden;
+    /* background: linear-gradient(to right, #ffff 50%,#4dd6b6); */
+}
+.register-contain{
+    height: 600px auto;
+    width: 90%;
+
+    background: linear-gradient(to right bottom, rgba(228, 228, 228, 0.7),rgba(191, 190, 190, 0.4));
+    border-radius: 1rem;
+    margin: 2rem auto;
+    box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0);
+
+
+     /* text-align: center; */
+     display: flex;
+     flex-direction: row;
+     justify-content: space-around;
+     /* flex-flow: wrap; */
+}
+.rgleft-side{
+    margin: 2rem;
+    height: 450px;
+    width: 45%;    
+    /* background-color: rgba(207, 207, 207, 0.4); */
+
+    box-sizing: border-box;
+    /* display: inline-block; */
+     /* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(58 ,57 , 57);  */
+     border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.rgright-side{
+    margin: 2rem;
+    height: 450px;
+    width: 45%;
+
+
+    /* display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center; */
+    text-align: center;
+    
+}
+#rgwel-img-id{
+  display: block;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  height: 450px;
+  width: 60%;
+
+  /* object-fit: cover; */
+}
+#rglogo-img-id{
+  height: 120px;
+}
+#logo-nav-id{
+  height: 70px;
+}
+ input.rgInput{
+    display: block;
+    border: none;
+    height: 2rem;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 0rem;
+    padding: 0.2rem 1rem;
+    color: gray;
+    transition: all 0.2s ease-in-out;
+    border-radius: 5px;
+}
+ input.rgInput:focus{
+    outline: none;
+    border: none;
+}
+select.rgSelect{
+    display: block;
+    border: none;
+    height: 2rem;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 0rem;
+    padding: 0.2rem 1rem;
+    color: gray;
+    transition: all 0.2s ease-in-out;
+    border-radius: 5px;
+}
+select:focus{
+    outline: none;
+    border: none;
+}
+
+input:hover{
+    box-shadow: 2px 2px 6px -1px black;    
+    outline: 0.5px solid #1458b3; 
+}
+label.rglabel{
+    display: block;
+    margin: auto;
+    float: left;
+    width: 70%;
+    font-size: medium;
+    color:#1458b3;
+    text-align: left;
+    width: 78%;
+    margin-bottom: 0.25rem;
+}
+#rgsub_butt{
+    width: 100%;
+    background: #1458b3 ;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0.7rem 1rem;
+    transition: all 0.3 ease;
+    border-radius: 5px;
+}
+#rgsub_butt:hover{
+   box-shadow: 0.5px 0.5px 6px -1px black; 
+   /* transform: translate(-5px); */
+}
+.rgLink{
+    color: #1458b3;
+    text-decoration: none;
+}
+.welcomeImg{
+  height: 50%;
+  width: 70%;
+  text-align: center;
+  background-color: darkgreen;
+}
+
+
+  @media screen and (max-width: 1000px) {
+    .rgright-side{
+      width: 0%;
+      display: none;
+    }
+    .rgleft-side{
+      width: 84%;
+      height: 450px;
+    }
+    .register-contain{
+      height: 520px;
+      flex-flow: wrap;
+    }
+    #rgwel-img-id{
+
+      height: 0px;
+      width: 0%;
+      visibility: hidden;
+      /* object-fit: cover; */
+    }
+    .welcomeNote{
+      visibility: hidden;
+    }
+    #welid{
+      visibility: hidden;
+    }
+  }
+
+
+  @media screen and (min-width: 1600px) {
+    .register-contain{
+    height: 700px auto;
+      flex-flow: wrap;
+    }
+    #rgwel-img-id{
+
+      height: 550px;
+      width: 60%;
+    
+      /* object-fit: cover; */
+    }
+    .rgright-side{
+      height: 580px;
+    }
+    .rgleft-side{
+      height: 580px;
+    }
+    input.rgInput{
+      height: 2.5rem;
+      margin-bottom: 0.5rem;
+      padding: 0.2rem 1rem;
+  }
+  #rglogo-img-id{
+    height: 150px;
+  }
+  select.rgSelect{
+    height: 2.5rem;
+    margin: auto;
+    margin-bottom: 1rem;
+    padding: 0.2rem 1rem;
+}
+  }
