@@ -37,7 +37,7 @@ model Rating {
   @@map("rating")
 }
 
-model AddressID {
+model Address {
   AddressID  String  @id @default(cuid()) @map("address_id")
   Address     String  @map("address")
   Address2    String  @map("address2")
