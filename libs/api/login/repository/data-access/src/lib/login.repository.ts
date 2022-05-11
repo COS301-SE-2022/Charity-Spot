@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '@charity-spot/libs/api/shared/services/prisma';
+import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 
 @Injectable()
 export class LoginRepository {
@@ -28,6 +28,7 @@ export class LoginRepository {
         select:
         {
           UserID: true,
+          email: true
         },
         where:
         {
@@ -39,7 +40,7 @@ export class LoginRepository {
     {
       return null;
     }
-    return u;
+    return u[0].UserID;
   }
 
   async getSalt(email:string){

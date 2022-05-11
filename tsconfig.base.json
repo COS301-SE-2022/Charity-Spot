@@ -36,8 +36,8 @@
       "@charity-spot/api/registration/api/feature": [
         "libs/api/registration/api/feature/src/index.ts"
       ],
-      "@charity-spot/api/registration/repository/feature": [
-        "libs/api/registration/repository/feature/src/index.ts"
+      "@charity-spot/api/registration/repository/data-access": [
+        "libs/api/registration/repository/data-access/src/index.ts"
       ],
       "@charity-spot/api/registration/service/feature": [
         "libs/api/registration/service/feature/src/index.ts"
