@@ -1,13 +1,16 @@
-import { getGreeting } from '../support/app.po';
-
 describe('client', () => {
-  beforeEach(() => cy.visit('/'));
 
-  it('should display welcome message', () => {
-    // Custom command example, see `../support/commands.ts` file
-    cy.login('my-email@something.com', 'myPassword');
+    const input = "Hello World";
 
-    // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome client');
-  });
+    it('Visit Page 2 and enter a string', () =>{
+        cy.visit('http://localhost:4200')
+        cy.contains("Page 2").click();
+
+        cy.get('input[name=username]').type("Hello World!");
+    })
+
+    it('Go back to root', ()=>{
+        cy.visit('http://localhost:4200')
+    })
+  
 });

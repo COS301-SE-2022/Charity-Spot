@@ -63,7 +63,9 @@ export function ClientLogin(props: ClientLoginProps) {
         <h1>This is the Client Login Page</h1>
 
         <h3>Enter your username</h3>
-        <input type="text" onChange={ (i) => setText(i.target.value)}></input>
+        <input type="text" name="username" onChange={ (i) => setText(i.target.value)}></input><br></br>
+
+        <input type="text" name="testname" onChange={ (i) => setText(i.target.value)}></input>
 
       </div><br></br>
 

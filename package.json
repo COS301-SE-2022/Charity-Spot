@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "test-client": "nx e2e client-e2e --watch"
   },
   "private": true,
   "dependencies": {
