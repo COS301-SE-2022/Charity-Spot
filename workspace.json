@@ -3,7 +3,7 @@
   "projects": {
     "api": "apps/api",
     "api-organisation-profile-api-feature": "libs/api/organisation-profile/api/feature",
-    "api-organisation-profile-repository-feature": "libs/api/organisation-profile/repository/feature",
+    "api-organisation-profile-repository-feature": "libs/api/organisation-profile/repository/data-access",
     "api-organisation-profile-service-feature": "libs/api/organisation-profile/service/feature",
     "api-registration-api-feature": "libs/api/registration/api/feature",
     "api-registration-repository-feature": "libs/api/registration/repository/data-access",

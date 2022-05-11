@@ -40,7 +40,7 @@ export class LoginRepository {
     {
       return null;
     }
-    return u;
+    return u[0].UserID;
   }
 
   async getSalt(email:string){

@@ -6,34 +6,23 @@ import { LoginRepository } from '@charity-spot/api/login/repository/data-access'
 export class LoginService {
     constructor(private LoginRepository: LoginRepository) {}
 
-    async loginUser(email : string, password: string) {
+    async validate(email : string, password : string) {
+        if(this.LoginRepository.emailExists(email)) 
+            return this.LoginRepository.validateLogin(email, password);
+        else
+            return false;
+    }
 
-        console.log(email);
+    async getEntity_login(email : string, password : string) {
+        const repValidation = await this.validate(email, password);
 
-        const users = await this.LoginRepository.validateLogin(email, password);
+        if(repValidation != false) {
+            const entity = new LoginEntity();
+            entity.ID = repValidation;
 
-        const UsersArr = [];
-
-        let tempObj = null;
-
-        for(let i=0; i<users.length; i++){
-            tempObj = new LoginEntity();
-            tempObj.Name = users[i].email;
-            tempObj.UserID = users[i].UserID;
-            UsersArr.push(tempObj)
+            return entity;
         }
-
-        console.log(UsersArr);
-
-        return UsersArr;
-
-        //console.log(users);
-        //return null;
         
+        return null;
     }
-
-    sum(i,j){
-        return i+j;
-    }
-
 }

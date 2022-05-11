@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '@charity-spot/libs/api/shared/services/prisma';
+import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 
 @Injectable()
 export class LoginRepository {
@@ -21,7 +21,7 @@ export class LoginRepository {
 
   async getOrg(userID : string)
   {
-    return await this.prisma.Organisation.findFirst({
+    return await this.prisma.organisation.findFirst({
       where:
       {
         UserID:userID
@@ -38,7 +38,7 @@ export class LoginRepository {
 
   async getAdress(addressID : string)
   {
-    return await this.prisma.Organisation.findFirst({
+    return await this.prisma.organisation.findFirst({
       where:
       {
         AddressID:addressID
