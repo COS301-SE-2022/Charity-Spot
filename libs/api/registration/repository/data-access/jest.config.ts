@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'api-registration-repository-feature',
+  displayName: 'registration-repository-access-data',
   preset: '../../../../../jest.preset.ts',
   globals: {
     'ts-jest': {
@@ -12,5 +12,5 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory:
-    '../../../../../coverage/libs/api/registration/repository/feature',
+    '../../../../../coverage/libs/api/registration/repository/access-data',
 };
