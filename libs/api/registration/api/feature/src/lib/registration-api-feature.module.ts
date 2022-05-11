@@ -7,7 +7,7 @@ import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 
 @Module({
   controllers: [],
-  providers: [ApiRegistrationServiceFeatureModule],
+  providers: [ApiRegistrationServiceFeatureModule, RegistrationResolver, RegistrationService, RegistrationRepository, PrismaService],
   exports: [RegistrationResolver, RegistrationService, RegistrationRepository, PrismaService],
 })
 export class RegistrationApiFeatureModule {}

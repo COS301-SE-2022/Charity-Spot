@@ -53,7 +53,7 @@ export class RegistrationRepository {
 
   async AlterAdress(UserID : string,address:string,address2:string,city:string,prov:string,)
   {
-    let a = await this.prisma.addressID.findFirst({
+    let a = await this.prisma.address.findFirst({
       where:
       {
         Address:address,
@@ -63,12 +63,12 @@ export class RegistrationRepository {
       },
       select:
       {
-        Address_ID:true
+        AddressID:true
       }
     });
-    if(a.Address_ID==null)
+    if(a.AddressID==null)
     {
-      a = await this.prisma.addressID.create({
+      a = await this.prisma.address.create({
         data:
         {
           Address:address,
@@ -85,7 +85,7 @@ export class RegistrationRepository {
       },
       data:
       {
-        AddressID:a.Address_ID
+        AddressID:a.AddressID
       }
     })
 
