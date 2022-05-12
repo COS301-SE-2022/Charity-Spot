@@ -67,8 +67,8 @@ export function Register() {
       if(setPassval !== setConfPassval){
 
          setInvalidCredentials('The passwords must match');
-      }
-      else if(emailval === response.data.registerORG.email){
+       }else 
+       if(emailval === response.data.registerORG.email){
 
         setInvalidCredentials('The email already exists');
       }
