@@ -7,5 +7,13 @@ describe('client', () => {
             cy.url().should('include','login');
         })
 
+    it('The user should be able to login', () =>{
+        //cy.visit('http://localhost:4200/login')
+
+        cy.get('input[type=email]').type("timo@email");
+        cy.get('input[type=password]').type("1234");
+
+        cy.contains('Log in').click();
+
     })
 });
