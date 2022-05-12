@@ -1,5 +1,4 @@
 {
-  "root": "libs/api/login/service/feature",
   "sourceRoot": "libs/api/login/service/feature/src",
   "targets": {
     "lint": {

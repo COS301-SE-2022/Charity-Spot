@@ -45,6 +45,7 @@
       "@charity-spot/api/shared/services/prisma": [
         "libs/api/shared/services/prisma/src/index.ts"
       ],
+      "@charity-spot/client/home": ["libs/client/home/src/index.ts"],
       "@charity-spot/client/login": ["libs/client/login/src/index.ts"],
       "@charity-spot/client/organisation-profile": [
         "libs/client/organisation-profile/src/index.ts"

@@ -29,13 +29,13 @@ describe ( 'LoginService', () => {
 
     describe('getEntity_login()', () => {
         it('Should return a login entity', async () => {
-            expect(await service.getEntity_login("orgEmail11@email.com", "passWORD")).toMatchObject(loginEntity);
+            expect(await service.getEntity_login("seal@email", "123")).toMatchObject(loginEntity);
         });
     })
 
     describe('validate()', () => {
       it('Should return true', async () => {
-          expect(await service.validate("orgEmail11@email.com", "passWORD")).not.toEqual(false);
+          expect(await service.validate("seal@email", "123")).not.toEqual(false);
       });
   })
 

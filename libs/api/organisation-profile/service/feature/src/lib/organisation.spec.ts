@@ -29,7 +29,7 @@ describe ( 'OrganisationService', () => {
 
   describe('Get Organisation Profile', () => {
     it('Should return Organisation Profile', async () => {
-      expect(await service.getOrgProfile("cl33fox950013e0ch8f7aeurw")).toMatchObject(orgEntity);
+      expect(await service.getOrgProfile("cl33mx5jp02572rcha7os5ij5")).toMatchObject(orgEntity);
     });        
 })
 

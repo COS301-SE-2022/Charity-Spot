@@ -32,7 +32,7 @@ describe ( 'RegistrationService', () => {
 
   describe('Org does not exist', () => {
     it('The Organisation should not already exist', async () => {
-        expect(await service.doesNotExist("lk@gmail.com", "acdvdf")).toEqual(true);
+        expect(await service.doesNotExist("seal@email", "123")).not.toEqual(true);
     }); 
   })
 
