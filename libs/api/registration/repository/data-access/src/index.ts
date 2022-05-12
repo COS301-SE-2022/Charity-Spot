@@ -1,1 +1,1 @@
-export * from './lib/registration-repository-data-access.module';
+export * from './lib/registration.repository'

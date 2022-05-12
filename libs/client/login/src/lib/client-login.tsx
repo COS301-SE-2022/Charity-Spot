@@ -49,6 +49,8 @@ export function ClientLogin() {
 
   const hanndlesubmit = async(event: { preventDefault: () => void; }) =>{
       event.preventDefault();
+
+      //alert("test");
       
       const response = JSON.parse(await APICall(emailval, passval));
 
@@ -89,7 +91,7 @@ export function ClientLogin() {
               value={passval}
               onChange ={(e)=>{setPassval(e.target.value)}}
               /><br/>
-             <Link to ='/profile'><button type='submit' id='sub_butt' >Log in</button></Link>
+             <button type='submit' id='sub_butt' >Log in</button>
           </form>
           <div className='foot'>
             <p>Dont have an account yet?<Link to ='/register' className='Link'> click to Register</Link></p>
