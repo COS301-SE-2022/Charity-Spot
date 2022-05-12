@@ -53,18 +53,20 @@ export function Register() {
   const hanndlesubmit =  async(event: { preventDefault: () => void; }) =>{
       event.preventDefault();
       setInvalidCredentials('');
-      const response = JSON.parse(await APICall(emailval, passval, Locationval, passval));
-      console.log(response);
 
       if((nameval === '') || (emailval === '') || (Locationval === '') || (passval === '') || (confpassval === '')){
         setInvalidCredentials("Fields must not be empty");
         return;
       }
+
+      const response = JSON.parse(await APICall(nameval, emailval, Locationval, passval));
+      console.log(response);
+
       if(setPassval !== setConfPassval){
 
          setInvalidCredentials('The passwords must match');
-       }
-       if(emailval === response.data.registerORG.email){
+      }
+      else if(emailval === response.data.registerORG.email){
 
         setInvalidCredentials('The email already exists');
       }
