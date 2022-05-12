@@ -53,8 +53,11 @@ export function Register() {
   const hanndlesubmit =  async(event: { preventDefault: () => void; }) =>{
       event.preventDefault();
       setInvalidCredentials('');
+<<<<<<< HEAD
       const response = JSON.parse(await APICall(nameval, emailval, Locationval, passval));
       console.log(response);
+=======
+>>>>>>> 267966bce29feb4a8adf5606107b96de6142a62e
 
       if((nameval === '') || (emailval === '') || (Locationval === '') || (passval === '') || (confpassval === '')){
         setInvalidCredentials("Fields must not be empty");
