@@ -58,7 +58,12 @@ export function Register() {
         setInvalidCredentials("Fields must not be empty");
         return;
       }
-      else
+
+      //Hello world
+      
+      const response = JSON.parse(await APICall(nameval, emailval, Locationval, passval));
+      console.log(response);
+
       if(setPassval !== setConfPassval){
 
          setInvalidCredentials('The passwords must match');
