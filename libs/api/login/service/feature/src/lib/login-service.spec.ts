@@ -27,21 +27,11 @@ describe ( 'LoginService', () => {
     expect(service).toBeDefined();
   });
 
-  /*describe('sum()', () => {
-        it('Should add two numbers together', async () => {
-            expect(await service.sum(1,2)).toEqual(
-                3
-            )
-        });
-    })*/
-
-    /*describe('getName()', () => {
-        it('Should return a login entity', async () => {
-            expect(await service.getName()).toMatchObject(loginEntity);
-        });
-    })*/
+  
 
     describe('validate()', () => {
+
+        console.log("hello world")
         
     })
 
