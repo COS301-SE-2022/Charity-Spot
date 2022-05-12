@@ -7,7 +7,7 @@ export class OrgResolver {
     constructor(private readonly OrganisationService: OrganisationService) {}
 
     @Query(() => OrganisationEntity)
-    OrgProfile() : Promise<OrganisationEntity>{
-        return this.OrganisationService.CoolFUNC();
+    OrgProfile(@Args("userID") userID: string) : Promise<OrganisationEntity>{
+        return this.OrganisationService.getOrgProfile(userID);
     }
 }

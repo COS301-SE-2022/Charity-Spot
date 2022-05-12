@@ -13,14 +13,13 @@ export class LoginRepository {
             email: true
         }
     });
+    let returnValue = null;
     list.forEach(i => {
         if (i.email==email)
-        {
-            return true;
-        }
+            returnValue = true;
     });
     
-    return false;
+    return returnValue;
   }
 
   async validateLogin(email : string,password: string)
@@ -37,6 +36,7 @@ export class LoginRepository {
           password: password
         }
     });
+
     if(u.length == 0)
     {
       return null;

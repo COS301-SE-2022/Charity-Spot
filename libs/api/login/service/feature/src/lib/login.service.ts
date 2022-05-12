@@ -7,7 +7,7 @@ export class LoginService {
     constructor(private LoginRepository: LoginRepository) {}
 
     async validate(email : string, password : string) {
-        if(await this.LoginRepository.emailExists(email)) 
+        if(this.LoginRepository.emailExists(email)) 
             return this.LoginRepository.validateLogin(email, password);
         else
             return false;
