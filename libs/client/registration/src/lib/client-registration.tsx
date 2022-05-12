@@ -59,6 +59,8 @@ export function Register() {
         return;
       }
 
+      //Hello world
+      
       const response = JSON.parse(await APICall(nameval, emailval, Locationval, passval));
       console.log(response);
 
