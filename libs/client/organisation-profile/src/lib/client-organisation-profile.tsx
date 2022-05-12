@@ -1,14 +1,47 @@
-import React from 'react'
+import React,{useState} from 'react'
 import './profile.css'
 //import userprofile from'../assets/userprofile.png'
 import userprofile from '../../../shared/assets/userprofile.png'
 
 import ListGroup from 'react-bootstrap/esm/ListGroup';
+
+async function APICall(usrID:string){
+
+  const query = (`query {
+    OrgProfile(userID:"${usrID}"){
+      Email
+      Name
+      Date
+      Location
+    }
+  }`);
+
+  //console.log(query);
+    
+       let All_data = "";
+  
+       await fetch('http://localhost:3333/graphql', {
+             method: 'POST',
+             headers: {
+               'Content-Type': 'application/json',
+               'Accept': 'application/json',
+             },
+             body: JSON.stringify({
+               query
+             })
+          }).then(r => r.json()).then(data => 
+            All_data = data
+            );
+    
+         return JSON.stringify(All_data);
+
+}
 export function Home() {
 
   const hanndlesubmit = (event: { preventDefault: () => void; }) =>{
     event.preventDefault();
 }
+
   return (
     <div className='profile-page'>
       <br/>
