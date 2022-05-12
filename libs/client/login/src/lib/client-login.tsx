@@ -46,27 +46,29 @@ export function ClientLogin() {
   
   const [emailval,setEmailval] = useState('');
   const [passval,setPassval] = useState('');
+  const [invalidCredentials, setInvalidCredentials] = useState('');
 
   const hanndlesubmit = async(event: { preventDefault: () => void; }) =>{
       event.preventDefault();
-
-      //alert("test");
-      
+      setInvalidCredentials('');
       const response = JSON.parse(await APICall(emailval, passval));
 
 
       if(response.data.login.length == 0){
         alert("Invalid credentials");
+        setInvalidCredentials('Invalid Credentials, Try again');
       }
       else{
         let ID = response.data.login.ID;
         if(ID == null){
           alert("error");
+          setInvalidCredentials('Error Detected');
           return;
         }
         document.cookie = "ID="+ID;
         window.location.href = '/';
         console.log(response.data.login);
+        setInvalidCredentials('');
       }
 
       
@@ -95,6 +97,7 @@ export function ClientLogin() {
           </form>
           <div className='foot'>
             <p>Dont have an account yet?<Link to ='/register' className='Link'> click to Register</Link></p>
+            <p style={{color:"red"}}>{invalidCredentials}</p>
           </div>
         </div>
 
