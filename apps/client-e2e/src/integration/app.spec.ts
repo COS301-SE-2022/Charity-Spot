@@ -41,3 +41,34 @@ describe('client', () => {
         })
 
     });
+
+      //organised profile page
+    describe('organised profile page testing', () => {
+        beforeEach(() =>cy.visit('/organised-profile-page'));
+        it('should direct to the right url', () => {
+            cy.url().should('include','organised');
+        })
+
+    it('The user should be able to view their organisations profile page', () =>{
+        //cy.visit('http://localhost:4200/organised-profile')
+
+        cy.contains('#profile-pic');
+        cy.contains('#logout1');
+        cy.contains('Type');
+        cy.contains('Email');
+        cy.contains('Name');
+        cy.contains('Date Registered');
+        cy.contains('Location');
+
+        cy.contains('Home').click();
+
+/*cy.get('id') - by tag
+cy.get('.id') - by class 
+cy.get('#id')- by id*/
+
+    })
+    
+    });
+
+
+});
