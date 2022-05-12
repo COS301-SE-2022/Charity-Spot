@@ -54,3 +54,18 @@ describe('Adding User', () => {
     expect(await service.addUser("lk@gmail.com", "acdvdf")).not.toBeNull;
   }); 
 })
+
+  
+  //alterNGONum("1","125dawdf")
+describe('Altering the NGO number', () => {
+  it('Successfully altered the NGO number', async () => {
+    expect(await service.alterNGONum("1","125dawdf"))
+  }); 
+})   
+
+//alterDescr("1","This is an NGO that supplies food and clothes")
+describe('Altering the description', () => {
+  it('Successfully altered the description', async () => {
+      expect(await service.alterDescr("1","This is an NGO that supplies food and clothes")).toEqual(expect.any(String));
+  }); 
+})
