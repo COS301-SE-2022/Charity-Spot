@@ -1,1 +1,2 @@
-export * from './lib/api-organisation-profile-service-feature.module';
+export {OrganisationEntity} from './lib/organisation.entity';
+export {OrganisationService} from './lib/organisation.service';
