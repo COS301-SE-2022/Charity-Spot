@@ -24,7 +24,7 @@ async function APICall(email: string, password: string){
   //console.log(query);
     
        let initial_students = "";
-    
+  
        await fetch('http://localhost:3333/graphql', {
              method: 'POST',
              headers: {
@@ -55,18 +55,18 @@ export function ClientLogin() {
 
 
       if(response.data.login.length == 0){
-        alert("Invalid credentials");
-        setInvalidCredentials('Invalid Credentials, Try again');
+       // alert("Invalid credentials");
+        setInvalidCredentials('Invalid credentials');
       }
       else{
         let ID = response.data.login.ID;
         if(ID == null){
-          alert("error");
-          setInvalidCredentials('Error Detected');
+         // alert("error");
+          setInvalidCredentials('Invalid credentials');
           return;
         }
         document.cookie = "ID="+ID;
-        window.location.href = '/';
+        window.location.href = '/profile';
         console.log(response.data.login);
         setInvalidCredentials('');
       }
@@ -93,7 +93,7 @@ export function ClientLogin() {
               value={passval}
               onChange ={(e)=>{setPassval(e.target.value)}}
               /><br/>
-             <Link to ='/profile'><button type='submit' id='sub_butt' >Log in</button></Link>
+            <button type='submit' id='sub_butt' >Log in</button>
           </form>
           <div className='foot'>
             <p>Dont have an account yet?<Link to ='/register' className='Link'> click to Register</Link></p>

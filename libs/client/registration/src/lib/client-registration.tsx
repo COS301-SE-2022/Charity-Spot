@@ -7,6 +7,39 @@ import Bgpic from '../../../shared/assets/Bgpic.png'
 
 import './register.css';
 
+async function APICall(orgName:string, email: string,location:string, password: string){
+
+  const query = (`query {
+    registerORG(
+      org_Name:"${orgName}",
+      email: "${email}",
+      location: "${location}",
+      password: "${password}"
+    ){
+      ID
+    }
+  }`);
+
+  //console.log(query);
+    
+       let All_data = "";
+  
+       await fetch('http://localhost:3333/graphql', {
+             method: 'POST',
+             headers: {
+               'Content-Type': 'application/json',
+               'Accept': 'application/json',
+             },
+             body: JSON.stringify({
+               query
+             })
+          }).then(r => r.json()).then(data => 
+            All_data = data
+            );
+    
+         return JSON.stringify(All_data);
+
+}
 
 export function Register() {
   const [typeval,setTypeval] = useState('');
@@ -15,9 +48,39 @@ export function Register() {
   const [Locationval,setLocationval] = useState('');
   const [passval,setPassval] = useState('');
   const [confpassval,setConfPassval] = useState('');
+  const [invalidCredentials, setInvalidCredentials] = useState('');
 
-  const hanndlesubmit = (event: { preventDefault: () => void; }) =>{
+  const hanndlesubmit =  async(event: { preventDefault: () => void; }) =>{
       event.preventDefault();
+      setInvalidCredentials('');
+      const response = JSON.parse(await APICall(emailval, passval, Locationval, passval));
+      console.log(response);
+
+      if((nameval === '') || (emailval === '') || (Locationval === '') || (passval === '') || (confpassval === '')){
+        setInvalidCredentials('Fields must not be empty');
+      }
+      if(setPassval !== setConfPassval){
+
+         setInvalidCredentials('The passwords must match');
+       }
+       if(emailval === response.data.registerORG.email){
+
+        setInvalidCredentials('The email already exists');
+      }
+      else{
+        let ID = response.data.registerORG.ID;
+        // if(ID == null){
+        //  // alert("error");
+        //   setInvalidCredentials('Invalid credentials');
+        //   return;
+        // }
+        document.cookie = "ID="+ID;
+        window.location.href = '/profile';
+        console.log(response.data.registerORG);
+        setInvalidCredentials('');
+      }
+
+           
   }
 
   return (
@@ -67,6 +130,7 @@ export function Register() {
           </form>
           <div className='rgfoot'>
             <p>Already have an account?<Link to ='/login' className='rgLink'> click to Login</Link></p>
+            <p style={{color:"red"}}>{invalidCredentials}</p>
           </div>
         </div>
 
