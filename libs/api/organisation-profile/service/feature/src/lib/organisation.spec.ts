@@ -8,9 +8,9 @@ import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 
 
 
-const orgEntity = new OrganisationEntity();
+const OrganisationEntity = new OrganisationEntity();
 
-describe ( 'OrganisationService', () => {
+describe ( 'Organisation Service', () => {
     let service: OrganisationService;
     let repository: OrganisationRepository;
     let prisma: PrismaService;
@@ -27,10 +27,11 @@ describe ( 'OrganisationService', () => {
     expect(service).toBeDefined();
   });
 
-  describe('Get Organisation Profile', () => {
-    it('Should return Organisation Profile', async () => {
-      expect(await service.getOrgProfile("cl33fox950013e0ch8f7aeurw")).toMatchObject(orgEntity);
-    });        
-})
+  //getOrgProfile(userID: string)
+    describe('Get Organisation Profile', () => {
+        it('Should return Organisation Profile', async () => {
+          expect(await service.getOrgProfile("1")).toMatchObject(OrganisationEntity);
+        });        
+    })
 
 })
