@@ -18,7 +18,6 @@ export class LoginRepository {
         if (i.email==email)
             returnValue = true;
     });
-    
     return returnValue;
   }
 

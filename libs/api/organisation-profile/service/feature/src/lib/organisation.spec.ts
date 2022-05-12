@@ -8,9 +8,9 @@ import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 
 
 
-const loginEntity = new OrganisationEntity();
+const orgEntity = new OrganisationEntity();
 
-describe ( 'LoginService', () => {
+describe ( 'OrganisationService', () => {
     let service: OrganisationService;
     let repository: OrganisationRepository;
     let prisma: PrismaService;
@@ -23,12 +23,14 @@ describe ( 'LoginService', () => {
         service = module.get<OrganisationService>(OrganisationService);
 
   });
-  it('Login service should be defined', () => {
+  it('Organisation service should be defined', () => {
     expect(service).toBeDefined();
   });
 
-    describe('validate()', () => {
-        console.log("hello world2");
-    })
+  describe('Get Organisation Profile', () => {
+    it('Should return Organisation Profile', async () => {
+      expect(await service.getOrgProfile("cl33fox950013e0ch8f7aeurw")).toMatchObject(orgEntity);
+    });        
+})
 
 })
