@@ -47,3 +47,10 @@ describe('Org does not exist', () => {
       expect(await service.doesNotExist("lk@gmail.com", "acdvdf")).toEqual(true);
   }); 
 })
+
+  //addUser("lk@gmail.com", "acdvdf")
+describe('Adding User', () => {
+  it('A new User should be added', async () => {
+    expect(await service.addUser("lk@gmail.com", "acdvdf")).not.toBeNull;
+  }); 
+})
