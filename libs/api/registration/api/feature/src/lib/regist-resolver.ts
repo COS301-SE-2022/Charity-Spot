@@ -13,14 +13,16 @@ export class RegistrationResolver {
 		@Args("password") password: string
 	) {
 		const userID = await this.RegistrationService.addUser(email, password);
+		console.log(userID);
+
 		const temp = new RegistEntity();
-		if(userID > 0) {
+		if(userID != null) {
 			this.RegistrationService.addOrg(userID, orgName);
 			this.RegistrationService.alterAddress(userID, address, "", "", "");
 			temp.ID = userID;
 		}
 		else 
-			temp.ID = "0";
+			temp.ID = null;
 
 		return temp;
 	}

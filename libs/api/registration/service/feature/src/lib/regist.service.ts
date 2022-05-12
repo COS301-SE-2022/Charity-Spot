@@ -18,12 +18,12 @@ export class RegistrationService {
 		if(await this.doesNotExist(email, password) == true) {
 			//hash - upcoming
 
-			const user = this.RegistRepo.addUser(email, password, email+"#");
+			const user = await this.RegistRepo.addUser(email, password, email+"#");
 
-			return user[0].UserID;
+			return user.UserID;
 		}
 		else
-			return  -1000;
+			return  null;
 	}
 
 	async alterNGONum(UserID : string, NGONum: string) {
