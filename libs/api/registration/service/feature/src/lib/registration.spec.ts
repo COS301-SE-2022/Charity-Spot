@@ -11,9 +11,9 @@ import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 
 
 
-const loginEntity = new RegistEntity();
+const RegistrationEntity = new RegistEntity();
 
-describe ( 'RegistrationService', () => {
+describe ( 'Registration Service', () => {
     let service: RegistrationService;
     let repository: RegistrationRepository;
     let prisma: PrismaService;
@@ -30,12 +30,20 @@ describe ( 'RegistrationService', () => {
     expect(service).toBeDefined();
   });
 
-  describe('Org does not exist', () => {
-    it('The Organisation should not already exist', async () => {
-        expect(await service.doesNotExist("lk@gmail.com", "acdvdf")).toEqual(true);
-    }); 
-  })
+    ///////////////
+
+/*
+describe('', () => {
+  it('', async () => {
+
+  }); 
+})
+*/
 
 
-
+//doesNotExist("lk@gmail.com", "acdvdf")
+describe('Org does not exist', () => {
+  it('The Organisation should not already exist', async () => {
+      expect(await service.doesNotExist("lk@gmail.com", "acdvdf")).toEqual(true);
+  }); 
 })
