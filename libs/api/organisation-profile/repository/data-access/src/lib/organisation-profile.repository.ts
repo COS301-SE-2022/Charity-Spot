@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 
 @Injectable()
-export class LoginRepository {
+export class OrganisationRepository {
   constructor(private prisma: PrismaService) {}
 
   async getUserIDFromEmail(email : string)

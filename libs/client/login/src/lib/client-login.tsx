@@ -66,7 +66,7 @@ export function ClientLogin() {
           return;
         }
         document.cookie = "ID="+ID;
-        window.location.href = '/';
+        window.location.href = '/profile';
         console.log(response.data.login);
         setInvalidCredentials('');
       }

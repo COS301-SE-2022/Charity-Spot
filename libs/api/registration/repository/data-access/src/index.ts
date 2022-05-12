@@ -1,1 +1,1 @@
-export * from './lib/registration.repository'
+export * from './lib/registration.repository';

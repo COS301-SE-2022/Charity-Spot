@@ -27,8 +27,8 @@
       "@charity-spot/api/organisation-profile/api/feature": [
         "libs/api/organisation-profile/api/feature/src/index.ts"
       ],
-      "@charity-spot/api/organisation-profile/repository/feature": [
-        "libs/api/organisation-profile/repository/feature/src/index.ts"
+      "@charity-spot/api/organisation-profile/repository/data-access": [
+        "libs/api/organisation-profile/repository/data-access/src/index.ts"
       ],
       "@charity-spot/api/organisation-profile/service/feature": [
         "libs/api/organisation-profile/service/feature/src/index.ts"

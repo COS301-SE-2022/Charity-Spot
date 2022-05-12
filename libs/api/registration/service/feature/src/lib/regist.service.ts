@@ -20,7 +20,7 @@ export class RegistrationService {
 
 			const user = this.RegistRepo.addUser(email, password, email+"#");
 
-			return user.UserID;
+			return user[0].UserID;
 		}
 		else
 			return  -1000;
@@ -41,7 +41,7 @@ export class RegistrationService {
 		city: string, 
 		prov: string
 		) {
-			return this.RegistRepo.alterAddress(userID, address, address2, city, prov);
+			return this.RegistRepo.AlterAdress(userID, address, address2, city, prov);
 	}
 
 	async addOrg(userID : string, OrgName : string) {
