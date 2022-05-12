@@ -57,7 +57,8 @@ export function Register() {
       console.log(response);
 
       if((nameval === '') || (emailval === '') || (Locationval === '') || (passval === '') || (confpassval === '')){
-        setInvalidCredentials('Fields must not be empty');
+        setInvalidCredentials("Fields must not be empty");
+        return;
       }
       if(setPassval !== setConfPassval){
 
