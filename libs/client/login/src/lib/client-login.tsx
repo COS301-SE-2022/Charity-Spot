@@ -46,7 +46,7 @@ export function ClientLogin() {
   
   const [emailval,setEmailval] = useState('');
   const [passval,setPassval] = useState('');
-  const [invalidCredentials, setInvalidCredentials] = useState('Invalid Credentials, Try again');
+  const [invalidCredentials, setInvalidCredentials] = useState('');
 
   const hanndlesubmit = async(event: { preventDefault: () => void; }) =>{
       event.preventDefault();
