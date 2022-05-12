@@ -40,7 +40,6 @@ describe('', () => {
 })
 */
 
-
 //doesNotExist("lk@gmail.com", "acdvdf")
 describe('Org does not exist', () => {
   it('The Organisation should not already exist', async () => {
@@ -54,7 +53,6 @@ describe('Adding User', () => {
     expect(await service.addUser("lk@gmail.com", "acdvdf")).not.toBeNull;
   }); 
 })
-
   
   //alterNGONum("1","125dawdf")
 describe('Altering the NGO number', () => {
@@ -68,4 +66,20 @@ describe('Altering the description', () => {
   it('Successfully altered the description', async () => {
       expect(await service.alterDescr("1","This is an NGO that supplies food and clothes")).toEqual(expect.any(String));
   }); 
+})
+
+//alterAddress("1","1234 Park Address","5678 Konoha Street","Pretoria","Gauteng")
+describe('Altering the address', () => {
+  it('Successfully altered the address', async () => {
+    expect(await service.alterAddress("1","1234 Park Address","5678 Konoha Street","Pretoria","Gauteng")).toEqual(expect.any(String));
+  }); 
+})
+
+//addOrg("5","An incredible Org")
+describe('Adding a new organisation', () => {
+  it('Successfully added a new organisation', async () => {
+    expect(await service.addOrg("5","An incredible Org")).toEqual("SUCCESS");
+  }); 
+})
+
 })
