@@ -13,7 +13,7 @@ import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 
 const loginEntity = new RegistEntity();
 
-describe ( 'LoginService', () => {
+describe ( 'RegistrationService', () => {
     let service: RegistrationService;
     let repository: RegistrationRepository;
     let prisma: PrismaService;
@@ -26,14 +26,16 @@ describe ( 'LoginService', () => {
         service = module.get<RegistrationService>(RegistrationService);
 
   });
-  it('Login service should be defined', () => {
+  it('Registration service should be defined', () => {
     expect(service).toBeDefined();
   });
 
-    describe('validate()', () => {
+  describe('Org does not exist', () => {
+    it('The Organisation should not already exist', async () => {
+        expect(await service.doesNotExist("lk@gmail.com", "acdvdf")).toEqual(true);
+    }); 
+  })
 
-        console.log("hello world1");
-        
-    })
+
 
 })
