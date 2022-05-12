@@ -6,10 +6,23 @@ import { OrganisationRepository } from '@charity-spot/api/organisation-profile/r
 export class OrganisationService {
     constructor(private OrganisationRepository: OrganisationRepository) {}
 
-    async CoolFUNC(){
-        let temp = new OrganisationEntity();
-        console.log("hello");
+    async getOrgProfile(userID: string) {
+        //helpers
+        const organisationProfile = new OrganisationEntity();
+        const org = await this.OrganisationRepository.getOrg(userID);
+        const addr = await this.OrganisationRepository.getAdress(org.AddressID);
 
-        return null;
+        //build
+        organisationProfile.Email = (await this.OrganisationRepository.getEmailFromUserID(userID)).email;
+        organisationProfile.Name = org.OrgName;
+        organisationProfile.Date = "##/##/####";
+        organisationProfile.Location = 
+            addr.Address + "," +
+            addr.Address2 + "," +
+            addr.City + "," +
+            addr.Province
+        ;
+
+        return organisationProfile;
     }
 }

@@ -1,20 +1,21 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@charity-spot/api/shared/services/prisma';
+import { useId } from 'react';
 
 @Injectable()
 export class OrganisationRepository {
   constructor(private prisma: PrismaService) {}
 
-  async getUserIDFromEmail(email : string)
+  async getEmailFromUserID(uID : string)
   {
     return await this.prisma.user.findFirst({
       where:
       {
-        email:email
+        UserID: uID,
       },
       select:
       {
-        UserID:true
+        email: true
       }
     })
   }
