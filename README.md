@@ -3,7 +3,7 @@
     <div align="center">
         <h3 >Seal Team 301 is committed to <b>transparency<b>, <b>perseverance</b> and <b>success</b>.</h3>
     </div>
-    <img align="center"src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo1.png?alt=media&token=a0c65249-56a9-4533-9963-e914f01c585b"></img>
+    <img align="center"src="https://firebasestorage.googleapis.com/v0/b/charityspotdemo1.appspot.com/o/logo1.png?alt=media&token=b54104ac-a595-46f9-ab28-6069195143b4"></img>
 
 </div>
 
