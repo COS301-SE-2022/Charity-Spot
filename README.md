@@ -20,14 +20,9 @@
   
 </div>
 
-<div align="center">---</div>
-
-
-
-
 <div align="center">
     <h2>Our Team Members</h2>
-    <a href="https://www.linkedin.com/[removed]"><h3>Timo van der Merwe</h3></a>
+    <a href="https://github.com/TimovdMerwe-18"><h3>Timo van der Merwe</h3></a>
     <a href="https://www.linkedin.com/[removed]"><h3>Elphus Malope</h3></a>
     <a href="https://www.linkedin.com/[removed]"><h3>Moloko Magwai</h3></a>
     <a href="https://www.linkedin.com/[removed]"><h3>David Roodt </h3></a>
@@ -47,7 +42,7 @@
         Java
 
         PostgreSQL
-        
+
         Prisma
 
 </div>
