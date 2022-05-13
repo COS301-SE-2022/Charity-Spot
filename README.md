@@ -55,6 +55,10 @@
 
         Prisma
 
+        Jest
+
+        Cypress
+
 </div>
 
 
