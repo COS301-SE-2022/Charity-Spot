@@ -1,5 +1,5 @@
 <div>
-    <h1 align="center">Seal Team 301</h1>
+    <h1 align="center">Seal Team 301 + Charity Spot</h1>
     <div align="center">
         <h3 >Seal Team 301 is committed to <b>transparency<b>, <b>perseverance</b> and <b>success</b>.</h3>
     </div>
