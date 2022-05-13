@@ -1,7 +1,7 @@
 <div>
     <h1 align="center">Seal Team 301</h1>
     <div align="center">
-        <h2 >Seal Team 301 is committed to <b>transparency<b>, <b>perseverance</b> and <b>success</b>.</h2>
+        <h3 >Seal Team 301 is committed to <b>transparency<b>, <b>perseverance</b> and <b>success</b>.</h3>
     </div>
     <img align="center"src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo1.png?alt=media&token=a0c65249-56a9-4533-9963-e914f01c585b"></img>
 
@@ -20,15 +20,23 @@
   
 </div>
 
+<h2 align="center">Our Team Members</h2>
+
 <div align="center">
-    <h2>Our Team Members</h2>
-    ![Timo van der Merwe](https://github.com/TimovdMerwe-18)
-    <a href="https://www.linkedin.com/[removed]"><h3>Elphus Malope</h3></a>
-    <a href="https://www.linkedin.com/[removed]"><h3>Moloko Magwai</h3></a>
-    <a href="https://www.linkedin.com/[removed]"><h3>David Roodt </h3></a>
-    <a href="https://www.linkedin.com/[removed]"><h3>Lindinkosi Kunene</h3></a>
-    </div>
+
+[Timo van der Merwe](https://github.com/TimovdMerwe-18)
+
+[Elphus Malope](https://github.com/deamon-death)
+
+[Moloko Magwai](https://github.com/MoloTheSniper)
+
+[David Roodt](https://github.com/David-Roodt)
+
+[Lindinkosi Kunene](https://github.com/lindzik)
+
 </div>
+    
+
 
 <div align="center">
     <h2>Technologies and Frameworks</h2>
