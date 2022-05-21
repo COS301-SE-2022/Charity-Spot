@@ -1,13 +1,13 @@
 import { Resolver, Query, Args } from '@nestjs/graphql';
-import { LoginEntity } from '@charity-spot/api/login/service/feature';
-import { LoginService } from '@charity-spot/api/login/service/feature';
+import { DonateEntity } from '@charity-spot/api/donate/service/feature';
+import { DonateService } from '@charity-spot/api/donate/service/feature';
 
 @Resolver()
-export class LoginResolver {
-    constructor(private readonly LoginService: LoginService) {}
+export class DonateResolver {
+    constructor(private readonly DonateService: DonateService) {}
 
-    @Query(() => LoginEntity)
-    login(@Args('email') email: string, @Args('password') password: string) : Promise<LoginEntity>{
-        return this.LoginService.getEntity_login(email, password);
+    @Query(() => DonateEntity)
+    testQ() : Promise<DonateEntity>{
+        return this.DonateService.coolFunc();
     }
 }

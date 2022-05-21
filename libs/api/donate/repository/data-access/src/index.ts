@@ -1,1 +1,1 @@
-export * from './lib/api-donate-repository-data-access.module';
+export * from './lib/donate.repository';
