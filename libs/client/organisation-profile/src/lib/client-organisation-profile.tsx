@@ -2,6 +2,9 @@ import React,{useState,useEffect} from 'react'
 import './profile.css'
 import userprofile from '../../../shared/assets/userprofile.png'
 
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+
 import ListGroup from 'react-bootstrap/esm/ListGroup';
 let fullCookie = document.cookie.split("="); 
  let IdCookie = fullCookie[1];
@@ -38,7 +41,9 @@ async function APICall(usrID:string){
          console.log(All_data);
 
 }
+
 let Loc = '';
+
 export function Profile() {
   let [OEmail, setOEmail] = useState('');
   let [OName,setOName] = useState('');
@@ -74,8 +79,19 @@ export function Profile() {
   
   return (
     <div className='profile-page'>
+
+
       <br/>
         <h1 style ={{color: '#1458b3'}}> { OName }</h1>
+
+        <Tabs>
+          <TabList>
+            <Tab>Profile Page</Tab>
+            <Tab>Donate an Item</Tab>
+            <Tab>Profile Settings</Tab>
+          </TabList>
+        </Tabs>
+
         <div className='profile-main'>
 
           <div className='user-left'>
