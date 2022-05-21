@@ -27,6 +27,7 @@ describe ( 'LoginService', () => {
     expect(service).toBeDefined();
   });
 
+
   describe('sum()', () => {
         it('Should add two numbers together', async () => {
             expect(await service.sum(1,2)).toEqual(
@@ -40,5 +41,6 @@ describe ( 'LoginService', () => {
             expect(await service.getName()).toMatchObject(loginEntity);
         });
     })
+
 
 })

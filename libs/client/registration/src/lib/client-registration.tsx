@@ -62,9 +62,9 @@ export function Register() {
       //Hello world
       
       const response = JSON.parse(await APICall(nameval, emailval, Locationval, passval));
-      console.log(response);
+      //console.log(response);
 
-      if(setPassval !== setConfPassval){
+      /*if(setPassval !== setConfPassval){
 
          setInvalidCredentials('The passwords must match');
        }else 
@@ -72,7 +72,7 @@ export function Register() {
 
         setInvalidCredentials('The email already exists');
       }
-      else{
+      else{*/
         let ID = response.data.registerORG.ID;
         // if(ID == null){
         //  // alert("error");
@@ -80,10 +80,10 @@ export function Register() {
         //   return;
         // }
         document.cookie = "ID="+ID;
-        window.location.href = '/profile';
-        console.log(response.data.registerORG);
+        window.location.href = '/login';
+        //console.log(response.data.registerORG);
         setInvalidCredentials('');
-      }
+      //}
 
            
   }

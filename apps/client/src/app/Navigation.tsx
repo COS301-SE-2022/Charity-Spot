@@ -1,9 +1,36 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import {Navbar,Nav} from 'react-bootstrap'
 import CS from '../../../../libs/client/shared/assets/CS.png'
 
+
+
 function Navigation() {
+
+  const [showLogin, setShowLogin] = React.useState(false);
+  const [showProfile, setShowProfile] = React.useState(false);
+
+  useEffect(() => {
+    if (window.location.pathname === '/profile') {
+      console.log("working!");
+      setShowLogin(false);
+      setShowProfile(true);
+    }
+
+    if (window.location.pathname === '/login') {
+      console.log("working!");
+      setShowProfile(false);
+    }
+
+    if (window.location.pathname === '/home') {
+      console.log("working!");
+      setShowProfile(true);
+      setShowLogin(false);
+    }
+
+   },[]);
+
+
   return (
     <div>
     <Navbar expand="lg" style={{ backgroundColor: '#dcdfe3', height: '80px' }}>
@@ -14,9 +41,10 @@ function Navigation() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ backgroundColor: '#dcdfe3', }}className="me-auto">      
-          {/* <Nav.Link as={Link} to={"/"}>Home</Nav.Link> */}
-          <Nav.Link as={Link} to={"/login"}>Login</Nav.Link>
-          {/* <Nav.Link as={Link} to={"/register"}>Register</Nav.Link> */}
+          <Nav.Link as={Link} to={"/home"}>Home</Nav.Link>
+          { showLogin ? <Nav.Link as={Link} to={"/login"}>Login</Nav.Link> : null}
+          { showProfile ? <Nav.Link as={Link} to={"/profile"}>Profile</Nav.Link> : null}
+          
         </Nav>
       </Navbar.Collapse>
   </Navbar>

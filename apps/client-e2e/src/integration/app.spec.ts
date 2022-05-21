@@ -1,4 +1,4 @@
-describe('client', () => {
+/*describe('client', () => {
 
     //login page
     describe('login page testing', () => {
@@ -16,6 +16,7 @@ describe('client', () => {
         cy.contains('Log in').click();
 
     })
+
 });
 
    //registration page
@@ -53,6 +54,7 @@ describe('client', () => {
         //cy.visit('http://localhost:4200/organised-profile')
 
         cy.contains('#profile-pic');
+
         cy.contains('#logout1');
         cy.contains('Type');
         cy.contains('Email');
@@ -62,6 +64,7 @@ describe('client', () => {
 
         cy.contains('Home').click();
 
+
 /*cy.get('id') - by tag
 cy.get('.id') - by class 
 cy.get('#id')- by id*/
@@ -69,6 +72,7 @@ cy.get('#id')- by id*/
     })
     
     });
+
 
 
 });

@@ -10,6 +10,7 @@
     "api-registration-service-feature": "libs/api/registration/service/feature",
     "client": "apps/client",
     "client-e2e": "apps/client-e2e",
+    "client-home": "libs/client/home",
     "client-login": "libs/client/login",
     "client-organisation-profile": "libs/client/organisation-profile",
     "client-registration": "libs/client/registration",

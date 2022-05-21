@@ -56,17 +56,17 @@ export function ClientLogin() {
 
       if(response.data.login.length == 0){
        // alert("Invalid credentials");
-        setInvalidCredentials('Invalid credentials');
+        setInvalidCredentials('Invalid credentials, please try again');
       }
       else{
         let ID = response.data.login.ID;
         if(ID == null){
          // alert("error");
-          setInvalidCredentials('Invalid credentials');
+          setInvalidCredentials('Invalid credentials, please try again');
           return;
         }
         document.cookie = "ID="+ID;
-        window.location.href = '/profile';
+        window.location.href = '/home';
         console.log(response.data.login);
         setInvalidCredentials('');
       }
@@ -84,6 +84,7 @@ export function ClientLogin() {
             <img src={CS} alt='' id='logo-img-id'/>
           </div>
           <form onSubmit={hanndlesubmit}>
+          <p style={{color:"red"}}>{invalidCredentials}</p>
             <label htmlFor ='emil1' className='lgLabel'>Email</label>
               <input placeholder='Enter your email...' type ='email' id="emil1"  className='lgInput'
                value={emailval}
@@ -97,7 +98,6 @@ export function ClientLogin() {
           </form>
           <div className='foot'>
             <p>Dont have an account yet?<Link to ='/register' className='Link'> click to Register</Link></p>
-            <p style={{color:"red"}}>{invalidCredentials}</p>
           </div>
         </div>
 
