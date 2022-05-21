@@ -8,7 +8,7 @@ import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 
 
 
-const OrganisationEntity = new OrganisationEntity();
+const organisationEntity = new OrganisationEntity();
 
 describe ( 'Organisation Service', () => {
     let service: OrganisationService;

@@ -1,5 +1,4 @@
 {
-  "root": "libs/shared/services/prisma",
   "sourceRoot": "libs/shared/services/prisma/src",
   "targets": {
     "lint": {

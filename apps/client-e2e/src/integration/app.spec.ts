@@ -67,7 +67,7 @@
 
 /*cy.get('id') - by tag
 cy.get('.id') - by class 
-cy.get('#id')- by id*/
+cy.get('#id')- by id
 
     })
     
@@ -75,4 +75,4 @@ cy.get('#id')- by id*/
 
 
 
-});
+});*/
