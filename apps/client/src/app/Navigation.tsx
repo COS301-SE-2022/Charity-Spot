@@ -44,6 +44,7 @@ function Navigation() {
           <Nav.Link as={Link} to={"/home"}>Home</Nav.Link>
           { showLogin ? <Nav.Link as={Link} to={"/login"}>Login</Nav.Link> : null}
           { showProfile ? <Nav.Link as={Link} to={"/profile"}>Profile</Nav.Link> : null}
+          <Nav.Link as={Link} to={"/donate"}>Donate</Nav.Link>
           
         </Nav>
       </Navbar.Collapse>
