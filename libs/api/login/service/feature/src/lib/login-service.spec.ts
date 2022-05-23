@@ -27,16 +27,20 @@ describe ( 'LoginService', () => {
     expect(service).toBeDefined();
   });
 
-    describe('getEntity_login()', () => {
-        it('Should return a login entity', async () => {
-            expect(await service.getEntity_login("orgEmail11@email.com", "passWORD")).toMatchObject(loginEntity);
+
+  describe('sum()', () => {
+        it('Should add two numbers together', async () => {
+            expect(await service.sum(1,2)).toEqual(
+                3
+            )
         });
     })
 
-    describe('validate()', () => {
-      it('Should return true', async () => {
-          expect(await service.validate("orgEmail11@email.com", "passWORD")).not.toEqual(false);
-      });
-  })
+    describe('getName()', () => {
+        it('Should return a login entity', async () => {
+            expect(await service.getName()).toMatchObject(loginEntity);
+        });
+    })
+
 
 })

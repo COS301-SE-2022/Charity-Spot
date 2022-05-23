@@ -1,5 +1,4 @@
 {
-  "root": "libs/login/repository/data-access",
   "sourceRoot": "libs/login/repository/data-access/src",
   "targets": {
     "lint": {

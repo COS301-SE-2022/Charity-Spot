@@ -1,5 +1,4 @@
 {
-  "root": "libs/client/registration",
   "sourceRoot": "libs/client/registration/src",
   "projectType": "library",
   "tags": [],

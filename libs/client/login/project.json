@@ -1,5 +1,4 @@
 {
-  "root": "libs/client/login",
   "sourceRoot": "libs/client/login/src",
   "projectType": "library",
   "tags": [],

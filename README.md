@@ -1,37 +1,65 @@
-<div style="text-align: center;">
-    <h1 style="text-align:center; font-family: 'Monospace';">Charity Spot</h1>
-    <img style="background-color:white;" src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/Full-Logo.png?alt=media&token=956e85b9-df61-4708-9d0a-25960556f946" width="500">
-    <img style="background-color:white;" src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo1.png?alt=media&token=a0c65249-56a9-4533-9963-e914f01c585b" width="500">
-    <h1 style="text-align:center; font-family: 'Monospace';">Seal Team 301</h1>
-</div>
-
-<div style="margin-bottom:50px;">
-    <p style="text-align:center; font-family: 'Monospace';">Seal Team 301 is committed to <b style="color:green;" >transparency</b>, <b style="color:green;">perseverance</b> and <b style="color:green;">success</b>.
-    </p>
-</div>
-
-<div style="font-family: 'Monospace'; margin-bottom:50px;">
-    <h2 style="text-align:center; font-family: 'Monospace';">Our Team Members</h2>
-    <div style="margin-left:20%;">
-    <h3>Timo van der Merwe</h3>
-    <h3>Elphus Malope</h3>
-    <h3>Moloko Magwai</h3>
-    <h3>David Roodt </h3>
-    <h3>Lindinkosi Kunene</h3>
+<div>
+    <h1 align="center">Seal Team 301 + Charity Spot</h1>
+    <div align="center">
+        <h3 >Seal Team 301 is committed to <b>transparency<b>, <b>perseverance</b> and <b>success</b>.</h3>
     </div>
+    <img align="center"src="https://firebasestorage.googleapis.com/v0/b/charityspotdemo1.appspot.com/o/logo1.png?alt=media&token=b54104ac-a595-46f9-ab28-6069195143b4"></img>
+
 </div>
 
-<div style="font-family: 'Monospace'; margin-bottom:50px;">
-    <h2 style="text-align:center; font-family: 'Monospace';">Technologies and Frameworks</h2>
-    <ul style="margin-left:20%;list-style-position: inside;">
-        <li >React and React Native</li>
-        <li>NestJS</li>
-        <li>GraphQL</li>
-        <li>Java</li>
-        <li>PostgreSQL</li>
-        <li>Prisma</li>
-    </ul>
+<div align="center">---</div>
 
+<div align="center">
+
+[Our SRS](https://drive.google.com/file/d/1PB11ctS5-gHrR4uCKGpD1R9AEKioBgaX/view?usp=sharing)
+
+[SealTeam301-Demo1](https://drive.google.com/file/d/1NorrmnBr6aDn9ovl26_EOgvQ-I2dzZOf/view?usp=sharing)
+
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/COS301-SE-2022/Charity-Spot)
+
+![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/COS301-SE-2022/Charity-Spot)
+![GitHub issues](https://img.shields.io/github/issues-raw/COS301-SE-2022/Charity-Spot)
+
+![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/COS301-SE-2022/Charity-Spot)
+  
+</div>
+
+<h2 align="center">Our Team Members</h2>
+
+<div align="center">
+
+[Timo van der Merwe](https://github.com/TimovdMerwe-18)
+
+[Elphus Malope](https://github.com/deamon-death)
+
+[Moloko Magwai](https://github.com/MoloTheSniper)
+
+[David Roodt](https://github.com/David-Roodt)
+
+[Lindinkosi Kunene](https://github.com/lindzik)
+
+</div>
+    
+
+
+<div align="center">
+    <h2>Technologies and Frameworks</h2>
+
+        React and React Native
+
+        NestJS
+
+        GraphQL
+
+        Java
+
+        PostgreSQL
+
+        Prisma
+
+        Jest
+
+        Cypress
 
 </div>
 

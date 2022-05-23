@@ -1,5 +1,4 @@
 {
-  "root": "libs/client/organisation-profile",
   "sourceRoot": "libs/client/organisation-profile/src",
   "projectType": "library",
   "tags": [],

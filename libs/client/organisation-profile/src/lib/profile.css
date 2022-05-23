@@ -50,9 +50,11 @@
 
 #profile-pic
 {
-    height: 110px;
-    width: 110px;
-    padding: 15px;
+    /*height: 110px;
+    width: 110px;*/
+    height: auto;
+    width: 500px;
+    padding: 100px;
 }
 #logout1{
     width: 25%;
@@ -71,8 +73,11 @@
 @media screen and (max-width: 1200px) {
     #profile-pic
     {
-        height: 110px;
-        width: 110px;
+        /*height: 110px;
+        width: 110px;*/
+        height: auto;
+        width: 400px;
+        padding-top: 100px;
     }
     .profile-main{
         width: 90%;
@@ -91,8 +96,11 @@
 @media screen and (max-width: 900px) {
     #profile-pic
    {
-       height: 110px;
-       width: 110px;
+       /*height: 110px;
+       width: 110px;*/
+       height: auto;
+       width: 300px;
+       padding-top: 100px;
    }
    .profile-main{
        width: 90%;
@@ -160,8 +168,11 @@
 @media screen and (min-width: 1600px) {
     #profile-pic
     {
-        height: 120px;
-        width: 120px;
+        /*height: 120px;
+        width: 120px;*/
+        height: auto;
+        width: 500px;
+        padding-top: 150px;
     }        
     .profile-main{
         width: 80%;

@@ -1,5 +1,4 @@
 {
-  "root": "libs/api/registration/service/feature",
   "sourceRoot": "libs/api/registration/service/feature/src",
   "targets": {
     "lint": {

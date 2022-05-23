@@ -1,5 +1,4 @@
 {
-  "root": "libs/api/organisation-profile/api/feature",
   "sourceRoot": "libs/api/organisation-profile/api/feature/src",
   "targets": {
     "lint": {
