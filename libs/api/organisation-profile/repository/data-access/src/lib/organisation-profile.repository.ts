@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@charity-spot/api/shared/services/prisma';
-import { useId } from 'react';
 
 @Injectable()
 export class OrganisationRepository {
@@ -37,12 +36,37 @@ export class OrganisationRepository {
     })
   }
 
-  async getAdress(addressID : string)
+  async editOrgName(userID : string, name : string)
   {
+    return await this.prisma.organisation.update({
+      where:
+      {
+        UserID:userID
+      },
+      data:
+      {
+        OrgName:name
+      }
+    })
+  }
+
+  async getAdress(userID : string)
+  {
+    const u = await this.prisma.organisation.findFirst({
+      where:
+      {
+        UserID:userID
+      },
+      select:
+      {
+        AddressID:true
+      }
+    });
+
     return await this.prisma.address.findFirst({
       where:
       {
-        AddressID:addressID
+        AddressID:u.AddressID
       },
       select:
       {
@@ -50,6 +74,34 @@ export class OrganisationRepository {
         Address2:true,
         City:true,
         Province:true
+      }
+    })
+  }
+
+  async editAddress(userID : string, address : string, address2 : string, city : string, prov : string)
+  {
+    const u = await this.prisma.organisation.findFirst({
+      where:
+      {
+        UserID:userID
+      },
+      select:
+      {
+        AddressID:true
+      }
+    });
+
+    return await this.prisma.address.update({
+      where:
+      {
+        AddressID:u.AddressID
+      },
+      data:
+      {
+        Address:address,
+        Address2:address2,
+        City:city,
+        Province:prov
       }
     })
   }
@@ -66,6 +118,34 @@ export class OrganisationRepository {
         ClientID:true,
         rating:true,
         Comment:true
+      }
+    })
+  }
+
+  async getProfilePicture(userID : string)
+  {
+    return await this.prisma.organisation.findFirst({
+      where:
+      {
+        UserID:userID
+      },
+      select:
+      {
+        profilePicture:true
+      }
+    })
+  }
+
+  async editProfilePicture(userID : string, pfp : string)
+  {
+    return await this.prisma.organisation.update({
+      where:
+      {
+        UserID:userID
+      },
+      data:
+      {
+        profilePicture:pfp
       }
     })
   }
