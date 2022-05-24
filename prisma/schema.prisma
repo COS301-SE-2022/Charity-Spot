@@ -22,9 +22,19 @@ model Organisation {
   OrgName       String  @map("organisation_id")
   NGONum        String? @unique @map("ngo_number")
   Description   String?  @map("description")
-  AddressLink    String?  @map("address_link")
+  AddressID     String?  @map("address_ID")
 
   @@map("organisation")
+}
+
+model Address {
+  AddressID   String  @id @default(cuid()) @map("address_id")
+  Address     String  @map("address")
+  Address2    String  @map("address2")
+  City        String  @map("city")
+  Province    String  @map("province")
+  
+  @@map("address")
 }
 
 model Rating {
@@ -37,19 +47,12 @@ model Rating {
   @@map("rating")
 }
 
-model Item {
-  ItemID      String  @id @default(cuid()) @map("item_id")
+model DonoItem {
   ItemName    String  @map("item_name")
-  Descrition  String  @map("descrition")
-
-  @@map("item")
-}
-
-model HasItem {
-  ItemID      String  @map("item_id")
   OrgID       String  @map("org_id")
   Quantity    Int     @map("quantity")
+  Descrition  String  @map("descrition")
 
-  @@id([ItemID,OrgID])
-  @@map("has_item")
+  @@id([ItemName,OrgID])
+  @@map("donation_item")
 }
