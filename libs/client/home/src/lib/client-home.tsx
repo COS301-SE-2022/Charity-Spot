@@ -23,7 +23,7 @@ export function Home() {
   <Tab  eventKey="filter" title={
    <span>
      <FaFilter />{" Filter "}
-   </span>
+   </span> <h1></h1>
   }>
   </Tab>
   <Tab eventKey="contact" title="Contact" >
