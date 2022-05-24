@@ -18,11 +18,12 @@ model User {
 }
 
 model Organisation {
-  UserID        String  @id @map("user_id")
-  OrgName       String  @map("organisation_id")
-  NGONum        String? @unique @map("ngo_number")
-  Description   String?  @map("description")
-  AddressID     String?  @map("address_ID")
+  UserID          String  @id @map("user_id")
+  OrgName         String  @map("organisation_id")
+  NGONum          String? @unique @map("ngo_number")
+  Description     String?  @map("description")
+  AddressID       String?  @map("address_ID")
+  profilePicture  String? @map("profile_picture")
 
   @@map("organisation")
 }
@@ -49,10 +50,23 @@ model Rating {
 
 model DonoItem {
   ItemName    String  @map("item_name")
+  Picture     String? @map("picture")
   OrgID       String  @map("org_id")
   Quantity    Int     @map("quantity")
-  Descrition  String  @map("descrition")
+  Descrition  String? @map("descrition")
+  Quality     quality @map("quality")
+  Type        catagory  @map("type")
 
   @@id([ItemName,OrgID])
   @@map("donation_item")
+}
+
+enum quality {
+  NEW
+  USED
+}
+
+enum catagory {
+  CLOTHING
+  FOOD
 }
