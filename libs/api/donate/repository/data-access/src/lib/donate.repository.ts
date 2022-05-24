@@ -19,6 +19,21 @@ export class DonateRepository {
     })
   }
 
+ async editItemName(uID, oldName, newName : string)
+ {
+   return await this.prisma.donoItem.update({
+     where:
+     {
+       OrgID: uID,
+       ItemName: oldName
+     },
+     data:
+     {
+       ItemName: newName
+     }
+   })
+ }
+
   async getItemDescription(uID : string, iName: string)
   {
     return await this.prisma.donoItem.findFirst({
@@ -30,6 +45,21 @@ export class DonateRepository {
       select:
       {
         Descrition: true
+      }
+    })
+  }
+
+  async getItemPicture(uID : string, iName: string)
+  {
+    return await this.prisma.donoItem.findFirst({
+      where:
+      {
+        OrgID: uID,
+        ItemName: iName,
+      },
+      select:
+      {
+        Picture: true
       }
     })
   }
@@ -60,6 +90,21 @@ export class DonateRepository {
       select:
       {
         Quality : true
+      }
+    })
+  }
+
+  async getItemType(uID : string, iName: string)
+  {
+    return await this.prisma.donoItem.findFirst({
+      where:
+      {
+        OrgID: uID,
+        ItemName: iName,
+      },
+      select:
+      {
+        Type : true
       }
     })
   }
