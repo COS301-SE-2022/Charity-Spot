@@ -2,7 +2,7 @@
 import 'react-tabs/style/react-tabs.css';
 import {Tabs,Tab} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaMapMarkerAlt,FaFilter } from 'react-icons/fa'
+//import { FaMapMarkerAlt,FaFilter } from 'react-icons/fa'
 
 
 export function Home() {
@@ -22,7 +22,7 @@ export function Home() {
   </Tab>
   <Tab  eventKey="filter" title={
    <span>
-     <FaFilter />{" Filter "}
+     {/* <FaFilter />{" Filter "} */}
    </span> <h1></h1>
   }>
   </Tab>
