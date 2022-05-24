@@ -1,5 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Type } from '@nestjs/common';
 import { PrismaService } from '@charity-spot/api/shared/services/prisma';
+import { catagory, quality } from '@prisma/client';
 
 @Injectable()
 export class DonateRepository {
@@ -24,8 +25,11 @@ export class DonateRepository {
    return await this.prisma.donoItem.update({
      where:
      {
-       OrgID: uID,
-       ItemName: oldName
+      ItemName_OrgID:
+      {
+        OrgID: uID,
+        ItemName: oldName
+      }
      },
      data:
      {
@@ -49,6 +53,24 @@ export class DonateRepository {
     })
   }
 
+  async editItemDescription(uID, Name, Description : string)
+  {
+    return await this.prisma.donoItem.update({
+      where:
+      {
+        ItemName_OrgID:
+        {
+          OrgID: uID,
+          ItemName: Name
+        }
+      },
+      data:
+      {
+        Descrition: Description
+      }
+    })
+  }
+
   async getItemPicture(uID : string, iName: string)
   {
     return await this.prisma.donoItem.findFirst({
@@ -60,6 +82,24 @@ export class DonateRepository {
       select:
       {
         Picture: true
+      }
+    })
+  }
+
+  async editItemPicture(uID, Name, Picture : string)
+  {
+    return await this.prisma.donoItem.update({
+      where:
+      {
+        ItemName_OrgID:
+        {
+          OrgID: uID,
+          ItemName: Name
+        }
+      },
+      data:
+      {
+        Picture: Picture
       }
     })
   }
@@ -79,6 +119,24 @@ export class DonateRepository {
     })
   }
 
+  async editQuantity(uID, Name: string, Quantity : number)
+  {
+    return await this.prisma.donoItem.update({
+      where:
+      {
+        ItemName_OrgID:
+        {
+          OrgID: uID,
+          ItemName: Name
+        }
+      },
+      data:
+      {
+        Quantity: Quantity
+      }
+    })
+  }
+
   async getItemQuality(uID : string, iName: string)
   {
     return await this.prisma.donoItem.findFirst({
@@ -94,6 +152,24 @@ export class DonateRepository {
     })
   }
 
+  async editQuality(uID, Name: string, Quality : quality)
+  {
+    return await this.prisma.donoItem.update({
+      where:
+      {
+        ItemName_OrgID:
+        {
+          OrgID: uID,
+          ItemName: Name
+        }
+      },
+      data:
+      {
+        Quality: Quality
+      }
+    })
+  }
+
   async getItemType(uID : string, iName: string)
   {
     return await this.prisma.donoItem.findFirst({
@@ -105,6 +181,24 @@ export class DonateRepository {
       select:
       {
         Type : true
+      }
+    })
+  }
+
+  async editItemType(uID : string, iName: string, type : catagory)
+  {
+    return await this.prisma.donoItem.update({
+      where:
+      {
+        ItemName_OrgID:
+        {
+          OrgID: uID,
+          ItemName: iName
+        }
+      },
+      data:
+      {
+        Type : type
       }
     })
   }
