@@ -22,7 +22,7 @@ model Organisation {
   OrgName       String  @map("organisation_id")
   NGONum        String? @unique @map("ngo_number")
   Description   String?  @map("description")
-  AddressID     String?  @map("address_id")
+  AddressLink    String?  @map("address_link")
 
   @@map("organisation")
 }
@@ -37,10 +37,19 @@ model Rating {
   @@map("rating")
 }
 
-model Address {
-  AddressID  String  @id @default(cuid()) @map("address_id")
-  Address     String  @map("address")
-  Address2    String  @map("address2")
-  City        String  @map("city")
-  Province    String  @map("province")
+model Item {
+  ItemID      String  @id @default(cuid()) @map("item_id")
+  ItemName    String  @map("item_name")
+  Descrition  String  @map("descrition")
+
+  @@map("item")
+}
+
+model HasItem {
+  ItemID      String  @map("item_id")
+  OrgID       String  @map("org_id")
+  Quantity    Int     @map("quantity")
+
+  @@id([ItemID,OrgID])
+  @@map("has_item")
 }
