@@ -2,8 +2,11 @@ import React,{useState,useEffect} from 'react'
 import './profile.css'
 import userprofile from '../../../shared/assets/userprofile.png'
 
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+
 import 'react-tabs/style/react-tabs.css';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { FaUserAlt,FaEdit,FaPen } from 'react-icons/fa'
 
 import ListGroup from 'react-bootstrap/esm/ListGroup';
 let fullCookie = document.cookie.split("="); 
@@ -78,19 +81,20 @@ export function Profile() {
 
   
   return (
-    <div className='profile-page'>
-
-
-      <br/>
-        <h1 style ={{color: '#1458b3'}}> { OName }</h1>
-
-        <Tabs>
-          <TabList>
-            <Tab>Profile Page</Tab>
-            <Tab>Donate an Item</Tab>
-            <Tab>Profile Settings</Tab>
-          </TabList>
-        </Tabs>
+  <div className="wrapper">
+    <br/><br/>
+      <input type ="radio" name="slider" id='home' checked ></input>
+      <input type ="radio" name="slider" id='blog' ></input>
+      {/* <input type ="radio" name="slider" id='code' ></input>
+      <input type ="radio" name="slider" id='help' ></input> */}
+      <nav>
+        <label htmlFor= "home" className='home' onClick ={()=>{}}><FaUserAlt/> Profile  </label>
+        <label htmlFor= "blog" className='blog'> <FaEdit/> Edit </label>
+        <div className='slider'></div>
+      </nav>
+<section>
+  <div className='content content-1'>
+        <div className='title'><h2>Profile</h2></div>
 
         <div className='profile-main'>
 
@@ -115,7 +119,63 @@ export function Profile() {
           </ListGroup>
           </div>
       </div>
-    </div>
+   </div> 
+   
+   
+
+
+      
+
+  <div className='content content-2'>
+            <div className='title'><h2>Edit Profile</h2></div>
+
+            <div className='editor-main'>
+
+              <div className='editor-left'>
+              <div className='edit-pic'>
+                <img src={userprofile} alt="" id="editor-pic"/>
+              </div>
+              <form onSubmit={hanndlesubmit}>
+                  <button type='submit' id='logout1'>Log out</button>
+              </form>
+              </div>
+              <div className='editor-right'>
+                <br/><br/>
+                <div className='updater'>
+                  <form onSubmit={hanndlesubmit}>
+                    <div className='user-box1'>
+                      {/* <label htmlFor=''>OrgName</label><br/> */}
+                      <input className="in1" type ="text" placeholder='Name' ></input>  
+                      <FaPen color='#1458b3'/>
+                    </div>
+                    <div className='user-box2'>
+                      {/* <label htmlFor=''>Email</label> */}
+                      <input className="in2" type ="email" placeholder='Email'></input> 
+                      <FaPen color='#1458b3'/>
+                    </div>  
+                    <div className='user-box3'>
+                      {/* <label htmlFor=''>Address</label> */}
+                      <input className="in3" type ="text" placeholder='Address'></input> 
+                      <FaPen color='#1458b3'/>
+                    </div>                                
+                    <div className='user-box4'>
+                      {/* <label htmlFor=''>Org Password</label> */}
+                      <input className="in4" type ="password" placeholder='Password'></input> 
+                      <FaPen color='#1458b3'/>
+                    </div>      
+                    <div className='user-box5'>
+                      {/* <label htmlFor=''>confirm password</label> */}
+                      <input className="in5" type ="password" placeholder='Confirm Password'></input> 
+                      <FaPen color='#1458b3'/>
+                    </div> 
+                    <input id='upt_but'type="submit" value="Update"/>                                                                                       
+                  </form>
+                </div>  
+              </div>
+          </div>
+            </div>
+  </section>
+ </div>   
   )
 }
 

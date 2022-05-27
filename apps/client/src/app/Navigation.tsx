@@ -33,7 +33,7 @@ function Navigation() {
 
   return (
     <div>
-    <Navbar expand="lg" style={{ backgroundColor: '#dcdfe3', height: '80px' }}>
+    <Navbar expand="lg" style={{ backgroundColor: '#dcdfe3', height: '80px',zIndex: 2 }}>
     <div className='logo-class'>
             <img src={CS} alt='' id='logo-nav-id'/>
      </div>
