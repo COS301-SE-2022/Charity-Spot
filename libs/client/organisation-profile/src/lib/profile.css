@@ -1,5 +1,5 @@
 .profile-page{
-    background-color: rgb(232, 236, 243);
+    /* background-color: rgb(232, 236, 243); */
     min-height: 100vh;
     min-width: 100vw;
     overflow-x: hidden;
@@ -16,7 +16,7 @@
     height: 500px auto;
     width: 70%;
 
-    background: linear-gradient(to right bottom, rgba(221, 216, 216, 0.849),rgba(255, 255, 255, 0.863));
+    /* background: linear-gradient(to right bottom, rgba(221, 216, 216, 0.849),rgba(255, 255, 255, 0.863)); */
     border-radius: 1rem;
     margin: 1.5rem auto;
     box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0);
@@ -28,7 +28,7 @@
      justify-content: space-around;
      flex-flow: wrap;
 
-     background-color: rgb(13, 63, 138);
+     background-color: #e2e3e5;
 
 }
 .user-left{
@@ -38,6 +38,7 @@
 
     box-sizing: border-box;
     margin: 20px;
+    /* background-color: #1458b3; */
    
 }
 .user-right{
@@ -50,15 +51,13 @@
 
 #profile-pic
 {
-    /*height: 110px;
-    width: 110px;*/
-    height: auto;
-    width: 500px;
-    padding: 100px;
+    height: 110px;
+    width: 110px;
+    padding: 15px;
 }
 #logout1{
     width: 25%;
-    background: #e2e2e2 ;
+    background: #f1f1f1 ;
     color: #1458b3;
     border: none;
     cursor: pointer;
@@ -73,11 +72,8 @@
 @media screen and (max-width: 1200px) {
     #profile-pic
     {
-        /*height: 110px;
-        width: 110px;*/
-        height: auto;
-        width: 400px;
-        padding-top: 100px;
+        height: 110px;
+        width: 110px;
     }
     .profile-main{
         width: 90%;
@@ -96,11 +92,8 @@
 @media screen and (max-width: 900px) {
     #profile-pic
    {
-       /*height: 110px;
-       width: 110px;*/
-       height: auto;
-       width: 300px;
-       padding-top: 100px;
+       height: 110px;
+       width: 110px;
    }
    .profile-main{
        width: 90%;
@@ -168,11 +161,8 @@
 @media screen and (min-width: 1600px) {
     #profile-pic
     {
-        /*height: 120px;
-        width: 120px;*/
-        height: auto;
-        width: 500px;
-        padding-top: 150px;
+        height: 120px;
+        width: 120px;
     }        
     .profile-main{
         width: 80%;
@@ -182,6 +172,339 @@
         height: 600px;
     }
     .user-right{
+        width: 38%;
+        height: 600px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+.wrapper{
+    /* max-width: 1200px; */
+    width: 85%;
+    margin: 1px auto;
+    padding: 1px;
+  
+  
+  
+  }
+  .wrapper nav{
+    position: relative;
+    height: 50px;
+    width: 50%;
+    /* width: 500px; */
+    display: flex;
+    align-items: center;
+  
+     /* CENTERING STUFF*/ 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* background-color: red; */
+    z-index: 1;
+  }
+  .wrapper nav label{
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    color: rgb(37, 72, 162);
+    z-index: 2;
+    transition: all 0.3s ease;
+ 
+  }
+  #home:checked ~ nav label.home{
+    color: white;
+  }
+  #blog:checked ~ nav label.blog{
+    color: white;
+  }
+  input[type="radio"]{
+    display: none;
+  }
+  .wrapper nav label i{
+    padding-right: 7px;
+  }
+  .wrapper nav .slider{
+    position: absolute;
+    height: 100%;
+    width: 35%;
+    background-color: rgb(37, 72, 162);
+  
+    z-index: 1;
+    border-radius: 10px;
+    left: 8%;
+    bottom: 0;
+    transition: all 0.3s ease;
+  }
+  #home:checked ~ nav .slider{
+    left: 8%;
+  }
+  #blog:checked ~ nav .slider{
+    left: 58%;
+  }
+
+  /* SHOWING AND HIDING TAB DATA */
+  section .content{
+    display: none;
+  }
+  #home:checked ~ section .content-1{
+   display: block;
+  }
+  #blog:checked ~ section .content-2{
+    display: block;
+   }
+
+  
+
+
+
+
+   
+input.in1,.in2,.in3,.in4,.in5{
+   width: 80%; 
+   border: none;
+   border-bottom: 2px solid #1458b3;
+   background-color: transparent;
+   color: darkslategray;
+   margin-bottom: 30px;
+   outline: none;
+   margin-right: 10px;
+}
+input.in1,.in2,.in3,.in4,.in5:focus{
+    outline: none;
+}
+input.in1:hover{
+    outline: none;
+    box-shadow: 1px 1px 0px -1px blue;  
+    border-bottom: 2px solid gray;
+ 
+}
+input.in2:hover{
+    outline: none;
+    box-shadow: 1px 1px 0px -1px blue;  
+    border-bottom: 2px solid gray;
+
+}
+input.in3:hover{
+    outline: none;
+    box-shadow: 1px 1px 0px -1px blue;  
+    border-bottom: 2px solid gray;
+
+}
+input.in4:hover{
+    outline: none;
+    box-shadow: 1px 1px 0px -1px blue;  
+    border-bottom: 2px solid gray;
+
+}
+input.in5:hover{
+    outline: none;
+    box-shadow: 1px 1px 0px -1px blue;  
+    border-bottom: 2px solid gray;
+
+}
+
+
+
+
+#upt_but{
+    width: 85%;
+    background: #1458b3 ;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0.7rem 1rem;
+    transition: all 0.3 ease;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*------------------------------------- For the EDIT TAB CONTENT---------------------------------------------------------------------*/
+.editor-main{
+    height: 500px auto;
+    width: 70%;
+
+    /* background: linear-gradient(to right bottom, rgba(221, 216, 216, 0.849),rgba(255, 255, 255, 0.863)); */
+    border-radius: 1rem;
+    margin: 1.5rem auto;
+    box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0);
+
+
+     /* text-align: center; */
+     display: flex;
+     flex-direction: row;
+     justify-content: space-around;
+     flex-flow: wrap;
+
+     background-color: #e2e3e5;
+
+}
+.editor-left{
+    /* background-color: aqua; */
+    height: 450px;
+    width: 45%;
+
+    box-sizing: border-box;
+    margin: 20px;
+    /* background-color: #1458b3; */
+   
+}
+.editor-right{
+    /* background-color: rgb(162, 0, 255); */
+    height: 450px;
+    width: 45%;
+    box-sizing: border-box;
+    margin: 20px;  
+}
+
+#editor-pic
+{
+    height: 110px;
+    width: 110px;
+    padding: 15px;
+}
+#logout1{
+    width: 25%;
+    background: #f1f1f1 ;
+    color: #1458b3;
+    border: none;
+    cursor: pointer;
+    padding: 0.4rem 1rem;
+    transition: all 0.3 ease;
+    border-radius: 5px;
+}
+#logout1:hover{
+   box-shadow: 0.5px 0.5px 6px -1px black; 
+   /* transform: translate(-5px); */
+}
+@media screen and (max-width: 1200px) {
+    #editor-pic
+    {
+        height: 110px;
+        width: 110px;
+    }
+    .editor-main{
+        width: 90%;
+    }
+    .editor-left{
+        width: 44%;
+    }
+    .editor-right{
+        width: 44%;
+    }
+    #logout1{
+        width: 25%;
+ 
+    }    
+}
+@media screen and (max-width: 900px) {
+    #editor-pic
+   {
+       height: 110px;
+       width: 110px;
+   }
+   .editor-main{
+       width: 90%;
+   }
+   .editor-left{
+       width: 100%;
+       height: 270px;
+   }
+   .editor-right{
+       height: 450px;
+       width: 100%;
+   
+       box-sizing: border-box;
+       margin: 20px;  
+   }
+   #logout1{
+       width: 25%;
+
+   }
+}
+
+@media screen and (max-width: 750px) {
+     #editor-pic
+    {
+        height: 110px;
+        width: 110px;
+        padding: 15px;
+    }
+    .profile-main{
+        width: 90%;
+    }
+    .editor-left{
+        width: 100%;
+        height: 200px;
+    }
+    .editor-right{
+        height: 450px;
+        width: 100%;
+    
+        box-sizing: border-box;
+        margin: 20px;  
+    }
+    #logout1{
+        width: 25%;
+
+    }
+}
+@media screen and (max-width: 600px) {
+    #editor-pic
+   {
+       height: 100px;
+       width: 100px;
+       padding: 15px;
+   }
+   .editor-main{
+       width: 90%;
+   }
+   .editor-left{
+       width: 100%;
+       height: 100px;
+   }
+
+}
+
+@media screen and (min-width: 1600px) {
+    #editor-pic
+    {
+        height: 120px;
+        width: 120px;
+    }        
+    .editor-main{
+        width: 80%;
+    }
+    .editor-left{
+        width: 38%;
+        height: 600px;
+    }
+    .editor-right{
         width: 38%;
         height: 600px;
     }
