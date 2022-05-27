@@ -83,7 +83,7 @@ export function Profile() {
   return (
   <div className="wrapper">
     <br/><br/>
-      <input type ="radio" name="slider" id='home' checked ></input>
+      <input type ="radio" name="slider" id='home' defaultChecked ></input>
       <input type ="radio" name="slider" id='blog' ></input>
       {/* <input type ="radio" name="slider" id='code' ></input>
       <input type ="radio" name="slider" id='help' ></input> */}

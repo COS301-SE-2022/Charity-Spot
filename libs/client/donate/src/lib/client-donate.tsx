@@ -13,7 +13,7 @@ return (
 <div>
 <div className="wrapper2">
 <br/><br/>
-  <input type ="radio" name="slider" id='donate1'  checked></input>
+  <input type ="radio" name="slider" id='donate1'  defaultChecked></input>
   <input type ="radio" name="slider" id='history1' ></input>
   {/* <input type ="radio" name="slider" id='code' ></input>
   <input type ="radio" name="slider" id='help' ></input> */}
