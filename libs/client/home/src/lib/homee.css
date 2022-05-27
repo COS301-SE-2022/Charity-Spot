@@ -75,4 +75,3 @@ section .content{
 #blog:checked ~ section .content-2{
   display: block;
  }
-
