@@ -16,7 +16,7 @@ export class DonateResolver {
         @Args("condition") condition: any,
         @Args("descr") descr: string
     ) {
-        category = (category) : catagory => {
+        const Category = (category) : catagory => {
             switch(category) {
                 case 'Food':
                     return 'FOOD';
@@ -40,7 +40,7 @@ export class DonateResolver {
 
         //Moloko: fix your values in donate page form = donate-box4
 
-        condition = (condition) : quality => {
+        const Condition = (condition) : quality => {
             switch(condition) {
                 case 'New':
                     return 'NEW';
@@ -52,6 +52,6 @@ export class DonateResolver {
             }
         }
 
-        return this.DonateService.donate(id, name, quantity, category, condition, descr);
+        return this.DonateService.donate(id, name, quantity, Category(category), Condition(condition), descr);
     }
 }
