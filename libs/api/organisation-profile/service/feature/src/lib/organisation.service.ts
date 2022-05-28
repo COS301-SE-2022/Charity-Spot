@@ -10,7 +10,8 @@ export class OrganisationService {
         //helpers
         const organisationProfile = new OrganisationEntity();
         const org = await this.OrganisationRepository.getOrg(userID);
-        const addr = await this.OrganisationRepository.getAdress(org.AddressID);
+        //const addr = await this.OrganisationRepository.getAdress(org.AddressID);
+        const addr = await this.OrganisationRepository.getAdress(userID);
 
         //build
         organisationProfile.Email = (await this.OrganisationRepository.getEmailFromUserID(userID)).email;
