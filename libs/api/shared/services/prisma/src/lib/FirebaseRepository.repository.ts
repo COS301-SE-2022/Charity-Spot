@@ -7,13 +7,43 @@ import * as fs from 'fs';
 export class FirebaseService {
 
     firebaseConfig = {
-        apiKey: "AIzaSyCJDoT3fRnol23upGcl4O2q90Hsmq0aQ-s",
-        authDomain: "cos301-storage-test.firebaseapp.com",
-        projectId: "cos301-storage-test",
-        storageBucket: "cos301-storage-test.appspot.com",
-        messagingSenderId: "994861102315",
-        appId: "1:994861102315:web:6a4b736d15abc7915cbaae"
-        //measurementId: "MEASUREMENT_ID",
-      };
+        apiKey: "AIzaSyArwrzThCNUfKZHx9K_z2Ddp-EvnBSr5JM",
+        authDomain: "charity-spot.firebaseapp.com",
+        projectId: "charity-spot",
+        storageBucket: "charity-spot.appspot.com",
+        messagingSenderId: "257273465394",
+        appId: "1:257273465394:web:c402863daaf04823fb8a2b"
+    };
+
+    app = initializeApp(this.firebaseConfig);
+        
+    storage = getStorage();
+
+    async uploadFile(){
+
+        const fileRef = ref(this.storage, "dog.jpg");
+
+        let tempBool = false;
+
+        const file = new File(["dog"], "dog.jpg");
+
+        //add new file to firebase storage
+        await uploadBytes(fileRef, file).then( async (snapshot) => {
+
+            console.log('Successful upload');
+            console.log(snapshot);
+            
+
+        }).catch( (err) =>{
+
+            console.error(err);
+
+        });
+
+
+
+
+
+    }
 
 }
