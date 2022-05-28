@@ -110,9 +110,9 @@ export function Profile() {
           <div className='user-right'>
             <br/><br/>
           <ListGroup variant="flush" >
-            <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px', color: '#104283' }}></ListGroup.Item>
+          <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Name: { OName }</ListGroup.Item>
+            {/* <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px', color: '#104283' }}></ListGroup.Item> */}
             <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px', color: '#104283' }}>Email: { OEmail}</ListGroup.Item>
-            {/*<ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Name: { OName }</ListGroup.Item>*/}
             <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Date Registered: { ODate }</ListGroup.Item>
             <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Location: { OLocation}</ListGroup.Item>
             <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Rating: 5.0</ListGroup.Item>
@@ -145,17 +145,17 @@ export function Profile() {
                   <form onSubmit={hanndlesubmit}>
                     <div className='user-box1'>
                       {/* <label htmlFor=''>OrgName</label><br/> */}
-                      <input className="in1" type ="text" placeholder='Name' ></input>  
+                      <input className="in1" type ="text" placeholder='Name'defaultValue={OName} ></input>  
                       <FaPen color='#1458b3'/>
                     </div>
                     <div className='user-box2'>
                       {/* <label htmlFor=''>Email</label> */}
-                      <input className="in2" type ="email" placeholder='Email'></input> 
+                      <input className="in2" type ="email" placeholder='Email'defaultValue={OEmail}></input> 
                       <FaPen color='#1458b3'/>
                     </div>  
                     <div className='user-box3'>
                       {/* <label htmlFor=''>Address</label> */}
-                      <input className="in3" type ="text" placeholder='Address'></input> 
+                      <input className="in3" type ="text" placeholder='Address' defaultValue={OLocation}></input> 
                       <FaPen color='#1458b3'/>
                     </div>                                
                     <div className='user-box4'>
