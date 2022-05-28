@@ -21,11 +21,13 @@ export class FirebaseService {
 
     async uploadFile(){
 
+        console.log(process.cwd());
+
         const fileRef = ref(this.storage, "dog.jpg");
 
         let tempBool = false;
 
-        const file = new File(["dog"], "dog.jpg");
+        let file = require('fs').readFileSync('dog.jpg');
 
         //add new file to firebase storage
         await uploadBytes(fileRef, file).then( async (snapshot) => {

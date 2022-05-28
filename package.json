@@ -29,7 +29,8 @@
     "regenerator-runtime": "0.13.7",
     "rxjs": "^7.0.0",
     "tslib": "^2.3.0",
-    "firebase": "^9.6.11"
+    "firebase": "^9.6.11",
+    "fs": "^0.0.1-security"
   },
   "devDependencies": {
     "@nestjs/apollo": "^10.0.9",
