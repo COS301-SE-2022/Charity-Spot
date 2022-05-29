@@ -65,8 +65,8 @@ return (
                             <div className='donate-box4'>
                               {/* <label htmlFor=''>Org Password</label> */}
                               <select name="orgs"   className='din4'>
-                                    <option value="Food">New</option>
-                                    <option value="Clothes">Used</option>  
+                                    <option value="New">New</option>
+                                    <option value="Used">Used</option>  
                                 </select>                                       
                              
                               <FaPen color='#1458b3'/>
