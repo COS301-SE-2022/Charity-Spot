@@ -1,15 +1,29 @@
 import styles from './client-donate.module.css';
 import './donatee.css'
 import { FaHistory,FaDonate,FaPen } from 'react-icons/fa';
+import { useState } from 'react';
 
 /* eslint-disable-next-line */
-export interface ClientDonateProps {}
-export function ClientDonate(props: ClientDonateProps) {
+//export interface ClientDonateProps {}
+//export function ClientDonate(props: ClientDonateProps) {
+export function ClientDonate() {
+
+  const [imageUpload, setImageUpload] = useState<File>();
+
+  const uploadImage = () => {
+
+    
+
+
+  };
+
 
   const hanndlesubmit = (event: { preventDefault: () => void; }) =>{
     event.preventDefault();
-}
+  }
+
 return (
+
 <div>
 <div className="wrapper2">
 <br/><br/>
@@ -75,10 +89,30 @@ return (
                               {/* <label htmlFor=''>confirm password</label> */}
                               <textarea className="din5" rows={1}  placeholder='Item(s) Description'></textarea> 
                               
-                            </div> 
+                            </div>
+
                             <input id='dnt_but'type="submit" value="Donate"/>   
                             <input id='clr_but'type="submit" value="Clear"/>                                                                                    
                           </form>
+
+                          {/*Test code for file upload please feel free to remove*/}
+
+                            <div>
+
+                              <input type="file"
+                              onChange={(e) => {
+
+                                if(!e.target.files) return;
+                                setImageUpload(e.target.files[0])
+
+                              }}/>
+
+                              <button onClick={uploadImage}>Upload Image</button>
+
+                            </div>
+
+                          {/*End of test code for file upload*/}
+
                         </div>  
                       </div>
                   </div>
