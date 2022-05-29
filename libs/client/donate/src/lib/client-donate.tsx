@@ -40,6 +40,8 @@ export function ClientDonate() {
 
   const uploadImage = () => {
 
+    alert("Image uploaded to Firebase!");
+
     if(imageUpload){
       getBase64(imageUpload).then((data) => { uploadImageAPICall(data); });
     }
@@ -139,6 +141,7 @@ return (
                           {/*Test code for file upload please feel free to remove*/}
 
                             <div>
+                              <br></br>
 
                               <input type="file"
                               onChange={(e) => {
