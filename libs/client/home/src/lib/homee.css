@@ -1,0 +1,77 @@
+.wrapper{
+  /* max-width: 1200px; */
+  width: 85%;
+  margin: 1px auto;
+  padding: 1px;
+
+
+
+}
+.wrapper nav{
+  position: relative;
+  height: 50px;
+  width: 50%;
+  /* width: 500px; */
+  display: flex;
+  align-items: center;
+
+   /* CENTERING STUFF*/ 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* background-color: red; */
+
+}
+.wrapper nav label{
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  line-height: 50px;
+  cursor: pointer;
+  color: rgb(37, 72, 162);
+  z-index: 4;
+  transition: all 0.3s ease;
+
+}
+#home:checked ~ nav label.home{
+  color: white;
+}
+#blog:checked ~ nav label.blog{
+  color: white;
+}
+input[type="radio"]{
+  display: none;
+}
+.wrapper nav label i{
+  padding-right: 7px;
+}
+.wrapper nav .slider{
+  position: absolute;
+  height: 100%;
+  width: 35%;
+  background-color: rgb(37, 72, 162);
+
+  z-index: 3;
+  border-radius: 10px;
+  left: 8%;
+  bottom: 0;
+  transition: all 0.3s ease;
+}
+#home:checked ~ nav .slider{
+  left: 8%;
+}
+#blog:checked ~ nav .slider{
+  left: 58%;
+}
+
+/* SHOWING AND HIDING TAB DATA */
+section .content{
+  display: none;
+}
+#home:checked ~ section .content-1{
+ display: block;
+}
+#blog:checked ~ section .content-2{
+  display: block;
+ }

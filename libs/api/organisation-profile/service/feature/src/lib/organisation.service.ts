@@ -10,7 +10,8 @@ export class OrganisationService {
         //helpers
         const organisationProfile = new OrganisationEntity();
         const org = await this.OrganisationRepository.getOrg(userID);
-        const addr = await this.OrganisationRepository.getAdress(org.AddressID);
+        //const addr = await this.OrganisationRepository.getAdress(org.AddressID);
+        const addr = await this.OrganisationRepository.getAdress(userID);
 
         //build
         organisationProfile.Email = (await this.OrganisationRepository.getEmailFromUserID(userID)).email;
@@ -24,5 +25,18 @@ export class OrganisationService {
         ;
 
         return organisationProfile;
+    }
+
+    async updateDet(id: string, name: string, loc: string, picture: string) {
+        if(name != null)
+            this.OrganisationRepository.editOrgName(id, name);
+        
+        if(loc != null)
+            this.OrganisationRepository.editAddress(id, loc, null, null, null);
+
+        if(picture != null)
+            this.OrganisationRepository.editProfilePicture(id, picture);
+
+        return this.getOrgProfile(id);
     }
 }
