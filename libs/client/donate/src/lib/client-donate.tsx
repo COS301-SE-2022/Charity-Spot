@@ -41,7 +41,7 @@ export function ClientDonate() {
   const uploadImage = () => {
 
     if(imageUpload){
-      getBase64(imageUpload).then((data) => { console.log(data);uploadImageAPICall(data); });
+      getBase64(imageUpload).then((data) => { uploadImageAPICall(data); });
     }
 
 

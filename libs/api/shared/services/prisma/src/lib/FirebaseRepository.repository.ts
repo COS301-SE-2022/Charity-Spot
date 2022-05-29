@@ -27,22 +27,17 @@ export class FirebaseService {
         );
 
         
-        let fileName : string = idOfItem + '.' + imgType;
+        let fileName = "DonatedItems/" + idOfItem + '.' + imgType;
 
         const fileRef = ref(this.storage, fileName);
 
 
         await uploadString(fileRef, base64.split(',')[1], 'base64').then( async (snapshot) => {
             console.log('Successful upload');
-            console.log(snapshot);
+            //console.log(snapshot);
           }).catch( (err) =>{
-            console.error(err);
+            //console.error(err);
           });
-
-
-
-
-
     }
 
 }
