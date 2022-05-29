@@ -19,11 +19,13 @@ export class FirebaseService {
         
     storage = getStorage();
 
-    async uploadFile(){
+    async uploadFile(base64){
 
+        console.log(base64);
         console.log(process.cwd());
+        
 
-        const fileRef = ref(this.storage, "dog.jpg");
+        /*const fileRef = ref(this.storage, "dog.jpg");
 
         let tempBool = false;
 
@@ -40,7 +42,7 @@ export class FirebaseService {
 
             console.error(err);
 
-        });
+        });*/
 
 
 
