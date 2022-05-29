@@ -8,7 +8,7 @@ export class DonateResolver {
     constructor(private readonly DonateService: DonateService) {}
 
     @Query(() => DonateEntity)
-    async donate(
+    donate(
         @Args("userID") id: string,
         @Args("name") name: string,
         @Args("quantity") quantity: number,
