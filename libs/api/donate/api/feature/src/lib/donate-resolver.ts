@@ -11,7 +11,11 @@ export class DonateResolver {
     @Query(() => DonateEntity)
     uploadImage(@Args('base64') base64: string) : boolean{
 
-        this.FirebaseService.uploadFile(base64);
+        //idOfitem should be the id of the item in the db
+        //this will be used as the name of the image
+        let idOfItem = Math.floor(Math.random() * (1000 - 1) + 1);
+
+        this.FirebaseService.uploadFile(base64, idOfItem);
 
         return true;
     }

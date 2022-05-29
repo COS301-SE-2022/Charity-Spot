@@ -19,30 +19,25 @@ export class FirebaseService {
         
     storage = getStorage();
 
-    async uploadFile(base64){
+    async uploadFile(base64, idOfItem){
 
-        console.log(base64);
-        console.log(process.cwd());
+        var imgType = base64.substring(
+            base64.indexOf("/") + 1, 
+            base64.lastIndexOf(";")
+        );
+
         
+        let fileName : string = idOfItem + '.' + imgType;
 
-        /*const fileRef = ref(this.storage, "dog.jpg");
+        const fileRef = ref(this.storage, fileName);
 
-        let tempBool = false;
 
-        let file = require('fs').readFileSync('dog.jpg');
-
-        //add new file to firebase storage
-        await uploadBytes(fileRef, file).then( async (snapshot) => {
-
+        await uploadString(fileRef, base64.split(',')[1], 'base64').then( async (snapshot) => {
             console.log('Successful upload');
             console.log(snapshot);
-            
-
-        }).catch( (err) =>{
-
+          }).catch( (err) =>{
             console.error(err);
-
-        });*/
+          });
 
 
 
