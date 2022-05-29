@@ -34,7 +34,7 @@ export class DonateResolver {
                     return 'KITCHEN';
 
                 default:
-                    return 'FOOD';
+                    return null;
             }
         }
 
