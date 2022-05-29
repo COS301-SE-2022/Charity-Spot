@@ -12,8 +12,8 @@ export class DonateResolver {
         @Args("userID") id: string,
         @Args("name") name: string,
         @Args("quantity") quantity: number,
-        @Args("category") category: any,
-        @Args("condition") condition: any,
+        @Args("category") category: string,
+        @Args("condition") condition: string,
         @Args("descr") descr: string
     ) {
         const Category = (category) : catagory => {
