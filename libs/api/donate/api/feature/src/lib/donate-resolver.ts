@@ -24,8 +24,8 @@ export class DonateResolver {
                     return 'CLOTHING';
                 case 'Tech':
                     return 'TECH';
-                case 'Hygiene':
-                    return 'TOILETRIES';
+                //case 'Hygiene':
+                    //return 'TOILETRIES';
                 case 'Stationary':
                     return 'STATIONARY';
                 case 'Furniture':
