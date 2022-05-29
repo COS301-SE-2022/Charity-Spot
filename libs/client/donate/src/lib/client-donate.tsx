@@ -3,6 +3,34 @@ import './donatee.css'
 import { FaHistory,FaDonate,FaPen } from 'react-icons/fa';
 import { useState } from 'react';
 
+async function uploadImageAPICall(ImageBase64 : any){
+    
+  const query = (`query {
+    uploadImage(base64: "${ImageBase64}"){
+      ID
+    }
+  }`);
+
+  let All_data = "";
+  
+  await fetch('http://localhost:3333/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        query
+      })
+      }).then(r => r.json())
+        .then((data) => 
+            All_data = data
+        );
+            
+  console.log(JSON.stringify(All_data));
+
+}
+
 /* eslint-disable-next-line */
 //export interface ClientDonateProps {}
 //export function ClientDonate(props: ClientDonateProps) {
@@ -12,10 +40,23 @@ export function ClientDonate() {
 
   const uploadImage = () => {
 
-    
+    if(imageUpload){
+      getBase64(imageUpload).then((data) => { uploadImageAPICall(data); });
+    }
 
 
   };
+
+  function getBase64(file : File){
+
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
+
+  }
 
 
   const hanndlesubmit = (event: { preventDefault: () => void; }) =>{

@@ -7,7 +7,11 @@ export class DonateResolver {
     constructor(private readonly DonateService: DonateService) {}
 
     @Query(() => DonateEntity)
-    testQ() : Promise<DonateEntity>{
-        return this.DonateService.coolFunc();
+    uploadImage(@Args('base64') base64: string) : boolean{
+
+        console.log(base64);
+
+        //return this.DonateService.coolFunc();
+        return true;
     }
 }
