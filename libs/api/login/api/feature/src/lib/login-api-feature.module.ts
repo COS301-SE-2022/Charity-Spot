@@ -5,11 +5,9 @@ import { LoginResolver } from './login-resolver';
 import { LoginRepository } from '@charity-spot/api/login/repository/data-access';
 import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 
-import { FirebaseService } from '@charity-spot/api/shared/services/prisma';
-
 @Module({
   controllers: [],
   imports: [LoginServiceFeatureModule],
-  providers: [LoginResolver, LoginService, LoginRepository, PrismaService, FirebaseService]
+  providers: [LoginResolver, LoginService, LoginRepository, PrismaService]
 })
 export class LoginApiFeatureModule {}
