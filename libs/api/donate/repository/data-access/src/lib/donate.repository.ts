@@ -6,14 +6,13 @@ import { catagory, quality } from '@prisma/client';
 export class DonateRepository {
   constructor(private prisma: PrismaService) {}
 
-  async AddItem(itemName, picture, orgID: string, quantity : number, Quality : quality, type: catagory)
+  async AddItem(itemName, orgID: string, quantity : number, Quality : quality, type: catagory)
   {
     return await this.prisma.donoItem.create({
       
       data:
       {
         ItemName : itemName,
-        Picture : picture,
         OrgID : orgID,
         Quantity : quantity,
         Quality : Quality,
