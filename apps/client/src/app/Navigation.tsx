@@ -9,23 +9,28 @@ function Navigation() {
 
   const [showLogin, setShowLogin] = React.useState(false);
   const [showProfile, setShowProfile] = React.useState(false);
+  const [showDonate, setShowDonate] = React.useState(false);
 
   useEffect(() => {
     if (window.location.pathname === '/profile') {
       console.log("working!");
       setShowLogin(false);
       setShowProfile(true);
+      setShowDonate(true);
+      
     }
 
     if (window.location.pathname === '/login') {
       console.log("working!");
       setShowProfile(false);
+      setShowDonate(false);
     }
 
     if (window.location.pathname === '/home') {
       console.log("working!");
       setShowProfile(true);
       setShowLogin(false);
+      setShowDonate(true);
     }
 
    },[]);
@@ -44,7 +49,7 @@ function Navigation() {
           <Nav.Link as={Link} to={"/home"}>Home</Nav.Link>
           { showLogin ? <Nav.Link as={Link} to={"/login"}>Login</Nav.Link> : null}
           { showProfile ? <Nav.Link as={Link} to={"/profile"}>Profile</Nav.Link> : null}
-          <Nav.Link as={Link} to={"/donate"}>Donate</Nav.Link>
+          { showDonate ? <Nav.Link as={Link} to={"/donate"}>Donate</Nav.Link> : null }
           
         </Nav>
       </Navbar.Collapse>

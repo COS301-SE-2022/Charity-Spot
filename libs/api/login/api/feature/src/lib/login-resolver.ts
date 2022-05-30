@@ -8,6 +8,7 @@ export class LoginResolver {
 
     @Query(() => LoginEntity)
     login(@Args('email') email: string, @Args('password') password: string) : Promise<LoginEntity>{
+        
         return this.LoginService.getEntity_login(email, password);
     }
 }

@@ -1,15 +1,72 @@
 import styles from './client-donate.module.css';
 import './donatee.css'
 import { FaHistory,FaDonate,FaPen } from 'react-icons/fa';
+import { useState } from 'react';
+
+async function uploadImageAPICall(ImageBase64 : any){
+    
+  const query = (`query {
+    uploadImage(base64: "${ImageBase64}"){
+      ID
+    }
+  }`);
+
+  let All_data = "";
+  
+  await fetch('http://localhost:3333/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        query
+      })
+      }).then(r => r.json())
+        .then((data) => 
+            All_data = data
+        );
+            
+  console.log(JSON.stringify(All_data));
+
+}
 
 /* eslint-disable-next-line */
-export interface ClientDonateProps {}
-export function ClientDonate(props: ClientDonateProps) {
+//export interface ClientDonateProps {}
+//export function ClientDonate(props: ClientDonateProps) {
+export function ClientDonate() {
+
+  const [imageUpload, setImageUpload] = useState<File>();
+
+  const uploadImage = () => {
+
+    alert("Image uploaded to Firebase!");
+
+    if(imageUpload){
+      getBase64(imageUpload).then((data) => { uploadImageAPICall(data); });
+    }
+
+
+  };
+
+  function getBase64(file : File){
+
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
+
+  }
+
 
   const hanndlesubmit = (event: { preventDefault: () => void; }) =>{
     event.preventDefault();
-}
+  }
+
 return (
+
 <div>
 <div className="wrapper2">
 <br/><br/>
@@ -75,10 +132,31 @@ return (
                               {/* <label htmlFor=''>confirm password</label> */}
                               <textarea className="din5" rows={1}  placeholder='Item(s) Description'></textarea> 
                               
-                            </div> 
+                            </div>
+
                             <input id='dnt_but'type="submit" value="Donate"/>   
                             <input id='clr_but'type="submit" value="Clear"/>                                                                                    
                           </form>
+
+                          {/*Test code for file upload please feel free to remove*/}
+
+                            <div>
+                              <br></br>
+
+                              <input type="file"
+                              onChange={(e) => {
+
+                                if(!e.target.files) return;
+                                setImageUpload(e.target.files[0])
+
+                              }}/>
+
+                              <button onClick={uploadImage}>Upload Image</button>
+
+                            </div>
+
+                          {/*End of test code for file upload*/}
+
                         </div>  
                       </div>
                   </div>
