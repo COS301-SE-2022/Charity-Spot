@@ -7,21 +7,23 @@ import { catagory, quality } from '@prisma/client';
 export class DonateService {
     constructor(private donateRepository: DonateRepository) {}
 
-    async donate(id: string, name: string, quantity: number, category: catagory, condition: quality, descr: string){
+    async donate(id: string, name: string, quantity: number, category: catagory, condition: quality, descr: string, pic: string){
 
         //repository actions
-        this.donateRepository.editItemName(id, null, name);
-        this.donateRepository.editQuantity(id, name, quantity);
-        this.donateRepository.editItemType(id, name, category);
-        this.donateRepository.editQuality(id, name, condition);
-        this.donateRepository.editItemDescription(id, name, descr);
-
-        //David: need to edit Quality type in prismaClient, check donate-resolver.ts
+        await this.donateRepository.AddItem(name, id, quantity, condition, category);
+        await this.donateRepository.editItemDescription(id, name, descr);
+        const item = await this.donateRepository.editItemPicture(id, name, pic);
 
         //return id 
         //NOT NULLABLE
-        const temp = new DonateEntity();
-        temp.ID = "Donate Working!";
-        return temp;
+        const returnable = new DonateEntity();
+        returnable.ID = item.OrgID;
+        returnable.Name = item.ItemName;
+        returnable.Description = item.Descrition;
+        
+        //gibrish for now - until firebase
+        returnable.Picture = item.Picture;
+        
+        return returnable;
     }
 }

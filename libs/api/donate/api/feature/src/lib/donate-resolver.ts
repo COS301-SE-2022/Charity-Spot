@@ -10,14 +10,15 @@ export class DonateResolver {
     constructor(private readonly DonateService: DonateService, private readonly FirebaseService: FirebaseService) {}
 
     @Query(() => DonateEntity)
-
-    donate(
+    async donate(
         @Args("userID") id: string,
         @Args("name") name: string,
         @Args("quantity") quantity: number,
         @Args("category") category: string,
         @Args("condition") condition: string,
-        @Args("descr") descr: string
+        @Args("descr") descr: string,
+        @Args("picture") picBase64: string,
+        @Args("pic_format") format: string
     ) {
         const Category = (category) : catagory => {
             switch(category) {
@@ -27,8 +28,8 @@ export class DonateResolver {
                     return 'CLOTHING';
                 case 'Tech':
                     return 'TECH';
-                //case 'Hygiene':
-                    //return 'TOILETRIES';
+                case 'Hygiene':
+                    return 'HYGIENE';
                 case 'Stationary':
                     return 'STATIONARY';
                 case 'Furniture':
@@ -40,8 +41,6 @@ export class DonateResolver {
                     return null;
             }
         }
-
-        //Moloko: fix your values in donate page form = donate-box4
 
         const Condition = (condition) : quality => {
             switch(condition) {
@@ -55,17 +54,9 @@ export class DonateResolver {
             }
         }
         
-        //     uploadImage(@Args('base64') base64: string) : boolean{
 
-//         //idOfitem should be the id of the item in the db
-//         //this will be used as the name of the image
-//         let idOfItem = Math.floor(Math.random() * (1000 - 1) + 1);
+        const picRef =  picBase64 + '.' + format;//await this.FirebaseService.uploadFile(picBase64, id + "_" +  String(Math.floor(Math.random() * (1000 - 1) + 1)) + "_" + name, format);
 
-//         this.FirebaseService.uploadFile(base64, idOfItem);
-
-//         return true;
-
-
-        return this.DonateService.donate(id, name, quantity, Category(category), Condition(condition), descr);
+        return await this.DonateService.donate(id, name, quantity, Category(category), Condition(condition), descr, picRef);
     }
 }

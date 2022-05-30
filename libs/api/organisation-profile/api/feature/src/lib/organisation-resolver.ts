@@ -11,6 +11,7 @@ export class OrgResolver {
         return this.OrganisationService.getOrgProfile(userID);
     }
 
+    
     @Query(() => OrganisationEntity)
     OrgEditProfile(
         @Args('id') id: string,
