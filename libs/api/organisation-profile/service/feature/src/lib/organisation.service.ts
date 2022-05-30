@@ -10,6 +10,7 @@ export class OrganisationService {
         //helpers
         const organisationProfile = new OrganisationEntity();
         const org = await this.OrganisationRepository.getOrg(userID);
+
         //const addr = await this.OrganisationRepository.getAdress(org.AddressID);
         const addr = await this.OrganisationRepository.getAdress(userID);
 
@@ -38,5 +39,9 @@ export class OrganisationService {
             this.OrganisationRepository.editProfilePicture(id, picture);
 
         return this.getOrgProfile(id);
+    }
+
+    async getDonations(id: string) {
+        return null;
     }
 }

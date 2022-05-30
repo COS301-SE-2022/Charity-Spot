@@ -2,10 +2,14 @@ import { Injectable } from "@nestjs/common";
 import { RegistrationRepository } from '@charity-spot/api/registration/repository/data-access'
 import { RegistEntity } from "./regist-entity";
 import { LoginService } from "@charity-spot/api/login/service/feature"
+import { DonateRepository } from "@charity-spot/api/donate/repository/data-access";
 
 @Injectable()
 export class RegistrationService {
-	constructor (private RegistRepo: RegistrationRepository, private readonly LoginService: LoginService) {}
+	constructor (
+		private RegistRepo: RegistrationRepository,
+		private readonly LoginService: LoginService
+		) {}
 
 	async doesNotExist(email : string, password : string) {
 		if(await this.LoginService.validate(email, password) == false)
@@ -48,5 +52,9 @@ export class RegistrationService {
 		this.RegistRepo.addOrg(userID, OrgName);
 
 		return "SUCCESS";
+	}
+
+	async addPicture(id: string, name: string, picture: string) {
+		return null;
 	}
 }
