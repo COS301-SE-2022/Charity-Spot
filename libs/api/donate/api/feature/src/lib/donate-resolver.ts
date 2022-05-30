@@ -3,11 +3,14 @@ import { DonateEntity } from '@charity-spot/api/donate/service/feature';
 import { DonateService } from '@charity-spot/api/donate/service/feature';
 import { catagory, quality } from '@prisma/client';
 
+import { FirebaseService } from '@charity-spot/api/shared/services/prisma';
+
 @Resolver()
 export class DonateResolver {
-    constructor(private readonly DonateService: DonateService) {}
+    constructor(private readonly DonateService: DonateService, private readonly FirebaseService: FirebaseService) {}
 
     @Query(() => DonateEntity)
+
     donate(
         @Args("userID") id: string,
         @Args("name") name: string,
@@ -51,6 +54,17 @@ export class DonateResolver {
                     return null;
             }
         }
+        
+        //     uploadImage(@Args('base64') base64: string) : boolean{
+
+//         //idOfitem should be the id of the item in the db
+//         //this will be used as the name of the image
+//         let idOfItem = Math.floor(Math.random() * (1000 - 1) + 1);
+
+//         this.FirebaseService.uploadFile(base64, idOfItem);
+
+//         return true;
+
 
         return this.DonateService.donate(id, name, quantity, Category(category), Condition(condition), descr);
     }
