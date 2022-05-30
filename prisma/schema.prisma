@@ -69,4 +69,9 @@ enum quality {
 enum catagory {
   CLOTHING
   FOOD
+  TECH
+  STATIONARY
+  HYGIENE
+  FURNITURE
+  KITCHEN
 }
