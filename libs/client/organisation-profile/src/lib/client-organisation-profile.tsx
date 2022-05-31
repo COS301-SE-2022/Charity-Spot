@@ -81,16 +81,14 @@ export function Profile() {
 
   
   return (
-  <div className="wrapper">
+  <div className="wrapperProfile">
     <br/><br/>
-      <input type ="radio" name="slider" id='home' defaultChecked ></input>
-      <input type ="radio" name="slider" id='blog' ></input>
-      {/* <input type ="radio" name="slider" id='code' ></input>
-      <input type ="radio" name="slider" id='help' ></input> */}
+      <input type ="radio" name="sliderProf" id='profTab' defaultChecked ></input>
+      <input type ="radio" name="sliderProf" id='blog' ></input>
       <nav>
-        <label htmlFor= "home" className='home' onClick ={()=>{}}><FaUserAlt/> Profile  </label>
+        <label htmlFor= "profTab" className='profTab' ><FaUserAlt/> Profile  </label>
         <label htmlFor= "blog" className='blog'> <FaEdit/> Edit </label>
-        <div className='slider'></div>
+        <div className='sliderProf'></div>
       </nav>
 <section>
   <div className='content content-1'>

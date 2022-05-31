@@ -157,7 +157,7 @@ body{
 
 
 
-
+/*-------------------------- Tab Styles------------------------ */
 .wrapper2{
     /* max-width: 1200px; */
     width: 85%;
@@ -242,7 +242,13 @@ body{
   #history1:checked ~ section .content-2{
     display: block;
    }
+   
+   @media screen and (max-width: 600px) {
+    .wrapper2 nav{
+        width: 100%;
+    }
 
+}
   
 
 
@@ -250,7 +256,7 @@ body{
 
  
    
-
+/* ----------Input Edits-------------- */
 input.din1,.din2,.din3,.din4,.din5{
    width: 80%; 
    border: none;

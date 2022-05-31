@@ -3,6 +3,9 @@ import './donatee.css'
 import { FaHistory,FaDonate,FaPen } from 'react-icons/fa';
 import { useState } from 'react';
 
+const fullCookie = document.cookie.split("="); 
+const IdCookie = fullCookie[1];
+console.log(IdCookie);
 async function uploadImageAPICall(ImageBase64 : any){
     
   const query = (`query {
