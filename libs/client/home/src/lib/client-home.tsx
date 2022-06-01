@@ -19,12 +19,12 @@ export function Home() {
       </nav>
       <section>
         <div className='content content-1'>
-          <div className='title'><h1>Content 1</h1></div>
+          <div className='title'><h1>Map</h1></div>
           <img className={styles['container']} src="https://firebasestorage.googleapis.com/v0/b/charityspotdemo1.appspot.com/o/g1.png?alt=media&token=888e1913-ec8e-4508-b70a-69b590a27587"></img>
         </div>
         <div className='content content-2'>
-          <div className='title'><h1>Content 2</h1></div>
-          <p> who was the company's public face. </p>
+          <div className='title'><h1>Filter</h1></div>
+          <p> Filter Map here :) </p>
         </div>
       </section>
     </div>   
