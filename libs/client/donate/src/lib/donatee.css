@@ -334,7 +334,7 @@ input.din5:hover{
 /* --------------------Collapse and Expand----------------------- */
 .rapper{
     display: flex;
-    padding-top: 50px;
+    padding-top: 15px;
     justify-content: center;
 }
 .collapsible{

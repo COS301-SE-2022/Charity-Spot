@@ -193,6 +193,28 @@ return (
                     </div>
                   </div>
              </div>
+             <div className='rapper'>
+                  <div className='collapsible'>
+                    <input type ='checkbox' id = 'collapsible-head1'></input>
+                    <label htmlFor='collapsible-head1'>Bread <FaArrowRight/></label>
+  
+                    <div className='collapsible-text'><br/>
+                    <div className='collapseleft'>
+                     <img src={userprofile} alt="" id="profile-pic"/>
+                    </div>
+                    <div className='collapseright'>
+                      <ListGroup variant="flush" >
+                        <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Name: Bread</ListGroup.Item>
+                          <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px', color: '#104283' }}>Quantity: 1 </ListGroup.Item>
+                          <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Category: Food </ListGroup.Item>
+                          <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Condition: New</ListGroup.Item>
+                          <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Description: Brown whole wheat bread</ListGroup.Item>
+                      </ListGroup>
+                      </div>
+                    </div>
+                  </div>
+             </div>
+             
                 
   </div>
   </section>
