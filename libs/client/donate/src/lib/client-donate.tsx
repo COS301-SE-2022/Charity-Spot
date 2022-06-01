@@ -87,7 +87,7 @@ return (
   </nav>
   <section>
     <div className='content content-1'>
-      <div className='title'><h2>Donate</h2></div>
+      <div className='title'><h1>Donate</h1></div>
 
                     <div className='donate-main'>
 
@@ -171,7 +171,7 @@ return (
 
   
     <div className='content content-2'>
-           <div className='title'><h2>History</h2></div>
+           <div className='title'><h1>History</h1></div>
            <div className='rapper'>
                   <div className='collapsible'>
                     <input type ='checkbox' id = 'collapsible-head'></input>

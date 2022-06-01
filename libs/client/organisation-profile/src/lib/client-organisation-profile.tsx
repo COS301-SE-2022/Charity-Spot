@@ -92,7 +92,7 @@ export function Profile() {
       </nav>
 <section>
   <div className='content content-1'>
-        <div className='title'><h2>Profile</h2></div>
+        <div className='title'><h1>Profile</h1></div>
 
         <div className='profile-main'>
 
@@ -125,7 +125,7 @@ export function Profile() {
       
 
   <div className='content content-2'>
-            <div className='title'><h2>Edit Profile</h2></div>
+            <div className='title'><h1>Edit</h1></div>
 
             <div className='editor-main'>
 

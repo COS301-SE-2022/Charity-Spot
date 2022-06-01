@@ -1,3 +1,6 @@
+.title{
+    color: #1458b3;
+}
 .profile-page{
     /* background-color: rgb(232, 236, 243); */
     min-height: 100vh;
@@ -343,10 +346,10 @@ input.din5:hover{
 .collapsible label{
     position: relative;
     font-weight: 600;
-    background: #2462b2;
+    background: #c3c6c9;
      box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0);
     /* color: #1458b3; */
-    color: white;
+    color: #1458b3;
     display: block;
     margin-bottom: 10px;
     margin-bottom: 10px;
