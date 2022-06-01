@@ -9,8 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaUserAlt,FaEdit,FaPen } from 'react-icons/fa'
 
 import ListGroup from 'react-bootstrap/esm/ListGroup';
-let fullCookie = document.cookie.split("="); 
- let IdCookie = fullCookie[1];
+const fullCookie = document.cookie.split("="); 
+ const IdCookie = fullCookie[1];
 
 async function APICall(usrID:string){
     
@@ -45,15 +45,15 @@ async function APICall(usrID:string){
 
 }
 
-let Loc = '';
+
 
 export function Profile() {
-  let [OEmail, setOEmail] = useState('');
-  let [OName,setOName] = useState('');
-  let [ODate,setODate] = useState('');
-  let [OLocation,setOLocation] = useState('');
+  const [OEmail, setOEmail] = useState('');
+  const [OName,setOName] = useState('');
+  const [ODate,setODate] = useState('');
+  const [OLocation,setOLocation] = useState('');
 
-  let hanndlesubmit = (event: { preventDefault: () => void; }) =>{
+  const hanndlesubmit = (event: { preventDefault: () => void; }) =>{
     event.preventDefault();
 
     document.cookie = "ID= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
@@ -65,7 +65,7 @@ export function Profile() {
 
     const response = JSON.parse(await APICall(IdCookie));
     console.log(response.data.OrgProfile);
-    let allData = response.data.OrgProfile;
+    const allData = response.data.OrgProfile;
     const {Email,Name,Date,Location} = allData;
     
     setOEmail(Email);

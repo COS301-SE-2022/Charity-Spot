@@ -1,7 +1,10 @@
 import styles from './client-donate.module.css';
 import './donatee.css'
-import { FaHistory,FaDonate,FaPen } from 'react-icons/fa';
+import { FaHistory,FaDonate,FaPen,FaUserAlt,FaEdit,FaArrowRight } from 'react-icons/fa';
 import { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ListGroup from 'react-bootstrap/esm/ListGroup';
+import  userprofile from '../../../shared/assets/userprofile.png'
 
 const fullCookie = document.cookie.split("="); 
 const IdCookie = fullCookie[1];
@@ -84,7 +87,7 @@ return (
   </nav>
   <section>
     <div className='content content-1'>
-      <div className='title'><h1>Donate</h1></div>
+      <div className='title'><h2>Donate</h2></div>
 
                     <div className='donate-main'>
 
@@ -168,9 +171,30 @@ return (
 
   
     <div className='content content-2'>
-      <div className='title'><h1>Content 2</h1></div>
-      <p> who was the company's public face. </p>
-    </div>
+           <div className='title'><h2>History</h2></div>
+           <div className='rapper'>
+                  <div className='collapsible'>
+                    <input type ='checkbox' id = 'collapsible-head'></input>
+                    <label htmlFor='collapsible-head'>Levis Leather Jacket <FaArrowRight/></label>
+  
+                    <div className='collapsible-text'><br/>
+                    <div className='collapseleft'>
+                     <img src={userprofile} alt="" id="profile-pic"/>
+                    </div>
+                    <div className='collapseright'>
+                      <ListGroup variant="flush" >
+                        <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Name: Levis Leather Jacket</ListGroup.Item>
+                          <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px', color: '#104283' }}>Quantity: 5 </ListGroup.Item>
+                          <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Category: Clothing </ListGroup.Item>
+                          <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Condition: Old</ListGroup.Item>
+                          <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Description: Trucker Vintage jackets</ListGroup.Item>
+                      </ListGroup>
+                      </div>
+                    </div>
+                  </div>
+             </div>
+                
+  </div>
   </section>
 </div>   
  
