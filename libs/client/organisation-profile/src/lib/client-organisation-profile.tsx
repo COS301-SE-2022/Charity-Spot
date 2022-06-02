@@ -9,8 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaUserAlt,FaEdit,FaPen } from 'react-icons/fa'
 
 import ListGroup from 'react-bootstrap/esm/ListGroup';
-let fullCookie = document.cookie.split("="); 
- let IdCookie = fullCookie[1];
+const fullCookie = document.cookie.split("="); 
+ const IdCookie = fullCookie[1];
 
 async function APICall(usrID:string){
     
@@ -45,15 +45,15 @@ async function APICall(usrID:string){
 
 }
 
-let Loc = '';
+
 
 export function Profile() {
-  let [OEmail, setOEmail] = useState('');
-  let [OName,setOName] = useState('');
-  let [ODate,setODate] = useState('');
-  let [OLocation,setOLocation] = useState('');
+  const [OEmail, setOEmail] = useState('');
+  const [OName,setOName] = useState('');
+  const [ODate,setODate] = useState('');
+  const [OLocation,setOLocation] = useState('');
 
-  let hanndlesubmit = (event: { preventDefault: () => void; }) =>{
+  const hanndlesubmit = (event: { preventDefault: () => void; }) =>{
     event.preventDefault();
 
     document.cookie = "ID= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
@@ -65,7 +65,7 @@ export function Profile() {
 
     const response = JSON.parse(await APICall(IdCookie));
     console.log(response.data.OrgProfile);
-    let allData = response.data.OrgProfile;
+    const allData = response.data.OrgProfile;
     const {Email,Name,Date,Location} = allData;
     
     setOEmail(Email);
@@ -81,20 +81,18 @@ export function Profile() {
 
   
   return (
-  <div className="wrapper">
+  <div className="wrapperProfile">
     <br/><br/>
-      <input type ="radio" name="slider" id='home' defaultChecked ></input>
-      <input type ="radio" name="slider" id='blog' ></input>
-      {/* <input type ="radio" name="slider" id='code' ></input>
-      <input type ="radio" name="slider" id='help' ></input> */}
+      <input type ="radio" name="sliderProf" id='profTab' defaultChecked ></input>
+      <input type ="radio" name="sliderProf" id='blog' ></input>
       <nav>
-        <label htmlFor= "home" className='home' onClick ={()=>{}}><FaUserAlt/> Profile  </label>
+        <label htmlFor= "profTab" className='profTab' ><FaUserAlt/> Profile  </label>
         <label htmlFor= "blog" className='blog'> <FaEdit/> Edit </label>
-        <div className='slider'></div>
+        <div className='sliderProf'></div>
       </nav>
 <section>
   <div className='content content-1'>
-        <div className='title'><h2>Profile</h2></div>
+        <div className='title'><h1>Profile</h1></div>
 
         <div className='profile-main'>
 
@@ -127,7 +125,7 @@ export function Profile() {
       
 
   <div className='content content-2'>
-            <div className='title'><h2>Edit Profile</h2></div>
+            <div className='title'><h1>Edit</h1></div>
 
             <div className='editor-main'>
 

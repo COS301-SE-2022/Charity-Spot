@@ -1,3 +1,6 @@
+.title{
+    color: #1458b3;
+}
 .profile-page{
     /* background-color: rgb(232, 236, 243); */
     min-height: 100vh;
@@ -115,7 +118,7 @@
    }
    .donate-left{
        width: 100%;
-       height: 100px;
+       height: 200px;
        border-top-left-radius: 10px ;
        border-top-right-radius: 10px ;
 
@@ -157,7 +160,7 @@ body{
 
 
 
-
+/*-------------------------- Tab Styles------------------------ */
 .wrapper2{
     /* max-width: 1200px; */
     width: 85%;
@@ -242,7 +245,13 @@ body{
   #history1:checked ~ section .content-2{
     display: block;
    }
+   
+   @media screen and (max-width: 600px) {
+    .wrapper2 nav{
+        width: 100%;
+    }
 
+}
   
 
 
@@ -250,7 +259,7 @@ body{
 
  
    
-
+/* ----------Input Edits-------------- */
 input.din1,.din2,.din3,.din4,.din5{
    width: 80%; 
    border: none;
@@ -320,3 +329,144 @@ input.din5:hover{
     border-radius: 5px;
 
 }
+
+
+/* --------------------Collapse and Expand----------------------- */
+.rapper{
+    display: flex;
+    padding-top: 15px;
+    justify-content: center;
+}
+.collapsible{
+    width: 80%;
+    overflow: hidden;
+    font-weight: 500;
+    
+}
+.collapsible label{
+    position: relative;
+    font-weight: 600;
+
+     box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0);
+    /* color: #1458b3; */
+    color: #1458b3;
+    background-color: #d5d7da;
+    display: block;
+    margin-bottom: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding: 15px 0;
+    border-radius: 10px;
+
+}
+.collapsible label:after{
+content: '';
+position: absolute;
+right: 15px;
+top: 20px;
+width: 18px;
+height: 18px;
+
+}
+
+.collapsible-text{
+    max-height: 1px;
+    overflow: hidden;
+    border-radius: 4px;
+    line-height: 1.4;
+    position: relative;
+    transition: all 0.3s ease-in;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-flow: wrap;
+  
+}
+.collapseleft{
+    width: 28%;
+    padding-top: 10%;
+    margin-right: 2px;
+
+    background: rgb(218, 220, 223);
+    border-radius: 10px;
+    box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0);
+}
+.collapseright{
+    width: 70%;
+    background: rgb(229, 231, 233);
+    padding:10px;
+    border-radius: 10px;
+    box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0);
+}
+.collapsible input:checked ~.collapsible-text{
+    max-height: 700px;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    /* background: rgb(247, 246, 246); */
+    box-shadow: 0 5px 11px 0 rgba(0,0,0 .1), 0 4px 11px 0 rgba(0,0,0 .08);
+    border-radius: 10px;
+    /* box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0); */
+}
+.collapsible input{
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+
+    .collapseleft{
+        width: 100%;
+        height: 200px;
+        border-top-left-radius: 10px ;
+        border-top-right-radius: 10px ; 
+        border-bottom-left-radius: 0px ;
+        border-bottom-right-radius: 0px ;
+    }
+    .collapseright{
+        width: 100%;
+        
+        border-top-left-radius: 0px ;
+        border-top-right-radius: 0px ; 
+        border-bottom-left-radius: 0px ;
+    }
+    .collapsible label{
+        position: relative;
+        font-weight: 600;
+    
+         box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0);
+        /* color: #1458b3; */
+        color: #d7d9da;
+        background: #1458b3;
+
+    }
+
+}
+@media screen and (max-width: 900px) {
+
+    .collapseleft{
+        width: 100%;
+        height: 200px;
+        border-top-left-radius: 10px ;
+        border-top-right-radius: 10px ; 
+        border-bottom-left-radius: 0px ;
+        border-bottom-right-radius: 0px ;
+    }
+    .collapseright{
+        width: 100%;
+        
+        border-top-left-radius: 0px ;
+        border-top-right-radius: 0px ; 
+        border-bottom-left-radius: 0px ;
+    }
+    .collapsible label{
+        position: relative;
+        font-weight: 600;
+    
+         box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0);
+        /* color: #1458b3; */
+        color: #d7d9da;
+        background: #1458b3;
+
+    }
+ }

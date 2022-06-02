@@ -1,8 +1,14 @@
 import styles from './client-donate.module.css';
 import './donatee.css'
-import { FaHistory,FaDonate,FaPen } from 'react-icons/fa';
+import { FaHistory,FaDonate,FaPen,FaUserAlt,FaEdit,FaArrowRight } from 'react-icons/fa';
 import { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ListGroup from 'react-bootstrap/esm/ListGroup';
+import  userprofile from '../../../shared/assets/userprofile.png'
 
+const fullCookie = document.cookie.split("="); 
+const IdCookie = fullCookie[1];
+console.log(IdCookie);
 async function uploadImageAPICall(ImageBase64 : any){
     
   const query = (`query {
@@ -165,9 +171,52 @@ return (
 
   
     <div className='content content-2'>
-      <div className='title'><h1>Content 2</h1></div>
-      <p> who was the company's public face. </p>
-    </div>
+           <div className='title'><h1>History</h1></div>
+           <div className='rapper'>
+                  <div className='collapsible'>
+                    <input type ='checkbox' id = 'collapsible-head'></input>
+                    <label htmlFor='collapsible-head'>Levis Leather Jacket <FaArrowRight/></label>
+  
+                    <div className='collapsible-text'><br/>
+                    <div className='collapseleft'>
+                     <img src={userprofile} alt="" id="profile-pic"/>
+                    </div>
+                    <div className='collapseright'>
+                      <ListGroup variant="flush" >
+                        <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Name: Levis Leather Jacket</ListGroup.Item>
+                          <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px', color: '#104283' }}>Quantity: 5 </ListGroup.Item>
+                          <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Category: Clothing </ListGroup.Item>
+                          <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Condition: Old</ListGroup.Item>
+                          <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Description: Trucker Vintage jackets</ListGroup.Item>
+                      </ListGroup>
+                      </div>
+                    </div>
+                  </div>
+             </div>
+             <div className='rapper'>
+                  <div className='collapsible'>
+                    <input type ='checkbox' id = 'collapsible-head1'></input>
+                    <label htmlFor='collapsible-head1'>Bread <FaArrowRight/></label>
+  
+                    <div className='collapsible-text'><br/>
+                    <div className='collapseleft'>
+                     <img src={userprofile} alt="" id="profile-pic"/>
+                    </div>
+                    <div className='collapseright'>
+                      <ListGroup variant="flush" >
+                        <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Name: Bread</ListGroup.Item>
+                          <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px', color: '#104283' }}>Quantity: 1 </ListGroup.Item>
+                          <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Category: Food </ListGroup.Item>
+                          <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Condition: New</ListGroup.Item>
+                          <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Description: Brown whole wheat bread</ListGroup.Item>
+                      </ListGroup>
+                      </div>
+                    </div>
+                  </div>
+             </div>
+             
+                
+  </div>
   </section>
 </div>   
  
