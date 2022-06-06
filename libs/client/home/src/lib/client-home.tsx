@@ -65,8 +65,10 @@ export function Home() {
                 zoom={10}
               >
                 <Marker
+                  icon= {"https://maps.google.com/mapfiles/kml/paddle/blu-circle.png"}
                   onClick={() => {markerClick("Hello World!!")}}
                   position={markerPos1}
+                  title="This is the name of the organisation"
                 />
                 <Marker
                   position={markerPos2}
