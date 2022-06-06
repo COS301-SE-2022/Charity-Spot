@@ -6,7 +6,7 @@ import './homee.css';
 
 import {APIKEYS} from '../../../../../config';
 
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { GoogleMap, Marker, LoadScript } from '@react-google-maps/api';
 
 const containerStyle = {
   width: '100%',
@@ -19,7 +19,23 @@ const center = {
   lng: -38.523
 };
 
+const markerPos1 = {
+  lat: -3.745,
+  lng: -38.523
+}
+
+const markerPos2 = {
+  lat: -3.745,
+  lng: -39.523
+}
+
+function markerClick(input: String){
+  console.log(input)
+}
+
 export function Home() {
+
+  let APIKey = APIKEYS.GoogleMapsAPIKey;
   
   return (
     <div>
@@ -41,13 +57,21 @@ export function Home() {
           {/*Google API Stuff */}
           <div className={styles['container']}>
 
-            <LoadScript googleMapsApiKey = {APIKEYS.GoogleMapsAPIKey}>
+            <LoadScript googleMapsApiKey = {APIKey}>
               <GoogleMap
                 
                 mapContainerStyle={containerStyle}
                 center={center}
                 zoom={10}
               >
+                <Marker
+                  onClick={() => {markerClick("Hello World!!")}}
+                  position={markerPos1}
+                />
+                <Marker
+                  position={markerPos2}
+                />
+
               </GoogleMap>
             </LoadScript>
 
