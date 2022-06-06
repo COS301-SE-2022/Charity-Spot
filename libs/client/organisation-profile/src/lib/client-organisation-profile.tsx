@@ -9,8 +9,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaUserAlt,FaEdit,FaPen } from 'react-icons/fa'
 
 import ListGroup from 'react-bootstrap/esm/ListGroup';
+
 const fullCookie = document.cookie.split("="); 
- const IdCookie = fullCookie[1];
+const IdCookie = fullCookie[1];
 
 async function APICall(usrID:string){
     
@@ -41,7 +42,6 @@ async function APICall(usrID:string){
             );
             
          return JSON.stringify(All_data);
-         console.log(All_data);
 
 }
 

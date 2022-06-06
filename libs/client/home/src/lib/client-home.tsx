@@ -15,22 +15,22 @@ const containerStyle = {
 };
 
 const center = {
-  lat: -3.745,
-  lng: -38.523
+  lat: -26.2041,
+  lng: 28.0473
 };
 
 const markerPos1 = {
-  lat: -3.745,
-  lng: -38.523
+  lat: -26.2041,
+  lng: 28.0473
 }
 
 const markerPos2 = {
-  lat: -3.745,
-  lng: -39.523
+  lat: -26.2041,
+  lng: 27.0473
 }
 
 function markerClick(input: String){
-  console.log(input)
+  alert(input)
 }
 
 export function Home() {
@@ -51,7 +51,7 @@ export function Home() {
       </nav>
       <section>
         <div className='content content-1'>
-          <div className='title'><h1>Map</h1></div>
+          {/*<div className='title'><h1>Map</h1></div>*/}
           {/*<img className={styles['container']} src="https://firebasestorage.googleapis.com/v0/b/charityspotdemo1.appspot.com/o/g1.png?alt=media&token=888e1913-ec8e-4508-b70a-69b590a27587"></img>*/}
 
           {/*Google API Stuff */}
@@ -71,6 +71,7 @@ export function Home() {
                   title="This is the name of the organisation"
                 />
                 <Marker
+                  icon= {"https://maps.google.com/mapfiles/kml/paddle/red-circle.png"}
                   position={markerPos2}
                 />
 
