@@ -338,7 +338,7 @@ input.din5:hover{
     justify-content: center;
 }
 .collapsible{
-    width: 80%;
+    width: 85%;
     overflow: hidden;
     font-weight: 500;
     
@@ -357,6 +357,7 @@ input.din5:hover{
     cursor: pointer;
     padding: 15px 0;
     border-radius: 10px;
+    width: 100%;
 
 }
 .collapsible label:after{
