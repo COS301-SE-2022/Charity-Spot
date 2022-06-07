@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { DonateEntity, donationHistory } from './donate.entity';
+import { DonateEntity} from './donate.entity';
 import { DonateRepository } from '@charity-spot/api/donate/repository/data-access'
 import { catagory, quality } from '@prisma/client';
 
@@ -28,6 +28,27 @@ export class DonateService {
     }
 
     async history(id: string) {
-        const historyItem = new donationHistory();
+        const historyItem = new DonateEntity();
+
+        historyItem.Donations = [];
+
+        const donations = await this.donateRepository.getItemList(id);
+
+        for(const item of donations) {
+            const donateItem = new DonateEntity();
+            donateItem.ID = id;
+
+            //item details
+            donateItem.Name = item.ItemName;
+            donateItem.Picture = item.Picture;
+            donateItem.Quantity = item.Quantity
+            donateItem.Description = item.Descrition;
+            donateItem.Quality = item.Quality;
+            donateItem.Category = item.Type;
+
+            historyItem.Donations.push(donateItem);
+        }
+
+        return historyItem;
     }
 }
