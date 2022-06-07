@@ -6,9 +6,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ListGroup from 'react-bootstrap/esm/ListGroup';
 import  userprofile from '../../../shared/assets/userprofile.png'
 
-const fullCookie = document.cookie.split("="); 
-const IdCookie = fullCookie[1];
-console.log(IdCookie);
+import { getCookie, setCookie } from 'typescript-cookie'
+
+//const fullCookie = document.cookie.split("="); 
+//const IdCookie = fullCookie[1];
+//console.log(IdCookie);
+
+let IdCookie = getCookie('ID');
+
 async function uploadImageAPICall(ImageBase64 : any){
     
   const query = (`query {
@@ -35,6 +40,50 @@ async function uploadImageAPICall(ImageBase64 : any){
             
   console.log(JSON.stringify(All_data));
 
+}
+
+async function uploadItemAPICall(Name : string, Quantity : string, Category : string, Condition : string, Description : string, Base64Img : any){
+  
+  if(Base64Img == undefined){
+    Base64Img = "undefined";
+  }
+
+  const query = `
+  query{
+    donate(
+      userID: "${IdCookie}", 
+      name: "${Name}", 
+      quantity: ${Quantity}, 
+      category: "${Category}", 
+      condition: "${Condition}", 
+      descr: "${Description}", 
+      picture: "${Base64Img}", 
+      pic_format: "jpg"){
+      Name
+    }
+  }
+  `;
+
+  console.log(query);
+
+  let All_data = "";
+
+  await fetch('http://localhost:3333/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        query
+      })
+      }).then(r => r.json())
+        .then((data) => 
+            All_data = data
+        );
+
+  console.log(JSON.stringify(All_data));
+    
 }
 
 async function historyData() {
@@ -110,6 +159,13 @@ async function historyData() {
 //export function ClientDonate(props: ClientDonateProps) {
 export function ClientDonate() {
 
+  const [IName, setIName] = useState('');
+  const [IQuan,setIQuan] = useState('');
+  const [ICat, setICat] = useState('Food');
+  const [ICond,setICond] = useState('New');
+  const [IDesc, setIDesc] = useState('');
+  
+
   const [imageUpload, setImageUpload] = useState<File>();
 
   const uploadImage = () => {
@@ -123,7 +179,7 @@ export function ClientDonate() {
 
   };
 
-  function getBase64(file : File){
+  async function getBase64(file : File){
 
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -135,8 +191,24 @@ export function ClientDonate() {
   }
 
 
-  const hanndlesubmit = (event: { preventDefault: () => void; }) =>{
-    event.preventDefault();
+  const hanndlesubmit = async () =>{
+
+    console.log(IName);
+    console.log(IQuan);
+    console.log(ICat);
+    console.log(ICond);
+    console.log(IDesc);
+
+    let imgBase64 = undefined;
+
+    if(imageUpload){
+      imgBase64 = await getBase64(imageUpload);
+    }
+
+    await uploadItemAPICall(IName, IQuan, ICat, ICond, IDesc, imgBase64);
+
+    console.log("hello World!!");
+
   }
 
 return (
@@ -167,21 +239,21 @@ return (
                       <div className='donate-right'>
                         <br/><br/>
                         <div className='donater'>
-                          <form onSubmit={hanndlesubmit}>
+                          <form onSubmit={(e) => { e.preventDefault(); hanndlesubmit();}}>
                             <div className='donate-box1'>
                               {/* <label htmlFor=''>OrgName</label><br/> */}
-                              <input className="din1" type ="text" placeholder='Name' ></input>  
+                              <input className="din1" type ="text" placeholder='Name' onChange ={(e)=>{setIName(e.target.value)}}></input>  
                                <FaPen color='#1458b3'/>
                             </div>
                             <div className='donate-box2'>
                               {/* <label htmlFor=''>Email</label> */}
-                              <input className="din2" type ="number" min="1" placeholder='Quantity'></input> 
+                              <input className="din2" type ="number" min="1" placeholder='Quantity' onChange ={(e)=>{setIQuan(e.target.value)}}></input> 
                               <FaPen color='#1458b3'/>
                             </div>  
                             
                             <div className='donate-box3'>
                               {/* <label htmlFor=''>Address</label> */}
-                              <select name="orgs"   className='din3'>
+                              <select name="orgs" className='din3' onChange ={(e)=>{setICat(e.target.value)}}>
                                     <option value="Food">Food Item</option>
                                     <option value="Clothes">Clothing</option>  
                                     <option value="Tech">Tech (phone,laptop,etc..)</option> 
@@ -195,7 +267,7 @@ return (
                             </div>                                
                             <div className='donate-box4'>
                               {/* <label htmlFor=''>Org Password</label> */}
-                              <select name="orgs"   className='din4'>
+                              <select name="orgs"   className='din4' onChange ={(e)=>{setICond(e.target.value)}}>
                                     <option value="New">New</option>
                                     <option value="Used">Used</option>  
                                 </select>                                       
@@ -204,7 +276,7 @@ return (
                             </div>      
                             <div className='donate-box5'>
                               {/* <label htmlFor=''>confirm password</label> */}
-                              <textarea className="din5" rows={1}  placeholder='Item(s) Description'></textarea> 
+                              <textarea className="din5" rows={1}  placeholder='Item(s) Description' onChange ={(e)=>{setIDesc(e.target.value)}}></textarea> 
                               
                             </div>
 

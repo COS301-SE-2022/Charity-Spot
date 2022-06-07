@@ -11,20 +11,28 @@ export class DonateService {
 
         //repository actions
         await this.donateRepository.AddItem(name, id, quantity, condition, category);
-        await this.donateRepository.editItemDescription(id, name, descr);
-        const item = await this.donateRepository.editItemPicture(id, name, pic);
+        const item = await this.donateRepository.editItemDescription(id, name, descr);
+        //const item = await this.donateRepository.editItemPicture(id, name, pic);
 
         //return id 
         //NOT NULLABLE
         const returnable = new DonateEntity();
+
+        returnable.ItemID = item.ItemID;
         returnable.ID = item.OrgID;
         returnable.Name = item.ItemName;
         returnable.Description = item.Descrition;
         
         //gibrish for now - until firebase
-        returnable.Picture = item.Picture;
+        //returnable.Picture = item.Picture;
         
         return returnable;
+    }
+
+    async setItemPicName(id, name, pic){
+
+        await this.donateRepository.editItemPicture(id, name, pic);
+
     }
 
     async history(id: string) {

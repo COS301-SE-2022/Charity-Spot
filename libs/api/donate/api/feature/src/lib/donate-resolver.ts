@@ -53,11 +53,37 @@ export class DonateResolver {
                     return null;
             }
         }
+
+        /*if(picBase64 != "undefined"){
+            await this.FirebaseService.uploadFile(picBase64, String(Math.floor(Math.random() * (1000 - 1) + 1)));
+        }*/
         
+        //await this.FirebaseService.uploadFile(picBase64, String(Math.floor(Math.random() * (1000 - 1) + 1)));
 
         const picRef =  picBase64 + '.' + format;//await this.FirebaseService.uploadFile(picBase64, id + "_" +  String(Math.floor(Math.random() * (1000 - 1) + 1)) + "_" + name, format);
 
-        return await this.DonateService.donate(id, name, quantity, Category(category), Condition(condition), descr, picRef);
+        const returnV = await this.DonateService.donate(id, name, quantity, Category(category), Condition(condition), descr, picRef);
+
+        if(picBase64 != "undefined"){
+
+            var imgType = picBase64.substring(
+                picBase64.indexOf("/") + 1, 
+                picBase64.lastIndexOf(";")
+            );
+
+            let imgName = returnV.ItemID + '.' + imgType;
+
+            await this.DonateService.setItemPicName(id, name, imgName);
+
+            await this.FirebaseService.uploadFile(picBase64, imgName);
+
+        }
+        else{
+            await this.DonateService.setItemPicName(id, name, "undefined");
+        }
+
+        return returnV;
+        
     }
 
     @Query(() => DonateEntity)

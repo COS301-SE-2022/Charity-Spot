@@ -2,6 +2,10 @@ import { Field, ID, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class DonateEntity {
+
+    @Field( {nullable: false})
+    ItemID: string
+
     @Field({ nullable: false})
     ID: string
 
