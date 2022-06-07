@@ -7,12 +7,12 @@ import { catagory, quality } from '@prisma/client';
 export class DonateService {
     constructor(private donateRepository: DonateRepository) {}
 
-    async donate(id: string, name: string, quantity: number, category: catagory, condition: quality, descr: string, pic: string){
+    async donate(id: string, name: string, quantity: number, category: catagory, condition: quality, descr: string){
 
         //repository actions
         await this.donateRepository.AddItem(name, id, quantity, condition, category);
         const item = await this.donateRepository.editItemDescription(id, name, descr);
-        //const item = await this.donateRepository.editItemPicture(id, name, pic);
+        
 
         //return id 
         //NOT NULLABLE
@@ -23,8 +23,6 @@ export class DonateService {
         returnable.Name = item.ItemName;
         returnable.Description = item.Descrition;
         
-        //gibrish for now - until firebase
-        //returnable.Picture = item.Picture;
         
         return returnable;
     }

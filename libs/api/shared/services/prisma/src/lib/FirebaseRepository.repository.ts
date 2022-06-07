@@ -20,10 +20,8 @@ export class FirebaseService {
     storage = getStorage();
 
     async uploadFile(base64, idOfItem){
-        
-        let fileName = "DonatedItems/" + idOfItem;
 
-        const fileRef = ref(this.storage, fileName);
+        const fileRef = ref(this.storage, idOfItem);
 
 
         await uploadString(fileRef, base64.split(',')[1], 'base64').then( async (snapshot) => {
@@ -32,5 +30,25 @@ export class FirebaseService {
             console.error(err);
           });
     }
+
+    async getURLByFilePath(file_path:string) : Promise<string|null>{
+    
+        const fileRef = ref(this.storage, file_path);
+    
+        let url = null;
+    
+        //get the url that will download the file
+        await getDownloadURL(fileRef)
+          .then( async (value) => {
+            url = value;
+          })
+          .catch((error) => {
+            console.error(error);
+            return null;
+          });
+    
+        return url;
+
+      }
 
 }

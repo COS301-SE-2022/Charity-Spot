@@ -54,15 +54,8 @@ export class DonateResolver {
             }
         }
 
-        /*if(picBase64 != "undefined"){
-            await this.FirebaseService.uploadFile(picBase64, String(Math.floor(Math.random() * (1000 - 1) + 1)));
-        }*/
-        
-        //await this.FirebaseService.uploadFile(picBase64, String(Math.floor(Math.random() * (1000 - 1) + 1)));
 
-        const picRef =  picBase64 + '.' + format;//await this.FirebaseService.uploadFile(picBase64, id + "_" +  String(Math.floor(Math.random() * (1000 - 1) + 1)) + "_" + name, format);
-
-        const returnV = await this.DonateService.donate(id, name, quantity, Category(category), Condition(condition), descr, picRef);
+        const returnV = await this.DonateService.donate(id, name, quantity, Category(category), Condition(condition), descr);
 
         if(picBase64 != "undefined"){
 
@@ -71,11 +64,15 @@ export class DonateResolver {
                 picBase64.lastIndexOf(";")
             );
 
-            let imgName = returnV.ItemID + '.' + imgType;
+            let imgName = "DonatedItems/" + returnV.ItemID + '.' + imgType;
 
             await this.DonateService.setItemPicName(id, name, imgName);
 
             await this.FirebaseService.uploadFile(picBase64, imgName);
+
+            let downLink = await this.FirebaseService.getURLByFilePath(imgName);
+
+            console.log(downLink);
 
         }
         else{

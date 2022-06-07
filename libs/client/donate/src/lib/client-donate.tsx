@@ -8,13 +8,9 @@ import  userprofile from '../../../shared/assets/userprofile.png'
 
 import { getCookie, setCookie } from 'typescript-cookie'
 
-//const fullCookie = document.cookie.split("="); 
-//const IdCookie = fullCookie[1];
-//console.log(IdCookie);
-
 let IdCookie = getCookie('ID');
 
-async function uploadImageAPICall(ImageBase64 : any){
+/*async function uploadImageAPICall(ImageBase64 : any){
     
   const query = (`query {
     uploadImage(base64: "${ImageBase64}"){
@@ -40,7 +36,7 @@ async function uploadImageAPICall(ImageBase64 : any){
             
   console.log(JSON.stringify(All_data));
 
-}
+}*/
 
 async function uploadItemAPICall(Name : string, Quantity : string, Category : string, Condition : string, Description : string, Base64Img : any){
   
@@ -64,8 +60,6 @@ async function uploadItemAPICall(Name : string, Quantity : string, Category : st
   }
   `;
 
-  console.log(query);
-
   let All_data = "";
 
   await fetch('http://localhost:3333/graphql', {
@@ -82,7 +76,6 @@ async function uploadItemAPICall(Name : string, Quantity : string, Category : st
             All_data = data
         );
 
-  console.log(JSON.stringify(All_data));
     
 }
 
@@ -167,8 +160,9 @@ export function ClientDonate() {
   
 
   const [imageUpload, setImageUpload] = useState<File>();
+  const [imageURL, setImageURL] = useState('');
 
-  const uploadImage = () => {
+  /*const uploadImage = () => {
 
     alert("Image uploaded to Firebase!");
 
@@ -177,7 +171,7 @@ export function ClientDonate() {
     }
 
 
-  };
+  };*/
 
   async function getBase64(file : File){
 
@@ -193,11 +187,11 @@ export function ClientDonate() {
 
   const hanndlesubmit = async () =>{
 
-    console.log(IName);
+    /*console.log(IName);
     console.log(IQuan);
     console.log(ICat);
     console.log(ICond);
-    console.log(IDesc);
+    console.log(IDesc);*/
 
     let imgBase64 = undefined;
 
@@ -207,7 +201,8 @@ export function ClientDonate() {
 
     await uploadItemAPICall(IName, IQuan, ICat, ICond, IDesc, imgBase64);
 
-    console.log("hello World!!");
+    (document.getElementById("mainDonateForm") as HTMLFormElement)!.reset();
+    setImageURL("");
 
   }
 
@@ -233,13 +228,13 @@ return (
 
                       <div className='donate-left'>
                       <div className='item-pic'>
-                        {/* <img src={userprofile} alt="" id="donation-pic"/> */}
+                        <img src={imageURL} alt="" id="donation-pic"/>
                       </div>
                       </div>
                       <div className='donate-right'>
                         <br/><br/>
                         <div className='donater'>
-                          <form onSubmit={(e) => { e.preventDefault(); hanndlesubmit();}}>
+                          <form id = "mainDonateForm" onSubmit={(e) => { e.preventDefault(); hanndlesubmit();}}>
                             <div className='donate-box1'>
                               {/* <label htmlFor=''>OrgName</label><br/> */}
                               <input className="din1" type ="text" placeholder='Name' onChange ={(e)=>{setIName(e.target.value)}}></input>  
@@ -280,11 +275,30 @@ return (
                               
                             </div>
 
+                            <div>
+
+                              <input type="file"
+                                onChange={(e) => {
+
+                                  if(!e.target.files) return;
+                                  setImageUpload(e.target.files[0])
+                                  setImageURL(URL.createObjectURL(e.target.files[0]));
+
+                                }}/>
+
+                            </div>
+
+                            <br></br>
+
                             <input id='dnt_but'type="submit" value="Donate"/>   
-                            <input id='clr_but'type="submit" value="Clear"/>                                                                                    
+                            <input id='clr_but'type="button" onClick={(e) => { 
+                              e.preventDefault(); 
+                              (document.getElementById("mainDonateForm") as HTMLFormElement)!.reset();
+                              setImageURL("");}} 
+                              value="Clear"/>                                                                                    
                           </form>
 
-                          {/*Test code for file upload please feel free to remove*/}
+                          {/*Test code for file upload please feel free to remove
 
                             <div>
                               <br></br>
@@ -294,6 +308,7 @@ return (
 
                                 if(!e.target.files) return;
                                 setImageUpload(e.target.files[0])
+                                setImageURL(URL.createObjectURL(e.target.files[0]));
 
                               }}/>
 
