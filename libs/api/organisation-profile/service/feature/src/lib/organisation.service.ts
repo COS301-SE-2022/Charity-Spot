@@ -10,15 +10,15 @@ export class OrganisationService {
         //helpers
         const organisationProfile = new OrganisationEntity();
         const org = await this.OrganisationRepository.getOrg(userID);
-        const date = new Date();
 
         //const addr = await this.OrganisationRepository.getAdress(org.AddressID);
+        //this needs a fix to accommodate google maps api
         const addr = await this.OrganisationRepository.getAdress(userID);
 
         //build
         organisationProfile.Email = (await this.OrganisationRepository.getEmailFromUserID(userID)).email;
         organisationProfile.Name = org.OrgName;
-        organisationProfile.Date = date.toDateString();
+        organisationProfile.Date = "##/##/####"//org.Date;
         organisationProfile.Location = 
             addr.Address + "," +
             addr.Address2 + "," +
