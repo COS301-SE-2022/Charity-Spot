@@ -10,6 +10,7 @@ export class OrganisationService {
         //helpers
         const organisationProfile = new OrganisationEntity();
         const org = await this.OrganisationRepository.getOrg(userID);
+        const date = new Date();
 
         //const addr = await this.OrganisationRepository.getAdress(org.AddressID);
         const addr = await this.OrganisationRepository.getAdress(userID);
@@ -17,7 +18,7 @@ export class OrganisationService {
         //build
         organisationProfile.Email = (await this.OrganisationRepository.getEmailFromUserID(userID)).email;
         organisationProfile.Name = org.OrgName;
-        organisationProfile.Date = "##/##/####";
+        organisationProfile.Date = date.toDateString();
         organisationProfile.Location = 
             addr.Address + "," +
             addr.Address2 + "," +
