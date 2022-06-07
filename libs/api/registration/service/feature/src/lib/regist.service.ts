@@ -57,8 +57,4 @@ export class RegistrationService {
 	async addPicture(id: string, name: string, picture: string) {
 		return null;
 	}
-
-	async addDate(date: string) {
-		//this.RegistRepo.addDate(date);
-	}
 }
