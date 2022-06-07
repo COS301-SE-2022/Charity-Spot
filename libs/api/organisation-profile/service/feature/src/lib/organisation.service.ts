@@ -28,7 +28,7 @@ export class OrganisationService {
         return organisationProfile;
     }
 
-    async updateDet(id: string, name: string, loc: string, picture: string) {
+    async updateDet(id: string, name: string, loc: string, picture: string, password: string) {
         if(name != null)
             this.OrganisationRepository.editOrgName(id, name);
         
@@ -37,6 +37,10 @@ export class OrganisationService {
 
         if(picture != null)
             this.OrganisationRepository.editProfilePicture(id, picture);
+
+        if(password != null) {
+            //this.OrganisationRepository.editPassword(hash(passwordd));
+        }
 
         return this.getOrgProfile(id);
     }

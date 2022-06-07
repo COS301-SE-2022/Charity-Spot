@@ -96,6 +96,8 @@ export function Profile() {
   const hanndlesubmit = (event: { preventDefault: () => void; }) =>{
     event.preventDefault();
 
+    //Call EDIT_PAGE api call
+
     document.cookie = "ID= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
     window.location.href = '/login'; 
 
