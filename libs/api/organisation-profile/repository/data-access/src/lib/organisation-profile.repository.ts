@@ -149,4 +149,18 @@ export class OrganisationRepository {
       }
     })
   }
+
+  async getDateCreated(userID : string)
+  {
+    return await this.prisma.organisation.findFirst({
+      where:
+      {
+        UserID:userID
+      },
+      select:
+      {
+        dateCreated:true
+      }
+    })
+  }
 }
