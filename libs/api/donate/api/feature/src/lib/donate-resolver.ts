@@ -59,4 +59,11 @@ export class DonateResolver {
 
         return await this.DonateService.donate(id, name, quantity, Category(category), Condition(condition), descr, picRef);
     }
+
+    @Query(() => DonateEntity)
+    async donateHistory(
+        @Args("id") id: string
+    ) {
+        //
+    }
 }

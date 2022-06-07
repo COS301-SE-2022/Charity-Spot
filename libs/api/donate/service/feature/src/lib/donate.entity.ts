@@ -14,3 +14,9 @@ export class DonateEntity {
     @Field({nullable: false})
     Description: string
 }
+
+@ObjectType()
+export class donationHistory {
+    @Field(()=> [DonateEntity], {nullable: true})
+    Donations: DonateEntity[]
+}

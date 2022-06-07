@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { DonateEntity } from './donate.entity';
+import { DonateEntity, donationHistory } from './donate.entity';
 import { DonateRepository } from '@charity-spot/api/donate/repository/data-access'
 import { catagory, quality } from '@prisma/client';
 
@@ -25,5 +25,9 @@ export class DonateService {
         returnable.Picture = item.Picture;
         
         return returnable;
+    }
+
+    async history(id: string) {
+        const historyItem = new donationHistory();
     }
 }
