@@ -64,6 +64,6 @@ export class DonateResolver {
     async donateHistory(
         @Args("id") id: string
     ) {
-        //
+        return await this.DonateService.history(id);
     }
 }
