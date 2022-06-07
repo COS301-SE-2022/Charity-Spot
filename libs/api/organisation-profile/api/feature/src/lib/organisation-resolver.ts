@@ -17,8 +17,10 @@ export class OrgResolver {
         @Args('id') id: string,
         @Args('orgName') name: string ,
         @Args('loc') loc: string,
-        @Args('picture') pic: string
+        @Args('picture') pic: string,
+        @Args('password') password: string
     ) : Promise<OrganisationEntity> {
+
         if(id != undefined) {
             if(name == undefined)
                 name = null;
@@ -26,8 +28,10 @@ export class OrgResolver {
                 loc = null;
             if(pic == undefined)
                 pic = null;
+            if(password == undefined)
+                password = null;
 
-            return this.OrganisationService.updateDet(id, name, loc, pic);
+            return this.OrganisationService.updateDet(id, name, loc, pic, password);
         }
 
         return null;

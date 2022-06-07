@@ -21,6 +21,7 @@ async function APICall(usrID:string){
       Name
       Date
       Location
+      Picture
     }
   }`);
     
@@ -45,6 +46,44 @@ async function APICall(usrID:string){
 
 }
 
+//EDIT_PAGE
+async function API_EDIT_Call(id:string, orgName: undefined, loc: undefined, picture: undefined, password: undefined) {
+  const query = (`
+    OrgEditProfile(
+      id: "${id}",
+      orgName: "${orgName}",
+      loc: "${loc}",
+      picture: "${picture}",
+      password: "${password}"
+    ) {
+      Email
+      Name
+      Date
+      Location
+      Picture
+    }
+  `);
+
+  let act_data = undefined;
+
+  await fetch('http://localhost:3333/graphql', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+    body: JSON.stringify({
+      query
+
+    })
+  }).then(r => r.json())
+    .then((data) => 
+      act_data = data
+    );
+
+  return JSON.stringify(act_data);
+}
+
 
 
 export function Profile() {
@@ -52,9 +91,12 @@ export function Profile() {
   const [OName,setOName] = useState('');
   const [ODate,setODate] = useState('');
   const [OLocation,setOLocation] = useState('');
+  const [Picture,setOPicture] = useState('');
 
   const hanndlesubmit = (event: { preventDefault: () => void; }) =>{
     event.preventDefault();
+
+    //Call EDIT_PAGE api call
 
     document.cookie = "ID= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
     window.location.href = '/login'; 
@@ -66,13 +108,13 @@ export function Profile() {
     const response = JSON.parse(await APICall(IdCookie));
     console.log(response.data.OrgProfile);
     const allData = response.data.OrgProfile;
-    const {Email,Name,Date,Location} = allData;
+    const {Email,Name,Date,Location,Picture} = allData;
     
     setOEmail(Email);
     setOName(Name);
     setODate(Date);
     setOLocation(Location);
-    
+    setOPicture(Picture);
   }
 
   useEffect(() => {
@@ -98,7 +140,7 @@ export function Profile() {
 
           <div className='user-left'>
           <div className='prof-pic'>
-            {/*<img src={userprofile} alt="" id="profile-pic"/>*/}
+            {/*<img src={Picture} alt="" id="profile-pic"/>*/}
             <img src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo.png?alt=media&token=658a4502-2b08-47bf-8cb2-fe7eacbf8c3e" alt="" id="profile-pic"></img>
           </div>
           <form onSubmit={hanndlesubmit}>

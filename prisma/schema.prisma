@@ -24,6 +24,7 @@ model Organisation {
   Description     String?  @map("description")
   AddressID       String?  @map("address_ID")
   profilePicture  String? @map("profile_picture")
+  dateCreated     DateTime    @map("date_created") @default(now())
 
   @@map("organisation")
 }

@@ -37,6 +37,74 @@ async function uploadImageAPICall(ImageBase64 : any){
 
 }
 
+async function historyData() {
+  const query = `
+    donateHistory(id: "${IdCookie}"){
+      Donations{
+        Name
+        Quantity
+        Quality
+        Category
+        Picture
+        Description
+      }
+    }
+  `;
+
+  let act_data = "";
+  
+  await fetch('http://localhost:3333/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        query
+      })
+      }).then(r => r.json())
+        .then((data) => 
+            act_data = data
+        );
+            
+
+  /**
+   * EXPECT SOMETHING LIKE: 
+   * {
+        "data": {
+          "donateHistory": {
+            "Donations": [
+              {
+                "Name": "donation",
+                "Quantity": 5,
+                "Quality": "NEW",
+                "Category": "FOOD",
+                "Picture": "picture.png_base64",
+                "Description": "Description here"
+              },
+              {
+                "Name": "donation2",
+                "Quantity": 3,
+                "Quality": "NEW",
+                "Category": "FOOD",
+                "Picture": "picture2.png_base64",
+                "Description": "Description here"
+              },
+              
+              etc... for the ID you provided
+            ]
+          }
+        }
+      }
+   *
+      FROM THE API
+
+      you can take over from here
+        */      
+
+  console.log(JSON.stringify(act_data));
+}
+
 /* eslint-disable-next-line */
 //export interface ClientDonateProps {}
 //export function ClientDonate(props: ClientDonateProps) {

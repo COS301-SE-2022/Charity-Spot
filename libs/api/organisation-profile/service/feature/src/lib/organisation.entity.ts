@@ -15,6 +15,6 @@ export class OrganisationEntity {
     @Field({ nullable: true })
     Location: string;
 
-    // @Field(()=> [DonateEntity], {nullable: true})
-    // Donations: DonateEntity[]
+    @Field({ nullable: true })
+    Picture: string;
 }
