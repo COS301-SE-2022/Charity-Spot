@@ -43,8 +43,8 @@ export class DonateService {
             donateItem.Picture = item.Picture;
             donateItem.Quantity = item.Quantity
             donateItem.Description = item.Descrition;
-            donateItem.Quality = item.Quality;
-            donateItem.Category = item.Type;
+            donateItem.Quality = item.Quality.toString();
+            donateItem.Category = item.Type.toString();
 
             historyItem.Donations.push(donateItem);
         }

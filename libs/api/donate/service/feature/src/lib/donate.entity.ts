@@ -1,5 +1,4 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
-import { catagory, quality } from '@prisma/client';
 
 @ObjectType()
 export class DonateEntity {
@@ -13,10 +12,10 @@ export class DonateEntity {
     Quantity: number
 
     @Field({nullable: false})
-    Quality: quality
+    Quality: string
 
     @Field({nullable: false})
-    Category: catagory
+    Category: string
 
     @Field({nullable: true})
     Picture: string
@@ -25,7 +24,7 @@ export class DonateEntity {
     Description: string
 
 
-    //only for histoy
+    //only for history
 
     @Field(()=> [DonateEntity], {nullable: true})
     Donations: DonateEntity[]
