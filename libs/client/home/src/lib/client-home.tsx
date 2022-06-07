@@ -29,6 +29,11 @@ const markerPos2 = {
   lng: 27.0473
 }
 
+const markerPos3 = {
+  lat: -26.2041,
+  lng: 29.0473
+}
+
 function markerClick(input: String){
   alert(input)
 }
@@ -71,9 +76,13 @@ export function Home() {
                   title="This is the name of the organisation"
                 />
                 <Marker
-                  icon= {"https://maps.google.com/mapfiles/kml/paddle/red-circle.png"}
+                  icon= {"https://maps.google.com/mapfiles/kml/paddle/grn-circle.png"}
                   position={markerPos2}
                 />
+                <Marker
+                  icon= {"https://maps.google.com/mapfiles/kml/paddle/red-circle.png"}
+                  position={markerPos3}
+  />
 
               </GoogleMap>
             </LoadScript>
