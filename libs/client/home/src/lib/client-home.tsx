@@ -81,7 +81,7 @@ export function Home() {
                 />
                 <Marker
                   icon= {"https://maps.google.com/mapfiles/kml/paddle/red-circle.png"}
-                  position={markerPos3}
+  position={markerPos3}
   />
 
               </GoogleMap>
