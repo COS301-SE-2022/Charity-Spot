@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaTrash,FaBlog,FaCode,FaSave,FaMapMarkerAlt,FaFilter } from 'react-icons/fa'
 import './homee.css';
 
+import {MapMarker} from './map-marker'
+
 import {APIKEYS} from '../../../../../config';
 
 import { GoogleMap, Marker, LoadScript } from '@react-google-maps/api';
@@ -34,7 +36,42 @@ const markerPos3 = {
   lng: 29.0473
 }
 
-function markerClick(input: String){
+async function APICall(){
+
+  console.log("testttt");
+
+  const query = `query{
+    GetAllOrgs{
+      ID
+      Name
+      Address
+    }
+  }`;
+
+       let orgs = "";
+  
+       await fetch('http://localhost:3333/graphql', {
+             method: 'POST',
+             headers: {
+               'Content-Type': 'application/json',
+               'Accept': 'application/json',
+             },
+             body: JSON.stringify({
+               query
+             })
+          }).then(r => r.json()).then(data => 
+                 orgs= data
+            );
+    
+         let orgString = JSON.stringify(orgs);
+         let orgFin = JSON.parse(orgString);
+
+         console.log(orgFin.data.GetAllOrgs);
+
+}
+
+async function markerClick(input: String){
+  await APICall();
   alert(input)
 }
 
@@ -69,7 +106,9 @@ export function Home() {
                 center={center}
                 zoom={10}
               >
-                <Marker
+
+                <MapMarker></MapMarker>
+                {/*<Marker
                   icon= {"https://maps.google.com/mapfiles/kml/paddle/blu-circle.png"}
                   onClick={() => {markerClick("Hello World!!")}}
                   position={markerPos1}
@@ -82,7 +121,7 @@ export function Home() {
                 <Marker
                   icon= {"https://maps.google.com/mapfiles/kml/paddle/red-circle.png"}
   position={markerPos3}
-  />
+  />*/}
 
               </GoogleMap>
             </LoadScript>
