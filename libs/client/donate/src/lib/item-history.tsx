@@ -7,7 +7,7 @@ import { getCookie, setCookie } from 'typescript-cookie'
 let IdCookie = getCookie('ID');
 
 async function historyData() {
-    const query = `query{
+    var query = `query{
       donateHistory(id: "${IdCookie}"){
         Donations{
           ItemID
@@ -37,59 +37,25 @@ async function historyData() {
           .then((data) => 
               act_data = data
           );
-              
+             
   
-    /**
-     * EXPECT SOMETHING LIKE: 
-     * {
-          "data": {
-            "donateHistory": {
-              "Donations": [
-                {
-                  "Name": "donation",
-                  "Quantity": 5,
-                  "Quality": "NEW",
-                  "Category": "FOOD",
-                  "Picture": "picture.png_base64",
-                  "Description": "Description here"
-                },
-                {
-                  "Name": "donation2",
-                  "Quantity": 3,
-                  "Quality": "NEW",
-                  "Category": "FOOD",
-                  "Picture": "picture2.png_base64",
-                  "Description": "Description here"
-                },
-                
-                etc... for the ID you provided
-              ]
-            }
-          }
-        }
-     *
-        FROM THE API
-  
-        you can take over from here
-          */      
-  
-    const ItemString = JSON.stringify(act_data);
-    const Items = JSON.parse(ItemString);
+    var ItemString = JSON.stringify(act_data);
+    var Items = JSON.parse(ItemString);
 
     const ItemArr = Items.data.donateHistory.Donations;
 
+    console.log(ItemArr[0]);
+
     
     act_data = "";
-    //for(let i=0; i< ItemArr.length; i++){
+    for(let i=0; i< ItemArr.length; i++){
 
-        const newQuery = (`query{
-            getItemPicLink(itemID: "${ItemArr[0].ItemID}"){
-                Name
-            }
-        }`);
-
-        console.log(newQuery);
-        //console.log(ItemArr[i].ItemID);
+        query = `query{
+          getItemPicLink(itemID: "${ItemArr[i].ItemID}"){
+            Name
+          }
+        }
+        `;
 
         await fetch('http://localhost:3333/graphql', {
         method: 'POST',
@@ -98,19 +64,28 @@ async function historyData() {
           'Accept': 'application/json',
         },
         body: JSON.stringify({
-          newQuery
+          query
         })
         }).then(r => r.json())
           .then((data) => 
               act_data = data
           );
 
-          console.log(act_data);
-    //}
+          
+          ItemString = JSON.stringify(act_data);
+          Items = JSON.parse(ItemString);
+
+          if(Items.data.getItemPicLink.Name == "undefined"){
+            ItemArr[i].PicLink = "";
+          }
+          else{
+            ItemArr[i].PicLink = Items.data.getItemPicLink.Name;
+          }
+    }
 
 
 
-    return Items.data.donateHistory.Donations;
+    return ItemArr;
   }
 
 
@@ -140,9 +115,9 @@ export function ItemHistory(props : any){
         
                 <div>
                 {Items.map(function(item){
-                    return (/*<h1 key={item.ItemID}>{item.Name}</h1>
+                    return (
                             
-                })}*/ <div key={item.ItemID}>
+            <div key={item.ItemID}>
 
             
 
@@ -156,16 +131,16 @@ export function ItemHistory(props : any){
 
                     <div className='collapsible-text'><br/>
                         <div className='collapseleft'>
-                        <img src="" alt="" id="profile-pic"/>
+                        <img src={item.PicLink} alt="" id="profile-pic"/>
                         </div>
 
                         <div className='collapseright'>
                             <ListGroup variant="flush" >
-                            <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Name: Levis Leather Jacket</ListGroup.Item>
-                                <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px', color: '#104283' }}>Quantity: 5 </ListGroup.Item>
-                                <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Category: Clothing </ListGroup.Item>
-                                <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Condition: Old</ListGroup.Item>
-                                <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Description: Trucker Vintage jackets</ListGroup.Item>
+                            <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Name: {item.Name}</ListGroup.Item>
+                                <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px', color: '#104283' }}>Quantity: {item.Quantity} </ListGroup.Item>
+                                <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Category: {item.Category} </ListGroup.Item>
+                                <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Condition: {item.Quality}</ListGroup.Item>
+                                <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Description: {item.Description}</ListGroup.Item>
                             </ListGroup>
                         </div>
                         
@@ -175,11 +150,9 @@ export function ItemHistory(props : any){
 
             </div>
 
-            {/*<button onClick={() => {addName((Name) => [...Name, "Test"]);}}>Test</button>*/}
+            </div> )})}
 
-            </div>
-           
-                )})}</div>
+          </div>
         );
     }
 
