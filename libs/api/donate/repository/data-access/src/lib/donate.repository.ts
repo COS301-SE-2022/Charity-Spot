@@ -30,7 +30,13 @@ export class DonateRepository {
       },
       select:
       {
-        ItemName: true
+        ItemID: true,
+        ItemName: true,
+        Picture: true,
+        Quality: true,
+        Descrition: true,
+        Quantity: true,
+        Type: true
       }
     })
   }
@@ -214,6 +220,20 @@ export class DonateRepository {
       data:
       {
         Type : type
+      }
+    })
+  }
+
+  async getItemDirec(itemID : string)
+  {
+    return await this.prisma.donoItem.findFirst({
+      where:
+      {
+        ItemID: itemID,
+      },
+      select:
+      {
+        Picture: true
       }
     })
   }

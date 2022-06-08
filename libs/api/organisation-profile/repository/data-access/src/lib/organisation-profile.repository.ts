@@ -149,4 +149,33 @@ export class OrganisationRepository {
       }
     })
   }
+
+  async getDateCreated(userID : string)
+  {
+    return await this.prisma.organisation.findFirst({
+      where:
+      {
+        UserID:userID
+      },
+      select:
+      {
+        dateCreated:true
+      }
+    })
+  }
+
+  async editPassword(userID : string, password : string)
+  {
+    return await this.prisma.user.update({
+      where:
+      {
+        UserID:userID
+      },
+      data:
+      {
+        password:password
+      }
+    })
+  }
+  
 }

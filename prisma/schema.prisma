@@ -24,6 +24,7 @@ model Organisation {
   Description     String?  @map("description")
   AddressID       String?  @map("address_ID")
   profilePicture  String? @map("profile_picture")
+  dateCreated     DateTime    @map("date_created") @default(now())
 
   @@map("organisation")
 }
@@ -49,6 +50,7 @@ model Rating {
 }
 
 model DonoItem {
+  ItemID      String  @default(cuid()) @map("item_id")
   ItemName    String  @map("item_name")
   Picture     String? @map("picture")
   OrgID       String  @map("org_id")

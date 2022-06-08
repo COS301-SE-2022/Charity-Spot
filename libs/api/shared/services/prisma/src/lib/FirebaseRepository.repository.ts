@@ -21,23 +21,34 @@ export class FirebaseService {
 
     async uploadFile(base64, idOfItem){
 
-        var imgType = base64.substring(
-            base64.indexOf("/") + 1, 
-            base64.lastIndexOf(";")
-        );
-
-        
-        let fileName = "DonatedItems/" + idOfItem + '.' + imgType;
-
-        const fileRef = ref(this.storage, fileName);
+        const fileRef = ref(this.storage, idOfItem);
 
 
         await uploadString(fileRef, base64.split(',')[1], 'base64').then( async (snapshot) => {
             console.log('Successful upload');
-            //console.log(snapshot);
           }).catch( (err) =>{
-            //console.error(err);
+            console.error(err);
           });
     }
+
+    async getURLByFilePath(file_path:string) : Promise<string|null>{
+    
+        const fileRef = ref(this.storage, file_path);
+    
+        let url = null;
+    
+        //get the url that will download the file
+        await getDownloadURL(fileRef)
+          .then( async (value) => {
+            url = value;
+          })
+          .catch((error) => {
+            console.error(error);
+            return null;
+          });
+    
+        return url;
+
+      }
 
 }

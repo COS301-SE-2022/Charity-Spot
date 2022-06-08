@@ -2,15 +2,16 @@ import React,{useState,useEffect} from 'react'
 import './profile.css'
 import userprofile from '../../../shared/assets/userprofile.png'
 
-
 import 'react-tabs/style/react-tabs.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaUserAlt,FaEdit,FaPen } from 'react-icons/fa'
 
 import ListGroup from 'react-bootstrap/esm/ListGroup';
-const fullCookie = document.cookie.split("="); 
- const IdCookie = fullCookie[1];
+
+import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
+
+const IdCookie = getCookie('ID');
 
 async function APICall(usrID:string){
     
@@ -20,6 +21,7 @@ async function APICall(usrID:string){
       Name
       Date
       Location
+      Picture
     }
   }`);
     
@@ -41,8 +43,45 @@ async function APICall(usrID:string){
             );
             
          return JSON.stringify(All_data);
-         console.log(All_data);
 
+}
+
+//EDIT_PAGE
+async function API_EDIT_Call(id:string, orgName: string, loc: string, picture: string, password: string) {
+  const query = (`query{
+    OrgEditProfile(
+      id: "${id}",
+      orgName: "${orgName}",
+      loc: "${loc}",
+      picture: "${picture}",
+      password: "${password}"
+    ) {
+      Email
+      Name
+      Date
+      Location
+      Picture
+    }
+  }`);
+
+  let act_data = undefined;
+
+  await fetch('http://localhost:3333/graphql', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+    body: JSON.stringify({
+      query
+
+    })
+  }).then(r => r.json())
+    .then((data) => 
+      act_data = data
+    );
+
+  return JSON.stringify(act_data);
 }
 
 
@@ -52,27 +91,61 @@ export function Profile() {
   const [OName,setOName] = useState('');
   const [ODate,setODate] = useState('');
   const [OLocation,setOLocation] = useState('');
+  const [Picture,setOPicture] = useState('');
+
+  
+  const [NewOName,setNewOName] = useState('undefined');
+  const [NewOLocation,setNewOLocation] = useState('undefined');
+  const [NewOPass,setNewOPass] = useState('undefined');
+  const [NewOPassC,setNewOPassC] = useState('undefined');
+
+  //const [NewPicture,setNewOPicture] = useState('');
+
 
   const hanndlesubmit = (event: { preventDefault: () => void; }) =>{
     event.preventDefault();
 
-    document.cookie = "ID= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+    removeCookie('ID');
     window.location.href = '/login'; 
 
   }
 
+  const handlesumbitUpdate = async () => {
+
+    if(NewOName == "undefined" && NewOLocation == "undefined" && NewOPass == "undefined" && NewOPassC == "undefined"){
+      console.log("No changes");
+      return;
+    }
+
+    if(NewOPass != NewOPassC){
+      alert("password do not match");
+      return;
+    }
+
+    if(IdCookie != undefined){
+      await API_EDIT_Call(IdCookie, NewOName, NewOLocation, "undefined", NewOPass);
+    }
+
+    displayData();
+    
+  }
+
   const displayData = async() =>{
 
-    const response = JSON.parse(await APICall(IdCookie));
-    console.log(response.data.OrgProfile);
-    const allData = response.data.OrgProfile;
-    const {Email,Name,Date,Location} = allData;
-    
-    setOEmail(Email);
-    setOName(Name);
-    setODate(Date);
-    setOLocation(Location);
-    
+    if(IdCookie != undefined){
+
+      const response = JSON.parse(await APICall(IdCookie));
+      const allData = response.data.OrgProfile;
+      const {Email,Name,Date,Location,Picture} = allData;
+      
+      setOEmail(Email);
+      setOName(Name);
+      setODate(Date);
+      setOLocation(Location);
+      setOPicture(Picture);
+
+    }
+
   }
 
   useEffect(() => {
@@ -98,7 +171,7 @@ export function Profile() {
 
           <div className='user-left'>
           <div className='prof-pic'>
-            {/*<img src={userprofile} alt="" id="profile-pic"/>*/}
+            {/*<img src={Picture} alt="" id="profile-pic"/>*/}
             <img src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo.png?alt=media&token=658a4502-2b08-47bf-8cb2-fe7eacbf8c3e" alt="" id="profile-pic"></img>
           </div>
           <form onSubmit={hanndlesubmit}>
@@ -140,30 +213,22 @@ export function Profile() {
               <div className='editor-right'>
                 <br/><br/>
                 <div className='updater'>
-                  <form onSubmit={hanndlesubmit}>
+                  <form onSubmit={(e) => { e.preventDefault(); handlesumbitUpdate();}}>
                     <div className='user-box1'>
-                      {/* <label htmlFor=''>OrgName</label><br/> */}
-                      <input className="in1" type ="text" placeholder='Name'defaultValue={OName} ></input>  
+                      <input className="in1" type ="text" placeholder='Name'defaultValue={OName} onChange ={(e)=>{setNewOName(e.target.value)}}></input>  
                       <FaPen color='#1458b3'/>
                     </div>
+                    
                     <div className='user-box2'>
-                      {/* <label htmlFor=''>Email</label> */}
-                      <input className="in2" type ="email" placeholder='Email'defaultValue={OEmail}></input> 
-                      <FaPen color='#1458b3'/>
-                    </div>  
-                    <div className='user-box3'>
-                      {/* <label htmlFor=''>Address</label> */}
-                      <input className="in3" type ="text" placeholder='Address' defaultValue={OLocation}></input> 
+                      <input className="in3" type ="text" placeholder='Address' defaultValue={OLocation} onChange ={(e)=>{setNewOLocation(e.target.value)}}></input> 
                       <FaPen color='#1458b3'/>
                     </div>                                
-                    <div className='user-box4'>
-                      {/* <label htmlFor=''>Org Password</label> */}
-                      <input className="in4" type ="password" placeholder='Password'></input> 
+                    <div className='user-box3'>
+                      <input className="in4" type ="password" placeholder='Password' defaultValue = "" onChange ={(e)=>{setNewOPass(e.target.value)}}></input> 
                       <FaPen color='#1458b3'/>
                     </div>      
-                    <div className='user-box5'>
-                      {/* <label htmlFor=''>confirm password</label> */}
-                      <input className="in5" type ="password" placeholder='Confirm Password'></input> 
+                    <div className='user-box4'>
+                      <input className="in5" type ="password" placeholder='Confirm Password' onChange ={(e)=>{setNewOPassC(e.target.value)}}></input> 
                       <FaPen color='#1458b3'/>
                     </div> 
                     <input id='upt_but'type="submit" value="Update"/>                                                                                       

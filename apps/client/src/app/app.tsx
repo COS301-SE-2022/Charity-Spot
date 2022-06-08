@@ -1,15 +1,5 @@
-import React, { useState } from 'react';
-
 import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
 import Navigation from './Navigation';
-//import ClientLogin from './pages/ClientLogin';
-//import Home from './pages/Home';
-//import Register from './pages/register';
-//import 'bootstrap/dist/css/bootstrap.min.css';
-
-
-
-//import { Route, Routes, Link } from 'react-router-dom';
 
 import {ClientLogin} from '@charity-spot/client/login';
 import {Register} from '@charity-spot/client/registration';
