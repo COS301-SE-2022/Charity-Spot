@@ -1,1 +1,1 @@
-export * from './lib/api-home-repository-data-access.module';
+export * from './lib/home.repository';

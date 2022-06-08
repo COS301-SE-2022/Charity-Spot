@@ -8,6 +8,7 @@ import { LoginApiFeatureModule } from '@charity-spot/api/login/api/feature'
 import { RegistrationApiFeatureModule } from '@charity-spot/api/registration/api/feature'
 import { ApiOrganisationProfileApiFeatureModule } from '@charity-spot/api/organisation-profile/api/feature'
 import { ApiDonateApiFeatureModule} from '@charity-spot/api/donate/api/feature'
+import { ApiHomeApiFeatureModule} from '@charity-spot/api/home/api/feature'
 
 
 @Module({
@@ -20,6 +21,7 @@ import { ApiDonateApiFeatureModule} from '@charity-spot/api/donate/api/feature'
     RegistrationApiFeatureModule,
     ApiOrganisationProfileApiFeatureModule,
     ApiDonateApiFeatureModule,
+    ApiHomeApiFeatureModule,
     ConfigModule.forRoot()
   ]
 })
