@@ -96,24 +96,27 @@ section .content{
 
 
 .filters-contain{
-  height: 550px auto;
-  width: 90%;
+  height: 500px auto;
+  width: 100%;
 
-  /* background: linear-gradient(to right bottom, rgba(228, 228, 228, 0.7),rgba(191, 190, 190, 0.4)); */
+  
   border-radius: 1rem;
   margin: 1.5rem auto;
-  /* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0); */
 
+/* background-color: #1458b3; */
 
+   /* text-align: center; */
    display: flex;
    flex-direction: row;
    justify-content: space-around;
+   flex-flow: wrap;
+
 
 }
 .left-filt{
   margin: 2rem;
-  height: 450px;
-  width: 45%;
+  height: 420px;
+  width: 25%;
   background-color: rgb(222, 222, 222);
   border-radius: 10px;
   box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0);
@@ -121,8 +124,8 @@ section .content{
 }
 .middle-filt{
   margin: 2rem;
-  height: 450px;
-  width: 45%;
+  height: 420px;
+  width: 25%;
   background-color: rgb(222, 222, 222);
   border-radius: 10px;
   box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0);
@@ -130,8 +133,8 @@ section .content{
 }
 .right-filt{
   margin: 2rem;
-  height: 450px;
-  width: 45%;
+  height: 420px;
+  width: 25%;
   background-color: rgb(222, 222, 222);
   border-radius: 10px;
   box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0);
@@ -183,4 +186,51 @@ input[type="checkbox"]:checked
 {
   transition: 0.3s ease-in;
   background-color: #1458b3;
+}
+
+
+@media screen and (max-width: 600px) {
+  .filters-contain{
+    width: 100%;
+  
+  }
+  .left-filt{
+    width: 100%;
+  }
+  .right-filt{
+    width: 100%;
+  }
+  .middle-filt{
+    width: 100%;
+  }
+
+}
+@media screen and (max-width: 900px) {
+  .filters-contain{
+    width: 100%;
+  
+  }
+  .left-filt{
+    width: 100%;
+  }
+  .right-filt{
+    width: 100%;
+  }
+  .middle-filt{
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .filters-contain{
+   /* background-color: #1458b3; */
+  }
+  .left-filt{
+    height: 480px;
+  }
+  .right-filt{
+    height: 480px;
+  }
+  .middle-filt{
+    height: 480px;  
+  }
 }

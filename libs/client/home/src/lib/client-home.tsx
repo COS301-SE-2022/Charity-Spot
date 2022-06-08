@@ -82,7 +82,7 @@ export function Home() {
                             <label htmlFor="0"> Pretoria</label>
                           </div>
 
-                          <div className='wrap2'>
+                          <div className='wrap1'>
                             <input
                                 type="checkbox"
                                 id = "1"
@@ -93,7 +93,7 @@ export function Home() {
                             <label htmlFor="1"> Johannesburg</label>
                           </div>
 
-                          <div className='wrap3'>
+                          <div className='wrap1'>
                             <input
                                 type="checkbox"
                                 id = "2"
@@ -104,7 +104,7 @@ export function Home() {
                             <label htmlFor="2"> Durban</label>
                           </div>
 
-                          <div className='wrap4'>
+                          <div className='wrap1'>
                             <input
                                 type="checkbox"
                                 id = "3"
@@ -118,6 +118,7 @@ export function Home() {
                       </div>
               </div>
               <div className="middle-filt">
+                
               <h3 className='FiltLabels'>Item Type</h3>
               </div>     
               <div className="right-filt">
