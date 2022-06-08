@@ -8,6 +8,8 @@ import  userprofile from '../../../shared/assets/userprofile.png'
 
 import { getCookie, setCookie } from 'typescript-cookie'
 
+import ItemHistory from './item-history'
+
 let IdCookie = getCookie('ID');
 
 /*async function uploadImageAPICall(ImageBase64 : any){
@@ -202,7 +204,11 @@ export function ClientDonate() {
     await uploadItemAPICall(IName, IQuan, ICat, ICond, IDesc, imgBase64);
 
     (document.getElementById("mainDonateForm") as HTMLFormElement)!.reset();
-    setImageURL("");
+    () => setImageURL("");
+
+    //ItemHistory();
+
+    //forceUpdate()
 
   }
 
@@ -327,7 +333,8 @@ return (
   
     <div className='content content-2'>
            <div className='title'><h1>History</h1></div>
-           <div className='rapper'>
+           <ItemHistory key={imageURL}></ItemHistory>
+           {/*<div className='rapper'>
                   <div className='collapsible'>
                     <input type ='checkbox' id = 'collapsible-head'></input>
                     <label htmlFor='collapsible-head'>Levis Leather Jacket <FaArrowRight/></label>
@@ -368,7 +375,7 @@ return (
                       </div>
                     </div>
                   </div>
-             </div>
+                            </div>*/}
              
                 
   </div>

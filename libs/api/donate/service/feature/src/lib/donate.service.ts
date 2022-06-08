@@ -42,9 +42,11 @@ export class DonateService {
 
         for(const item of donations) {
             const donateItem = new DonateEntity();
+
             donateItem.ID = id;
 
             //item details
+            donateItem.ItemID = item.ItemID;
             donateItem.Name = item.ItemName;
             donateItem.Picture = item.Picture;
             donateItem.Quantity = item.Quantity

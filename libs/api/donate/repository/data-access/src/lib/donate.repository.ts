@@ -30,6 +30,7 @@ export class DonateRepository {
       },
       select:
       {
+        ItemID: true,
         ItemName: true,
         Picture: true,
         Quality: true,
