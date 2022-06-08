@@ -16,6 +16,11 @@ const durban = {
     lng: 31.0218
 }
 
+const capetown = {
+    lat: -33.9249,
+    lng: 18.4241
+}
+
 async function APICall(){
   
     const query = `query{
@@ -60,8 +65,6 @@ export function MapMarker(){
 
         for(let i=0; i< newItemss.length; i++){
 
-            console.log(newItemss[i]);
-
             if(newItemss[i].Address == "Pretoria"){
                 newItemss[i].Coord = pretoria;
             }
@@ -70,6 +73,12 @@ export function MapMarker(){
             }
             else if(newItemss[i].Address == "Durban"){
                 newItemss[i].Coord = durban;
+            }
+            else if(newItemss[i].Address == "Cape Town"){
+                newItemss[i].Coord = capetown;
+            }
+            else{
+                newItemss[i].Coord = pretoria;
             }
 
             
@@ -97,7 +106,6 @@ export function MapMarker(){
 
             {MarkerO.map(function(marker){
                 loopCount = loopCount + getRandomArbitrary(-0.1, 0.1);
-                console.log(marker.Coord);
                 
                 return(
 

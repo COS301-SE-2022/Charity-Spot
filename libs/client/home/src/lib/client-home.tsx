@@ -3,6 +3,7 @@ import {Tabs,Tab} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaTrash,FaBlog,FaCode,FaSave,FaMapMarkerAlt,FaFilter } from 'react-icons/fa'
 import './homee.css';
+import { useEffect, useState } from 'react';
 
 import {MapMarker} from './map-marker'
 
@@ -46,6 +47,10 @@ async function markerClick(input: String){
 export function Home() {
 
   let APIKey = APIKEYS.GoogleMapsAPIKey;
+
+  const [checkedState, setCheckedState] = useState(
+    new Array(4).fill(true)
+  );
   
   return (
     <div>
@@ -72,7 +77,7 @@ export function Home() {
                 
                 mapContainerStyle={containerStyle}
                 center={center}
-                zoom={10}
+                zoom={5}
               >
 
                 <MapMarker></MapMarker>
@@ -100,7 +105,55 @@ export function Home() {
         </div>
         <div className='content content-2'>
           <div className='title'><h1>Filter</h1></div>
-          <p> Filter Map here :) </p>
+
+          <div id = "mapFilters">
+
+              <div>
+                  <input
+                    type="checkbox"
+                    id = "0"
+                    checked={checkedState[0]}
+                    onChange={() => {let checked = [...checkedState]; checked[0] = !checked[0]; setCheckedState(checked); console.log(checkedState)}}
+                  />
+
+                <label htmlFor="0"> Pretoria</label>
+              </div>
+
+              <div>
+                <input
+                    type="checkbox"
+                    id = "1"
+                    checked={checkedState[1]}
+                    onChange={() => {let checked = [...checkedState]; checked[1] = !checked[1]; setCheckedState(checked); console.log(checkedState)}}
+                  />
+
+                <label htmlFor="1"> Johannesburg</label>
+              </div>
+
+              <div>
+                <input
+                    type="checkbox"
+                    id = "2"
+                    checked={checkedState[2]}
+                    onChange={() => {let checked = [...checkedState]; checked[2] = !checked[2]; setCheckedState(checked); console.log(checkedState)}}
+                  />
+
+                <label htmlFor="2"> Durban</label>
+              </div>
+
+              <div>
+                <input
+                    type="checkbox"
+                    id = "3"
+                    checked={checkedState[3]}
+                    onChange={() => {let checked = [...checkedState]; checked[3] = !checked[3]; setCheckedState(checked); console.log(checkedState)}}
+                  />
+
+                <label htmlFor="3"> Cape Town</label>
+              </div>
+
+          </div>
+
         </div>
       </section>
     </div>   
