@@ -41,7 +41,7 @@
 
     box-sizing: border-box;
     /* margin: 20px; */
-    background-color: #d3d3d3;
+    background-color: #dadada;
     /* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0); */
     border-top-left-radius: 10px ;
     border-bottom-left-radius: 10px ;
@@ -58,6 +58,14 @@ input[type="file"] {
     display: none;
 }
 img#donation-pic{
+    height: 250px;
+    width: 65%;
+    border-radius: 10%;
+    /* padding-bottom: 5px; */
+    color: #1458b3;
+
+}
+img#donation-pic2{
     height: 250px;
     width: 65%;
     border-radius: 10%;
@@ -116,9 +124,20 @@ img#donation-pic{
     width: 110px;
     padding: 15px;
 }
+#donation-pic2
+{
+    height: 110px;
+    width: 110px;
+    padding: 15px;
+}
 
 @media screen and (max-width: 1200px) {
     #donation-pic
+    {
+        height: 110px;
+        width: 110px;
+    }
+    #donation-pic2
     {
         height: 110px;
         width: 110px;
@@ -136,6 +155,11 @@ img#donation-pic{
 }
 @media screen and (max-width: 900px) {
     #donation-pic
+   {
+       height: 110px;
+       width: 110px;
+   }
+   #donation-pic2
    {
        height: 110px;
        width: 110px;
@@ -168,9 +192,27 @@ img#donation-pic{
     border-radius: 50%;
 
 }
+img#donation-pic2{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+
+}
+.custom-file-upload{
+    /* margin-top: 30px; */
+    width:240px;
+    /* height: 50px; */
+    
+  }
 }
 @media screen and (max-width: 600px) {
     #donation-pic
+   {
+       height: 100px;
+       width: 100px;
+       padding: 15px;
+   }
+   #donation-pic2
    {
        height: 100px;
        width: 100px;
@@ -196,6 +238,18 @@ img#donation-pic{
     border-radius: 50%;
 
 }
+img#donation-pic2{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+
+}
+.custom-file-upload{
+    /* margin-top: 30px; */
+    width:200px;
+    /* height: 50px; */
+    
+  }
 
 }
 
@@ -205,6 +259,11 @@ img#donation-pic{
         height: 120px;
         width: 120px;
     }        
+    #donation-pic2
+    {
+        height: 120px;
+        width: 120px;
+    } 
     .donate-main{
         width: 80%;
     }
@@ -457,13 +516,37 @@ height: 18px;
   
 }
 .collapseleft{
-    width: 28%;
+    /* width: 28%;
     padding-top: 10%;
     margin-right: 2px;
 
     background: rgb(218, 220, 223);
+
+
+    align-items: center; */
+    text-align: center;
+
     border-radius: 10px;
     box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0);
+
+
+    width: 28%;
+    height: 450px;
+
+
+    box-sizing: border-box;
+    /* margin: 20px; */
+    background-color: #dadada;
+    /* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0); */
+    border-top-left-radius: 10px ;
+    border-bottom-left-radius: 10px ;
+
+    /* Centering content */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
 }
 .collapseright{
     width: 70%;
