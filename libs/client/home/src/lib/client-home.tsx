@@ -80,7 +80,7 @@ export function Home() {
                 zoom={5}
               >
 
-                <MapMarker></MapMarker>
+                <MapMarker checkState={checkedState}></MapMarker>
                 {/*<Marker
                   icon= {"https://maps.google.com/mapfiles/kml/paddle/blu-circle.png"}
                   onClick={() => {markerClick("Hello World!!")}}
@@ -113,7 +113,7 @@ export function Home() {
                     type="checkbox"
                     id = "0"
                     checked={checkedState[0]}
-                    onChange={() => {let checked = [...checkedState]; checked[0] = !checked[0]; setCheckedState(checked); console.log(checkedState)}}
+                    onChange={() => {let checked = [...checkedState]; checked[0] = !checked[0]; setCheckedState(checked);}}
                   />
 
                 <label htmlFor="0"> Pretoria</label>
@@ -124,7 +124,7 @@ export function Home() {
                     type="checkbox"
                     id = "1"
                     checked={checkedState[1]}
-                    onChange={() => {let checked = [...checkedState]; checked[1] = !checked[1]; setCheckedState(checked); console.log(checkedState)}}
+                    onChange={() => {let checked = [...checkedState]; checked[1] = !checked[1]; setCheckedState(checked);}}
                   />
 
                 <label htmlFor="1"> Johannesburg</label>
@@ -135,7 +135,7 @@ export function Home() {
                     type="checkbox"
                     id = "2"
                     checked={checkedState[2]}
-                    onChange={() => {let checked = [...checkedState]; checked[2] = !checked[2]; setCheckedState(checked); console.log(checkedState)}}
+                    onChange={() => {let checked = [...checkedState]; checked[2] = !checked[2]; setCheckedState(checked);}}
                   />
 
                 <label htmlFor="2"> Durban</label>
@@ -146,7 +146,7 @@ export function Home() {
                     type="checkbox"
                     id = "3"
                     checked={checkedState[3]}
-                    onChange={() => {let checked = [...checkedState]; checked[3] = !checked[3]; setCheckedState(checked); console.log(checkedState)}}
+                    onChange={() => {let checked = [...checkedState]; checked[3] = !checked[3]; setCheckedState(checked);}}
                   />
 
                 <label htmlFor="3"> Cape Town</label>

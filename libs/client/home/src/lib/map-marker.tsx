@@ -53,14 +53,16 @@ async function APICall(){
   
   }
 
-export function MapMarker(){
+export function MapMarker(props : any){
 
     const [MarkerO, addMarkerO] = useState<any[]>([]);
     const MarkerL : any[] = [];
 
     let loopCount = -0.1;
 
-    const updateMarkers = async () => {
+    const updateMarkers = async (props : any) => {
+        console.log(props);
+
         let newItemss = await APICall();
 
         for(let i=0; i< newItemss.length; i++){
@@ -81,6 +83,10 @@ export function MapMarker(){
                 newItemss[i].Coord = pretoria;
             }
 
+            if(props.checkState[0] == false && newItemss[i].Address == "Pretoria"){
+                continue;
+            }
+
             
             MarkerL.push(newItemss[i]);
         }
@@ -90,8 +96,8 @@ export function MapMarker(){
     }
 
     useEffect(() => {
-        updateMarkers();
-       },[]);
+        updateMarkers(props);
+       },[props]);
 
 
     function getRandomArbitrary(min : number, max : number) {
