@@ -49,7 +49,7 @@ export class RegistrationService {
 	}
 
 	async addOrg(userID : string, OrgName : string) {
-		this.RegistRepo.addOrg(userID, OrgName);
+		await this.RegistRepo.addOrg(userID, OrgName);
 
 		return "SUCCESS";
 	}
