@@ -1,9 +1,19 @@
 import { GoogleMap, Marker, LoadScript } from '@react-google-maps/api';
 import { useEffect, useState } from 'react';
 
-const markerPos1 = {
+const joburg = {
     lat: -26.2041,
     lng: 28.0473
+}
+
+const pretoria = {
+    lat: -25.7479,
+    lng: 28.2293
+}
+
+const durban = {
+    lat: -29.8587,
+    lng: 31.0218
 }
 
 async function APICall(){
@@ -49,6 +59,20 @@ export function MapMarker(){
         let newItemss = await APICall();
 
         for(let i=0; i< newItemss.length; i++){
+
+            console.log(newItemss[i]);
+
+            if(newItemss[i].Address == "Pretoria"){
+                newItemss[i].Coord = pretoria;
+            }
+            else if(newItemss[i].Address == "Johannesburg"){
+                newItemss[i].Coord = joburg;
+            }
+            else if(newItemss[i].Address == "Durban"){
+                newItemss[i].Coord = durban;
+            }
+
+            
             MarkerL.push(newItemss[i]);
         }
 
@@ -72,8 +96,8 @@ export function MapMarker(){
         <div>
 
             {MarkerO.map(function(marker){
-                loopCount = loopCount + getRandomArbitrary(-0.1, 0.3);
-                console.log(loopCount);
+                loopCount = loopCount + getRandomArbitrary(-0.1, 0.1);
+                console.log(marker.Coord);
                 
                 return(
 
@@ -82,7 +106,7 @@ export function MapMarker(){
                 <Marker key={marker.ID}
                     icon= {"https://maps.google.com/mapfiles/kml/paddle/red-circle.png"}
                   
-                    position= {{ lat:markerPos1.lat+getRandomArbitrary(-0.1,0.1), lng:markerPos1.lng+loopCount}}
+                    position= {{ lat:marker.Coord.lat+getRandomArbitrary(-0.1,0.1), lng:marker.Coord.lng+loopCount}}
                     title={marker.Name}
                 />
 
