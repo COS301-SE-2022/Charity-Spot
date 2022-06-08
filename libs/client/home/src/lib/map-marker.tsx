@@ -1,4 +1,4 @@
-import { GoogleMap, Marker, LoadScript } from '@react-google-maps/api';
+import { Marker } from '@react-google-maps/api';
 import { useEffect, useState } from 'react';
 
 const joburg = {
@@ -61,7 +61,6 @@ export function MapMarker(props : any){
     let loopCount = -0.1;
 
     const updateMarkers = async (props : any) => {
-        console.log(props);
 
         let newItemss = await APICall();
 
@@ -84,6 +83,18 @@ export function MapMarker(props : any){
             }
 
             if(props.checkState[0] == false && newItemss[i].Address == "Pretoria"){
+                continue;
+            }
+
+            if(props.checkState[1] == false && newItemss[i].Address == "Johannesburg"){
+                continue;
+            }
+
+            if(props.checkState[2] == false && newItemss[i].Address == "Durban"){
+                continue;
+            }
+
+            if(props.checkState[3] == false && newItemss[i].Address == "Cape Town"){
                 continue;
             }
 
@@ -115,16 +126,12 @@ export function MapMarker(props : any){
                 
                 return(
 
-            //<div key={marker.ID}>
-
-                <Marker key={marker.ID}
-                    icon= {"https://maps.google.com/mapfiles/kml/paddle/red-circle.png"}
-                  
-                    position= {{ lat:marker.Coord.lat+getRandomArbitrary(-0.1,0.1), lng:marker.Coord.lng+loopCount}}
-                    title={marker.Name}
-                />
-
-            //</div>
+                    <Marker key={marker.ID}
+                        icon= {"https://maps.google.com/mapfiles/kml/paddle/red-circle.png"}
+                    
+                        position= {{ lat:marker.Coord.lat+getRandomArbitrary(-0.1,0.1), lng:marker.Coord.lng+loopCount}}
+                        title={marker.Name}
+                    />
 
             )})}
 
