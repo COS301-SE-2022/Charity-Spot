@@ -92,6 +92,20 @@ export class RegistrationRepository {
       }
     })
     }
+    else{
+
+    u = await this.prisma.organisation.update({
+      where:
+      {
+        UserID:UserID
+      },
+      data:
+      {
+        AddressID:a.AddressID
+      }
+    });
+
+    }
 
     return u;
   }

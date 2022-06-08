@@ -43,22 +43,16 @@ export function MapMarker(){
     const [MarkerO, addMarkerO] = useState<any[]>([]);
     const MarkerL : any[] = [];
 
+    let loopCount = -0.1;
+
     const updateMarkers = async () => {
         let newItemss = await APICall();
 
-        console.log(newItemss);
-
         for(let i=0; i< newItemss.length; i++){
-            console.log(newItemss[i]);
             MarkerL.push(newItemss[i]);
         }
 
-        console.log(MarkerL);
-
         addMarkerO(MarkerL);
-
-        console.log("testtt!");
-        console.log(MarkerO);
 
     }
 
@@ -66,26 +60,36 @@ export function MapMarker(){
         updateMarkers();
        },[]);
 
+
+    function getRandomArbitrary(min : number, max : number) {
+        return Math.random() * (max - min) + min;
+    }
+
+    
+
     return (
 
         <div>
 
             {MarkerO.map(function(marker){
+                loopCount = loopCount + getRandomArbitrary(-0.1, 0.3);
+                console.log(loopCount);
+                
                 return(
 
-            <div>
+            //<div key={marker.ID}>
 
-                <Marker
+                <Marker key={marker.ID}
                     icon= {"https://maps.google.com/mapfiles/kml/paddle/red-circle.png"}
                   
-                    position={markerPos1}
-                    title="This is the name of the organisation"
+                    position= {{ lat:markerPos1.lat+getRandomArbitrary(-0.1,0.1), lng:markerPos1.lng+loopCount}}
+                    title={marker.Name}
                 />
 
-            </div>
+            //</div>
 
             )})}
-            
+
         </div>
     )
 

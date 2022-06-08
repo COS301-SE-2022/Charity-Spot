@@ -17,8 +17,8 @@ export class RegistrationResolver {
 		const temp = new RegistEntity();
 		if(userID != null) {
 			
-			this.RegistrationService.addOrg(userID, orgName);
-			this.RegistrationService.alterAddress(userID, address, "", "", "");
+			await this.RegistrationService.addOrg(userID, orgName);
+			await this.RegistrationService.alterAddress(userID, address, "", "", "");
 			temp.ID = userID;
 		}
 		else 
