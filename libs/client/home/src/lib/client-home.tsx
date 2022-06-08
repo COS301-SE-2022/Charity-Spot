@@ -36,43 +36,11 @@ const markerPos3 = {
   lng: 29.0473
 }
 
-async function APICall(){
-
-  console.log("testttt");
-
-  const query = `query{
-    GetAllOrgs{
-      ID
-      Name
-      Address
-    }
-  }`;
-
-       let orgs = "";
-  
-       await fetch('http://localhost:3333/graphql', {
-             method: 'POST',
-             headers: {
-               'Content-Type': 'application/json',
-               'Accept': 'application/json',
-             },
-             body: JSON.stringify({
-               query
-             })
-          }).then(r => r.json()).then(data => 
-                 orgs= data
-            );
-    
-         let orgString = JSON.stringify(orgs);
-         let orgFin = JSON.parse(orgString);
-
-         console.log(orgFin.data.GetAllOrgs);
-
-}
 
 async function markerClick(input: String){
-  await APICall();
+
   alert(input)
+  
 }
 
 export function Home() {
