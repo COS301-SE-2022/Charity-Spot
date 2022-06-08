@@ -135,8 +135,6 @@ export function Profile() {
     if(IdCookie != undefined){
 
       const response = JSON.parse(await APICall(IdCookie));
-      console.log(response.data.OrgProfile);
-      console.log("testtt");
       const allData = response.data.OrgProfile;
       const {Email,Name,Date,Location,Picture} = allData;
       
