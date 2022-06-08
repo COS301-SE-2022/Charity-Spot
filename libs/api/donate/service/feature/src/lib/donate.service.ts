@@ -33,6 +33,18 @@ export class DonateService {
 
     }
 
+    async getItemPicDirec(itemID : string){
+
+        let imgDirec = await this.donateRepository.getItemDirec(itemID);
+
+        const returnable = new DonateEntity();
+
+        returnable.Name = imgDirec.Picture;
+
+        return returnable;
+
+    }
+
     async history(id: string) {
         const historyItem = new DonateEntity();
 

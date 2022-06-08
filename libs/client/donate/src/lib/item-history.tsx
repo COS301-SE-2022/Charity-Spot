@@ -76,6 +76,40 @@ async function historyData() {
     const ItemString = JSON.stringify(act_data);
     const Items = JSON.parse(ItemString);
 
+    const ItemArr = Items.data.donateHistory.Donations;
+
+    
+    act_data = "";
+    //for(let i=0; i< ItemArr.length; i++){
+
+        const newQuery = (`query{
+            getItemPicLink(itemID: "${ItemArr[0].ItemID}"){
+                Name
+            }
+        }`);
+
+        console.log(newQuery);
+        //console.log(ItemArr[i].ItemID);
+
+        await fetch('http://localhost:3333/graphql', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          newQuery
+        })
+        }).then(r => r.json())
+          .then((data) => 
+              act_data = data
+          );
+
+          console.log(act_data);
+    //}
+
+
+
     return Items.data.donateHistory.Donations;
   }
 

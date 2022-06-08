@@ -223,4 +223,18 @@ export class DonateRepository {
       }
     })
   }
+
+  async getItemDirec(itemID : string)
+  {
+    return await this.prisma.donoItem.findFirst({
+      where:
+      {
+        ItemID: itemID,
+      },
+      select:
+      {
+        Picture: true
+      }
+    })
+  }
 }

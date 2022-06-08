@@ -84,6 +84,26 @@ export class DonateResolver {
     }
 
     @Query(() => DonateEntity)
+    async getItemPicLink(
+        @Args("itemID") itemID: string
+    ) {
+
+        let imgDirec = await this.DonateService.getItemPicDirec(itemID);
+
+        if(imgDirec.Name == "undefined"){
+            return imgDirec;
+        }
+
+        let downLink = await this.FirebaseService.getURLByFilePath(imgDirec.Name);
+
+        imgDirec.Name = downLink;
+
+        console.log(imgDirec.Name);
+
+        return imgDirec;
+    }
+
+    @Query(() => DonateEntity)
     async donateHistory(
         @Args("id") id: string
     ) {

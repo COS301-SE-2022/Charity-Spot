@@ -204,11 +204,7 @@ export function ClientDonate() {
     await uploadItemAPICall(IName, IQuan, ICat, ICond, IDesc, imgBase64);
 
     (document.getElementById("mainDonateForm") as HTMLFormElement)!.reset();
-    () => setImageURL("");
-
-    //ItemHistory();
-
-    //forceUpdate()
+    setImageURL("");
 
   }
 
