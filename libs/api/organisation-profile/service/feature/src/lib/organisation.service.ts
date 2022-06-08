@@ -20,12 +20,14 @@ export class OrganisationService {
         organisationProfile.Email = (await this.OrganisationRepository.getEmailFromUserID(userID)).email;
         organisationProfile.Name = org.OrgName;
         organisationProfile.Date = date.toDateString();
-        organisationProfile.Location = 
+        /*organisationProfile.Location = 
             addr.Address + "," +
             addr.Address2 + "," +
             addr.City + "," +
             addr.Province
-        ;
+        ;*/
+        organisationProfile.Location = 
+            addr.Address;
 
         return organisationProfile;
     }
@@ -34,14 +36,14 @@ export class OrganisationService {
         if(name != null)
             this.OrganisationRepository.editOrgName(id, name);
         
-        if(loc != null)
-            this.OrganisationRepository.editAddress(id, loc, null, null, null);
+        if(loc != null){
+            this.OrganisationRepository.editAddress(id, loc, undefined, undefined, undefined);}
 
         if(picture != null)
             this.OrganisationRepository.editProfilePicture(id, picture);
 
         if(password != null) {
-            //this.OrganisationRepository.editPassword(hash(passwordd));
+            this.OrganisationRepository.editPassword(id, password);
         }
 
         return this.getOrgProfile(id);

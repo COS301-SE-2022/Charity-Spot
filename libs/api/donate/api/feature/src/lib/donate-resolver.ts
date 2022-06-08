@@ -53,11 +53,54 @@ export class DonateResolver {
                     return null;
             }
         }
+
+
+        const returnV = await this.DonateService.donate(id, name, quantity, Category(category), Condition(condition), descr);
+
+        if(picBase64 != "undefined"){
+
+            var imgType = picBase64.substring(
+                picBase64.indexOf("/") + 1, 
+                picBase64.lastIndexOf(";")
+            );
+
+            let imgName = "DonatedItems/" + returnV.ItemID + '.' + imgType;
+
+            await this.DonateService.setItemPicName(id, name, imgName);
+
+            await this.FirebaseService.uploadFile(picBase64, imgName);
+
+            let downLink = await this.FirebaseService.getURLByFilePath(imgName);
+
+            console.log(downLink);
+
+        }
+        else{
+            await this.DonateService.setItemPicName(id, name, "undefined");
+        }
+
+        return returnV;
         
+    }
 
-        const picRef =  picBase64 + '.' + format;//await this.FirebaseService.uploadFile(picBase64, id + "_" +  String(Math.floor(Math.random() * (1000 - 1) + 1)) + "_" + name, format);
+    @Query(() => DonateEntity)
+    async getItemPicLink(
+        @Args("itemID") itemID: string
+    ) {
 
-        return await this.DonateService.donate(id, name, quantity, Category(category), Condition(condition), descr, picRef);
+        let imgDirec = await this.DonateService.getItemPicDirec(itemID);
+
+        if(imgDirec.Name == "undefined"){
+            return imgDirec;
+        }
+
+        let downLink = await this.FirebaseService.getURLByFilePath(imgDirec.Name);
+
+        imgDirec.Name = downLink;
+
+        console.log(imgDirec.Name);
+
+        return imgDirec;
     }
 
     @Query(() => DonateEntity)

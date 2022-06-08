@@ -1,16 +1,10 @@
 import React,{useState} from 'react';
 import {Link} from 'react-router-dom';
 
-//import Seallogin from '../assets/Seallogin.png';
-//import CS from '../assets/CS.png';
-//import Bgpic from '../assets/Bgpic.png'
-
 import Seallogin from '../../../shared/assets/Seallogin.png'
 import CS from '../../../shared/assets/CS.png'
 import Bgpic from '../../../shared/assets/Bgpic.png'
 import './login.css'
-
-import { useNavigate } from "react-router-dom";
 
 
 async function APICall(email: string, password: string){
@@ -21,8 +15,6 @@ async function APICall(email: string, password: string){
     }
   }`;
 
-  //console.log(query);
-    
        let initial_students = "";
   
        await fetch('http://localhost:3333/graphql', {
@@ -55,13 +47,11 @@ export function ClientLogin() {
 
 
       if(response.data.login.length == 0){
-       // alert("Invalid credentials");
         setInvalidCredentials('Invalid credentials, please try again');
       }
       else{
         let ID = response.data.login.ID;
         if(ID == null){
-         // alert("error");
           setInvalidCredentials('Invalid credentials, please try again');
           return;
         }

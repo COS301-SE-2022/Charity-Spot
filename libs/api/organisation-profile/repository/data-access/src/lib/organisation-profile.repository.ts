@@ -163,4 +163,19 @@ export class OrganisationRepository {
       }
     })
   }
+
+  async editPassword(userID : string, password : string)
+  {
+    return await this.prisma.user.update({
+      where:
+      {
+        UserID:userID
+      },
+      data:
+      {
+        password:password
+      }
+    })
+  }
+  
 }

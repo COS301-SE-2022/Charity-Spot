@@ -7,24 +7,42 @@ import { catagory, quality } from '@prisma/client';
 export class DonateService {
     constructor(private donateRepository: DonateRepository) {}
 
-    async donate(id: string, name: string, quantity: number, category: catagory, condition: quality, descr: string, pic: string){
+    async donate(id: string, name: string, quantity: number, category: catagory, condition: quality, descr: string){
 
         //repository actions
         await this.donateRepository.AddItem(name, id, quantity, condition, category);
-        await this.donateRepository.editItemDescription(id, name, descr);
-        const item = await this.donateRepository.editItemPicture(id, name, pic);
+        const item = await this.donateRepository.editItemDescription(id, name, descr);
+        
 
         //return id 
         //NOT NULLABLE
         const returnable = new DonateEntity();
+
+        returnable.ItemID = item.ItemID;
         returnable.ID = item.OrgID;
         returnable.Name = item.ItemName;
         returnable.Description = item.Descrition;
         
-        //gibrish for now - until firebase
-        returnable.Picture = item.Picture;
         
         return returnable;
+    }
+
+    async setItemPicName(id, name, pic){
+
+        await this.donateRepository.editItemPicture(id, name, pic);
+
+    }
+
+    async getItemPicDirec(itemID : string){
+
+        let imgDirec = await this.donateRepository.getItemDirec(itemID);
+
+        const returnable = new DonateEntity();
+
+        returnable.Name = imgDirec.Picture;
+
+        return returnable;
+
     }
 
     async history(id: string) {
@@ -36,9 +54,11 @@ export class DonateService {
 
         for(const item of donations) {
             const donateItem = new DonateEntity();
+
             donateItem.ID = id;
 
             //item details
+            donateItem.ItemID = item.ItemID;
             donateItem.Name = item.ItemName;
             donateItem.Picture = item.Picture;
             donateItem.Quantity = item.Quantity

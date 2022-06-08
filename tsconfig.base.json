@@ -24,6 +24,15 @@
       "@charity-spot/api/donate/service/feature": [
         "libs/api/donate/service/feature/src/index.ts"
       ],
+      "@charity-spot/api/home/api/feature": [
+        "libs/api/home/api/feature/src/index.ts"
+      ],
+      "@charity-spot/api/home/repository/data-access": [
+        "libs/api/home/repository/data-access/src/index.ts"
+      ],
+      "@charity-spot/api/home/service/feature": [
+        "libs/api/home/service/feature/src/index.ts"
+      ],
       "@charity-spot/api/login/api/feature": [
         "libs/api/login/api/feature/src/index.ts"
       ],
