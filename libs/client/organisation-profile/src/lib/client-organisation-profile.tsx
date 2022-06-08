@@ -100,6 +100,7 @@ export function Profile() {
   const [NewOPassC,setNewOPassC] = useState('undefined');
 
   //const [NewPicture,setNewOPicture] = useState('');
+  const [tempView, setTempView] = useState(true);
 
 
   const hanndlesubmit = (event: { preventDefault: () => void; }) =>{
@@ -134,7 +135,17 @@ export function Profile() {
 
     if(IdCookie != undefined){
 
-      const response = JSON.parse(await APICall(IdCookie));
+      let testCookie = getCookie("tempID");
+
+      let cookieCall = IdCookie;
+
+      if(testCookie != undefined){        
+        removeCookie("tempID");
+        setTempView(false);
+        cookieCall = testCookie;
+      }
+
+      const response = JSON.parse(await APICall(cookieCall));
       const allData = response.data.OrgProfile;
       const {Email,Name,Date,Location,Picture} = allData;
       
@@ -149,6 +160,7 @@ export function Profile() {
   }
 
   useEffect(() => {
+    setTempView(true);
     displayData();
    },[]);
 
@@ -158,11 +170,11 @@ export function Profile() {
     <br/><br/>
       <input type ="radio" name="sliderProf" id='profTab' defaultChecked ></input>
       <input type ="radio" name="sliderProf" id='blog' ></input>
-      <nav>
+      {( tempView && <nav>
         <label htmlFor= "profTab" className='profTab' ><FaUserAlt/> Profile  </label>
         <label htmlFor= "blog" className='blog'> <FaEdit/> Edit </label>
         <div className='sliderProf'></div>
-      </nav>
+      </nav>)}
 <section>
   <div className='content content-1'>
         <div className='title'><h1>Profile</h1></div>
@@ -174,9 +186,9 @@ export function Profile() {
             {/*<img src={Picture} alt="" id="profile-pic"/>*/}
             <img src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo.png?alt=media&token=658a4502-2b08-47bf-8cb2-fe7eacbf8c3e" alt="" id="profile-pic"></img>
           </div>
-          <form onSubmit={hanndlesubmit}>
+          {( tempView &&<form onSubmit={hanndlesubmit}>
               <button type='submit' id='logout1'>Log out</button>
-          </form>
+          </form>)}
           </div>
           <div className='user-right'>
             <br/><br/>
@@ -197,7 +209,7 @@ export function Profile() {
 
       
 
-  <div className='content content-2'>
+  {( tempView && <div className='content content-2'>
             <div className='title'><h1>Edit</h1></div>
 
             <div className='editor-main'>
@@ -236,7 +248,7 @@ export function Profile() {
                 </div>  
               </div>
           </div>
-            </div>
+            </div>)}
   </section>
  </div>   
   )

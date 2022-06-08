@@ -1,6 +1,8 @@
 import { Marker } from '@react-google-maps/api';
 import { useEffect, useState } from 'react';
 
+import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
+
 const joburg = {
     lat: -26.2041,
     lng: 28.0473
@@ -115,6 +117,11 @@ export function MapMarker(props : any){
         return Math.random() * (max - min) + min;
     }
 
+    function handleClick(ID : any){
+        setCookie("tempID", ID);
+        window.location.href = '/Profile'; 
+    }
+
     
 
     return (
@@ -128,7 +135,8 @@ export function MapMarker(props : any){
 
                     <Marker key={marker.ID}
                         icon= {"https://maps.google.com/mapfiles/kml/paddle/red-circle.png"}
-                    
+
+                        onClick = {() => { handleClick(marker.ID); }}
                         position= {{ lat:marker.Coord.lat+getRandomArbitrary(-0.1,0.1), lng:marker.Coord.lng+loopCount}}
                         title={marker.Name}
                     />
