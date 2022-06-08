@@ -1,7 +1,7 @@
 import ListGroup from 'react-bootstrap/esm/ListGroup';
 import { FaHistory,FaDonate,FaPen,FaUserAlt,FaEdit,FaArrowRight } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
-
+import './donatee.css'
 import { getCookie, setCookie } from 'typescript-cookie'
 
 let IdCookie = getCookie('ID');
@@ -131,7 +131,7 @@ export function ItemHistory(props : any){
 
                     <div className='collapsible-text'><br/>
                         <div className='collapseleft'>
-                        <img src={item.PicLink} alt="" id="profile-pic"/>
+                        <img src={item.PicLink} alt="" id="donation-pic2"/>
                         </div>
 
                         <div className='collapseright'>

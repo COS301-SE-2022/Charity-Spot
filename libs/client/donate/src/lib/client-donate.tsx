@@ -1,5 +1,5 @@
 import './donatee.css'
-import { FaHistory,FaDonate,FaPen,FaUserAlt,FaEdit,FaArrowRight } from 'react-icons/fa';
+import { FaHistory,FaDonate,FaPen,FaUserAlt,FaEdit,FaArrowRight,FaCloudDownloadAlt } from 'react-icons/fa';
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -141,88 +141,107 @@ return (
   <section>
     <div className='content content-1'>
       <div className='title'><h1>Donate</h1></div>
+            <div className='donate-main'>
+              <div className='donate-left'>
+              <br/><br/>                  
+                  <div className="imgWrap" >
+                    <div className='item-pic'>
+                 
+                      <img src={imageURL} alt="Your uploaded picture will show here" id="donation-pic"/>
+                    </div>
+                  
+                          <div>
+                          <label htmlFor="file-upload" className="custom-file-upload">
+                              Browse Image
+                          </label>
+                          
+                            <input type="file"
+                            id="file-upload"
+                              onChange={(e) => {
+                                
+                                if(!e.target.files) return;
+                                setImageUpload(e.target.files[0])
+                                setImageURL(URL.createObjectURL(e.target.files[0]));
 
-                    <div className='donate-main'>
+                             }}/>
 
-                      <div className='donate-left'>
-                      <div className='item-pic'>
-                        <img src={imageURL} alt="" id="donation-pic"/>
-                      </div>
-                      </div>
-                      <div className='donate-right'>
-                        <br/><br/>
-                        <div className='donater'>
-                          <form id = "mainDonateForm" onSubmit={(e) => { e.preventDefault(); hanndlesubmit();}}>
-                            <div className='donate-box1'>
-                              
-                              <input className="din1" type ="text" placeholder='Name' onChange ={(e)=>{setIName(e.target.value)}}></input>  
-                               <FaPen color='#1458b3'/>
-                            </div>
-                            <div className='donate-box2'>
-                              
-                              <input className="din2" type ="number" min="1" placeholder='Quantity' onChange ={(e)=>{setIQuan(e.target.value)}}></input> 
-                              <FaPen color='#1458b3'/>
-                            </div>  
-                            
-                            <div className='donate-box3'>
-                              
-                              <select name="orgs" className='din3' onChange ={(e)=>{setICat(e.target.value)}}>
-                                    <option value="Food">Food Item</option>
-                                    <option value="Clothes">Clothing</option>  
-                                    <option value="Tech">Tech (phone,laptop,etc..)</option> 
-                                    <option value="Stationery">Stationery (books,pencils,etc..)</option> 
-                                    <option value="Hygiene">Hygiene (soap,pads,etc..)</option> 
-                                    <option value="Furniture">Furniture (Tv,desk,etc..)</option> 
-                                    <option value="Kitchen">Kitchen (kettle,toaster,etc..)</option> 
-                                </select>                                    
-                             
-                              <FaPen color='#1458b3'/>
-                            </div>                                
-                            <div className='donate-box4'>
-                              
-                              <select name="orgs"   className='din4' onChange ={(e)=>{setICond(e.target.value)}}>
-                                    <option value="New">New</option>
-                                    <option value="Used">Used</option>  
-                                </select>                                       
-                             
-                              <FaPen color='#1458b3'/>
-                            </div>      
-                            <div className='donate-box5'>
+                           </div>
+
+                     </div>
+
+              </div>
+              <div className='donate-right'>
+                <br/><br/>
+                <div className='donater'>
+                  <form id = "mainDonateForm" onSubmit={(e) => { e.preventDefault(); hanndlesubmit();}}>
+                    <div className='donate-box1'>
+                      
+                      <input className="din1" type ="text" placeholder='Name' onChange ={(e)=>{setIName(e.target.value)}}></input>  
+                        <FaPen color='#1458b3'/>
+                    </div>
+                    <div className='donate-box2'>
+                      
+                      <input className="din2" type ="number" min="1" placeholder='Quantity' onChange ={(e)=>{setIQuan(e.target.value)}}></input> 
+                      <FaPen color='#1458b3'/>
+                    </div>  
                     
-                              <textarea className="din5" rows={1}  placeholder='Item(s) Description' onChange ={(e)=>{setIDesc(e.target.value)}}></textarea> 
-                              
-                            </div>
+                    <div className='donate-box3'>
+                      
+                      <select name="orgs" className='din3' onChange ={(e)=>{setICat(e.target.value)}}>
+                            <option value="Food">Food Item</option>
+                            <option value="Clothes">Clothing</option>  
+                            <option value="Tech">Tech (phone,laptop,etc..)</option> 
+                            <option value="Stationery">Stationery (books,pencils,etc..)</option> 
+                            <option value="Hygiene">Hygiene (soap,pads,etc..)</option> 
+                            <option value="Furniture">Furniture (Tv,desk,etc..)</option> 
+                            <option value="Kitchen">Kitchen (kettle,toaster,etc..)</option> 
+                        </select>                                    
+                      
+                      <FaPen color='#1458b3'/>
+                    </div>                                
+                    <div className='donate-box4'>
+                      
+                      <select name="orgs"   className='din4' onChange ={(e)=>{setICond(e.target.value)}}>
+                            <option value="New">New</option>
+                            <option value="Used">Used</option>  
+                        </select>                                       
+                      
+                      <FaPen color='#1458b3'/>
+                    </div>      
+                    <div className='donate-box5'>
+            
+                      <textarea className="din5" rows={1}  placeholder='Item(s) Description' onChange ={(e)=>{setIDesc(e.target.value)}}></textarea> 
+                      
+                    </div>
 
-                            <div>
+                    {/* <div>
 
-                              <input type="file"
-                                onChange={(e) => {
+                      <input type="file"
+                        onChange={(e) => {
 
-                                  if(!e.target.files) return;
-                                  setImageUpload(e.target.files[0])
-                                  setImageURL(URL.createObjectURL(e.target.files[0]));
+                          if(!e.target.files) return;
+                          setImageUpload(e.target.files[0])
+                          setImageURL(URL.createObjectURL(e.target.files[0]));
 
-                                }}/>
+                        }}/>
 
-                            </div>
+                    </div> */}
 
-                            <br></br>
+                    <br></br>
 
-                            <input id='dnt_but'type="submit" value="Donate"/>   
-                            <input id='clr_but'type="button" onClick={(e) => { 
-                              e.preventDefault(); 
-                              (document.getElementById("mainDonateForm") as HTMLFormElement)!.reset();
-                              setImageURL("");}} 
-                              value="Clear"/>                                                                                    
-                          </form>
+                    <input id='dnt_but'type="submit" value="Donate"/>   
+                    <input id='clr_but'type="button" onClick={(e) => { 
+                      e.preventDefault(); 
+                      (document.getElementById("mainDonateForm") as HTMLFormElement)!.reset();
+                      setImageURL("");}} 
+                      value="Clear"/>                                                                                    
+                  </form>
 
-                        </div>  
-                      </div>
-                  </div>
-                </div>
+                </div>  
+              </div>
+          </div>
+        </div>
 
-
-  
     <div className='content content-2'>
            <div className='title'><h1>History</h1></div>
            <ItemHistory key={imageURL}></ItemHistory>
