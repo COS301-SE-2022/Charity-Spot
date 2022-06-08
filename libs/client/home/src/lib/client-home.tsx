@@ -60,11 +60,25 @@ export function Home() {
             </LoadScript>
 
           </div>
-
-          
+    
         </div>
         <div className='content content-2'>
-          <div className='title'><h1>Filter</h1></div>
+
+        <div className='title'><h1>Filter</h1></div>
+
+          <div className ="filters-contain">
+              <div className="left-filt">
+
+              </div>
+              <div className="middle-filt">
+  
+              </div>     
+              <div className="right-filt">
+  
+             </div>      
+          </div>
+
+
 
           <div id = "mapFilters">
 
