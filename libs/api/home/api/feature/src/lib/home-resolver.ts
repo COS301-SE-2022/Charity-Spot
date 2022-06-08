@@ -6,9 +6,9 @@ import { HomeService } from '@charity-spot/api/home/service/feature';
 export class HomeResolver {
     constructor(private readonly HomeService: HomeService) {}
 
-    @Query(() => HomeEntity)
-    Test(@Args('email') email: string) : Promise<HomeEntity>{
+    @Query(() => [HomeEntity])
+    GetAllOrgs() : Promise<HomeEntity[]>{
         
-        return this.HomeService.testHome();
+        return this.HomeService.getAllOrg();
     }
 }
