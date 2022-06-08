@@ -113,44 +113,74 @@ section .content{
 .left-filt{
   margin: 2rem;
   height: 450px;
-  width: 47%;    
-  background-color: rgb(209, 209, 209);
+  width: 45%;
+  background-color: rgb(222, 222, 222);
+  border-radius: 10px;
   box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0);
-  box-sizing: border-box;
-
-   border-radius: 10px;
-
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+  text-align: center;
 }
 .middle-filt{
   margin: 2rem;
   height: 450px;
-  width: 47%;    
-  background-color: rgb(209, 209, 209);
-
-  box-sizing: border-box;
+  width: 45%;
+  background-color: rgb(222, 222, 222);
+  border-radius: 10px;
   box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0);
-   border-radius: 10px;
-
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+  text-align: center;
 }
 .right-filt{
   margin: 2rem;
   height: 450px;
   width: 45%;
-  background-color: rgb(209, 209, 209);
+  background-color: rgb(222, 222, 222);
   border-radius: 10px;
   box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0);
-  /* display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center; */
   text-align: center;
   
+}
+.FiltLabels{
+  color: #1458b3;
+  background-color: rgb(213, 213, 213);
+  height: 80px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+  /* ----Centering the Text--- */
+     display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+
+.wrap1,.wrap2,.wrap3,.wrap4{
+  /* height: 80px; */
+  padding: 10px;
+  width: 400px;
+align-items: center;
+  margin: auto;
+  display: flex;
+  /* background-color: yellow; */
+}
+input[type="checkbox"]{
+  appearance: none;
+  height:  40px;
+  width: 40px;
+  background-color: #c4c6c7;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in;
+  
+}
+label{
+  color: #4c4c4c;
+  cursor: pointer;
+  padding-left: 10px;
+
+}
+input[type="checkbox"]:checked
+{
+  transition: 0.3s ease-in;
+  background-color: #1458b3;
 }

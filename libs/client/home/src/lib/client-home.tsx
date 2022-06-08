@@ -9,7 +9,7 @@ import {MapMarker} from './map-marker'
 import {APIKEYS} from '../../../../../config';
 
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
-
+import ListGroup from 'react-bootstrap/esm/ListGroup';
 const containerStyle = {
   width: '100%',
   height: '100%',
@@ -68,65 +68,66 @@ export function Home() {
 
           <div className ="filters-contain">
               <div className="left-filt">
+                
+                <h3 className='FiltLabels'>Location</h3>
+                      <div id = "mapFilters"><br/><br/>
+                          <div className='wrap1'>
+                              <input
+                                type="checkbox"
+                                id = "0"
+                                checked={checkedState[0]}
+                                onChange={() => {let checked = [...checkedState]; checked[0] = !checked[0]; setCheckedState(checked);}}
+                              />
 
+                            <label htmlFor="0"> Pretoria</label>
+                          </div>
+
+                          <div className='wrap2'>
+                            <input
+                                type="checkbox"
+                                id = "1"
+                                checked={checkedState[1]}
+                                onChange={() => {let checked = [...checkedState]; checked[1] = !checked[1]; setCheckedState(checked);}}
+                              />
+
+                            <label htmlFor="1"> Johannesburg</label>
+                          </div>
+
+                          <div className='wrap3'>
+                            <input
+                                type="checkbox"
+                                id = "2"
+                                checked={checkedState[2]}
+                                onChange={() => {let checked = [...checkedState]; checked[2] = !checked[2]; setCheckedState(checked);}}
+                              />
+
+                            <label htmlFor="2"> Durban</label>
+                          </div>
+
+                          <div className='wrap4'>
+                            <input
+                                type="checkbox"
+                                id = "3"
+                                checked={checkedState[3]}
+                                onChange={() => {let checked = [...checkedState]; checked[3] = !checked[3]; setCheckedState(checked);}}
+                              />
+
+                            <label htmlFor="3"> Cape Town</label>
+                          </div>
+
+                      </div>
               </div>
               <div className="middle-filt">
-  
+              <h3 className='FiltLabels'>Item Type</h3>
               </div>     
               <div className="right-filt">
-  
+              <h3 className='FiltLabels'>Organization</h3>
              </div>      
           </div>
 
 
 
-          <div id = "mapFilters">
 
-              <div>
-                  <input
-                    type="checkbox"
-                    id = "0"
-                    checked={checkedState[0]}
-                    onChange={() => {let checked = [...checkedState]; checked[0] = !checked[0]; setCheckedState(checked);}}
-                  />
-
-                <label htmlFor="0"> Pretoria</label>
-              </div>
-
-              <div>
-                <input
-                    type="checkbox"
-                    id = "1"
-                    checked={checkedState[1]}
-                    onChange={() => {let checked = [...checkedState]; checked[1] = !checked[1]; setCheckedState(checked);}}
-                  />
-
-                <label htmlFor="1"> Johannesburg</label>
-              </div>
-
-              <div>
-                <input
-                    type="checkbox"
-                    id = "2"
-                    checked={checkedState[2]}
-                    onChange={() => {let checked = [...checkedState]; checked[2] = !checked[2]; setCheckedState(checked);}}
-                  />
-
-                <label htmlFor="2"> Durban</label>
-              </div>
-
-              <div>
-                <input
-                    type="checkbox"
-                    id = "3"
-                    checked={checkedState[3]}
-                    onChange={() => {let checked = [...checkedState]; checked[3] = !checked[3]; setCheckedState(checked);}}
-                  />
-
-                <label htmlFor="3"> Cape Town</label>
-              </div>
-
-          </div>
 
         </div>
       </section>
