@@ -18,6 +18,10 @@ export class HomeService {
             returnEnt.ID = orgs[i].UserID;
             returnEnt.Name = orgs[i].OrgName;
 
+            let addObj = await this.HomeRepository.getAddressFromID(orgs[i].AddressID);
+
+            returnEnt.Address = addObj[0].Address;
+
             returnOrg.push(returnEnt);
 
         }

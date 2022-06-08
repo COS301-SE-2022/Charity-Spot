@@ -7,4 +7,7 @@ export class HomeEntity {
 
     @Field({ nullable: true })
     Name: string
+
+    @Field({ nullable: true})
+    Address: string
 }

@@ -11,9 +11,28 @@ export class HomeRepository {
       select:
       {
         UserID: true,
-        OrgName: true
+        OrgName: true,
+        AddressID: true
       }
 
     })
   }
+
+  async getAddressFromID(addID : string){
+
+    return await this.prisma.address.findMany({
+      select:
+      {
+        Address: true
+      },
+      where:
+      {
+        AddressID: addID
+      }
+
+    });
+
+  }
+
+  
 }
