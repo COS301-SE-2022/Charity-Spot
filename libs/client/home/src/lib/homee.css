@@ -3,9 +3,6 @@
   width: 85%;
   margin: 1px auto;
   padding: 1px;
-
-
-
 }
 .wrapperHome nav{
   position: relative;
@@ -80,4 +77,160 @@ section .content{
       width: 100%;
   }
 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.filters-contain{
+  height: 500px auto;
+  width: 100%;
+
+  
+  border-radius: 1rem;
+  margin: 1.5rem auto;
+
+/* background-color: #1458b3; */
+
+   /* text-align: center; */
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   flex-flow: wrap;
+
+
+}
+.left-filt{
+  margin: 2rem;
+  height: 420px;
+  width: 25%;
+  background-color: rgb(222, 222, 222);
+  border-radius: 10px;
+  box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0);
+  text-align: center;
+}
+.middle-filt{
+  margin: 2rem;
+  height: 420px;
+  width: 25%;
+  background-color: rgb(222, 222, 222);
+  border-radius: 10px;
+  box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0);
+  text-align: center;
+}
+.right-filt{
+  margin: 2rem;
+  height: 420px;
+  width: 25%;
+  background-color: rgb(222, 222, 222);
+  border-radius: 10px;
+  box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0);
+  text-align: center;
+  
+}
+.FiltLabels{
+  color: #1458b3;
+  background-color: rgb(213, 213, 213);
+  height: 80px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+  /* ----Centering the Text--- */
+     display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+
+.wrap1,.wrap2,.wrap3,.wrap4{
+  /* height: 80px; */
+  padding: 10px;
+  width: 400px;
+align-items: center;
+  margin: auto;
+  display: flex;
+  /* background-color: yellow; */
+}
+input[type="checkbox"]{
+  appearance: none;
+  height:  40px;
+  width: 40px;
+  background-color: #c4c6c7;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in;
+  
+}
+label{
+  color: #4c4c4c;
+  cursor: pointer;
+  padding-left: 10px;
+
+}
+input[type="checkbox"]:checked
+{
+  transition: 0.3s ease-in;
+  background-color: #1458b3;
+}
+
+
+@media screen and (max-width: 600px) {
+  .filters-contain{
+    width: 100%;
+  
+  }
+  .left-filt{
+    width: 100%;
+  }
+  .right-filt{
+    width: 100%;
+  }
+  .middle-filt{
+    width: 100%;
+  }
+
+}
+@media screen and (max-width: 900px) {
+  .filters-contain{
+    width: 100%;
+  
+  }
+  .left-filt{
+    width: 100%;
+  }
+  .right-filt{
+    width: 100%;
+  }
+  .middle-filt{
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .filters-contain{
+   /* background-color: #1458b3; */
+  }
+  .left-filt{
+    height: 480px;
+  }
+  .right-filt{
+    height: 480px;
+  }
+  .middle-filt{
+    height: 480px;  
+  }
 }
