@@ -54,3 +54,13 @@ describe ( 'LoginService', () => {
             expect(await service.validate("test@email.com","123")).toBeFalsy();
         })
     })
+
+    //getEntity_login(email : string, password : string)
+    describe('getEntity_login()', () => {
+        it('Successfully retrieved the login entity', async () => {
+            expect(await service.getEntity_login("test@email.com","123")).not.toBeNull();
+        })
+    })
+
+
+});
