@@ -1,4 +1,29 @@
-/*describe('client', () => {
+describe('client', () => {
+
+    //registration page
+    describe('registration testing', () => {
+        beforeEach(() =>cy.visit('http://localhost:4200/register'));
+        it('should direct to the right url', () => {
+            cy.url().should('include','register');
+        })
+
+        it('The user should be able to Register', () =>{
+            cy.visit('http://localhost:4200/register')
+            
+            cy.get('#rgorgnm1').select('Organization').should('have.value','Organization');
+
+            cy.get('#rgorgnm2').type("Organisation 1")
+            cy.get('input[type=email]').type("test@gmail.com");
+            cy.get('#lct1').type("Pretoria");
+            cy.get('#rgpwd1').type("1234");
+            cy.get('#rgpwd2').type("1234");
+            
+            //cy.contains('Register').click();
+            cy.get('#rgsub_butt').click();
+        })
+
+    });
+
 
     //login page
     describe('login page testing', () => {
@@ -10,7 +35,7 @@
     it('The user should be able to login', () =>{
         //cy.visit('http://localhost:4200/login')
 
-        cy.get('input[type=email]').type("timo@email");
+        cy.get('input[type=email]').type("test@gmail.com");
         cy.get('input[type=password]').type("1234");
 
         cy.contains('Log in').click();
@@ -18,61 +43,28 @@
     })
 
 });
-
-   //registration page
-    describe('registration testing', () => {
-        beforeEach(() =>cy.visit('/registration-page'));
-        it('should direct to the right url', () => {
-            cy.url().should('include','registration');
-        })
-
-        it('The user should be able to Register', () =>{
-            //cy.visit('http://localhost:4200/register')
-            cy.contains('Charity-Spot')
-            
-            cy.get('#rgorgnm2').type("Organisation 1")
-            cy.get('input[type=email]').type("timo@email");
-            cy.get('#lct1').type("1166 Burnett Street,Hatfield");
-            cy.get('#rgpwd1').type("1234");
-            cy.get('#rgpwd2').type("1234");
-            
     
-            cy.contains('Register').click();
-            cy.contains('click to Login').click();
+    //donation page
+    describe('donate page testing', () => {
+        beforeEach(() => cy.visit('http://localhost:4200/donate'));
+        it('should direct you to the right url', () => {
+            cy.url().should('include','donate');
+
+        it('The user should be able to donate an item', () => {
+            cy.get('.din1').type('Jackets');//Name
+            cy.get('.din2').type('4');//Quantity
+            //cy.get('select').select('Clothing').should('have.value','Clothes');//Food Item
+            cy.get('.din3').select('Clothing').should('have.value','Clothes');//Food Item
+            cy.get('.din4').select('Used').should('have.value','Used');//Condition
+            cy.get('.din5').type('Consists of 1 pink,1 black,1 green and 1 blue jacket');//Description
+            cy.get('#dnt_but').click();
         })
 
+        })
     });
-
-      //organised profile page
-    describe('organised profile page testing', () => {
-        beforeEach(() =>cy.visit('/organised-profile-page'));
-        it('should direct to the right url', () => {
-            cy.url().should('include','organised');
-        })
-
-    it('The user should be able to view their organisations profile page', () =>{
-        //cy.visit('http://localhost:4200/organised-profile')
-
-        cy.contains('#profile-pic');
-
-        cy.contains('#logout1');
-        cy.contains('Type');
-        cy.contains('Email');
-        cy.contains('Name');
-        cy.contains('Date Registered');
-        cy.contains('Location');
-
-        cy.contains('Home').click();
-
 
 /*cy.get('id') - by tag
 cy.get('.id') - by class 
-cy.get('#id')- by id
+cy.get('#id')- by id*/
 
-    })
-    
-    });
-
-
-
-});*/
+});
