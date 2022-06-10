@@ -50,13 +50,21 @@ describe('client', () => {
         it('should direct you to the right url', () => {
             cy.url().should('include','donate');
           
+          it('The user should be able to donate an item', () => {
+            cy.get('.din1').type('Jackets');//Name
+            cy.get('.din2').type('4');//Quantity
+            //cy.get('select').select('Clothing').should('have.value','Clothes');//Food Item
+            cy.get('.din3').select('Clothing').should('have.value','Clothes');//Food Item
+            cy.get('.din4').select('Used').should('have.value','Used');//Condition
+            cy.get('.din5').type('Consists of 1 pink,1 black,1 green and 1 blue jacket');//Description
+            cy.get('#dnt_but').click();
+        })
+          
           })
+      });
           
  /*cy.get('id') - by tag
 cy.get('.id') - by class 
 cy.get('#id')- by id*/
-
-
-
 
 });
