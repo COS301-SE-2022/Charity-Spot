@@ -27,7 +27,8 @@ describe('client', () => {
 
     //login page
     describe('login page testing', () => {
-        beforeEach(() =>cy.visit('/login-page'));
+        //beforeEach(() =>cy.visit('/login-page'));
+        beforeEach(() =>cy.visit('http://localhost:4200/login'));
         it('should direct to the right url', () => {
             cy.url().should('include','login');
         })
