@@ -31,7 +31,18 @@ describe('client', () => {
             cy.url().should('include','login');
         })
       
-      
+    
+    it('The user should be able to login', () =>{
+        //cy.visit('http://localhost:4200/login')
+
+        cy.get('input[type=email]').type("test@gmail.com");
+        cy.get('input[type=password]').type("1234");
+
+        cy.contains('Log in').click();
+
+    })
+
+}); 
  /*cy.get('id') - by tag
 cy.get('.id') - by class 
 cy.get('#id')- by id*/
