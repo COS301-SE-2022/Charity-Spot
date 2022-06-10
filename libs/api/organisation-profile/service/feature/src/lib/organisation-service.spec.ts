@@ -43,3 +43,13 @@ describe ( 'Organisation Service', () => {
       });
     })
 
+
+    //getDonations(id: string)
+    describe('Get Donations', () => {
+      it('Should return null', async () => {
+        expect(await service.getDonations("1")).toBeNull();
+      });
+    })
+
+
+})
