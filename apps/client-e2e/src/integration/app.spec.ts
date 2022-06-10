@@ -1,5 +1,5 @@
 describe('client', () => {
-
+  //registration page
     describe('registration testing', () => {
         beforeEach(() =>cy.visit('http://localhost:4200/register'));
         it('should direct to the right url', () => {
@@ -43,6 +43,15 @@ describe('client', () => {
     })
 
 }); 
+  
+      //donation page
+    describe('donate page testing', () => {
+        beforeEach(() => cy.visit('http://localhost:4200/donate'));
+        it('should direct you to the right url', () => {
+            cy.url().should('include','donate');
+          
+          })
+          
  /*cy.get('id') - by tag
 cy.get('.id') - by class 
 cy.get('#id')- by id*/
