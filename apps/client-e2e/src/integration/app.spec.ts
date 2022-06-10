@@ -13,6 +13,12 @@ describe('client', () => {
 
             cy.get('#rgorgnm2').type("Organisation 1")
             cy.get('input[type=email]').type("test@gmail.com");
+            cy.get('#lct1').type("Pretoria");
+            cy.get('#rgpwd1').type("1234");
+            cy.get('#rgpwd2').type("1234");
+            
+            //cy.contains('Register').click();
+            cy.get('#rgsub_butt').click();
          })
       
  /*cy.get('id') - by tag
