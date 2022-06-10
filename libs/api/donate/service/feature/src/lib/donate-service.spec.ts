@@ -35,5 +35,11 @@ describe ('getItemPictureDirec()', () => {
     });
   })
 
-          
-          
+  //history(id: string)
+  describe ('history()', () => {
+    it('Should be able to get donation history', async () => {
+      expect(await service.history("1")).toMatchObject(donateEntity);
+    });
+  })
+
+});         
