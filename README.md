@@ -11,9 +11,11 @@
 
 <div align="center">
 
-[Our SRS](https://drive.google.com/file/d/1PB11ctS5-gHrR4uCKGpD1R9AEKioBgaX/view?usp=sharing)
+[SRS Demo 1](https://drive.google.com/file/d/1PB11ctS5-gHrR4uCKGpD1R9AEKioBgaX/view?usp=sharing)
 
 [SealTeam301-Demo1](https://drive.google.com/file/d/1NorrmnBr6aDn9ovl26_EOgvQ-I2dzZOf/view?usp=sharing)
+
+[SRS Demo 2](https://drive.google.com/file/d/1x9V5Q9cslBw2WyzMVTkBBWh6nYkTVkOY/view?usp=sharing)
 
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/COS301-SE-2022/Charity-Spot)
 
@@ -45,7 +47,7 @@
 <div align="center">
     <h2>Technologies and Frameworks</h2>
 
-        React and React Native
+        React
 
         NestJS
 
