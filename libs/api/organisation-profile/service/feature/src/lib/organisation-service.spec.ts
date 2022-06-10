@@ -24,3 +24,14 @@ describe ( 'Organisation Service', () => {
         service = module.get<OrganisationService>(OrganisationService);
 
   });
+  it('Organisation service should be defined', () => {
+    expect(service).toBeDefined();
+  });
+
+
+  //getOrgProfile(userID: string)
+    describe('Get Organisation Profile', () => {
+        it('Should return Organisation Profile', async () => {
+          expect(await service.getOrgProfile("1")).toMatchObject(entity);
+        });        
+    })
