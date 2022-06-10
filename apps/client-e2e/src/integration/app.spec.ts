@@ -1,13 +1,14 @@
 describe('client', () => {
-  //registration page
+
+    //registration page
     describe('registration testing', () => {
         beforeEach(() =>cy.visit('http://localhost:4200/register'));
         it('should direct to the right url', () => {
             cy.url().should('include','register');
         })
-      
-      it('The user should be able to Register', () =>{
-           cy.visit('http://localhost:4200/register')
+
+        it('The user should be able to Register', () =>{
+            cy.visit('http://localhost:4200/register')
             
             cy.get('#rgorgnm1').select('Organization').should('have.value','Organization');
 
@@ -19,10 +20,10 @@ describe('client', () => {
             
             //cy.contains('Register').click();
             cy.get('#rgsub_butt').click();
-         })
-    
+        })
+
     });
-  
+
 
     //login page
     describe('login page testing', () => {
@@ -30,8 +31,7 @@ describe('client', () => {
         it('should direct to the right url', () => {
             cy.url().should('include','login');
         })
-      
-    
+
     it('The user should be able to login', () =>{
         //cy.visit('http://localhost:4200/login')
 
@@ -42,15 +42,15 @@ describe('client', () => {
 
     })
 
-}); 
-  
-      //donation page
+});
+    
+    //donation page
     describe('donate page testing', () => {
         beforeEach(() => cy.visit('http://localhost:4200/donate'));
         it('should direct you to the right url', () => {
             cy.url().should('include','donate');
-          
-          it('The user should be able to donate an item', () => {
+
+        it('The user should be able to donate an item', () => {
             cy.get('.din1').type('Jackets');//Name
             cy.get('.din2').type('4');//Quantity
             //cy.get('select').select('Clothing').should('have.value','Clothes');//Food Item
@@ -59,11 +59,11 @@ describe('client', () => {
             cy.get('.din5').type('Consists of 1 pink,1 black,1 green and 1 blue jacket');//Description
             cy.get('#dnt_but').click();
         })
-          
-          })
-      });
-          
- /*cy.get('id') - by tag
+
+        })
+    });
+
+/*cy.get('id') - by tag
 cy.get('.id') - by class 
 cy.get('#id')- by id*/
 
