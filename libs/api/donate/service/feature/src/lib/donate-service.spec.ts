@@ -24,6 +24,16 @@ describe ( 'DonateService', () => {
         service = module.get<DonateService>(DonateService);
 
   });
-          
+  it('Donate service should be defined', () => {
+    expect(service).toBeDefined();
+  });
+
+//getItemPicDirec(itemID : string){
+describe ('getItemPictureDirec()', () => {
+    it('Successfully retrieved organisation picture ', async () => {
+      expect(await service.getItemPicDirec("1")).toMatchObject(donateEntity);
+    });
+  })
+
           
           
