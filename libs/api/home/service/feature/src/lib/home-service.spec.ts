@@ -24,3 +24,14 @@ describe ( 'Home Service', () => {
         service = module.get<HomeService>(HomeService);
 
   });
+  it('Home service should be defined', () => {
+    expect(service).toBeDefined();
+  });
+                   
+describe('getAllOrg()', () => {
+    it('Succesffuly retrieved all organisations', async () => {
+        expect(await service.getAllOrg()).toMatchObject(Array);
+    });
+})
+
+});
