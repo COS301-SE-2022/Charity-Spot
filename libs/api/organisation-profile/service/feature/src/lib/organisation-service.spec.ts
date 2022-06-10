@@ -35,3 +35,11 @@ describe ( 'Organisation Service', () => {
           expect(await service.getOrgProfile("1")).toMatchObject(entity);
         });        
     })
+
+    //updateDet(id: string, name: string, loc: string, picture: string, password: string)
+    describe('Update Organisation Details', () => {
+      it('Should update an organisations details', async () => {
+        expect(await service.updateDet("1","test org","Pretoria","asdadwdadddd","12345")).toMatchObject(entity);
+      });
+    })
+
