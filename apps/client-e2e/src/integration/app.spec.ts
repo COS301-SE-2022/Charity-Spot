@@ -20,6 +20,17 @@ describe('client', () => {
             //cy.contains('Register').click();
             cy.get('#rgsub_butt').click();
          })
+    
+    });
+  
+
+    //login page
+    describe('login page testing', () => {
+        beforeEach(() =>cy.visit('/login-page'));
+        it('should direct to the right url', () => {
+            cy.url().should('include','login');
+        })
+      
       
  /*cy.get('id') - by tag
 cy.get('.id') - by class 
