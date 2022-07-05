@@ -1,1 +1,1 @@
-export * from './lib/api-chat-repository-feature.module';
+export * from './lib/chat.repository';

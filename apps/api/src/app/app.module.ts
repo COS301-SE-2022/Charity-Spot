@@ -7,8 +7,9 @@ import { ApolloDriver } from '@nestjs/apollo';
 import { LoginApiFeatureModule } from '@charity-spot/api/login/api/feature'
 import { RegistrationApiFeatureModule } from '@charity-spot/api/registration/api/feature'
 import { ApiOrganisationProfileApiFeatureModule } from '@charity-spot/api/organisation-profile/api/feature'
-import { ApiDonateApiFeatureModule} from '@charity-spot/api/donate/api/feature'
-import { ApiHomeApiFeatureModule} from '@charity-spot/api/home/api/feature'
+import { ApiDonateApiFeatureModule } from '@charity-spot/api/donate/api/feature'
+import { ApiHomeApiFeatureModule } from '@charity-spot/api/home/api/feature'
+import { ApiChatApiFeatureModule } from '@charity-spot/api/chat/api/feature'
 
 
 @Module({
@@ -22,6 +23,7 @@ import { ApiHomeApiFeatureModule} from '@charity-spot/api/home/api/feature'
     ApiOrganisationProfileApiFeatureModule,
     ApiDonateApiFeatureModule,
     ApiHomeApiFeatureModule,
+    ApiChatApiFeatureModule,
     ConfigModule.forRoot()
   ]
 })
