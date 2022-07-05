@@ -15,6 +15,15 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@charity-spot/api/chat/api/feature": [
+        "libs/api/chat/api/feature/src/index.ts"
+      ],
+      "@charity-spot/api/chat/repository/feature": [
+        "libs/api/chat/repository/feature/src/index.ts"
+      ],
+      "@charity-spot/api/chat/service/feature": [
+        "libs/api/chat/service/feature/src/index.ts"
+      ],
       "@charity-spot/api/donate/api/feature": [
         "libs/api/donate/api/feature/src/index.ts"
       ],

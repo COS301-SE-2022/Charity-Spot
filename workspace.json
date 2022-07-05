@@ -2,6 +2,9 @@
   "version": 2,
   "projects": {
     "api": "apps/api",
+    "api-chat-api-feature": "libs/api/chat/api/feature",
+    "api-chat-repository-feature": "libs/api/chat/repository/feature",
+    "api-chat-service-feature": "libs/api/chat/service/feature",
     "api-donate-api-feature": "libs/api/donate/api/feature",
     "api-donate-repository-data-access": "libs/api/donate/repository/data-access",
     "api-donate-service-feature": "libs/api/donate/service/feature",
