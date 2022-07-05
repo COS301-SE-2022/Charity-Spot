@@ -4,6 +4,8 @@ public class Main {
 
         System.out.println("Hello World");
 
+        Matrix tMatrix = new Matrix(2,3);
+
     }
 
 }
