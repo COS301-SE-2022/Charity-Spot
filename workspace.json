@@ -15,6 +15,7 @@
     "api-registration-repository-feature": "libs/api/registration/repository/data-access",
     "api-registration-service-feature": "libs/api/registration/service/feature",
     "client": "apps/client",
+    "client-chat": "libs/client/chat",
     "client-donate": "libs/client/donate",
     "client-e2e": "apps/client-e2e",
     "client-home": "libs/client/home",
