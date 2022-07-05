@@ -15,6 +15,15 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@charity-spot/api/chat/api/feature": [
+        "libs/api/chat/api/feature/src/index.ts"
+      ],
+      "@charity-spot/api/chat/repository/feature": [
+        "libs/api/chat/repository/feature/src/index.ts"
+      ],
+      "@charity-spot/api/chat/service/feature": [
+        "libs/api/chat/service/feature/src/index.ts"
+      ],
       "@charity-spot/api/donate/api/feature": [
         "libs/api/donate/api/feature/src/index.ts"
       ],
@@ -63,6 +72,7 @@
       "@charity-spot/api/shared/services/prisma": [
         "libs/api/shared/services/prisma/src/index.ts"
       ],
+      "@charity-spot/client/chat": ["libs/client/chat/src/index.ts"],
       "@charity-spot/client/donate": ["libs/client/donate/src/index.ts"],
       "@charity-spot/client/home": ["libs/client/home/src/index.ts"],
       "@charity-spot/client/login": ["libs/client/login/src/index.ts"],
