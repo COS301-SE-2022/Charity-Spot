@@ -155,6 +155,69 @@ public class Matrix{
         
     }
 
+    //Sigmoid activation function
+    public void sigmoid(){
 
+        for(int i=0; i<this.rows; i++){
+
+            for(int j=0; j<this.cols; j++){
+
+                this.data[i][j] = 1/(1 + Math.exp(-(this.data[i][j])));
+
+            }
+
+        }
+
+    }
+
+    //Derivative of sigmoid used for backpropogation
+    public Matrix dsigmoid(){
+
+        Matrix retMat = new Matrix(this.rows, this.cols);
+
+        for(int i=0; i<this.rows; i++){
+
+            for(int j=0; j<this.cols; j++){
+
+                retMat.data[i][j] = this.data[i][j] * (1-this.data[i][j]);
+
+            }
+
+        }
+
+        return retMat;
+
+    }
+
+    //Array to matrix helper function
+    public static Matrix fromArray(double[] x){
+
+        Matrix retMat = new Matrix(x.length, 1);
+
+        for(int i=0; i<x.length; i++){
+
+            retMat.data[i][0] = x[i];
+
+        }
+
+        return retMat;
+    }
+
+    //Matrix to array list helper function
+    public List<Double> toArray(){
+
+        List<Double> retList = new ArrayList<Double>();
+
+        for(int i=0; i<this.rows; i++){
+
+            for(int j=0; j<this.cols; j++){
+
+                retList.add(this.data[i][j]);
+            }
+
+        }
+
+        return retList;
+    }
 
 }
