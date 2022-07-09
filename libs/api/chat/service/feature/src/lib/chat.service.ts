@@ -12,4 +12,11 @@ export class ChatService {
         return entity;
     }
 
+    async Send(to: string, from: string, message: string) {
+        return null;
+    }
+
+    async RetrieveMessages(userID: string) {
+        return null;
+    }
 }

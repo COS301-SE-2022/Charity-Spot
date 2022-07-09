@@ -11,4 +11,20 @@ export class ChatResolver {
         
         return this.ChatService.TestFunc();
     }
+
+    @Query(() => ChatEntity)
+    async Send(
+        @Args("receiverID") to: string,
+        @Args("senderID") from: string,
+        @Args("message") message: string
+    ) {
+        return null;
+    }
+
+    @Query(() => ChatEntity)
+    async RetrieveMessages(
+        @Args("userID") id: string
+    ) {
+        return null;
+    }
 }
