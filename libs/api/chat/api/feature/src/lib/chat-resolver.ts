@@ -7,18 +7,20 @@ export class ChatResolver {
     constructor(private readonly ChatService: ChatService) {}
 
     @Query(() => ChatEntity)
-    ChatTest() : Promise<ChatEntity>{
-        
-        return this.ChatService.TestFunc();
-    }
-
-    @Query(() => ChatEntity)
     async Send(
         @Args("receiverID") to: string,
         @Args("senderID") from: string,
         @Args("message") message: string
     ) {
-        return null;
+        const date = new Date();
+
+        const message_
+            = "[" + from + "_"
+            + date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + "_"
+            + date.getHours + ":" + date.getMinutes() + "] - "
+            + message;
+
+        return this.ChatService.Send(to, from, message);
     }
 
     @Query(() => ChatEntity)
