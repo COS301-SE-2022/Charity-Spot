@@ -52,7 +52,7 @@ model Rating {
 model ChatHistory {
   OrgID     String  @map("organisation_id")
   ClientID  String  @map("client_id")
-  Messages  String@map("messages")
+  Messages  String  @map("messages")
 
   @@id([OrgID,ClientID])
   @@map("chat_history")
