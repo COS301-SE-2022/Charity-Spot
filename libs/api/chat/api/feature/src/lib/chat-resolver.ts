@@ -27,6 +27,6 @@ export class ChatResolver {
     async RetrieveMessages(
         @Args("userID") id: string
     ) {
-        return null;
+        return this.ChatService.RetrieveMessages(id);
     }
 }
