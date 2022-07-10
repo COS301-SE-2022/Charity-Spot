@@ -41,6 +41,7 @@
     height: 500px;
     width: 70%;
     box-sizing: border-box; 
+    overflow-y: scroll;
 }
 .user-right{
 

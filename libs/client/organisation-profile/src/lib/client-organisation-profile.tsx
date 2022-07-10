@@ -196,7 +196,8 @@ export function Profile() {
               </div>
               <h4 className='headings' >Reviews</h4>
               <div className='pcomments'>
-
+                <div className='pcomment'>sfsf</div>
+      
               </div>
           </div>
           <div className='user-right'>
