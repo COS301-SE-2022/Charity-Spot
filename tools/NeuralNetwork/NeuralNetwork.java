@@ -81,7 +81,7 @@ public class NeuralNetwork{
 
         for(int i=0; i<epochs; i++){
             int sampleN = (int)(Math.random() * x.length);
-            this.train(x[sampleN, y[sampleN]]);
+            this.train(x[sampleN], y[sampleN]);
         }
     }
 

@@ -90,7 +90,7 @@ public class Matrix{
 
             for(int j=0; j<a.cols; j++){
 
-                retMat.data[j][j] = a.data[i][j];
+                retMat.data[j][i] = a.data[i][j];
             }
 
         }
