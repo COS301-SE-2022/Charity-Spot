@@ -182,13 +182,22 @@ export function Profile() {
         <div className='profile-main'>
 
           <div className='user-left'>
-          <div className='prof-pic'>
-            {/*<img src={Picture} alt="" id="profile-pic"/>*/}
-            <img src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo.png?alt=media&token=658a4502-2b08-47bf-8cb2-fe7eacbf8c3e" alt="" id="profile-pic"></img>
-          </div>
-          {( tempView &&<form onSubmit={hanndlesubmit}>
-              <button type='submit' id='logout1'>Log out</button>
-          </form>)}
+              <div className='prof-pic'>
+                <img src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo.png?alt=media&token=658a4502-2b08-47bf-8cb2-fe7eacbf8c3e" alt="" id="profile-pic"></img>
+                
+              </div>
+              {( tempView &&<form onSubmit={hanndlesubmit}>
+                  <button type='submit' id='logout1'>Log out</button>
+              </form>)}
+              <h4 className='headings' >About Us</h4>
+              <div className="cover3">
+                 
+                 <p>We have been in the food business for 10 years, particularly focusing on poultry. We offer Chicken intenstines, feet and breasts</p>
+              </div>
+              <h4 className='headings' >Reviews</h4>
+              <div className='pcomments'>
+
+              </div>
           </div>
           <div className='user-right'>
             <br/><br/>
@@ -196,10 +205,9 @@ export function Profile() {
               <div className="cover">Email: { OEmail}</div>
               <div className="cover">Date Registered: { ODate }</div>
               <div className="cover">Location: { OLocation}</div>
-              <div className="cover">Rating: 6.0</div>
 
               <div className="cover2"> 
-                  <p>Rate Organization</p>
+                  {/* <p>Rate Organization</p>
                   <div className="rate"> 
                     <input type="radio" id="star5" name="rate" value="5" />
                     <label htmlFor="star5" title="text"></label>
@@ -211,9 +219,25 @@ export function Profile() {
                     <label  htmlFor="star2" title="text"></label>
                     <input type="radio" id="star1" name="rate" value="1" />
                     <label  htmlFor="star1" title="text"></label>
-                  </div>
+                  </div> */}
+
+                  <p>Average Rating 4.0</p>
+                  <div className="rated"> 
+                    <input type="radio" id="star5" name="rate" value="5" disabled />
+                    <label htmlFor="star5" title="text"></label>
+                    <input type="radio" id="star4"  checked = {true} name="rate" value="4"  disabled/>
+                    <label htmlFor="star4"title="text"></label>
+                    <input type="radio" id="star3" name="rate" value="3"  disabled />
+                    <label  htmlFor="star3" title="text"></label>
+                    <input type="radio" id="star2" name="rate" value="2"  disabled/>
+                    <label  htmlFor="star2" title="text"></label>
+                    <input type="radio" id="star1" name="rate" value="1"  disabled/>
+                    <label  htmlFor="star1" title="text"></label>
+                  </div>  
               </div>
-              
+              <button type='submit' id='chatGo'>Chat</button>
+              <button type='submit' id='delivGo'> delievery</button>
+              {/* <button type='submit' id='subGo'>Submit</button> */}
           </div>
       </div>
    </div> 

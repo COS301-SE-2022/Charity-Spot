@@ -14,7 +14,7 @@
   }
 .profile-main{
 
-    height: 500px auto;
+    height: 650px auto;
     width: 100%;
 
     
@@ -38,14 +38,14 @@
 .user-left{
 
     /* background-color: rgb(228, 229, 230);  */
-    height: 450px;
+    height: 500px;
     width: 70%;
     box-sizing: border-box; 
 }
 .user-right{
 
     /* background-color: rgb(228, 229, 230);  */
-    height: 450px;
+    height: 550px;
     width: 70%;
     box-sizing: border-box;  
 }
@@ -66,10 +66,61 @@
     transition: all 0.3 ease;
     border-radius: 5px;
 }
+
 #logout1:hover{
    box-shadow: 0.5px 0.5px 6px -1px black; 
    /* transform: translate(-5px); */
 }
+
+#chatGo{
+    width: 25%;
+    background: #1458b3 ;
+    color: #ffff;
+    border: none;
+    cursor: pointer;
+    padding: 0.4rem 1rem;
+    transition: all 0.3 ease;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+#chatGo:hover{
+    transition: 0.3s ease-in;
+    box-shadow: 0.5px 0.5px 6px -1px black; 
+    /* transform: translate(-5px); */
+ }
+#delivGo{
+    width: 25%;
+    background: #1458b3;
+    color: #ffff;
+    border: none;
+    cursor: pointer;
+    padding: 0.4rem 1rem;
+    transition: all 0.3 ease;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+#delivGo:hover{
+    transition: 0.3s ease-in;
+    box-shadow: 0.5px 0.5px 6px -1px black; 
+    /* transform: translate(-5px); */
+ }
+#subGo{
+    width: 25%;
+    background: #ffff ;
+    color: #1458b3;
+   
+    cursor: pointer;
+    padding: 0.4rem 1rem;
+    transition: all 0.3 ease;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+#subGo:hover{
+    transition: 0.3s ease-in;
+    box-shadow: 0.5px 0.5px 6px -1px black; 
+    border: #1458b3 solid 1px;
+    /* transform: translate(-5px); */
+ }
 .cover{
     /* box-shadow: 0.5px 0.5px 6px -1px rgba(0, 0, 0, 0.163);  */
     background-color: #dadada;
@@ -88,10 +139,59 @@
     margin: 15px;
     border:  #bdbdbd ;
     border-width: 1px;
-    padding: 15px;
-    height: auto;
+    /* padding: 15px; */
+    height: 300px auto;
     color: #1458b3;
 }
+.cover3{
+    /* box-shadow: 0.5px 0.5px 6px -1px rgba(0, 0, 0, 0.163);  */
+    background-color: #dadada;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px;
+    border:  #d6d6d6 ;
+    border-width: 1px;
+    /* padding: 15px; */
+    max-height: 200px auto ;
+    color: #1458b3;
+}
+.pcomments{
+    background-color: #ffff;
+    max-height: 600px  ;
+    color: #1458b3;
+}
+.pcomment{
+    float: left;
+ background-color: #1458b3;
+ color: white;
+ border-radius: 10px;
+ margin: 15px;
+ width: 60%;
+}
+.commentPic
+{
+    float: left;
+    background-color: #c2cad4;
+    height: 30px;
+    margin-right: 5px;
+    width: 30px;
+    border-radius: 100%;
+}
+.headings{
+    color: #1458b3;
+    /* background-color: rgb(208, 208, 208); */
+    height: 50px;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-top: 10px;
+  
+    /* ----Centering the Text--- */
+       display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+  }
 /* ------------------------------------STAR RATING CODE------------------------------- */
 .rate {
     height: 50px;
@@ -115,7 +215,7 @@
     white-space:nowrap;
     cursor:pointer;
     font-size:50px;
-    color:#ccc;
+    color:rgb(196, 196, 196);
 
 }
 .rate:not(:checked) > label:before {
@@ -123,7 +223,7 @@
 }
 .rate > input:checked ~ label {
     transition: 0.3s ease-in;
-    color: #ffc700;    
+    color: #dab73a;    
 }
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
@@ -137,7 +237,55 @@
 .rate > label:hover ~ input:checked ~ label {
     color: #c59b08;
 }
+/*---------------------END OF RATING CODE----------------*/
 
+
+/* ------------------------------------STAR RATED!!!!! CODE------------------------------- */
+.rated {
+    height: 50px;
+ 
+    border-radius: 10px;
+    padding: 0 10px;
+
+         /* CENTERING STUFF*/ 
+         display: table;
+         margin: 0 auto;
+      
+}
+.rated:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rated:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:default;
+    font-size:50px;
+    color:rgb(196, 196, 196);
+
+}
+.rated:not(:checked) > label:before {
+    content: '★ ';
+}
+.rated > input:checked ~ label {
+    transition: 0.3s ease-in;
+    color: rgb(184, 181, 90);    
+}
+/* .rated:not(:checked) > label:hover,
+.rated:not(:checked) > label:hover ~ label {
+    transition: 0.3s ease-in;
+    color: #deb217;  
+}
+.rated > input:checked + label:hover,
+.rated > input:checked + label:hover ~ label,
+.rated > input:checked ~ label:hover,
+.rated > input:checked ~ label:hover ~ label,
+.rated > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+} */
+/*---------------------END OF RATED CODE----------------*/
 @media screen and (max-width: 1200px) {
     #profile-pic
     {
@@ -172,7 +320,7 @@
        height: 270px;
    }
    .user-right{
-       height: 450px;
+       height: 650px;
        width: 100%;
    
        box-sizing: border-box;
@@ -199,11 +347,14 @@
         height: 200px;
     }
     .user-right{
-        height: 550px;
+        height: 750px;
         width: 100%;
     
         box-sizing: border-box;
         margin: 20px;  
+    }
+    .rated:not(:checked) > label{
+        font-size: 40px;
     }
     #logout1{
         width: 25%;
@@ -238,11 +389,11 @@
     }
     .user-left{
         width: 38%;
-        height: 600px;
+        height: 550px;
     }
     .user-right{
         width: 38%;
-        height: 600px;
+        height: 550px;
     }
 }
 
