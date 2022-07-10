@@ -13,11 +13,12 @@
     100% {opacity:1 ;}
   }
 .profile-main{
-    height: 500px auto;
-    width: 70%;
 
-    /* background: linear-gradient(to right bottom, rgba(221, 216, 216, 0.849),rgba(255, 255, 255, 0.863)); */
-    border-radius: 1rem;
+    height: 500px auto;
+    width: 100%;
+
+    
+    border-radius: 10px;
     margin: 1.5rem auto;
     box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0);
 
@@ -28,25 +29,25 @@
      justify-content: space-around;
      flex-flow: wrap;
 
-     background-color: #e2e3e5;
+     background-color: #e5e4e4;
+    border: 1px solid #bdbdbd;
+
+
 
 }
 .user-left{
-    /* background-color: aqua; */
-    height: 450px;
-    width: 45%;
 
-    box-sizing: border-box;
-    margin: 20px;
-    /* background-color: #1458b3; */
-   
+    /* background-color: rgb(228, 229, 230);  */
+    height: 450px;
+    width: 70%;
+    box-sizing: border-box; 
 }
 .user-right{
-    /* background-color: rgb(162, 0, 255); */
+
+    /* background-color: rgb(228, 229, 230);  */
     height: 450px;
-    width: 45%;
-    box-sizing: border-box;
-    margin: 20px;  
+    width: 70%;
+    box-sizing: border-box;  
 }
 
 #profile-pic
@@ -69,6 +70,60 @@
    box-shadow: 0.5px 0.5px 6px -1px black; 
    /* transform: translate(-5px); */
 }
+.cover{
+    /* box-shadow: 0.5px 0.5px 6px -1px rgba(0, 0, 0, 0.163);  */
+    background-color: #dadada;
+    border-radius: 10px;
+    margin: 15px;
+    border:  #bdbdbd solid;
+    border-width: 1px;
+    padding: 15px;
+    height: 60px;
+    color: #1458b3;
+}
+/* ------------------------------------STAR RATING CODE------------------------------- */
+.rate {
+    /* float: left; */
+    height: 50px;
+    padding: 0 10px;
+
+         /* CENTERING STUFF*/ 
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:50px;
+    color:#ccc;
+
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
 @media screen and (max-width: 1200px) {
     #profile-pic
     {
@@ -192,7 +247,6 @@
     width: 85%;
     margin: 1px auto;
     padding: 1px;
-  
   
   
   }

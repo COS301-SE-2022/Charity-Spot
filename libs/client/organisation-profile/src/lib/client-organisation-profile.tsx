@@ -192,14 +192,24 @@ export function Profile() {
           </div>
           <div className='user-right'>
             <br/><br/>
-          <ListGroup variant="flush" >
-          <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Name: { OName }</ListGroup.Item>
-            {/* <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px', color: '#104283' }}></ListGroup.Item> */}
-            <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px', color: '#104283' }}>Email: { OEmail}</ListGroup.Item>
-            <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Date Registered: { ODate }</ListGroup.Item>
-            <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Location: { OLocation}</ListGroup.Item>
-            <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Rating: 5.0</ListGroup.Item>
-          </ListGroup>
+             <div className="cover">Name: { OName }</div>
+              <div className="cover">Email: { OEmail}</div>
+              <div className="cover">Date Registered: { ODate }</div>
+              <div className="cover">Location: { OLocation}</div>
+              <div className="cover">Rating: 6.0</div>
+      
+              <div className="rate">
+                <input type="radio" id="star5" name="rate" value="5" />
+                <label htmlFor="star5" title="text"></label>
+                <input type="radio" id="star4" name="rate" value="4" />
+                <label htmlFor="star4" title="text"></label>
+                <input type="radio" id="star3" name="rate" value="3" />
+                <label  htmlFor="star3" title="text"></label>
+                <input type="radio" id="star2" name="rate" value="2" />
+                <label  htmlFor="star2" title="text"></label>
+                <input type="radio" id="star1" name="rate" value="1" />
+                <label  htmlFor="star1" title="text"></label>
+              </div>
           </div>
       </div>
    </div> 
