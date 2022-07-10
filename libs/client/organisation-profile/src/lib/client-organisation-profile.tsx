@@ -196,7 +196,24 @@ export function Profile() {
               </div>
               <h4 className='headings' >Reviews</h4>
               <div className='pcomments'>
-                <div className='pcomment'>sfsf</div>
+              <div className='pcomment'><div className='commentPic'><h4>HF</h4></div><b><p>Helping Foundation</p></b><br></br>
+              <div className="ratedsmall"> 
+                    <input type="radio" id="star55" checked = {true} name="rate3" value="5" disabled />
+                    <label htmlFor="star55" title="text"></label>
+                    <input type="radio" id="star44"   name="rate3" value="4"  disabled/>
+                    <label htmlFor="star44"title="text"></label>
+                    <input type="radio" id="star33" name="rate3" value="3"  disabled />
+                    <label  htmlFor="star33" title="text"></label>
+                    <input type="radio" id="star22" name="rate3" value="2"  disabled/>
+                    <label  htmlFor="star22" title="text"></label>
+                    <input type="radio" id="star11" name="rate3" value="1"  disabled/>
+                    <label  htmlFor="star11" title="text"></label>
+                  </div> 
+                  <br></br>
+                     This organization is fast and reliable, The delievered the frozen chicken in time</div> 
+
+                
+                <div className='pcomment'><div className='commentPic'><h4>RT</h4></div><b><p>Ronald's School</p></b><br></br>Didnt deliever on time</div>                
       
               </div>
           </div>

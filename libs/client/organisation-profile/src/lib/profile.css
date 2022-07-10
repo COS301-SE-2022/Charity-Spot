@@ -157,26 +157,65 @@
     color: #1458b3;
 }
 .pcomments{
-    background-color: #ffff;
-    max-height: 600px  ;
+    background-color: rgb(214, 214, 214);
+    border-radius: 10px;
+    height: 600px  ;
     color: #1458b3;
+    width: 100%;
+    overflow: hidden; /* add this to contain floated children */
+    padding-right: 15px;
 }
 .pcomment{
-    float: left;
- background-color: #1458b3;
- color: white;
+    
+
+
+ /* display: inline-block; */
+ 
+ height:auto;
+ 
+ float: left;
  border-radius: 10px;
+
+ background-color: #d8d8d8;
+ color: #1458b3;
+
+ border: 1px solid;
+ padding: 0.5em 1em;
+ position: relative;
+ border-radius: 0 0.25em 0.25em 0.25em;
+ box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+ transition: 0.5s;
+ animation: speech .7s linear 1;
  margin: 15px;
- width: 60%;
+ 
+ word-wrap: break-word;	
+ max-width: 250px;
+ min-width: 250px;
 }
+/* .pcomment::after{
+	content: '';
+	position: absolute;
+	border: 0.5em solid transparent;
+	border-top-color:#1458b3;
+	border-right-color:#1458b3;
+	right: 100%;
+	top: 0;
+
+	transform-origin: 100% 100% ;
+} */
+
 .commentPic
 {
     float: left;
-    background-color: #c2cad4;
-    height: 30px;
-    margin-right: 5px;
-    width: 30px;
+    background-color: #518bd6;
+    height: 40px;
+    /* margin-right: 5px; */
+    width: 40px;
     border-radius: 100%;
+
+    display: inline-block;
+
+    border: 1px solid #ffff
 }
 .headings{
     color: #1458b3;
@@ -287,6 +326,60 @@
     color: #c59b08;
 } */
 /*---------------------END OF RATED CODE----------------*/
+
+
+
+
+
+
+/* ------------------------------------STAR RATED!!!!! CODE------------------------------- */
+.ratedsmall {
+    height: 50px;
+ 
+    border-radius: 10px;
+    padding: 0 10px;
+
+         /* CENTERING STUFF*/ 
+         display: table;
+         margin: 0 auto;
+      
+}
+.ratedsmall:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.ratedsmall:not(:checked) > label {
+    float:right;
+    width:1.5em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:default;
+    font-size:25px;
+    color:rgb(196, 196, 196);
+
+}
+.ratedsmall:not(:checked) > label:before {
+    content: '★ ';
+}
+.ratedsmall > input:checked ~ label {
+    transition: 0.3s ease-in;
+    color: rgb(184, 181, 90);    
+}
+/* .ratedsmall:not(:checked) > label:hover,
+.ratedsmall:not(:checked) > label:hover ~ label {
+    transition: 0.3s ease-in;
+    color: #deb217;  
+}
+.ratedsmall > input:checked + label:hover,
+.ratedsmall > input:checked + label:hover ~ label,
+.ratedsmall > input:checked ~ label:hover,
+.ratedsmall > input:checked ~ label:hover ~ label,
+.ratedsmall > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+} */
+/*---------------------END OF RATED CODE----------------*/
+
+
 @media screen and (max-width: 1200px) {
     #profile-pic
     {
