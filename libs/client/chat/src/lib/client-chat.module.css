@@ -1,7 +1,101 @@
-/*
- * Replace this with your own classes
- *
- * e.g.
- * .container {
- * }
-*/
+.bodyC{
+	margin: 0 auto;
+	font-family: arial;
+	min-height: 100vh;
+	align-items: center;
+	justify-content: center;
+    width: 90%;
+}
+.speech-bubbleLeft{
+	background: lightgray;
+	color: #1556bf;
+	padding: 0.5em 1em;
+	position: relative;
+	border-radius: 0 0.25em 0.25em 0.25em;
+	box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+	transition: 0.5s;
+	animation: speech .7s linear 1;
+	margin: 15px;
+	width: 15%;
+	word-wrap: break-word;	
+	min-width: 80px;
+}
+.speech-bubbleLeft::after{
+	content: '';
+	position: absolute;
+	border: 0.5em solid transparent;
+	border-top-color: lightgray;
+	border-right-color:lightgray;
+	right: 100%;
+	top: 0;
+
+	transform-origin: 100% 100% ;
+}
+
+
+.speech-bubbleRight{
+	background: #1556bf;
+	color: #ffff;
+	padding: 0.5em 1em;
+	position: relative;
+	border-radius: 0.25em 0em 0.25em 0.25em;
+	box-shadow: 0 7px 7px rgba(0,0,0,0.2);
+	transition: 0.5s;
+	animation: speech .7s linear 1;
+	max-width: 15%;
+	margin: 15px;
+    word-wrap: break-word;	
+	margin-left: auto; 
+	margin-right: 1;
+	min-width: 80px;
+
+}
+.speech-bubbleRight::after{
+	content: '';
+	position: absolute;
+	border: 0.5em solid transparent;
+	border-top-color: #1556bf;
+	border-left-color: #1556bf;
+	left: 100%;
+	top: 0;
+
+	transform-origin: 100% 100% ;
+}
+.messages{
+	margin: 10px auto;
+	width: 60%;
+	/*background: red;*/
+	  height: 450px;
+    overflow-y: scroll;
+    overflow-x:hidden;
+    min-width: 250px;
+}
+input[type=text] {
+  border: 2px solid #f8f8f8;
+  border-radius: 4px;
+  width: 55%;
+  padding: 12px 20px;
+  background-color: #f8f8f8;
+}
+button {
+  background-color:#1556bf;
+  border: none;
+  color: white;
+  padding: 14px 24px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.anim{animation-name: speech;}
+@keyframes speech{
+  0% {
+    transform: scale(0.75);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
