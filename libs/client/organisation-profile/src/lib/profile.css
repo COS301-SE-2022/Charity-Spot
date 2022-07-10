@@ -145,8 +145,8 @@
     color: #1458b3;
 }
 .cover3{
-    /* box-shadow: 0.5px 0.5px 6px -1px rgba(0, 0, 0, 0.163);  */
-    background-color: #dadada;
+    box-shadow: 0.5px 0.5px 6px -1px rgba(0, 0, 0, 0.163); 
+    /* background-color: #dadada; */
     border-radius: 10px;
     padding: 15px;
     margin: 15px;
@@ -155,6 +155,7 @@
     /* padding: 15px; */
     max-height: 200px auto ;
     color: #1458b3;
+    
 }
 .pcomments{
     background-color: rgb(214, 214, 214);
@@ -176,13 +177,12 @@
  float: left;
  border-radius: 10px;
 
- background-color: #d8d8d8;
+ background-color: #dddddd;
  color: #1458b3;
 
- border: 1px solid;
+ border: 1px solid #bdbdbd;
  padding: 0.5em 1em;
  position: relative;
- border-radius: 0 0.25em 0.25em 0.25em;
  box-shadow: 0 3px 3px rgba(0,0,0,0.2);
  transition: 0.5s;
  animation: speech .7s linear 1;
@@ -196,8 +196,8 @@
 	content: '';
 	position: absolute;
 	border: 0.5em solid transparent;
-	border-top-color:#1458b3;
-	border-right-color:#1458b3;
+	border-top-color:#dddddd;
+	border-right-color:#dddddd;
 	right: 100%;
 	top: 0;
 
@@ -207,7 +207,7 @@
 .commentPic
 {
     float: left;
-    background-color: #518bd6;
+    background-color: #76a7e7;
     height: 40px;
     /* margin-right: 5px; */
     width: 40px;
@@ -215,7 +215,7 @@
 
     display: inline-block;
 
-    border: 1px solid #ffff
+    border: 2px solid #b0cbef;
 }
 .headings{
     color: #1458b3;
