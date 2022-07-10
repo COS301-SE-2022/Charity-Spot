@@ -7,25 +7,25 @@
     width: 90%;
 }
 .speech-bubbleLeft{
-	background: lightgray;
+	background:rgb(224, 224, 224);
 	color: #1556bf;
 	padding: 0.5em 1em;
 	position: relative;
-	border-radius: 0 0.25em 0.25em 0.25em;
+	border-radius: 0 15px 15px 15px;
 	box-shadow: 0 3px 3px rgba(0,0,0,0.2);
 	transition: 0.5s;
 	animation: speech .7s linear 1;
 	margin: 15px;
-	width: 15%;
+	width: 25%;
 	word-wrap: break-word;	
-	min-width: 80px;
+	min-width: 20%;
 }
 .speech-bubbleLeft::after{
 	content: '';
 	position: absolute;
 	border: 0.5em solid transparent;
-	border-top-color: lightgray;
-	border-right-color:lightgray;
+	border-top-color: rgb(224, 224, 224);
+	border-right-color:rgb(224, 224, 224);
 	right: 100%;
 	top: 0;
 
@@ -38,16 +38,16 @@
 	color: #ffff;
 	padding: 0.5em 1em;
 	position: relative;
-	border-radius: 0.25em 0em 0.25em 0.25em;
+	border-radius: 15px 0em 15px 15px;
 	box-shadow: 0 7px 7px rgba(0,0,0,0.2);
 	transition: 0.5s;
 	animation: speech .7s linear 1;
-	max-width: 15%;
+	max-width: 25%;
 	margin: 15px;
     word-wrap: break-word;	
 	margin-left: auto; 
 	margin-right: 1;
-	min-width: 80px;
+	min-width: 20%;
 
 }
 .speech-bubbleRight::after{
@@ -69,13 +69,16 @@
     overflow-y: scroll;
     overflow-x:hidden;
     min-width: 250px;
+	border-radius: 10px;
+	background-color: #f8f8f8;
 }
 input[type=text] {
   border: 2px solid #f8f8f8;
-  border-radius: 4px;
-  width: 55%;
+  border-radius: 10px;
+  width: 54%;
   padding: 12px 20px;
   background-color: #f8f8f8;
+  color: gray;
 }
 button {
   background-color:#1556bf;
