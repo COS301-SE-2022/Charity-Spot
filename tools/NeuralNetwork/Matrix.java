@@ -8,7 +8,7 @@ public class Matrix{
     int cols;
 
 
-    //Create a matrix and init values to 0
+    //Create a matrix and init values to random ints
     public Matrix(int rows, int cols){
 
         this.data = new double[rows][cols];
@@ -19,7 +19,7 @@ public class Matrix{
 
             for(int j=0; j<cols; j++){
 
-                data[i][j] = 0;
+                data[i][j] = Math.random() * 2 - 1;
 
             }
 
