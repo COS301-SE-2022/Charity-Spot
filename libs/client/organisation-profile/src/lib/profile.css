@@ -29,7 +29,7 @@
      justify-content: space-around;
      flex-flow: wrap;
 
-     background-color: #e5e4e4;
+     background-color: #e4e4e4;
     border: 1px solid #bdbdbd;
 
 
@@ -75,22 +75,34 @@
     background-color: #dadada;
     border-radius: 10px;
     margin: 15px;
-    border:  #bdbdbd solid;
+    border:  #bdbdbd ;
     border-width: 1px;
     padding: 15px;
     height: 60px;
     color: #1458b3;
 }
+.cover2{
+    /* box-shadow: 0.5px 0.5px 6px -1px rgba(0, 0, 0, 0.163);  */
+    background-color: #dadada;
+    border-radius: 10px;
+    margin: 15px;
+    border:  #bdbdbd ;
+    border-width: 1px;
+    padding: 15px;
+    height: auto;
+    color: #1458b3;
+}
 /* ------------------------------------STAR RATING CODE------------------------------- */
 .rate {
-    /* float: left; */
     height: 50px;
+ 
+    border-radius: 10px;
     padding: 0 10px;
 
          /* CENTERING STUFF*/ 
-         top: 50%;
-         left: 50%;
-         transform: translate(-50%, -50%);
+         display: table;
+         margin: 0 auto;
+      
 }
 .rate:not(:checked) > input {
     position:absolute;
@@ -110,10 +122,12 @@
     content: '★ ';
 }
 .rate > input:checked ~ label {
+    transition: 0.3s ease-in;
     color: #ffc700;    
 }
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
+    transition: 0.3s ease-in;
     color: #deb217;  
 }
 .rate > input:checked + label:hover,
@@ -185,7 +199,7 @@
         height: 200px;
     }
     .user-right{
-        height: 450px;
+        height: 550px;
         width: 100%;
     
         box-sizing: border-box;
