@@ -15,7 +15,7 @@
 .profile-main{
 
     height: 650px auto;
-    width: 100%;
+    width: 90%;
 
     
     border-radius: 10px;
@@ -39,7 +39,7 @@
 
     /* background-color: rgb(228, 229, 230);  */
     height: 500px;
-    width: 70%;
+    width: 50%;
     box-sizing: border-box; 
     overflow-y: scroll;
 }
@@ -47,7 +47,7 @@
 
     /* background-color: rgb(228, 229, 230);  */
     height: 550px;
-    width: 70%;
+    width: 50%;
     box-sizing: border-box;  
 }
 
@@ -85,7 +85,7 @@
     margin-right: 10px;
 }
 #chatGo:hover{
-    transition: 0.3s ease-in;
+    transition: 0.2s ease-in;
     box-shadow: 0.5px 0.5px 6px -1px black; 
     /* transform: translate(-5px); */
  }
@@ -101,7 +101,7 @@
     margin-right: 10px;
 }
 #delivGo:hover{
-    transition: 0.3s ease-in;
+    transition: 0.2s ease-in;
     box-shadow: 0.5px 0.5px 6px -1px black; 
     /* transform: translate(-5px); */
  }
@@ -117,7 +117,7 @@
     margin-right: 10px;
 }
 #subGo:hover{
-    transition: 0.3s ease-in;
+    transition: 0.2s ease-in;
     box-shadow: 0.5px 0.5px 6px -1px black; 
     border: #1458b3 solid 1px;
     /* transform: translate(-5px); */
@@ -145,12 +145,12 @@
     color: #1458b3;
 }
 .cover3{
-    box-shadow: 0.5px 0.5px 6px -1px rgba(0, 0, 0, 0.163); 
-    /* background-color: #dadada; */
+    /* box-shadow: 0.5px 0.5px 6px -1px rgba(0, 0, 0, 0.163);  */
+    background-color: #dadada;
     border-radius: 10px;
     padding: 15px;
     margin: 15px;
-    border:  #d6d6d6 ;
+    /* border:  #d6d6d6 solid 1px ; */
     border-width: 1px;
     /* padding: 15px; */
     max-height: 200px auto ;
@@ -158,7 +158,7 @@
     
 }
 .pcomments{
-    background-color: rgb(214, 214, 214);
+    background-color: rgb(230, 230, 230);
     border-radius: 10px;
     height: 600px  ;
     color: #1458b3;
@@ -189,8 +189,8 @@
  margin: 15px;
  
  word-wrap: break-word;	
- max-width: 250px;
- min-width: 250px;
+ max-width: 450px;
+ min-width: 450px;
 }
 /* .pcomment::after{
 	content: '';
@@ -377,29 +377,10 @@
 .ratedsmall > label:hover ~ input:checked ~ label {
     color: #c59b08;
 } */
-/*---------------------END OF RATED CODE----------------*/
+/*---------------------END OF RATED SMALL CODE----------------*/
 
 
-@media screen and (max-width: 1200px) {
-    #profile-pic
-    {
-        height: 110px;
-        width: 110px;
-    }
-    .profile-main{
-        width: 90%;
-    }
-    .user-left{
-        width: 44%;
-    }
-    .user-right{
-        width: 44%;
-    }
-    #logout1{
-        width: 25%;
- 
-    }    
-}
+
 @media screen and (max-width: 900px) {
     #profile-pic
    {
@@ -424,36 +405,6 @@
        width: 25%;
 
    }
-}
-
-@media screen and (max-width: 750px) {
-     #profile-pic
-    {
-        height: 110px;
-        width: 110px;
-        padding: 15px;
-    }
-    .profile-main{
-        width: 90%;
-    }
-    .user-left{
-        width: 100%;
-        height: 200px;
-    }
-    .user-right{
-        height: 750px;
-        width: 100%;
-    
-        box-sizing: border-box;
-        margin: 20px;  
-    }
-    .rated:not(:checked) > label{
-        font-size: 40px;
-    }
-    #logout1{
-        width: 25%;
-
-    }
 }
 @media screen and (max-width: 600px) {
     #profile-pic

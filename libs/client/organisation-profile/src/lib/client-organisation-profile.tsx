@@ -189,12 +189,12 @@ export function Profile() {
               {( tempView &&<form onSubmit={hanndlesubmit}>
                   <button type='submit' id='logout1'>Log out</button>
               </form>)}
-              <h4 className='headings' >About Us</h4>
+              <h3 className='headings' >About Us</h3>
               <div className="cover3">
                  
                  <p>We have been in the food business for 10 years, particularly focusing on poultry. We offer Chicken intenstines, feet and breasts</p>
               </div>
-              <h4 className='headings' >Reviews</h4>
+              <h3 className='headings' >Reviews</h3>
               <div className='pcomments'>
 
               <div className='pcomment'><div className='commentPic'><h4>HF</h4></div><b><p>Helping Foundation</p></b><br></br>
