@@ -198,7 +198,7 @@ export function Profile() {
             <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px', color: '#104283' }}>Email: { OEmail}</ListGroup.Item>
             <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Date Registered: { ODate }</ListGroup.Item>
             <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Location: { OLocation}</ListGroup.Item>
-            <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Rating: 5.0</ListGroup.Item>
+            <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Rating: 6.0</ListGroup.Item>
           </ListGroup>
           </div>
       </div>
