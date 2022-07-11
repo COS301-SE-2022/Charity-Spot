@@ -34,7 +34,7 @@
 
 
 .speech-bubbleRight{
-	background: #1556bf;
+	background: #1458b3; 
 	color: #ffff;
 	padding: 0.5em 1em;
 	position: relative;
@@ -55,8 +55,8 @@
 	content: '';
 	position: absolute;
 	border: 0.5em solid transparent;
-	border-top-color: #1556bf;
-	border-left-color: #1556bf;
+	border-top-color:#1458b3; 
+	border-left-color: #1458b3; 
 	left: 100%;
 	top: 0;
 
@@ -81,7 +81,7 @@ input[type=text] {
   background-color: #f8f8f8;
   color: gray;
 }
-button {
+/* button {
   background-color:#1556bf;
   border: none;
   color: white;
@@ -90,7 +90,27 @@ button {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 5px;
+} */
+.sndBT{
+    
+    background: rgb(228, 228, 228);
+    color:  #1458b3;
+    border: none;
+    cursor: pointer;
+    padding: 12px;
+	width: 5%;
+    transition: all 0.3 ease;
+    border-radius: 5px;
+    margin-right: 10px;
+	margin-left: 10px;
 }
+.sndBT:hover{
+    transition: 0.2s ease-in;
+    box-shadow: 0.5px 0.5px 6px -1px black; 
+	background: #1458b3;
+	color: #ffff;
+    /* transform: translate(-5px); */
+ }
 .anim{animation-name: speech;}
 @keyframes speech{
   0% {
@@ -107,7 +127,7 @@ button {
 	
 	padding: 10px;
 
-	width: 30%;
+	width: 63%;
 	margin: 0 auto;
 	/* background-color: red; */
 }
