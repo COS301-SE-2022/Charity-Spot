@@ -18,8 +18,6 @@ export class ChatService {
         //retrieve file from database 
         let orgID = null, clientID = null, data = null;
 
-        console.log(Buffer.from(message, 'utf-8').toString('base64'));
-
         if(identify == "ORG") { orgID = from; clientID = to; }
         else { orgID = to; clientID = from; }
 
@@ -27,7 +25,7 @@ export class ChatService {
 
             let messages = data.Messages;
                 messages = Buffer.from(messages, 'base64').toString('utf-8');
-                messages = messages + message;
+                messages = messages + "\n" + message;
                 message = Buffer.from(messages, 'utf-8').toString('base64');
                 
             //update the file in database
@@ -47,16 +45,48 @@ export class ChatService {
         return returnableV;
     }
 
-    async RetrieveMessages(userID: string) {
+    async RetrieveMessages(userID: string, with_ID: string, id: string) {
         // retrieve file from database
+        let orgID = null, clientID = null, data = null;
 
-        let messages = "AG0AZQBzAHMAYQBnAGUAcwBfAGkAbgBfAGIAYQBzAGUANgA0";
-            messages = Buffer.from(messages, 'base64').toString('utf-8');
+        if(id == "ORG") { 
+            orgID = userID; clientID = with_ID; 
+            const threads = await this.ChatRepository.GetAllChatsOrg(orgID);
 
+            for(const i of threads) {
+                if(i.ClientID == clientID) {
+                    data = await this.ChatRepository.getThread(orgID, i.ClientID);
+                    break;
+                }
+            }
+
+            if(data != null)
+                await this.ChatRepository.negateAlertOrg(orgID, clientID);
+        }
+        else { 
+            orgID = with_ID; clientID = userID; 
+            const threads = await this.ChatRepository.GetAllChatsClient(clientID);
+
+            for(const i of threads) {
+                if(i.OrgID == orgID) {
+                    data = await this.ChatRepository.getThread(i.OrgID, clientID);
+                    break;
+                }
+            }
+
+            if(data != null)
+                await this.ChatRepository.negateAlertClient(orgID, clientID);
+        }        
+        
         const returnableV = new ChatEntity();
             returnableV.Reciever = "";
             returnableV.Sender = userID;
-            returnableV.Message = messages;
+
+        if(data != null) {
+            let messages = data.Messages;
+                messages = Buffer.from(messages, 'base64').toString('utf-8');
+                returnableV.Message = messages;
+        }
 
         return returnableV;
     }
