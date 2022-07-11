@@ -40,5 +40,23 @@ export class ChatRepository {
     return u;
   }
 
+  //Find all clients that have a chat with an Org
+
+  async GetAllChatsOrg(orgID : string)
+  {
+    const u = await this.prisma.chatHistory.findMany({
+      where:
+      {
+        OrgID: orgID
+      },
+      select:
+      {
+        ClientID :true
+      }
+    })
+
+    return u;
+  }
+
   
 }
