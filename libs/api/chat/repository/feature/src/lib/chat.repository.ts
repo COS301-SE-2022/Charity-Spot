@@ -1,26 +1,65 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@charity-spot/api/shared/services/prisma';
-import { ClientLogin } from '@charity-spot/client/login';
 
 @Injectable()
 export class ChatRepository {
   constructor(private prisma: PrismaService) {}
 
-  async AddMessages(orgID, clientID : string ,text: string)
+  //create an empty thread for messages
+  async createThread(orgID: string, clientID : string)
   {
     const u = await this.prisma.chatHistory.create({
       data:
       {
         OrgID: orgID,
-        ClientID:clientID,
-        Messages:text
+        ClientID:clientID
       }
     })
 
     return u;
   }
 
-  async UpdateMessages(orgID, clientID : string ,text: string)
+  //get messages in a thread
+
+  async getThread(orgID: string, clientID : string)
+  {
+    const u = await this.prisma.chatHistory.findUnique({
+      where:
+      {
+        OrgID_ClientID:
+        {
+          OrgID: orgID,
+          ClientID:clientID,
+        }
+      }
+    })
+
+    return u;
+  }
+  
+  async updateThread(orgID: string, clientID: string, text: string) {
+    const u = await this.prisma.chatHistory.update({
+      where:
+      {
+        OrgID_ClientID:
+        {
+          OrgID: orgID,
+          ClientID:clientID,
+        }
+      },
+      data:
+      {
+        Messages: text
+      }
+    })
+
+    return u;
+  }
+
+/************************************************************************************
+  //Trigger when an org sends a messsage
+
+  async OrgSendsMessage(orgID, clientID : string ,text: string)
   {
     const u = await this.prisma.chatHistory.update({
       where:
@@ -33,12 +72,118 @@ export class ChatRepository {
       },
       data:
       {
-        Messages:text
+        Messages:text,
+        AlertOrg: false,
+        AlertClient: true
       }
     })
 
     return u;
   }
+
+  //Trigger when a client sends a message
+
+  async ClientSendsMessage(orgID, clientID : string ,text: string)
+  {
+    const u = await this.prisma.chatHistory.update({
+      where:
+      {
+        OrgID_ClientID:
+        {
+          OrgID: orgID,
+          ClientID:clientID,
+        }
+      },
+      data:
+      {
+        Messages:text,
+        AlertOrg: true,
+        AlertClient: false
+      }
+    })
+
+    return u;
+  }
+  
+  //**********************************************************************************/
+  
+  
+  //Notify Organisation || Negate
+  async alertOrg(orgID: string, clientID: string) {
+    const u = await this.prisma.chatHistory.update({
+      where:
+      {
+        OrgID_ClientID:
+        {
+          OrgID: orgID,
+          ClientID:clientID,
+        }
+      },
+      data:
+      {
+        AlertOrg: true
+      }
+    })
+
+    return u;
+  }
+  async negateAlertOrg(orgID: string, clientID: string) {
+    const u = await this.prisma.chatHistory.update({
+      where:
+      {
+        OrgID_ClientID:
+        {
+          OrgID: orgID,
+          ClientID:clientID,
+        }
+      },
+      data:
+      {
+        AlertOrg: false
+      }
+    })
+
+    return u;
+  }
+//=====
+  //Notify Client || Negate
+  async alertClient(orgID: string, clientID: string) {
+    const u = await this.prisma.chatHistory.update({
+      where:
+      {
+        OrgID_ClientID:
+        {
+          OrgID: orgID,
+          ClientID:clientID,
+        }
+      },
+      data:
+      {
+        AlertClient: true
+      }
+    })
+
+    return u;
+  }
+  async negateAlertClient(orgID: string, clientID: string) {
+    const u = await this.prisma.chatHistory.update({
+      where:
+      {
+        OrgID_ClientID:
+        {
+          OrgID: orgID,
+          ClientID:clientID,
+        }
+      },
+      data:
+      {
+        AlertClient: false
+      }
+    })
+
+    return u;
+  }
+//====
 
   //Find all clients that have a chat with an Org
 
@@ -75,6 +220,8 @@ export class ChatRepository {
 
     return u;
   }
+
+  //Remove all messages between two participants
 
   async RemoveChat(orgID, clientID : string)
   {
