@@ -49,6 +49,17 @@ model Rating {
   @@map("rating")
 }
 
+model ChatHistory {
+  OrgID       String  @map("organisation_id")
+  ClientID    String  @map("client_id")
+  AlertClient Boolean @map("alert_client") @default(false)
+  AlertOrg    Boolean @map("alert_org") @default(false)
+  Messages    String  @map("messages") @default("")
+
+  @@id([OrgID,ClientID])
+  @@map("chat_history")
+}
+
 model DonoItem {
   ItemID      String  @default(cuid()) @map("item_id")
   ItemName    String  @map("item_name")
