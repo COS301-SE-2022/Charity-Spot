@@ -107,6 +107,9 @@ button {
 	
 	padding: 10px;
 
+	width: 30%;
+	margin: 0 auto;
+	/* background-color: red; */
 }
 .senderName{
 	float: left;

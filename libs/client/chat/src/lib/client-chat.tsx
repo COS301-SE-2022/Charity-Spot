@@ -90,7 +90,7 @@ export function ClientChat() {
                     <option value="Other Organizations">Client</option>  
               </select>
               </div> 
-        </div><br/><br/>
+        </div><br/>
       <div id = "mainMW" className={styles["messages"]}>
 
         {Bubb.map(function(B){
