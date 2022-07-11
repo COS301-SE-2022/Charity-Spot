@@ -6,6 +6,7 @@ import {Register} from '@charity-spot/client/registration';
 import {Profile} from '@charity-spot/client/organisation-profile';
 import {Home} from '@charity-spot/client/home';
 import {ClientDonate} from '@charity-spot/client/donate';
+import {ClientChat} from '@charity-spot/client/chat';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path = "/profile" element ={<Profile/>}/>
           <Route path = "/home" element ={<Home/>}/>
           <Route path = "/donate" element = {<ClientDonate/>}/>
+          <Route path = "/chat" element = {<ClientChat/>}/>
         </Routes>
       </Router>
     </div>
