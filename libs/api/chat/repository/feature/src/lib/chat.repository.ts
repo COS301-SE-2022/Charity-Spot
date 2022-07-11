@@ -13,8 +13,7 @@ export class ChatRepository {
       data:
       {
         OrgID: orgID,
-        ClientID:clientID,
-        Messages:""
+        ClientID:clientID
       }
     })
 
