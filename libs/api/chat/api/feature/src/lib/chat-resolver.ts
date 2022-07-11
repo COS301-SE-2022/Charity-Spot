@@ -10,6 +10,7 @@ export class ChatResolver {
     async Send(
         @Args("receiverID") to: string,
         @Args("senderID") from: string,
+        @Args("sentBy") sender: "ORG" | "CLIENT",
         @Args("message") message: string
     ) {
         const date = new Date();
@@ -17,16 +18,28 @@ export class ChatResolver {
         const message_
             = "[" + from + "_"
             + date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + "_"
-            + date.getHours + ":" + date.getMinutes() + "] - "
+            + date.getHours() + ":" + date.getMinutes() + "] - "
             + message;
 
-        return this.ChatService.Send(to, from, message);
+        let sender_ID = null;   
+        switch(sender) {
+            case "ORG":
+                sender_ID = "ORG";
+                break;
+            case "CLIENT":
+                sender_ID = "CLIENT";
+                break;
+        }
+
+        return this.ChatService.Send(to, from, sender_ID, message_);
     }
 
     @Query(() => ChatEntity)
     async RetrieveMessages(
-        @Args("userID") id: string
+        @Args("userID") u_id: string,
+        @Args("with_ID") w_id: string,
+        @Args("whois") identification: "ORG" | "CLIENT"
     ) {
-        return this.ChatService.RetrieveMessages(id);
+        return this.ChatService.RetrieveMessages(u_id, w_id, identification);
     }
 }

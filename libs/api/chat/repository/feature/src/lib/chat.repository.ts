@@ -6,7 +6,7 @@ export class ChatRepository {
   constructor(private prisma: PrismaService) {}
 
   //create an empty thread for messages
-  async createThread(orgID, clientID : string)
+  async createThread(orgID: string, clientID : string)
   {
     const u = await this.prisma.chatHistory.create({
       data:
@@ -21,7 +21,7 @@ export class ChatRepository {
 
   //get messages in a thread
 
-  async getThread(orgID, clientID : string)
+  async getThread(orgID: string, clientID : string)
   {
     const u = await this.prisma.chatHistory.findUnique({
       where:
@@ -52,6 +52,8 @@ export class ChatRepository {
         Messages: text
       }
     })
+
+    return u;
   }
 
 /************************************************************************************
@@ -105,7 +107,8 @@ export class ChatRepository {
   
   //**********************************************************************************/
   
-  //Notify Organisation
+  
+  //Notify Organisation || Negate
   async alertOrg(orgID: string, clientID: string) {
     const u = await this.prisma.chatHistory.update({
       where:
@@ -121,9 +124,29 @@ export class ChatRepository {
         AlertOrg: true
       }
     })
+
+    return u;
   }
-  
-  //Notify Client
+  async negateAlertOrg(orgID: string, clientID: string) {
+    const u = await this.prisma.chatHistory.update({
+      where:
+      {
+        OrgID_ClientID:
+        {
+          OrgID: orgID,
+          ClientID:clientID,
+        }
+      },
+      data:
+      {
+        AlertOrg: false
+      }
+    })
+
+    return u;
+  }
+//=====
+  //Notify Client || Negate
   async alertClient(orgID: string, clientID: string) {
     const u = await this.prisma.chatHistory.update({
       where:
@@ -139,7 +162,28 @@ export class ChatRepository {
         AlertClient: true
       }
     })
+
+    return u;
   }
+  async negateAlertClient(orgID: string, clientID: string) {
+    const u = await this.prisma.chatHistory.update({
+      where:
+      {
+        OrgID_ClientID:
+        {
+          OrgID: orgID,
+          ClientID:clientID,
+        }
+      },
+      data:
+      {
+        AlertClient: false
+      }
+    })
+
+    return u;
+  }
+//====
 
   //Find all clients that have a chat with an Org
 
