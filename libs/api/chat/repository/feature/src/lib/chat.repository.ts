@@ -1,26 +1,43 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 import { ClientLogin } from '@charity-spot/client/login';
+import { Alert } from 'react-native';
 
 @Injectable()
 export class ChatRepository {
   constructor(private prisma: PrismaService) {}
 
-  async AddMessages(orgID, clientID : string ,text: string)
+  async createThread(orgID, clientID : string)
   {
     const u = await this.prisma.chatHistory.create({
       data:
       {
         OrgID: orgID,
         ClientID:clientID,
-        Messages:text
+        Messages:""
       }
     })
 
     return u;
   }
 
-  async UpdateMessages(orgID, clientID : string ,text: string)
+  async getThread(orgID, clientID : string)
+  {
+    const u = await this.prisma.chatHistory.findUnique({
+      where:
+      {
+        OrgID_ClientID:
+        {
+          OrgID: orgID,
+          ClientID:clientID,
+        }
+      }
+    })
+
+    return u;
+  }
+
+  async OrgSendsMessage(orgID, clientID : string ,text: string)
   {
     const u = await this.prisma.chatHistory.update({
       where:
@@ -33,7 +50,31 @@ export class ChatRepository {
       },
       data:
       {
-        Messages:text
+        Messages:text,
+        AlertOrg: false,
+        AlertClient: true
+      }
+    })
+
+    return u;
+  }
+
+  async ClientSendsMessage(orgID, clientID : string ,text: string)
+  {
+    const u = await this.prisma.chatHistory.update({
+      where:
+      {
+        OrgID_ClientID:
+        {
+          OrgID: orgID,
+          ClientID:clientID,
+        }
+      },
+      data:
+      {
+        Messages:text,
+        AlertOrg: true,
+        AlertClient: false
       }
     })
 
