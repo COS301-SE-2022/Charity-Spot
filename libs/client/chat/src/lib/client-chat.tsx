@@ -85,9 +85,9 @@ export function ClientChat() {
     
     <div className={styles["bodyC"]}>
       <div className={styles["topbar"]}><div className={styles["ToFrom"]}>From: </div><div className={styles["senderName"]}>malana</div><div className={styles["ToFrom"]}>To: </div>
-             <div className={styles["recieverName"]}> <select name="orgs" id="rgorgnm1" className='rgSelect'>
-                    <option value="Organization">Organization</option>
-                    <option value="Client">Client</option>  
+             <div className={styles["recieverName"]}> <select name="orgs" id="rgorgnm1" className={styles["sendOptions"]}>
+                    <option value=" Name of Organization">Organization</option>
+                    <option value="Other Organizations">Client</option>  
               </select>
               </div> 
         </div><br/><br/>
