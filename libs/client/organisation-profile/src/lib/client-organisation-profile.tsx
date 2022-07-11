@@ -182,13 +182,57 @@ export function Profile() {
         <div className='profile-main'>
 
           <div className='user-left'>
-          <div className='prof-pic'>
-            {/*<img src={Picture} alt="" id="profile-pic"/>*/}
-            <img src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo.png?alt=media&token=658a4502-2b08-47bf-8cb2-fe7eacbf8c3e" alt="" id="profile-pic"></img>
-          </div>
-          {( tempView &&<form onSubmit={hanndlesubmit}>
-              <button type='submit' id='logout1'>Log out</button>
-          </form>)}
+              <div className='prof-pic'>
+                <img src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo.png?alt=media&token=658a4502-2b08-47bf-8cb2-fe7eacbf8c3e" alt="" id="profile-pic"></img>
+                
+              </div>
+              {( tempView &&<form onSubmit={hanndlesubmit}>
+                  <button type='submit' id='logout1'>Log out</button>
+              </form>)}
+              <h4 className='headings' >About Us</h4>
+              <div className="cover3">
+                 
+                 <p>We have been in the food business for 10 years, particularly focusing on poultry. We offer Chicken intenstines, feet and breasts</p>
+              </div>
+              <h4 className='headings' >Reviews</h4>
+              <div className='pcomments'>
+
+              <div className='pcomment'><div className='commentPic'><h4>HF</h4></div><b><p>Helping Foundation</p></b><br></br>
+                <div className="ratedsmall"> 
+                      <input type="radio" id="star55" checked = {true} name="rate3" value="5" disabled />
+                      <label htmlFor="star55" title="text"></label>
+                      <input type="radio" id="star44"   name="rate3" value="4"  disabled/>
+                      <label htmlFor="star44"title="text"></label>
+                      <input type="radio" id="star33" name="rate3" value="3"  disabled />
+                      <label  htmlFor="star33" title="text"></label>
+                      <input type="radio" id="star22" name="rate3" value="2"  disabled/>
+                      <label  htmlFor="star22" title="text"></label>
+                      <input type="radio" id="star11" name="rate3" value="1"  disabled/>
+                      <label  htmlFor="star11" title="text"></label>
+                    </div> 
+                    <br></br>
+                     <p>This organization is fast and reliable, The delievered the frozen chicken in time</p> 
+                </div> 
+
+                
+              <div className='pcomment'><div className='commentPic'><h4>BS</h4></div><b><p>Boys School</p></b><br></br>
+                <div className="ratedsmall"> 
+                      <input type="radio" id="star55"  name="rate4" value="5" disabled />
+                      <label htmlFor="star55" title="text"></label>
+                      <input type="radio" id="star44"   name="rate4" value="4"  disabled/>
+                      <label htmlFor="star44"title="text"></label>
+                      <input type="radio" id="star33" name="rate4" value="3"  disabled />
+                      <label  htmlFor="star33" title="text"></label>
+                      <input type="radio" id="star22" name="rate4" value="2"  disabled/>
+                      <label  htmlFor="star22" title="text"></label>
+                      <input type="radio" id="star11" checked = {true} name="rate4" value="1"  disabled/>
+                      <label  htmlFor="star11" title="text"></label>
+                    </div> 
+                    <br></br>
+                     <p> Very dissapointed, they delivered rotten chicken breats :(</p>
+                </div>                
+      
+              </div>
           </div>
           <div className='user-right'>
             <br/><br/>
@@ -196,20 +240,39 @@ export function Profile() {
               <div className="cover">Email: { OEmail}</div>
               <div className="cover">Date Registered: { ODate }</div>
               <div className="cover">Location: { OLocation}</div>
-              <div className="cover">Rating: 6.0</div>
-      
-              <div className="rate">
-                <input type="radio" id="star5" name="rate" value="5" />
-                <label htmlFor="star5" title="text"></label>
-                <input type="radio" id="star4" name="rate" value="4" />
-                <label htmlFor="star4" title="text"></label>
-                <input type="radio" id="star3" name="rate" value="3" />
-                <label  htmlFor="star3" title="text"></label>
-                <input type="radio" id="star2" name="rate" value="2" />
-                <label  htmlFor="star2" title="text"></label>
-                <input type="radio" id="star1" name="rate" value="1" />
-                <label  htmlFor="star1" title="text"></label>
+
+              <div className="cover2"> 
+                  {/* <p>Rate Organization</p>
+                  <div className="rate"> 
+                    <input type="radio" id="star5" name="rate" value="5" />
+                    <label htmlFor="star5" title="text"></label>
+                    <input type="radio" id="star4" name="rate" value="4" />
+                    <label htmlFor="star4" title="text"></label>
+                    <input type="radio" id="star3" name="rate" value="3" />
+                    <label  htmlFor="star3" title="text"></label>
+                    <input type="radio" id="star2" name="rate" value="2" />
+                    <label  htmlFor="star2" title="text"></label>
+                    <input type="radio" id="star1" name="rate" value="1" />
+                    <label  htmlFor="star1" title="text"></label>
+                  </div> */}
+
+                  <p>Average Rating 4.0</p>
+                  <div className="rated"> 
+                    <input type="radio" id="star5" name="rate" value="5" disabled />
+                    <label htmlFor="star5" title="text"></label>
+                    <input type="radio" id="star4"  checked = {true} name="rate" value="4"  disabled/>
+                    <label htmlFor="star4"title="text"></label>
+                    <input type="radio" id="star3" name="rate" value="3"  disabled />
+                    <label  htmlFor="star3" title="text"></label>
+                    <input type="radio" id="star2" name="rate" value="2"  disabled/>
+                    <label  htmlFor="star2" title="text"></label>
+                    <input type="radio" id="star1" name="rate" value="1"  disabled/>
+                    <label  htmlFor="star1" title="text"></label>
+                  </div>  
               </div>
+              <button type='submit' id='chatGo'>Chat</button>
+              <button type='submit' id='delivGo'> delievery</button>
+              {/* <button type='submit' id='subGo'>Submit</button> */}
           </div>
       </div>
    </div> 
