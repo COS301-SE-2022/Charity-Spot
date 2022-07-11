@@ -1,12 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@charity-spot/api/shared/services/prisma';
-import { ClientLogin } from '@charity-spot/client/login';
-import { Alert } from 'react-native';
 
 @Injectable()
 export class ChatRepository {
   constructor(private prisma: PrismaService) {}
 
+  //create an empty thread for messages
   async createThread(orgID, clientID : string)
   {
     const u = await this.prisma.chatHistory.create({
@@ -19,6 +18,8 @@ export class ChatRepository {
 
     return u;
   }
+
+  //get messages in a thread
 
   async getThread(orgID, clientID : string)
   {
@@ -35,6 +36,8 @@ export class ChatRepository {
 
     return u;
   }
+
+  //Trigger when an org sends a messsage
 
   async OrgSendsMessage(orgID, clientID : string ,text: string)
   {
@@ -57,6 +60,8 @@ export class ChatRepository {
 
     return u;
   }
+
+  //Trigger when a client sends a message
 
   async ClientSendsMessage(orgID, clientID : string ,text: string)
   {
@@ -115,6 +120,8 @@ export class ChatRepository {
 
     return u;
   }
+
+  //Remove all messages between two participants
 
   async RemoveChat(orgID, clientID : string)
   {
