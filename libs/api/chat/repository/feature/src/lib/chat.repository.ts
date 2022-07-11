@@ -20,7 +20,7 @@ export class ChatRepository {
     return u;
   }
 
-  async UpdateMessages(orgID, clientID : string ,text: string)
+  async UpdateMessages(orgID, clientID : string ,text: string, read: boolean)
   {
     const u = await this.prisma.chatHistory.update({
       where:
@@ -33,7 +33,8 @@ export class ChatRepository {
       },
       data:
       {
-        Messages:text
+        Messages:text,
+        Read: read
       }
     })
 
