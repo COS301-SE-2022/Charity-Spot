@@ -76,5 +76,19 @@ export class ChatRepository {
     return u;
   }
 
-  
+  async RemoveChat(orgID, clientID : string)
+  {
+    const u = await this.prisma.chatHistory.delete({
+      where:
+      {
+        OrgID_ClientID :
+        {
+          OrgID:orgID,
+          ClientID:clientID
+        }
+      }
+    })
+
+    return u;
+  }
 }
