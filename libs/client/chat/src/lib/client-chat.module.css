@@ -72,25 +72,19 @@
     min-width: 250px;
 	border-radius: 10px;
 	background-color: #f8f8f8;
+	padding: 10px;
 }
-input[type=text] {
+input.myText {
   border: 2px solid #f8f8f8;
   border-radius: 10px;
-  width: 54%;
+  width: 52%;
   padding: 12px 20px;
   background-color: #f8f8f8;
   color: gray;
 }
-/* button {
-  background-color:#1556bf;
-  border: none;
-  color: white;
-  padding: 14px 24px;
-  text-decoration: none;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 5px;
-} */
+input.myText:hover{
+	transition: 0.3s ease-in;
+} 
 .sndBT{
     
     background: rgb(228, 228, 228);
@@ -98,7 +92,7 @@ input[type=text] {
     border: none;
     cursor: pointer;
     padding: 12px;
-	width: 5%;
+	width: 90px;
     transition: all 0.3 ease;
     border-radius: 5px;
     margin-right: 10px;
@@ -164,3 +158,63 @@ select:focus{
     outline: none;
     border: none;
 }
+
+
+
+
+
+@media screen and (max-width: 600px) {
+ .messages{
+	width: 95%;
+	
+ }
+ input.myText{
+	width: 75%;
+ }
+ .topbar{
+	margin-top: 10px;
+	width: 100%;
+ }
+ .recieverName{
+	width: 48%;
+
+ }
+ .sndBT{
+	width: 65px;
+ }
+ 
+  }
+  @media screen and (max-width: 900px) {
+	.messages{
+		width: 95%;
+		
+	 }
+	 .sndBT{
+		width: 120px;
+	 }
+	 input.myText{
+		width: 75%;
+	 }
+	 .topbar{
+		width: 95%;
+	 }
+  }
+
+  @media screen and (min-width: 1600px) {
+	.messages{
+		width: 55%;
+
+		
+	 }
+	 input.myText{
+		width: 49%;
+	 }
+	 .topbar{
+		margin-top: 80px;
+		width: 58%;
+	 }
+	 .sndBT{
+		width: 85px;
+	 }
+
+  }

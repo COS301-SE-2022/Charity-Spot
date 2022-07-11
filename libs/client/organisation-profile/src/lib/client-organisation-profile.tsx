@@ -10,6 +10,7 @@ import { FaUserAlt,FaEdit,FaPen } from 'react-icons/fa'
 import ListGroup from 'react-bootstrap/esm/ListGroup';
 
 import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
+import {Link} from 'react-router-dom'
 
 const IdCookie = getCookie('ID');
 
@@ -270,7 +271,7 @@ export function Profile() {
                     <label  htmlFor="star1" title="text"></label>
                   </div>  
               </div>
-              <button type='submit' id='chatGo'>Chat</button>
+              <Link to ='/chat' className='rgLink'><button type='submit' id='chatGo'>Chat</button></Link>
               <button type='submit' id='delivGo'> delievery</button>
               {/* <button type='submit' id='subGo'>Submit</button> */}
           </div>
