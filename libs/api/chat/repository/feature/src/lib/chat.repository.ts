@@ -36,7 +36,25 @@ export class ChatRepository {
 
     return u;
   }
+  
+  async updateThread(orgID: string, clientID: string, text: string) {
+    const u = await this.prisma.chatHistory.update({
+      where:
+      {
+        OrgID_ClientID:
+        {
+          OrgID: orgID,
+          ClientID:clientID,
+        }
+      },
+      data:
+      {
+        Messages: text
+      }
+    })
+  }
 
+/************************************************************************************
   //Trigger when an org sends a messsage
 
   async OrgSendsMessage(orgID, clientID : string ,text: string)
@@ -83,6 +101,44 @@ export class ChatRepository {
     })
 
     return u;
+  }
+  
+  //**********************************************************************************/
+  
+  //Notify Organisation
+  async alertOrg(orgID: string, clientID: string) {
+    const u = await this.prisma.chatHistory.update({
+      where:
+      {
+        OrgID_ClientID:
+        {
+          OrgID: orgID,
+          ClientID:clientID,
+        }
+      },
+      data:
+      {
+        AlertOrg: true
+      }
+    })
+  }
+  
+  //Notify Client
+  async alertClient(orgID: string, clientID: string) {
+    const u = await this.prisma.chatHistory.update({
+      where:
+      {
+        OrgID_ClientID:
+        {
+          OrgID: orgID,
+          ClientID:clientID,
+        }
+      },
+      data:
+      {
+        AlertClient: true
+      }
+    })
   }
 
   //Find all clients that have a chat with an Org
