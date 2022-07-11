@@ -82,7 +82,15 @@ export function ClientChat() {
   
 
   return (
+    
     <div className={styles["bodyC"]}>
+      <div className={styles["topbar"]}><div className={styles["ToFrom"]}>From: </div><div className={styles["senderName"]}>malana</div><div className={styles["ToFrom"]}>To: </div>
+             <div className={styles["recieverName"]}> <select name="orgs" id="rgorgnm1" className='rgSelect'>
+                    <option value="Organization">Organization</option>
+                    <option value="Client">Client</option>  
+              </select>
+              </div> 
+        </div><br/><br/>
       <div id = "mainMW" className={styles["messages"]}>
 
         {Bubb.map(function(B){
@@ -101,7 +109,7 @@ export function ClientChat() {
 
       </div>      
 
-      <input id="myText" type="text" name="fname" onChange={(e) => {setInputVal(e.target.value)}}/> <button onClick={()=>{sendMess()}}type="button">Send</button> <br />
+      <input id="myText" type="text" name="fname" placeholder='Type a message..' onChange={(e) => {setInputVal(e.target.value)}}/> <button onClick={()=>{sendMess()}}type="button">Send</button> <br />
 
     </div>
   );

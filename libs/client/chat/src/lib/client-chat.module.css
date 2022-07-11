@@ -16,9 +16,9 @@
 	transition: 0.5s;
 	animation: speech .7s linear 1;
 	margin: 15px;
-	width: 25%;
+	width: 30%;
 	word-wrap: break-word;	
-	min-width: 20%;
+	/* min-width: 20%; */
 }
 .speech-bubbleLeft::after{
 	content: '';
@@ -42,12 +42,13 @@
 	box-shadow: 0 7px 7px rgba(0,0,0,0.2);
 	transition: 0.5s;
 	animation: speech .7s linear 1;
-	max-width: 25%;
+	/* max-width: 25%; */
 	margin: 15px;
     word-wrap: break-word;	
 	margin-left: auto; 
 	margin-right: 1;
-	min-width: 20%;
+	width: 30%;
+	/* min-width: 20%; */
 
 }
 .speech-bubbleRight::after{
@@ -101,4 +102,21 @@ button {
   100% {
     transform: scale(1);
   }
+}
+.topbar{
+	
+	padding: 10px;
+}
+.senderName{
+	float: left;
+	background-color: gray;
+	width: 15%;
+	color: #1556bf;
+}
+.recieverName{
+	float: left;
+}
+.ToFrom{
+
+	float: left;
 }
