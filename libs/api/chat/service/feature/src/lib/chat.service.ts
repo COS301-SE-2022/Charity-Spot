@@ -45,12 +45,16 @@ export class ChatService {
         return returnableV;
     }
 
-    async RetrieveMessages(userID: string, with_ID: string, id: string) {
+    async RetrieveThread(userID: string, with_ID: string, id: string) {
+        //allocate
+        const returnableV = new ChatEntity();
+
         // retrieve file from database
         let orgID = null, clientID = null, data = null;
 
         if(id == "ORG") { 
             orgID = userID; clientID = with_ID; 
+            returnableV.Reciever = clientID; returnableV.Sender = orgID;
             const threads = await this.ChatRepository.GetAllChatsOrg(orgID);
 
             for(const i of threads) {
@@ -65,6 +69,7 @@ export class ChatService {
         }
         else { 
             orgID = with_ID; clientID = userID; 
+            returnableV.Reciever = orgID; returnableV.Sender = clientID;
             const threads = await this.ChatRepository.GetAllChatsClient(clientID);
 
             for(const i of threads) {
@@ -77,11 +82,8 @@ export class ChatService {
             if(data != null)
                 await this.ChatRepository.negateAlertClient(orgID, clientID);
         }        
-        
-        const returnableV = new ChatEntity();
-            returnableV.Reciever = "";
-            returnableV.Sender = userID;
 
+        //Message to return
         if(data != null) {
             let messages = data.Messages;
                 messages = Buffer.from(messages, 'base64').toString('utf-8');
@@ -89,5 +91,35 @@ export class ChatService {
         }
 
         return returnableV;
+    }
+
+    async RetrieveThreads(userID: string, id: string) {
+        let data = null;
+        const returnableV = new ChatEntity();
+            returnableV.Threads = [];
+
+        switch(id) {
+            case "ORG":
+                data = await this.ChatRepository.GetAllChatsOrg(userID);
+
+                if(data != null)
+                    for(const i of data) {
+                        returnableV.Threads.push(i.ClientID);
+                    }
+
+                break;
+
+            case "CLIENT":
+                data = await this.ChatRepository.GetAllChatsClient(userID);
+
+                if( data != null)
+                    for(const i of data) {
+                        returnableV.Threads.push(i.OrgID);
+                    }
+
+                break;
+        }
+
+        return returnableV
     }
 }

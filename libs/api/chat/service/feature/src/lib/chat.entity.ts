@@ -10,4 +10,7 @@ export class ChatEntity {
 
     @Field({nullable: true})
     Message: string
+
+    @Field(() => [String], {nullable: true})
+    Threads: string[]
 }
