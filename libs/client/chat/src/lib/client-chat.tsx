@@ -4,6 +4,8 @@ import {Bubble} from './Bubble';
 import { useEffect, useState } from 'react';
 
 
+
+
 export function ClientChat() {
 
   let loopCount = 0;
@@ -82,7 +84,16 @@ export function ClientChat() {
   
 
   return (
+    
     <div className={styles["bodyC"]}>
+      <br/>
+      <div className={styles["topbar"]}><div className={styles["ToFrom"]}>From: </div><div className={styles["senderName"]}>malana</div><div className={styles["ToFrom"]}>To: </div>
+             <div className={styles["recieverName"]}> <select name="orgs" id="rgorgnm1" className={styles["sendOptions"]}>
+                    <option value=" Name of Organization">Organization Name</option>
+                    <option value="Other Organizations">Other Organizations</option>  
+              </select>
+              </div> 
+        </div><br/>
       <div id = "mainMW" className={styles["messages"]}>
 
         {Bubb.map(function(B){
@@ -101,7 +112,7 @@ export function ClientChat() {
 
       </div>      
 
-      <input id="myText" type="text" name="fname" onChange={(e) => {setInputVal(e.target.value)}}/> <button onClick={()=>{sendMess()}}type="button">Send</button> <br />
+      <input className={styles["myText"]}type="text" name="fname" placeholder='Type a message..' onChange={(e) => {setInputVal(e.target.value)}}/> <button className={styles["sndBT"]} onClick={()=>{sendMess()}}type="button">Send</button> <br />
 
     </div>
   );

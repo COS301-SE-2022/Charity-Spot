@@ -7,25 +7,25 @@
     width: 90%;
 }
 .speech-bubbleLeft{
-	background: lightgray;
+	background:rgb(224, 224, 224);
 	color: #1556bf;
 	padding: 0.5em 1em;
 	position: relative;
-	border-radius: 0 0.25em 0.25em 0.25em;
+	border-radius: 0 15px 15px 15px;
 	box-shadow: 0 3px 3px rgba(0,0,0,0.2);
 	transition: 0.5s;
 	animation: speech .7s linear 1;
 	margin: 15px;
-	width: 15%;
+	width: 30%;
 	word-wrap: break-word;	
-	min-width: 80px;
+	/* min-width: 20%; */
 }
 .speech-bubbleLeft::after{
 	content: '';
 	position: absolute;
 	border: 0.5em solid transparent;
-	border-top-color: lightgray;
-	border-right-color:lightgray;
+	border-top-color: rgb(224, 224, 224);
+	border-right-color:rgb(224, 224, 224);
 	right: 100%;
 	top: 0;
 
@@ -34,28 +34,29 @@
 
 
 .speech-bubbleRight{
-	background: #1556bf;
+	background: #1458b3; 
 	color: #ffff;
 	padding: 0.5em 1em;
 	position: relative;
-	border-radius: 0.25em 0em 0.25em 0.25em;
+	border-radius: 15px 0em 15px 15px;
 	box-shadow: 0 7px 7px rgba(0,0,0,0.2);
 	transition: 0.5s;
 	animation: speech .7s linear 1;
-	max-width: 15%;
+	/* max-width: 25%; */
 	margin: 15px;
     word-wrap: break-word;	
 	margin-left: auto; 
 	margin-right: 1;
-	min-width: 80px;
+	width: 30%;
+	/* min-width: 20%; */
 
 }
 .speech-bubbleRight::after{
 	content: '';
 	position: absolute;
 	border: 0.5em solid transparent;
-	border-top-color: #1556bf;
-	border-left-color: #1556bf;
+	border-top-color:#1458b3; 
+	border-left-color: #1458b3; 
 	left: 100%;
 	top: 0;
 
@@ -69,24 +70,41 @@
     overflow-y: scroll;
     overflow-x:hidden;
     min-width: 250px;
+	border-radius: 10px;
+	background-color: #f8f8f8;
+	padding: 10px;
 }
-input[type=text] {
+input.myText {
   border: 2px solid #f8f8f8;
-  border-radius: 4px;
-  width: 55%;
+  border-radius: 10px;
+  width: 52%;
   padding: 12px 20px;
   background-color: #f8f8f8;
+  color: gray;
 }
-button {
-  background-color:#1556bf;
-  border: none;
-  color: white;
-  padding: 14px 24px;
-  text-decoration: none;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 5px;
+input.myText:hover{
+	transition: 0.3s ease-in;
+} 
+.sndBT{
+    
+    background: rgb(228, 228, 228);
+    color:  #1458b3;
+    border: none;
+    cursor: pointer;
+    padding: 12px;
+	width: 90px;
+    transition: all 0.3 ease;
+    border-radius: 5px;
+    margin-right: 10px;
+	margin-left: 10px;
 }
+.sndBT:hover{
+    transition: 0.2s ease-in;
+    box-shadow: 0.5px 0.5px 6px -1px black; 
+	background: #1458b3;
+	color: #ffff;
+    /* transform: translate(-5px); */
+ }
 .anim{animation-name: speech;}
 @keyframes speech{
   0% {
@@ -99,3 +117,104 @@ button {
     transform: scale(1);
   }
 }
+.topbar{
+	
+	padding: 10px;
+
+	width: 63%;
+	margin: 0 auto;
+	/* background-color: red; */
+}
+.senderName{
+	float: left;
+	background-color: rgb(211, 211, 211);
+	padding-right: 10px;
+	padding-left: 10px;
+	color: #1556bf;
+	border-radius: 5px;
+}
+.recieverName{
+	float: left;
+}
+.ToFrom{
+	margin-left: 15px;
+	margin-right: 15px;
+	float: left;
+}
+select.sendOptions{
+    display: block;
+    border: none;
+    height: 2rem;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 0rem;
+    padding: 0.2rem 1rem;
+    color: gray;
+    transition: all 0.2s ease-in-out;
+    border-radius: 5px;
+	
+}
+select:focus{
+    outline: none;
+    border: none;
+}
+
+
+
+
+
+@media screen and (max-width: 600px) {
+ .messages{
+	width: 95%;
+	
+ }
+ input.myText{
+	width: 75%;
+ }
+ .topbar{
+	margin-top: 10px;
+	width: 100%;
+ }
+ .recieverName{
+	width: 48%;
+
+ }
+ .sndBT{
+	width: 65px;
+ }
+ 
+  }
+  @media screen and (max-width: 900px) {
+	.messages{
+		width: 95%;
+		
+	 }
+	 .sndBT{
+		width: 120px;
+	 }
+	 input.myText{
+		width: 75%;
+	 }
+	 .topbar{
+		width: 95%;
+	 }
+  }
+
+  @media screen and (min-width: 1600px) {
+	.messages{
+		width: 55%;
+
+		
+	 }
+	 input.myText{
+		width: 49%;
+	 }
+	 .topbar{
+		margin-top: 80px;
+		width: 58%;
+	 }
+	 .sndBT{
+		width: 85px;
+	 }
+
+  }
