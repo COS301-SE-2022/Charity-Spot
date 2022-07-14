@@ -1,7 +1,12 @@
 <div>
     <h1 align="center">Seal Team 301 + Charity Spot</h1>
     <div align="center">
+  
         <h3 >Seal Team 301 is committed to <b>transparency<b>, <b>perseverance</b> and <b>success</b>.</h3>
+        <p>For this Project we are making a charity app, that will allow organizations and parties in need to meet and communicate effectively.
+          The party in need will look for a registered organization on our platform and they will ask for a donation that they need, if the 
+          organization can donate the requested item, it will let the party in need be alerted. We are using the google maps API to show the
+          locations of the organizations and we are using our own in-built chat functionality.</p>
     </div>
     <img align="center"src="https://firebasestorage.googleapis.com/v0/b/charityspotdemo1.appspot.com/o/logo1.png?alt=media&token=b54104ac-a595-46f9-ab28-6069195143b4"></img>
 
