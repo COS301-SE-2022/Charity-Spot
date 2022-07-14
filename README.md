@@ -37,7 +37,7 @@
 
 [Timo van der Merwe](https://github.com/TimovdMerwe-18)
 
-[Elphus Malope](https://github.com/deamon-death)
+[Elphus Malope](https://github.com/nimGaluu)
 
 [Moloko Magwai](https://github.com/MoloTheSniper)
 
