@@ -69,6 +69,15 @@
       "@charity-spot/api/registration/service/feature": [
         "libs/api/registration/service/feature/src/index.ts"
       ],
+      "@charity-spot/api/schedule-delivery/api/feature": [
+        "libs/api/schedule-delivery/api/feature/src/index.ts"
+      ],
+      "@charity-spot/api/schedule-delivery/repository/feature": [
+        "libs/api/schedule-delivery/repository/feature/src/index.ts"
+      ],
+      "@charity-spot/api/schedule-delivery/service/feature": [
+        "libs/api/schedule-delivery/service/feature/src/index.ts"
+      ],
       "@charity-spot/api/shared/services/prisma": [
         "libs/api/shared/services/prisma/src/index.ts"
       ],
