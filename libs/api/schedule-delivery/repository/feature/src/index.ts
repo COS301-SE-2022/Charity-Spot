@@ -1,1 +1,1 @@
-export * from './lib/api-schedule-delivery-repository-feature.module';
+export * from './lib/scheduleDelivery.repository';
