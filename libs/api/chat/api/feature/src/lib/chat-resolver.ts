@@ -21,17 +21,7 @@ export class ChatResolver {
             + date.getHours() + ":" + date.getMinutes() + "] - "
             + message;
 
-        let sender_ID = null;   
-        switch(sender) {
-            case "ORG":
-                sender_ID = "ORG";
-                break;
-            case "CLIENT":
-                sender_ID = "CLIENT";
-                break;
-        }
-
-        return this.ChatService.Send(to, from, sender_ID, message_);
+        return this.ChatService.Send(to, from, sender, message_);
     }
 
     @Query(() => ChatEntity)
@@ -40,6 +30,14 @@ export class ChatResolver {
         @Args("with_ID") w_id: string,
         @Args("whois") identification: "ORG" | "CLIENT"
     ) {
-        return this.ChatService.RetrieveMessages(u_id, w_id, identification);
+        return this.ChatService.RetrieveThread(u_id, w_id, identification);
+    }
+
+    @Query(() => ChatEntity)
+    async RetrieveThreads(
+        @Args("userID") u_id: string,
+        @Args("whois") identity: "ORG" | "CLIENT"
+    ) {
+        return this.ChatService.RetrieveThreads(u_id, identity);
     }
 }
