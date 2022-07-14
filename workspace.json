@@ -25,6 +25,7 @@
     "client-login": "libs/client/login",
     "client-organisation-profile": "libs/client/organisation-profile",
     "client-registration": "libs/client/registration",
+    "client-schedule-delivery": "libs/client/schedule-delivery",
     "login-api-feature": "libs/api/login/api/feature",
     "login-repository-data-access": "libs/api/login/repository/data-access",
     "login-service-feature": "libs/api/login/service/feature",

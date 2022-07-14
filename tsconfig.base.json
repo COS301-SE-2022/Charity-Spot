@@ -81,6 +81,9 @@
       ],
       "@charity-spot/client/registration": [
         "libs/client/registration/src/index.ts"
+      ],
+      "@charity-spot/client/schedule-delivery": [
+        "libs/client/schedule-delivery/src/index.ts"
       ]
     }
   },
