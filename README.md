@@ -1,7 +1,6 @@
 <div>
     <h1 align="center">Seal Team 301 + Charity Spot</h1>
-    <div align="center">
-  
+    <div align="center">Hello 
         <h3 >Seal Team 301 is committed to <b>transparency<b>, <b>perseverance</b> and <b>success</b>.</h3>
         <p>For this Project we are making a charity app, that will allow organizations and parties in need to meet and communicate effectively.
           The party in need will look for a registered organization on our platform and they will ask for a donation that they need, if the 
