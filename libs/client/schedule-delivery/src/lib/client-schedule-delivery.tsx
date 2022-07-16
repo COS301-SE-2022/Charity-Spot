@@ -8,48 +8,39 @@ export function ClientScheduleDelivery(props: ClientScheduleDeliveryProps) {
     <div>
 <div className="wrapper2">
 <br/><br/>
-  <input type ="radio" name="slider" id='donate1'  defaultChecked></input>
+  <input type ="radio" name="slider" id='deliver1'  defaultChecked></input>
   <input type ="radio" name="slider" id='history1' ></input>
   
   <nav>
-    <label htmlFor= "donate1" className='donate1'><FaClock/> Delievery </label>
+    <label htmlFor= "deliver1" className='deliver1'><FaClock/> Delievery </label>
     <label htmlFor= "history1" className='history1'> <FaHistory/> History </label>
     <div className='slider'></div>
   </nav>
   <section>
     <div className='content content-1'>
       <div className='title'><h1>Delievery Schedule</h1></div>
-            <div className='donate-main'>
+            <div className='deliver-main'>
               <div className='deliver-cent'>
                 <br/><br/>
-                <div className='donater'>
-                  <form id = "mainDonateForm">
-                    <div className='donate-box1'>
+                <div className='delvrr'>
+                  <form id = "mainDeliverForm">
+                    <div className='deliver-box'>
                       <label>From:</label><br/>
-                      <input className="din1" type ="text" placeholder=''></input>  
+                      <input className="del1" type ="text" placeholder=''></input>  
                         <FaPen color='#1458b3'/><br/>
-
                     </div>
-                    <div className='donate-box2'>
+                    
+                    <div className='deliver-box'>
                       
                         <label>To:</label><br/>
-                        <input className="din1" type ="text" placeholder=' Name'></input>  
+                        <input className="del1" type ="text" placeholder=' Name'></input>  
                         <FaPen color='#1458b3'/>
                     </div>  
                     
-                    <div className='donate-box3'>
-                      
-                    </div>                                 
-                    <div className='donate-box5'>
-                    </div>
-
-
                     <br></br>
-
+{/* 
                     <input id='dnt_but'type="submit" value="Donate"/>   
-                    <input id='clr_but'type="button"
-
-                      value="Clear"/>                                                                                    
+                    <input id='clr_but'type="button" value="Clear"/>                                                                                     */}
                   </form>
 
                 </div>  
