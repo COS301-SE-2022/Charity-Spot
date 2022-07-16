@@ -272,7 +272,7 @@ export function Profile() {
                   </div>  
               </div>
               <Link to ='/chat' className='rgLink'><button type='submit' id='chatGo'>Chat</button></Link>
-              <button type='submit' id='delivGo'> delievery</button>
+              <Link to ='/scheduleDelivery' className='rgLink'><button type='submit' id='delivGo'> delievery</button></Link>
               {/* <button type='submit' id='subGo'>Submit</button> */}
           </div>
       </div>
@@ -301,23 +301,23 @@ export function Profile() {
                 <div className='updater'>
                   <form onSubmit={(e) => { e.preventDefault(); handlesumbitUpdate();}}>
                     <div className='user-box1'>
-                      <input className="in1" type ="text" placeholder='Name'defaultValue={OName} onChange ={(e)=>{setNewOName(e.target.value)}}></input>  
+                      <input className="in1" type ="text" placeholder=' Name'defaultValue={OName} onChange ={(e)=>{setNewOName(e.target.value)}}></input>  
                       <FaPen color='#1458b3'/>
                     </div>
                     
                     <div className='user-box2'>
-                      <input className="in3" type ="text" placeholder='Address' defaultValue={OLocation} onChange ={(e)=>{setNewOLocation(e.target.value)}}></input> 
+                      <input className="in3" type ="text" placeholder=' Address' defaultValue={OLocation} onChange ={(e)=>{setNewOLocation(e.target.value)}}></input> 
                       <FaPen color='#1458b3'/>
                     </div>                                
                     <div className='user-box3'>
-                      <input className="in4" type ="password" placeholder='Password' defaultValue = "" onChange ={(e)=>{setNewOPass(e.target.value)}}></input> 
+                      <input className="in4" type ="password" placeholder=' Password' defaultValue = "" onChange ={(e)=>{setNewOPass(e.target.value)}}></input> 
                       <FaPen color='#1458b3'/>
                     </div>      
                     <div className='user-box4'>
-                      <input className="in5" type ="password" placeholder='Confirm Password' onChange ={(e)=>{setNewOPassC(e.target.value)}}></input> 
+                      <input className="in5" type ="password" placeholder=' Confirm Password' onChange ={(e)=>{setNewOPassC(e.target.value)}}></input> 
                       <FaPen color='#1458b3'/>
                     </div> 
-                    <input id='upt_but'type="submit" value="Update"/>                                                                                       
+                    <input id='upt_but'type="submit" value="Update"/>   <FaPen color='transparent'/>                                                                                     
                   </form>
                 </div>  
               </div>

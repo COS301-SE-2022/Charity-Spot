@@ -550,54 +550,59 @@
 
    
 input.in1,.in2,.in3,.in4,.in5{
-   width: 80%; 
-   border: none;
-   border-bottom: 2px solid #1458b3;
-   background-color: transparent;
-   color: darkslategray;
-   margin-bottom: 30px;
-   outline: none;
-   margin-right: 10px;
+    width: 80%; 
+    border: none;
+    /* border-bottom: 2px solid #1458b3; */
+    background-color: rgb(241, 241, 241);
+    color: darkslategray;
+    margin-bottom: 15px;
+    outline: none;
+    margin-right: 10px;
+ 
+    border-radius: 5px;
+    height: 45px;
 }
 input.in1,.in2,.in3,.in4,.in5:focus{
     outline: none;
 }
 input.in1:hover{
+    transition: 0.3s ease-in;
     outline: none;
-    box-shadow: 1px 1px 0px -1px blue;  
-    border-bottom: 2px solid gray;
+    border: 1px solid #1458b3;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
  
 }
 input.in2:hover{
+    transition: 0.3s ease-in;
     outline: none;
-    box-shadow: 1px 1px 0px -1px blue;  
-    border-bottom: 2px solid gray;
-
+    border: 1px solid #1458b3;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
 }
 input.in3:hover{
+    transition: 0.3s ease-in;
     outline: none;
-    box-shadow: 1px 1px 0px -1px blue;  
-    border-bottom: 2px solid gray;
-
+    border: 1px solid #1458b3;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
 }
 input.in4:hover{
+    transition: 0.3s ease-in;
     outline: none;
-    box-shadow: 1px 1px 0px -1px blue;  
-    border-bottom: 2px solid gray;
+    border: 1px solid #1458b3;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
 
 }
 input.in5:hover{
+    transition: 0.3s ease-in;
     outline: none;
-    box-shadow: 1px 1px 0px -1px blue;  
-    border-bottom: 2px solid gray;
-
+    border: 1px solid #1458b3;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
 }
 
 
 
 
 #upt_but{
-    width: 85%;
+    width: 80%;
     background: #1458b3 ;
     color: white;
     border: none;
