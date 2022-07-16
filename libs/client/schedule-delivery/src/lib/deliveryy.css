@@ -60,6 +60,7 @@
     height: 450px;
     width: 100%;
     box-sizing: border-box;
+    border-radius: 10px;
 
 }
 input[type="file"] {
@@ -610,6 +611,9 @@ max-height: 450px;
         background: #1458b3;
 
     }
+    #deliv_but{
+        width: 150px;
+    }
 
 }
 @media screen and (max-width: 900px) {
@@ -639,4 +643,22 @@ max-height: 450px;
         background: #1458b3;
 
     }
+    #deliv_but{
+        width: 150px;
+    }
  }
+ @media screen and (min-width: 1600px) {
+    #deliv_but{
+        width: 150px;
+    }
+    .deliver-cent{
+        /* margin-top: 10px; */
+        width: 100%;
+        height: 500px;
+    }
+    .deliver-main{
+        margin-top: 50px;
+        width: 80%;
+        height: 500px;
+    }
+  }
