@@ -26,45 +26,47 @@ export function ClientScheduleDelivery(props: ClientScheduleDeliveryProps) {
                   <form id = "mainDeliverForm">
                     <div className='deliver-box'>
                       <label>From:</label><br/>
-                      <input className="del1" type ="text" placeholder=''></input>  
+                      <input className="del1" type ="text" placeholder='Your Name'></input>  
                         <FaPen color='#1458b3'/><br/>
                     </div>
                     
                     <div className='deliver-box'>
                       
                         <label>To:</label><br/>
-                        <input className="del1" type ="text" placeholder=' Name'></input>  
+                        <input className="del1" type ="text" placeholder='Recipient Name'></input>  
                         <FaPen color='#1458b3'/>
                     </div>  
                     <div className='deliver-box'>
                       
                       <label>Your Location:</label><br/>
-                      <input className="del1" type ="text" placeholder=' Name'></input>  
+                      <input className="del1" type ="text" placeholder=' e.g Pretoria, Hatfield'></input>  
                       <FaPen color='#1458b3'/>
                   </div>  
                   <div className='deliver-box'>
                       
                       <label>Delivery Location:</label><br/>
-                      <input className="del1" type ="text" placeholder=' Name'></input>  
+                      <input className="del1" type ="text" placeholder=' Limpopo, Polokwane'></input>  
                       <FaPen color='#1458b3'/>
                   </div>  
                   <div className='deliver-box'>
                       
                       <label>Date of Transportation:</label><br/>
-                      <input className="del1" type ="date" placeholder=' Name'></input>  
+                      <input className="del1" type ="date" ></input>  
                       <FaPen color='#1458b3'/>
                   </div>  
                   <div className='deliver-box'>
                       
                       <label>Estimated Date of Arrival:</label><br/>
-                      <input className="del1" type ="date" placeholder=' Name'></input>  
+                      <input className="del1" type ="date" ></input>  
                       <FaPen color='#1458b3'/>
                   </div>  
                     
-                    <br></br>
-{/* 
-                    <input id='dnt_but'type="submit" value="Donate"/>   
-                    <input id='clr_but'type="button" value="Clear"/>                                                                                     */}
+                    <br></br><br></br>
+                  <div className='deliver-box'>
+                  <input id='deliv_but'type="submit" value="Confirm Delivery"/>   
+                    {/* <input id='clr_but'type="button" value="Clear"/>   */}
+                  </div>
+    
                   </form>
 
                 </div>  

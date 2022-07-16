@@ -418,8 +418,8 @@ input.del1:hover{
 
 
 
-#dnt_but{
-    width: 55%;
+#deliv_but{
+    width: 35%;
     background: #1458b3 ;
     color: white;
     border: none;
@@ -428,6 +428,7 @@ input.del1:hover{
     transition: all 0.3 ease;
     border-radius: 5px;
     margin-right: 4px;
+
 }
 #clr_but{
     width: 25%;
