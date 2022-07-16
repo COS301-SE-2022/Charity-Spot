@@ -23,4 +23,16 @@ export class ScheduleDeliveryService {
         return returnableV;
     }
 
+    async History( userid: string) {
+        //get data from database
+
+        const returnableV = new ScheduleDeliveryEntity();
+            returnableV.id_1 = userid;
+            returnableV.id_2 = "";
+            returnableV.id_item = "";
+            returnableV.History_ = [];
+
+        return returnableV;
+    }
+
 }

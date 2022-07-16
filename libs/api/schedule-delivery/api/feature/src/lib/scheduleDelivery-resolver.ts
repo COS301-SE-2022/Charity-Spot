@@ -22,4 +22,11 @@ export class ScheduleDeliveryResolver {
             date
         );
     }
+
+    @Query(() => ScheduleDeliveryEntity)
+    History(
+        @Args("userid") id: string
+    ) {
+        return this.ScheduleDeliveryService.History(id);
+    }
 }

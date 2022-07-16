@@ -10,4 +10,9 @@ export class ScheduleDeliveryEntity {
 
     @Field({nullable: false})
     id_item: string
+
+
+    //history
+    @Field(() => [ScheduleDeliveryEntity], {nullable: true})
+    History_: ScheduleDeliveryEntity[]
 }
