@@ -272,7 +272,7 @@ export function Profile() {
                   </div>  
               </div>
               <Link to ='/chat' className='rgLink'><button type='submit' id='chatGo'>Chat</button></Link>
-              <Link to ='/scheduleDelivery' className='rgLink'><button type='submit' id='delivGo'> delievery</button></Link>
+              <Link to ='/scheduleDelivery' className='rgLink'><button type='submit' id='delivGo'> delivery</button></Link>
               {/* <button type='submit' id='subGo'>Submit</button> */}
           </div>
       </div>

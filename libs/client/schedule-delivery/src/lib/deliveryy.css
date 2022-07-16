@@ -60,6 +60,7 @@
     height: 450px;
     width: 100%;
     box-sizing: border-box;
+    border-radius: 10px;
 
 }
 input[type="file"] {
@@ -416,7 +417,17 @@ input.del1:hover{
 }
 
 
-
+label.labelDel{
+    /* display: block; */
+    margin: auto;
+    /* float: left; */
+    /* width: 70%; */
+    font-size: large;
+    color:#1458b3;
+    text-align: left;
+    width: 85%;
+    padding-bottom: 5px;
+}
 
 #deliv_but{
     width: 35%;
@@ -480,7 +491,7 @@ height: 17px;
 
 }
 
-.collapsible-text{
+.collapsible-textDel{
     max-height: 1px;
     overflow: hidden;
     border-radius: 4px;
@@ -524,24 +535,14 @@ max-height: 450px;
     
  
 }
-.collapseleft{
-    /* width: 28%;
-    padding-top: 10%;
-    margin-right: 2px;
+.collapseleftDel{
 
-    background: rgb(218, 220, 223);
-
-
-    align-items: center; */
     text-align: center;
 
     border-radius: 10px;
     box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0);
-
-
-    /* border: solid 1px rgb(202, 202, 202); */
     width: 28%;
-    height: 450px;
+    height: 470px;
 
 
     box-sizing: border-box;
@@ -557,16 +558,20 @@ max-height: 450px;
     flex-direction: column;
     justify-content: center;
 
+    margin-top: 10px;
+
 }
-.collapseright{
+.collapserightDel{
     width: 70%;
     background: rgb(229, 231, 233);
-    padding:20px;
+    padding:0px;
     border-radius: 10px;
     box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0);
+
+    margin-top: 10px ;
     /* border: solid 1px rgb(202, 202, 202); */
 }
-.collapsible input:checked ~.collapsible-text{
+.collapsible input:checked ~.collapsible-textDel{
     max-height: 700px;
     padding-bottom: 25px;
     margin-bottom: 25px;
@@ -581,7 +586,7 @@ max-height: 450px;
 
 @media screen and (max-width: 600px) {
 
-    .collapseleft{
+    .collapseleftDel{
         width: 100%;
         height: 200px;
         border-top-left-radius: 10px ;
@@ -589,7 +594,7 @@ max-height: 450px;
         border-bottom-left-radius: 0px ;
         border-bottom-right-radius: 0px ;
     }
-    .collapseright{
+    .collapserightDel{
         width: 100%;
         
         border-top-left-radius: 0px ;
@@ -605,12 +610,15 @@ max-height: 450px;
         color: #d7d9da;
         background: #1458b3;
 
+    }
+    #deliv_but{
+        width: 150px;
     }
 
 }
 @media screen and (max-width: 900px) {
 
-    .collapseleft{
+    .collapseleftDel{
         width: 100%;
         height: 200px;
         border-top-left-radius: 10px ;
@@ -618,7 +626,7 @@ max-height: 450px;
         border-bottom-left-radius: 0px ;
         border-bottom-right-radius: 0px ;
     }
-    .collapseright{
+    .collapserightDel{
         width: 100%;
         
         border-top-left-radius: 0px ;
@@ -635,4 +643,22 @@ max-height: 450px;
         background: #1458b3;
 
     }
+    #deliv_but{
+        width: 150px;
+    }
  }
+ @media screen and (min-width: 1600px) {
+    #deliv_but{
+        width: 150px;
+    }
+    .deliver-cent{
+        /* margin-top: 10px; */
+        width: 100%;
+        height: 500px;
+    }
+    .deliver-main{
+        margin-top: 50px;
+        width: 80%;
+        height: 500px;
+    }
+  }
