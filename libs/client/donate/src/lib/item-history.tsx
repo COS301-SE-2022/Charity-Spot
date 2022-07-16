@@ -140,7 +140,7 @@ export function ItemHistory(props : any){
                             <div className="cov">Quantity: {item.Quantity}</div> 
                             <div className="cov">Category: {item.Category}</div> 
                             <div className="cov">Condition: {item.Quality}</div> 
-                            <div className="cov">Description: {item.Description}</div>
+                            <div className="covDesc">Description: {item.Description}</div>
                         </div>
                         
                     </div>

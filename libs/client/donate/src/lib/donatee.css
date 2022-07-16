@@ -70,12 +70,13 @@ img#donation-pic{
     border-radius: 10%;
     /* padding-bottom: 5px; */
     color: #1458b3;
+ 
 
 }
 img#donation-pic2{
     height: 250px;
     width: 65%;
-    border-radius: 10%;
+    border-radius: 100%;
     /* padding-bottom: 5px; */
     color: #1458b3;
 
@@ -477,8 +478,6 @@ input.din5:hover{
     position: relative;
     font-weight: 600;
 
-     /* box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0); */
-    /* color: #1458b3; */
     color: #1458b3;
     background-color: #d5d7da;
     display: block;
@@ -523,8 +522,25 @@ height: 18px;
     border:  #bdbdbd ;
     border-width: 1px;
     padding: 15px;
-    height: 60px;
+    min-height: 60px;
     color: #1458b3;
+ 
+}
+.covDesc{
+    /* box-shadow: 0.5px 0.5px 6px -1px rgba(0, 0, 0, 0.163);  */
+    background-color: #dadada;
+    border-radius: 10px;
+    margin: 15px;
+    border:  #bdbdbd ;
+    border-width: 1px;
+    padding: 15px;
+    min-height: 60px;
+    color: #1458b3;
+    overflow-y: auto;
+    /* overflow-x: hidden; */
+max-height: 450px;
+    
+ 
 }
 .collapseleft{
     /* width: 28%;
@@ -547,7 +563,7 @@ height: 18px;
 
     box-sizing: border-box;
     /* margin: 20px; */
-    background-color: #dadada;
+    background-color: rgb(229, 231, 233);
     /* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0); */
     border-top-left-radius: 10px ;
     border-bottom-left-radius: 10px ;
