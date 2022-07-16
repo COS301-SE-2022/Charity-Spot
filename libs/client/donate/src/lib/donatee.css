@@ -477,7 +477,7 @@ input.din5:hover{
     position: relative;
     font-weight: 600;
 
-     box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0);
+     /* box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0); */
     /* color: #1458b3; */
     color: #1458b3;
     background-color: #d5d7da;
@@ -485,7 +485,7 @@ input.din5:hover{
     margin-bottom: 10px;
     margin-bottom: 10px;
     cursor: pointer;
-    padding: 15px 0;
+    padding: 25px 0;
     border-radius: 10px;
     width: 100%;
 
@@ -514,6 +514,17 @@ height: 18px;
     justify-content: space-around;
     flex-flow: wrap;
   
+}
+.cov{
+    /* box-shadow: 0.5px 0.5px 6px -1px rgba(0, 0, 0, 0.163);  */
+    background-color: #dadada;
+    border-radius: 10px;
+    margin: 15px;
+    border:  #bdbdbd ;
+    border-width: 1px;
+    padding: 15px;
+    height: 60px;
+    color: #1458b3;
 }
 .collapseleft{
     /* width: 28%;

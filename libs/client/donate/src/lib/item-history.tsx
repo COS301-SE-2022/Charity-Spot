@@ -1,5 +1,5 @@
 import ListGroup from 'react-bootstrap/esm/ListGroup';
-import { FaHistory,FaDonate,FaPen,FaUserAlt,FaEdit,FaArrowRight } from 'react-icons/fa';
+import { FaHistory,FaDonate,FaPen,FaUserAlt,FaEdit,FaArrowDown,FaArrowUp } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import './donatee.css'
 import { getCookie, setCookie } from 'typescript-cookie'
@@ -127,7 +127,7 @@ export function ItemHistory(props : any){
 
                     <input type ='checkbox' id = {item.ItemID}></input>
 
-                    <label htmlFor={item.ItemID}>{item.Name}<FaArrowRight/></label>
+                    <label htmlFor={item.ItemID}>{item.Name} <FaArrowDown/></label>
 
                     <div className='collapsible-text'><br/>
                         <div className='collapseleft'>
@@ -135,13 +135,12 @@ export function ItemHistory(props : any){
                         </div>
 
                         <div className='collapseright'>
-                            <ListGroup variant="flush" >
-                            <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Name: {item.Name}</ListGroup.Item>
-                                <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px', color: '#104283' }}>Quantity: {item.Quantity} </ListGroup.Item>
-                                <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Category: {item.Category} </ListGroup.Item>
-                                <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Condition: {item.Quality}</ListGroup.Item>
-                                <ListGroup.Item style={{ backgroundColor: 'transparent', height: '70px' , color: '#104283'}}>Description: {item.Description}</ListGroup.Item>
-                            </ListGroup>
+      
+                            <div className="cov">Name: {item.Name}</div>
+                            <div className="cov">Quantity: {item.Quantity}</div> 
+                            <div className="cov">Category: {item.Category}</div> 
+                            <div className="cov">Condition: {item.Quality}</div> 
+                            <div className="cov">Description: {item.Description}</div>
                         </div>
                         
                     </div>
