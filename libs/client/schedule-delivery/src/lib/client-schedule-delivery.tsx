@@ -36,6 +36,30 @@ export function ClientScheduleDelivery(props: ClientScheduleDeliveryProps) {
                         <input className="del1" type ="text" placeholder=' Name'></input>  
                         <FaPen color='#1458b3'/>
                     </div>  
+                    <div className='deliver-box'>
+                      
+                      <label>Your Location:</label><br/>
+                      <input className="del1" type ="text" placeholder=' Name'></input>  
+                      <FaPen color='#1458b3'/>
+                  </div>  
+                  <div className='deliver-box'>
+                      
+                      <label>Delivery Location:</label><br/>
+                      <input className="del1" type ="text" placeholder=' Name'></input>  
+                      <FaPen color='#1458b3'/>
+                  </div>  
+                  <div className='deliver-box'>
+                      
+                      <label>Date of Transportation:</label><br/>
+                      <input className="del1" type ="date" placeholder=' Name'></input>  
+                      <FaPen color='#1458b3'/>
+                  </div>  
+                  <div className='deliver-box'>
+                      
+                      <label>Estimated Date of Arrival:</label><br/>
+                      <input className="del1" type ="date" placeholder=' Name'></input>  
+                      <FaPen color='#1458b3'/>
+                  </div>  
                     
                     <br></br>
 {/* 
