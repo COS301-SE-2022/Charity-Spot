@@ -29,7 +29,7 @@ export class ScheduleDeliveryRepository {
     //To Be Added
   }
 
-  //Schedule Delivery
+  //Find All Org Schedule Delivery
 
   async FindAllOrgDeliviries(OrgID:string){
     const u = await this.prisma.donoItem.findMany({
@@ -48,6 +48,12 @@ export class ScheduleDeliveryRepository {
     u.forEach(item => {
       result.push(/*to add getting result from delivery table*/);
     });
+  }
+
+  //Find All Org Schedule Delivery
+
+  async FindAllClientDeliviries(ClientID:string){
+    //To Add
   }
 
   //Delivery Details
