@@ -30,6 +30,8 @@ export class ScheduleDeliveryRepository {
   }
 
   //Find All Org Schedule Delivery
+  
+  //Will only return Deliviers IDs Run  GetDeliveryDetails to get details
 
   async FindAllOrgDeliviries(OrgID:string){
     const u = await this.prisma.donoItem.findMany({
@@ -51,6 +53,8 @@ export class ScheduleDeliveryRepository {
   }
 
   //Find All Org Schedule Delivery
+  
+  //Will only return Deliviers IDs Run  GetDeliveryDetails to get details
 
   async FindAllClientDeliviries(ClientID:string){
     //To Add
