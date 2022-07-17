@@ -25,7 +25,7 @@ export class ScheduleDeliveryRepository {
 
   //Schedule Delivery
 
-  async CreateShedule(itemID:string, loaction: string, Time: string, ClientID: string){
+  async CreateShedule(itemID:string, loaction: string, Date: string, Time: string, ClientID: string){
     //To Be Added
   }
 
@@ -50,9 +50,15 @@ export class ScheduleDeliveryRepository {
     });
   }
 
-  //Schedule Delivery
+  //Delivery Details
 
   async GetDeliveryDetails(DeliveryID:string){
+    //to add
+  }
+
+  //Change Date Time
+
+  async ChangeDateTime(DeliveryID:string, Date, Time:string){
     //to add
   }
 }
