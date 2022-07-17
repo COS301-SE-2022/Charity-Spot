@@ -49,4 +49,10 @@ export class ScheduleDeliveryRepository {
       result.push(/*to add getting result from delivery table*/);
     });
   }
+
+  //Schedule Delivery
+
+  async GetDeliveryDetails(DeliveryID:string){
+    //to add
+  }
 }
