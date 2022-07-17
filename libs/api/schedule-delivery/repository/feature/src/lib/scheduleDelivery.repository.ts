@@ -22,4 +22,10 @@ export class ScheduleDeliveryRepository {
 
     return u;
   }
+
+  //Schedule Delivery
+
+  async CreateShedule(itemID:string, loaction: string, Time: string, ClientID: string){
+    //To Be Added
+  }
 }
