@@ -10,37 +10,39 @@ public class Main {
 	public static void main(String[] args) {
 
 		try{
+			
+			BufferedReader br = new BufferedReader(new FileReader(new File("mockDonations.txt")));
+			
+			String line;
 
-			PushbackInputStream input = new PushbackInputStream(new FileInputStream("mockDonations.txt"));
+			while((line = br.readLine()) != null){
 
-			int charV = input.read();
+				for (int i=0; i < line.length(  ); i++){
 
-			String st;
+					if(line.charAt(i) == ' ' || line.charAt(i) == ','){
+						continue;
+					}
 
-			int i = 0;
+					double val = (double) (line.charAt(i) - '0');
 
-			while (charV != -1){
+    				System.out.print(val);
 
-				trainData[i] = new double[3];
-				trainData[i][0] = 1; 
-
-				if(charV == 10){
-					System.out.print(" new line");
 				}
 
-				System.out.print((char)charV);
+				System.out.println();
 
-				charV = input.read();
-			}
+			}  
+
+			
 
 		}
 		catch(Exception e){}
 
-		System.out.println(trainData[0].length);
+		System.out.println(trainData.length);
 
 	
 		
-		/*NeuralNetwork nn = new NeuralNetwork(2,10,1);
+		/*NeuralNetwork nn = new NeuralNetwork(3,10,4);
 
 		/* [
 		
