@@ -1,8 +1,13 @@
+.deliver-box
+{
+    float: left;
+    width: 50%;
+
+}
 .title{
     color: #1458b3;
 }
 .profile-page{
-    /* background-color: rgb(232, 236, 243); */
     min-height: 100vh;
     min-width: 100vw;
     overflow-x: hidden;
@@ -15,7 +20,7 @@
     0%   {opacity:0 ;}
     100% {opacity:1 ;}
   }
-.donate-main{
+.deliver-main{
     height: 500px auto;
     width: 100%;
 
@@ -35,14 +40,11 @@
 
 }
 .donate-left{
-    /* background-color: aqua; */
     height: 450px;
     width: 30%;
 
     box-sizing: border-box;
-    /* margin: 20px; */
     background-color: #dadada;
-    /* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0); */
     border-top-left-radius: 10px ;
     border-bottom-left-radius: 10px ;
 
@@ -53,13 +55,13 @@
     justify-content: center;
    
 }
-.donate-right{
+.deliver-cent{
     background-color: rgb(228, 229, 230); 
     height: 450px;
-    width: 70%;
+    width: 100%;
     box-sizing: border-box;
-    /* margin: 20px;   */
-    /* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0); */
+    border-radius: 10px;
+
 }
 input[type="file"] {
     display: none;
@@ -68,7 +70,6 @@ img#donation-pic{
     height: 250px;
     width: 65%;
     border-radius: 10%;
-    /* padding-bottom: 5px; */
     color: #1458b3;
  
 
@@ -328,10 +329,10 @@ body{
     transition: all 0.3s ease;
  
   }
-  #donate1:checked ~ nav label.donate1{
+  #deliver1:checked ~ nav label.deliver1{
     color: white;
   }
-  .donate1:hover{
+  .deliver1:hover{
     color: gray;
     
   }
@@ -359,7 +360,7 @@ body{
     bottom: 0;
     transition: all 0.3s ease;
   }
-  #donate1:checked ~ nav .slider{
+  #deliver1:checked ~ nav .slider{
     left: 8%;
   }
   #history1:checked ~ nav .slider{
@@ -370,7 +371,7 @@ body{
   section .content{
     display: none;
   }
-  #donate1:checked ~ section .content-1{
+  #deliver1:checked ~ section .content-1{
    display: block;
   }
   #history1:checked ~ section .content-2{
@@ -391,7 +392,7 @@ body{
  
    
 /* ----------Input Edits-------------- */
-input.din1,.din2,.din3,.din4,.din5{
+input.del1{
    width: 80%; 
    border: none;
    /* border-bottom: 2px solid #1458b3; */
@@ -405,52 +406,31 @@ input.din1,.din2,.din3,.din4,.din5{
    height: 45px;
    /* border: 1px solid #1458b3; */
 }
-input.din1,.din2,.din3,.din4,.din5:focus{
+input.del1:focus{
     outline: none;
 }
-input.din1:hover{
+input.del1:hover{
     transition: 0.3s ease-in;
     outline: none;
     border: 1px solid #1458b3;
     box-shadow: 0 3px 3px rgba(0,0,0,0.2);
 }
-input.din2:hover{
-    transition: 0.3s ease-in;
-    outline: none;
-    border: 1px solid #1458b3;
-    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
- 
-}
-select.din3:hover{
-    transition: 0.3s ease-in;
-    outline: none;
-    border: 1px solid #1458b3;
-    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
- 
 
-}
-select.din4:hover{
-    transition: 0.3s ease-in;
-    outline: none;
-    border: 1px solid #1458b3;
-    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
- 
 
-}
-textarea.din5:hover{
-    transition: 0.3s ease-in;
-    outline: none;
-    border: 1px solid #1458b3;
-    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
- 
-
+label.labelDel{
+    /* display: block; */
+    margin: auto;
+    /* float: left; */
+    /* width: 70%; */
+    font-size: large;
+    color:#1458b3;
+    text-align: left;
+    width: 85%;
+    padding-bottom: 5px;
 }
 
-
-
-
-#dnt_but{
-    width: 55%;
+#deliv_but{
+    width: 35%;
     background: #1458b3 ;
     color: white;
     border: none;
@@ -459,6 +439,7 @@ textarea.din5:hover{
     transition: all 0.3 ease;
     border-radius: 5px;
     margin-right: 4px;
+
 }
 #clr_but{
     width: 25%;
@@ -510,7 +491,7 @@ height: 17px;
 
 }
 
-.collapsible-text{
+.collapsible-textDel{
     max-height: 1px;
     overflow: hidden;
     border-radius: 4px;
@@ -554,24 +535,14 @@ max-height: 450px;
     
  
 }
-.collapseleft{
-    /* width: 28%;
-    padding-top: 10%;
-    margin-right: 2px;
+.collapseleftDel{
 
-    background: rgb(218, 220, 223);
-
-
-    align-items: center; */
     text-align: center;
 
     border-radius: 10px;
     box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0);
-
-
-    /* border: solid 1px rgb(202, 202, 202); */
     width: 28%;
-    height: 450px;
+    height: 470px;
 
 
     box-sizing: border-box;
@@ -587,16 +558,20 @@ max-height: 450px;
     flex-direction: column;
     justify-content: center;
 
+    margin-top: 10px;
+
 }
-.collapseright{
+.collapserightDel{
     width: 70%;
     background: rgb(229, 231, 233);
-    padding:20px;
+    padding:0px;
     border-radius: 10px;
     box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0);
+
+    margin-top: 10px ;
     /* border: solid 1px rgb(202, 202, 202); */
 }
-.collapsible input:checked ~.collapsible-text{
+.collapsible input:checked ~.collapsible-textDel{
     max-height: 700px;
     padding-bottom: 25px;
     margin-bottom: 25px;
@@ -611,7 +586,7 @@ max-height: 450px;
 
 @media screen and (max-width: 600px) {
 
-    .collapseleft{
+    .collapseleftDel{
         width: 100%;
         height: 200px;
         border-top-left-radius: 10px ;
@@ -619,7 +594,7 @@ max-height: 450px;
         border-bottom-left-radius: 0px ;
         border-bottom-right-radius: 0px ;
     }
-    .collapseright{
+    .collapserightDel{
         width: 100%;
         
         border-top-left-radius: 0px ;
@@ -635,12 +610,15 @@ max-height: 450px;
         color: #d7d9da;
         background: #1458b3;
 
+    }
+    #deliv_but{
+        width: 150px;
     }
 
 }
 @media screen and (max-width: 900px) {
 
-    .collapseleft{
+    .collapseleftDel{
         width: 100%;
         height: 200px;
         border-top-left-radius: 10px ;
@@ -648,7 +626,7 @@ max-height: 450px;
         border-bottom-left-radius: 0px ;
         border-bottom-right-radius: 0px ;
     }
-    .collapseright{
+    .collapserightDel{
         width: 100%;
         
         border-top-left-radius: 0px ;
@@ -665,4 +643,22 @@ max-height: 450px;
         background: #1458b3;
 
     }
+    #deliv_but{
+        width: 150px;
+    }
  }
+ @media screen and (min-width: 1600px) {
+    #deliv_but{
+        width: 150px;
+    }
+    .deliver-cent{
+        /* margin-top: 10px; */
+        width: 100%;
+        height: 500px;
+    }
+    .deliver-main{
+        margin-top: 50px;
+        width: 80%;
+        height: 500px;
+    }
+  }

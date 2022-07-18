@@ -176,12 +176,12 @@ return (
                   <form id = "mainDonateForm" onSubmit={(e) => { e.preventDefault(); hanndlesubmit();}}>
                     <div className='donate-box1'>
                       
-                      <input className="din1" type ="text" placeholder='Name' onChange ={(e)=>{setIName(e.target.value)}}></input>  
+                      <input className="din1" type ="text" placeholder=' Name' onChange ={(e)=>{setIName(e.target.value)}}></input>  
                         <FaPen color='#1458b3'/>
                     </div>
                     <div className='donate-box2'>
                       
-                      <input className="din2" type ="number" min="1" placeholder='Quantity' onChange ={(e)=>{setIQuan(e.target.value)}}></input> 
+                      <input className="din2" type ="number" min="1" placeholder=' Quantity' onChange ={(e)=>{setIQuan(e.target.value)}}></input> 
                       <FaPen color='#1458b3'/>
                     </div>  
                     
@@ -202,16 +202,16 @@ return (
                     <div className='donate-box4'>
                       
                       <select name="orgs"   className='din4' onChange ={(e)=>{setICond(e.target.value)}}>
-                            <option value="New">New</option>
-                            <option value="Used">Used</option>  
+                            <option value=" New">New</option>
+                            <option value=" Used">Used</option>  
                         </select>                                       
                       
                       <FaPen color='#1458b3'/>
                     </div>      
                     <div className='donate-box5'>
             
-                      <textarea className="din5" rows={1}  placeholder='Item(s) Description' onChange ={(e)=>{setIDesc(e.target.value)}}></textarea> 
-                      
+                      <textarea className="din5" rows={1}  placeholder=' Item(s) Description' onChange ={(e)=>{setIDesc(e.target.value)}}></textarea> 
+                      <FaPen color='#1458b3'/>
                     </div>
 
                     {/* <div>
