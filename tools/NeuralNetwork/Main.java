@@ -15,6 +15,8 @@ public class Main {
 	public static void main(String[] args) {
 		
 		NeuralNetwork nn = new NeuralNetwork(2,10,1);
+
+		/* [*/
 		
 		
 		List<Double>output;
@@ -23,6 +25,7 @@ public class Main {
 		double [][] input = {
 				{0,0},{0,1},{1,0},{1,1}	
 		};
+		
 		for(double d[]:input)
 		{
 			output = nn.predict(d);

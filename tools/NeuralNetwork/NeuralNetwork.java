@@ -1,5 +1,7 @@
 import java.util.List;
 
+//Neural Network with one hidden layer using the sigmoid activation function
+
 public class NeuralNetwork{
     //1. Weight matrix for the input and hidden layer
     //2. Weight matrix for the hidden and output layer
@@ -13,24 +15,52 @@ public class NeuralNetwork{
     Matrix bias_for_output;
     double learning_rate = 0.01;
 
-    public NeuralNetwork(int i, int h, int o){
+    public NeuralNetwork(int input, int hidden, int output){
 
-        input_hidden_weights = new Matrix(h, i);
-        hidden_output_weights = new Matrix(o, h);
+        //weight matrix for input to hidden
+        //x input vals for each y neurons in the hidden layer
+        input_hidden_weights = new Matrix(hidden, input);
 
-        bias_for_hidden = new Matrix(h, 1);
-        bias_for_output = new Matrix(o, 1);
+        //weight matrix for hidden to output
+        hidden_output_weights = new Matrix(output, hidden);
+
+        //bias matrix for hidden layer
+        bias_for_hidden = new Matrix(hidden, 1);
+
+        //bias matrix for output layer
+        bias_for_output = new Matrix(output, 1);
     }
 
 
     //Function used for forward propagation
     public List<Double> predict(double[] x){
 
+        //Used to calculate output of a trained network
+
+        //Step 1 = w1.x1 + ...
+        //Step 2 = add bias 
+        //Step 3 = apply activation function
+        //f(w1.x1 + w2.x2 + ... + b)
+
+        //Repeat steps for input to hidden and hidden to output
+
         Matrix input = Matrix.fromArray(x);
+
+        //Step1:
+        //calculate matrix that is the dot product of input_to_hidden weights
+        //and the input given (w1.x1 + ... )
         Matrix hidden = Matrix.multiply(input_hidden_weights, input);
+
+        //Step2:
+        //add the bias to the new matrix
         hidden.add(bias_for_hidden);
+
+        //Step3:
+        //apply activation function
         hidden.sigmoid();
 
+
+        //Repeat steps for the output layer
         Matrix output = Matrix.multiply(hidden_output_weights, hidden);
         output.add(bias_for_output);
         output.sigmoid();
@@ -83,6 +113,7 @@ public class NeuralNetwork{
             int sampleN = (int)(Math.random() * x.length);
             this.train(x[sampleN], y[sampleN]);
         }
+
     }
 
 }
