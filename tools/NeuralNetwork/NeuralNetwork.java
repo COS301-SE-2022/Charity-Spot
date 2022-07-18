@@ -120,8 +120,8 @@ public class NeuralNetwork{
     public void fit(double[][] input, double[][] output, int epochs){
 
         for(int i=0; i<epochs; i++){
-            int sampleN = (int)(Math.random() * input.length);
-            this.train(input[sampleN], output[sampleN]);
+            int n = (int)(Math.random() * input.length);
+            this.train(input[n], output[n]);
         }
 
     }
