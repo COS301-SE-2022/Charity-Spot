@@ -2,13 +2,13 @@ import java.util.List;
 
 public class Main {
 
-    static double [][] X= {
+    static double [][] trainData= {
 			{0,0},
 			{1,0},
 			{0,1},
 			{1,1}
 	};
-	static double [][] Y= {
+	static double [][] correctOutput= {
 			{0},{1},{1},{0}
 	};
 
@@ -21,11 +21,13 @@ public class Main {
 		
 		List<Double>output;
 		
-		nn.fit(X, Y, 50000);
+		nn.fit(trainData, correctOutput, 50000);
+
+		
 		double [][] input = {
 				{0,0},{0,1},{1,0},{1,1}	
 		};
-		
+
 		for(double d[]:input)
 		{
 			output = nn.predict(d);

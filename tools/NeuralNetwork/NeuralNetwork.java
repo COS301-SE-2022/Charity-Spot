@@ -60,7 +60,7 @@ public class NeuralNetwork{
         hidden.sigmoid();
 
 
-        //Repeat steps for the output layer
+        //Repeat steps for the output layer using the hidden layer as the input
         Matrix output = Matrix.multiply(hidden_output_weights, hidden);
         output.add(bias_for_output);
         output.sigmoid();
@@ -68,9 +68,11 @@ public class NeuralNetwork{
         return output.toArray();
     }
 
-    public void train(double[] x, double[] y){
+    public void train(double[] inputV, double[] outputV){
 
-        Matrix input = Matrix.fromArray(x);
+        //Calculate the output using the current network
+        //Same as the predict function
+        Matrix input = Matrix.fromArray(inputV);
         Matrix hidden = Matrix.multiply(input_hidden_weights, input);
         hidden.add(bias_for_hidden);
         hidden.sigmoid();
@@ -79,18 +81,26 @@ public class NeuralNetwork{
         output.add(bias_for_output);
         output.sigmoid();
 
-        Matrix target = Matrix.fromArray(y);
+        //Now use the target and output from the previous step to adjust the network
+        //Start from the output layer and adjust backwards towards the input layer
 
+        //target = what the output should be
+        Matrix target = Matrix.fromArray(outputV);
+
+        //error is the difference between the correct output and the output of the network
         Matrix error = Matrix.subtract(target, output);
         Matrix gradient = output.dsigmoid();
         gradient.multiply(error);
         gradient.multiply(learning_rate);
 
+        //Adjust the activation of each neuron by the gradient of the error
         Matrix hidden_T = Matrix.transpose(hidden);
         Matrix who_delta = Matrix.multiply(gradient, hidden_T);
 
         hidden_output_weights.add(who_delta);
         bias_for_output.add(gradient);
+
+        //Repeat the same step as above for the input to hidden layer
 
         Matrix who_T = Matrix.transpose(hidden_output_weights);
         Matrix hidden_errors = Matrix.multiply(who_T, error);
@@ -107,11 +117,11 @@ public class NeuralNetwork{
 
     }
 
-    public void fit(double[][] x, double[][] y, int epochs){
+    public void fit(double[][] input, double[][] output, int epochs){
 
         for(int i=0; i<epochs; i++){
-            int sampleN = (int)(Math.random() * x.length);
-            this.train(x[sampleN], y[sampleN]);
+            int sampleN = (int)(Math.random() * input.length);
+            this.train(input[sampleN], output[sampleN]);
         }
 
     }
