@@ -1,11 +1,11 @@
-import java.util.List;
+import java.util.*;
 import java.io.*;
 
 public class Main {
 
-    static double [][] trainData= new double[360][];
+    static double [][] trainData= new double[720][];
 
-	static double [][] correctOutput= new double[360][];
+	static double [][] correctOutput= new double[720][];
 
 	public static void main(String[] args) {
 
@@ -62,7 +62,7 @@ public class Main {
 		}
 		catch(Exception e){}
 
-		for(int i=0; i<trainData.length; i++){
+		/*for(int i=0; i<trainData.length; i++){
 
 			for(int jj=0; jj<trainData[i].length; jj++){
 
@@ -84,27 +84,64 @@ public class Main {
 
 			System.out.println();
 
-		}    
+		}*/    
 
 	
 
 	
 		
-		NeuralNetwork nn = new NeuralNetwork(3,15,4);
+		NeuralNetwork nn = new NeuralNetwork(3,35,4);
 		
 		
 		List<Double>output;
 		
-		nn.fit(trainData, correctOutput, 60000);
+		nn.fit(trainData, correctOutput, 1000000);
+
+		//Read input from user
+
+		try{
+
+			while(true){
+
+				Scanner reader = new Scanner(System.in);
+
+				System.out.println("Please enter the day of the week");
+
+				Double dayOfWeek = reader.nextDouble();
+
+				System.out.println("Please enter the type of the item");
+				System.out.println("1: Clothes, 2: Food, 3: Stationary, 4: Other");
+
+				Double typeOfItem = reader.nextDouble();
+
+				System.out.println("Please enter your location");
+				System.out.println("1: Pretoria, 2: Johannesburg, 3: Cape Town");
+
+				Double location = reader.nextDouble();
+
+				double[] input = new double[3];
+				
+				input[0] = dayOfWeek;
+				input[1] = typeOfItem;
+				input[2] = location;
+
+				output = nn.predict(input);
+				System.out.println(output.toString());
+
+			}
+
+		}
+		catch(Exception e){}
+
 
 
 		
 
-		for(double d[]:trainData)
+		/*for(double d[]:trainData)
 		{
 			output = nn.predict(d);
 			System.out.println(output.toString());
-		}		
+		}*/		
 
 	}
 

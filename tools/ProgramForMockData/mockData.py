@@ -1,3 +1,4 @@
+import random
 #Day of the week = 1,2,3,4,5,6,7
 
 #Org ID = 1, 2, 3, 4
@@ -57,5 +58,15 @@ for x in range(30):
     f.write("4, 5, 2, 1" + '\n')
     f.write("4, 5, 1, 1" + '\n')
     f.write("4, 3, 3, 1" + '\n')
+
+
+for x in range(360):
+    org = random.randint(1,4)
+    dayOfWeek = random.randint(1,7)
+    typeOfItem = random.randint(1,4)
+    loc = random.randint(1,3)
+
+    f.write(str(org) + ", " + str(dayOfWeek) + ", " + str(typeOfItem) + ", " + str(loc) + '\n')
+
 
 f.close()
