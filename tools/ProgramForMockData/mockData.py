@@ -49,7 +49,7 @@ for x in range(30):
 
 #Donations for org3
 for x in range(30):
-    f.write("3, 1, 2, 2" + '\n')
+    f.write("3, 3, 2, 1" + '\n')
     f.write("3, 1, 1, 2" + '\n')
     f.write("3, 3, 3, 2" + '\n')
 

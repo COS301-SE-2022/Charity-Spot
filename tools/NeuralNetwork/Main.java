@@ -84,18 +84,18 @@ public class Main {
 
 			System.out.println();
 
-		}*/    
+		}*/  
 
 	
 
 	
 		
-		NeuralNetwork nn = new NeuralNetwork(3,35,4);
+		NeuralNetwork nn = new NeuralNetwork(3,10,4);
 		
 		
 		List<Double>output;
 		
-		nn.fit(trainData, correctOutput, 1000000);
+		nn.fit(trainData, correctOutput, 50000);
 
 		//Read input from user
 
@@ -120,13 +120,17 @@ public class Main {
 				Double location = reader.nextDouble();
 
 				double[] input = new double[3];
-				
-				input[0] = dayOfWeek;
-				input[1] = typeOfItem;
-				input[2] = location;
 
-				output = nn.predict(input);
-				System.out.println(output.toString());
+				//for(int i=1; i<5; i++){
+				
+					//input[0] = i;
+					input[1] = dayOfWeek;
+					input[2] = typeOfItem;
+					input[3] = location;
+
+					output = nn.predict(input);
+					System.out.println(output.toString());
+				//}
 
 			}
 
