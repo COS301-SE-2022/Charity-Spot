@@ -11,6 +11,7 @@ import { ApiDonateApiFeatureModule } from '@charity-spot/api/donate/api/feature'
 import { ApiHomeApiFeatureModule } from '@charity-spot/api/home/api/feature'
 import { ApiChatApiFeatureModule } from '@charity-spot/api/chat/api/feature'
 import { ApiScheduleDeliveryApiFeatureModule } from '@charity-spot/api/schedule-delivery/api/feature'
+import { ApiItemRequestApiFeatureModule } from '@charity-spot/api/item-request/api/feature'
 
 
 @Module({
@@ -26,6 +27,7 @@ import { ApiScheduleDeliveryApiFeatureModule } from '@charity-spot/api/schedule-
     ApiHomeApiFeatureModule,
     ApiChatApiFeatureModule,
     ApiScheduleDeliveryApiFeatureModule,
+    ApiItemRequestApiFeatureModule,
     ConfigModule.forRoot()
   ]
 })
