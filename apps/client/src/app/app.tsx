@@ -8,6 +8,7 @@ import {Home} from '@charity-spot/client/home';
 import {ClientDonate} from '@charity-spot/client/donate';
 import {ClientChat} from '@charity-spot/client/chat';
 import {ClientScheduleDelivery} from '@charity-spot/client/schedule-delivery'
+import {ClientItemRequest} from '@charity-spot/client/item-request'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path = "/donate" element = {<ClientDonate/>}/>
           <Route path = "/chat" element = {<ClientChat/>}/>
           <Route path = "/scheduleDelivery" element = {<ClientScheduleDelivery/>}/>
+          <Route path = "/itemRequest" element = {<ClientItemRequest/>}/>
         </Routes>
       </Router>
     </div>

@@ -7,12 +7,15 @@ export class RegistrationRepository {
 
   async addUser(email : string,password: string, PasswordSalt:string)
   {
+    let identTemp : string = "temp";
+
     const u = await this.prisma.user.create({
       data:
       {
         email: email,
         password:password,
-        passwordSalt:PasswordSalt
+        passwordSalt:PasswordSalt,
+        identity: identTemp,
       }
     })
 
