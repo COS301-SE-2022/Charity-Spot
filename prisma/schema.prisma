@@ -75,6 +75,18 @@ model DonoItem {
   @@map("donation_item")
 }
 
+model Delivery {
+  DeliveryID  String  @default(cuid()) @id
+  ItemID      String  @map("item_id")
+  OrgID       String  @map("org_id")
+  ClientID    String  @map("client_id")
+  Loaction    String? @map("location")
+  Date        String  @map("date")
+  Time        String? @map("time")
+
+  @@map("delivery")
+}
+
 enum quality {
   NEW
   USED
