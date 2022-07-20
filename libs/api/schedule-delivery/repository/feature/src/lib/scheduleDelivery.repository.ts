@@ -73,6 +73,8 @@ export class ScheduleDeliveryRepository {
         }
       }));
     });
+
+    return result;
   }
 
   //Find All Org Schedule Delivery
@@ -81,17 +83,56 @@ export class ScheduleDeliveryRepository {
 
   async FindAllClientDeliviries(ClientID:string){
     //To Add
+
+    const u = await this.prisma.delivery.findMany({
+      where:
+      {
+        ClientID:ClientID
+      }
+    });
+
+    return u;
   }
 
   //Delivery Details
 
   async GetDeliveryDetails(DeliveryID:string){
     //to add
+    const u = await this.prisma.delivery.findFirst({
+      select:
+      {
+        ItemID:true,
+        OrgID:true,
+        ClientID:true,
+        Loaction:true,
+        Date:true,
+        Time:true
+      },
+      where:
+      {
+        DeliveryID:DeliveryID
+      }
+    });
+
+    return u;
   }
 
   //Change Date Time
 
   async ChangeDateTime(DeliveryID:string, Date, Time:string){
     //to add
+    const u = await this.prisma.delivery.update({
+      data:
+      {
+        Date:Date,
+        Time:Time
+      },
+      where:
+      {
+        DeliveryID:DeliveryID
+      }
+    });
+
+    return u;
   }
 }
