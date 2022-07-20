@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@charity-spot/api/shared/services/prisma';
+import { time } from 'console';
 
 @Injectable()
 export class ScheduleDeliveryRepository {
@@ -25,8 +26,21 @@ export class ScheduleDeliveryRepository {
 
   //Schedule Delivery
 
-  async CreateShedule(itemID:string, loaction: string, Date: string, Time: string, ClientID: string){
+  async CreateShedule(itemID:string, orgID:string, loaction: string, Date: string, Time: string, ClientID: string){
     //To Be Added
+    const u = await this.prisma.delivery.create({
+      data:
+      {
+        ItemID:itemID,
+        OrgID:orgID,
+        ClientID:ClientID,
+        Loaction:loaction,
+        Date:Date,
+        Time:Time
+      }
+    });
+
+    return u;
   }
 
   //Find All Org Schedule Delivery
@@ -48,7 +62,16 @@ export class ScheduleDeliveryRepository {
     let result;
 
     u.forEach(item => {
-      result.push(/*to add getting result from delivery table*/);
+      result.push(this.prisma.delivery.findMany({
+        select:
+        {
+          DeliveryID : true
+        },
+        where:
+        {
+          ItemID: item.ItemID
+        }
+      }));
     });
   }
 
