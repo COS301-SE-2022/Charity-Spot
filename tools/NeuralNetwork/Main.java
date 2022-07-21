@@ -5,7 +5,7 @@ public class Main {
 
     static double [][] trainData= new double[720][];
 
-	static double [][] correctOutput= new double[720][];
+	static double [] correctOutput= new double[720];
 
 	public static void main(String[] args) {
 
@@ -19,40 +19,24 @@ public class Main {
 
 			while((line = br.readLine()) != null){
 
-				trainData[j] = new double[3];
-				correctOutput[j] = new double[4];
+				trainData[j] = new double[6];
+				correctOutput[j] = 0;
 				int k = 0;
 
-				for (int i=0; i < line.length(  ); i++){
+				String[] split = line.split(",");
 
-					if(i==0){
+				for(int i=0; i<split.length; i++){
 
-						if(line.charAt(i) == '1'){
-							correctOutput[j] = new double[]{1, 0, 0, 0};
-						}
-						else if(line.charAt(i) == '2'){
-							correctOutput[j] = new double[]{0, 1, 0, 0};
-						}
-						else if(line.charAt(i) == '3'){
-							correctOutput[j] = new double[]{0, 0, 1, 0};
-						}
-						else if(line.charAt(i) == '4'){
-							correctOutput[j] = new double[]{0, 0, 0, 1};
-						}
+					double val = Double.parseDouble(split[i]);
 
+					if(i == split.length-1){
+						correctOutput[j] = val;
 						continue;
 					}
-
-					if(line.charAt(i) == ' ' || line.charAt(i) == ','){
-						continue;
-					}
-
-					double val = (double) (line.charAt(i) - '0');
 
 					trainData[j][k] = val;
 
     				k++;
-
 				}
 
 				j++;
@@ -61,6 +45,8 @@ public class Main {
 
 		}
 		catch(Exception e){}
+
+		
 
 		for(int i=0; i<trainData.length; i++){
 
@@ -76,13 +62,7 @@ public class Main {
 
 		for(int i=0; i<correctOutput.length; i++){
 
-			for(int jj=0; jj<correctOutput[i].length; jj++){
-
-				System.out.print(correctOutput[i][jj] + ", ");
-
-			}
-
-			System.out.println();
+			System.out.println(correctOutput[i]);
 
 		}  
 
