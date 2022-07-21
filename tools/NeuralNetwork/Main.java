@@ -19,40 +19,24 @@ public class Main {
 
 			while((line = br.readLine()) != null){
 
-				trainData[j] = new double[3];
-				correctOutput[j] = new double[4];
+				trainData[j] = new double[6];
+				correctOutput[j] = new double[1];
 				int k = 0;
 
-				for (int i=0; i < line.length(  ); i++){
+				String[] split = line.split(",");
 
-					if(i==0){
+				for(int i=0; i<split.length; i++){
 
-						if(line.charAt(i) == '1'){
-							correctOutput[j] = new double[]{1, 0, 0, 0};
-						}
-						else if(line.charAt(i) == '2'){
-							correctOutput[j] = new double[]{0, 1, 0, 0};
-						}
-						else if(line.charAt(i) == '3'){
-							correctOutput[j] = new double[]{0, 0, 1, 0};
-						}
-						else if(line.charAt(i) == '4'){
-							correctOutput[j] = new double[]{0, 0, 0, 1};
-						}
+					double val = Double.parseDouble(split[i]);
 
+					if(i == split.length-1){
+						correctOutput[j][0] = val;
 						continue;
 					}
-
-					if(line.charAt(i) == ' ' || line.charAt(i) == ','){
-						continue;
-					}
-
-					double val = (double) (line.charAt(i) - '0');
 
 					trainData[j][k] = val;
 
     				k++;
-
 				}
 
 				j++;
@@ -61,6 +45,8 @@ public class Main {
 
 		}
 		catch(Exception e){}
+
+
 
 		/*for(int i=0; i<trainData.length; i++){
 
@@ -84,18 +70,14 @@ public class Main {
 
 			System.out.println();
 
-		}*/  
-
-	
-
+		}*/
 	
 		
-		NeuralNetwork nn = new NeuralNetwork(3,10,4);
-		
+		NeuralNetwork nn = new NeuralNetwork(6,15,1);
 		
 		List<Double>output;
 		
-		nn.fit(trainData, correctOutput, 50000);
+		nn.fit(trainData, correctOutput, 500000);
 
 		//Read input from user
 
@@ -105,47 +87,30 @@ public class Main {
 
 				Scanner reader = new Scanner(System.in);
 
-				System.out.println("Please enter the day of the week");
+				System.out.println("Please enter a donation");
+				System.out.println("Use the form: orgID, dayOfWeek, itemType, Loc, Month, Weather");
+				System.out.println("Use the form: 1,1,1,1,1,1");
 
-				Double dayOfWeek = reader.nextDouble();
+				double[] inVals = new double[6];
 
-				System.out.println("Please enter the type of the item");
-				System.out.println("1: Clothes, 2: Food, 3: Stationary, 4: Other");
+				String input = reader.nextLine();
 
-				Double typeOfItem = reader.nextDouble();
+				String[] split = input.split(",");
 
-				System.out.println("Please enter your location");
-				System.out.println("1: Pretoria, 2: Johannesburg, 3: Cape Town");
+				for(int i=0; i<split.length; i++){
 
-				Double location = reader.nextDouble();
+					double val = Double.parseDouble(split[i]);
+					inVals[i] = val;
 
-				double[] input = new double[3];
+				}
 
-				//for(int i=1; i<5; i++){
-				
-					//input[0] = i;
-					input[1] = dayOfWeek;
-					input[2] = typeOfItem;
-					input[3] = location;
-
-					output = nn.predict(input);
-					System.out.println(output.toString());
-				//}
+				output = nn.predict(inVals);
+				System.out.println(output.toString());
 
 			}
 
 		}
-		catch(Exception e){}
-
-
-
-		
-
-		/*for(double d[]:trainData)
-		{
-			output = nn.predict(d);
-			System.out.println(output.toString());
-		}*/		
+		catch(Exception e){}	
 
 	}
 
