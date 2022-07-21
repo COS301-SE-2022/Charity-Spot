@@ -62,7 +62,7 @@ public class Main {
 		}
 		catch(Exception e){}
 
-		/*for(int i=0; i<trainData.length; i++){
+		for(int i=0; i<trainData.length; i++){
 
 			for(int jj=0; jj<trainData[i].length; jj++){
 
@@ -84,13 +84,13 @@ public class Main {
 
 			System.out.println();
 
-		}*/  
+		}  
 
 	
 
 	
 		
-		NeuralNetwork nn = new NeuralNetwork(3,10,4);
+		/*NeuralNetwork nn = new NeuralNetwork(3,10,4);
 		
 		
 		List<Double>output;

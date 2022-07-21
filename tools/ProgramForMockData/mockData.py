@@ -1,7 +1,9 @@
 import random
-#Day of the week = 1,2,3,4,5,6,7
 
+#Using 4 Test organisations
 #Org ID = 1, 2, 3, 4
+
+#Day of the week = 1,2,3,4,5,6,7
 
 #Type of the item donated:
     # 1 = clothes
@@ -13,6 +15,22 @@ import random
     # 1 = Pretoria
     # 2 = Johannesburg
     # 3 = Cape Town
+
+#Season
+    # 1 = Winter
+    # 2 = Spring
+    # 3 = Summer
+    # 4 = Autumn
+
+#Month = 1,2,3,4,5,6,7,8,9,10,11,12
+
+#Weather
+    # 1 = Sunny
+    # 2 = Rain
+    # 3 = Cloudy
+
+
+#Each organisation has 3 distinct donations that they repeat 30 times each. 90 total donations per organisation
 
 #Org 1 will donate food on a Tuesday in Cape Town
 #Org 2 will donate food on a Wednesday in Pretoria
