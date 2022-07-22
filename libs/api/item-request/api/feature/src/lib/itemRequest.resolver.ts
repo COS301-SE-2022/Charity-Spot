@@ -10,4 +10,9 @@ export class ItemRequestResolver {
     test(){
         return this.itemRequestService.Test();
     }
+
+    @Query(() => itemRequestEntity)
+    getAIInfo(){
+        return this.itemRequestService.getAIInfo();
+    }
 }
