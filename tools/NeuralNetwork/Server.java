@@ -2,6 +2,8 @@ import java.net.*;
 import java.io.*;
 import java.util.Scanner;
 
+import java.util.concurrent.TimeUnit;
+
 public class Server{
 
     private ServerSocket serverSocket;
@@ -15,7 +17,7 @@ public class Server{
 
             serverSocket = new ServerSocket(port);
 
-            System.out.println("Waiting for a client ...");
+            System.out.println("Waiting for a clients...");
 
             while(true){
 
@@ -29,19 +31,9 @@ public class Server{
                 //Writer for the socket
                 s_out = new PrintWriter(clientSocket.getOutputStream(), true);
 
-                String inMessage = s_in.readLine();
+                Thread clientThread = new Client(clientSocket, s_in, s_out);
 
-                System.out.println(inMessage);
-
-                System.out.println("HTTP/1.1 200 OK\n"+
-                    "Content-Type: application/json\n\n"+
-                    "{"+'"'+"success"+'"'+":" + '"'+"true"+'"'+"}");
-
-                s_out.println("HTTP/1.1 200 OK\n"+
-                    "Content-Type: application/json\n\n"+
-                    "{"+'"'+"success"+'"'+":" + '"'+"true"+'"'+"}");
-
-                clientSocket.close();
+                clientThread.start();
 
             }
 
