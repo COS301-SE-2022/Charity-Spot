@@ -9,7 +9,10 @@ export function ClientItemRequestResults(props: ClientItemRequestResultsProps) {
       <h2>Suggested Organizations</h2>
       <div className='HoldAll'>
         <div className='leftHolda'>
-          <h3>Company1</h3>
+        <img src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo.png?alt=media&token=658a4502-2b08-47bf-8cb2-fe7eacbf8c3e" alt="" id="profile-pic"></img>
+          <h4>Seal Organization</h4>
+          <h6>Food and Toiletry</h6>
+          
         </div>
         <div className='middleHolda'>
           <h3>Company2</h3>

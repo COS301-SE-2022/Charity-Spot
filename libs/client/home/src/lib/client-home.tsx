@@ -123,7 +123,8 @@ export function Home() {
               </div>     
               <div className="right-filt">
               <h3 className='FiltLabels'>Organization</h3>
-             </div>      
+             </div>     
+              
           </div>
 
 
