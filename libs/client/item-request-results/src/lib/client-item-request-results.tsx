@@ -10,8 +10,11 @@ export function ClientItemRequestResults(props: ClientItemRequestResultsProps) {
       <div className='HoldAll'>
         <div className='leftHolda'>
         <img src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo.png?alt=media&token=658a4502-2b08-47bf-8cb2-fe7eacbf8c3e" alt="" id="profile-pic"></img>
-          <h4>Seal Organization</h4>
-          <h6>Food and Toiletry</h6>
+          <div className='Lead'><h4>Seal Organization</h4></div>
+          <div className='within'>
+            <p>We offer high quality food, and we are the best in the business</p>
+          </div>
+          <button type='submit' id='chatGo'>Choose</button>
           
         </div>
         <div className='middleHolda'>

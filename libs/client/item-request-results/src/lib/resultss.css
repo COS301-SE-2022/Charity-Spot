@@ -31,11 +31,11 @@
   .leftHolda{
     z-index: 0;
 	margin: 2rem;
-	height: 320px;
+	height: 380px;
 	width: 26%;
-	background-color: rgba(202, 202, 202, 0.579);
+	background-color: rgba(216, 216, 216, 0.579);
 	border-radius: 10px;
-	/* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0); */
+	box-shadow: 0.5rem 0.5rem 2rem -1rem rgba(0, 0, 0, 0.322);
 	text-align: center;
 	padding: 15px;	 
     float: left;
@@ -43,11 +43,11 @@
   .middleHolda{
     z-index: 0;
 	margin: 2rem;
-	height: 320px;
+	height: 380px;
 	width: 26%;
-	background-color: rgba(202, 202, 202, 0.579);
+	background-color: rgba(216, 216, 216, 0.579);
 	border-radius: 10px;
-	/* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0); */
+	box-shadow: 0.5rem 0.5rem 2rem -1rem rgba(0, 0, 0, 0.322);
 	text-align: center;
 	padding: 15px;	 
     float: left;
@@ -55,12 +55,27 @@
   .righttHolda{
     z-index: 0;
 	margin: 2rem;
-	height: 320px;
+	height: 380px;
 	width: 26%;
-    background-color: rgba(202, 202, 202, 0.579);
+	background-color: rgba(216, 216, 216, 0.579);
 	border-radius: 10px;
-	/* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0); */
+	box-shadow: 0.5rem 0.5rem 2rem -1rem rgba(0, 0, 0, 0.322);
 	text-align: center;
 	padding: 15px;	 
     float: left;
   }
+.within
+{
+    /* background-color: #d6d6d6; */
+    border-radius: 10px;
+    margin: 15px;
+    border:  #cacaca ;
+    border-width: 1px;
+    padding: 5px;
+    width: 90%;
+    /* height: 60px; */
+    color: #1458b3;
+}
+.Lead{
+    color: #1458b3;   
+}
