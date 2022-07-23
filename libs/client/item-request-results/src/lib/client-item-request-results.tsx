@@ -4,8 +4,26 @@ export interface ClientItemRequestResultsProps {}
 
 export function ClientItemRequestResults(props: ClientItemRequestResultsProps) {
   return (
-    <div>
-      <h1>Welcome to ClientItemRequestResults!</h1>
+    <div className='motherHolder'>
+      <br/>
+      <h2>Suggested Organizations</h2>
+      <div className='HoldAll'>
+        <div className='leftHolda'>
+          <h3>Company1</h3>
+        </div>
+        <div className='middleHolda'>
+          <h3>Company2</h3>
+        </div>
+        <div className='righttHolda'>
+          <h3>Company3</h3>
+        </div>
+        <div className='leftHolda'>
+          <h3>Company3</h3>
+        </div>
+        
+        
+        
+      </div> 
     </div>
   );
 }

@@ -1,0 +1,66 @@
+.motherHolder
+{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.HoldAll{
+	height: 500px auto;
+	width: 80%;
+  
+
+
+  
+  background-color: #1458b3;
+  
+	 /* text-align: center; */
+	 /* display: flex; */
+	 /* flex-direction: row; */
+	 /* justify-content: space-around; */
+	 /* flex-flow: wrap; */
+    
+     /* justify-content: center; */
+
+     margin: 10px auto;
+     vertical-align: middle;
+     
+     
+  
+  
+  }
+  .leftHolda{
+    z-index: 0;
+	margin: 2rem;
+	height: 320px;
+	width: 26%;
+	background-color: rgba(202, 202, 202, 0.579);
+	border-radius: 10px;
+	/* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0); */
+	text-align: center;
+	padding: 15px;	 
+    float: left;
+  }
+  .middleHolda{
+    z-index: 0;
+	margin: 2rem;
+	height: 320px;
+	width: 26%;
+	background-color: rgba(202, 202, 202, 0.579);
+	border-radius: 10px;
+	/* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0); */
+	text-align: center;
+	padding: 15px;	 
+    float: left;
+  }
+  .righttHolda{
+    z-index: 0;
+	margin: 2rem;
+	height: 320px;
+	width: 26%;
+    background-color: rgba(202, 202, 202, 0.579);
+	border-radius: 10px;
+	/* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0); */
+	text-align: center;
+	padding: 15px;	 
+    float: left;
+  }
