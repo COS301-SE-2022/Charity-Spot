@@ -20,7 +20,7 @@
     width: 75%;
 
     
-    border-radius: 1rem;
+    border-radius: 15px;
     margin: 1.5rem auto;
     box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0);
 
@@ -58,6 +58,7 @@
     height: 550px;
     width: 100%;
     box-sizing: border-box;
+    border-radius: 10px;
     /* margin: 20px;   */
     /* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0); */
 }
@@ -122,10 +123,10 @@ input[type="file"] {
         width: 90%;
     }
     .request-left{
-        width: 35%;
+        width: 0%;
     }
     .request-right{
-        width: 65%;
+        width: 100%;
     }
    
 }
@@ -134,15 +135,11 @@ input[type="file"] {
        width: 90%;
    }
    .request-left{
-       width: 100%;
-       height: 350px;
-       border-top-left-radius: 10px ;
-       border-top-right-radius: 10px ;
-
-       border-bottom-left-radius: 0px ;
+       width: 0%;
+       height: 0px;
    }
    .request-right{
-       height: 450px;
+       height: 550px;
        width:100%;
    
        box-sizing: border-box;
@@ -165,12 +162,17 @@ input[type="file"] {
        width: 90%;
    }
    .request-left{
-       width: 100%;
-       height: 350px;
+       width: 0%;
+       height: 0px;
        border-top-left-radius: 10px ;
        border-top-right-radius: 10px ;  
        border-bottom-left-radius: 0px ;
    }
+   .request-right{
+    padding: 10px;
+    width: 100%;
+    height: 600px;
+}
    .imgWrap{
     width: 100%;
     height: 100%;
@@ -196,17 +198,21 @@ input[type="file"] {
         width: 120px;
     } 
     .request-main{
-        width: 80%;
+        width: 70%;
     }
     .request-left{
-        width: 35%;
-        height: 600px;
+        width: 0%;
+        height: 0px;
     }
     .request-right{
         padding: 55px;
-        width: 65%;
-        height: 600px;
+        width: 100%;
+        height: 650px;
     }
+    .reqHead{
+        padding: 20px;
+    }
+    
 }
 body{
     background-color: #f0f0f0;

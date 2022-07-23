@@ -29,7 +29,7 @@ export function ClientItemRequest(props: ClientItemRequestProps) {
                     </div>
                     <div className='request-box2'>
                       
-                      <input className="req2" type ="number" min="1" placeholder=' Item Quantity' onChange ={()=>{}}></input> 
+                      <input className="req2" type ="number" min="1" placeholder=' Item(s) Quantity' onChange ={()=>{}}></input> 
                       <FaPen color='#1458b3'/>
                     </div>   
 
