@@ -98,7 +98,11 @@
 .rqq{
     color: #1458b3;
 }
-
+.orgreqpic{
+    height: 110px;
+    width: 110px;
+    padding: 15px;
+}
 
 @media screen and (max-width: 1200px) {
 
@@ -174,6 +178,11 @@
       .righttHolda{
         height: 450px; 
       }
+      .orgreqpic{
+        height: 125px;
+        width: 125px;
+        padding: 15px;
+    }
 
 }
 
