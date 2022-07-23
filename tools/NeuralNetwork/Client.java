@@ -25,7 +25,7 @@ class Client extends Thread{
     @Override
     public void run(){
 
-            String dateString = "2022-07-24";
+            /*String dateString = "2022-07-24";
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
@@ -33,7 +33,7 @@ class Client extends Thread{
 
             DayOfWeek dayOfWeek = dateTest.getDayOfWeek();
 
-            System.out.println(dayOfWeek.getValue());
+            System.out.println(dayOfWeek.getValue());*/
 
             try{
 
@@ -42,6 +42,41 @@ class Client extends Thread{
                 //Client will send date, type of item, location of donation
 
                 String inMessage = this.inputS.readLine();
+
+                    //remove GET /
+                    String[] split = inMessage.split("/");
+                    inMessage = split[1];
+
+                    //remove HTTP
+                    split = inMessage.split(" ");
+                    inMessage = split[0];
+
+                    //split three values
+                    split = inMessage.split(",");
+
+                //Get the day of the week from the date
+                String dateString = "2022-"+split[0];
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                LocalDate dateT = LocalDate.parse(dateString, formatter);
+                double dayOfWeek = dateT.getDayOfWeek().getValue();
+
+                //Get the item Type
+                double itemType = Double.parseDouble(split[1]);
+
+                //Get the location
+                double location = Double.parseDouble(split[2]);
+
+
+
+
+
+                
+
+                System.out.println(dayOfWeek);
+                System.out.println(itemType);
+                System.out.println(location);
+
+            
 
                 double[] inVals = new double[]{1,1,1,1,1,2};
 

@@ -17,9 +17,16 @@ export class itemRequestService {
 
     }
 
+    /*The query must have this form
+    query{
+        getAIPredic(Date:"07-23", itemType:"1", location:"2"){
+            ID
+        }
+    }
+    */
     async getAIPredic(Date : string, itemType : string, location : string){
 
-        const response = await fetch('http://localhost:7777/hello');
+        const response = await fetch(`http://localhost:7777/${Date},${itemType},${location}`);
         const data = await response.json();
 
         console.log(data);
