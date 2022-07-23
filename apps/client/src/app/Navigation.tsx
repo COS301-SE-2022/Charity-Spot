@@ -34,6 +34,7 @@ function Navigation() {
           {/*!checkIfUserLogIn()  && <Nav.Link as={Link} to={"/login"}>Login</Nav.Link>*/}
           { checkIfUserLogIn()  && <Nav.Link as={Link} to={"/profile"}>Profile</Nav.Link>}
           { checkIfUserLogIn()  && <Nav.Link as={Link} to={"/donate"}>Donate</Nav.Link>}
+          { checkIfUserLogIn()  && <Nav.Link as={Link} to={"/itemRequest"}>Ask</Nav.Link>}
         </Nav>
       </Navbar.Collapse>
   </Navbar>
