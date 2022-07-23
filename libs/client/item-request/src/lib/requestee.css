@@ -15,7 +15,7 @@
     0%   {opacity:0 ;}
     100% {opacity:1 ;}
   }
-.donate-main{
+.request-main{
     height: 500px auto;
     width: 100%;
 
@@ -34,7 +34,7 @@
      background-color: transparent;
 
 }
-.donate-left{
+.request-left{
     /* background-color: aqua; */
     height: 450px;
     width: 30%;
@@ -53,7 +53,7 @@
     justify-content: center;
    
 }
-.donate-right{
+.request-right{
     background-color: rgb(228, 229, 230); 
     height: 450px;
     width: 70%;
@@ -143,13 +143,13 @@ img#donation-pic2{
         height: 110px;
         width: 110px;
     }
-    .donate-main{
+    .request-main{
         width: 90%;
     }
-    .donate-left{
+    .request-left{
         width: 35%;
     }
-    .donate-right{
+    .request-right{
         width: 65%;
     }
    
@@ -165,10 +165,10 @@ img#donation-pic2{
        height: 110px;
        width: 110px;
    }
-   .donate-main{
+   .request-main{
        width: 90%;
    }
-   .donate-left{
+   .request-left{
        width: 100%;
        height: 350px;
        border-top-left-radius: 10px ;
@@ -176,7 +176,7 @@ img#donation-pic2{
 
        border-bottom-left-radius: 0px ;
    }
-   .donate-right{
+   .request-right{
        height: 450px;
        width:100%;
    
@@ -219,10 +219,10 @@ img#donation-pic2{
        width: 100px;
        padding: 15px;
    }
-   .donate-main{
+   .request-main{
        width: 90%;
    }
-   .donate-left{
+   .request-left{
        width: 100%;
        height: 350px;
        border-top-left-radius: 10px ;
@@ -265,14 +265,14 @@ img#donation-pic2{
         height: 120px;
         width: 120px;
     } 
-    .donate-main{
+    .request-main{
         width: 80%;
     }
-    .donate-left{
+    .request-left{
         width: 35%;
         height: 600px;
     }
-    .donate-right{
+    .request-right{
         padding: 55px;
         width: 65%;
         height: 600px;
@@ -391,7 +391,7 @@ body{
  
    
 /* ----------Input Edits-------------- */
-input.din1,.din2,.din3,.din4,.din5{
+input.req1,.req2,.req3,.req4,.req5{
    width: 80%; 
    border: none;
    /* border-bottom: 2px solid #1458b3; */
@@ -405,10 +405,10 @@ input.din1,.din2,.din3,.din4,.din5{
    height: 45px;
    /* border: 1px solid #1458b3; */
 }
-input.din1,.din2,.din3,.din4,.din5:focus{
+input.req1,.din2,.din3,.din4,.din5:focus{
     outline: none;
 }
-input.din1:hover{
+input.req1:hover{
     transition: 0.3s ease-in;
     outline: none;
     border: 1px solid #1458b3;

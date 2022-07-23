@@ -11,28 +11,28 @@ export interface ClientItemRequestProps {}
 export function ClientItemRequest(props: ClientItemRequestProps) {
   return (
     <div>
-        <div className='donate-main'>
-              <div className='donate-left'>
+        <div className='request-main'>
+              <div className='request-left'>
               <br/><br/>                  
               </div>
-              <div className='donate-right'>
+              <div className='request-right'>
                 <br/><br/>
                 <div className='donater'>
-                  <form id = "mainDonateForm" onSubmit={() => {}}>
-                    <div className='donate-box1'>
+                  <form id = "mainRequestForm" onSubmit={() => {}}>
+                    <div className='request-box1'>
                       
-                      <input className="din1" type ="text" placeholder=' Name' onChange ={()=>{}}></input>  
+                      <input className="req1" type ="text" placeholder=' Name' onChange ={()=>{}}></input>  
                         <FaPen color='#1458b3'/>
                     </div>
-                    <div className='donate-box2'>
+                    <div className='request-box2'>
                       
-                      <input className="din2" type ="number" min="1" placeholder=' Quantity' onChange ={()=>{}}></input> 
+                      <input className="req2" type ="number" min="1" placeholder=' Quantity' onChange ={()=>{}}></input> 
                       <FaPen color='#1458b3'/>
                     </div>  
                     
                     <div className='donate-box3'>
                       
-                      <select name="orgs" className='din3' onChange ={()=>{}}>
+                      <select name="orgs" className='req3' onChange ={()=>{}}>
                             <option value="Food">Food Item</option>
                             <option value="Clothes">Clothing</option>  
                             <option value="Tech">Tech (phone,laptop,etc..)</option> 
@@ -46,7 +46,7 @@ export function ClientItemRequest(props: ClientItemRequestProps) {
                     </div>                                
                     <div className='donate-box4'>
                       
-                      <select name="orgs"   className='din4' onChange ={()=>{}}>
+                      <select name="orgs"   className='req4' onChange ={()=>{}}>
                             <option value=" New">New</option>
                             <option value=" Used">Used</option>  
                         </select>                                       
@@ -55,7 +55,7 @@ export function ClientItemRequest(props: ClientItemRequestProps) {
                     </div>      
                     <div className='donate-box5'>
             
-                      <textarea className="din5" rows={1}  placeholder=' Item(s) Description' onChange ={()=>{}}></textarea> 
+                      <textarea className="req5" rows={1}  placeholder=' Item(s) Description' onChange ={()=>{}}></textarea> 
                       <FaPen color='#1458b3'/>
                     </div>
 
