@@ -79,3 +79,66 @@
 .Lead{
     color: #1458b3;   
 }
+#butChoose{
+    width: 50%;
+    background: #1458b3 ;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    transition: all 0.3 ease;
+    border-radius: 5px;
+}
+#butChoose:hover{
+    transition: 0.3s ease-in;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.473);
+}
+.rqq{
+    color: #1458b3;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ------------------------------------STAR RATED!!!!! CODE------------------------------- */
+.ratedsmalla {
+    height: 50px;
+ 
+    border-radius: 10px;
+    padding: 0 10px;
+
+         /* CENTERING STUFF*/ 
+         display: table;
+         margin: 0 auto;
+      
+}
+.ratedsmalla:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.ratedsmalla:not(:checked) > label {
+    float:right;
+    width:1.5em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:default;
+    font-size:25px;
+    color:rgb(196, 196, 196);
+
+}
+.ratedsmalla:not(:checked) > label:before {
+    content: '★ ';
+}
+.ratedsmalla > input:checked ~ label {
+    transition: 0.3s ease-in;
+    color: rgb(184, 181, 90);    
+}
+
+/*---------------------END OF RATED SMALL CODE----------------*/
