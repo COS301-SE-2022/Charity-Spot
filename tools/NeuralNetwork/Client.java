@@ -1,6 +1,8 @@
 import java.net.*;
 import java.io.*;
 import java.util.*;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 import java.util.concurrent.TimeUnit;
 
@@ -23,9 +25,21 @@ class Client extends Thread{
     @Override
     public void run(){
 
+            String dateString = "2022-07-24";
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+            LocalDate dateTest = LocalDate.parse(dateString, formatter);
+
+            DayOfWeek dayOfWeek = dateTest.getDayOfWeek();
+
+            System.out.println(dayOfWeek.getValue());
+
             try{
 
                 System.out.println("Client running on: " + Thread.currentThread().getName());
+
+                //Client will send date, type of item, location of donation
 
                 String inMessage = this.inputS.readLine();
 
