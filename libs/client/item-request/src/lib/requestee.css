@@ -17,7 +17,7 @@
   }
 .request-main{
     height: 500px auto;
-    width: 100%;
+    width: 75%;
 
     
     border-radius: 1rem;
@@ -37,7 +37,7 @@
 .request-left{
     /* background-color: aqua; */
     height: 450px;
-    width: 30%;
+    width: 0%;
 
     box-sizing: border-box;
     /* margin: 20px; */
@@ -56,7 +56,7 @@
 .request-right{
     background-color: rgb(228, 229, 230); 
     height: 450px;
-    width: 70%;
+    width: 100%;
     box-sizing: border-box;
     /* margin: 20px;   */
     /* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0); */
@@ -405,7 +405,7 @@ input.req1,.req2,.req3,.req4,.req5{
    height: 45px;
    /* border: 1px solid #1458b3; */
 }
-input.req1,.din2,.din3,.din4,.din5:focus{
+input.req1,.req2,.req3,.req4,.req5:focus{
     outline: none;
 }
 input.req1:hover{
@@ -414,22 +414,14 @@ input.req1:hover{
     border: 1px solid #1458b3;
     box-shadow: 0 3px 3px rgba(0,0,0,0.2);
 }
-input.din2:hover{
+input.req2:hover{
     transition: 0.3s ease-in;
     outline: none;
     border: 1px solid #1458b3;
     box-shadow: 0 3px 3px rgba(0,0,0,0.2);
  
 }
-select.din3:hover{
-    transition: 0.3s ease-in;
-    outline: none;
-    border: 1px solid #1458b3;
-    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
- 
-
-}
-select.din4:hover{
+select.req3:hover{
     transition: 0.3s ease-in;
     outline: none;
     border: 1px solid #1458b3;
@@ -437,7 +429,15 @@ select.din4:hover{
  
 
 }
-textarea.din5:hover{
+select.req4:hover{
+    transition: 0.3s ease-in;
+    outline: none;
+    border: 1px solid #1458b3;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+ 
+
+}
+textarea.req5:hover{
     transition: 0.3s ease-in;
     outline: none;
     border: 1px solid #1458b3;

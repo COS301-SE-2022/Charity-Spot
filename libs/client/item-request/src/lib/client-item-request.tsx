@@ -11,6 +11,7 @@ export interface ClientItemRequestProps {}
 export function ClientItemRequest(props: ClientItemRequestProps) {
   return (
     <div>
+      <br/><br/><br/><br/>
         <div className='request-main'>
               <div className='request-left'>
               <br/><br/>                  
@@ -28,7 +29,8 @@ export function ClientItemRequest(props: ClientItemRequestProps) {
                       
                       <input className="req2" type ="number" min="1" placeholder=' Quantity' onChange ={()=>{}}></input> 
                       <FaPen color='#1458b3'/>
-                    </div>  
+                    </div>   
+                    
                     
                     <div className='donate-box3'>
                       
@@ -58,19 +60,6 @@ export function ClientItemRequest(props: ClientItemRequestProps) {
                       <textarea className="req5" rows={1}  placeholder=' Item(s) Description' onChange ={()=>{}}></textarea> 
                       <FaPen color='#1458b3'/>
                     </div>
-
-                    {/* <div>
-
-                      <input type="file"
-                        onChange={(e) => {
-
-                          if(!e.target.files) return;
-                          setImageUpload(e.target.files[0])
-                          setImageURL(URL.createObjectURL(e.target.files[0]));
-
-                        }}/>
-
-                    </div> */}
 
                     <br></br>
 
