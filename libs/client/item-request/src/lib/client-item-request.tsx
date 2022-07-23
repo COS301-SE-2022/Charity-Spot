@@ -11,7 +11,9 @@ export interface ClientItemRequestProps {}
 export function ClientItemRequest(props: ClientItemRequestProps) {
   return (
     <div>
-      <br/><br/><br/><br/>
+      <br/>
+      <h1 className='reqHead'>Request for an item</h1>
+      
         <div className='request-main'>
               <div className='request-left'>
               <br/><br/>                  
@@ -21,19 +23,23 @@ export function ClientItemRequest(props: ClientItemRequestProps) {
                 <div className='donater'>
                   <form id = "mainRequestForm" onSubmit={() => {}}>
                     <div className='request-box1'>
-                      
-                      <input className="req1" type ="text" placeholder=' Name' onChange ={()=>{}}></input>  
+                    <label className='labelDel'>Item Name:</label><br/>
+                      <input className="req1" type ="text" placeholder='Item Name' onChange ={()=>{}}></input>  
                         <FaPen color='#1458b3'/>
                     </div>
                     <div className='request-box2'>
                       
-                      <input className="req2" type ="number" min="1" placeholder=' Quantity' onChange ={()=>{}}></input> 
+                      <input className="req2" type ="number" min="1" placeholder=' Item Quantity' onChange ={()=>{}}></input> 
                       <FaPen color='#1458b3'/>
                     </div>   
-                    
-                    
-                    <div className='donate-box3'>
+
+                    <div className='request-box2'>
                       
+                      <input className="req2" type ="text" placeholder='Your Location' onChange ={()=>{}}></input> 
+                      <FaPen color='#1458b3'/>
+                    </div>   
+
+                    <div className='donate-box3'>    
                       <select name="orgs" className='req3' onChange ={()=>{}}>
                             <option value="Food">Food Item</option>
                             <option value="Clothes">Clothing</option>  
@@ -42,29 +48,22 @@ export function ClientItemRequest(props: ClientItemRequestProps) {
                             <option value="Hygiene">Hygiene (soap,pads,etc..)</option> 
                             <option value="Furniture">Furniture (Tv,desk,etc..)</option> 
                             <option value="Kitchen">Kitchen (kettle,toaster,etc..)</option> 
-                        </select>                                    
-                      
+                        </select>                                     
                       <FaPen color='#1458b3'/>
-                    </div>                                
-                    <div className='donate-box4'>
-                      
-                      <select name="orgs"   className='req4' onChange ={()=>{}}>
-                            <option value=" New">New</option>
-                            <option value=" Used">Used</option>  
-                        </select>                                       
-                      
+                    </div>  
+
+                    <div className='request-box2'>
+                    <label className='labelDel'>Prefered Date of Delivery:</label><br/>
+                      <input className="del1" type ="date" ></input>  
                       <FaPen color='#1458b3'/>
-                    </div>      
-                    <div className='donate-box5'>
-            
-                      <textarea className="req5" rows={1}  placeholder=' Item(s) Description' onChange ={()=>{}}></textarea> 
-                      <FaPen color='#1458b3'/>
-                    </div>
+                    </div>   
+                    
+                                 
 
                     <br></br>
 
-                    <input id='dnt_but'type="submit" value="Donate"/>   
-                    <input id='clr_but'type="button" onClick={()=>{}} 
+                    <input id='req_but'type="submit" value="Request"/>   
+                    <input id='reqclr_but'type="button" onClick={()=>{}} 
                       value="Clear"/>                                                                                    
                   </form>
 

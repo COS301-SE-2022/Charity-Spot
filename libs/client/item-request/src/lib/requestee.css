@@ -16,7 +16,7 @@
     100% {opacity:1 ;}
   }
 .request-main{
-    height: 500px auto;
+    height: 550px auto;
     width: 75%;
 
     
@@ -55,7 +55,7 @@
 }
 .request-right{
     background-color: rgb(228, 229, 230); 
-    height: 450px;
+    height: 550px;
     width: 100%;
     box-sizing: border-box;
     /* margin: 20px;   */
@@ -449,8 +449,8 @@ textarea.req5:hover{
 
 
 
-#dnt_but{
-    width: 55%;
+#req_but{
+    width: 50%;
     background: #1458b3 ;
     color: white;
     border: none;
@@ -460,8 +460,8 @@ textarea.req5:hover{
     border-radius: 5px;
     margin-right: 4px;
 }
-#clr_but{
-    width: 25%;
+#reqclr_but{
+    width: 32%;
     background: #cecece ;
     color: #1458b3;
     border: none;
@@ -471,7 +471,9 @@ textarea.req5:hover{
     border-radius: 5px;
 
 }
-
+.reqHead{
+    color: #1458b3;
+}
 
 /* --------------------Collapse and Expand----------------------- */
 .rapper{
