@@ -64,23 +64,7 @@
 input[type="file"] {
     display: none;
 }
-img#donation-pic{
-    height: 250px;
-    width: 65%;
-    border-radius: 10%;
-    /* padding-bottom: 5px; */
-    color: #1458b3;
- 
 
-}
-img#donation-pic2{
-    height: 250px;
-    width: 65%;
-    border-radius: 100%;
-    /* padding-bottom: 5px; */
-    color: #1458b3;
-
-}
 .item-pic{
     /* background-color: #1459b338; */
     width: 100%;
@@ -133,16 +117,7 @@ img#donation-pic2{
 }
 
 @media screen and (max-width: 1200px) {
-    #donation-pic
-    {
-        height: 110px;
-        width: 110px;
-    }
-    #donation-pic2
-    {
-        height: 110px;
-        width: 110px;
-    }
+
     .request-main{
         width: 90%;
     }
@@ -155,16 +130,6 @@ img#donation-pic2{
    
 }
 @media screen and (max-width: 900px) {
-    #donation-pic
-   {
-       height: 110px;
-       width: 110px;
-   }
-   #donation-pic2
-   {
-       height: 110px;
-       width: 110px;
-   }
    .request-main{
        width: 90%;
    }
@@ -187,18 +152,7 @@ img#donation-pic2{
     width: 100%;
     height: 100%;
 }
-img#donation-pic{
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
 
-}
-img#donation-pic2{
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-
-}
 .custom-file-upload{
     /* margin-top: 30px; */
     width:240px;
@@ -207,18 +161,6 @@ img#donation-pic2{
   }
 }
 @media screen and (max-width: 600px) {
-    #donation-pic
-   {
-       height: 100px;
-       width: 100px;
-       padding: 15px;
-   }
-   #donation-pic2
-   {
-       height: 100px;
-       width: 100px;
-       padding: 15px;
-   }
    .request-main{
        width: 90%;
    }
@@ -232,18 +174,6 @@ img#donation-pic2{
    .imgWrap{
     width: 100%;
     height: 100%;
-}
-img#donation-pic{
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-
-}
-img#donation-pic2{
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-
 }
 .custom-file-upload{
     /* margin-top: 30px; */
@@ -283,107 +213,6 @@ body{
 }
 
 
-
-
-
-
-
-
-
-
-/*-------------------------- Tab Styles------------------------ */
-.wrapper2{
-    /* max-width: 1200px; */
-    width: 85%;
-    margin: 1px auto;
-    padding: 1px;
-  
-  
-  
-  }
-  .wrapper2 nav{
-    position: relative;
-    height: 50px;
-    width: 50%;
-    /* width: 500px; */
-    display: flex;
-    align-items: center;
-  
-     /* CENTERING STUFF*/ 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* background-color: red; */
-    z-index: 1;
-  }
-  .wrapper2 nav label{
-    display: block;
-    height: 100%;
-    width: 100%;
-    text-align: center;
-    line-height: 50px;
-    cursor: pointer;
-    color: rgb(37, 72, 162);
-    z-index: 2;
-    transition: all 0.3s ease;
- 
-  }
-  #donate1:checked ~ nav label.donate1{
-    color: white;
-  }
-  .donate1:hover{
-    color: gray;
-    
-  }
-  .history1:hover{
-    color: gray;
-  }
-  #history1:checked ~ nav label.history1{
-    color: white;
-  }
-  input[type="radio"]{
-    display: none;
-  }
-  .wrapper2 nav label i{
-    padding-right: 7px;
-  }
-  .wrapper2 nav .slider{
-    position: absolute;
-    height: 100%;
-    width: 35%;
-    background-color: rgb(37, 72, 162);
-  
-    z-index: 1;
-    border-radius: 10px;
-    left: 8%;
-    bottom: 0;
-    transition: all 0.3s ease;
-  }
-  #donate1:checked ~ nav .slider{
-    left: 8%;
-  }
-  #history1:checked ~ nav .slider{
-    left: 58%;
-  }
-
-  /* SHOWING AND HIDING TAB DATA */
-  section .content{
-    display: none;
-  }
-  #donate1:checked ~ section .content-1{
-   display: block;
-  }
-  #history1:checked ~ section .content-2{
-    display: block;
-   }
-   
-   @media screen and (max-width: 600px) {
-    .wrapper2 nav{
-        width: 100%;
-    }
-
-}
-  
 
 
 
@@ -437,14 +266,6 @@ select.req4:hover{
  
 
 }
-textarea.req5:hover{
-    transition: 0.3s ease-in;
-    outline: none;
-    border: 1px solid #1458b3;
-    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
- 
-
-}
 
 
 
@@ -474,197 +295,3 @@ textarea.req5:hover{
 .reqHead{
     color: #1458b3;
 }
-
-/* --------------------Collapse and Expand----------------------- */
-.rapper{
-    display: flex;
-    padding-top: 15px;
-    justify-content: center;
-}
-.collapsible{
-    width: 85%;
-    overflow: hidden;
-    font-weight: 500;
-    
-}
-.collapsible label{
-    position: relative;
-    font-weight: 600;
-
-    color: #1458b3;
-    background-color: #d5d7da;
-    display: block;
-    margin-bottom: 0px;
-    margin-bottom: 0px;
-    cursor: pointer;
-    padding: 25px 0;
-    border-radius: 10px;
-    width: 100%;
-
-}
-.collapsible label:after{
-content: '';
-position: absolute;
-right: 15px;
-top: 20px;
-width: 18px;
-height: 17px;
-
-}
-
-.collapsible-text{
-    max-height: 1px;
-    overflow: hidden;
-    border-radius: 4px;
-    line-height: 1.4;
-    position: relative;
-    transition: all 0.3s ease-in;
-    width: 100%;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    flex-flow: wrap;
-  
-}
-.cov{
-    /* box-shadow: 0.5px 0.5px 6px -1px rgba(0, 0, 0, 0.163);  */
-    background-color: #dadada;
-    border-radius: 10px;
-    margin: 15px;
-    border:  #bdbdbd ;
-    border-width: 1px;
-    padding: 15px;
-    min-height: 60px;
-    color: #1458b3;
-
- 
-}
-.covDesc{
-    /* box-shadow: 0.5px 0.5px 6px -1px rgba(0, 0, 0, 0.163);  */
-    background-color: #dadada;
-    border-radius: 10px;
-    margin: 15px;
-    border:  #bdbdbd ;
-    border-width: 1px;
-    padding: 15px;
-    min-height: 60px;
-    color: #1458b3;
-    overflow-y: auto;
-    /* overflow-x: hidden; */
-max-height: 450px;
-    
- 
-}
-.collapseleft{
-    /* width: 28%;
-    padding-top: 10%;
-    margin-right: 2px;
-
-    background: rgb(218, 220, 223);
-
-
-    align-items: center; */
-    text-align: center;
-
-    border-radius: 10px;
-    box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0);
-
-
-    /* border: solid 1px rgb(202, 202, 202); */
-    width: 28%;
-    height: 450px;
-
-
-    box-sizing: border-box;
-    /* margin: 20px; */
-    background-color: rgb(229, 231, 233);
-    /* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0); */
-    border-top-left-radius: 10px ;
-    border-bottom-left-radius: 10px ;
-
-    /* Centering content */
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-
-}
-.collapseright{
-    width: 70%;
-    background: rgb(229, 231, 233);
-    padding:20px;
-    border-radius: 10px;
-    box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0);
-    /* border: solid 1px rgb(202, 202, 202); */
-}
-.collapsible input:checked ~.collapsible-text{
-    max-height: 700px;
-    padding-bottom: 25px;
-    margin-bottom: 25px;
-    /* background: rgb(247, 246, 246); */
-    box-shadow: 0 5px 11px 0 rgba(0,0,0 .1), 0 4px 11px 0 rgba(0,0,0 .08);
-    border-radius: 10px;
-    /* box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0); */
-}
-.collapsible input{
-    display: none;
-}
-
-@media screen and (max-width: 600px) {
-
-    .collapseleft{
-        width: 100%;
-        height: 200px;
-        border-top-left-radius: 10px ;
-        border-top-right-radius: 10px ; 
-        border-bottom-left-radius: 0px ;
-        border-bottom-right-radius: 0px ;
-    }
-    .collapseright{
-        width: 100%;
-        
-        border-top-left-radius: 0px ;
-        border-top-right-radius: 0px ; 
-        border-bottom-left-radius: 0px ;
-    }
-    .collapsible label{
-        position: relative;
-        font-weight: 600;
-    
-         box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0);
-        /* color: #1458b3; */
-        color: #d7d9da;
-        background: #1458b3;
-
-    }
-
-}
-@media screen and (max-width: 900px) {
-
-    .collapseleft{
-        width: 100%;
-        height: 200px;
-        border-top-left-radius: 10px ;
-        border-top-right-radius: 10px ; 
-        border-bottom-left-radius: 0px ;
-        border-bottom-right-radius: 0px ;
-    }
-    .collapseright{
-        width: 100%;
-        
-        border-top-left-radius: 0px ;
-        border-top-right-radius: 0px ; 
-        border-bottom-left-radius: 0px ;
-    }
-    .collapsible label{
-        position: relative;
-        font-weight: 600;
-    
-         box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0);
-        /* color: #1458b3; */
-        color: #d7d9da;
-        background: #1458b3;
-
-    }
- }

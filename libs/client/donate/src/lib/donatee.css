@@ -41,7 +41,7 @@
 
     box-sizing: border-box;
     /* margin: 20px; */
-    background-color: #dadada;
+    background-color: rgb(228, 229, 230); 
     /* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0); */
     border-top-left-radius: 10px ;
     border-bottom-left-radius: 10px ;
@@ -67,7 +67,7 @@ input[type="file"] {
 img#donation-pic{
     height: 250px;
     width: 65%;
-    border-radius: 10%;
+    border-radius: 100%;
     /* padding-bottom: 5px; */
     color: #1458b3;
  
