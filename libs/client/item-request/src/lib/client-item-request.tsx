@@ -13,7 +13,7 @@ export function ClientItemRequest(props: ClientItemRequestProps) {
   return (
     <div>
       <br/>
-      <h1 className='reqHead'>Request for an item</h1>
+      <h2 className='reqHead'>Request for an item</h2>
       
         <div className='request-main'>
               <div className='request-left'>
