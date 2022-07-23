@@ -1,6 +1,7 @@
 import styles from './client-item-request.module.css';
 import "./requestee.css";
 import { FaHistory,FaDonate,FaPen,FaUserAlt,FaEdit,FaArrowRight,FaCloudDownloadAlt } from 'react-icons/fa';
+import {Link} from 'react-router-dom'
 
 /* eslint-disable-next-line */
 export interface ClientItemRequestProps {}
@@ -62,7 +63,7 @@ export function ClientItemRequest(props: ClientItemRequestProps) {
 
                     <br></br>
 
-                    <input id='req_but'type="submit" value="Request"/>   
+                    <Link to ='/scheduleDelivery' className='rgLink'><input id='req_but'type="button" value="Request"/></Link>   
                     <input id='reqclr_but'type="button" onClick={()=>{}} 
                       value="Clear"/>                                                                                    
                   </form>
