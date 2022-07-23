@@ -25,19 +25,9 @@ class Client extends Thread{
     @Override
     public void run(){
 
-            /*String dateString = "2022-07-24";
-
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-            LocalDate dateTest = LocalDate.parse(dateString, formatter);
-
-            DayOfWeek dayOfWeek = dateTest.getDayOfWeek();
-
-            System.out.println(dayOfWeek.getValue());*/
-
             try{
 
-                System.out.println("Client running on: " + Thread.currentThread().getName());
+                System.out.println("New thread created");
 
                 //Client will send date, type of item, location of donation
 
@@ -66,24 +56,14 @@ class Client extends Thread{
                 //Get the location
                 double location = Double.parseDouble(split[2]);
 
-
-
-
-
-                
-
-                System.out.println(dayOfWeek);
-                System.out.println(itemType);
-                System.out.println(location);
-
             
 
-                double[] inVals = new double[]{1,1,1,1,1,2};
+                double[] inVals = new double[]{1,dayOfWeek,itemType,location,1,1};
 
                 List<Double>output = nn.predict(inVals);
 
-                try{ TimeUnit.SECONDS.sleep(10);}
-                catch(Exception e){}
+                /*try{ TimeUnit.SECONDS.sleep(10);}
+                catch(Exception e){}*/
 
                 outS.println("HTTP/1.1 200 OK\n"+
                         "Content-Type: application/json\n\n"+
