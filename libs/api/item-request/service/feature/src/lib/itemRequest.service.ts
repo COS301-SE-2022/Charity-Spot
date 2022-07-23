@@ -17,7 +17,7 @@ export class itemRequestService {
 
     }
 
-    async getAIInfo(){
+    async getAIPredic(Date : string, itemType : string, location : string){
 
         const response = await fetch('http://localhost:7777/hello');
         const data = await response.json();

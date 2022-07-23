@@ -12,7 +12,7 @@ export class ItemRequestResolver {
     }
 
     @Query(() => itemRequestEntity)
-    getAIInfo(){
-        return this.itemRequestService.getAIInfo();
+    getAIPredic(@Args('Date') Date: string, @Args('itemType') itemType: string, @Args('location') location: string){
+        return this.itemRequestService.getAIPredic(Date, itemType, location);
     }
 }
