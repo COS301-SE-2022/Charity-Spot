@@ -23,7 +23,7 @@ export function ClientItemRequest(props: ClientItemRequestProps) {
                 <div className='donater'>
                   <form id = "mainRequestForm" onSubmit={() => {}}>
                     <div className='request-box1'>
-                    <label className='labelDel'>Item Name:</label><br/>
+                    <label className='labelDel'>Item Details:</label><br/>
                       <input className="req1" type ="text" placeholder='Item Name' onChange ={()=>{}}></input>  
                         <FaPen color='#1458b3'/>
                     </div>
