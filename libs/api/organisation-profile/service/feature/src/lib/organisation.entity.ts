@@ -17,4 +17,7 @@ export class OrganisationEntity {
 
     @Field({ nullable: true })
     Picture: string;
+
+    @Field({ nullable: true })
+    Internal: string;
 }

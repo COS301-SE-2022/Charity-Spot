@@ -9,25 +9,26 @@ export class OrganisationService {
     async getOrgProfile(userID: string) {
         //helpers
         const organisationProfile = new OrganisationEntity();
-        const org = await this.OrganisationRepository.getOrg(userID);
-        const date = (await this.OrganisationRepository.getDateCreated(userID)).dateCreated;
+        const user = await this.OrganisationRepository.getUser(userID);
+        let date = null;
 
-        //const addr = await this.OrganisationRepository.getAdress(org.AddressID);
-        //this needs a fix to accommodate google maps api
-        const addr = await this.OrganisationRepository.getAdress(userID);
 
-        //build
-        organisationProfile.Email = (await this.OrganisationRepository.getEmailFromUserID(userID)).email;
-        organisationProfile.Name = org.OrgName;
-        organisationProfile.Date = date.toDateString();
-        /*organisationProfile.Location = 
-            addr.Address + "," +
-            addr.Address2 + "," +
-            addr.City + "," +
-            addr.Province
-        ;*/
-        organisationProfile.Location = 
-            addr.Address;
+        //build up
+        if(user.identity == "ORG") {
+            const addr = await this.OrganisationRepository.getAdress(userID);
+            const org = await this.OrganisationRepository.getOrg(userID);
+            date = (await this.OrganisationRepository.getDateCreated(userID)).dateCreated;
+            organisationProfile.Email = user.email;
+            organisationProfile.Name = org.OrgName;
+            console.log(date);
+            organisationProfile.Date = date.toDateString();
+            organisationProfile.Location = 
+                addr.Address;
+            organisationProfile.Internal = "ORG";
+        } else {
+            organisationProfile.Email = user.email;
+            organisationProfile.Internal = user.identity;
+        }
 
         return organisationProfile;
     }

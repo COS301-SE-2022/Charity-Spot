@@ -5,7 +5,7 @@ import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 export class OrganisationRepository {
   constructor(private prisma: PrismaService) {}
 
-  async getEmailFromUserID(uID : string)
+  async getUser(uID : string)
   {
     return await this.prisma.user.findFirst({
       where:
@@ -14,7 +14,8 @@ export class OrganisationRepository {
       },
       select:
       {
-        email: true
+        email: true,
+        identity: true
       }
     })
   }
