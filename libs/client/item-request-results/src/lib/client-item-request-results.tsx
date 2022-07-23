@@ -1,11 +1,10 @@
 import styles from './client-item-request-results.module.css';
-
-/* eslint-disable-next-line */
+import "./resultss.css";
 export interface ClientItemRequestResultsProps {}
 
 export function ClientItemRequestResults(props: ClientItemRequestResultsProps) {
   return (
-    <div className={styles['container']}>
+    <div>
       <h1>Welcome to ClientItemRequestResults!</h1>
     </div>
   );
