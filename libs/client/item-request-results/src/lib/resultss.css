@@ -6,30 +6,13 @@
 }
 .HoldAll{
 	height: 500px auto;
-	width: 80%;
-  
-
-
-  
-  /* background-color: #1458b3; */
-  
-	 /* text-align: center; */
-	 /* display: flex; */
-	 /* flex-direction: row; */
-	 /* justify-content: space-around; */
-	 /* flex-flow: wrap; */
-    
-     /* justify-content: center; */
-
+	width: 75%;
      margin: 10px auto;
      vertical-align: middle;
-     
-     
-  
-  
+      
   }
   .leftHolda{
-    z-index: 0;
+
 	margin: 2rem;
 	height: 380px;
 	width: 26%;
@@ -41,7 +24,7 @@
     float: left;
   }
   .middleHolda{
-    z-index: 0;
+
 	margin: 2rem;
 	height: 380px;
 	width: 26%;
@@ -53,7 +36,7 @@
     float: left;
   }
   .righttHolda{
-    z-index: 0;
+
 	margin: 2rem;
 	height: 380px;
 	width: 26%;
@@ -76,6 +59,18 @@
     /* height: 60px; */
     color: #1458b3;
 }
+.within2
+{
+    background-color: #d6d6d6;
+    border-radius: 10px;
+    /* margin: 15px; */
+    border:  #cacaca ;
+    border-width: 1px;
+    padding: 5px;
+    width: 100%;
+    /* height: 60px; */
+    color: #1458b3;
+}
 .Lead{
     color: #1458b3;   
 }
@@ -95,6 +90,71 @@
 }
 .rqq{
     color: #1458b3;
+}
+
+
+@media screen and (max-width: 1200px) {
+
+    .HoldAll{
+        width: 100%;     
+      }
+      .leftHolda{
+        width: 85%;    
+      }
+      .middleHolda{
+        width: 85%; 
+      }
+      .righttHolda{
+        width: 85%; 
+      } 
+}
+@media screen and (max-width: 900px) {
+    .HoldAll{
+        width: 100%;     
+      }
+      .leftHolda{
+        width: 85%;    
+      }
+      .middleHolda{
+        width: 85%; 
+      }
+      .righttHolda{
+        width: 85%; 
+      }
+}
+
+@media screen and (max-width: 750px) {
+    .HoldAll{
+        width: 100%;     
+      }
+      .leftHolda{
+        width: 85%;    
+      }
+      .middleHolda{
+        width: 85%; 
+      }
+      .righttHolda{
+        width: 85%; 
+      }
+
+}
+@media screen and (max-width: 600px) {
+    .HoldAll{
+        width: 100%;     
+      }
+      .leftHolda{
+        width: 85%;    
+      }
+      .middleHolda{
+        width: 85%; 
+      }
+      .righttHolda{
+        width: 85%; 
+      }
+}
+
+@media screen and (min-width: 1600px) {
+
 }
 
 
