@@ -96,6 +96,9 @@
       "@charity-spot/client/item-request": [
         "libs/client/item-request/src/index.ts"
       ],
+      "@charity-spot/client/item-request-results": [
+        "libs/client/item-request-results/src/index.ts"
+      ],
       "@charity-spot/client/login": ["libs/client/login/src/index.ts"],
       "@charity-spot/client/organisation-profile": [
         "libs/client/organisation-profile/src/index.ts"
