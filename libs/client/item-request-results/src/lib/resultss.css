@@ -6,9 +6,16 @@
 }
 .HoldAll{
 	height: 500px auto;
-	width: 75%;
+	width: 85%;
      margin: 10px auto;
      vertical-align: middle;
+
+     /* --Might want to comment this out-- */
+     display: flex;
+     flex-direction: row;
+     justify-content: space-around;
+     flex-flow: wrap;
+  
       
   }
   .leftHolda{
@@ -154,6 +161,19 @@
 }
 
 @media screen and (min-width: 1600px) {
+    .HoldAll{
+        width: 80%;   
+        height: 450px;  
+      }
+      .leftHolda{
+        height: 450px; 
+      }
+      .middleHolda{
+        height: 450px; 
+      }
+      .righttHolda{
+        height: 450px; 
+      }
 
 }
 
