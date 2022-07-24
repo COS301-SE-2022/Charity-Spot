@@ -1,4 +1,5 @@
 import psycopg2
+import random
 
 try:
     connection = psycopg2.connect(user="seal_team",
@@ -21,6 +22,7 @@ try:
     cursor.execute(postgres_delete_query)
     connection.commit()
 
+    #Each charity makes 30 donations with small variations in type and location
 
 
     #1 Edgars
@@ -29,10 +31,28 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-    record_to_insert = ("Test item", "1", "1", "This is a test item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "FOOD", "1", "01/12", "Pretoria")
-    cursor.execute(postgres_insert_query, record_to_insert)
-    connection.commit()
+    #Edgards makes 50% of donations in Cape Town and 50% in Pretoria. Always clothes
+
+    for x in range(15):
+
+        month = random.randint(1,12)
+        day = random.randint(1,28)
+
+        postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
+        record_to_insert = (f"Clothing item {x} from Edgars. Pretoria", "1", "1", "This is a clothing item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "CLOTHING", f"1{x}", f"{day},{month}", "Pretoria")
+        cursor.execute(postgres_insert_query, record_to_insert)
+        connection.commit()
+
+    for x in range(15):
+
+        month = random.randint(1,12)
+        day = random.randint(1,28)
+
+        postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
+        record_to_insert = (f"Clothing item {x} from Edgars. Cape Town", "1", "1", "This is a clothing item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "CLOTHING", f"111{x}", f"{day},{month}", "Cape Town")
+        cursor.execute(postgres_insert_query, record_to_insert)
+        connection.commit()
+        
 
     #2 Mr Price
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
