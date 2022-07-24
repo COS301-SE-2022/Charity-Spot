@@ -10,11 +10,17 @@ import random
     # 2 = food
     # 3 = stationary
     # 4 = toiletries
+    # 5 = household utensils
+    # 6 = technology
+    # 7 = furniture
 
 #Location of the donation
     # 1 = Pretoria
     # 2 = Johannesburg
     # 3 = Cape Town
+    # 4 = Bloemfontein
+    # 5 = Polokwane
+    # 6 = Durban
 
 #Month = 1,2,3,4,5,6,7,8,9,10,11,12
 
