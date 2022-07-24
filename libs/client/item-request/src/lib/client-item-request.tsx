@@ -13,7 +13,7 @@ export function ClientItemRequest(props: ClientItemRequestProps) {
   return (
     <div>
       <br/>
-      <h1 className='reqHead'>Request for an item</h1>
+      <h2 className='reqHead'>Request for an item</h2>
       
         <div className='request-main'>
               <div className='request-left'>
@@ -63,7 +63,7 @@ export function ClientItemRequest(props: ClientItemRequestProps) {
 
                     <br></br>
 
-                    <Link to ='/scheduleDelivery' className='rgLink'><input id='req_but'type="button" value="Request"/></Link>   
+                    <Link to ='/itemRequestResults' className='rgLink'><input id='req_but'type="button" value="Request"/></Link>   
                     <input id='reqclr_but'type="button" onClick={()=>{}} 
                       value="Clear"/>                                                                                    
                   </form>
