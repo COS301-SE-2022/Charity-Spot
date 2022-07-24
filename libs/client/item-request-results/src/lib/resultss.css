@@ -1,0 +1,233 @@
+.motherHolder
+{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.HoldAll{
+	height: 500px auto;
+	width: 85%;
+     margin: 10px auto;
+     vertical-align: middle;
+
+     /* --Might want to comment this out-- */
+     display: flex;
+     flex-direction: row;
+     justify-content: space-around;
+     flex-flow: wrap;
+  
+      
+  }
+  .leftHolda{
+
+	margin: 2rem;
+	height: 380px;
+	width: 26%;
+	background-color: rgba(216, 216, 216, 0.579);
+	border-radius: 10px;
+	box-shadow: 0.5rem 0.5rem 2rem -1rem rgba(0, 0, 0, 0.322);
+	text-align: center;
+	padding: 15px;	 
+    float: left;
+  }
+  .middleHolda{
+
+	margin: 2rem;
+	height: 380px;
+	width: 26%;
+	background-color: rgba(216, 216, 216, 0.579);
+	border-radius: 10px;
+	box-shadow: 0.5rem 0.5rem 2rem -1rem rgba(0, 0, 0, 0.322);
+	text-align: center;
+	padding: 15px;	 
+    float: left;
+  }
+  .righttHolda{
+
+	margin: 2rem;
+	height: 380px;
+	width: 26%;
+	background-color: rgba(216, 216, 216, 0.579);
+	border-radius: 10px;
+	box-shadow: 0.5rem 0.5rem 2rem -1rem rgba(0, 0, 0, 0.322);
+	text-align: center;
+	padding: 15px;	 
+    float: left;
+  }
+.within
+{
+    /* background-color: #d6d6d6; */
+    border-radius: 10px;
+    margin: 15px;
+    border:  #cacaca ;
+    border-width: 1px;
+    padding: 5px;
+    width: 90%;
+    /* height: 60px; */
+    color: #1458b3;
+}
+.within2
+{
+    background-color: #d6d6d6;
+    border-radius: 10px;
+    /* margin: 15px; */
+    border:  #cacaca ;
+    border-width: 1px;
+    padding: 5px;
+    width: 100%;
+    /* height: 60px; */
+    color: #1458b3;
+}
+.Lead{
+    color: #1458b3;   
+}
+#butChoose{
+    width: 50%;
+    background: #1458b3 ;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    transition: all 0.3 ease;
+    border-radius: 5px;
+}
+#butChoose:hover{
+    transition: 0.3s ease-in;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.473);
+}
+.rqq{
+    color: #1458b3;
+}
+.orgreqpic{
+    height: 110px;
+    width: 110px;
+    padding: 15px;
+}
+
+@media screen and (max-width: 1200px) {
+
+    .HoldAll{
+        width: 100%;     
+      }
+      .leftHolda{
+        width: 85%;    
+      }
+      .middleHolda{
+        width: 85%; 
+      }
+      .righttHolda{
+        width: 85%; 
+      } 
+}
+@media screen and (max-width: 900px) {
+    .HoldAll{
+        width: 100%;     
+      }
+      .leftHolda{
+        width: 85%;    
+      }
+      .middleHolda{
+        width: 85%; 
+      }
+      .righttHolda{
+        width: 85%; 
+      }
+}
+
+@media screen and (max-width: 750px) {
+    .HoldAll{
+        width: 100%;     
+      }
+      .leftHolda{
+        width: 85%;    
+      }
+      .middleHolda{
+        width: 85%; 
+      }
+      .righttHolda{
+        width: 85%; 
+      }
+
+}
+@media screen and (max-width: 600px) {
+    .HoldAll{
+        width: 100%;     
+      }
+      .leftHolda{
+        width: 85%;    
+      }
+      .middleHolda{
+        width: 85%; 
+      }
+      .righttHolda{
+        width: 85%; 
+      }
+}
+
+@media screen and (min-width: 1600px) {
+    .HoldAll{
+        width: 80%;   
+        height: 450px;  
+      }
+      .leftHolda{
+        height: 450px; 
+      }
+      .middleHolda{
+        height: 450px; 
+      }
+      .righttHolda{
+        height: 450px; 
+      }
+      .orgreqpic{
+        height: 125px;
+        width: 125px;
+        padding: 15px;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ------------------------------------STAR RATED!!!!! CODE------------------------------- */
+.ratedsmalla {
+    height: 50px;
+ 
+    border-radius: 10px;
+    padding: 0 10px;
+
+         /* CENTERING STUFF*/ 
+         display: table;
+         margin: 0 auto;
+      
+}
+.ratedsmalla:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.ratedsmalla:not(:checked) > label {
+    float:right;
+    width:1.5em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:default;
+    font-size:25px;
+    color:rgb(196, 196, 196);
+
+}
+.ratedsmalla:not(:checked) > label:before {
+    content: '★ ';
+}
+.ratedsmalla > input:checked ~ label {
+    transition: 0.3s ease-in;
+    color: rgb(184, 181, 90);    
+}
+
+/*---------------------END OF RATED SMALL CODE----------------*/

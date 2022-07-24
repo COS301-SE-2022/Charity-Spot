@@ -41,7 +41,7 @@
 
     box-sizing: border-box;
     /* margin: 20px; */
-    background-color: #dadada;
+    background-color: rgb(228, 229, 230); 
     /* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0); */
     border-top-left-radius: 10px ;
     border-bottom-left-radius: 10px ;
@@ -67,15 +67,16 @@ input[type="file"] {
 img#donation-pic{
     height: 250px;
     width: 65%;
-    border-radius: 10%;
+    border-radius: 100%;
     /* padding-bottom: 5px; */
     color: #1458b3;
+ 
 
 }
 img#donation-pic2{
     height: 250px;
     width: 65%;
-    border-radius: 10%;
+    border-radius: 100%;
     /* padding-bottom: 5px; */
     color: #1458b3;
 
@@ -393,44 +394,55 @@ body{
 input.din1,.din2,.din3,.din4,.din5{
    width: 80%; 
    border: none;
-   border-bottom: 2px solid #1458b3;
-   background-color: transparent;
+   /* border-bottom: 2px solid #1458b3; */
+   background-color: rgb(241, 241, 241);
    color: darkslategray;
-   margin-bottom: 30px;
+   margin-bottom: 15px;
    outline: none;
    margin-right: 10px;
+
+   border-radius: 5px;
+   height: 45px;
+   /* border: 1px solid #1458b3; */
 }
 input.din1,.din2,.din3,.din4,.din5:focus{
     outline: none;
 }
 input.din1:hover{
+    transition: 0.3s ease-in;
     outline: none;
-    box-shadow: 1px 1px 0px -1px blue;  
-    border-bottom: 2px solid gray;
- 
+    border: 1px solid #1458b3;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
 }
 input.din2:hover{
+    transition: 0.3s ease-in;
     outline: none;
-    box-shadow: 1px 1px 0px -1px blue;  
-    border-bottom: 2px solid gray;
+    border: 1px solid #1458b3;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+ 
+}
+select.din3:hover{
+    transition: 0.3s ease-in;
+    outline: none;
+    border: 1px solid #1458b3;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+ 
 
 }
-input.din3:hover{
+select.din4:hover{
+    transition: 0.3s ease-in;
     outline: none;
-    box-shadow: 1px 1px 0px -1px blue;  
-    border-bottom: 2px solid gray;
+    border: 1px solid #1458b3;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+ 
 
 }
-input.din4:hover{
+textarea.din5:hover{
+    transition: 0.3s ease-in;
     outline: none;
-    box-shadow: 1px 1px 0px -1px blue;  
-    border-bottom: 2px solid gray;
-
-}
-input.din5:hover{
-    outline: none;
-    box-shadow: 1px 1px 0px -1px blue;  
-    border-bottom: 2px solid gray;
+    border: 1px solid #1458b3;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+ 
 
 }
 
@@ -477,15 +489,13 @@ input.din5:hover{
     position: relative;
     font-weight: 600;
 
-     box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0);
-    /* color: #1458b3; */
     color: #1458b3;
     background-color: #d5d7da;
     display: block;
-    margin-bottom: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
+    margin-bottom: 0px;
     cursor: pointer;
-    padding: 15px 0;
+    padding: 25px 0;
     border-radius: 10px;
     width: 100%;
 
@@ -496,7 +506,7 @@ position: absolute;
 right: 15px;
 top: 20px;
 width: 18px;
-height: 18px;
+height: 17px;
 
 }
 
@@ -515,6 +525,35 @@ height: 18px;
     flex-flow: wrap;
   
 }
+.cov{
+    /* box-shadow: 0.5px 0.5px 6px -1px rgba(0, 0, 0, 0.163);  */
+    background-color: #dadada;
+    border-radius: 10px;
+    margin: 15px;
+    border:  #bdbdbd ;
+    border-width: 1px;
+    padding: 15px;
+    min-height: 60px;
+    color: #1458b3;
+
+ 
+}
+.covDesc{
+    /* box-shadow: 0.5px 0.5px 6px -1px rgba(0, 0, 0, 0.163);  */
+    background-color: #dadada;
+    border-radius: 10px;
+    margin: 15px;
+    border:  #bdbdbd ;
+    border-width: 1px;
+    padding: 15px;
+    min-height: 60px;
+    color: #1458b3;
+    overflow-y: auto;
+    /* overflow-x: hidden; */
+max-height: 450px;
+    
+ 
+}
 .collapseleft{
     /* width: 28%;
     padding-top: 10%;
@@ -530,13 +569,14 @@ height: 18px;
     box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0);
 
 
+    /* border: solid 1px rgb(202, 202, 202); */
     width: 28%;
     height: 450px;
 
 
     box-sizing: border-box;
     /* margin: 20px; */
-    background-color: #dadada;
+    background-color: rgb(229, 231, 233);
     /* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0); */
     border-top-left-radius: 10px ;
     border-bottom-left-radius: 10px ;
@@ -551,9 +591,10 @@ height: 18px;
 .collapseright{
     width: 70%;
     background: rgb(229, 231, 233);
-    padding:10px;
+    padding:20px;
     border-radius: 10px;
     box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0);
+    /* border: solid 1px rgb(202, 202, 202); */
 }
 .collapsible input:checked ~.collapsible-text{
     max-height: 700px;

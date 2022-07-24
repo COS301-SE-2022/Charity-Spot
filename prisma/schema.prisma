@@ -11,8 +11,9 @@ datasource db {
 model User {
   UserID        String  @id @default(cuid()) @map("user_id")
   email         String? @unique
-  password      String
-  passwordSalt  String
+  password      String  @map("password")
+  passwordSalt  String  @map("password_salt")
+  identity      String  @map("identity")
 
   @@map("user")
 }
@@ -69,9 +70,23 @@ model DonoItem {
   Descrition  String? @map("descrition")
   Quality     quality @map("quality")
   Type        catagory  @map("type")
+  DonoDate    String  @map("dono_date")
+  DonoLoc     String  @map("dono_loc")
 
   @@id([ItemName,OrgID])
   @@map("donation_item")
+}
+
+model Delivery {
+  DeliveryID  String  @default(cuid()) @id
+  ItemID      String  @map("item_id")
+  OrgID       String  @map("org_id")
+  ClientID    String  @map("client_id")
+  Loaction    String? @map("location")
+  Date        String  @map("date")
+  Time        String? @map("time")
+
+  @@map("delivery")
 }
 
 enum quality {

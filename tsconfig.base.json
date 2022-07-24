@@ -42,6 +42,15 @@
       "@charity-spot/api/home/service/feature": [
         "libs/api/home/service/feature/src/index.ts"
       ],
+      "@charity-spot/api/item-request/api/feature": [
+        "libs/api/item-request/api/feature/src/index.ts"
+      ],
+      "@charity-spot/api/item-request/repository/feature": [
+        "libs/api/item-request/repository/feature/src/index.ts"
+      ],
+      "@charity-spot/api/item-request/service/feature": [
+        "libs/api/item-request/service/feature/src/index.ts"
+      ],
       "@charity-spot/api/login/api/feature": [
         "libs/api/login/api/feature/src/index.ts"
       ],
@@ -69,18 +78,36 @@
       "@charity-spot/api/registration/service/feature": [
         "libs/api/registration/service/feature/src/index.ts"
       ],
+      "@charity-spot/api/schedule-delivery/api/feature": [
+        "libs/api/schedule-delivery/api/feature/src/index.ts"
+      ],
+      "@charity-spot/api/schedule-delivery/repository/feature": [
+        "libs/api/schedule-delivery/repository/feature/src/index.ts"
+      ],
+      "@charity-spot/api/schedule-delivery/service/feature": [
+        "libs/api/schedule-delivery/service/feature/src/index.ts"
+      ],
       "@charity-spot/api/shared/services/prisma": [
         "libs/api/shared/services/prisma/src/index.ts"
       ],
       "@charity-spot/client/chat": ["libs/client/chat/src/index.ts"],
       "@charity-spot/client/donate": ["libs/client/donate/src/index.ts"],
       "@charity-spot/client/home": ["libs/client/home/src/index.ts"],
+      "@charity-spot/client/item-request": [
+        "libs/client/item-request/src/index.ts"
+      ],
+      "@charity-spot/client/item-request-results": [
+        "libs/client/item-request-results/src/index.ts"
+      ],
       "@charity-spot/client/login": ["libs/client/login/src/index.ts"],
       "@charity-spot/client/organisation-profile": [
         "libs/client/organisation-profile/src/index.ts"
       ],
       "@charity-spot/client/registration": [
         "libs/client/registration/src/index.ts"
+      ],
+      "@charity-spot/client/schedule-delivery": [
+        "libs/client/schedule-delivery/src/index.ts"
       ]
     }
   },
