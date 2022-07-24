@@ -50,12 +50,15 @@ export function ClientLogin() {
         setInvalidCredentials('Invalid credentials, please try again');
       }
       else{
-        let ID = response.data.login.ID;
+        const ID = response.data.login.ID,
+              ID_EXT = response.data.login.ID_EXT;
+        
         if(ID == null){
           setInvalidCredentials('Invalid credentials, please try again');
           return;
         }
-        document.cookie = "ID="+ID;
+        document.cookie = `ID=${ID}`;
+        document.cookie = `ID_EXT=${ID_EXT}`;
         window.location.href = '/home';
         console.log(response.data.login);
         setInvalidCredentials('');
@@ -93,7 +96,7 @@ export function ClientLogin() {
 
         <div className="right-side">
           <div className='welcomeNote'>
-            <h3 id='welid'>Welcome back,</h3>
+            <h3 id='welid'>Welcome</h3>
           </div>
 
             <img src={Seallogin} alt='' id='wel-img-id'/>

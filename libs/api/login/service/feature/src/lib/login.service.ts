@@ -19,7 +19,8 @@ export class LoginService {
 
         if(repValidation != false) {
             const entity = new LoginEntity();
-            entity.ID = repValidation;
+            entity.ID = repValidation.UserID;
+            entity.ID_EXT = repValidation.identity;
 
             return entity;
         }

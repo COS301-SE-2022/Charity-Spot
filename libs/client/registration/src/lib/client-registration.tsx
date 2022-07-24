@@ -93,6 +93,7 @@ function ClientForm () {
     let ID = null;
     if(response.data != null && (ID = response.data.clientRegist.ID_internal) != null) {
       document.cookie = "ID="+ID;
+      document.cookie = "ID_EXT=CLIENT";
       window.location.href = '/login';
       setInvalidCredentials('');
     } else {
@@ -186,6 +187,7 @@ function OrgForm() {
     let ID = null;
     if(response.data != null && (ID = response.data.orgRegist.ID_internal) != null) {
       document.cookie = "ID="+ID;
+      document.cookie = "ID_EXT=ORG";
       setInvalidCredentials('');
       window.location.href = '/login';
     } else {

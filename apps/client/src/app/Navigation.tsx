@@ -6,18 +6,26 @@ import CS from '../../../../libs/client/shared/assets/CS.png'
 import { getCookie, setCookie } from 'typescript-cookie'
 
 
+const ID = getCookie('ID');
+const ID_EXT = getCookie('ID_EXT');
 
 function Navigation() {
 
   const checkIfUserLogIn = () => {
-    var ID = getCookie('ID');
 
-    if(ID == undefined){
+    if(ID === undefined){
       return false;
     }
 
     return true;
 
+  }
+
+  const checkID = () => {
+    if(checkIfUserLogIn())
+      return ID_EXT === "ORG";
+
+    return false;
   }
 
   return (
@@ -33,7 +41,8 @@ function Navigation() {
           <Nav.Link as={Link} to={"/home"}>Home</Nav.Link> 
           {/*!checkIfUserLogIn()  && <Nav.Link as={Link} to={"/login"}>Login</Nav.Link>*/}
           { checkIfUserLogIn()  && <Nav.Link as={Link} to={"/profile"}>Profile</Nav.Link>}
-          { checkIfUserLogIn()  && <Nav.Link as={Link} to={"/donate"}>Donate</Nav.Link>}
+          { checkID()  && <Nav.Link as={Link} to={"/donate"}>Donate</Nav.Link>}
+          { checkIfUserLogIn()  && <Nav.Link as={Link} to={"/chat"}>Chat</Nav.Link>}
         </Nav>
       </Navbar.Collapse>
   </Navbar>
