@@ -5,6 +5,7 @@ import Seallogin from '../../../shared/assets/Seallogin.png'
 import CS from '../../../shared/assets/CS.png'
 import Bgpic from '../../../shared/assets/Bgpic.png'
 import './login.css'
+import { getCookie } from 'typescript-cookie';
 
 async function APICall(email: string, password: string){
 
@@ -65,11 +66,13 @@ export function ClientLogin() {
         window.location.href = '/home';
         setInvalidCredentials('');
       }
-
-      
   }
 
+  if(getCookie('ID') !== undefined)
+    window.location.href = '/home';
+
   return ( 
+
     <div className = "main-login" style ={{backgroundImage:`url(${Bgpic})`}}>
       <br/>
       <h1>Charity-Spot</h1>

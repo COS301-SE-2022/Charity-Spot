@@ -2,15 +2,15 @@ import { Field, ID, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class ChatEntity {
-    @Field({ nullable: false })
+    @Field({ nullable: true })
     Reciever: string
 
-    @Field({nullable: false})
+    @Field({nullable: true})
     Sender: string
 
     @Field({nullable: true})
     Message: string
 
-    @Field(() => [String], {nullable: true})
-    Threads: string[]
+    @Field(() => [ChatEntity], {nullable: true})
+    Threads: ChatEntity[]
 }

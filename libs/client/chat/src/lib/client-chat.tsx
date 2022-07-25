@@ -1,22 +1,101 @@
 import styles from './client-chat.module.css';
 import {Bubble} from './Bubble';
 
-import { useEffect, useState } from 'react';
+import { ReactChild, ReactFragment, ReactPortal, useEffect, useState } from 'react';
 import { getCookie } from 'typescript-cookie';
 
-let threads: any;
 let move: any;
 document.cookie = `RENDER=00`;
 
-async function API_link(query: string) {
-  return ["org1","org2"];
+async function API_link(query: string, id_q: string) {
+  let outcome = null;
+
+  await fetch(
+    'http://localhost:3333/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        query
+      })
+    }).then(r => r.json()).then(data => 
+      outcome = data
+  );
+  
+  return JSON.stringify(outcome);
 }
 
 export function ClientChat() {
-  
-  threads = API_link("query");
+
+  //renderingDATA
+  const [result, setResult] = useState<string>("");
+
+  useEffect(() =>{
+    if(renderingDet === "00" || renderingDet === "01") {
+      API_link(threadsQuery(), "").then(data => {
+        setResult(data);
+      })
+    } else {
+      API_link(threadQuery(), "").then(data => {
+        setResult(data);
+      })
+    }
+  }, [result]);
+
+
+  //QUERIES
+  const threadsQuery = () => {
+    return `
+      query{
+        RetrieveThreads(
+          userID: "${getCookie('ID')}",
+          whois: "${getCookie('ID_EXT')}"
+        ) {
+          Threads {
+            Reciever
+            Sender
+            Message
+          }
+        }
+      }`;
+  }
+
+  const threadQuery = () => {
+    return `
+      query{
+        RetrieveMessages(
+          userID: "${getCookie('ID')}",
+          with_ID: "${getCookie('RUNNER')}",
+          whois: "${getCookie('ID_EXT')}"
+        ) {
+          Reciever
+          Sender
+          Message
+        }
+      }`;
+  }
+
+  const sendMessage = (message: string) => {
+    return `
+    query{
+      Send(
+        senderID: "${getCookie('ID')}",
+        receiverID: "${getCookie('RUNNER')}",
+        sentBy: "${getCookie('ID_EXT')}",
+        message: "${message}"
+        ){
+        Reciever
+        Sender
+        Message
+        }
+      }`;
+  }
+
   move = getCookie('RENDER');
 
+  //SWITCH UI
   const [renderingDet, setRenderVal] = useState<string>("00");
 
   const changeState = () => {
@@ -25,12 +104,14 @@ export function ClientChat() {
     else if (move === "10")
       move = "01";
 
-    console.log(move);
     setRenderVal(move);
+    setResult("");
   }
 
-  const onClickThreads = (clicked: string) => {
+  //UI - ACCESS
+  const onClickThreads = (clicked: string, clicked_n: string) => {
     document.cookie = `RUNNER=${clicked}`;
+    document.cookie = `RUNNER_N=${clicked_n}`
     document.cookie = `RENDER=10`;
     changeState();
   }
@@ -40,18 +121,50 @@ export function ClientChat() {
     changeState();
   }
 
+
+  //RENDER
   if(renderingDet === "00" || renderingDet === "01")
     return (
       <div className={styles["bodyC"]}>
-        <h1>CHAT THREADS</h1>
-        <button className={styles["sndBT"]} onClick={()=>{onClickThreads(threads[0]); move = renderingDet;}}type="button">Move</button>
+        {(() => {
+          if(result === "")
+            return <h1>LOADING CHAT...</h1>
+          
+          else {
+            const threads = JSON.parse(result).data.RetrieveThreads.Threads;
+            return (
+              <div>
+                <h1>Active Chats</h1>
+                
+                  {
+                    threads.map((thread_: any) => (
+                      <>
+                      <button className={styles["sndBT"]} onClick={()=>{onClickThreads(`${thread_.Message}`, `${thread_.Sender}`); move = renderingDet;}}type="button" key={thread_.Message}>{thread_.Sender}</button><br/><br/>
+                      </>
+                    ))
+                  }
+              </div>
+            )  
+          }   
+        })()}
       </div>
     )
   else 
     return (
       <div className={styles["bodyC"]}>
-        <h1>CHATS</h1>
-        <button className={styles["sndBT"]} onClick={()=>{onClickBack(); move = renderingDet;}}type="button">Back</button>
+      {(() => {
+        if(result === "")
+          return <h1>LOADING CHAT...</h1>
+       
+        else {
+          return (
+            <div>
+              <h1>Chats with {getCookie('RUNNER_N')}</h1>
+              <button className={styles["sndBT"]} onClick={()=>{onClickBack(); move = renderingDet;}}type="button">Back</button>
+            </div>
+          ) 
+        }    
+      })()}
       </div>
     )
 }

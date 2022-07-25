@@ -104,7 +104,13 @@ export class ChatService {
 
                 if(data != null)
                     for(const i of data) {
-                        returnableV.Threads.push(i.ClientID);
+                        const ik = new ChatEntity();
+                        const user = await this.ChatRepository.GetUserForThreadList(i.ClientID);
+                        ik.Sender = user.email;
+                        ik.Reciever = "";
+                        ik.Message = i.ClientID; 
+
+                        returnableV.Threads.push(ik);
                     }
 
                 break;
@@ -113,9 +119,15 @@ export class ChatService {
                 data = await this.ChatRepository.GetAllChatsClient(userID);
 
                 if( data != null)
-                    for(const i of data) {
-                        returnableV.Threads.push(i.OrgID);
-                    }
+                for(const i of data) {
+                    const ik = new ChatEntity();
+                    const user = await this.ChatRepository.GetOrgForThreadList(i.OrgID);
+                    ik.Sender = user.OrgName;
+                    ik.Reciever = user.profilePicture;
+                    ik.Message = i.OrgID; 
+
+                    returnableV.Threads.push(ik);
+                }
 
                 break;
         }
