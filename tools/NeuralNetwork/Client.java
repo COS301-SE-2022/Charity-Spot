@@ -33,6 +33,8 @@ class Client extends Thread{
 
                 String inMessage = this.inputS.readLine();
 
+                System.out.println(inMessage);
+
                     //remove GET /
                     String[] split = inMessage.split("/");
                     inMessage = split[1];
@@ -64,6 +66,8 @@ class Client extends Thread{
 
                 /*try{ TimeUnit.SECONDS.sleep(10);}
                 catch(Exception e){}*/
+
+                System.out.println(output.toString());
 
                 outS.println("HTTP/1.1 200 OK\n"+
                         "Content-Type: application/json\n\n"+

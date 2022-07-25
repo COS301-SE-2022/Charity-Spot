@@ -48,15 +48,15 @@ public class Server{
 
     public static NeuralNetwork trainNewNetwork(){
 
-        double [][] trainData= new double[720][];
+        double [][] trainData= new double[1320][];
 
-	    double [][] correctOutput= new double[720][];
+	    double [][] correctOutput= new double[1320][];
 
         //Read in the donations from a file
 
         try{
 			
-			BufferedReader br = new BufferedReader(new FileReader(new File("mockDonations.txt")));
+			BufferedReader br = new BufferedReader(new FileReader(new File("donationsData.txt")));
 			
 			String line;
 
@@ -118,7 +118,7 @@ public class Server{
 		}*/
 
         //Create and train the new nn
-        NeuralNetwork nn = new NeuralNetwork(6,15,1);
+        NeuralNetwork nn = new NeuralNetwork(6,25,1);
         nn.fit(trainData, correctOutput, 500000);
 
         return nn;
