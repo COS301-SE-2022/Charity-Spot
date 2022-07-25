@@ -8,8 +8,6 @@ def findDay(date):
     day, month, year = (int(i) for i in date.split(','))   
     dayNumber = calendar.weekday(year, month, day)
     return dayNumber+1
-    #givenDate = datetime.datetime.strptime(date, '%d,%m,%Y').weekday()
-    #return (calendar.day_name[born])
 
 def findLoc(loc):
 
@@ -23,15 +21,28 @@ def findLoc(loc):
 
 def findItemType(item):
 
-    locations = ["Pretoria", "Johannesburg", "Cape Town", "Bloemfontein", "Polokwane", "Durban"]
+    items = ["CLOTHING", "FOOD", "STATIONARY", "HYGIENE", "KITCHEN", "FURNITURE"]
 
-    for i in range(0, len(locations)):
-        if(loc == locations[i]):
+    for i in range(0, len(items)):
+        if(item == items[i]):
             return i+1
 
     return 0
 
+def createFakeDonation(orgID):
+
+    org = orgID
+    dayOfWeek = random.randint(1,7)
+    typeOfItem = random.randint(1,4)
+    loc = random.randint(1,3)
+    month = random.randint(1,12)
+    Weather = random.randint(1,3)
+
+    return org + "," + str(dayOfWeek) + "," + str(typeOfItem) + "," + str(loc) + "," + str(month) + "," + str(Weather) + ',0'
+
 try:
+    f = open("donationsData.txt","w")
+
     connection = psycopg2.connect(user="seal_team",
                                   password="seal_team",
                                   host="localhost",
@@ -40,20 +51,24 @@ try:
 
     cursor = connection.cursor()
 
-    postgres_delete_query = "SELECT org_id, dono_date, dono_loc, type FROM public.donation_item;"
-    cursor.execute(postgres_delete_query)
-    #connection.commit()
+    postgres_select_query = "SELECT org_id, dono_date, dono_loc, type FROM public.donation_item;"
+    cursor.execute(postgres_select_query)
 
     row = cursor.fetchone()
 
     while row is not None:
 
         orgID = row[0] 
-        date = row[1]
+        dayOfWeek = str(findDay(row[1] + ",2022"))
+        item_type = str(findItemType(row[3]))
         location = str(findLoc(row[2]))
-        item_type = row[3]
+        day, month = row[1].split(',')
 
-        print(orgID + " " + date + " " + location + " " + item_type)
+        realDono = orgID + "," + dayOfWeek + "," + item_type + "," + location + "," + month + ",1,1"
+        fakeDono = createFakeDonation(orgID)
+
+        f.write(realDono + '\n')
+        f.write(fakeDono + '\n')
 
         row = cursor.fetchone()
 
@@ -66,7 +81,3 @@ finally:
         cursor.close()
         connection.close()
         print("PostgreSQL connection is closed")
- 
-# Driver program
-date = '28,07,2022'
-print(findDay(date))
