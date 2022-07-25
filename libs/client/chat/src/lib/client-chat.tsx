@@ -2,15 +2,11 @@ import styles from './client-chat.module.css';
 import {Bubble} from './Bubble';
 
 import { useEffect, useState } from 'react';
+import { getCookie } from 'typescript-cookie';
 
-let move: number;
 let threads: any;
-
-function ChatThread() {
-  return (
-    <h1>CHAT</h1>
-  )
-}
+let move: any;
+document.cookie = `RENDER=00`;
 
 async function API_link(query: string) {
   return ["org1","org2"];
@@ -19,32 +15,45 @@ async function API_link(query: string) {
 export function ClientChat() {
   
   threads = API_link("query");
+  move = getCookie('RENDER');
 
-  const [renderingDet, setRenderVal] = useState<number>(0);
+  const [renderingDet, setRenderVal] = useState<string>("00");
 
   const changeState = () => {
-    if(move === 0) 
-      move = 1;
-    else if (move === 1)
-      move = 0;
+    if(move === "00" || move === "01") 
+      move = "10";
+    else if (move === "10")
+      move = "01";
 
+    console.log(move);
     setRenderVal(move);
   }
 
-  const onClickThread = (clicked: string) => {
-    document.cookie = `RUNNER=${clicked}`
+  const onClickThreads = (clicked: string) => {
+    document.cookie = `RUNNER=${clicked}`;
+    document.cookie = `RENDER=10`;
     changeState();
   }
 
-  if(renderingDet === 0)
+  const onClickBack = () => {
+    document.cookie = `RENDER=01`;
+    changeState();
+  }
+
+  if(renderingDet === "00" || renderingDet === "01")
     return (
       <div className={styles["bodyC"]}>
         <h1>CHAT THREADS</h1>
-        <button className={styles["sndBT"]} onClick={()=>{onClickThread(threads[0])}}type="button">Move</button>
+        <button className={styles["sndBT"]} onClick={()=>{onClickThreads(threads[0]); move = renderingDet;}}type="button">Move</button>
       </div>
     )
-  else
-    return <ChatThread  />
+  else 
+    return (
+      <div className={styles["bodyC"]}>
+        <h1>CHATS</h1>
+        <button className={styles["sndBT"]} onClick={()=>{onClickBack(); move = renderingDet;}}type="button">Back</button>
+      </div>
+    )
 }
 
 export default ClientChat;
