@@ -39,13 +39,18 @@ export function ClientChat() {
   const [Bubb, addBubb] = useState<any[]>([]);
 
   const sendMessage = () => {
-    const tempB: Bubbles = new Bubbles();
-    tempB.typeM = "R";
-    tempB.mess = inputVal;
+    if(inputVal !== undefined) {
+      const tempB: Bubbles = new Bubbles();
+      tempB.typeM = "R";
+      tempB.mess = inputVal;
 
-    const newArr = [...Bubb, tempB]
+      const newArr = [...Bubb, tempB]
 
-    addBubb(newArr);
+      API_link(sendMessageQuery(tempB.mess), "");
+
+      addBubb(newArr);
+    } else 
+      return;
   }
 
   //renderingDATA
@@ -177,13 +182,40 @@ export function ClientChat() {
           return <h1>LOADING CHAT...</h1>
        
         else {
-          
+          const retrive = () => {
+            const botRef = document.getElementById("b1");
+
+            const thread = JSON.parse(result).data.RetrieveMessages.Message;
+            const messages = thread.split("\n");
+            const bubbleMessages = [];
+
+            for(const m of messages) {
+              const tempB: Bubbles = new Bubbles();
+              const line = m.split(" - ");
+              const creds = line[0].split("_");
+
+              if(creds[0].split("[")[1] === getCookie("RUNNER"))
+                tempB.typeM = "L";
+              else
+                tempB.typeM = "R";
+
+              tempB.mess = line[1];
+              
+              bubbleMessages.push(tempB);
+            }
+
+            addBubb(bubbleMessages);
+
+            setTimeout(() => { botRef?.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'start' })}, 500);
+          }
+
 
           return (
             <>
               <div>
                 <h1>Chatting with {getCookie('RUNNER_N')}</h1>
                 <button className={styles["sndBT"]} onClick={()=>{onClickBack(); move = renderingDet;}}type="button">Back</button>
+                <button className={styles["sndBT"]} onClick={()=>{retrive()}}type="button">History</button> 
               </div>
 
               <div id = "mainMW" className={styles["messages"]}>
@@ -249,11 +281,11 @@ export default ClientChat;
 //       //Get all of the previous messages that were send in this chat
 
 //       for(let i=0; i<3; i++){
-//         let tempB: Bubbles = new Bubbles();
-//         tempB.typeM = "R";
-//         tempB.mess = "This is a right bubble" + i;
+        // let tempB: Bubbles = new Bubbles();
+        // tempB.typeM = "R";
+        // tempB.mess = "This is a right bubble" + i;
         
-//         prevMess.push(tempB);
+        // prevMess.push(tempB);
 //       }
 
 //       for(let i=0; i<3; i++){
@@ -274,7 +306,7 @@ export default ClientChat;
       
 //       addBubb(prevMess);
 
-//       setTimeout(() => { botRef?.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'start' })}, 500)
+      // setTimeout(() => { botRef?.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'start' })}, 500)
 
 //     }
 //     else{
