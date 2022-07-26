@@ -48,9 +48,9 @@ public class Server{
 
     public static NeuralNetwork trainNewNetwork(){
 
-        double [][] trainData= new double[1860][];
+        double [][] trainData= new double[4154][];
 
-	    double [][] correctOutput= new double[1860][];
+	    double [][] correctOutput= new double[4154][];
 
         //Read in the donations from a file
 
@@ -119,7 +119,7 @@ public class Server{
 
         //Create and train the new nn
         NeuralNetwork nn = new NeuralNetwork(6,25,1);
-        nn.fit(trainData, correctOutput, 1500000);
+        nn.fit(trainData, correctOutput, 5000000);
 
         return nn;
 
