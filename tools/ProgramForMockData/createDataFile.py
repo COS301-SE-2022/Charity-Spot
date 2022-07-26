@@ -129,16 +129,19 @@ def getNormalizedVal(val, type):
         return normalized_OrgID[int(val)-1]
 
     if(type == "DayOfW"):
-        return normalized_OrgID[int(val)-1]
+        return normalized_dayOfWeek[int(val)-1]
 
     if(type == "TypeOfI"):
-        return normalized_OrgID[int(val)-1]
+        return normalized_typeOfItem[int(val)-1]
 
     if(type == "LocOfI"):
-        return normalized_OrgID[int(val)-1]
+        return normalized_location[int(val)-1]
     
     if(type == "Month"):
-        return normalized_OrgID[int(val)-1]
+        return normalized_month[int(val)-1]
+
+    if(type == "Weather"):
+        return normalized_weather[int(val)-1]
 
 def findDay(date):
     day, month, year = (int(i) for i in date.split(','))   
@@ -175,7 +178,7 @@ def createFakeDonation(orgID, day_of_week, item_type, location, month):
       #      dayOfWeek -= 1
        # else:
         #    dayOfWeek += 1
-    dayOfWeek = str(getNormalizedVal(1))
+    dayOfWeek = str(getNormalizedVal(1, "DayOfW"))
 
     typeOfItem = random.randint(1,6)
     if typeOfItem == int(item_type):
@@ -184,7 +187,7 @@ def createFakeDonation(orgID, day_of_week, item_type, location, month):
         else:
             typeOfItem += 1
 
-    typeOfItem = str(getNormalizedVal(typeOfItem))
+    typeOfItem = str(getNormalizedVal(typeOfItem, "TypeOfI"))
 
     loc = random.randint(1,6)
     if loc == int(location):
@@ -193,7 +196,7 @@ def createFakeDonation(orgID, day_of_week, item_type, location, month):
         else:
             loc += 1
 
-    loc = str(getNormalizedVal(loc))
+    loc = str(getNormalizedVal(loc, "LocOfI"))
 
     
    # month_N = random.randint(1,12)
@@ -202,10 +205,10 @@ def createFakeDonation(orgID, day_of_week, item_type, location, month):
       #      month_N -= 1
        # else:
         #    month_N += 1
-    month_N = str(getNormalizedVal(1))
+    month_N = str(getNormalizedVal(1, "Month"))
 
     #Weather = random.randint(1,3)
-    Weather = str(getNormalizedVal(1))
+    Weather = str(getNormalizedVal(1, "Weather"))
 
     return org + "," + str(dayOfWeek) + "," + str(typeOfItem) + "," + str(loc) + "," + str(month_N) + "," + str(Weather) + ',0'
 
@@ -237,12 +240,12 @@ try:
             charIDR.append(random.uniform(0, 1))
         
         orgID = str(getRandID(row[0])) 
-        dayOfWeek = str(getNormalizedVal(findDay(row[1] + ",2022")))
-        item_type = str(getNormalizedVal(findItemType(row[3])))
-        location = str(getNormalizedVal(findLoc(row[2])))
-        weather = str(getNormalizedVal(1))
+        dayOfWeek = str(getNormalizedVal(findDay(row[1] + ",2022"), "DayOfW"))
+        item_type = str(getNormalizedVal(findItemType(row[3]), "TypeOfI"))
+        location = str(getNormalizedVal(findLoc(row[2]), "LocOfI"))
+        weather = str(getNormalizedVal(1, "Weather"))
         day, month = row[1].split(',')
-        monthN = str(getNormalizedVal(month))
+        monthN = str(getNormalizedVal(month, "Month"))
 
         realDono = orgID + "," + dayOfWeek + "," + item_type + "," + location + "," + monthN + ","+weather+",1"
         

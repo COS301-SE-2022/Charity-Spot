@@ -15,9 +15,28 @@ class Client extends Thread{
 
     private int NumOfCharities;
 
-    private int[] input;
-    private double[] normInput;
+    //Arrays for values and corresponding normalized value
+    private int[] inputID;
+    private double[] normID;
 
+    private int[] inputDOW;
+    private double[] normDOW;
+
+    private int[] inputTOI;
+    private double[] normTOI;
+
+    private int[] inputLOC;
+    private double[] normLOC;
+
+    private int[] inputMON;
+    private double[] normMON;
+
+    private int[] inputWEA;
+    private double[] normWEA;
+
+
+
+    //randomly generated id's for charities
     private int[] charID;
     private double[] charIDR;
 
@@ -44,43 +63,142 @@ class Client extends Thread{
 
             }
 
-            this.input = new int[this.NumOfCharities];
-            this.normInput = new double[this.NumOfCharities];
 
-            int i = 0;
+                //Vals for ID
+                this.inputID = new int[this.NumOfCharities];
+                this.normID = new double[this.NumOfCharities];
 
-            System.out.println(this.NumOfCharities);
+                int i = 0;
 
-            BufferedReader br = new BufferedReader(new FileReader(new File("normalizedVal.txt")));
+                BufferedReader br = new BufferedReader(new FileReader(new File("normalizedOrgID.txt")));
 
-            while((line = br.readLine()) != null){
+                while((line = br.readLine()) != null){
 
-                String[] split = line.split(",");
+                    String[] split = line.split(",");
 
-                this.input[i] = Integer.parseInt(split[0]);
-                this.normInput[i] = Double.parseDouble(split[1]);
+                    this.inputID[i] = Integer.parseInt(split[0]);
+                    this.normID[i] = Double.parseDouble(split[1]);
 
-                i++;
+                    i++;
 
-            }
+                }
 
-            i = 0;
+
+                //Vals for Day of week
+                i = 0;
             
-            this.charID = new int[this.NumOfCharities];
-            this.charIDR = new double[this.NumOfCharities];
+                this.inputDOW = new int[7];
+                this.normDOW = new double[7];
 
-            BufferedReader brID = new BufferedReader(new FileReader(new File("charID.txt")));
+                BufferedReader brID = new BufferedReader(new FileReader(new File("normalizedDOW.txt")));
 
-            while((line = brID.readLine()) != null){
+                while((line = brID.readLine()) != null){
 
-                String[] split = line.split(",");
+                    String[] split = line.split(",");
 
-                this.charID[i] = Integer.parseInt(split[0]);
-                this.charIDR[i] = Double.parseDouble(split[1]);
+                    this.inputDOW[i] = Integer.parseInt(split[0]);
+                    this.normDOW[i] = Double.parseDouble(split[1]);
 
-                i++;
+                    i++;
 
-            }
+                }
+
+                //Vals for Type of item
+                i = 0;
+            
+                this.inputTOI = new int[7];
+                this.normTOI = new double[7];
+
+                BufferedReader brID = new BufferedReader(new FileReader(new File("normalizedTOI.txt")));
+
+                while((line = brID.readLine()) != null){
+
+                    String[] split = line.split(",");
+
+                    this.inputTOI[i] = Integer.parseInt(split[0]);
+                    this.normTOI[i] = Double.parseDouble(split[1]);
+
+                    i++;
+
+                }
+
+                //Vals for location
+                i = 0;
+            
+                this.inputLOC = new int[6];
+                this.normLOC = new double[6];
+
+                BufferedReader brID = new BufferedReader(new FileReader(new File("normalizedLOC.txt")));
+
+                while((line = brID.readLine()) != null){
+
+                    String[] split = line.split(",");
+
+                    this.inputLOC[i] = Integer.parseInt(split[0]);
+                    this.normLOC[i] = Double.parseDouble(split[1]);
+
+                    i++;
+
+                }
+
+                //Vals for Month
+                i = 0;
+            
+                this.inputMON = new int[12];
+                this.normMON = new double[12];
+
+                BufferedReader brID = new BufferedReader(new FileReader(new File("normalizedMON.txt")));
+
+                while((line = brID.readLine()) != null){
+
+                    String[] split = line.split(",");
+
+                    this.inputMON[i] = Integer.parseInt(split[0]);
+                    this.normMON[i] = Double.parseDouble(split[1]);
+
+                    i++;
+
+                }
+
+                //Vals for weather
+                i = 0;
+            
+                this.inputWEA = new int[3];
+                this.normWEA = new double[3];
+
+                BufferedReader brID = new BufferedReader(new FileReader(new File("normalizedMON.txt")));
+
+                while((line = brID.readLine()) != null){
+
+                    String[] split = line.split(",");
+
+                    this.inputWEA[i] = Integer.parseInt(split[0]);
+                    this.normWEA[i] = Double.parseDouble(split[1]);
+
+                    i++;
+
+                }
+
+                //Random id's generated for charities
+                i = 0;
+            
+                this.charID = new int[20];
+                this.charIDR = new double[20];
+
+                BufferedReader brID = new BufferedReader(new FileReader(new File("charID.txt")));
+
+                while((line = brID.readLine()) != null){
+
+                    String[] split = line.split(",");
+
+                    this.charID[i] = Integer.parseInt(split[0]);
+                    this.charIDR[i] = Double.parseDouble(split[1]);
+
+                    i++;
+
+                }
+
+
 
         }
         catch(Exception e){}
@@ -88,7 +206,51 @@ class Client extends Thread{
 
     }
 
-    double getNormVal(int input){
+    double getNormVal(int input, char type){
+
+        switch(type){
+            case 'a':
+                for(int i=0; i<inputID.length; i++){
+                    if(inputID[i] == input){
+                        return this.normID[i];
+                    }
+                }
+                break;
+
+            case 'b':
+                for(int i=0; i<inputDOW.length; i++){
+                    if(inputDOW[i] == input){
+                        return this.normDOW[i];
+                    }
+                }
+                break;
+
+            case 'c':
+                for(int i=0; i<inputTOI.length; i++){
+                    if(inputTOI[i] == input){
+                        return this.normTOI[i];
+                    }
+                }
+                break;
+
+            case 'd':
+                for(int i=0; i<inputLOC.length; i++){
+                    if(inputLOC[i] == input){
+                        return this.normLOC[i];
+                    }
+                }
+                break;
+
+            case 'e':
+                for(int i=0; i<inputID.length; i++){
+                    if(inputID[i] == input){
+                        return this.normID[i];
+                    }
+                }
+                break;
+            
+
+        }
 
         for(int i=0; i<this.NumOfCharities; i++){
 
