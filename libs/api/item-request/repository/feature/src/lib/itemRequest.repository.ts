@@ -5,4 +5,20 @@ import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 export class itemRequestRepository {
   constructor(private prisma: PrismaService) {}
 
+  async emailExists(UserID : string)
+  {
+    const list = await this.prisma.organisation.findMany({
+      select:
+      {
+        UserID: true,
+        OrgName: true
+      },
+      where:
+      {
+        UserID: UserID,
+      }
+    });
+
+  }
+
 }

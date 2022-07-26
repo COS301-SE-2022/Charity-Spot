@@ -9,5 +9,8 @@ export class itemRequestEntity {
     @Field({ nullable: true })
     Probability: string
 
+    @Field({nullable : true})
+    OrgName: string
+
 }
 

@@ -1,29 +1,57 @@
 import styles from './client-chat.module.css';
 import { useEffect, useState } from 'react';
 
+async function APICall(){
+
+    const query = `query{ 
+          getAIPredic(Date:"01-03", itemType:"1", location:"1"){
+                ID,
+                Probability
+          }
+    }`;
+
+    let result = "";
+
+    await fetch('http://localhost:3333/graphql', {
+             method: 'POST',
+             headers: {
+               'Content-Type': 'application/json',
+               'Accept': 'application/json',
+             },
+             body: JSON.stringify({
+               query
+             })
+          }).then(r => r.json()).then(data => 
+                 result = data
+            );
+    
+         let resultString = JSON.stringify(result);
+         let resultFin = JSON.parse(resultString);
+
+         return resultFin.data.getAIPredic;
+
+}
+
 export function ResultBlock(props : any){
 
-    let classN = "leftHolda"
+    const [className, setClassName] = useState<any>();
 
     useEffect(() => { 
-        
-        //console.log(props.inState[1]);
-        console.log(props.inState[1]%3);
 
-        if(props.inState[1]%3==0){
-            classN = "leftHolda"
+        if(props.inState[1]%3 == 0){
+            setClassName("leftHolda");
         }
         else if(props.inState[1]%3==1){
-            classN = "middleHolda"
+            setClassName("middleHolda");
         }
         else if(props.inState[1]%3==2){
-            classN = "righttHolda"
+            setClassName("righttHolda");
         }
     
     }, []);
 
     return (
-        <div className={classN}>
+        <div className={className}>
         <img src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo.png?alt=media&token=658a4502-2b08-47bf-8cb2-fe7eacbf8c3e" alt="" className="orgreqpic"></img>
           <div className='Lead'><h4>Seal Organization</h4></div>
           <div className='within'>

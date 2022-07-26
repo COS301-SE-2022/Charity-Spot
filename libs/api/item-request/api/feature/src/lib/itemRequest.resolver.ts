@@ -7,8 +7,8 @@ export class ItemRequestResolver {
     constructor(private readonly itemRequestService: itemRequestService) {}
 
     @Query(() => itemRequestEntity)
-    test(){
-        return this.itemRequestService.Test();
+    getOrgInfo(@Args('OrgID') OrgID: string){
+        return this.itemRequestService.FindOrgInfo();
     }
 
     @Query(() => [itemRequestEntity])
