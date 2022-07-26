@@ -22,13 +22,50 @@ try:
     cursor.execute(postgres_delete_query)
     connection.commit()
 
-    #Each charity makes 30 donations with small variations in type and location
-    #Each charity makes 100 donations with small variations in type and location
+    postgres_delete_query = "DELETE FROM public.address;"
+    cursor.execute(postgres_delete_query)
+    connection.commit()
+
+    postgres_delete_query = "DELETE FROM public.organisation;"
+    cursor.execute(postgres_delete_query)
+    connection.commit()
+
+    #First add locations to Address table
+    postgres_insert_query = "INSERT INTO public.address (address_id, address, address2, city, province) VALUES (%s,%s,%s,%s,%s);"
+
+    record_to_insert = ("A1", "Pretoria", "", "", "")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    record_to_insert = ("A2", "Johannesburg", "", "", "")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    record_to_insert = ("A3", "Cape Town", "", "", "")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    record_to_insert = ("A4", "Bloemfontein", "", "", "")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    record_to_insert = ("A5", "Polokwane", "", "", "")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    record_to_insert = ("A6", "Durban", "", "", "")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
 
 
     #1 Edgars
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
     record_to_insert = ("1", "edgars@email.com", "1234", "edgars@email.com#", "temp")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
+    record_to_insert = ("1", "Edgars", "A1")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -61,6 +98,11 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
+    record_to_insert = ("2", "Mr Price", "A2")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
     #Mr Price makes all of its donations in Durban. Always clothes
     for x in range(200):
 
@@ -77,6 +119,11 @@ try:
     #3 Scooters Pizza
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
     record_to_insert = ("3", "scooters_pizza@email.com", "1234", "scooters_pizza@email.com#", "temp")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
+    record_to_insert = ("3", "Scooters Pizza", "A3")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -119,6 +166,11 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
+    record_to_insert = ("4", "Checkers", "A4")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
     #Checkers will donate all of their itmes in Polokwane. 33% of their items will be food, 33% will be clothes and 33% will be toiletries
     for x in range(66):
 
@@ -158,6 +210,11 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
+    record_to_insert = ("5", "Spar", "A5")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
     #Spar will donate all of their food items in Pretoria and all of their Hygiene items in Durban
     for x in range(100):
 
@@ -184,6 +241,11 @@ try:
     #6 Clicks
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
     record_to_insert = ("6", "clicks@email.com", "1234", "clicks@email.com#", "temp")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
+    record_to_insert = ("6", "Clicks", "A6")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -216,6 +278,11 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
+    record_to_insert = ("7", "The Clothing Store", "A1")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
     #The Clothing Store will donate half of their items in Durban and half of their items in Polokwane
     for x in range(100):
 
@@ -242,6 +309,11 @@ try:
     #8 The General Store
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
     record_to_insert = ("8", "the_general_store@email.com", "1234", "the_general_store@email.com#", "temp")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
+    record_to_insert = ("8", "The General Store", "A2")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -446,6 +518,11 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
+    record_to_insert = ("9", "Pretoria Restaurant", "A3")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
     #Pretoria Restaurant will donate all of their items in Pretoria. Only food
     for x in range(200):
 
@@ -462,6 +539,11 @@ try:
     #10 Cape Town Restaurant
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
     record_to_insert = ("10", "cape_town_restaurant@email.com", "1234", "cape_town_restaurant@email.com#", "temp")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
+    record_to_insert = ("10", "Cape Town Restaurant", "A4")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -484,6 +566,11 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
+    record_to_insert = ("11", "Durban Clothing Store", "A5")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
     #Durban Clothing Store will donate all of their items in Durban. Only clothing
     for x in range(200):
 
@@ -500,6 +587,11 @@ try:
     #12 Woolworths
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
     record_to_insert = ("12", "woolworths@email.com", "1234", "woolworths@email.com#", "temp")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
+    record_to_insert = ("12", "Woolworths", "A6")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -543,6 +635,11 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
+    record_to_insert = ("13", "PEP", "A1")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
     #PEP will donate all of their items in Bloemfontein. 33% of their items will be clothes, 33% will be KITCHEN and 33% will be HYGIENE
     for x in range(66):
 
@@ -578,6 +675,11 @@ try:
     #14 Discount Clothing Store
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
     record_to_insert = ("14", "discount_clothing_store@email.com", "1234", "discount_clothing_store@email.com#", "temp")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
+    record_to_insert = ("14", "Discount Clothing Store", "A2")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -620,6 +722,11 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
+    record_to_insert = ("15", "Pick n Pay", "A3")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
     #Pick n Pay will donate all of their items in Pretoria. 33% of their items will be food, 33% will be clothes and 33% will be toiletries
     for x in range(66):
 
@@ -654,6 +761,11 @@ try:
     #16 Ackermans
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
     record_to_insert = ("16", "ackermans@email.com", "1234", "ackermans@email.com#", "temp")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
+    record_to_insert = ("16", "Ackermans", "A4")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -694,6 +806,11 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
+    record_to_insert = ("17", "Shoprite", "A5")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
     #Shoprite will donate all of their items in Johannesburg. 50% of their items will be food and 50% will be toiletries
     for x in range(100):
 
@@ -723,6 +840,11 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
+    record_to_insert = ("18", "Dischem", "A6")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
     #Dischem will donate 50% of their hygiene items in Bloemfontein and 50% of their hygiene items in Polokwane
     for x in range(100):
 
@@ -747,6 +869,11 @@ try:
     #19 West Pack
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
     record_to_insert = ("19", "west_pack@email.com", "1234", "west_pack@email.com#", "temp")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
+    record_to_insert = ("19", "West Pack", "A1")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -784,6 +911,11 @@ try:
     #20 OK Furniture
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
     record_to_insert = ("20", "ok_furniture@email.com", "1234", "ok_furniture@email.com#", "temp")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
+    record_to_insert = ("20", "OK Furniture", "A2")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
