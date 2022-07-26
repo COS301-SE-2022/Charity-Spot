@@ -11,7 +11,8 @@ class Client extends Thread{
     private Socket clientSocket;
     private BufferedReader inputS;
     private PrintWriter outS;
-    private NeuralNetwork nn;
+    private List<NeuralNetwork> nn;
+    private List<Double> Charities;
 
     private int NumOfCharities;
 
@@ -40,12 +41,13 @@ class Client extends Thread{
     private int[] charID;
     private double[] charIDR;
 
-    Client(Socket clientSocket, BufferedReader inputS,  PrintWriter outS, NeuralNetwork nn){
+    Client(Socket clientSocket, BufferedReader inputS,  PrintWriter outS, List<NeuralNetwork> nn, List<Double> Charities){
 
         this.clientSocket = clientSocket;
         this.inputS = inputS;
         this.outS = outS;
         this.nn = nn;
+        this.Charities = Charities;
 
         this.NumOfCharities = 0;
 
@@ -335,16 +337,16 @@ class Client extends Thread{
                 double location = Double.parseDouble(split[2]);
 
 
-                for(int i=1; i<21; i++){
+                //for(int i=1; i<21; i++){
 
                     //System.out.println(i+","+dayOfWeek+","+itemType+","+location+","+1+","+1);
                     //System.out.println(getNormVal(i,'g')+","+getNormVal((int)dayOfWeek,'b')+","+getNormVal((int)itemType,'c')+","+getNormVal((int)location,'d')+","+getNormVal(1,'e')+","+getNormVal(1,'f'));
 
-                    double[] inVals = new double[]{getNormVal(i,'g'),getNormVal((int)dayOfWeek,'b'),getNormVal((int)itemType,'c'),getNormVal((int)location,'d'),getNormVal(1,'e'),getNormVal(1,'f')};
-                    List<Double>output = nn.predict(inVals);
-                    System.out.println(i + ": " + output.toString());
+                    //double[] inVals = new double[]{getNormVal(i,'g'),getNormVal((int)dayOfWeek,'b'),getNormVal((int)itemType,'c'),getNormVal((int)location,'d'),getNormVal(1,'e'),getNormVal(1,'f')};
+                    //List<Double>output = nn.predict(inVals);
+                    //System.out.println(i + ": " + output.toString());
 
-                }
+                //}
 
                 //List<Double>output = nn.predict(inVals);
 
@@ -352,6 +354,20 @@ class Client extends Thread{
                 catch(Exception e){}*/
 
                 //System.out.println(output.toString());
+
+                System.out.println(getNormVal((int)dayOfWeek,'b')+","+getNormVal((int)itemType,'c')+","+getNormVal((int)location,'d')+","+getNormVal(1,'e')+","+getNormVal(1,'f'));
+                double[] inVals = new double[]{getNormVal((int)dayOfWeek,'b'),getNormVal((int)itemType,'c'),getNormVal((int)location,'d'),getNormVal(1,'e'),getNormVal(1,'f')};
+
+                for(int i=0; i<this.Charities.size();i++){
+                    //System.out.println(this.Charities.get(i));
+                    NeuralNetwork current = this.nn.get(i);
+                    List<Double>output = current.predict(inVals);
+                    System.out.println(this.Charities.get(i) + ": " + output.toString());
+
+                }
+
+                /*List<Double>output = nn.predict(inVals);
+                System.out.println("20" + ": " + output.toString());*/
 
                 outS.println("HTTP/1.1 200 OK\n"+
                         "Content-Type: application/json\n\n"+

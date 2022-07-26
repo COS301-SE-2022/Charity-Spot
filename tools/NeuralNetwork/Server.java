@@ -14,7 +14,13 @@ public class Server{
 
     public void start(int port){
 
-        NeuralNetwork nn = trainNewNetwork(); 
+        double[][] trainData = getTrainData();
+
+        List<Double> list = getListOfCharities(trainData);
+
+        List<NeuralNetwork> neuralNetworks = getListOfNetworks(list,trainData); 
+
+        System.out.println(list.toString());
 
         try{
 
@@ -36,7 +42,7 @@ public class Server{
                 //Writer for the socket
                 s_out = new PrintWriter(clientSocket.getOutputStream(), true);
 
-                Thread clientThread = new Client(clientSocket, s_in, s_out, nn);
+                Thread clientThread = new Client(clientSocket, s_in, s_out, neuralNetworks, list);
 
                 clientThread.start();
 
@@ -47,7 +53,7 @@ public class Server{
 
     }
 
-    public static NeuralNetwork trainNewNetwork(){
+    public static double[][] getTrainData(){
 
         double[][] trainData= new double[4154][];
 
@@ -111,6 +117,8 @@ public class Server{
 		}
 		catch(Exception e){}
 
+        return trainData;
+
         /*//Two loops that can be used to check that the data has been read correctly
 
         for(int i=0; i<trainData.length; i++){
@@ -143,7 +151,7 @@ public class Server{
 
         return nn;*/
 
-        List<Double> list = getListOfCharities(trainData);
+        /*List<Double> list = getListOfCharities(trainData);
 
         System.out.println(list.toString());
 
@@ -175,13 +183,41 @@ public class Server{
 
 		}*/
 
+        /*List<NeuralNetwork> neuralNetworks = new ArrayList<NeuralNetwork>();
+
+        for(int i=0; i<list.size(); i++){
+
+            double[][] matForChar = getMatrixForCharity(i,trainData);
+            double[][] corrMatForChar = getCorrOutForCharity(i,trainData);
+
+            NeuralNetwork newNetwork = new NeuralNetwork(5,25,1);
+            newNetwork.fit(matForChar, corrMatForChar, 500000);
+
+            neuralNetworks.add(newNetwork);
+        } 
+
+        return neuralNetworks;*/
+
+    }
+
+    static List<NeuralNetwork> getListOfNetworks(List<Double> list, double[][] trainData){
+
         List<NeuralNetwork> neuralNetworks = new ArrayList<NeuralNetwork>();
 
         for(int i=0; i<list.size(); i++){
-            NeuralNetwork newNetwork = new new NeuralNetwork(6,25,1);
+
+            System.out.println(list.get(i));
+
+            double[][] matForChar = getMatrixForCharity(list.get(i),trainData);
+            double[][] corrMatForChar = getCorrOutForCharity(list.get(i),trainData);
+
+            NeuralNetwork newNetwork = new NeuralNetwork(5,25,1);
+            newNetwork.fit(matForChar, corrMatForChar, 500000);
+
+            neuralNetworks.add(newNetwork);
         } 
 
-        return null;
+        return neuralNetworks;
 
     }
 
