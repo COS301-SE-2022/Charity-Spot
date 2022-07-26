@@ -55,9 +55,9 @@ public class Server{
 
     public static double[][] getTrainData(){
 
-        double[][] trainData= new double[4154][];
+        double[][] trainData= new double[12534][];
 
-	    double[][] correctOutput= new double[4154][];
+	    double[][] correctOutput= new double[12534][];
 
         //Read in the donations from a file
 
@@ -211,7 +211,7 @@ public class Server{
             double[][] matForChar = getMatrixForCharity(list.get(i),trainData);
             double[][] corrMatForChar = getCorrOutForCharity(list.get(i),trainData);
 
-            NeuralNetwork newNetwork = new NeuralNetwork(5,25,1);
+            NeuralNetwork newNetwork = new NeuralNetwork(5,20,1);
             newNetwork.fit(matForChar, corrMatForChar, 500000);
 
             neuralNetworks.add(newNetwork);

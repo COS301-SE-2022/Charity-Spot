@@ -275,14 +275,6 @@ class Client extends Thread{
 
         return 0;
 
-        /*for(int i=0; i<this.NumOfCharities; i++){
-
-            if(this.input[i] == input){
-                return this.normInput[i];
-            }
-        }
-
-        return 0;*/
     }
 
     double getCharRID(int input){
@@ -337,37 +329,44 @@ class Client extends Thread{
                 double location = Double.parseDouble(split[2]);
 
 
-                //for(int i=1; i<21; i++){
+                
 
-                    //System.out.println(i+","+dayOfWeek+","+itemType+","+location+","+1+","+1);
-                    //System.out.println(getNormVal(i,'g')+","+getNormVal((int)dayOfWeek,'b')+","+getNormVal((int)itemType,'c')+","+getNormVal((int)location,'d')+","+getNormVal(1,'e')+","+getNormVal(1,'f'));
-
-                    //double[] inVals = new double[]{getNormVal(i,'g'),getNormVal((int)dayOfWeek,'b'),getNormVal((int)itemType,'c'),getNormVal((int)location,'d'),getNormVal(1,'e'),getNormVal(1,'f')};
-                    //List<Double>output = nn.predict(inVals);
-                    //System.out.println(i + ": " + output.toString());
-
-                //}
-
-                //List<Double>output = nn.predict(inVals);
-
-                /*try{ TimeUnit.SECONDS.sleep(10);}
-                catch(Exception e){}*/
-
-                //System.out.println(output.toString());
-
-                System.out.println(getNormVal((int)dayOfWeek,'b')+","+getNormVal((int)itemType,'c')+","+getNormVal((int)location,'d')+","+getNormVal(1,'e')+","+getNormVal(1,'f'));
+                //System.out.println(getNormVal((int)dayOfWeek,'b')+","+getNormVal((int)itemType,'c')+","+getNormVal((int)location,'d')+","+getNormVal(1,'e')+","+getNormVal(1,'f'));
                 double[] inVals = new double[]{getNormVal((int)dayOfWeek,'b'),getNormVal((int)itemType,'c'),getNormVal((int)location,'d'),getNormVal(1,'e'),getNormVal(1,'f')};
 
+                List<OrgInfo> outputList = new ArrayList<OrgInfo>();
+
                 for(int i=0; i<this.Charities.size();i++){
-                    //System.out.println(this.Charities.get(i));
+                    
                     NeuralNetwork current = this.nn.get(i);
                     List<Double>output = current.predict(inVals);
-                    System.out.println(this.Charities.get(i) + ": " + output.toString());
-
+                    OrgInfo newResult = new OrgInfo(this.Charities.get(i), output.get(0));
+                    outputList.add(newResult);
                 }
 
-                /*List<Double>output = nn.predict(inVals);
-                System.out.println("20" + ": " + output.toString());*/
+                Collections.sort(outputList);
+                Collections.reverse(outputList);
+
+                double topScore = outputList.get(0).OrgScore;
+
+                for(int i=0; i<outputList.size(); i++){
+                    if((topScore - outputList.get(i).OrgScore) > 0.2){
+                        outputList.remove(i);
+                    }
+                }
+
+                for(int i=0; i<outputList.size(); i++){
+                    outputList.get(i).OrgScore = Math.round(outputList.get(i).OrgScore*100.0)/100.0;
+                }
+
+                String returnStr = "";
+
+                for(int i=0; i<outputList.size(); i++){
+                    returnStr = returnStr + "{" + '"' + outputList.get(i).OrgID + '"'+" : " + '"' + outputList.get(i).OrgScore + '"' +"},";
+                }
+
+
+                
 
                 outS.println("HTTP/1.1 200 OK\n"+
                         "Content-Type: application/json\n\n"+

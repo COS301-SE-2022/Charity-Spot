@@ -249,10 +249,11 @@ try:
         monthN = str(getNormalizedVal(month, "Month"))
 
         realDono = orgID + "," + dayOfWeek + "," + item_type + "," + location + "," + monthN + ","+weather+",1"
-        
         f.write(realDono + '\n')
-        fakeDono = createFakeDonation(row[0], findDay(row[1] + ",2022"), findItemType(row[3]), findLoc(row[2]), month)
-        f.write(fakeDono + '\n')
+
+        for i in range(0,2):
+            fakeDono = createFakeDonation(row[0], findDay(row[1] + ",2022"), findItemType(row[3]), findLoc(row[2]), month)
+            f.write(fakeDono + '\n')
 
         row = cursor.fetchone()
 

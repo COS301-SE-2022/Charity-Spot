@@ -33,7 +33,7 @@ try:
     connection.commit()
 
     #Edgards makes 50% of donations in Cape Town and 50% in Pretoria. Always clothes
-    for x in range(50):
+    for x in range(100):
 
         month = 1
         day = 3
@@ -43,7 +43,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(50):
+    for x in range(100):
 
         month = 1
         day = 3
@@ -62,7 +62,7 @@ try:
     connection.commit()
 
     #Mr Price makes all of its donations in Durban. Always clothes
-    for x in range(100):
+    for x in range(200):
 
         month = 1
         day = 3
@@ -81,7 +81,7 @@ try:
     connection.commit()
 
     #Scooters pizza makes 33% of its donations in Johannesburg, 33% in Bloemfontein and 33% in Polokwane
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -91,7 +91,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -101,7 +101,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -120,7 +120,7 @@ try:
     connection.commit()
 
     #Checkers will donate all of their itmes in Polokwane. 33% of their items will be food, 33% will be clothes and 33% will be toiletries
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -130,7 +130,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -140,7 +140,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -159,7 +159,7 @@ try:
     connection.commit()
 
     #Spar will donate all of their food items in Pretoria and all of their Hygiene items in Durban
-    for x in range(50):
+    for x in range(100):
 
         month = 1
         day = 3
@@ -169,7 +169,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(50):
+    for x in range(100):
 
         month = 1
         day = 3
@@ -188,7 +188,7 @@ try:
     connection.commit()
 
     #Clicks will donate 50% of their hygiene items in Cape Town and 50% of their hygiene items in Pretoria
-    for x in range(50):
+    for x in range(100):
 
         month = 1
         day = 3
@@ -198,7 +198,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(50):
+    for x in range(100):
 
         month = 1
         day = 3
@@ -217,7 +217,7 @@ try:
     connection.commit()
 
     #The Clothing Store will donate half of their items in Durban and half of their items in Polokwane
-    for x in range(50):
+    for x in range(100):
 
         month = 1
         day = 3
@@ -227,7 +227,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(50):
+    for x in range(100):
 
         month = 1
         day = 3
@@ -248,7 +248,7 @@ try:
     #The General Store will donate 15 items in each of the locations. 33% will be furniture, 33% will be kitchen items and 33% will be clothing items
 
     #Pretoria
-    for x in range(11):
+    for x in range(22):
 
         month = 1
         day = 3
@@ -258,7 +258,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(11):
+    for x in range(22):
 
         month = 1
         day = 3
@@ -268,7 +268,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(11):
+    for x in range(22):
 
         month = 1
         day = 3
@@ -280,7 +280,7 @@ try:
 
     
     #Johannesburg
-    for x in range(11):
+    for x in range(22):
 
         month = 1
         day = 3
@@ -290,7 +290,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(11):
+    for x in range(22):
 
         month = 1
         day = 3
@@ -300,7 +300,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(11):
+    for x in range(22):
 
         month = 1
         day = 3
@@ -312,7 +312,7 @@ try:
 
 
     #Cape Town
-    for x in range(11):
+    for x in range(22):
 
         month = 1
         day = 3
@@ -322,7 +322,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(11):
+    for x in range(22):
 
         month = 1
         day = 3
@@ -332,7 +332,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(11):
+    for x in range(22):
 
         month = 1
         day = 3
@@ -344,7 +344,7 @@ try:
 
 
     #Bloemfontein
-    for x in range(11):
+    for x in range(22):
 
         month = 1
         day = 3
@@ -354,7 +354,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(5):
+    for x in range(22):
 
         month = 1
         day = 3
@@ -364,7 +364,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(5):
+    for x in range(22):
 
         month = 1
         day = 3
@@ -376,7 +376,7 @@ try:
 
 
     #Polokwane
-    for x in range(11):
+    for x in range(22):
 
         month = 1
         day = 3
@@ -386,7 +386,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(11):
+    for x in range(22):
 
         month = 1
         day = 3
@@ -396,7 +396,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(11):
+    for x in range(22):
 
         month = 1
         day = 3
@@ -408,7 +408,7 @@ try:
 
 
     #Durban
-    for x in range(11):
+    for x in range(22):
 
         month = 1
         day = 3
@@ -418,7 +418,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(11):
+    for x in range(22):
 
         month = 1
         day = 3
@@ -428,7 +428,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(11):
+    for x in range(22):
 
         month = 1
         day = 3
@@ -447,7 +447,7 @@ try:
     connection.commit()
 
     #Pretoria Restaurant will donate all of their items in Pretoria. Only food
-    for x in range(100):
+    for x in range(200):
 
         month = 1
         day = 3
@@ -466,7 +466,7 @@ try:
     connection.commit()
 
     #Cape Town Restaurant will donate all of their items in Cape Town. Only food
-    for x in range(100):
+    for x in range(200):
 
         month = 1
         day = 3
@@ -485,7 +485,7 @@ try:
     connection.commit()
 
     #Durban Clothing Store will donate all of their items in Durban. Only clothing
-    for x in range(100):
+    for x in range(200):
 
         month = 1
         day = 3
@@ -504,7 +504,7 @@ try:
     connection.commit()
 
     #Woolworths will donate all of their items in Cape Town. 33% of their items will be food, 33% will be clothes and 33% will be toiletries
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -514,7 +514,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -524,7 +524,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -544,7 +544,7 @@ try:
     connection.commit()
 
     #PEP will donate all of their items in Bloemfontein. 33% of their items will be clothes, 33% will be KITCHEN and 33% will be HYGIENE
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -554,7 +554,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -564,7 +564,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -582,7 +582,7 @@ try:
     connection.commit()
 
     #Discount Clothing store will donate 33% of their items in Pretoria, 33% of their items in Bloemfontein and 33% of their items on Polokwane
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -592,7 +592,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -602,7 +602,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -621,7 +621,7 @@ try:
     connection.commit()
 
     #Pick n Pay will donate all of their items in Pretoria. 33% of their items will be food, 33% will be clothes and 33% will be toiletries
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -631,7 +631,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -641,7 +641,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -658,7 +658,7 @@ try:
     connection.commit()
 
     #Ackermans will donate 33% of their items in Polokwane, 33% of their items in Bloemfontein and 33% of their items in Cape Town
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -668,7 +668,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -678,7 +678,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -695,7 +695,7 @@ try:
     connection.commit()
 
     #Shoprite will donate all of their items in Johannesburg. 50% of their items will be food and 50% will be toiletries
-    for x in range(50):
+    for x in range(100):
 
         month = 1
         day = 3
@@ -705,7 +705,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(50):
+    for x in range(100):
 
         month = 1
         day = 3
@@ -724,7 +724,7 @@ try:
     connection.commit()
 
     #Dischem will donate 50% of their hygiene items in Bloemfontein and 50% of their hygiene items in Polokwane
-    for x in range(50):
+    for x in range(100):
 
         month = 1
         day = 3
@@ -734,7 +734,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(50):
+    for x in range(100):
 
         month = 1
         day = 3
@@ -751,7 +751,7 @@ try:
     connection.commit()
 
     #West Pack will donate 33% of their items in Pretoria, 33% of their items in Durban and 33% of their items in Cape Town
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -761,7 +761,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -771,7 +771,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -788,7 +788,7 @@ try:
     connection.commit()
 
     #OK Furniture will donate 33% of their items in Pretoria, 33% of their items in Durban and 33% of their items in Cape Town
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -798,7 +798,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
@@ -808,7 +808,7 @@ try:
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
-    for x in range(33):
+    for x in range(66):
 
         month = 1
         day = 3
