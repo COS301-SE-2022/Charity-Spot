@@ -4,14 +4,55 @@ import {ResultBlock} from './resultBlock'
 
 import { useEffect, useState } from 'react';
 
+import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
+
+function getLocation(location : any){
+      let locations = ["Pretoria", "Johannesburg", "Cape Town", "Bloemfontein", "Polokwane", "Durban"]
+
+      for(let i=0; i<location.length; i++){
+            if(locations[i] == location){
+                  return i;
+            }
+      }
+
+      return 0;
+
+}
+
+function getItem(item : any){
+      let items = ["CLOTHING", "FOOD", "STATIONARY", "HYGIENE", "KITCHEN", "FURNITURE"]
+
+      for(let i=0; i<items.length; i++){
+            if(items[i] == item){
+                  return i;
+            }
+      }
+
+      return 0;
+}
+
 async function APICall(){
 
-      const query = `query{ 
+      /*const query = `query{ 
             getAIPredic(Date:"01-03", itemType:"1", location:"1"){
                   ID,
                   Probability
             }
+      }`;*/
+
+      let date = getCookie("date");
+      let itemType = getItem(getCookie("type"));
+      let location = getLocation(getCookie("location"));
+
+      const query = `query{ 
+            getAIPredic(Date:"${date}", itemType:"${itemType}", location:"${location}"){
+                  ID,
+                  Probability
+            }
       }`;
+
+      console.log(query);
+
 
       let result = "";
 
