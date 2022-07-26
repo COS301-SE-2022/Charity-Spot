@@ -5,7 +5,7 @@ import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 export class itemRequestRepository {
   constructor(private prisma: PrismaService) {}
 
-  async emailExists(UserID : string)
+  async getOrgInfo(UserID : string)
   {
     const list = await this.prisma.organisation.findMany({
       select:
@@ -18,6 +18,8 @@ export class itemRequestRepository {
         UserID: UserID,
       }
     });
+
+    return list;
 
   }
 

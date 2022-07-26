@@ -8,7 +8,7 @@ export class ItemRequestResolver {
 
     @Query(() => itemRequestEntity)
     getOrgInfo(@Args('OrgID') OrgID: string){
-        return this.itemRequestService.FindOrgInfo();
+        return this.itemRequestService.FindOrgInfo(OrgID);
     }
 
     @Query(() => [itemRequestEntity])

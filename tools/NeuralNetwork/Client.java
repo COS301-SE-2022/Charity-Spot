@@ -364,7 +364,8 @@ class Client extends Thread{
                 //outputList.get(i).OrgScore 
 
                 for(int i=0; i<outputList.size(); i++){
-                    returnStr = returnStr + "{" + '"' + "OrgID" + '"'+" : " + '"' + outputList.get(i).OrgID + '"'+", " + '"' + "Result" + '"' +" : " + '"' + outputList.get(i).OrgScore + '"' + " },\n";
+                    int oID = (int)outputList.get(i).OrgID;
+                    returnStr = returnStr + "{" + '"' + "OrgID" + '"'+" : " + '"' + oID + '"'+", " + '"' + "Result" + '"' +" : " + '"' + outputList.get(i).OrgScore + '"' + " },\n";
                 }
 
                 returnStr = returnStr.substring(0, returnStr.length() - 2);

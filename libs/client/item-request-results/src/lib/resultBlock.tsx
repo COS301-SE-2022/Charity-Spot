@@ -1,12 +1,11 @@
 import styles from './client-chat.module.css';
 import { useEffect, useState } from 'react';
 
-async function APICall(){
+async function APICall(ID : any){
 
     const query = `query{ 
-          getAIPredic(Date:"01-03", itemType:"1", location:"1"){
-                ID,
-                Probability
+        getOrgInfo(OrgID:"${ID}"){
+            OrgName
           }
     }`;
 
@@ -28,7 +27,7 @@ async function APICall(){
          let resultString = JSON.stringify(result);
          let resultFin = JSON.parse(resultString);
 
-         return resultFin.data.getAIPredic;
+         return resultFin.data.getOrgInfo;
 
 }
 
@@ -36,7 +35,18 @@ export function ResultBlock(props : any){
 
     const [className, setClassName] = useState<any>();
 
-    useEffect(() => { 
+    const [OrgName, setOrgName] = useState<any>();
+
+    const getResultInfo = async () => {
+        let OrgInfo = await APICall(props.inState[0].ResultID)
+        setOrgName(OrgInfo.OrgName);
+    }
+
+    useEffect(() => {
+        
+        getResultInfo();
+
+        //console.log(props.inState[0].ResultID);
 
         if(props.inState[1]%3 == 0){
             setClassName("leftHolda");
@@ -53,7 +63,7 @@ export function ResultBlock(props : any){
     return (
         <div className={className}>
         <img src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo.png?alt=media&token=658a4502-2b08-47bf-8cb2-fe7eacbf8c3e" alt="" className="orgreqpic"></img>
-          <div className='Lead'><h4>Seal Organization</h4></div>
+          <div className='Lead'><h4>{OrgName}</h4></div>
           <div className='within'>
             <p>We offer high quality food, and we are the best in the business</p>
           </div>

@@ -91,7 +91,7 @@ export function ClientItemRequestResults() {
             })}
 
 
-        <div className='leftHolda'>
+        {/*<div className='leftHolda'>
             <img src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo.png?alt=media&token=658a4502-2b08-47bf-8cb2-fe7eacbf8c3e" alt="" className="orgreqpic"></img>
               <div className='Lead'><h4>Seal Organization</h4></div>
               <div className='within'>
@@ -186,7 +186,7 @@ export function ClientItemRequestResults() {
                     <br></br>   
               <button type='submit' id='butChoose'>Choose</button> 
 
-        </div>
+      </div>*/}
         
         
         

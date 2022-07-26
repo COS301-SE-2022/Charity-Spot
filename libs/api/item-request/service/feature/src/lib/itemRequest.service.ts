@@ -8,11 +8,14 @@ import fetch from 'node-fetch';
 export class itemRequestService {
     constructor(private itemRequestRepository: itemRequestRepository) {}
 
-    async FindOrgInfo(){
+    async FindOrgInfo(OrgID){
+        
+        let returnV = await this.itemRequestRepository.getOrgInfo(OrgID);
 
         let temp = new itemRequestEntity();
-        
 
+        temp.OrgName = returnV[0].OrgName;
+        
         return temp;
 
     }
