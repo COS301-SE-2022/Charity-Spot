@@ -42,15 +42,15 @@ public class Server{
             }
 
         }
-        catch(IOException e){}
+        catch(IOException e){System.out.println(e);}
 
     }
 
     public static NeuralNetwork trainNewNetwork(){
 
-        double [][] trainData= new double[1320][];
+        double [][] trainData= new double[1860][];
 
-	    double [][] correctOutput= new double[1320][];
+	    double [][] correctOutput= new double[1860][];
 
         //Read in the donations from a file
 
@@ -93,7 +93,7 @@ public class Server{
 
         //Two loops that can be used to check that the data has been read correctly
 
-        /*for(int i=0; i<trainData.length; i++){
+        for(int i=0; i<trainData.length; i++){
 
 			for(int jj=0; jj<trainData[i].length; jj++){
 
@@ -115,11 +115,11 @@ public class Server{
 
 			System.out.println();
 
-		}*/
+		}
 
         //Create and train the new nn
         NeuralNetwork nn = new NeuralNetwork(6,25,1);
-        nn.fit(trainData, correctOutput, 500000);
+        nn.fit(trainData, correctOutput, 1500000);
 
         return nn;
 

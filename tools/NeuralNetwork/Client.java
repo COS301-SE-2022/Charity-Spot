@@ -19,6 +19,21 @@ class Client extends Thread{
         this.inputS = inputS;
         this.outS = outS;
         this.nn = nn;
+
+        BufferedReader br = new BufferedReader(new FileReader(new File("normalizedVal.txt")));
+
+        String line;
+
+		int j = 0;
+
+		while((line = br.readLine()) != null){
+
+            System.out.println(line);
+
+        }
+
+    }
+
         
     }
 
@@ -58,20 +73,27 @@ class Client extends Thread{
                 //Get the location
                 double location = Double.parseDouble(split[2]);
 
-            
+                System.out.println(dayOfWeek);
 
-                double[] inVals = new double[]{1,dayOfWeek,itemType,location,1,1};
 
-                List<Double>output = nn.predict(inVals);
+                for(int i=1; i<21; i++){
+
+                    double[] inVals = new double[]{i,dayOfWeek,itemType,location,1,1};
+                    List<Double>output = nn.predict(inVals);
+                    System.out.println(i + ": " + output.toString());
+
+                }
+
+                //List<Double>output = nn.predict(inVals);
 
                 /*try{ TimeUnit.SECONDS.sleep(10);}
                 catch(Exception e){}*/
 
-                System.out.println(output.toString());
+                //System.out.println(output.toString());
 
                 outS.println("HTTP/1.1 200 OK\n"+
                         "Content-Type: application/json\n\n"+
-                        "{"+'"'+"success"+'"'+":" + '"'+output.toString()+'"'+"}");
+                        "{"+'"'+"success"+'"'+":" + '"'+"true"+'"'+"}");
 
                 clientSocket.close();
 
