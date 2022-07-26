@@ -9,7 +9,10 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		try{
+		Server mainServer = new Server();
+        mainServer.start(7777);
+
+		/*try{
 			
 			BufferedReader br = new BufferedReader(new FileReader(new File("mockDonations.txt")));
 			
@@ -73,7 +76,7 @@ public class Main {
 		}*/
 	
 		
-		NeuralNetwork nn = new NeuralNetwork(6,15,1);
+		/*NeuralNetwork nn = new NeuralNetwork(6,15,1);
 		
 		List<Double>output;
 		
@@ -110,7 +113,7 @@ public class Main {
 			}
 
 		}
-		catch(Exception e){}	
+		catch(Exception e){}*/	
 
 	}
 

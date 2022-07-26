@@ -29,6 +29,7 @@
     "client-e2e": "apps/client-e2e",
     "client-home": "libs/client/home",
     "client-item-request": "libs/client/item-request",
+    "client-item-request-results": "libs/client/item-request-results",
     "client-login": "libs/client/login",
     "client-organisation-profile": "libs/client/organisation-profile",
     "client-registration": "libs/client/registration",
