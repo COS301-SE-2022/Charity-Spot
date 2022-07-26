@@ -5,6 +5,7 @@ import { ReactChild, ReactFragment, ReactPortal, useEffect, useState } from 'rea
 import { getCookie } from 'typescript-cookie';
 
 let move: any;
+let loopCount: number;
 document.cookie = `RENDER=00`;
 
 async function API_link(query: string, id_q: string) {
@@ -28,6 +29,24 @@ async function API_link(query: string, id_q: string) {
 }
 
 export function ClientChat() {
+  //chatArea
+  class Bubbles {
+    typeM: string | undefined = "";
+    mess: string | undefined = "";
+  }
+
+  const [inputVal, setInputVal] = useState<string>();
+  const [Bubb, addBubb] = useState<any[]>([]);
+
+  const sendMessage = () => {
+    const tempB: Bubbles = new Bubbles();
+    tempB.typeM = "R";
+    tempB.mess = inputVal;
+
+    const newArr = [...Bubb, tempB]
+
+    addBubb(newArr);
+  }
 
   //renderingDATA
   const [result, setResult] = useState<string>("");
@@ -77,7 +96,7 @@ export function ClientChat() {
       }`;
   }
 
-  const sendMessage = (message: string) => {
+  const sendMessageQuery = (message: string) => {
     return `
     query{
       Send(
@@ -118,6 +137,7 @@ export function ClientChat() {
 
   const onClickBack = () => {
     document.cookie = `RENDER=01`;
+    addBubb([]);
     changeState();
   }
 
@@ -157,11 +177,37 @@ export function ClientChat() {
           return <h1>LOADING CHAT...</h1>
        
         else {
+          
+
           return (
-            <div>
-              <h1>Chats with {getCookie('RUNNER_N')}</h1>
-              <button className={styles["sndBT"]} onClick={()=>{onClickBack(); move = renderingDet;}}type="button">Back</button>
-            </div>
+            <>
+              <div>
+                <h1>Chatting with {getCookie('RUNNER_N')}</h1>
+                <button className={styles["sndBT"]} onClick={()=>{onClickBack(); move = renderingDet;}}type="button">Back</button>
+              </div>
+
+              <div id = "mainMW" className={styles["messages"]}>
+
+                  {Bubb.map(function(B){
+
+                    loopCount++;
+
+                    return(
+                      <Bubble key={loopCount} inState={[B.mess, B.typeM]}/>
+                    )
+
+                  })}
+
+                  <br/>
+
+                  <div id="b1" />
+
+                </div>      
+
+                <input className={styles["myText"]}type="text" name="fname" placeholder='Type a message..' onChange={(e) => {setInputVal(e.target.value)}}/> 
+                <button className={styles["sndBT"]} onClick={()=>{sendMessage()}}type="button">Send</button> 
+                <br />
+            </>
           ) 
         }    
       })()}
@@ -183,33 +229,18 @@ export default ClientChat;
 
 // let loopCount = 0;
 
-//   class Bubbles {
-//     typeM: string = "";
-//     mess: string | undefined = "";
-//   }
 
-//   const [inputVal, setInputVal] = useState<string>();
 
-//   const [Bubb, addBubb] = useState<any[]>([]);
+
   
 //   //Still need to add function for receiving new messages
-//   const sendMess = () => {
 
-//     let tempB: Bubbles = new Bubbles();
-//     tempB.typeM = "R";
-//     tempB.mess = inputVal;
-
-//     let newArr = [...Bubb, tempB]
-
-//     addBubb(newArr);
-
-//   }
 
 //   useEffect(() => {
 
-//     const botRef = document.getElementById("b1");
+    // const botRef = document.getElementById("b1");
 
-//     loopCount = 0;
+    // loopCount = 0;
 
 //     if(Bubb.length == 0){
 
@@ -267,27 +298,27 @@ export default ClientChat;
 //               </select>
 //               </div> 
 //         </div><br/>
-//       <div id = "mainMW" className={styles["messages"]}>
+      // <div id = "mainMW" className={styles["messages"]}>
 
-//         {Bubb.map(function(B){
+      //   {Bubb.map(function(B){
 
-//           loopCount++;
+      //     loopCount++;
 
-//           return(
-//             <Bubble key={loopCount} inState={[B.mess, B.typeM]}/>
-//           )
+      //     return(
+      //       <Bubble key={loopCount} inState={[B.mess, B.typeM]}/>
+      //     )
 
-//         })}
+      //   })}
 
-//         <br/>
+      //   <br/>
         
-//         <div id="b1" />
+      //   <div id="b1" />
 
-//       </div>      
+      // </div>      
 
-//       <input className={styles["myText"]}type="text" name="fname" placeholder='Type a message..' onChange={(e) => {setInputVal(e.target.value)}}/> 
-//       <button className={styles["sndBT"]} onClick={()=>{sendMess()}}type="button">Send</button> 
-//       <br />
+      // <input className={styles["myText"]}type="text" name="fname" placeholder='Type a message..' onChange={(e) => {setInputVal(e.target.value)}}/> 
+      // <button className={styles["sndBT"]} onClick={()=>{sendMess()}}type="button">Send</button> 
+      // <br />
 
 //     </div>
 //   );
