@@ -170,7 +170,7 @@ def findItemType(item):
 
 def createFakeDonation(orgID, day_of_week, item_type, location, month):
 
-    org = str(getRandID(orgID))
+    org = str((orgID))
 
     #dayOfWeek = random.randint(1,7)
     #if dayOfWeek == int(day_of_week):
@@ -239,7 +239,8 @@ try:
             charID.append(row[0])
             charIDR.append(random.uniform(0, 1))
         
-        orgID = str(getRandID(row[0])) 
+        #orgID = str(getRandID(row[0]))
+        orgID = row[0] 
         dayOfWeek = str(getNormalizedVal(findDay(row[1] + ",2022"), "DayOfW"))
         item_type = str(getNormalizedVal(findItemType(row[3]), "TypeOfI"))
         location = str(getNormalizedVal(findLoc(row[2]), "LocOfI"))

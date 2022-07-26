@@ -51,7 +51,7 @@ class Client extends Thread{
 
         try{
 
-            BufferedReader brCount = new BufferedReader(new FileReader(new File("normalizedVal.txt")));
+            BufferedReader brCount = new BufferedReader(new FileReader(new File("charID.txt")));
 
             String line;
 
@@ -109,7 +109,7 @@ class Client extends Thread{
                 this.inputTOI = new int[7];
                 this.normTOI = new double[7];
 
-                BufferedReader brID = new BufferedReader(new FileReader(new File("normalizedTOI.txt")));
+                brID = new BufferedReader(new FileReader(new File("normalizedTOI.txt")));
 
                 while((line = brID.readLine()) != null){
 
@@ -128,7 +128,7 @@ class Client extends Thread{
                 this.inputLOC = new int[6];
                 this.normLOC = new double[6];
 
-                BufferedReader brID = new BufferedReader(new FileReader(new File("normalizedLOC.txt")));
+                brID = new BufferedReader(new FileReader(new File("normalizedLOC.txt")));
 
                 while((line = brID.readLine()) != null){
 
@@ -147,7 +147,7 @@ class Client extends Thread{
                 this.inputMON = new int[12];
                 this.normMON = new double[12];
 
-                BufferedReader brID = new BufferedReader(new FileReader(new File("normalizedMON.txt")));
+                brID = new BufferedReader(new FileReader(new File("normalizedMON.txt")));
 
                 while((line = brID.readLine()) != null){
 
@@ -166,7 +166,7 @@ class Client extends Thread{
                 this.inputWEA = new int[3];
                 this.normWEA = new double[3];
 
-                BufferedReader brID = new BufferedReader(new FileReader(new File("normalizedMON.txt")));
+                brID = new BufferedReader(new FileReader(new File("normalizedWEA.txt")));
 
                 while((line = brID.readLine()) != null){
 
@@ -185,7 +185,7 @@ class Client extends Thread{
                 this.charID = new int[20];
                 this.charIDR = new double[20];
 
-                BufferedReader brID = new BufferedReader(new FileReader(new File("charID.txt")));
+                brID = new BufferedReader(new FileReader(new File("charID.txt")));
 
                 while((line = brID.readLine()) != null){
 
@@ -201,7 +201,7 @@ class Client extends Thread{
 
 
         }
-        catch(Exception e){}
+        catch(Exception e){e.printStackTrace();}
 
 
     }
@@ -242,24 +242,45 @@ class Client extends Thread{
                 break;
 
             case 'e':
-                for(int i=0; i<inputID.length; i++){
-                    if(inputID[i] == input){
-                        return this.normID[i];
+                for(int i=0; i<inputMON.length; i++){
+                    if(inputMON[i] == input){
+                        return this.normMON[i];
                     }
                 }
                 break;
+
+            case 'f':
+                for(int i=0; i<inputWEA.length; i++){
+                    if(inputWEA[i] == input){
+                        return this.normWEA[i];
+                    }
+                }
+                break;
+
+            case 'g':
+                for(int i=0; i<charID.length; i++){
+                    if(charID[i] == input){
+                        return this.charIDR[i];
+                    }
+                }
+                break;
+
+            default:
+                return 0;
             
 
         }
 
-        for(int i=0; i<this.NumOfCharities; i++){
+        return 0;
+
+        /*for(int i=0; i<this.NumOfCharities; i++){
 
             if(this.input[i] == input){
                 return this.normInput[i];
             }
         }
 
-        return 0;
+        return 0;*/
     }
 
     double getCharRID(int input){
@@ -316,10 +337,10 @@ class Client extends Thread{
 
                 for(int i=1; i<21; i++){
 
-                    System.out.println(i+","+dayOfWeek+","+itemType+","+location+","+1+","+1);
-                    System.out.println(getCharRID(i)+","+getNormVal((int)dayOfWeek)+","+getNormVal((int)itemType)+","+getNormVal((int)location)+","+getNormVal(1)+","+getNormVal(1));
+                    //System.out.println(i+","+dayOfWeek+","+itemType+","+location+","+1+","+1);
+                    //System.out.println(getNormVal(i,'g')+","+getNormVal((int)dayOfWeek,'b')+","+getNormVal((int)itemType,'c')+","+getNormVal((int)location,'d')+","+getNormVal(1,'e')+","+getNormVal(1,'f'));
 
-                    double[] inVals = new double[]{getCharRID(i),getNormVal((int)dayOfWeek),getNormVal((int)itemType),getNormVal((int)location),getNormVal(1),getNormVal(1)};
+                    double[] inVals = new double[]{getNormVal(i,'g'),getNormVal((int)dayOfWeek,'b'),getNormVal((int)itemType,'c'),getNormVal((int)location,'d'),getNormVal(1,'e'),getNormVal(1,'f')};
                     List<Double>output = nn.predict(inVals);
                     System.out.println(i + ": " + output.toString());
 
@@ -339,7 +360,7 @@ class Client extends Thread{
                 clientSocket.close();
 
             }
-            catch(Exception e){System.out.println(e);}
+            catch(Exception e){e.printStackTrace();}
 
             return;
 
