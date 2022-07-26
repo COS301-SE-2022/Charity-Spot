@@ -59,7 +59,6 @@ async function APICall(orgName:string, email: string,location:string, password: 
       All_data = data
     );
   
-  console.log(All_data);
   state = 0;
   return JSON.stringify(All_data);
 }

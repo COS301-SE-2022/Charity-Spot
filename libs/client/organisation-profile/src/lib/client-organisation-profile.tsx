@@ -117,7 +117,6 @@ export function Profile() {
   const handlesumbitUpdate = async () => {
 
     if(NewOName == "undefined" && NewOLocation == "undefined" && NewOPass == "undefined" && NewOPassC == "undefined"){
-      console.log("No changes");
       return;
     }
 
