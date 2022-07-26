@@ -11,7 +11,7 @@ export class ItemRequestResolver {
         return this.itemRequestService.Test();
     }
 
-    @Query(() => itemRequestEntity)
+    @Query(() => [itemRequestEntity])
     getAIPredic(@Args('Date') Date: string, @Args('itemType') itemType: string, @Args('location') location: string){
         return this.itemRequestService.getAIPredic(Date, itemType, location);
     }

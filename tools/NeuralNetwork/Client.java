@@ -359,18 +359,25 @@ class Client extends Thread{
                     outputList.get(i).OrgScore = Math.round(outputList.get(i).OrgScore*100.0)/100.0;
                 }
 
-                String returnStr = "";
+                String returnStr = "{" + '"' + "results" + '"' + " : [\n";
+
+                //outputList.get(i).OrgScore 
 
                 for(int i=0; i<outputList.size(); i++){
-                    returnStr = returnStr + "{" + '"' + outputList.get(i).OrgID + '"'+" : " + '"' + outputList.get(i).OrgScore + '"' +"},";
+                    returnStr = returnStr + "{" + '"' + "OrgID" + '"'+" : " + '"' + outputList.get(i).OrgID + '"'+", " + '"' + "Result" + '"' +" : " + '"' + outputList.get(i).OrgScore + '"' + " },\n";
                 }
 
+                returnStr = returnStr.substring(0, returnStr.length() - 2);
 
+                returnStr = returnStr + "\n]\n}";
+
+                System.out.println("HTTP/1.1 200 OK\n"+
+                        "Content-Type: application/json\n\n"+ returnStr);
                 
 
                 outS.println("HTTP/1.1 200 OK\n"+
-                        "Content-Type: application/json\n\n"+
-                        "{"+'"'+"success"+'"'+":" + '"'+"true"+'"'+"}");
+                        "Content-Type: application/json\n\n"+ returnStr);
+                        //"{"+'"'+"success"+'"'+":" + '"'+"true"+'"'+"}");
 
                 clientSocket.close();
 

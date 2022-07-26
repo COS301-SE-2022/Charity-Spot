@@ -11,7 +11,7 @@ export class itemRequestService {
     async Test(){
 
         let temp = new itemRequestEntity();
-        temp.ID = "Item Request Working!";
+        //temp.ID = "Item Request Working!";
 
         return temp;
 
@@ -29,12 +29,23 @@ export class itemRequestService {
         const response = await fetch(`http://localhost:7777/${Date},${itemType},${location}`);
         const data = await response.json();
 
-        console.log(data);
+        let retList = [];
 
-        let temp = new itemRequestEntity();
-        temp.ID = "Item Request Working!";
+        for(let i=0; i<data.results.length;i++){
 
-        return temp;
+            
+            let temp = new itemRequestEntity();
+            temp.ID = data.results[i].OrgID;
+            temp.Probability = data.results[i].Result
+
+            retList.push(temp);
+
+
+
+        }        
+    
+
+        return retList;
 
     }
 
