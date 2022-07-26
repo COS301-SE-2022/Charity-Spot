@@ -12,7 +12,7 @@ import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
 export function ClientItemRequest() {
 
   const [location, setLocation] = useState<any>();
-  const [type, setType] = useState<any>("Food Item");
+  const [type, setType] = useState<any>("FOOD");
   const [date, setDate] = useState<any>();
 
   function setCookies(){

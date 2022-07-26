@@ -11,7 +11,7 @@ function getLocation(location : any){
 
       for(let i=0; i<location.length; i++){
             if(locations[i] == location){
-                  return i;
+                  return i+1;
             }
       }
 
@@ -24,7 +24,7 @@ function getItem(item : any){
 
       for(let i=0; i<items.length; i++){
             if(items[i] == item){
-                  return i;
+                  return i+1;
             }
       }
 

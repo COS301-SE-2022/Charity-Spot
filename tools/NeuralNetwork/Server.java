@@ -212,7 +212,7 @@ public class Server{
             double[][] corrMatForChar = getCorrOutForCharity(list.get(i),trainData);
 
             NeuralNetwork newNetwork = new NeuralNetwork(5,20,1);
-            newNetwork.fit(matForChar, corrMatForChar, 500000);
+            newNetwork.fit(matForChar, corrMatForChar, 2500000);
 
             neuralNetworks.add(newNetwork);
         } 
