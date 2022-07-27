@@ -196,7 +196,7 @@ export class ChatRepository {
       },
       select:
       {
-        ClientID :true
+        ClientID :true,
       }
     })
 
@@ -219,6 +219,28 @@ export class ChatRepository {
     })
 
     return u;
+  }
+
+  //misc
+  async GetOrgForThreadList(id: string) {
+    return await this.prisma.organisation.findUnique({
+      where: {
+        UserID: id
+      }, select: {
+        OrgName: true,
+        profilePicture: true
+      }
+    });
+  }
+
+  async GetUserForThreadList(id: string) {
+    return await this.prisma.user.findUnique({
+      where: {
+        UserID: id
+      }, select: {
+        email: true
+      }
+    });
   }
 
   //Remove all messages between two participants

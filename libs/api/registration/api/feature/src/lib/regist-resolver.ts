@@ -4,26 +4,24 @@ import { RegistrationService, RegistEntity } from '@charity-spot/api/registratio
 @Resolver()
 export class RegistrationResolver {
     constructor(private readonly RegistrationService: RegistrationService) {}
+	
+	@Query(() => RegistEntity)
+	async clientRegist(
+		@Args("Name") name: string,
+		@Args("Email") email: string,
+		@Args("Location") loc: string,
+		@Args("Password") secr: string
+	) {
+		return this.RegistrationService.regClient(name, email, loc, secr);
+	}
 
 	@Query(() => RegistEntity)
-	async registerORG(
-		@Args("org_Name") orgName: string,
-		@Args("email") email: string, 
-		@Args("location") address: string,
-		@Args("password") password: string
+	async orgRegist(
+		@Args("OrgName") o_name: string,
+		@Args("OrgEmail") o_email: string,
+		@Args("OrgLocation") o_loc: string,
+		@Args("OrgPassword") o_secr: string
 	) {
-		const userID = await this.RegistrationService.addUser(email, password);
-
-		const temp = new RegistEntity();
-		if(userID != null) {
-			
-			await this.RegistrationService.addOrg(userID, orgName);
-			await this.RegistrationService.alterAddress(userID, address, "", "", "");
-			temp.ID = userID;
-		}
-		else 
-			temp.ID = null;
-
-		return temp;
+		return this.RegistrationService.regOrg(o_name, o_email, o_loc, o_secr);
 	}
 }

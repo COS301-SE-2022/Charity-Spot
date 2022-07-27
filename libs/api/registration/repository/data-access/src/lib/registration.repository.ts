@@ -5,17 +5,15 @@ import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 export class RegistrationRepository {
   constructor(private prisma: PrismaService) {}
 
-  async addUser(email : string,password: string, PasswordSalt:string)
+  async addUser(email : string,PasswordSalt: string, password:string, identity: string)
   {
-    let identTemp : string = "temp";
-
     const u = await this.prisma.user.create({
       data:
       {
         email: email,
         password:password,
         passwordSalt:PasswordSalt,
-        identity: identTemp,
+        identity: identity,
       }
     })
 
@@ -54,7 +52,7 @@ export class RegistrationRepository {
     return u;
   }
 
-  async AlterAdress(UserID : string,address:string,address2:string,city:string,prov:string,)
+  async AlterAdress(UserID : string,address:string,address2:string,city:string,prov:string, resort: string)
   {
     let u = null;
 
@@ -84,29 +82,31 @@ export class RegistrationRepository {
         }
       });
       
-      u = await this.prisma.organisation.update({
-      where:
-      {
-        UserID:UserID
-      },
-      data:
-      {
-        AddressID:a.AddressID
-      }
-    })
+      if(resort == "ORG") 
+        u = await this.prisma.organisation.update({
+        where:
+        {
+          UserID:UserID
+        },
+        data:
+        {
+          AddressID:a.AddressID
+        }
+      })
     }
     else{
 
-    u = await this.prisma.organisation.update({
-      where:
-      {
-        UserID:UserID
-      },
-      data:
-      {
-        AddressID:a.AddressID
-      }
-    });
+      if(resort == "ORG")
+        u = await this.prisma.organisation.update({
+          where:
+          {
+            UserID:UserID
+          },
+          data:
+          {
+            AddressID:a.AddressID
+          }
+        });
 
     }
 

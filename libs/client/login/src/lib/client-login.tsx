@@ -5,13 +5,14 @@ import Seallogin from '../../../shared/assets/Seallogin.png'
 import CS from '../../../shared/assets/CS.png'
 import Bgpic from '../../../shared/assets/Bgpic.png'
 import './login.css'
-
+import { getCookie } from 'typescript-cookie';
 
 async function APICall(email: string, password: string){
 
   const query = `query{
     login(email: "`+email+`", password: "`+password+`",){
       ID
+      ID_EXT
     }
   }`;
 
@@ -29,13 +30,15 @@ async function APICall(email: string, password: string){
           }).then(r => r.json()).then(data => 
                  initial_students = data
             );
+
+           
     
          return JSON.stringify(initial_students);
 
 }
 
 export function ClientLogin() {
-  
+
   const [emailval,setEmailval] = useState('');
   const [passval,setPassval] = useState('');
   const [invalidCredentials, setInvalidCredentials] = useState('');
@@ -45,26 +48,31 @@ export function ClientLogin() {
       setInvalidCredentials('');
       const response = JSON.parse(await APICall(emailval, passval));
 
-
       if(response.data.login.length == 0){
         setInvalidCredentials('Invalid credentials, please try again');
       }
       else{
-        let ID = response.data.login.ID;
+        const ID = response.data.login.ID,
+              ID_EXT = response.data.login.ID_EXT;
+
+        
         if(ID == null){
           setInvalidCredentials('Invalid credentials, please try again');
           return;
         }
-        document.cookie = "ID="+ID;
+
+        document.cookie = `ID=${ID}`;
+        document.cookie = `ID_EXT=${ID_EXT}`;
         window.location.href = '/home';
-        console.log(response.data.login);
         setInvalidCredentials('');
       }
-
-      
   }
 
-  return (
+  if(getCookie('ID') !== undefined)
+    window.location.href = '/home';
+
+  return ( 
+
     <div className = "main-login" style ={{backgroundImage:`url(${Bgpic})`}}>
       <br/>
       <h1>Charity-Spot</h1>
@@ -93,7 +101,7 @@ export function ClientLogin() {
 
         <div className="right-side">
           <div className='welcomeNote'>
-            <h3 id='welid'>Welcome back,</h3>
+            <h3 id='welid'>Welcome</h3>
           </div>
 
             <img src={Seallogin} alt='' id='wel-img-id'/>

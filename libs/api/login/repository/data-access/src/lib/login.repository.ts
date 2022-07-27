@@ -27,12 +27,13 @@ export class LoginRepository {
         select:
         {
           UserID: true,
-          email: true
+          email: true,
+          identity: true
         },
         where:
         {
           email: email,
-          password: password
+          password: password,
         }
     });
 
@@ -40,7 +41,7 @@ export class LoginRepository {
     {
       return null;
     }
-    return u[0].UserID;
+    return u[0];
   }
 
   async getSalt(email:string){
