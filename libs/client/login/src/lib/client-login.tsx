@@ -68,8 +68,8 @@ export function ClientLogin() {
       }
   }
 
-  if(getCookie('ID') !== undefined)
-    window.location.href = '/home';
+  /*if(getCookie('ID') !== undefined)
+    window.location.href = '/login';*/
 
   return ( 
 

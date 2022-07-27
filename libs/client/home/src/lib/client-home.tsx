@@ -10,6 +10,9 @@ import {APIKEYS} from '../../../../../config';
 
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import ListGroup from 'react-bootstrap/esm/ListGroup';
+
+import {removeCookie } from 'typescript-cookie'
+
 const containerStyle = {
   width: '100%',
   height: '100%',

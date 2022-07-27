@@ -103,7 +103,7 @@ export function Profile() {
   const [NewOPassC,setNewOPassC] = useState('undefined');
 
   //const [NewPicture,setNewOPicture] = useState('');
-  const [tempView, setTempView] = useState(true);
+  const [editView, setEditView] = useState(true);
 
 
   const hanndlesubmit = (event: { preventDefault: () => void; }) =>{
@@ -137,13 +137,15 @@ export function Profile() {
 
     if(IdCookie != undefined){
 
-      const testCookie = getCookie("tempID");
+      const foreinCookie = getCookie("foreignID");
       let response = null;
 
-      if(testCookie != undefined){        
-        removeCookie("tempID");
-        setTempView(false);
-        response = JSON.parse(await APICall(testCookie));
+      if(foreinCookie != undefined){        
+        //removeCookie("tempID");
+        if(foreinCookie!=IdCookie){
+          setEditView(false);
+        }
+        response = JSON.parse(await APICall(foreinCookie));
       }
       else 
         response = JSON.parse(await APICall(IdCookie));
@@ -165,10 +167,9 @@ export function Profile() {
   }
 
   useEffect(() => {
-    setTempView(true);
+    setEditView(true);
     displayData();
    },[]);
-
   
   return (
     <div>
@@ -189,7 +190,7 @@ export function Profile() {
                 <br/><br/>
                   <input type ="radio" name="sliderProf" id='profTab' defaultChecked ></input>
                   <input type ="radio" name="sliderProf" id='blog' ></input>
-                  {( tempView && <nav>
+                  {( editView && <nav>
                     <label htmlFor= "profTab" className='profTab' ><FaUserAlt/> Profile  </label>
                     <label htmlFor= "blog" className='blog'> <FaEdit/> Edit </label>
                     <div className='sliderProf'></div>
@@ -207,7 +208,7 @@ export function Profile() {
                   <img src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo.png?alt=media&token=658a4502-2b08-47bf-8cb2-fe7eacbf8c3e" alt="" id="profile-pic"></img>
                   
                 </div>
-                {( tempView &&<form onSubmit={hanndlesubmit}>
+                {( editView &&<form onSubmit={hanndlesubmit}>
                     <button type='submit' id='logout1'>Log out</button>
                 </form>)}
                 <h3 className='headings' >About Us</h3>
@@ -309,7 +310,7 @@ export function Profile() {
 
       
 
-              {( tempView && <div className='content content-2'>
+              {( editView && <div className='content content-2'>
                         <div className='title'><h1>Edit</h1></div>
 
                         <div className='editor-main'>
