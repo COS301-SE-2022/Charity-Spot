@@ -27,9 +27,16 @@ function Navigation() {
       window.location.replace('/login');
   }
 
-  const checkID = () => {  
+  const checkIDOrg = () => {  
     if(checkIfUserLogIn())
       return ID_EXT === "ORG";
+
+    return false;
+  }
+
+  const checkIDClient = () => {  
+    if(checkIfUserLogIn())
+      return ID_EXT === "CLIENT";
 
     return false;
   }
@@ -48,10 +55,10 @@ function Navigation() {
           {!checkIfUserLogIn()  && <Nav.Link as={Link} to={"/login"}>Login</Nav.Link>}
           <Nav.Link as={Link} to={"/home"}>Home</Nav.Link> 
           { checkIfUserLogIn()  && <Nav.Link as={Link} to={"/profile"}>Profile</Nav.Link>}
-          { checkID()  && <Nav.Link as={Link} to={"/donate"}>Donate</Nav.Link>}
+          { checkIDOrg()  && <Nav.Link as={Link} to={"/donate"}>Donate</Nav.Link>}
           { checkIfUserLogIn()  && <Nav.Link as={Link} to={"/chat"}>Chat</Nav.Link>}
+          { checkIDClient()  && <Nav.Link as={Link} to={"/itemRequest"}>Ask</Nav.Link>}
           { checkIfUserLogIn() && <Nav.Link as={Link} to='#' onClick={() => {logout()}}>Logout</Nav.Link>}
-          { checkIfUserLogIn()  && <Nav.Link as={Link} to={"/itemRequest"}>Ask</Nav.Link>}
         </Nav>
       </Navbar.Collapse>
   </Navbar>
