@@ -55,9 +55,9 @@ function Navigation() {
           <Nav.Link as={Link} to={"/home"} onClick={()=>{removeForeignCookie();}}>Home</Nav.Link> 
           { checkIfUserLogIn()  && <Nav.Link as={Link} to={"/profile"} onClick={()=>{removeForeignCookie(); window.location.replace('/profile')}}>Profile</Nav.Link>}
           { checkID()  && <Nav.Link as={Link} to={"/donate"} onClick={()=>{removeForeignCookie();}}>Donate</Nav.Link>}
-          { checkIfUserLogIn()  && <Nav.Link as={Link} to={"/chat"} onClick={()=>{removeForeignCookie();}}>Chat</Nav.Link>}
           { /*checkIfUserLogIn() && <Nav.Link as={Link} to='#' onClick={() => {logout()}}>Logout</Nav.Link>}*/}
           { checkIfUserLogIn()  && <Nav.Link as={Link} to={"/itemRequest"} onClick={()=>{removeForeignCookie();}}>Ask</Nav.Link>}
+          <Nav.Link as={Link} to={"chatHistory"}>Chat History</Nav.Link>
         </Nav>
       </Navbar.Collapse>
   </Navbar>
