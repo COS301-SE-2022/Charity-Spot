@@ -13,7 +13,7 @@ public class NeuralNetwork{
     Matrix hidden_output_weights;
     Matrix bias_for_hidden;
     Matrix bias_for_output;
-    double learning_rate = 0.005;
+    double learning_rate = 0.002;
 
     public NeuralNetwork(int input, int hidden, int output){
 

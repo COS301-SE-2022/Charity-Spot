@@ -135,4 +135,23 @@ export class ScheduleDeliveryRepository {
 
     return u;
   }
+
+  async getAvailItems( Userid: string){
+
+    const u = await this.prisma.donoItem.findMany({
+      select:
+      {
+        ItemID: true,
+        ItemName: true
+      },
+      where:
+      {
+        OrgID:Userid,
+        ItemAvail:true
+      }
+    });
+
+    return u;
+
+  }
 }

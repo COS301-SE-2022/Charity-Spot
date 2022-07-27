@@ -72,6 +72,7 @@ model DonoItem {
   Type        catagory  @map("type")
   DonoDate    String  @map("dono_date")
   DonoLoc     String  @map("dono_loc")
+  ItemAvail   Boolean @map("item_avail")
 
   @@id([ItemName,OrgID])
   @@map("donation_item")

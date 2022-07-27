@@ -11,6 +11,7 @@ export class DonateRepository {
 
     let tempDate = "tempDate";
     let tempLoc = "tempLoc";
+    let tempAvail = true;
 
     return await this.prisma.donoItem.create({
       
@@ -22,7 +23,8 @@ export class DonateRepository {
         Quality : Quality,
         Type : type,
         DonoDate: tempDate,
-        DonoLoc: tempLoc
+        DonoLoc: tempLoc,
+        ItemAvail: tempAvail
       }
     })
   }
