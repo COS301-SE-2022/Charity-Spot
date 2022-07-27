@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import {Link, useNavigate} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {Navbar,Nav} from 'react-bootstrap'
 import CS from '../../../../libs/client/shared/assets/CS.png'
 
@@ -10,11 +10,17 @@ const ID_EXT = getCookie('ID_EXT');
 
 function Navigation() {
 
-  const navigate = useNavigate();
+  const [assist,setAssist] = useState(false);
+  const [need,setNeed] = useState(false);
+  const [log, setLog] = useState(false);
 
+  function checkIfUserLogIn(){
 
-  const checkIfUserLogIn = () => {
-    return ID !== undefined;
+    if(ID == undefined){
+      return;
+    }
+    setLog(true);
+
   }
 
   /*const logout = () => {
@@ -30,15 +36,24 @@ function Navigation() {
   //}*/
 
   const checkID = () => {  
-    if(checkIfUserLogIn())
-      return ID_EXT === "ORG";
-
+    if(ID_EXT == "assist"){
+      setAssist(true)
+    }
+    else if(ID_EXT == "need"){
+      setNeed(true);
+    }
     return false;
   }
 
   function removeForeignCookie(){
     removeCookie('foreignID');
   }
+
+  useEffect(() => {
+    console.log("hellob");
+    checkIfUserLogIn();
+    checkID();
+  },[]);
 
   return (
     <div>
@@ -51,13 +66,13 @@ function Navigation() {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ backgroundColor: '#dcdfe3'}} className="me-auto">      
 
-          {!checkIfUserLogIn()  && <Nav.Link as={Link} to={"/login"} onClick={()=>{removeForeignCookie();}}>Login</Nav.Link>}
+          { !log &&<Nav.Link as={Link} to={"/login"} onClick={()=>{removeForeignCookie();}}>Login</Nav.Link>}
           <Nav.Link as={Link} to={"/home"} onClick={()=>{removeForeignCookie();}}>Home</Nav.Link> 
-          { checkIfUserLogIn()  && <Nav.Link as={Link} to={"/profile"} onClick={()=>{removeForeignCookie(); window.location.replace('/profile')}}>Profile</Nav.Link>}
-          { checkID()  && <Nav.Link as={Link} to={"/donate"} onClick={()=>{removeForeignCookie();}}>Donate</Nav.Link>}
+          { log &&<Nav.Link as={Link} to={"/profile"} onClick={()=>{removeForeignCookie(); window.location.replace('/profile')}}>Profile</Nav.Link>}
+          { assist && <Nav.Link as={Link} to={"/donate"} onClick={()=>{removeForeignCookie();}}>Donate</Nav.Link>}
           { /*checkIfUserLogIn() && <Nav.Link as={Link} to='#' onClick={() => {logout()}}>Logout</Nav.Link>}*/}
-          { checkIfUserLogIn()  && <Nav.Link as={Link} to={"/itemRequest"} onClick={()=>{removeForeignCookie();}}>Ask</Nav.Link>}
-          <Nav.Link as={Link} to={"chatHistory"}>Chat History</Nav.Link>
+          { need && <Nav.Link as={Link} to={"/itemRequest"} onClick={()=>{removeForeignCookie();}}>Ask</Nav.Link>}
+          { log && <Nav.Link as={Link} to={"chatHistory"}>Chat History</Nav.Link>}
         </Nav>
       </Navbar.Collapse>
   </Navbar>
