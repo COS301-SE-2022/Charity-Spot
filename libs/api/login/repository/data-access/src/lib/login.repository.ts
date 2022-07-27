@@ -21,19 +21,20 @@ export class LoginRepository {
     return returnValue;
   }
 
-  async validateLogin(email : string,password: string)
+  async validateLogin(email : string)
   {
     const u = await this.prisma.user.findMany({
         select:
         {
           UserID: true,
           email: true,
-          identity: true
+          identity: true,
+          password: true,
+          passwordSalt: true
         },
         where:
         {
-          email: email,
-          password: password,
+          email: email
         }
     });
 
