@@ -1,15 +1,138 @@
 import styles from './client-item-request-results.module.css';
 import "./resultss.css";
-export interface ClientItemRequestResultsProps {}
+import {ResultBlock} from './resultBlock'
 
-export function ClientItemRequestResults(props: ClientItemRequestResultsProps) {
+import { useEffect, useState } from 'react';
+
+import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
+
+function getLocation(location : any){
+      let locations = ["Pretoria", "Johannesburg", "Cape Town", "Bloemfontein", "Polokwane", "Durban"]
+
+      for(let i=0; i<location.length; i++){
+            if(locations[i] == location){
+                  return i+1;
+            }
+      }
+
+      return 0;
+
+}
+
+function getItem(item : any){
+      let items = ["CLOTHING", "FOOD", "STATIONARY", "HYGIENE", "KITCHEN", "FURNITURE"]
+
+      for(let i=0; i<items.length; i++){
+            if(items[i] == item){
+                  return i+1;
+            }
+      }
+
+      return 0;
+}
+
+async function APICall(){
+
+      /*const query = `query{ 
+            getAIPredic(Date:"01-03", itemType:"1", location:"1"){
+                  ID,
+                  Probability
+            }
+      }`;*/
+
+      let date = getCookie("date");
+      let itemType = getItem(getCookie("type"));
+      let location = getLocation(getCookie("location"));
+
+      const query = `query{ 
+            getAIPredic(Date:"${date}", itemType:"${itemType}", location:"${location}"){
+                  ID,
+                  Probability
+            }
+      }`;
+
+      console.log(query);
+
+
+      let result = "";
+
+      await fetch('http://localhost:3333/graphql', {
+               method: 'POST',
+               headers: {
+                 'Content-Type': 'application/json',
+                 'Accept': 'application/json',
+               },
+               body: JSON.stringify({
+                 query
+               })
+            }).then(r => r.json()).then(data => 
+                   result = data
+              );
+      
+           let resultString = JSON.stringify(result);
+           let resultFin = JSON.parse(resultString);
+
+           return resultFin.data.getAIPredic;
+
+}
+
+export function ClientItemRequestResults() {
+
+      let loopCount = -1;
+
+      const [result, addResult] = useState<any[]>([]);
+
+      class ResultV {
+            ResultID : string = "";
+            ResultProb: string = "";
+      }
+
+      const updateResult = async () => {
+            let resultArr = await APICall();
+
+            console.log(resultArr);
+
+            let results : any = [];
+
+            for(let i=0; i<resultArr.length; i++){
+                  let temp = new ResultV();
+
+                  temp.ResultID = resultArr[i].ID;
+                  temp.ResultProb = resultArr[i].Probability;
+
+                  results.push(temp);
+
+            }
+
+            addResult(results);
+      }
+
+      useEffect(() => {
+            loopCount = -1;
+            updateResult();
+      }, []);
+
+
   return (
     <div className='motherHolder'>
       <br/>
       <h2 className='rqq'>Suggested Organizations</h2>
       <div className='HoldAll'>
-        <div className='leftHolda'>
 
+
+
+            {result.map(function(R){
+
+                  loopCount++;
+
+                  return(
+                        <ResultBlock inState={[R, loopCount]}/>
+                  )
+
+            })}
+
+
+        {/*<div className='leftHolda'>
             <img src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo.png?alt=media&token=658a4502-2b08-47bf-8cb2-fe7eacbf8c3e" alt="" className="orgreqpic"></img>
               <div className='Lead'><h4>Seal Organization</h4></div>
               <div className='within'>
@@ -104,7 +227,7 @@ export function ClientItemRequestResults(props: ClientItemRequestResultsProps) {
                     <br></br>   
               <button type='submit' id='butChoose'>Choose</button> 
 
-        </div>
+      </div>*/}
         
         
         

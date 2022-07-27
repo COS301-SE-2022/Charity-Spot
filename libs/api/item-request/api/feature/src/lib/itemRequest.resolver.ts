@@ -7,11 +7,11 @@ export class ItemRequestResolver {
     constructor(private readonly itemRequestService: itemRequestService) {}
 
     @Query(() => itemRequestEntity)
-    test(){
-        return this.itemRequestService.Test();
+    getOrgInfo(@Args('OrgID') OrgID: string){
+        return this.itemRequestService.FindOrgInfo(OrgID);
     }
 
-    @Query(() => itemRequestEntity)
+    @Query(() => [itemRequestEntity])
     getAIPredic(@Args('Date') Date: string, @Args('itemType') itemType: string, @Args('location') location: string){
         return this.itemRequestService.getAIPredic(Date, itemType, location);
     }
