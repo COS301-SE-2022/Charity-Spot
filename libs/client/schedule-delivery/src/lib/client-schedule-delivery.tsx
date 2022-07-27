@@ -38,18 +38,36 @@ async function getItemsApi(){
 
 }
 
-async function setDelivery(location : string, itemID : string, date : string, time : string){
+async function setDeliveryApi(location : string, itemID : string, date : string, time : string){
 
   let donatedBy = getCookie("ID");
+  let donateFor = getCookie("foreignID");
 
   const query = `query{
-    Schedule(donated_by:"${donatedBy}",donated_for:"",location:"${location}",dd_mm_yyyy:"${date}",itemID:"${itemID}"){
+    Schedule(donated_by:"${donatedBy}",donated_for:"${donateFor}",location:"${location}",dd_mm_yyyy:"${date}",itemID:"${itemID}"){
       id_1
     }
   }`;
 
   let result = "";
 
+  await fetch('http://localhost:3333/graphql', {
+               method: 'POST',
+               headers: {
+                 'Content-Type': 'application/json',
+                 'Accept': 'application/json',
+               },
+               body: JSON.stringify({
+                 query
+               })
+            }).then(r => r.json()).then(data => 
+                   result = data
+              );
+      
+  let resultString = JSON.stringify(result);
+  let resultFin = JSON.parse(resultString);
+
+  console.log(resultFin);
 
 }
 
@@ -100,6 +118,8 @@ export function ClientScheduleDelivery() {
     console.log(delDate);
     console.log(delLocation);
     console.log(delItem);
+
+    await setDeliveryApi(delLocation, delItem, delDate, delTime)
 
   }
 

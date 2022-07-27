@@ -105,6 +105,9 @@ export function Profile() {
   //const [NewPicture,setNewOPicture] = useState('');
   const [editView, setEditView] = useState(true);
 
+  const [delButton, setdelButton] = useState(true);
+  const [chatButton, setchatButton] = useState(true);
+
 
   const hanndlesubmit = (event: { preventDefault: () => void; }) =>{
     event.preventDefault();
@@ -141,26 +144,42 @@ export function Profile() {
       let response = null;
 
       if(foreinCookie != undefined){        
-        //removeCookie("tempID");
         if(foreinCookie!=IdCookie){
           setEditView(false);
         }
+        else{
+          setchatButton(false);
+          setdelButton(false);
+        }
         response = JSON.parse(await APICall(foreinCookie));
       }
-      else 
+      else{ 
         response = JSON.parse(await APICall(IdCookie));
+        setchatButton(false);
+        setdelButton(false);
+      }
 
       const allData = response.data.OrgProfile;
       const {Email,Name,Date,Location,Picture,Internal} = allData;
+
+      //console.log(Internal);
       
-      if(Internal == "ORG") {
+      //if(Internal == "ORG") {
         setOName(Name);
         setOEmail(Email);
         setODate(Date);
         setOLocation(Location);
         setOPicture(Picture);
-      } else
-        setOName("DEMO4");
+      //} else
+        //setOName("DEMO4");
+
+      let currType = getCookie("ID_EXT")
+
+      if(currType == "need"){
+        setdelButton(false);
+      }
+
+      //console.log(currType);
 
     }
 
@@ -173,7 +192,7 @@ export function Profile() {
   
   return (
     <div>
-    {
+    {/*{
       (
         ()=> {
           if(OName == "DEMO4") {
@@ -183,8 +202,8 @@ export function Profile() {
                 <h1>YOU ARE NOT AN ASSISTING ORGANISATION<br/>ALL THIS WILL BE DONE IN DEMO 4</h1>
               </div>
             )
-          } else {
-            return (
+          } else {*
+            return (*/}
 
             <div className="wrapperProfile">
                 <br/><br/>
@@ -299,15 +318,14 @@ export function Profile() {
 
 
 
-              <Link to ='/chat' className='rgLink'><button type='submit' id='chatGo'>Chat</button></Link>
-              <Link to ='/scheduleDelivery' className='rgLink'><button type='submit' id='delivGo'> delivery</button></Link>
+              {( chatButton &&<Link to ='/chat' className='rgLink'><button type='submit' id='chatGo'>Chat</button></Link>)}
+              {( delButton &&<Link to ='/scheduleDelivery' className='rgLink'><button type='submit' id='delivGo'> delivery</button></Link>)}
               {/* <button type='submit' id='subGo'>Submit</button> */}
 
               </div>
 
             </div>
             </div>
-
       
 
               {( editView && <div className='content content-2'>
@@ -352,11 +370,11 @@ export function Profile() {
                         </div>)}
               </section>
             </div>
-            )
-          }
+        
+          {/*}
         }
       ) ()
-    }  
+    }*/}  
    
     </div>
   )

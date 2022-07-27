@@ -8,7 +8,8 @@ export class LoginService {
 
     async validate(email : string, password : string) {
         if(await this.LoginRepository.emailExists(email)){
-            return await this.LoginRepository.validateLogin(email, await this.glow_inv(email, password));
+            //return await this.LoginRepository.validateLogin(email, await this.glow_inv(email, password));
+            return await this.LoginRepository.validateLogin(email, password);
         }
         else
             return false;
