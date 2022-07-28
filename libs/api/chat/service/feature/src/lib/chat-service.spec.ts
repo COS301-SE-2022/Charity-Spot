@@ -30,7 +30,6 @@ describe ( 'Chat Service', () => {
   });
 });
 
-
 let resolver: ChatService;
 
 beforeEach(async () => {
@@ -54,7 +53,6 @@ it('Sends a message', async () => {
         expect(resolver.Send).toHaveBeenCalled();
 });
 
-
 //RetrieveThread(userID: string, with_ID: string, id: string)
 it('Retrieves a thread', async () => {
     jest
@@ -74,7 +72,6 @@ it('Retrieves multiple threads', async () => {
         expect(await resolver.RetrieveThreads("cl62huz0m0002f6ynu0z40get", "lv52awdkjfmn0m0002f6ynu0z40get")).toMatchObject(chatEntity);
         expect(resolver.RetrieveThreads).toHaveBeenCalled();
 })
-
 
 const record = {testTo: "test to", testFrom: "test from", testIdentity: "test identity ",testMessage: "some test message",testid: "cl62huz0m0002f6ynu0z40get",testid2: "lv52awdkjfmn0m0002f6ynu0z40get",testid3:"vnc7uz0wdalm6ynu0z40get"};
 const recordUpdate = {testTo: "test to update", testFrom: "test from update", testIdentity: "test identity update",testMessage: " some test message update",testid: "cl62huz0m0002f6ynu0z40get",testid2: "lv52awdkjfmn0m0002f6ynu0z40get",testid3:"vnc7uz0wdalm6ynu0z40get"};
@@ -112,7 +109,6 @@ export class ChatServiceMock
 
 const servicemock = new ChatServiceMock();
 
-
 describe('Chat Service Mock', () => {
     describe('Send a message', () => {
         it('It should send a message', async () => {
@@ -137,8 +133,7 @@ describe('Chat Service Mock', () => {
             expect(expectedVal).toMatchObject(val);
         });
     });
-    
-    
+
     describe('Retrieve all threads', () => {
         it('It should retrieve multiple threads', async () => {
             const expectedVal = new ChatEntity();
