@@ -53,3 +53,24 @@ it('Sends a message', async () => {
         expect(await resolver.Send("to", "from","identity","message")).toMatchObject(chatEntity);
         expect(resolver.Send).toHaveBeenCalled();
 });
+
+
+//RetrieveThread(userID: string, with_ID: string, id: string)
+it('Retrieves a thread', async () => {
+    jest
+        .spyOn(resolver,'RetrieveThread')
+        .mockImplementation((): Promise<ChatEntity> => Promise.resolve(chatEntity));
+        expect(resolver.RetrieveThread).not.toHaveBeenCalled();
+        expect(await resolver.RetrieveThread("cl62huz0m0002f6ynu0z40get", "lv52awdkjfmn0m0002f6ynu0z40get","vnc7uz0wdalm6ynu0z40get")).toMatchObject(chatEntity);
+        expect(resolver.RetrieveThread).toHaveBeenCalled();
+});
+
+//RetrieveThreads(userID: string, id: string) => chatEntity
+it('Retrieves multiple threads', async () => {
+    jest
+        .spyOn(resolver,'RetrieveThreads')
+        .mockImplementation((): Promise<ChatEntity> => Promise.resolve(chatEntity));
+        expect(resolver.RetrieveThreads).not.toHaveBeenCalled();
+        expect(await resolver.RetrieveThreads("cl62huz0m0002f6ynu0z40get", "lv52awdkjfmn0m0002f6ynu0z40get")).toMatchObject(chatEntity);
+        expect(resolver.RetrieveThreads).toHaveBeenCalled();
+})
