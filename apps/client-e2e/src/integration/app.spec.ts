@@ -64,6 +64,72 @@ describe('client', () => {
         })
     });
 
+    /* ADDED FOR DEMO 3*/
+
+    //profile page
+    describe('profile page testing', () => {
+        beforeEach(() => cy.visit('http://localhost:4200/profile'));
+        it('should direct you to the right url', () => {
+            cy.url().should('include','profile');
+
+        it('The user should be able to view an organisations profile page', () => {
+            cy.get('#chatGo').click();
+        })
+
+        })
+    });
+
+
+    //chat page
+    describe('chat page testing', () => {
+        beforeEach(() => cy.visit('http://localhost:4200/chat'));
+        it('should direct you to the right url', () => {
+            cy.url().should('include','chat');
+
+        it('The user should be able to view the chat area', () => {
+            //cy.get('#chatGo').click();
+            cy.get('.client-chat_myText__3vWpw').type("Hello i am testing the chat feature");
+            cy.get('.client-chat_sndBT__3serM').click();
+        })
+
+        })
+    });
+
+    //Schedule Delivery page
+    describe('Schedule Delivery page testing', () => {
+        beforeEach(() => cy.visit('http://localhost:4200/scheduleDelivery'));
+        it('should direct you to the right url', () => {
+            cy.url().should('include','scheduleDelivery');
+
+        it('The user should be able to schedule a delivery', () => {
+            cy.contains('Your Name').type('Steve');  
+            cy.contains('Recipient Name').type('Dave');
+            cy.contains('Hatfield').type('Pretoria');
+            cy.contains('Polokwane').type('Limpopo');
+            cy.get('#deliv_but').click();
+        })
+
+        })
+    });
+
+    //Item Request Page
+    describe('Item Request page testing', () => {
+        beforeEach(() => cy.visit('http://localhost:4200/itemRequest'));
+        it('should direct you to the right url', () => {
+            cy.url().should('include','itemRequest');
+
+        it('The user should be able to request an item', () => {
+            cy.contains('Item Name').type('Jeans');  
+            cy.contains('Item(s) Quantity').type('3');
+            cy.contains('Your Location').type('Pretoria');
+            
+            cy.get('.req3').select('Clothing').should('have.value','Clothes');
+            cy.contains('Request').click();
+        })
+
+        })
+    });
+
 /*cy.get('id') - by tag
 cy.get('.id') - by class 
 cy.get('#id')- by id*/
