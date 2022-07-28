@@ -172,3 +172,16 @@ export class RegistrationServiceMock
             }
           
         }
+        
+              alterDescr(userID : string, Descr : string)
+        {
+          if(userID.match(recordUpdate.testid) && (Descr.match(recordUpdate.testDesc)))
+            {
+              recordUpdate.testDesc = Descr;
+              return "SUCCESS";
+            }
+          else
+            {
+              return "FAILURE";
+            }
+        }
