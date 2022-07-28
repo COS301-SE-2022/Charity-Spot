@@ -60,3 +60,14 @@ it('',async () => {
 
 });
 */
+
+
+it('Org does not exist',async () => {
+  jest
+    .spyOn(resolver,'doesNotExist')
+    .mockImplementation( (): Promise<boolean> => Promise.resolve(true));
+    expect(resolver.doesNotExist).not.toHaveBeenCalled();
+    expect(await resolver.doesNotExist("lk@gmail.com", "acdvdf")).toEqual(true);
+    expect(resolver.doesNotExist).toHaveBeenCalled();
+
+});
