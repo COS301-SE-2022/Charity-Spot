@@ -11,4 +11,11 @@ export class HomeResolver {
         
         return this.HomeService.getAllOrg();
     }
+
+    @Query(() => [HomeEntity])
+    GetAllItems(){
+
+        return this.HomeService.getAllItems();
+
+    }
 }
