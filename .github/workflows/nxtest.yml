@@ -12,3 +12,38 @@ on:
         description: 'Test type (lint, build, test)'
         required: false
         type: string
+        
+        
+jobs:
+  build:
+    name: Generate cache
+    runs-on: ubuntu-latest
+    steps:
+        #Checking out to the develop branch
+      - name: Checkout develop
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v2
+        with:
+          main-branch-name: 'develop'
+          
+      - name: Use Node.js 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install yarn
+        run: npm install yarn -g
+
+      - name: Cache yarn packages
+        id: cache-yarn-packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache
+          key: yarn-package-${{ hashFiles('***/yarn.lock')}}
+
+      - name: Install packages
+        run: yarn install --frozen-lockfile
