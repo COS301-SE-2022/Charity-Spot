@@ -20,6 +20,8 @@ async function getDelScheduleApi(query : string){
         }
       }`;*/
 
+      console.log(query);
+
       await fetch('http://localhost:3333/graphql', {
         method: 'POST',
         headers: {
@@ -58,7 +60,7 @@ export function ClientDeliveryScheduleInfo() {
 
   const DelScheduleQuery = () => {
     return `query{
-      getDelSchedule(UserID:"${getCookie("ID")}"){
+      getDelSchedule(UserID:"${getCookie("ID")}", type:"${getCookie("ID_EXT")}"){
         id_1
         itemID
         location
@@ -103,6 +105,8 @@ export function ClientDeliveryScheduleInfo() {
         let userID = finRes[i].id_1;
 
         let userName : any= await getDelScheduleApi(NameQuery(finRes[i].id_1));
+
+        console.log(userName);
 
         userName = userName.data.getChatName.Message;
 
@@ -158,7 +162,7 @@ export function ClientDeliveryScheduleInfo() {
 
                     <input type ='checkbox' id = {A.itemID}></input>
 
-                    <label htmlFor={A.itemID}>{A.itemName}:  {A.partyName} on {A.date}  <FaArrowDown/></label>
+                    <label htmlFor={A.itemID}>{A.itemName}<FaArrowDown/></label>
 
                     <div className='collapsible-text'><br/>
                         {/*<div className='collapseleft'>

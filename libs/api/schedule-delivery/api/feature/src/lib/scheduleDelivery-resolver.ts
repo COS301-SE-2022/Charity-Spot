@@ -43,8 +43,8 @@ export class ScheduleDeliveryResolver {
     }
 
     @Query(() => [ScheduleDeliveryEntity])
-    getDelSchedule(@Args("UserID") UserID: string){
-        return this.ScheduleDeliveryService.getDelSchedule(UserID);
+    getDelSchedule(@Args("UserID") UserID: string, @Args("type") type : string){
+        return this.ScheduleDeliveryService.getDelSchedule(UserID, type);
     }
 
     @Query(() => ScheduleDeliveryEntity)
