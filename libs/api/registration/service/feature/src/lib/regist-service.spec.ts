@@ -257,3 +257,11 @@ describe('Altering the description', () => {
     expect(expectedVal).toEqual(expect.any(String));
   }); 
 });
+
+//alterAddress("1","1234 Park Address","5678 Konoha Street","Pretoria","Gauteng")
+describe('Altering the address', () => {
+  it('Successfully altered the address', async () => {
+    const expectedVal = servicemock.alterAddress("cl62huz0m0002f6ynu0z40get","1234 Park Address","5678 Konoha Street","Pretoria","Gauteng");
+    expect(expectedVal).toEqual(expect.any(String));
+  }); 
+});
