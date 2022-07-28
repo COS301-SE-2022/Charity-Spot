@@ -203,3 +203,15 @@ describe(' Organisation Service Mock', () =>
             expect(someEntity).toMatchObject(expectedEntity);
           });
       });
+
+
+    describe('Get Donations', () => 
+      {
+        it('Should return null', async () => 
+          {
+            const val = servicemock.getDonations(record.testId);
+            const expectedValue = null;
+            expect(val).toBe(expectedValue);
+          });
+      });
+  });
