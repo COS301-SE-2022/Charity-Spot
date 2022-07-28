@@ -99,3 +99,16 @@ export class itemRequestServiceMock
 
 
 // PART 3 - START
+
+const servicemock = new itemRequestServiceMock();
+
+describe('item Request Service Mock', () => {
+    //Test()
+    describe('Test()', () => {
+        it('Should successfully test service', async () => {
+            const expectedVal = new itemRequestEntity();
+            expectedVal.ID = record.testId;
+            const val = servicemock.Test();
+            expect(expectedVal).toMatchObject(val);
+        }); 
+    });
