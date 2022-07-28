@@ -79,3 +79,63 @@ it('Should allow a user to donate an item', async () => {
 });
 
 // PART 1 - END
+
+
+// PART 2 - START
+
+  const record = {testid: "cl62huz0m0002f6ynu0z40get",testName:"org 1",testQuantity:3,testCatagoty:catagory.CLOTHING,
+                  testCondition:quality.NEW,testEmail:"lk@gmail.com",testPass: "acdvdf",testOrgNum:"1",
+                  testDesc:" this is a test description for org 1",testAdress:"123 test Address 1",
+                  testPicture:"asdd13dw5a",testItemID:"sad254"};
+  const recordUpdate = {testid: "cl62huz0m0002f6ynu0z40get",testName:"org 1",testQuantity:3,testCatagoty:catagory.FURNITURE,
+                        testCondition:quality.USED,testEmail:"lk@gmail.com",testPass: "acdvdf",testOrgNum:"2",
+                        testDesc:" this is a test description for org 2",testAdress:"456 test Address 2",
+                        testPicture:"sdkjdi9",testItemID:"dcxa214"};
+
+  export class DonateServiceMock
+    {
+      getItemPicDirec(itemID : string)
+        {
+          const ret = new DonateEntity();
+          ret.Name = "asdd13dw5a";
+          return ret;
+        }
+        
+        
+      history(id: string)
+        {
+          const ret = new DonateEntity();
+          ret.Donations = [];
+
+            const donateItem = new DonateEntity();
+
+            donateItem.ID = id;
+            donateItem.ItemID = record.testItemID;
+            donateItem.Name = record.testName;
+            donateItem.Picture = record.testPicture;
+            donateItem.Quantity = record.testQuantity;
+            donateItem.Description = record.testDesc;
+            donateItem.Quality = record.testCondition.toString();
+            donateItem.Category = record.testCatagoty.toString();
+            ret.Donations.push(donateItem);
+
+            return ret;
+        }
+
+
+      donate(id: string, name: string, quantity: number, category: catagory, condition: quality, descr: string)
+        {
+          const ret = new DonateEntity();
+
+          ret.ItemID = "sad254";
+          ret.ID = id;
+          ret.Name = name;
+          ret.Description = descr;
+
+          return ret;
+        }
+    }
+
+
+
+// PART 2 - END
