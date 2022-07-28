@@ -128,3 +128,21 @@ it('Adds a picture',async () => {
     expect(resolver.addPicture).toHaveBeenCalled();
 
 });
+
+
+const record = {testName:"org 1",testEmail:"lk@gmail.com",testPass: "acdvdf",testid: "cl62huz0m0002f6ynu0z40get",testOrgNum:"1",testDesc:" this is a test description for org 1",testAdress:"123 test Address 1"};
+const recordUpdate = {testName:"org 2",testEmail:"lk@gmail.com",testPass: "acdvdf",testid: "cl62huz0m0002f6ynu0z40get",testOrgNum:"1",testDesc:" this is a test description for org 2",testAdress:"456 test Address 2"};
+
+export class RegistrationServiceMock
+  {
+    doesNotExist(email : string, password : string)
+      {
+        if(email.match(record.testEmail) && (password.match(record.testPass)))
+          {
+            return false;
+          }
+        else
+          {
+            return true;
+          }
+      }
