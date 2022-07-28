@@ -51,7 +51,7 @@ jobs:
         
       - name: Unit Test Affected
         if: inputs.testtype == 'unit' && inputs.test == 'affected' 
-        run: yarn nx affected:test --base=${{ env.NX_BASE}} --head=${{ env.NX_HEAD}}
+        run: yarn nx affected:e2e --base=${{ env.NX_BASE}} --head=${{ env.NX_HEAD}}
       
       - name: Lint test affected
         if: inputs.testtype == 'lint' && inputs.test == 'affected'
