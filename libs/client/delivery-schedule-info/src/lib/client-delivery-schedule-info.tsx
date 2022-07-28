@@ -161,9 +161,9 @@ export function ClientDeliveryScheduleInfo() {
                     <label htmlFor={A.itemID}>{A.itemName}:  {A.partyName} on {A.date} </label>
 
                     <div className='collapsible-text'><br/>
-                        {/*<div className='collapseleft'>
-                        {/*<img src={item.PicLink} alt="" id="donation-pic2"/>
-                        </div>*/}
+                        <div className='collapseleft'>
+                        <img src="" alt="" id="donation-pic2"/>
+                        </div>
 
                         <div className='collapserightDel'>
       
