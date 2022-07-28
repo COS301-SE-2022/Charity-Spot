@@ -139,3 +139,23 @@ it('Should allow a user to donate an item', async () => {
 
 
 // PART 2 - END
+
+
+
+// PART 3 - START
+
+const servicemock = new DonateServiceMock();
+
+describe('Donate Service Mock', () => {
+
+//getItemPicDirec(itemID : string){
+describe ('getItemPictureDirec()', () => 
+  {
+    it('Successfully retrieved organisation picture ', async () => 
+      {
+        const expectedVal = new DonateEntity();
+        expectedVal.Name = "asdd13dw5a";
+        const val = servicemock.getItemPicDirec(record.testPicture);
+        expect(expectedVal).toMatchObject(val);
+      });
+  });
