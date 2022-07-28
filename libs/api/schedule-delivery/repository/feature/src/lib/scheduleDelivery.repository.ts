@@ -154,4 +154,43 @@ export class ScheduleDeliveryRepository {
     return u;
 
   }
+
+  async getDelSchedule( Userid : string){
+
+    const u = await this.prisma.delivery.findMany({
+      select:
+      {
+        ItemID: true,
+        ClientID: true,
+        Loaction: true,
+        Date: true,
+        Time: true
+      },
+      where:
+      {
+        OrgID:Userid,
+      }
+    });
+
+    return u;
+
+  }
+
+  async getItemName(ItemID : string){
+
+    const u = await this.prisma.donoItem.findMany({
+      select:
+      {
+        ItemName: true,
+      },
+      where:
+      {
+        ItemID: ItemID
+      }
+    });
+
+    return u;
+
+  }
+
 }

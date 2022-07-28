@@ -3,6 +3,8 @@ import {Link} from 'react-router-dom'
 import {Navbar,Nav} from 'react-bootstrap'
 import CS from '../../../../libs/client/shared/assets/CS.png'
 
+import Button from 'react-bootstrap/Button';
+
 import { getCookie, removeCookie} from 'typescript-cookie'
 
 const ID = getCookie('ID');
@@ -23,17 +25,13 @@ function Navigation() {
 
   }
 
-  /*const logout = () => {
-    if(document.cookie.split(";").length > 0)
-      document.cookie.split(";").forEach((c) => {
-        document.cookie = c
-          .replace(/^ +/, "")
-          .replace(/=.*///, "=;expires=" + new Date().toUTCString() + ";path=/");
-      //}); 
-      
+  const logOut = () => {
+    removeCookie('ID');
+    removeCookie('ID_EXT');
+    removeCookie('foreignID');
 
-      //window.location.replace('/login');
-  //}*/
+    window.location.href = '/login';
+  }
 
   const checkID = () => {  
     if(ID_EXT == "assist"){
@@ -45,8 +43,15 @@ function Navigation() {
     return false;
   }
 
-  function removeForeignCookie(){
-    removeCookie('foreignID');
+  function removeForeignCookie(aLink : string){
+
+    if(getCookie('foreignID') != undefined){
+      removeCookie('foreignID');
+      if(aLink == 'b'){
+        window.location.replace('/profile')
+      }
+    }
+    
   }
 
   useEffect(() => {
@@ -55,25 +60,33 @@ function Navigation() {
     checkID();
   },[]);
 
+  
+
   return (
     <div>
-    <Navbar expand="lg" style={{ backgroundColor: '#dcdfe3', height: '80px',zIndex: 2 }}>
+    <Navbar expand="lg" style={{ backgroundColor: '#dcdfe3', height: '80px',zIndex: 2 }} >
     <div className='logo-class'>
             <img src={CS} alt='' id='logo-nav-id'/>
      </div>
       <Navbar.Brand style={{ color: '#1458b3', }} as={Link} to = '#'>Charity-Spot</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav style={{ backgroundColor: '#dcdfe3'}} className="me-auto">      
+        <Nav style={{ backgroundColor: '#dcdfe3'}} className="me-auto" variant="pills">      
 
-          { !log &&<Nav.Link as={Link} to={"/login"} onClick={()=>{removeForeignCookie();}}>Login</Nav.Link>}
-          <Nav.Link as={Link} to={"/home"} onClick={()=>{removeForeignCookie();}}>Home</Nav.Link> 
-          { log &&<Nav.Link as={Link} to={"/profile"} onClick={()=>{removeForeignCookie(); window.location.replace('/profile')}}>Profile</Nav.Link>}
-          { assist && <Nav.Link as={Link} to={"/donate"} onClick={()=>{removeForeignCookie();}}>Donate</Nav.Link>}
-          { /*checkIfUserLogIn() && <Nav.Link as={Link} to='#' onClick={() => {logout()}}>Logout</Nav.Link>}*/}
-          { need && <Nav.Link as={Link} to={"/itemRequest"} onClick={()=>{removeForeignCookie();}}>Ask</Nav.Link>}
-          { log && <Nav.Link as={Link} to={"chatHistory"}>Chat History</Nav.Link>}
+          { !log &&<Nav.Link  as={Link} to={"/login"} onClick={()=>{removeForeignCookie('a');}}>Login</Nav.Link>}
+          <Nav.Link as={Link} to={"/home"} onClick={()=>{removeForeignCookie('a');}}>Home</Nav.Link> 
+          { log &&<Nav.Link as={Link} to={"/profile"} onClick={()=>{removeForeignCookie('b');}}>Profile</Nav.Link>}
+          { assist && <Nav.Link as={Link} to={"/donate"} onClick={()=>{removeForeignCookie('a');}}>Donate</Nav.Link>}
+          { need && <Nav.Link as={Link} to={"/itemRequest"} onClick={()=>{removeForeignCookie('a');}}>Ask</Nav.Link>}
+          { log && <Nav.Link as={Link} to={"/chatSessions"}>Chat Sessions</Nav.Link>}
+          { log && <Nav.Link as={Link} to={"/deliverySchedule"}>Delivery Schedule</Nav.Link>}
+          
         </Nav>
+
+        { log && <Nav style={{ backgroundColor: '#dcdfe3'}} className="ms-auto">
+          <Nav.Link><Button variant="outline-danger" onClick={()=>{logOut();}}>Log Out</Button></Nav.Link>
+        </Nav>}
+
       </Navbar.Collapse>
   </Navbar>
   </div>

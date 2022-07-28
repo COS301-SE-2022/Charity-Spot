@@ -21,4 +21,13 @@ export class ScheduleDeliveryEntity {
 
     @Field({nullable: true})
     itemName: string
+
+    @Field({nullable: true})
+    location: string
+
+    @Field({nullable: true})
+    date: string
+
+    @Field({nullable: true})
+    time: string
 }

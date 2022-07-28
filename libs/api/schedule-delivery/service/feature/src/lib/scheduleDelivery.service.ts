@@ -54,4 +54,40 @@ export class ScheduleDeliveryService {
         return returnItems;
     }
 
+    async getDelSchedule( Userid : string){
+
+        let schedule = await this.ScheduleDeliveryRepository.getDelSchedule(Userid);
+
+        let returnSchedule = [];
+
+        for(let i=0; i<schedule.length; i++){
+
+            let temp = new ScheduleDeliveryEntity();
+            
+            temp.id_1 = schedule[i].ClientID;
+            temp.itemID = schedule[i].ItemID;
+            temp.location = schedule[i].Loaction;
+            temp.date = schedule[i].Date;
+            temp.time = schedule[i].Time;
+
+            returnSchedule.push(temp);
+
+        }
+
+        return returnSchedule;
+
+    }
+
+    async getItemName( itemID : string){
+
+        let itemName = await this.ScheduleDeliveryRepository.getItemName(itemID);
+
+        let temp = new ScheduleDeliveryEntity();
+
+        temp.itemName = itemName[0].ItemName;
+
+        return temp;
+
+    }
+
 }

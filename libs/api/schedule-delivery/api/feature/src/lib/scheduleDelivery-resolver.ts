@@ -41,4 +41,14 @@ export class ScheduleDeliveryResolver {
 
         return this.ScheduleDeliveryService.getAvailItems(UserID);
     }
+
+    @Query(() => [ScheduleDeliveryEntity])
+    getDelSchedule(@Args("UserID") UserID: string){
+        return this.ScheduleDeliveryService.getDelSchedule(UserID);
+    }
+
+    @Query(() => ScheduleDeliveryEntity)
+    getItemName(@Args("ItemID") ItemID: string){
+        return this.ScheduleDeliveryService.getItemName(ItemID);
+    }
 }

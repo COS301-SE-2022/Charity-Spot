@@ -94,6 +94,9 @@
       "@charity-spot/client/chat-history": [
         "libs/client/chat-history/src/index.ts"
       ],
+      "@charity-spot/client/delivery-schedule-info": [
+        "libs/client/delivery-schedule-info/src/index.ts"
+      ],
       "@charity-spot/client/donate": ["libs/client/donate/src/index.ts"],
       "@charity-spot/client/home": ["libs/client/home/src/index.ts"],
       "@charity-spot/client/item-request": [
