@@ -112,3 +112,19 @@ export class ScheduleDeliveryServiceMock
 
 
 /*          PART 3 - START             */
+
+const servicemock = new ScheduleDeliveryServiceMock();
+
+//Sched(assis_id: string,needing_id: string,ite_id: string,location: string,date: string)
+describe('Sched()', () => {
+    it('Should successfully schedule a delivery', async () => {
+        const expectedVal = new ScheduleDeliveryEntity();
+
+        expectedVal.id_1 = record.testAssis;
+        expectedVal.id_2 = record.testNeeding;
+        expectedVal.id_item = record.testIte;
+
+        const val = servicemock.Sched(record.testAssis,record.testNeeding,record.testIte,record.testLocation,record.testDate);
+        expect(expectedVal).toMatchObject(val);
+    });
+});
