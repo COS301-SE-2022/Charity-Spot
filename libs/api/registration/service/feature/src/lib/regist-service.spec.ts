@@ -135,6 +135,17 @@ const recordUpdate = {testName:"org 2",testEmail:"lk@gmail.com",testPass: "acdvd
 
 export class RegistrationServiceMock
   {
+const servicemock = new RegistrationServiceMock();
+
+describe('Registration Service Mock', () => 
+  {
+    describe('Org does not exist', () => {
+      it('The Organisation should not already exist', async () => {
+        const expectedVal = false;
+        const val = servicemock.doesNotExist(record.testEmail,record.testPass);
+        expect(expectedVal).toBe(val);
+      }); 
+    });
     doesNotExist(email : string, password : string)
       {
         if(email.match(record.testEmail) && (password.match(record.testPass)))
@@ -208,3 +219,16 @@ export class RegistrationServiceMock
           return null;
         }
   }
+
+
+const servicemock = new RegistrationServiceMock();
+
+describe('Registration Service Mock', () => 
+  {
+    describe('Org does not exist', () => {
+      it('The Organisation should not already exist', async () => {
+        const expectedVal = false;
+        const val = servicemock.doesNotExist(record.testEmail,record.testPass);
+        expect(expectedVal).toBe(val);
+      }); 
+    });
