@@ -188,3 +188,22 @@ describe ('getItemPictureDirec()', () =>
           //expect(await service.history("1")).toMatchObject(donateEntity);
         });
     });
+    
+    
+//donate(id: string, name: string, quantity: number, category: catagory, condition: quality, descr: string)
+  describe('donate()', () => 
+    {
+      it('Successfully donated an item', async () => 
+        {
+          const expectedVal = new DonateEntity();
+
+          expectedVal.ItemID = "sad254";
+          expectedVal.ID = record.testid;;
+          expectedVal.Name = record.testName;
+          expectedVal.Description = record.testDesc;
+        
+          const val = servicemock.donate(record.testid,record.testName,record.testQuantity,record.testCatagoty,record.testCondition,record.testDesc);
+          expect(expectedVal).toMatchObject(val);
+      });
+    });
+});
