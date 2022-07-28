@@ -202,3 +202,9 @@ export class RegistrationServiceMock
         {
           return "SUCCESS";
         }
+        
+              addPicture(id: string, name: string, picture: string)
+        {
+          return null;
+        }
+  }
