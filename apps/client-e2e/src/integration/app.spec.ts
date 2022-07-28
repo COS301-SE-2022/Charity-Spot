@@ -77,7 +77,20 @@ describe('client', () => {
         })
     });
     
-    
+    //chat page
+    describe('chat page testing', () => {
+        beforeEach(() => cy.visit('http://localhost:4200/chat'));
+        it('should direct you to the right url', () => {
+            cy.url().should('include','chat');
+
+        it('The user should be able to view the chat area', () => {
+            //cy.get('#chatGo').click();
+            cy.get('.client-chat_myText__3vWpw').type("Hello i am testing the chat feature");
+            cy.get('.client-chat_sndBT__3serM').click();
+        })
+
+        })
+    });
 
 /*cy.get('id') - by tag
 cy.get('.id') - by class 
