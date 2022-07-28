@@ -1,0 +1,10 @@
+name: Full Tests
+on:
+  push:
+    branches: [main,develop]
+
+jobs:
+  test-all:
+    uses: ./.github/workflows/nxtest.yml
+    with:
+      test: 'all'
