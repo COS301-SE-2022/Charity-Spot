@@ -111,3 +111,29 @@ export class ChatServiceMock
     }
 
 const servicemock = new ChatServiceMock();
+
+
+describe('Chat Service Mock', () => {
+    describe('Send a message', () => {
+        it('It should send a message', async () => {
+        const expectedVal = new ChatEntity();
+        expectedVal.Reciever = "test to";
+        expectedVal.Sender = "test from";
+        expectedVal.Message = "some test message";
+        //Send(to: string, from: string, identify: string, message: string) => chatEntity
+        const val = servicemock.Send(record.testTo,record.testFrom,record.testIdentity,record.testMessage);
+        expect(expectedVal).toMatchObject(val);
+        });
+    });
+
+    describe('Retrieve a thread', () => {
+        it('It should retrieve a thread', async () => {
+            //RetrieveThread(userID: string, with_ID: string, id: string)
+            const expectedVal = new ChatEntity();
+            expectedVal.Reciever = record.testid2;
+            expectedVal.Sender = record.testid;
+            expectedVal.Message = "some test message";
+            const val = servicemock.RetrieveThread(record.testid,record.testid2,record.testid3);
+            expect(expectedVal).toMatchObject(val);
+        });
+    });
