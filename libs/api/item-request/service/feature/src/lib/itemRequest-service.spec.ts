@@ -72,3 +72,30 @@ it('Predicts the AI', async () => {
 
 
 // PART 2 - START
+
+
+const record = {testDate:"28-07-2022 08:57", testitemType:"Clothing",testLocation:"Pretoria",testId:"item Request Working!"};
+
+export class itemRequestServiceMock
+    {
+        Test()
+            {
+                const ret = new itemRequestEntity();
+                ret.ID = "item Request Working!";
+
+                return ret;
+            }
+
+        getAIPredic(Date : string, itemType : string, location : string)
+            {
+                const ret = new itemRequestEntity();
+                ret.ID = "item Request Working!";
+
+                return ret;
+            }
+    }
+
+// PART 2 - END
+
+
+// PART 3 - START
