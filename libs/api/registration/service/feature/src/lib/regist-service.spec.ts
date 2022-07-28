@@ -113,3 +113,18 @@ it('Adds an org',async () => {
     expect(resolver.addOrg).toHaveBeenCalled();
 
 });
+
+it('Adds a picture',async () => {
+  jest
+    .spyOn(resolver,'addPicture')
+    //.mockImplementation( () => true);
+    //.mockImplementation( (): Promise<boolean> => boolean);
+    //.mockImplementation( (): Promise<string|null> => Promise.resolve("lk@gmail.com"));
+    .mockImplementation( () => null);
+    expect(resolver.addPicture).not.toHaveBeenCalled();
+    //expect(await resolver.addUser("lk@gmail.com", "acdvdf")).toEqual(true);
+    expect(await resolver.addPicture("cl62huz0m0002f6ynu0z40get","org 1","sadwdad")).toBeNull();
+    //expect(await resolver.addOrg("cl62huz0m0002f6ynu0z40get", "org 1")).toEqual("lk@gmail.com");
+    expect(resolver.addPicture).toHaveBeenCalled();
+
+});
