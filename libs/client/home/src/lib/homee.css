@@ -115,7 +115,7 @@ section .content{
 }
 .left-filt{
   margin: 2rem;
-  height: 420px;
+  height: 450px;
   width: 25%;
   background-color: rgb(222, 222, 222);
   border-radius: 10px;
@@ -124,7 +124,7 @@ section .content{
 }
 .middle-filt{
   margin: 2rem;
-  height: 420px;
+  height: 450px;
   width: 25%;
   background-color: rgb(222, 222, 222);
   border-radius: 10px;
@@ -133,7 +133,7 @@ section .content{
 }
 .right-filt{
   margin: 2rem;
-  height: 420px;
+  height: 450px;
   width: 25%;
   background-color: rgb(222, 222, 222);
   border-radius: 10px;
