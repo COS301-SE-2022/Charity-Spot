@@ -137,3 +137,20 @@ describe('Chat Service Mock', () => {
             expect(expectedVal).toMatchObject(val);
         });
     });
+    
+    
+    describe('Retrieve all threads', () => {
+        it('It should retrieve multiple threads', async () => {
+            const expectedVal = new ChatEntity();
+            expectedVal.Threads = [];
+            
+            expectedVal.Threads.push("cl62huz0m0002f6ynu0z40get");
+            expectedVal.Threads.push("lv52awdkjfmn0m0002f6ynu0z40get");
+            expectedVal.Threads.push("vnc7uz0wdalm6ynu0z40get");
+
+            const val = servicemock.RetrieveThreads("cl62huz0m0002f6wdadhb","cl62huz0m0002f6ynu0z40get");
+            
+            expect(expectedVal).toMatchObject(val);
+        });
+    });
+});
