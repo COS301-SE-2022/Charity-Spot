@@ -72,3 +72,23 @@ it('', async () => {
         expect(await resolver.History("dawdaddawd")).toMatchObject(scheduleDeliveryEntity);
         expect(resolver.History).toHaveBeenCalled();
 });
+
+
+/*          PART 1 - END             */
+
+
+
+/*          PART 2 - START             */
+const record = {testid:"dawdaddawd",testAssis:"fjkznfdsf",testNeeding:"esffrcv2d",testIte:"wdcxdfvrsa",testLocation:"Pretoria",testDate:"28-07-2022 0953"};
+
+export class ScheduleDeliveryServiceMock
+    {
+        Sched(assis_id: string,needing_id: string,ite_id: string,location: string,date: string)
+            {
+                const ret = new ScheduleDeliveryEntity();
+                ret.id_1 = assis_id;
+                ret.id_2 = needing_id;
+                ret.id_item = ite_id;
+
+                return ret;
+            }
