@@ -71,3 +71,30 @@ it('Org does not exist',async () => {
     expect(resolver.doesNotExist).toHaveBeenCalled();
 
 });
+
+it('Adds user',async () => {
+  jest
+    .spyOn(resolver,'addUser')
+    .mockImplementation( (): Promise<string|null> => Promise.resolve("lk@gmail.com"));
+    expect(resolver.addUser).not.toHaveBeenCalled();
+    expect(await resolver.addUser("lk@gmail.com", "acdvdf")).toEqual("lk@gmail.com");
+    expect(resolver.addUser).toHaveBeenCalled();
+
+});
+
+
+/* */
+/*
+it('Alter NGO Num',async () => {
+  jest
+    .spyOn(resolver,'alterNGONum')
+    //.mockImplementation( () => true);
+    //.mockImplementation( (): Promise<boolean> => boolean);
+    //.mockImplementation( (): Promise<string|null> => Promise.resolve("lk@gmail.com"));
+    .mockImplementation( (): Promise<string> => Promise.resolve("lk@gmail.com"));
+    expect(resolver.addUser).not.toHaveBeenCalled();
+    //expect(await resolver.addUser("lk@gmail.com", "acdvdf")).toEqual(true);
+    expect(await resolver.addUser("lk@gmail.com", "acdvdf")).toEqual("lk@gmail.com");
+    expect(resolver.addUser).toHaveBeenCalled();
+
+});*/
