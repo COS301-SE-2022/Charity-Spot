@@ -3,11 +3,11 @@ import { getCookie } from 'typescript-cookie';
 
 import { useEffect, useState } from 'react';
 
-async function getDelScheduleApi(){
+async function getDelScheduleApi(query : string){
 
   let result = null;
 
-  const query =
+  /*const query =
       `query{
         getDelSchedule(UserID:"${getCookie("ID")}"){
           id_1
@@ -16,7 +16,7 @@ async function getDelScheduleApi(){
           date
           time
         }
-      }`;
+      }`;*/
 
       await fetch('http://localhost:3333/graphql', {
         method: 'POST',
@@ -31,16 +31,28 @@ async function getDelScheduleApi(){
             result = data
        );
 
-      let resultString = JSON.stringify(result);
-      let resultFin = JSON.parse(resultString);
+       //console.log(result);
 
-      return resultFin.data.getDelSchedule
+      return result
 
 }
 
 
 
 export function ClientDeliveryScheduleInfo() {
+
+  const [schedule, setSchedule] = useState<any[]>([]);
+  
+
+  class scheduleItem {
+    itemName : string = "";
+    itemID : string = "";
+    partyName : string = "";
+    partyID : string = "";
+    location : string = "";
+    date : string = "";
+    time : string = "";
+  }
 
   const DelScheduleQuery = () => {
     return `query{
@@ -54,45 +66,85 @@ export function ClientDeliveryScheduleInfo() {
     }`;
   }
 
-  const NameQuery = () => {
+  const NameQuery = (nameID : string) => {
     return `query{
-        getChatName(userID:"cl63y9az900021zchny75w64j"){
+        getChatName(userID:"${nameID}"){
               Message
         }
       }`
   };
 
-  const NameQuery = () => {
+  const ItemQuery = (itemID : string) => {
     return `query{
-        getChatName(userID:"cl63y9az900021zchny75w64j"){
-              Message
-        }
-      }`
+      getItemName(ItemID:"${itemID}"){
+        itemName
+      }
+    }`
   };
 
   
 
   async function getDelSchedule(){
 
-    let active = await getDelScheduleApi();
+    let active = await getDelScheduleApi(DelScheduleQuery());
+    let resultString = JSON.stringify(active);
+    let resultFin = JSON.parse(resultString);
 
-    console.log(active);
+    let finRes : any = []
 
-    /*let activeList : any = [];
+    let scheduleList : any = [];
 
-    for(let i=0; i<active.length;i++){
+    finRes = resultFin.data.getDelSchedule;
 
-      let temp = new activeChatC();
-      temp.orgID = active[i].Reciever;
-      temp.orgName = active[i].Message;
+      for(let i=0; i<finRes.length;i++){
 
-      activeList.push(temp);
+        let userID = finRes[i].id_1;
+
+        let userName : any= await getDelScheduleApi(NameQuery(finRes[i].id_1));
+
+        userName = userName.data.getChatName.Message;
+
+        let itemID = finRes[i].itemID;
+
+        let itemName : any= await getDelScheduleApi(ItemQuery(finRes[i].itemID));
+
+        itemName = itemName.data.getItemName.itemName;
+
+        let location = finRes[i].location;
+
+        let date = finRes[i].date;
+
+        let time = finRes[i].time;
+
+        let temp = new scheduleItem();
+
+        temp.partyID = userID;
+        temp.partyName = userName;
+        temp.itemID = itemID;
+        temp.itemName = itemName;
+        temp.location = location;
+        temp.date = date;
+        temp.time = time;
+
+        scheduleList.push(temp);
+
+        //console.log(await getDelScheduleApi(NameQuery(active[i].id_1)));
+
+        /*let temp = new activeChatC();
+        temp.orgID = active[i].Reciever;
+        temp.orgName = active[i].Message;
+
+        activeList.push(temp);*/
+
+      }
+
+      console.log(scheduleList)
 
     }
 
-    addactiveChat(activeList);*/
+    //addactiveChat(activeList);*/
     
-  }
+  
 
   useEffect(() => {
     getDelSchedule();
