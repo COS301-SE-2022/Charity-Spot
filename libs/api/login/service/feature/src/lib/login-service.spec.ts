@@ -28,7 +28,6 @@ describe ( 'LoginService', () => {
   });
 });
 
-
     let resolver: LoginService;
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
@@ -77,7 +76,6 @@ export class LoginServiceMock {
         }
         
 }
-
 
 const servicemock = new LoginServiceMock();
 
