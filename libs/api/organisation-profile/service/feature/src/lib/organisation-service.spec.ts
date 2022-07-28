@@ -123,3 +123,49 @@ export class OrganisationServiceMock
             return null;
           }
       }
+
+
+    updateDet(id: string, name: string, loc: string, picture: string, password: string)
+      {
+        if(id != null)
+          {
+            recordUpdate.testId = id;
+          }
+
+        if(name != null)
+          {
+            recordUpdate.testName = name;
+          }
+
+        if(loc != null)
+          {
+            recordUpdate.testLocation = loc;
+          }
+
+        if(picture != null)
+          {
+            recordUpdate.testPicture = picture;
+          }
+
+        if(password != null)
+          {
+            recordUpdate.testPass = password;
+          }
+
+          const orgProfileUpdate = new OrganisationEntity();
+
+        /* */
+
+        const orgName = recordUpdate.testName;
+
+        const orgEmail = recordUpdate.testEmail;
+        const orgLocation = recordUpdate.testLocation;
+
+
+        orgProfileUpdate.Email = orgEmail;
+        orgProfileUpdate.Name = orgName;
+
+        orgProfileUpdate.Location =  orgLocation;
+        return orgProfileUpdate;
+
+      }
