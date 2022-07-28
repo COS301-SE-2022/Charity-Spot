@@ -128,3 +128,21 @@ describe('Sched()', () => {
         expect(expectedVal).toMatchObject(val);
     });
 });
+
+
+//History( userid: string)
+describe('History()', () => {
+    it('Should successfully get the history', async () => {
+        const expectedVal = new ScheduleDeliveryEntity();
+
+        expectedVal.id_1 = record.testid;
+        expectedVal.id_2 = "";
+        expectedVal.id_item = "";
+        expectedVal.History_ = [];
+
+        const val = servicemock.History(record.testid);
+        expect(expectedVal).toMatchObject(val);
+    });
+});
+
+/*          PART 3 - END             */
