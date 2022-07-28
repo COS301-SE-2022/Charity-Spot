@@ -69,3 +69,14 @@ jest
   expect(await service.updateDet("cl62huz0m0002f6ynu0z40get","test","Pretoria","asdadwdadddd","123")).toMatchObject(organisationEntity);
   expect(resolver.updateDet).toHaveBeenCalled();
 });*/
+
+
+//getDonations(id: string)
+it('Should be Null', async () => {
+  jest
+    .spyOn(resolver,'getDonations')
+    .mockImplementation(() => null);
+    expect(resolver.getDonations).not.toHaveBeenCalled();
+    expect(await resolver.getDonations("cl62huz0m0002f6ynu0z40get")).toBeNull();
+    expect(resolver.getDonations).toHaveBeenCalled();
+});
