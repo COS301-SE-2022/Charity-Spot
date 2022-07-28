@@ -265,3 +265,12 @@ describe('Altering the address', () => {
     expect(expectedVal).toEqual(expect.any(String));
   }); 
 });
+
+//addOrg("5","An incredible Org")
+describe('Adding a new organisation', () => {
+  it('Successfully added a new organisation', async () => {
+    const expectedVal = servicemock.addOrg("cl62huz0m0002f6ynu0z40get","An incredible Org");
+    console.log(expectedVal);
+    expect(expectedVal).toEqual("SUCCESS");
+  }); 
+});
