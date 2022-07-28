@@ -29,3 +29,27 @@ describe ( 'Chat Service', () => {
     expect(service).toBeDefined();
   });
 });
+
+
+let resolver: ChatService;
+
+beforeEach(async () => {
+  const module: TestingModule = await Test.createTestingModule({
+    providers: 
+    [ChatService, 
+      ChatRepository,
+      ChatEntity, 
+      PrismaService, 
+    ],
+  }).compile();
+  resolver = module.get<ChatService>(ChatService);
+});
+
+it('Sends a message', async () => {
+    jest
+        .spyOn(resolver,'Send')
+        .mockImplementation((): Promise<ChatEntity> => Promise.resolve(chatEntity));
+        expect(resolver.Send).not.toHaveBeenCalled();
+        expect(await resolver.Send("to", "from","identity","message")).toMatchObject(chatEntity);
+        expect(resolver.Send).toHaveBeenCalled();
+});
