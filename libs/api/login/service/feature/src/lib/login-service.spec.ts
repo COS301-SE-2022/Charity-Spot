@@ -62,3 +62,18 @@ const LoginService_DTO = {
     id:"cl62huz0m0002f6ynu0z40get",
 };
 
+
+export class LoginServiceMock {
+    validate(email : string, password : string)
+        {
+            if(email.match(record.testEmail)&&(password.match(record.testPass)))
+                {
+                    return "cl62huz0m0002f6ynu0z40get";
+                }
+            else
+                {
+                    return false;
+                }
+        }
+        
+}
