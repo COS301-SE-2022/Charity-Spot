@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { jest } from '@jest/globals'
 
 import { DonateService } from './donate.service';
 import { DonateEntity } from './donate.entity';
@@ -18,7 +19,7 @@ describe ( 'DonateService', () => {
 
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
-          providers: [DonateService, DonateRepository, PrismaService],
+          providers: [DonateService, DonateRepository, DonateEntity, PrismaService],
         }).compile();
 
         service = module.get<DonateService>(DonateService);
@@ -27,19 +28,31 @@ describe ( 'DonateService', () => {
   it('Donate service should be defined', () => {
     expect(service).toBeDefined();
   });
+});
 
-//getItemPicDirec(itemID : string){
-describe ('getItemPictureDirec()', () => {
-    it('Successfully retrieved organisation picture ', async () => {
-      expect(await service.getItemPicDirec("1")).toMatchObject(donateEntity);
-    });
-  })
+let resolver: DonateService;
 
-  //history(id: string)
-  describe ('history()', () => {
-    it('Should be able to get donation history', async () => {
-      expect(await service.history("1")).toMatchObject(donateEntity);
-    });
-  })
+beforeEach(async () => {
+  const module: TestingModule = await Test.createTestingModule({
+    providers: 
+    [DonateService, 
+      DonateRepository,
+      DonateEntity, 
+      PrismaService, 
+    ],
+  }).compile();
+  resolver = module.get<DonateService>(DonateService);
+});
+
+// PART 1 - START
+
+//getItemPicDirec(itemID : string)
+it('Should retireve organisation picture',async () => {
+  jest
+    .spyOn(resolver,'getItemPicDirec')
+    .mockImplementation( (): Promise<DonateEntity> => Promise.resolve(donateEntity));
+    expect(resolver.getItemPicDirec).not.toHaveBeenCalled();
+    expect(await resolver.getItemPicDirec("asdd13dw5a")).toMatchObject(donateEntity);
+    expect(resolver.getItemPicDirec).toHaveBeenCalled();
 
 });
