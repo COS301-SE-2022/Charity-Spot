@@ -57,7 +57,6 @@ it('Should retireve organisation picture',async () => {
 
 });
 
-
 //history(id: string)
 it('Should return history of a user', async () => {
   jest
@@ -100,8 +99,7 @@ it('Should allow a user to donate an item', async () => {
           ret.Name = "asdd13dw5a";
           return ret;
         }
-        
-        
+
       history(id: string)
         {
           const ret = new DonateEntity();
@@ -160,7 +158,6 @@ describe ('getItemPictureDirec()', () =>
       });
   });
 
-
 //history(id: string)
   describe ('history()', () => 
     {
@@ -188,8 +185,7 @@ describe ('getItemPictureDirec()', () =>
           //expect(await service.history("1")).toMatchObject(donateEntity);
         });
     });
-    
-    
+
 //donate(id: string, name: string, quantity: number, category: catagory, condition: quality, descr: string)
   describe('donate()', () => 
     {
