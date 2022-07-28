@@ -28,3 +28,47 @@ describe('item Request Service', () => {
     expect(service).toBeDefined();
   });
 });
+
+
+let resolver: itemRequestService;
+
+beforeEach(async () => {
+  const module: TestingModule = await Test.createTestingModule({
+    providers: 
+    [itemRequestService, 
+      itemRequestRepository,
+      itemRequestEntity, 
+      PrismaService, 
+    ],
+  }).compile();
+  resolver = module.get<itemRequestService>(itemRequestService);
+});
+
+// PART 1 - START
+
+//Test()
+it('Tests', async () => {
+    jest
+        .spyOn(resolver,'Test')
+        .mockImplementation((): Promise<itemRequestEntity> => Promise.resolve(ItemRequestEntity));
+        expect(resolver.Test).not.toHaveBeenCalled();
+        expect(await resolver.Test()).toMatchObject(ItemRequestEntity);
+        expect(resolver.Test).toHaveBeenCalled();
+});
+
+
+//getAIPredic(Date : string, itemType : string, location : string)
+it('Predicts the AI', async () => {
+    jest
+        .spyOn(resolver,'getAIPredic')
+        .mockImplementation((): Promise<itemRequestEntity> => Promise.resolve(ItemRequestEntity));
+        expect(resolver.getAIPredic).not.toHaveBeenCalled();
+        expect(await resolver.getAIPredic("28-07-2022 08:57","Clothing","Pretoria")).toMatchObject(ItemRequestEntity);
+        expect(resolver.getAIPredic).toHaveBeenCalled();
+
+});
+
+// PART 1 - END
+
+
+// PART 2 - START
