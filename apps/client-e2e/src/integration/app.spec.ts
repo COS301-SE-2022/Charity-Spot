@@ -63,6 +63,21 @@ describe('client', () => {
 
         })
     });
+    
+      //profile page
+    describe('profile page testing', () => {
+        beforeEach(() => cy.visit('http://localhost:4200/profile'));
+        it('should direct you to the right url', () => {
+            cy.url().should('include','profile');
+
+        it('The user should be able to view an organisations profile page', () => {
+            cy.get('#chatGo').click();
+        })
+
+        })
+    });
+    
+    
 
 /*cy.get('id') - by tag
 cy.get('.id') - by class 
