@@ -26,12 +26,13 @@ const capetown = {
 async function APICall(){
   
     const query = `query{
-      GetAllOrgs{
-        ID
-        Name
-        Address
-      }
-    }`;
+        GetAllItems{
+          ItemName
+          OrgID
+          Location
+          Type
+        }
+      }`;
   
          let orgs = "";
     
@@ -50,8 +51,10 @@ async function APICall(){
       
            let orgString = JSON.stringify(orgs);
            let orgFin = JSON.parse(orgString);
+
+           console.log(orgFin.data.GetAllItems);
   
-           return orgFin.data.GetAllOrgs;
+           return orgFin.data.GetAllItems;
   
   }
 
@@ -68,41 +71,65 @@ export function MapMarker(props : any){
 
         for(let i=0; i< newItemss.length; i++){
 
-            if(newItemss[i].Address == "Pretoria"){
+            if(newItemss[i].Location == "Pretoria"){
                 newItemss[i].Coord = pretoria;
             }
-            else if(newItemss[i].Address == "Johannesburg"){
+            else if(newItemss[i].Location == "Johannesburg"){
                 newItemss[i].Coord = joburg;
             }
-            else if(newItemss[i].Address == "Durban"){
+            else if(newItemss[i].Location == "Durban"){
                 newItemss[i].Coord = durban;
             }
-            else if(newItemss[i].Address == "Cape Town"){
+            else if(newItemss[i].Location == "Cape Town"){
                 newItemss[i].Coord = capetown;
             }
             else{
                 newItemss[i].Coord = pretoria;
             }
 
-            if(props.checkState[0] == false && newItemss[i].Address == "Pretoria"){
+            console.log(props.state)
+
+            //Location filter
+
+            if(props.state[0][0] == false && newItemss[i].Location == "tempLoc"){
                 continue;
             }
 
-            if(props.checkState[1] == false && newItemss[i].Address == "Johannesburg"){
+            if(props.state[0][1] == false && newItemss[i].Location == "Johannesburg"){
                 continue;
             }
 
-            if(props.checkState[2] == false && newItemss[i].Address == "Durban"){
+            if(props.state[0][2] == false && newItemss[i].Location == "Durban"){
                 continue;
             }
 
-            if(props.checkState[3] == false && newItemss[i].Address == "Cape Town"){
+            if(props.state[0][3] == false && newItemss[i].Location == "Cape Town"){
+                continue;
+            }
+
+            //Type Filter
+
+            if(props.state[1][0] == false && newItemss[i].Location == "tempLoc"){
+                continue;
+            }
+
+            if(props.state[1][1] == false && newItemss[i].Location == "Johannesburg"){
+                continue;
+            }
+
+            if(props.state[1][2] == false && newItemss[i].Location == "Durban"){
+                continue;
+            }
+
+            if(props.state[1][3] == false && newItemss[i].Location == "Cape Town"){
                 continue;
             }
 
             
             MarkerL.push(newItemss[i]);
         }
+
+        console.log(newItemss);
 
         addMarkerO(MarkerL);
 
@@ -136,9 +163,9 @@ export function MapMarker(props : any){
                     <Marker key={marker.ID}
                         icon= {"https://maps.google.com/mapfiles/kml/paddle/red-circle.png"}
 
-                        onClick = {() => { handleClick(marker.ID); }}
+                        onClick = {() => { handleClick(marker.OrgID); }}
                         position= {{ lat:marker.Coord.lat+getRandomArbitrary(-0.1,0.1), lng:marker.Coord.lng+loopCount}}
-                        title={marker.Name}
+                        title={marker.ItemName}
                     />
 
             )})}
