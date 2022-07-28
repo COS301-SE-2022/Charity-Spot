@@ -165,7 +165,7 @@ export function ClientDeliveryScheduleInfo() {
                         {/*<img src={item.PicLink} alt="" id="donation-pic2"/>
                         </div>*/}
 
-                        <div className='collapseright'>
+                        <div className='collapserightDel'>
       
                             <div className="cov">Item Name: {A.itemName}</div>
                             <div className="cov">Organisation Name: {A.partyName}</div>

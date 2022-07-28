@@ -105,7 +105,7 @@ export function ClientChatHistory() {
                 <div className='chatHistRight'>
                   <br></br>
                   <div className='chatcov'><h2>{A.orgName}</h2></div>
-                  <div className='chatcov2'><h4>Location of Client: Pretoria</h4></div>
+                  <div className='widthLimit'> <div className='chatcov2'><h4>Location of Client: Pretoria</h4></div></div>
                   <div><h4></h4></div>
                 <Link to ='/chat' className='rgLink'><button id='chatHistGo' onClick={()=>{setSelection(A.orgID);}}>Resume chat</button></Link>
                 <Link to ='/profile' className='rgLink'><button id='chatHistGo' onClick={()=>{setSelection(A.orgID);}}>View Profile</button></Link>
