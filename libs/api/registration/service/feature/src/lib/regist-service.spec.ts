@@ -274,3 +274,16 @@ describe('Adding a new organisation', () => {
     expect(expectedVal).toEqual("SUCCESS");
   }); 
 });
+
+
+
+
+//addPicture(id: string, name: string, picture: string)
+describe('Adding a new picture', () => {
+  it('Successfully added picture', async () => {
+    const expectedVal = servicemock.addPicture("cl62huz0m0002f6ynu0z40get","org 1","sadwdad");
+    expect(expectedVal).toBeNull();
+  });
+});
+
+  });
