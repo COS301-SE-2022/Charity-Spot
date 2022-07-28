@@ -193,3 +193,13 @@ describe(' Organisation Service Mock', () =>
           });
       });
 
+    describe('updateDet', () => 
+      {
+        it('Should update the description', async () => 
+          {
+            const someEntity = servicemock.updateDet("1","test org","Johannesburg","asdadwdagbd","12345");
+            console.log(someEntity);
+            const expectedEntity = new  OrganisationEntity();
+            expect(someEntity).toMatchObject(expectedEntity);
+          });
+      });
