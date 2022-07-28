@@ -198,3 +198,7 @@ export class RegistrationServiceMock
               return "FAILURE";
             }
         }
+      addOrg(userID : string, OrgName : string)
+        {
+          return "SUCCESS";
+        }
