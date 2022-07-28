@@ -33,7 +33,7 @@ async function getDelScheduleApi(query : string){
             result = data
        );
 
-       //console.log(result);
+       console.log(result);
 
       return result
 
