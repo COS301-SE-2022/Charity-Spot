@@ -110,30 +110,33 @@ export function ClientChat() {
 
       let result = await API_link(threadQuery(), "");
 
-      //console.log(result);
+      console.log(result);
 
       const thread = JSON.parse(result).data.RetrieveMessages.Message;
-      const messages = thread.split("\n");
-      const bubbleMessages = [];
 
-      for(const m of messages) {
-        const tempB: Bubbles = new Bubbles();
-        const line = m.split(" - ");
-        const creds = line[0].split("_");
+      if(thread != null){
+        const messages = thread.split("\n");
+        const bubbleMessages = [];
 
-        if(creds[0].split("[")[1] === getCookie("foreignID"))
-          tempB.typeM = "L";
-        else
-          tempB.typeM = "R";
+        for(const m of messages) {
+          const tempB: Bubbles = new Bubbles();
+          const line = m.split(" - ");
+          const creds = line[0].split("_");
 
-        tempB.mess = line[1];
+          if(creds[0].split("[")[1] === getCookie("foreignID"))
+            tempB.typeM = "L";
+          else
+            tempB.typeM = "R";
+
+          tempB.mess = line[1];
         
-        bubbleMessages.push(tempB);
+          bubbleMessages.push(tempB);
+        }
+
+        addBubb(bubbleMessages);
+
+        setTimeout(() => { botRef?.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'start' })}, 500);
       }
-
-      addBubb(bubbleMessages);
-
-      setTimeout(() => { botRef?.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'start' })}, 500);
     }
     else{
 
@@ -166,7 +169,7 @@ export function ClientChat() {
       <br/>
       <div className={styles["topbar"]}>
         <div className={styles["ToFrom"]}>Sending Message To: </div>
-        <div className={styles["senderName"]}>{chatName}</div>
+        <div className={styles["senderName"]} onClick={()=>{window.location.href = '/profile';;}}>{chatName}</div>
       </div>
       <br/>
 

@@ -60,7 +60,7 @@ try:
 
     #1 Edgars
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("1", "edgars@email.com", "1234", "edgars@email.com#", "temp")
+    record_to_insert = ("1", "edgars@email.com", "1234", "edgars@email.com#", "assist")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -94,7 +94,7 @@ try:
 
     #2 Mr Price
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("2", "mr_price@email.com", "1234", "mr_price@email.com#", "temp")
+    record_to_insert = ("2", "mr_price@email.com", "1234", "mr_price@email.com#", "assist")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -118,7 +118,7 @@ try:
 
     #3 Scooters Pizza
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("3", "scooters_pizza@email.com", "1234", "scooters_pizza@email.com#", "temp")
+    record_to_insert = ("3", "scooters_pizza@email.com", "1234", "scooters_pizza@email.com#", "assist")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -162,7 +162,7 @@ try:
 
     #4 Checkers
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("4", "checkers@email.com", "1234", "checkers@email.com#", "temp")
+    record_to_insert = ("4", "checkers@email.com", "1234", "checkers@email.com#", "assist")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -206,7 +206,7 @@ try:
 
     #5 Spar
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("5", "spar@email.com", "1234", "spar@email.com#", "temp")
+    record_to_insert = ("5", "spar@email.com", "1234", "spar@email.com#", "assist")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -240,7 +240,7 @@ try:
 
     #6 Clicks
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("6", "clicks@email.com", "1234", "clicks@email.com#", "temp")
+    record_to_insert = ("6", "clicks@email.com", "1234", "clicks@email.com#", "assist")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -274,7 +274,7 @@ try:
 
     #7 The Clothing Store
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("7", "the_clothing_store@email.com", "1234", "the_clothing_store@email.com#", "temp")
+    record_to_insert = ("7", "the_clothing_store@email.com", "1234", "the_clothing_store@email.com#", "assist")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -308,7 +308,7 @@ try:
 
     #8 The General Store
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("8", "the_general_store@email.com", "1234", "the_general_store@email.com#", "temp")
+    record_to_insert = ("8", "the_general_store@email.com", "1234", "the_general_store@email.com#", "assist")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -514,7 +514,7 @@ try:
 
     #9 Pretoria Restaurant
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("9", "pretoria_restaurant@email.com", "1234", "pretoria_restaurant@email.com#", "temp")
+    record_to_insert = ("9", "pretoria_restaurant@email.com", "1234", "pretoria_restaurant@email.com#", "assist")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -538,7 +538,7 @@ try:
 
     #10 Cape Town Restaurant
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("10", "cape_town_restaurant@email.com", "1234", "cape_town_restaurant@email.com#", "temp")
+    record_to_insert = ("10", "cape_town_restaurant@email.com", "1234", "cape_town_restaurant@email.com#", "assist")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -562,7 +562,7 @@ try:
 
     #11 Durban Clothing Store
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("11", "durban_clothing_store@email.com", "1234", "durban_clothing_store@email.com#", "temp")
+    record_to_insert = ("11", "durban_clothing_store@email.com", "1234", "durban_clothing_store@email.com#", "assist")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -586,7 +586,7 @@ try:
 
     #12 Woolworths
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("12", "woolworths@email.com", "1234", "woolworths@email.com#", "temp")
+    record_to_insert = ("12", "woolworths@email.com", "1234", "woolworths@email.com#", "assist")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -631,7 +631,7 @@ try:
 
     #13 PEP
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("13", "pep@email.com", "1234", "pep@email.com#", "temp")
+    record_to_insert = ("13", "pep@email.com", "1234", "pep@email.com#", "assist")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -674,7 +674,7 @@ try:
 
     #14 Discount Clothing Store
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("14", "discount_clothing_store@email.com", "1234", "discount_clothing_store@email.com#", "temp")
+    record_to_insert = ("14", "discount_clothing_store@email.com", "1234", "discount_clothing_store@email.com#", "assist")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -718,7 +718,7 @@ try:
 
     #15 Pick n Pay
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("15", "pick_n_pay@email.com", "1234", "pick_n_pay@email.com#", "temp")
+    record_to_insert = ("15", "pick_n_pay@email.com", "1234", "pick_n_pay@email.com#", "assist")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -760,7 +760,7 @@ try:
 
     #16 Ackermans
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("16", "ackermans@email.com", "1234", "ackermans@email.com#", "temp")
+    record_to_insert = ("16", "ackermans@email.com", "1234", "ackermans@email.com#", "assist")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -802,7 +802,7 @@ try:
 
     #17 Shoprite
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("17", "shoprite@email.com", "1234", "shoprite@email.com#", "temp")
+    record_to_insert = ("17", "shoprite@email.com", "1234", "shoprite@email.com#", "assist")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -836,7 +836,7 @@ try:
 
     #18 Dischem
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("18", "dischem@email.com", "1234", "dischem@email.com#", "temp")
+    record_to_insert = ("18", "dischem@email.com", "1234", "dischem@email.com#", "assist")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -868,7 +868,7 @@ try:
 
     #19 West Pack
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("19", "west_pack@email.com", "1234", "west_pack@email.com#", "temp")
+    record_to_insert = ("19", "west_pack@email.com", "1234", "west_pack@email.com#", "assist")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -910,7 +910,7 @@ try:
 
     #20 OK Furniture
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("20", "ok_furniture@email.com", "1234", "ok_furniture@email.com#", "temp")
+    record_to_insert = ("20", "ok_furniture@email.com", "1234", "ok_furniture@email.com#", "assist")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 

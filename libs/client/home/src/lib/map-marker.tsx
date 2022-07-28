@@ -111,7 +111,7 @@ export function MapMarker(props : any){
 
             //Location filter
 
-            if(props.state[0][0] == false && newItemss[i].Location == "tempLoc"){
+            if(props.state[0][0] == false && newItemss[i].Location == "Pretoria"){
                 continue;
             }
 
@@ -124,6 +124,14 @@ export function MapMarker(props : any){
             }
 
             if(props.state[0][3] == false && newItemss[i].Location == "Cape Town"){
+                continue;
+            }
+
+            if(props.state[0][4] == false && newItemss[i].Location == "Polokwane"){
+                continue;
+            }
+
+            if(props.state[0][5] == false && newItemss[i].Location == "Bloemfontein"){
                 continue;
             }
 

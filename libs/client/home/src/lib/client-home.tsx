@@ -29,7 +29,7 @@ export function Home() {
   let APIKey = APIKEYS.GoogleMapsAPIKey;
 
   const [checkedLocation, setCheckedLocation] = useState(
-    new Array(4).fill(true)
+    new Array(6).fill(true)
   );
 
   const [checkedType, setCheckedType] = useState(
@@ -81,7 +81,7 @@ export function Home() {
               <div className="left-filt">
                 
                 <h3 className='FiltLabels'>Location</h3>
-                      <div id = "mapFilters"><br/><br/>
+                      <div id = "mapFilters">
                           <div className='wrap1'>
                               <input
                                 type="checkbox"
@@ -124,6 +124,28 @@ export function Home() {
                               />
 
                             <label htmlFor="l3"> Cape Town</label>
+                          </div>
+
+                          <div className='wrap1'>
+                            <input
+                                type="checkbox"
+                                id = "l4"
+                                checked={checkedLocation[4]}
+                                onChange={() => {let checked = [...checkedLocation]; checked[4] = !checked[4]; setCheckedLocation(checked);}}
+                              />
+
+                            <label htmlFor="l4"> Polokwane</label>
+                          </div>
+
+                          <div className='wrap1'>
+                            <input
+                                type="checkbox"
+                                id = "l5"
+                                checked={checkedLocation[5]}
+                                onChange={() => {let checked = [...checkedLocation]; checked[5] = !checked[5]; setCheckedLocation(checked);}}
+                              />
+
+                            <label htmlFor="l5"> Bloemfontein</label>
                           </div>
 
                       </div>
