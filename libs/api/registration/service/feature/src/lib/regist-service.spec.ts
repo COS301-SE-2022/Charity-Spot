@@ -61,7 +61,6 @@ it('',async () => {
 });
 */
 
-
 it('Org does not exist',async () => {
   jest
     .spyOn(resolver,'doesNotExist')
@@ -135,17 +134,6 @@ const recordUpdate = {testName:"org 2",testEmail:"lk@gmail.com",testPass: "acdvd
 
 export class RegistrationServiceMock
   {
-const servicemock = new RegistrationServiceMock();
-
-describe('Registration Service Mock', () => 
-  {
-    describe('Org does not exist', () => {
-      it('The Organisation should not already exist', async () => {
-        const expectedVal = false;
-        const val = servicemock.doesNotExist(record.testEmail,record.testPass);
-        expect(expectedVal).toBe(val);
-      }); 
-    });
     doesNotExist(email : string, password : string)
       {
         if(email.match(record.testEmail) && (password.match(record.testPass)))
@@ -183,8 +171,8 @@ describe('Registration Service Mock', () =>
             }
           
         }
-        
-              alterDescr(userID : string, Descr : string)
+
+      alterDescr(userID : string, Descr : string)
         {
           if(userID.match(recordUpdate.testid) && (Descr.match(recordUpdate.testDesc)))
             {
@@ -209,17 +197,17 @@ describe('Registration Service Mock', () =>
               return "FAILURE";
             }
         }
+
       addOrg(userID : string, OrgName : string)
         {
           return "SUCCESS";
         }
-        
-              addPicture(id: string, name: string, picture: string)
+
+      addPicture(id: string, name: string, picture: string)
         {
           return null;
         }
   }
-
 
 const servicemock = new RegistrationServiceMock();
 
@@ -233,15 +221,16 @@ describe('Registration Service Mock', () =>
       }); 
     });
     
-        describe('Adding User', () => {
+    describe('Adding User', () => {
       it('A new User should be added', async () => {
         //const expectedVal = record.testid;
         const val = servicemock.addUser("lk@gmail.com", "acdvdf");
         expect(val).not.toBeNull;
       }); 
     });
-    
-    
+
+
+
       //alterNGONum("1","125dawdf")
 describe('Altering the NGO number', () => {
   it('Successfully altered the NGO number', async () => {
@@ -277,7 +266,6 @@ describe('Adding a new organisation', () => {
 
 
 
-
 //addPicture(id: string, name: string, picture: string)
 describe('Adding a new picture', () => {
   it('Successfully added picture', async () => {
@@ -287,3 +275,4 @@ describe('Adding a new picture', () => {
 });
 
   });
+
