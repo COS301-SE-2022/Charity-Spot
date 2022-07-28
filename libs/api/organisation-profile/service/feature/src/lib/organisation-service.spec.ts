@@ -176,3 +176,20 @@ export class OrganisationServiceMock
         return null;
       }
   }
+  
+  
+  const servicemock = new OrganisationServiceMock();
+
+describe(' Organisation Service Mock', () => 
+  {
+    describe('getOrgProfile()', () => 
+      {
+        it('Should return Organisation Profile', async () => 
+          {
+            const someEntity = servicemock.getOrgProfile(record.testId);
+            console.log(someEntity);
+            const expectedEntity = new  OrganisationEntity();
+            expect(someEntity).toMatchObject(expectedEntity);
+          });
+      });
+
