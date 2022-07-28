@@ -61,3 +61,19 @@
     width: 120px;
    margin: 10px;
 }
+#chatHistGo{
+    width: 25%;
+    background: #1458b3;
+    color: #ffff;
+    border: none;
+    cursor: pointer;
+    padding: 0.4rem 1rem;
+    transition: all 0.3 ease;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+#chatHistGo:hover{
+    transition: 0.2s ease-in;
+    box-shadow: 0.5px 0.5px 6px -1px black; 
+    /* transform: translate(-5px); */
+ }
