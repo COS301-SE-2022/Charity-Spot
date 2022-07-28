@@ -74,3 +74,40 @@ it('Retrieves multiple threads', async () => {
         expect(await resolver.RetrieveThreads("cl62huz0m0002f6ynu0z40get", "lv52awdkjfmn0m0002f6ynu0z40get")).toMatchObject(chatEntity);
         expect(resolver.RetrieveThreads).toHaveBeenCalled();
 })
+
+
+const record = {testTo: "test to", testFrom: "test from", testIdentity: "test identity ",testMessage: "some test message",testid: "cl62huz0m0002f6ynu0z40get",testid2: "lv52awdkjfmn0m0002f6ynu0z40get",testid3:"vnc7uz0wdalm6ynu0z40get"};
+const recordUpdate = {testTo: "test to update", testFrom: "test from update", testIdentity: "test identity update",testMessage: " some test message update",testid: "cl62huz0m0002f6ynu0z40get",testid2: "lv52awdkjfmn0m0002f6ynu0z40get",testid3:"vnc7uz0wdalm6ynu0z40get"};
+
+export class ChatServiceMock
+    {
+        Send(to: string, from: string, identify: string, message: string)
+            {
+                const ret = new ChatEntity();
+                ret.Reciever = to;
+                ret.Sender = from;
+                ret.Message = message;
+                return ret;
+            }      
+
+            RetrieveThread(userID: string, with_ID: string, id: string)
+                {
+                    const ret = new ChatEntity();
+                    ret.Reciever = with_ID;
+                    ret.Sender = userID;
+                    ret.Message = "some test message";
+                    return ret; 
+                }
+
+            RetrieveThreads(userID: string, id: string)
+                {
+                    const ret = new ChatEntity();
+                    ret.Threads = [];
+                    ret.Threads.push(id);
+                    ret.Threads.push(recordUpdate.testid2);
+                    ret.Threads.push(recordUpdate.testid3);
+                    return ret;
+                }
+    }
+
+const servicemock = new ChatServiceMock();
