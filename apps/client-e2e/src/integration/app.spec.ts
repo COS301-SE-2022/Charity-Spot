@@ -92,6 +92,23 @@ describe('client', () => {
         })
     });
 
+//Schedule Delivery page
+    describe('Schedule Delivery page testing', () => {
+        beforeEach(() => cy.visit('http://localhost:4200/scheduleDelivery'));
+        it('should direct you to the right url', () => {
+            cy.url().should('include','scheduleDelivery');
+
+        it('The user should be able to schedule a delivery', () => {
+            cy.contains('Your Name').type('Steve');  
+            cy.contains('Recipient Name').type('Dave');
+            cy.contains('Hatfield').type('Pretoria');
+            cy.contains('Polokwane').type('Limpopo');
+            cy.get('#deliv_but').click();
+        })
+
+        })
+    });
+    
 /*cy.get('id') - by tag
 cy.get('.id') - by class 
 cy.get('#id')- by id*/
