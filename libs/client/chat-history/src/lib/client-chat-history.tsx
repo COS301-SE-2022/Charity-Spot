@@ -1,4 +1,5 @@
 import styles from './client-chat-history.module.css';
+import "./chathistory.css";
 import { getCookie } from 'typescript-cookie';
 
 import { useEffect, useState } from 'react';
@@ -90,7 +91,7 @@ export function ClientChatHistory() {
 
 
   return (
-    <div className={styles['container']}>
+    <div >
       <br/><br/>
       <div className='title'><h2>Your active chat sessions:</h2></div>
 
@@ -99,7 +100,22 @@ export function ClientChatHistory() {
         return(
           <div>
             <br/>
-              <Link to ='/chat' className='rgLink'><button id='delivGo' onClick={()=>{setSelection(A.orgID);}}>{A.orgName}</button></Link>
+              <div className='chatHist'>
+                <div className='chatHistLeft'>
+                  <br/><br/>
+                <img src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo.png?alt=media&token=658a4502-2b08-47bf-8cb2-fe7eacbf8c3e" alt="" id="chatprofile-pic"></img>
+                
+                </div>
+                <div className='chatHistRight'>
+                  <br></br>
+                  <div className='chatcov'><h2>{A.orgName}</h2></div>
+                  <div className='widthLimit'> <div className='chatcov2'><h4>Location of Client: Pretoria</h4></div></div>
+                  <div><h4></h4></div>
+                <Link to ='/chat' className='rgLink'><button id='chatHistGo' onClick={()=>{setSelection(A.orgID);}}>Resume chat</button></Link>
+                <Link to ='/profile' className='rgLink'><button id='chatHistGo' onClick={()=>{setSelection(A.orgID);}}>View Profile</button></Link>
+                </div>
+                
+              </div>
             <br/>
           </div>
         )

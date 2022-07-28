@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import {Navbar,Nav} from 'react-bootstrap'
 import CS from '../../../../libs/client/shared/assets/CS.png'
+import './navbarrr.css';
 
 import Button from 'react-bootstrap/Button';
 
@@ -71,7 +72,7 @@ function Navigation() {
       <Navbar.Brand style={{ color: '#1458b3', }} as={Link} to = '#'>Charity-Spot</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav style={{ backgroundColor: '#dcdfe3'}} className="me-auto" variant="pills">      
+        <Nav style={{ backgroundColor: '#dcdfe3'}} className="me-auto" variant="pills" >      
 
           { !log &&<Nav.Link  as={Link} to={"/login"} onClick={()=>{removeForeignCookie('a');}}>Login</Nav.Link>}
           <Nav.Link as={Link} to={"/home"} onClick={()=>{removeForeignCookie('a');}}>Home</Nav.Link> 

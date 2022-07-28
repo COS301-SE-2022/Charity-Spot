@@ -162,14 +162,14 @@ export function ClientDeliveryScheduleInfo() {
 
                     <input type ='checkbox' id = {A.itemID}></input>
 
-                    <label htmlFor={A.itemID}>{A.itemName}<FaArrowDown/></label>
+                    <label htmlFor={A.itemID}>{A.itemName}:  {A.partyName} on {A.date} </label>
 
                     <div className='collapsible-text'><br/>
-                        {/*<div className='collapseleft'>
-                        {/*<img src={item.PicLink} alt="" id="donation-pic2"/>
-                        </div>*/}
+                        <div className='collapseleft'>
+                        <img src="" alt="" id="donation-pic2"/>
+                        </div>
 
-                        <div className='collapseright'>
+                        <div className='collapserightDel'>
       
                             <div className="cov">Item Name: {A.itemName}</div>
                             <div className="cov">Organisation Name: {A.partyName}</div>

@@ -1,0 +1,79 @@
+.chatHist
+{
+    background-color: rgb(224, 224, 224);
+    border-radius: 15px;
+    height: 200px auto;
+    width: 70%;
+  
+
+    margin: 1.5rem auto;
+  
+     display: flex;
+     flex-direction: row;
+     justify-content: space-around;
+     flex-flow: wrap;
+    box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0);
+  
+}
+.chatHistLeft{
+  
+    height: 250px;
+    width: 25%;
+    /* background-color: rgb(255, 146, 146); */
+    border-radius: 10px;
+    /* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0); */
+    /* text-align: center; */
+}
+.chatHistRight{
+   
+    height: 250px;
+    width: 50%;
+    /* background-color: rgb(222, 222, 222); */
+    border-radius: 10px;
+    /* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0); */
+    /* text-align: center; */
+}
+.chatcov{
+        /* box-shadow: 0.5px 0.5px 6px -1px rgba(0, 0, 0, 0.163);  */
+        /* background-color: #dadada; */
+        border-radius: 10px;
+        margin: 15px;
+        border:  #bdbdbd ;
+        border-width: 1px;
+        /* padding: 15px; */
+        height: 300px auto;
+        color: #6d6d6e;
+}
+.chatcov2{
+    /* box-shadow: 0.5px 0.5px 6px -1px rgba(0, 0, 0, 0.163);  */
+    /* background-color: #d4d4d4; */
+    border-radius: 10px;
+    margin: 15px;
+    border:  #bdbdbd ;
+    border-width: 1px;
+    padding: 15px;
+    height: 300px auto;
+    color: #1458b3;
+}
+#chatprofile-pic
+{
+    height: 120px;
+    width: 120px;
+   margin: 10px;
+}
+#chatHistGo{
+    width: 25%;
+    background: #1458b3;
+    color: #ffff;
+    border: none;
+    cursor: pointer;
+    padding: 0.4rem 1rem;
+    transition: all 0.3 ease;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+#chatHistGo:hover{
+    transition: 0.2s ease-in;
+    box-shadow: 0.5px 0.5px 6px -1px black; 
+    /* transform: translate(-5px); */
+ }
