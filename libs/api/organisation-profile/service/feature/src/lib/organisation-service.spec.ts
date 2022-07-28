@@ -169,3 +169,10 @@ export class OrganisationServiceMock
         return orgProfileUpdate;
 
       }
+      
+      
+    getDonations(id: string)
+      {
+        return null;
+      }
+  }
