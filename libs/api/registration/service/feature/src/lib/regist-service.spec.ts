@@ -146,3 +146,15 @@ export class RegistrationServiceMock
             return true;
           }
       }
+
+      addUser(email : string, password : string)
+        {
+          if(this.doesNotExist(email,password) == true) 
+            {
+              return record.testid;
+            }
+          else
+            {
+              return null;
+            }
+        }
