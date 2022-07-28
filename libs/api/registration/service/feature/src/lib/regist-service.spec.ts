@@ -185,3 +185,16 @@ export class RegistrationServiceMock
               return "FAILURE";
             }
         }
+
+      alterAddress( userID : string, address: string, address2: string, city: string, prov: string )  
+        {
+          if(userID.match(recordUpdate.testid))
+            {
+              recordUpdate.testAdress = address;
+              return "SUCCESS";
+            }
+          else
+            {
+              return "FAILURE";
+            }
+        }
