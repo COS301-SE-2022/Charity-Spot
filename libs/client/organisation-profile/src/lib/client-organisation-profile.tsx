@@ -103,7 +103,10 @@ export function Profile() {
   const [NewOPassC,setNewOPassC] = useState('undefined');
 
   //const [NewPicture,setNewOPicture] = useState('');
-  const [tempView, setTempView] = useState(true);
+  const [editView, setEditView] = useState(true);
+
+  const [delButton, setdelButton] = useState(true);
+  const [chatButton, setchatButton] = useState(true);
 
 
   const hanndlesubmit = (event: { preventDefault: () => void; }) =>{
@@ -137,42 +140,59 @@ export function Profile() {
 
     if(IdCookie != undefined){
 
-      const testCookie = getCookie("tempID");
+      const foreinCookie = getCookie("foreignID");
       let response = null;
 
-      if(testCookie != undefined){        
-        removeCookie("tempID");
-        setTempView(false);
-        response = JSON.parse(await APICall(testCookie));
+      if(foreinCookie != undefined){        
+        if(foreinCookie!=IdCookie){
+          setEditView(false);
+        }
+        else{
+          setchatButton(false);
+          setdelButton(false);
+        }
+        response = JSON.parse(await APICall(foreinCookie));
       }
-      else 
+      else{ 
         response = JSON.parse(await APICall(IdCookie));
+        setchatButton(false);
+        setdelButton(false);
+      }
 
       const allData = response.data.OrgProfile;
       const {Email,Name,Date,Location,Picture,Internal} = allData;
+
+      //console.log(Internal);
       
-      if(Internal == "ORG") {
+      //if(Internal == "ORG") {
         setOName(Name);
         setOEmail(Email);
         setODate(Date);
         setOLocation(Location);
         setOPicture(Picture);
-      } else
-        setOName("DEMO4");
+      //} else
+        //setOName("DEMO4");
+
+      let currType = getCookie("ID_EXT")
+
+      if(currType == "need"){
+        setdelButton(false);
+      }
+
+      //console.log(currType);
 
     }
 
   }
 
   useEffect(() => {
-    setTempView(true);
+    setEditView(true);
     displayData();
    },[]);
-
   
   return (
     <div>
-    {
+    {/*{
       (
         ()=> {
           if(OName == "DEMO4") {
@@ -182,14 +202,14 @@ export function Profile() {
                 <h1>YOU ARE NOT AN ASSISTING ORGANISATION<br/>ALL THIS WILL BE DONE IN DEMO 4</h1>
               </div>
             )
-          } else {
-            return (
+          } else {*
+            return (*/}
 
             <div className="wrapperProfile">
                 <br/><br/>
                   <input type ="radio" name="sliderProf" id='profTab' defaultChecked ></input>
                   <input type ="radio" name="sliderProf" id='blog' ></input>
-                  {( tempView && <nav>
+                  {( editView && <nav>
                     <label htmlFor= "profTab" className='profTab' ><FaUserAlt/> Profile  </label>
                     <label htmlFor= "blog" className='blog'> <FaEdit/> Edit </label>
                     <div className='sliderProf'></div>
@@ -207,7 +227,7 @@ export function Profile() {
                   <img src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo.png?alt=media&token=658a4502-2b08-47bf-8cb2-fe7eacbf8c3e" alt="" id="profile-pic"></img>
                   
                 </div>
-                {( tempView &&<form onSubmit={hanndlesubmit}>
+                {( editView &&<form onSubmit={hanndlesubmit}>
                     <button type='submit' id='logout1'>Log out</button>
                 </form>)}
                 <h3 className='headings' >About Us</h3>
@@ -298,18 +318,17 @@ export function Profile() {
 
 
 
-              <Link to ='/chat' className='rgLink'><button type='submit' id='chatGo'>Chat</button></Link>
-              <Link to ='/scheduleDelivery' className='rgLink'><button type='submit' id='delivGo'> delivery</button></Link>
+              {( chatButton &&<Link to ='/chat' className='rgLink'><button type='submit' id='chatGo'>Chat</button></Link>)}
+              {( delButton &&<Link to ='/scheduleDelivery' className='rgLink'><button type='submit' id='delivGo'> delivery</button></Link>)}
               {/* <button type='submit' id='subGo'>Submit</button> */}
 
               </div>
 
             </div>
             </div>
-
       
 
-              {( tempView && <div className='content content-2'>
+              {( editView && <div className='content content-2'>
                         <div className='title'><h1>Edit</h1></div>
 
                         <div className='editor-main'>
@@ -351,11 +370,11 @@ export function Profile() {
                         </div>)}
               </section>
             </div>
-            )
-          }
+        
+          {/*}
         }
       ) ()
-    }  
+    }*/}  
    
     </div>
   )

@@ -26,9 +26,30 @@ export class HomeService {
 
         }
 
-        
-
         return returnOrg;
+    }
+
+    async getAllItems(){
+
+        let temp = new HomeEntity();
+
+        let items = await this.HomeRepository.getAllItems();
+
+        let retItem : any = []
+
+        for(let i=0; i<items.length; i++){
+
+            let temp = new HomeEntity();
+
+            temp.ItemName = items[i].ItemName;
+            temp.OrgID = items[i].OrgID;
+            temp.Type = items[i].Type;
+            temp.Location = items[i].DonoLoc;
+            
+            retItem.push(temp);
+        }
+
+        return retItem;
     }
 
     

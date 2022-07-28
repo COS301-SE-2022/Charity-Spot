@@ -15,6 +15,8 @@ export class ScheduleDeliveryService {
     ) {
         // save data in database
 
+        this.ScheduleDeliveryRepository.CreateShedule(ite_id, assis_id, location, date, "1", needing_id)
+
         const returnableV = new ScheduleDeliveryEntity();
             returnableV.id_1 = assis_id;
             returnableV.id_2 = needing_id;
@@ -33,6 +35,59 @@ export class ScheduleDeliveryService {
             returnableV.History_ = [];
 
         return returnableV;
+    }
+
+    async getAvailItems( userid: string){
+
+        let availItems = await this.ScheduleDeliveryRepository.getAvailItems(userid);
+
+        let returnItems = []
+
+        for(let i=0; i<availItems.length; i++){
+            let tempItem = new ScheduleDeliveryEntity();
+            tempItem.itemID = availItems[i].ItemID;
+            tempItem.itemName = availItems[i].ItemName;
+
+            returnItems.push(tempItem);
+        }
+
+        return returnItems;
+    }
+
+    async getDelSchedule( Userid : string){
+
+        let schedule = await this.ScheduleDeliveryRepository.getDelSchedule(Userid);
+
+        let returnSchedule = [];
+
+        for(let i=0; i<schedule.length; i++){
+
+            let temp = new ScheduleDeliveryEntity();
+            
+            temp.id_1 = schedule[i].ClientID;
+            temp.itemID = schedule[i].ItemID;
+            temp.location = schedule[i].Loaction;
+            temp.date = schedule[i].Date;
+            temp.time = schedule[i].Time;
+
+            returnSchedule.push(temp);
+
+        }
+
+        return returnSchedule;
+
+    }
+
+    async getItemName( itemID : string){
+
+        let itemName = await this.ScheduleDeliveryRepository.getItemName(itemID);
+
+        let temp = new ScheduleDeliveryEntity();
+
+        temp.itemName = itemName[0].ItemName;
+
+        return temp;
+
     }
 
 }

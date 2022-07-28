@@ -16,6 +16,8 @@ async function APICall(email: string, password: string){
     }
   }`;
 
+  console.log(query);
+
        let initial_students = "";
   
        await fetch('http://localhost:3333/graphql', {
@@ -68,8 +70,8 @@ export function ClientLogin() {
       }
   }
 
-  if(getCookie('ID') !== undefined)
-    window.location.href = '/home';
+  /*if(getCookie('ID') !== undefined)
+    window.location.href = '/login';*/
 
   return ( 
 

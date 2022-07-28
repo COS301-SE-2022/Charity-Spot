@@ -118,8 +118,8 @@ export function MapMarker(props : any){
     }
 
     function handleClick(ID : any){
-        setCookie("tempID", ID);
-        window.location.href = '/Profile'; 
+        setCookie("foreignID", ID);
+        window.location.href = '/profile'; 
     }
 
     

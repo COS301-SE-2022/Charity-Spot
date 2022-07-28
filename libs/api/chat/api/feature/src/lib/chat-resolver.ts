@@ -36,8 +36,13 @@ export class ChatResolver {
     @Query(() => ChatEntity)
     async RetrieveThreads(
         @Args("userID") u_id: string,
-        @Args("whois") identity: "ORG" | "CLIENT"
+        @Args("whois") identity: string
     ) {
         return this.ChatService.RetrieveThreads(u_id, identity);
+    }
+
+    @Query(() => ChatEntity)
+    async getChatName(@Args("userID") u_id: string){
+        return this.ChatService.getChatName(u_id);
     }
 }

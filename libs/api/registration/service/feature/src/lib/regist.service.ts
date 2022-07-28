@@ -1,42 +1,59 @@
 import { Injectable } from "@nestjs/common";
 import { RegistrationRepository } from '@charity-spot/api/registration/repository/data-access'
 import { RegistEntity } from "./regist-entity";
+import { LoginService } from "@charity-spot/api/login/service/feature"
+import { DonateRepository } from "@charity-spot/api/donate/repository/data-access";
 
 @Injectable()
 export class RegistrationService {
 	constructor (
-		private RegistRepo: RegistrationRepository
+		private RegistRepo: RegistrationRepository,
+		private readonly LoginService: LoginService
 		) {}
 
-	async regClient(id: string, flier: string, pin: string, hack: string) {
-
-		const returnableV = new RegistEntity();
-		let runner = null;
-
-		if((runner = await this.RegistRepo.addUser(flier, hack, await this.glow(flier, hack), "CLIENT")) != null) {
-			returnableV.ID_external = runner.identity;
-			returnableV.ID_internal = runner.UserID;
-			await this.RegistRepo.AlterAdress(runner.UserID, pin, pin, pin, pin, "");
-		}
-
-		return returnableV;
+	async doesNotExist(email : string, password : string) {
+		if(await this.LoginService.validate(email, password) == false)
+			return true;
+		else 
+			return false;
 	}
 
-	async regOrg(badge: string, relay: string, rendezvous: string, riddle: string) {
-		const returnableV = new RegistEntity();
-		let runner = null;
+	async addUser(email : string, password : string, identity : string) {
+		if(await this.doesNotExist(email, password) == true) {
+			//hash - upcoming
+			const user = await this.RegistRepo.addUser(email, "#", password, identity);
 
-		if((runner = await this.RegistRepo.addUser(relay, riddle, await this.glow(relay, riddle), "ORG")) != null) {
-			await this.RegistRepo.addOrg(runner.UserID, badge);
-			returnableV.ID_external = runner.identity;
-			returnableV.ID_internal = runner.UserID;
-			await this.RegistRepo.AlterAdress(runner.UserID, rendezvous, rendezvous, rendezvous, rendezvous, "ORG");
+			return user.UserID;
 		}
-
-		return returnableV;
+		else
+			return  null;
 	}
 
-	async glow(worm: string, manure: string) {
-		return worm + manure;
+	async alterNGONum(UserID : string, NGONum: string) {
+		return this.RegistRepo.AlterNGONum(UserID, NGONum);
+	}
+
+	async alterDescr(userID : string, Descr : string) {
+		return this.RegistRepo.AlterDescription(userID, Descr)
+	}
+
+	async alterAddress(
+		userID : string, 
+		address: string,
+		address2: string,
+		city: string, 
+		prov: string
+		) {
+			return this.RegistRepo.AlterAdress(userID, address, address2, city, prov);
+	}
+
+	async addOrg(userID : string, OrgName : string) {
+		await this.RegistRepo.addOrg(userID, OrgName);
+
+		return "SUCCESS";
+	}
+
+	async addPicture(id: string, name: string, picture: string) {
+		return null;
 	}
 }
