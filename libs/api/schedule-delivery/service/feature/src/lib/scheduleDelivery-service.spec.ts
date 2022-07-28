@@ -92,3 +92,23 @@ export class ScheduleDeliveryServiceMock
 
                 return ret;
             }
+            
+            
+        History( userid: string)
+            {
+                const ret = new ScheduleDeliveryEntity();
+                ret.id_1 = userid;
+                ret.id_2 = "";
+                ret.id_item = "";
+                ret.History_ = [];
+
+                return ret;
+            }
+    }
+
+
+/*          PART 2 - END             */
+
+
+
+/*          PART 3 - START             */
