@@ -249,3 +249,11 @@ describe('Altering the NGO number', () => {
     expect(expectedVal).toEqual(expect.any(String));
   }); 
 });
+
+//alterDescr("1","This is an NGO that supplies food and clothes")
+describe('Altering the description', () => {
+  it('Successfully altered the description', async () => {
+    const expectedVal = servicemock.alterDescr("cl62huz0m0002f6ynu0z40get","This is an NGO that supplies food and clothes");
+    expect(expectedVal).toEqual(expect.any(String));
+  }); 
+});
