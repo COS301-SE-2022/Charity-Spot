@@ -158,7 +158,7 @@ export function ClientDeliveryScheduleInfo() {
 
                     <input type ='checkbox' id = {A.itemID}></input>
 
-                    <label htmlFor={A.itemID}>{A.itemName}:  {A.partyName} on {A.date}  <FaArrowDown/></label>
+                    <label htmlFor={A.itemID}>{A.itemName}:  {A.partyName} on {A.date} </label>
 
                     <div className='collapsible-text'><br/>
                         {/*<div className='collapseleft'>
