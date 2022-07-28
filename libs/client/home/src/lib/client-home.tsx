@@ -65,7 +65,7 @@ export function Home() {
                 zoom={5}
               >
 
-                <MapMarker state={[checkedLocation, checkedType]}></MapMarker>
+                <MapMarker state={[checkedLocation, checkedType, checkedAI]}></MapMarker>
 
               </GoogleMap>
             </LoadScript>
@@ -195,9 +195,36 @@ export function Home() {
 
                     </div>
 
-              </div>     
+              </div>
+
               <div className="right-filt">
-              <h3 className='FiltLabels'>Prediction Type</h3>
+                <h3 className='FiltLabels'>Prediction Type</h3><br/><br/><br/>
+
+                <div id = "typeFilters">
+
+                          <div className='wrap1'>
+                              <input
+                                type="checkbox"
+                                id = "A0"
+                                checked={checkedAI[0]}
+                                onChange={() => {let checked = [...checkedAI]; checked[0] = !checked[0]; setCheckedAI(checked);}}
+                              />
+                            <label htmlFor="A0">Available Items</label>
+
+                          </div>
+
+                          <div className='wrap1'>
+                              <input
+                                type="checkbox"
+                                id = "A1"
+                                checked={checkedAI[1]}
+                                onChange={() => {let checked = [...checkedAI]; checked[1] = !checked[1]; setCheckedAI(checked);}}
+                              />
+                            <label htmlFor="A1">Predictions for Available Items</label>
+
+                          </div>
+
+                </div>
              </div>     
               
           </div>
