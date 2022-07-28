@@ -77,3 +77,36 @@ export class LoginServiceMock {
         }
         
 }
+
+
+const servicemock = new LoginServiceMock();
+
+describe('Login Service Mock', () => {
+    describe('validate()', () => {
+        it('Successfully validated details', async () => {
+            const ID = servicemock.validate(record.testEmail,record.testPass);
+            const expectedID = "cl62huz0m0002f6ynu0z40get";
+            expect(ID).toBe(expectedID);
+        });
+    });
+});
+
+
+
+    //validate(email : string, password : string)
+   /* describe('validate()', () => {
+        it('Successfully validated details', async () => {
+            //expect(await service.validate("test@email.com","123")).not.toEqual(false);
+            expect(await service.validate("test@email.com","123")).toBeFalsy();
+        })
+    })
+
+    //getEntity_login(email : string, password : string)
+    describe('getEntity_login()', () => {
+        it('Successfully retrieved the login entity', async () => {
+            expect(await service.getEntity_login("test@email.com","123")).not.toBeNull();
+        })
+    })*/
+
+
+
