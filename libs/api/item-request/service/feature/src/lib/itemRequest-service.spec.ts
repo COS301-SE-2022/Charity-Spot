@@ -112,3 +112,19 @@ describe('item Request Service Mock', () => {
             expect(expectedVal).toMatchObject(val);
         }); 
     });
+   
+    //getAIPredic(Date : string, itemType : string, location : string)
+    describe('getAIPredic', () => {
+        it('Should successfully predict using the AI', async () => {
+            const expectedVal = new itemRequestEntity();
+            expectedVal.ID = record.testId;
+            const val = servicemock.getAIPredic(record.testDate,record.testitemType,record.testLocation);
+            expect(expectedVal).toMatchObject(val);
+        }); 
+    });
+
+ 
+    
+});
+
+// PART 3 - END
