@@ -63,8 +63,10 @@ describe('client', () => {
 
         })
     });
-    
-      //profile page
+
+    /* ADDED FOR DEMO 3*/
+
+    //profile page
     describe('profile page testing', () => {
         beforeEach(() => cy.visit('http://localhost:4200/profile'));
         it('should direct you to the right url', () => {
@@ -76,7 +78,8 @@ describe('client', () => {
 
         })
     });
-    
+
+
     //chat page
     describe('chat page testing', () => {
         beforeEach(() => cy.visit('http://localhost:4200/chat'));
@@ -92,7 +95,7 @@ describe('client', () => {
         })
     });
 
-//Schedule Delivery page
+    //Schedule Delivery page
     describe('Schedule Delivery page testing', () => {
         beforeEach(() => cy.visit('http://localhost:4200/scheduleDelivery'));
         it('should direct you to the right url', () => {
@@ -108,7 +111,7 @@ describe('client', () => {
 
         })
     });
-    
+
     //Item Request Page
     describe('Item Request page testing', () => {
         beforeEach(() => cy.visit('http://localhost:4200/itemRequest'));
@@ -126,7 +129,7 @@ describe('client', () => {
 
         })
     });
-    
+
 /*cy.get('id') - by tag
 cy.get('.id') - by class 
 cy.get('#id')- by id*/
