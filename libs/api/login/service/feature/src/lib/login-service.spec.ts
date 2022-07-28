@@ -27,3 +27,38 @@ describe ( 'LoginService', () => {
     expect(service).toBeDefined();
   });
 });
+
+
+    let resolver: LoginService;
+    beforeEach(async () => {
+        const module: TestingModule = await Test.createTestingModule({
+            providers: [
+
+            ],
+        }).compile();
+        resolver = module.get<LoginService>(LoginService);
+    });
+
+    it('Should be truthy', async () => {
+        jest
+            .spyOn(resolver, 'validate')
+            .mockImplementation();
+            expect(resolver.validate).not.toHaveBeenCalled();
+            expect(await resolver.validate("test@email.com","123")).toBeFalsy();
+            expect(resolver.validate).toHaveBeenCalled();
+    });
+
+const record = {testEmail:"test@email.com",testPass:"123",testId:"cl62huz0m0002f6ynu0z40get"}
+
+class LoginService_input_Mock {
+    email: string;
+    pass: string;
+    id: string;
+};
+
+const LoginService_DTO = {
+    email:"test@email.com",
+    pass:"123",
+    id:"cl62huz0m0002f6ynu0z40get",
+};
+
