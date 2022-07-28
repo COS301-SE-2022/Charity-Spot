@@ -1,0 +1,14 @@
+---
+name: 'Default Test'
+
+on:
+  workflow_call:
+    inputs:
+      test:
+        description: 'Test being run'
+        required: true
+        type: string
+      testtype:
+        description: 'Test type (lint, build, test)'
+        required: false
+        type: string
