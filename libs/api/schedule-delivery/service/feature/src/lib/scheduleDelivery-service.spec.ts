@@ -61,3 +61,14 @@ it('', async () => {
         expect(await resolver.Sched("fjkznfdsf","esffrcv2d","wdcxdfvrsa","Pretoria","28-07-2022 0953")).toMatchObject(scheduleDeliveryEntity);
         expect(resolver.Sched).toHaveBeenCalled();
 });
+
+//History( userid: string)
+// -> ScheduleDeliveryEntity
+it('', async () => {
+    jest
+        .spyOn(resolver,'History')
+        .mockImplementation( (): Promise<ScheduleDeliveryEntity> => Promise.resolve(scheduleDeliveryEntity));
+        expect(resolver.History).not.toHaveBeenCalled();
+        expect(await resolver.History("dawdaddawd")).toMatchObject(scheduleDeliveryEntity);
+        expect(resolver.History).toHaveBeenCalled();
+});
