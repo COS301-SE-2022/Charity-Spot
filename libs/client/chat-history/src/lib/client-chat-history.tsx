@@ -98,7 +98,8 @@ export function ClientChatHistory() {
             <br/>
               <div className='chatHist'>
                 <div className='chatHistLeft'>
-                <img src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo.png?alt=media&token=658a4502-2b08-47bf-8cb2-fe7eacbf8c3e" alt="" id="profile-pic"></img>
+                  <br/><br/>
+                <img src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo.png?alt=media&token=658a4502-2b08-47bf-8cb2-fe7eacbf8c3e" alt="" id="chatprofile-pic"></img>
                 
                 </div>
                 <div className='chatHistRight'>

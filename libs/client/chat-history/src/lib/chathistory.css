@@ -27,7 +27,7 @@
 .chatHistRight{
    
     height: 250px;
-    width: 55%;
+    width: 50%;
     /* background-color: rgb(222, 222, 222); */
     border-radius: 10px;
     /* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0); */
@@ -42,7 +42,7 @@
         border-width: 1px;
         /* padding: 15px; */
         height: 300px auto;
-        color: #4f5052;
+        color: #6d6d6e;
 }
 .chatcov2{
     /* box-shadow: 0.5px 0.5px 6px -1px rgba(0, 0, 0, 0.163);  */
@@ -54,4 +54,10 @@
     padding: 15px;
     height: 300px auto;
     color: #1458b3;
+}
+#chatprofile-pic
+{
+    height: 120px;
+    width: 120px;
+   margin: 10px;
 }
