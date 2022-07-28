@@ -27,3 +27,26 @@ describe('item Request Service', () => {
     expect(service).toBeDefined();
   });
 });
+
+
+let resolver: ScheduleDeliveryService;
+
+beforeEach(async () => {
+  const module: TestingModule = await Test.createTestingModule({
+    providers: 
+    [ScheduleDeliveryService, 
+      ScheduleDeliveryRepository,
+      ScheduleDeliveryEntity, 
+      PrismaService, 
+    ],
+  }).compile();
+  resolver = module.get<ScheduleDeliveryService>(ScheduleDeliveryService);
+
+});
+
+/*          PART 1 - START             */
+
+
+
+//Sched(assis_id: string,needing_id: string,ite_id: string,location: string,date: string)
+// -> ScheduleDeliveryEntity
