@@ -9,7 +9,6 @@ import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 
 const ItemRequestEntity = new itemRequestEntity();
 
-
 describe('item Request Service', () => {
 
     let service: itemRequestService;
@@ -28,7 +27,6 @@ describe('item Request Service', () => {
     expect(service).toBeDefined();
   });
 });
-
 
 let resolver: itemRequestService;
 
@@ -56,7 +54,6 @@ it('Tests', async () => {
         expect(resolver.Test).toHaveBeenCalled();
 });
 
-
 //getAIPredic(Date : string, itemType : string, location : string)
 it('Predicts the AI', async () => {
     jest
@@ -72,7 +69,6 @@ it('Predicts the AI', async () => {
 
 
 // PART 2 - START
-
 
 const record = {testDate:"28-07-2022 08:57", testitemType:"Clothing",testLocation:"Pretoria",testId:"item Request Working!"};
 
@@ -112,7 +108,7 @@ describe('item Request Service Mock', () => {
             expect(expectedVal).toMatchObject(val);
         }); 
     });
-   
+    
     //getAIPredic(Date : string, itemType : string, location : string)
     describe('getAIPredic', () => {
         it('Should successfully predict using the AI', async () => {
