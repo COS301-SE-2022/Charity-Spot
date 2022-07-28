@@ -158,3 +158,17 @@ export class RegistrationServiceMock
               return null;
             }
         }
+
+      alterNGONum(UserID : string, NGONum: string)
+        {
+          if(UserID.match(recordUpdate.testid) && (NGONum.match(recordUpdate.testOrgNum)))
+            {
+              recordUpdate.testOrgNum = NGONum;
+              return "SUCCESS";
+            }
+          else
+            {
+              return "FAILURE";
+            }
+          
+        }
