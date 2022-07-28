@@ -3,6 +3,8 @@ import { getCookie } from 'typescript-cookie';
 
 import { useEffect, useState } from 'react';
 
+import { FaHistory,FaDonate,FaPen,FaUserAlt,FaEdit,FaArrowDown,FaArrowUp } from 'react-icons/fa';
+
 async function getDelScheduleApi(query : string){
 
   let result = null;
@@ -128,22 +130,11 @@ export function ClientDeliveryScheduleInfo() {
 
         scheduleList.push(temp);
 
-        //console.log(await getDelScheduleApi(NameQuery(active[i].id_1)));
-
-        /*let temp = new activeChatC();
-        temp.orgID = active[i].Reciever;
-        temp.orgName = active[i].Message;
-
-        activeList.push(temp);*/
-
       }
 
-      console.log(scheduleList)
+      setSchedule(scheduleList);
 
     }
-
-    //addactiveChat(activeList);*/
-    
   
 
   useEffect(() => {
@@ -152,7 +143,50 @@ export function ClientDeliveryScheduleInfo() {
 
   return (
     <div className={styles['container']}>
-      <h1>Welcome to ClientDeliveryScheduleInfo!</h1>
+      <br/><br/>
+      <div className='title'><h2>Your current delivery schedule:</h2></div>
+
+      {schedule.map(function(A){
+
+        return(
+          <div>
+            <br/>
+
+              <div className='rapper'>
+
+                <div className='collapsible'>
+
+                    <input type ='checkbox' id = {A.itemID}></input>
+
+                    <label htmlFor={A.itemID}>{A.itemName}:  {A.partyName} on {A.date}  <FaArrowDown/></label>
+
+                    <div className='collapsible-text'><br/>
+                        {/*<div className='collapseleft'>
+                        {/*<img src={item.PicLink} alt="" id="donation-pic2"/>
+                        </div>*/}
+
+                        <div className='collapseright'>
+      
+                            <div className="cov">Item Name: {A.itemName}</div>
+                            <div className="cov">Organisation Name: {A.partyName}</div>
+                            <div className="cov">Location: {A.location}</div>
+                            <div className="cov">Date: {A.date}</div>
+                            <div className="cov">Time: {A.time}</div>
+                            
+                        </div>
+                        
+                    </div>
+
+                </div>
+
+            </div>
+
+            
+          </div>
+        )
+
+      })}
+
     </div>
   );
 }
