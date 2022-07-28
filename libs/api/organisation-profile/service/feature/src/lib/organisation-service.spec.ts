@@ -70,7 +70,6 @@ jest
   expect(resolver.updateDet).toHaveBeenCalled();
 });*/
 
-
 //getDonations(id: string)
 it('Should be Null', async () => {
   jest
@@ -80,7 +79,6 @@ it('Should be Null', async () => {
     expect(await resolver.getDonations("cl62huz0m0002f6ynu0z40get")).toBeNull();
     expect(resolver.getDonations).toHaveBeenCalled();
 });
-
 
 const record = {testId: "cl62huz0m0002f6ynu0z40get", testName:"test", testLocation:"Pretoria", testPicture:"asdadwdadddd", testPass:"123",testEmail:"test@email.com"};
 const recordUpdate = {testId: "cl62huz0m0002f6ynu0z40get", testName:"test 2", testLocation:"Pretoria", testPicture:"asdadwdadddd", testPass:"123",testEmail:"test@email.com"};
@@ -123,7 +121,6 @@ export class OrganisationServiceMock
             return null;
           }
       }
-
 
     updateDet(id: string, name: string, loc: string, picture: string, password: string)
       {
@@ -169,15 +166,13 @@ export class OrganisationServiceMock
         return orgProfileUpdate;
 
       }
-      
-      
+
     getDonations(id: string)
       {
         return null;
       }
   }
-  
-  
+
   const servicemock = new OrganisationServiceMock();
 
 describe(' Organisation Service Mock', () => 
@@ -203,7 +198,6 @@ describe(' Organisation Service Mock', () =>
             expect(someEntity).toMatchObject(expectedEntity);
           });
       });
-
 
     describe('Get Donations', () => 
       {
