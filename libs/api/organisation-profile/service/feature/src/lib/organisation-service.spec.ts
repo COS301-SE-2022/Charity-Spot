@@ -101,3 +101,25 @@ const OrganisationService_DTO = {
   pass:"123",
 };
 
+export class OrganisationServiceMock 
+  {
+    getOrgProfile(userID: string) 
+      {
+        const orgProfile = new OrganisationEntity();
+        const orgName = "test";
+        const orgEmail = "test@email.com";
+        const orgLocation = "Pretoria";
+
+        orgProfile.Email = orgEmail;
+        orgProfile.Name = orgName;
+        orgProfile.Location =  orgLocation;
+
+        if(userID.match(record.testId))
+          {
+            return orgProfile;
+          }
+        else
+          {
+            return null;
+          }
+      }
