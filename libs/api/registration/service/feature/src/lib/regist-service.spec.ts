@@ -240,3 +240,12 @@ describe('Registration Service Mock', () =>
         expect(val).not.toBeNull;
       }); 
     });
+    
+    
+      //alterNGONum("1","125dawdf")
+describe('Altering the NGO number', () => {
+  it('Successfully altered the NGO number', async () => {
+    const expectedVal = servicemock.alterNGONum("cl62huz0m0002f6ynu0z40get","1");
+    expect(expectedVal).toEqual(expect.any(String));
+  }); 
+});
