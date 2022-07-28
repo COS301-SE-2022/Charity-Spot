@@ -15,7 +15,7 @@
 .profile-main{
 
     height: 650px auto;
-    width: 90%;
+    width: 100%;
 
     
     border-radius: 10px;
@@ -38,7 +38,7 @@
 .user-left{
 
     /* background-color: rgb(228, 229, 230);  */
-    height: 500px;
+    height: 650px;
     width: 45%;
     box-sizing: border-box; 
     overflow-y: scroll;
@@ -46,7 +46,7 @@
 .user-right{
 
     /* background-color: rgb(228, 229, 230);  */
-    height: 550px;
+    height: 650px;
     width: 45%;
     box-sizing: border-box;  
 }
