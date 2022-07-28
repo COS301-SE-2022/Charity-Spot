@@ -109,6 +109,24 @@ describe('client', () => {
         })
     });
     
+    //Item Request Page
+    describe('Item Request page testing', () => {
+        beforeEach(() => cy.visit('http://localhost:4200/itemRequest'));
+        it('should direct you to the right url', () => {
+            cy.url().should('include','itemRequest');
+
+        it('The user should be able to request an item', () => {
+            cy.contains('Item Name').type('Jeans');  
+            cy.contains('Item(s) Quantity').type('3');
+            cy.contains('Your Location').type('Pretoria');
+            
+            cy.get('.req3').select('Clothing').should('have.value','Clothes');
+            cy.contains('Request').click();
+        })
+
+        })
+    });
+    
 /*cy.get('id') - by tag
 cy.get('.id') - by class 
 cy.get('#id')- by id*/
