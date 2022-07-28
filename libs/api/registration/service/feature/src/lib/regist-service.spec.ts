@@ -232,3 +232,11 @@ describe('Registration Service Mock', () =>
         expect(expectedVal).toBe(val);
       }); 
     });
+    
+        describe('Adding User', () => {
+      it('A new User should be added', async () => {
+        //const expectedVal = record.testid;
+        const val = servicemock.addUser("lk@gmail.com", "acdvdf");
+        expect(val).not.toBeNull;
+      }); 
+    });
