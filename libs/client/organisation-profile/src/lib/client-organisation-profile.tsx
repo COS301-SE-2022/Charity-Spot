@@ -319,7 +319,7 @@ export function Profile() {
 
 
               {( chatButton &&<Link to ='/chat' className='rgLink'><button type='submit' id='chatGo'>Chat</button></Link>)}
-              {( delButton &&<Link to ='/scheduleDelivery' className='rgLink'><button type='submit' id='delivGo'> delivery</button></Link>)}
+              {( delButton &&<Link to ='/scheduleDelivery' className='rgLink'><button type='submit' id='delivGo'>Donate</button></Link>)}
               {/* <button type='submit' id='subGo'>Submit</button> */}
 
               </div>

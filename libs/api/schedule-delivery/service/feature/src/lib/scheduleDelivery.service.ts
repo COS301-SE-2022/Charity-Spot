@@ -54,17 +54,25 @@ export class ScheduleDeliveryService {
         return returnItems;
     }
 
-    async getDelSchedule( Userid : string){
+    async getDelSchedule( Userid : string, type : string){
 
-        let schedule = await this.ScheduleDeliveryRepository.getDelSchedule(Userid);
+        console.log(Userid);
+
+        let schedule = await this.ScheduleDeliveryRepository.getDelSchedule(Userid, type);
 
         let returnSchedule = [];
 
         for(let i=0; i<schedule.length; i++){
 
             let temp = new ScheduleDeliveryEntity();
-            
-            temp.id_1 = schedule[i].ClientID;
+
+            if(type == "assist"){
+                temp.id_1 = schedule[i].ClientID;
+            }
+            else if(type == "need"){
+                temp.id_1 = schedule[i].OrgID;
+            }
+            //temp.id_1 = schedule[i].ClientID;
             temp.itemID = schedule[i].ItemID;
             temp.location = schedule[i].Loaction;
             temp.date = schedule[i].Date;

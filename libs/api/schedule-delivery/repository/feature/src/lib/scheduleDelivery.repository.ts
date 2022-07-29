@@ -155,22 +155,46 @@ export class ScheduleDeliveryRepository {
 
   }
 
-  async getDelSchedule( Userid : string){
+  async getDelSchedule( Userid : string, type : string){
 
-    const u = await this.prisma.delivery.findMany({
-      select:
-      {
-        ItemID: true,
-        ClientID: true,
-        Loaction: true,
-        Date: true,
-        Time: true
-      },
-      where:
-      {
-        OrgID:Userid,
-      }
-    });
+    let u = null;
+
+    if(type=="assist"){
+
+      u = await this.prisma.delivery.findMany({
+        select:
+        {
+          ItemID: true,
+          ClientID: true,
+          Loaction: true,
+          Date: true,
+          Time: true
+        },
+        where:
+        {
+          OrgID:Userid,
+        }
+      });
+
+    }
+    else if(type=="need"){
+
+      u = await this.prisma.delivery.findMany({
+        select:
+        {
+          ItemID: true,
+          OrgID: true,
+          Loaction: true,
+          Date: true,
+          Time: true
+        },
+        where:
+        {
+          ClientID:Userid,
+        }
+      });
+
+    }
 
     return u;
 
