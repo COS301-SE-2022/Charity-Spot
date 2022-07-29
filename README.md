@@ -1,15 +1,78 @@
 <div>
     <h1 align="center">Seal Team 301 + Charity Spot</h1>
-    <div align="center"><h3>Hello, and Welcome :)</h3> 
-        <h3 >Seal Team 301 is committed to <b>transparency<b>, <b>perseverance</b> and <b>success</b>.</h3>
-        <p>For this Project we are making a charity app that will allow organizations and parties in need to meet and communicate effectively.
-          The party in need will look for a registered organization on our platform and they will ask for a donation that they need, if the 
-          organization can donate the requested item, it will let the party in need to know. We are using the google maps API to show the
-          locations of the organizations and we are using our own in-built chat functionality so that the parties can communicate within our code base.</p>
+    <img align="center"src="https://firebasestorage.googleapis.com/v0/b/charityspotdemo1.appspot.com/o/logo1.png?alt=media&token=b54104ac-a595-46f9-ab28-6069195143b4"></img>
+    <div align="center">---</div>
+    <div>
+        <p><b>Charity-Spot</b> is intended to serve as a platform for organisations who would like to donate charitable items to those in need, and to assist people in need to find the items that they require.</p>
+        <p>An interactive map with a set of filters can be used to find items that have been donated. The system also has an AI component that can be used to predict when donations will be made before anything has been donated. We use this information to inform people in need of organisations that are most likely able to assist them if the items they need are not available</p>
     </div>
+    <div align="center">---</div>
+
+<div align="center">
+<h2 align="center">Documentation and Info</h2>
+
+[SRS Demo 1](https://drive.google.com/file/d/1PB11ctS5-gHrR4uCKGpD1R9AEKioBgaX/view?usp=sharing)
+
+[SealTeam301-Demo1](https://drive.google.com/file/d/1NorrmnBr6aDn9ovl26_EOgvQ-I2dzZOf/view?usp=sharing)
+
+[SRS Demo 2](https://drive.google.com/file/d/1x9V5Q9cslBw2WyzMVTkBBWh6nYkTVkOY/view?usp=sharing)
+
+[User Manual](https://drive.google.com/file/d/1nfuax5BIQE3qRWe6ASYoTe_7m-Mz4h46/view?usp=sharing)
+
+[Technical Installation Manual](https://drive.google.com/file/d/1Pil3PRXTYTbhpU21-ZJpw83V-NokXw4I/view?usp=sharing)
+
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/COS301-SE-2022/Charity-Spot)
+
+![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/COS301-SE-2022/Charity-Spot)
+![GitHub issues](https://img.shields.io/github/issues-raw/COS301-SE-2022/Charity-Spot)
+
+![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/COS301-SE-2022/Charity-Spot)
+  
+<!-- </div>
+
+<h2 align="center">Our Team Members</h2>
+
+<div align="center">
+
+[Timo van der Merwe](https://github.com/TimovdMerwe-18)
+
+[Elphus Malope](https://github.com/nimGaluu)
+
+[Moloko Magwai](https://github.com/MoloTheSniper)
+
+[David Roodt](https://github.com/David-Roodt)
+
+[Lindinkosi Kunene](https://github.com/lindzik)
+
+</div> -->
+    
+
+
+<div align="center">
+    <h2>Technologies and Frameworks</h2>
+
+        React
+
+        NestJS
+
+        GraphQL
+
+        Java
+
+        PostgreSQL
+
+        Prisma
+
+        Jest
+
+        Cypress
+
+</div>
     <div align="center">
     <h2 align="center">Our Team Members</h2>
     <img  align="center"src="https://drive.google.com/thumbnail?id=1bT75l2YS4pQl4mYyCvAgoTCd_A1lgKXr"></img><br>
+
+
 
 <div>
 
@@ -68,65 +131,6 @@ Python, React and JavaScript.</p>
     </div>
 
     
-
-</div>
-
-<div align="center">---</div>
-
-<div align="center">
-<h2 align="center">Our Demos</h2>
-
-[SRS Demo 1](https://drive.google.com/file/d/1PB11ctS5-gHrR4uCKGpD1R9AEKioBgaX/view?usp=sharing)
-
-[SealTeam301-Demo1](https://drive.google.com/file/d/1NorrmnBr6aDn9ovl26_EOgvQ-I2dzZOf/view?usp=sharing)
-
-[SRS Demo 2](https://drive.google.com/file/d/1x9V5Q9cslBw2WyzMVTkBBWh6nYkTVkOY/view?usp=sharing)
-
-![GitHub commit activity](https://img.shields.io/github/commit-activity/w/COS301-SE-2022/Charity-Spot)
-
-![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/COS301-SE-2022/Charity-Spot)
-![GitHub issues](https://img.shields.io/github/issues-raw/COS301-SE-2022/Charity-Spot)
-
-![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/COS301-SE-2022/Charity-Spot)
-  
-<!-- </div>
-
-<h2 align="center">Our Team Members</h2>
-
-<div align="center">
-
-[Timo van der Merwe](https://github.com/TimovdMerwe-18)
-
-[Elphus Malope](https://github.com/nimGaluu)
-
-[Moloko Magwai](https://github.com/MoloTheSniper)
-
-[David Roodt](https://github.com/David-Roodt)
-
-[Lindinkosi Kunene](https://github.com/lindzik)
-
-</div> -->
-    
-
-
-<div align="center">
-    <h2>Technologies and Frameworks</h2>
-
-        React
-
-        NestJS
-
-        GraphQL
-
-        Java
-
-        PostgreSQL
-
-        Prisma
-
-        Jest
-
-        Cypress
 
 </div>
 
