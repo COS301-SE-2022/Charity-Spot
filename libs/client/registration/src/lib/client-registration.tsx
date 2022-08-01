@@ -7,7 +7,7 @@ import Bgpic from '../../../shared/assets/Bgpic.png'
 
 import './register.css';
 
-async function APICall(orgName:string, email: string,location:string, password: string, identity: string){
+async function APICall(orgName:string, email: string,location:string, password: string, identity: string, picture :any){
 
   const query = (`query {
     registerORG(
@@ -15,7 +15,8 @@ async function APICall(orgName:string, email: string,location:string, password: 
       email: "${email}",
       location: "${location}",
       password: "${password}",
-      identity: "${identity}"
+      identity: "${identity},"
+      picture: "${picture}"
     ){
       ID
     }
@@ -51,16 +52,36 @@ export function Register() {
   const [confpassval,setConfPassval] = useState('');
   const [invalidCredentials, setInvalidCredentials] = useState('');
 
+  const [imageUpload, setImageUpload] = useState<File>();
+  const [imageURL, setImageURL] = useState('');
+
+  async function getBase64(file : File){
+
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
+
+  }
+
   const hanndlesubmit =  async(event: { preventDefault: () => void; }) =>{
       event.preventDefault();
       setInvalidCredentials('');
+
+      let imgBase64 = undefined;
+
+      if(imageUpload){
+        imgBase64 = await getBase64(imageUpload);
+      }
 
       if((nameval === '') || (emailval === '') || (Locationval === '') || (passval === '') || (confpassval === '')){
         setInvalidCredentials("Fields must not be empty");
         return;
       }
       
-      const response = JSON.parse(await APICall(nameval, emailval, Locationval, passval, typeval));
+      const response = JSON.parse(await APICall(nameval, emailval, Locationval, passval, typeval, imgBase64));
       
       let ID = response.data.registerORG.ID;
   
@@ -111,7 +132,27 @@ export function Register() {
             <label htmlFor ='rgpwd2' className='rglabel'>Confirm Password</label>              
               <input placeholder='Confirm password...' type ='password' id="rgpwd2" className='rgInput'
               value={confpassval}
-              onChange ={(e)=>{setConfPassval(e.target.value)}}/>              
+              onChange ={(e)=>{setConfPassval(e.target.value); console.log("pass test")}}/>
+
+            
+                          <label htmlFor="file-upload" className="custom-file-upload">
+                              Browse Image
+                          </label>
+                          
+                            <input type="file"
+                            id="file-upload"
+                              onChange={(e) => {
+
+                                console.log("test");
+                                
+                                if(!e.target.files) return;
+                                setImageUpload(e.target.files[0])
+                                setImageURL(URL.createObjectURL(e.target.files[0]));
+
+                                console.log(imageURL);
+
+                             }}/>
+              
               
               <br/>
               <button type='submit' id='rgsub_butt'>Register</button>

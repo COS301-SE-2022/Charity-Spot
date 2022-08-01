@@ -122,4 +122,19 @@ export class RegistrationRepository {
       }
     })
   }
+
+  async editItemPicture(uID, Picture : string)
+  {
+    return await this.prisma.organisation.update({
+      where:
+      {
+        UserID: uID,
+      },
+      data:
+      {
+        profilePicture: Picture
+      }
+    })
+  }
+
 }

@@ -4,6 +4,7 @@ import { RegistEntity } from "./regist-entity";
 import { LoginService } from "@charity-spot/api/login/service/feature"
 import { DonateRepository } from "@charity-spot/api/donate/repository/data-access";
 
+
 @Injectable()
 export class RegistrationService {
 	constructor (
@@ -56,4 +57,10 @@ export class RegistrationService {
 	async addPicture(id: string, name: string, picture: string) {
 		return null;
 	}
+
+	async setItemPicName(id, pic){
+
+        await this.RegistRepo.editItemPicture(id, pic);
+
+    }
 }

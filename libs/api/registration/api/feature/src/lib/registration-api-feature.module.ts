@@ -8,9 +8,11 @@ import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 import { LoginService } from '@charity-spot/api/login/service/feature';
 import { LoginRepository } from '@charity-spot/api/login/repository/data-access';
 
+import { FirebaseService } from '@charity-spot/api/shared/services/prisma';
+
 @Module({
   controllers: [],
-  providers: [ApiRegistrationServiceFeatureModule, RegistrationResolver, RegistrationService, RegistrationRepository, PrismaService, LoginService, LoginRepository],
+  providers: [ApiRegistrationServiceFeatureModule, RegistrationResolver, RegistrationService, RegistrationRepository, PrismaService, LoginService, LoginRepository, FirebaseService],
   exports: [RegistrationResolver, RegistrationService, RegistrationRepository, PrismaService],
 })
 export class RegistrationApiFeatureModule {}
