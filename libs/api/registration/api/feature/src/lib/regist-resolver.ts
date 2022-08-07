@@ -17,6 +17,8 @@ export class RegistrationResolver {
 		@Args("picture") picBase64: string,
 	) {
 
+		console.log(identity);
+
 		const userID = await this.RegistrationService.addUser(email, password, identity);
 
 		const temp = new RegistEntity();

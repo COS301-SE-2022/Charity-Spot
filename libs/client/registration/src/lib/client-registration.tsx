@@ -15,7 +15,7 @@ async function APICall(orgName:string, email: string,location:string, password: 
       email: "${email}",
       location: "${location}",
       password: "${password}",
-      identity: "${identity},"
+      identity: "${identity}",
       picture: "${picture}"
     ){
       ID
