@@ -1,1 +1,1 @@
-export * from './lib/api-notification-repository-feature.module';
+export * from './lib/notification.repository';
