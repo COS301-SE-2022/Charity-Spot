@@ -36,6 +36,7 @@
     "client-item-request": "libs/client/item-request",
     "client-item-request-results": "libs/client/item-request-results",
     "client-login": "libs/client/login",
+    "client-notification": "libs/client/notification",
     "client-organisation-profile": "libs/client/organisation-profile",
     "client-registration": "libs/client/registration",
     "client-schedule-delivery": "libs/client/schedule-delivery",
