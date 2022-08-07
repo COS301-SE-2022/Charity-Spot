@@ -60,6 +60,15 @@
       "@charity-spot/api/login/service/feature": [
         "libs/api/login/service/feature/src/index.ts"
       ],
+      "@charity-spot/api/notification/api/feature": [
+        "libs/api/notification/api/feature/src/index.ts"
+      ],
+      "@charity-spot/api/notification/repository/feature": [
+        "libs/api/notification/repository/feature/src/index.ts"
+      ],
+      "@charity-spot/api/notification/service/feature": [
+        "libs/api/notification/service/feature/src/index.ts"
+      ],
       "@charity-spot/api/organisation-profile/api/feature": [
         "libs/api/organisation-profile/api/feature/src/index.ts"
       ],
