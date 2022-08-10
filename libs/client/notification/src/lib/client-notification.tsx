@@ -9,6 +9,7 @@ export function ClientNotification(props: ClientNotificationProps) {
   return (
     <div>
             <br/>
+            <h2 style={{'color':'#1458b3'}}>Notifications</h2>
               <div className='notiMain'>
                 <div className='notiLeft'>
                   <br/><br/>
