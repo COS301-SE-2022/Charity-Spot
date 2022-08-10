@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import {Navbar,Nav} from 'react-bootstrap'
 import CS from '../../../../libs/client/shared/assets/CS.png'
 import './navbarrr.css';
-
+import { FaBell } from 'react-icons/fa';
 import Button from 'react-bootstrap/Button';
 
 import { getCookie, removeCookie} from 'typescript-cookie'
@@ -85,6 +85,7 @@ function Navigation() {
         </Nav>
 
         { log && <Nav style={{ backgroundColor: '#dcdfe3'}} className="ms-auto">
+        <Nav.Link><Button variant="outline-danger" onClick={()=>{logOut();}}><FaBell/></Button></Nav.Link>
           <Nav.Link><Button variant="outline-danger" onClick={()=>{logOut();}}>Log Out</Button></Nav.Link>
         </Nav>}
 
