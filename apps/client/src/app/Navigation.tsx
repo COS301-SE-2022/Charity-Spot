@@ -84,7 +84,7 @@ function Navigation() {
         </Nav>
 
         { log && <Nav style={{ backgroundColor: '#dcdfe3'}} className="ms-auto">
-        <Nav.Link><Button variant=""  style={{ color: '#1458b3'}}><FaBell/></Button></Nav.Link>
+        <Nav.Link as={Link} to={"/notifications"}><Button variant="pills"  style={{ color: '#1458b3'}}><FaBell/></Button></Nav.Link>
           <Nav.Link><Button variant="outline-danger" onClick={()=>{logOut();}}>Log Out</Button></Nav.Link>
         </Nav>}
 
