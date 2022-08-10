@@ -13,6 +13,8 @@
      justify-content: space-around;
      flex-flow: wrap;
     box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0);
+
+    transition: 1s ease-out;
   
 }
 .notiLeft{
@@ -37,7 +39,7 @@
         /* box-shadow: 0.5px 0.5px 6px -1px rgba(0, 0, 0, 0.163);  */
         /* background-color: #dadada; */
         border-radius: 10px;
-        margin: 15px;
+        margin: 1px;
         border:  #bdbdbd ;
         border-width: 1px;
         /* padding: 15px; */
@@ -48,10 +50,10 @@
     /* box-shadow: 0.5px 0.5px 6px -1px rgba(0, 0, 0, 0.163);  */
     /* background-color: #d4d4d4; */
     border-radius: 10px;
-    margin: 15px;
+    margin: 1px;
     border:  #bdbdbd ;
     border-width: 1px;
-    padding: 15px;
+    padding: 1px;
     height: 300px auto;
     color: #1458b3;
 }
@@ -77,6 +79,35 @@
     box-shadow: 0.5px 0.5px 6px -1px black; 
     /* transform: translate(-5px); */
  }
+
+ .messageContent{
+    height:100px;
+    border-radius: 15px;
+    /* background-color: #d7d8da; */
+    margin: 15px;
+    padding: 10px;
+ }
+
+ .load {
+    border: 16px solid #b9b8b871;
+    border-radius: 50%;
+    border-top: 16px solid #1458b3;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 
  @media screen and (max-width: 600px) {
 
