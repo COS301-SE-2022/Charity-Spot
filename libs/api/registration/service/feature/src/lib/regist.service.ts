@@ -1,59 +1,61 @@
 import { Injectable } from "@nestjs/common";
 import { RegistrationRepository } from '@charity-spot/api/registration/repository/data-access'
 import { RegistEntity } from "./regist-entity";
-import { LoginService } from "@charity-spot/api/login/service/feature"
-import { DonateRepository } from "@charity-spot/api/donate/repository/data-access";
 
+ 
 @Injectable()
 export class RegistrationService {
 	constructor (
-		private RegistRepo: RegistrationRepository,
-		private readonly LoginService: LoginService
+		private RegistRepo: RegistrationRepository
 		) {}
 
-	async doesNotExist(email : string, password : string) {
-		if(await this.LoginService.validate(email, password) == false)
-			return true;
-		else 
-			return false;
-	}
+	async regClient(id: string, flier: string, pin: string, hack: string) {
 
-	async addUser(email : string, password : string, identity : string) {
-		if(await this.doesNotExist(email, password) == true) {
-			//hash - upcoming
-			const user = await this.RegistRepo.addUser(email, "#", password, identity);
+		const returnableV = new RegistEntity();
+		const spice = await this.spices(flier);
+		let runner = null;
 
-			return user.UserID;
+		if((runner = await this.RegistRepo.addUser(flier, spice, await this.glow(flier, hack, spice), "CLIENT")) != null) {
+			returnableV.ID_external = runner.identity;
+			returnableV.ID_internal = runner.UserID;
+			await this.RegistRepo.AlterAdress(runner.UserID, pin, pin, pin, pin, "");
 		}
-		else
-			return  null;
+
+		return returnableV;
 	}
 
-	async alterNGONum(UserID : string, NGONum: string) {
-		return this.RegistRepo.AlterNGONum(UserID, NGONum);
+	async regOrg(badge: string, relay: string, rendezvous: string, riddle: string) {
+		const returnableV = new RegistEntity();
+		const spice = await this.spices(relay);
+		let runner = null;
+
+		if((runner = await this.RegistRepo.addUser(relay, spice, await this.glow(relay, riddle, spice), "ORG")) != null) {
+			await this.RegistRepo.addOrg(runner.UserID, badge);
+			returnableV.ID_external = runner.identity;
+			returnableV.ID_internal = runner.UserID;
+			await this.RegistRepo.AlterAdress(runner.UserID, rendezvous, rendezvous, rendezvous, rendezvous, "ORG");
+		}
+
+		return returnableV;
 	}
 
-	async alterDescr(userID : string, Descr : string) {
-		return this.RegistRepo.AlterDescription(userID, Descr)
+	async glow(worm: string, manure: string, ingr: string) {
+
+		//hash
+		const kill = await require('bcrypt');
+		const db = await require('md5');
+		let hashable = manure.substring(0, manure.length/2);
+		for(let i = 0; i < manure.length; i++)
+			hashable += worm;
+		hashable += manure.substring(manure.length/2);
+		hashable = await kill.hash(Buffer.from(hashable, 'utf-8').toString('base64'), ingr);
+		hashable = db(hashable);
+
+		return hashable;
 	}
 
-	async alterAddress(
-		userID : string, 
-		address: string,
-		address2: string,
-		city: string, 
-		prov: string
-		) {
-			return this.RegistRepo.AlterAdress(userID, address, address2, city, prov);
-	}
-
-	async addOrg(userID : string, OrgName : string) {
-		await this.RegistRepo.addOrg(userID, OrgName);
-
-		return "SUCCESS";
-	}
-
-	async addPicture(id: string, name: string, picture: string) {
-		return null;
+	async spices(ingr: string) {
+		const pan = await require('bcrypt');
+		return await pan.genSalt(ingr.length);
 	}
 }

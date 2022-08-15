@@ -35,10 +35,10 @@ function Navigation() {
   }
 
   const checkID = () => {  
-    if(ID_EXT == "assist"){
+    if(ID_EXT === "ORG"){
       setAssist(true)
     }
-    else if(ID_EXT == "need"){
+    else if(ID_EXT === "CLIENT"){
       setNeed(true);
     }
     return false;
@@ -46,13 +46,22 @@ function Navigation() {
 
   function removeForeignCookie(aLink : string){
 
-    if(getCookie('foreignID') != undefined){
+    if(document.cookie.split(";").length > 0)
+      document.cookie.split(";").forEach((c) => {
+        document.cookie = c
+          .replace(/^ +/, "")
+          .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+      }); 
+    
+    //REDUNDENT
+    if(getCookie('foreignID') !== undefined){
       removeCookie('foreignID');
-      if(aLink == 'b'){
-        window.location.replace('/profile')
+      if(aLink === 'b'){
+        window.location.replace('/profile'); //NEEDED REGARDLESS OF REDUNDENCY
       }
     }
-    
+
+
   }
 
   useEffect(() => {
