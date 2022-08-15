@@ -34,5 +34,20 @@ export class HomeRepository {
 
   }
 
+  async getAllItems(){
+
+    return await this.prisma.donoItem.findMany({
+      select:
+      {
+        ItemName: true,
+        OrgID: true,
+        Type: true,
+        DonoLoc: true
+      }
+
+    });
+
+  }
+
   
 }

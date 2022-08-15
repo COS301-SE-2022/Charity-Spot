@@ -9,8 +9,9 @@ export class DonateRepository {
   async AddItem(itemName, orgID: string, quantity : number, Quality : quality, type: catagory)
   {
 
-    let tempDate = "tempDate";
-    let tempLoc = "tempLoc";
+    let tempDate = "3,1";
+    let tempLoc = "Pretoria";
+    let tempAvail = true;
 
     return await this.prisma.donoItem.create({
       
@@ -22,7 +23,8 @@ export class DonateRepository {
         Quality : Quality,
         Type : type,
         DonoDate: tempDate,
-        DonoLoc: tempLoc
+        DonoLoc: tempLoc,
+        ItemAvail: tempAvail
       }
     })
   }

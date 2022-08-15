@@ -10,6 +10,9 @@ import {ClientChat} from '@charity-spot/client/chat';
 import {ClientScheduleDelivery} from '@charity-spot/client/schedule-delivery'
 import {ClientItemRequest} from '@charity-spot/client/item-request'
 import {ClientItemRequestResults} from '@charity-spot/client/item-request-results'
+import {ClientChatHistory} from '@charity-spot/client/chat-history'
+import {ClientDeliveryScheduleInfo} from '@charity-spot/client/delivery-schedule-info'
+import {ClientNotification} from '@charity-spot/client/notification'
 
 function App() {
   return (
@@ -27,6 +30,9 @@ function App() {
           <Route path = "/scheduleDelivery" element = {<ClientScheduleDelivery/>}/>
           <Route path = "/itemRequest" element = {<ClientItemRequest/>}/>
           <Route path = "/itemRequestResults" element = {<ClientItemRequestResults/>}/>
+          <Route path = "/chatSessions" element = {<ClientChatHistory/>}/>
+          <Route path = "/deliverySchedule" element = {<ClientDeliveryScheduleInfo/>}/>
+          <Route path = "/notifications" element = {<ClientNotification/>}/>
         </Routes>
       </Router>
     </div>

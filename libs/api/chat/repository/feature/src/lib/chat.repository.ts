@@ -234,13 +234,22 @@ export class ChatRepository {
   }
 
   async GetUserForThreadList(id: string) {
-    return await this.prisma.user.findUnique({
+    /*return await this.prisma.user.findUnique({
       where: {
         UserID: id
       }, select: {
         email: true
       }
+    });*/
+    return await this.prisma.organisation.findUnique({
+      where: {
+        UserID: id
+      }, select: {
+        OrgName: true,
+        profilePicture: true
+      }
     });
+
   }
 
   //Remove all messages between two participants
@@ -260,4 +269,17 @@ export class ChatRepository {
 
     return u;
   }
+
+  async getChatName(u_id: string){
+    const u = await this.prisma.organisation.findUnique({
+      where: {
+        UserID: u_id
+      }, select: {
+        OrgName: true,
+      }
+    })
+
+    return u;
+  }
+  
 }

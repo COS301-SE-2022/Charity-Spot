@@ -60,6 +60,15 @@
       "@charity-spot/api/login/service/feature": [
         "libs/api/login/service/feature/src/index.ts"
       ],
+      "@charity-spot/api/notification/api/feature": [
+        "libs/api/notification/api/feature/src/index.ts"
+      ],
+      "@charity-spot/api/notification/repository/feature": [
+        "libs/api/notification/repository/feature/src/index.ts"
+      ],
+      "@charity-spot/api/notification/service/feature": [
+        "libs/api/notification/service/feature/src/index.ts"
+      ],
       "@charity-spot/api/organisation-profile/api/feature": [
         "libs/api/organisation-profile/api/feature/src/index.ts"
       ],
@@ -91,6 +100,12 @@
         "libs/api/shared/services/prisma/src/index.ts"
       ],
       "@charity-spot/client/chat": ["libs/client/chat/src/index.ts"],
+      "@charity-spot/client/chat-history": [
+        "libs/client/chat-history/src/index.ts"
+      ],
+      "@charity-spot/client/delivery-schedule-info": [
+        "libs/client/delivery-schedule-info/src/index.ts"
+      ],
       "@charity-spot/client/donate": ["libs/client/donate/src/index.ts"],
       "@charity-spot/client/home": ["libs/client/home/src/index.ts"],
       "@charity-spot/client/item-request": [
@@ -100,6 +115,9 @@
         "libs/client/item-request-results/src/index.ts"
       ],
       "@charity-spot/client/login": ["libs/client/login/src/index.ts"],
+      "@charity-spot/client/notification": [
+        "libs/client/notification/src/index.ts"
+      ],
       "@charity-spot/client/organisation-profile": [
         "libs/client/organisation-profile/src/index.ts"
       ],

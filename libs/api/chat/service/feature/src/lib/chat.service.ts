@@ -18,7 +18,7 @@ export class ChatService {
         //retrieve file from database 
         let orgID = null, clientID = null, data = null;
 
-        if(identify == "ORG") { orgID = from; clientID = to; }
+        if(identify == "assist") { orgID = from; clientID = to; }
         else { orgID = to; clientID = from; }
 
         if((data = await this.ChatRepository.getThread(orgID, clientID)) != null) {
@@ -37,7 +37,7 @@ export class ChatService {
         }
 
         //Notify recipient
-        if(identify == "ORG") 
+        if(identify == "assist") 
             this.ChatRepository.alertClient(orgID, clientID);
         else 
             this.ChatRepository.alertOrg(orgID, clientID);
@@ -52,7 +52,7 @@ export class ChatService {
         // retrieve file from database
         let orgID = null, clientID = null, data = null;
 
-        if(id == "ORG") { 
+        if(id == "assist") { 
             orgID = userID; clientID = with_ID; 
             returnableV.Reciever = clientID; returnableV.Sender = orgID;
             const threads = await this.ChatRepository.GetAllChatsOrg(orgID);
@@ -99,32 +99,41 @@ export class ChatService {
             returnableV.Threads = [];
 
         switch(id) {
-            case "ORG":
+            case "assist":
                 data = await this.ChatRepository.GetAllChatsOrg(userID);
+
+                console.log(data);
 
                 if(data != null)
                     for(const i of data) {
                         const ik = new ChatEntity();
                         const user = await this.ChatRepository.GetUserForThreadList(i.ClientID);
-                        ik.Sender = user.email;
-                        ik.Reciever = "";
-                        ik.Message = i.ClientID; 
+                        //ik.Sender = user.email;
+                        //ik.Reciever = "";
+                        //ik.Message = i.ClientID;
+                        ik.Sender = userID;
+                        ik.Reciever = i.ClientID;
+                        ik.Message = user.OrgName; 
 
                         returnableV.Threads.push(ik);
                     }
 
                 break;
 
-            case "CLIENT":
+            case "need":
                 data = await this.ChatRepository.GetAllChatsClient(userID);
+                //console.log(data);
 
                 if( data != null)
                 for(const i of data) {
                     const ik = new ChatEntity();
                     const user = await this.ChatRepository.GetOrgForThreadList(i.OrgID);
-                    ik.Sender = user.OrgName;
+                    /*ik.Sender = user.OrgName;
                     ik.Reciever = user.profilePicture;
-                    ik.Message = i.OrgID; 
+                    ik.Message = i.OrgID;*/
+                    ik.Sender = userID;
+                    ik.Reciever = i.OrgID;
+                    ik.Message = user.OrgName;  
 
                     returnableV.Threads.push(ik);
                 }
@@ -132,6 +141,19 @@ export class ChatService {
                 break;
         }
 
+        //console.log(returnableV);
+
         return returnableV
+    }
+
+    async getChatName(u_id: string){
+
+        let name = await this.ChatRepository.getChatName(u_id);
+
+        let temp = new ChatEntity();
+        temp.Message = name.OrgName;
+
+        return temp;
+
     }
 }
