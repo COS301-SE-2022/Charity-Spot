@@ -34,10 +34,10 @@ function Navigation() {
   }
 
   const checkID = () => {  
-    if(ID_EXT === "ORG"){
+    if(ID_EXT === "ASSIST"){
       setAssist(true)
     }
-    else if(ID_EXT === "CLIENT"){
+    else if(ID_EXT === "NEED"){
       setNeed(true);
     }
     return false;

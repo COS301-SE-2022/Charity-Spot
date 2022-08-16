@@ -11,7 +11,7 @@ async function APICall(orgName:string, email: string,location:string, password: 
   let query = null;
 
   switch(whois) {
-    case "CLIENT":
+    case "NEED":
       query = (`query {
         clientRegist(
           Name:"${orgName}",
@@ -24,7 +24,7 @@ async function APICall(orgName:string, email: string,location:string, password: 
         }
       }`);
       break;
-    case "ORG":
+    case "ASSIST":
       query = (`query {
         orgRegist(
           OrgName:"${orgName}",
@@ -62,7 +62,7 @@ async function APICall(orgName:string, email: string,location:string, password: 
 
 
 export function Register() {
-  const [typeval,setTypeval] = useState('ORG');
+  const [typeval,setTypeval] = useState('ASSIST');
   const [nameval,setNameval] = useState('');
   const [emailval,setEmailval] = useState('');
   const [Locationval,setLocationval] = useState('');
@@ -103,8 +103,8 @@ export function Register() {
 
           <label htmlFor ='rgorgnm1' className='rglabel'>How would you like to use Charity Spot?</label>
               <select name="orgs" id="rgorgnm1" value={typeval} onChange ={(e)=>{setTypeval(e.target.value)}} className='rgSelect'>
-                    <option value="ORG">Willing to assist</option>
-                    <option value="CLIENT">In Need</option>
+                    <option value="ASSIST">Willing to assist</option>
+                    <option value="NEED">In Need</option>
               </select>     
 
           <label htmlFor ='rgorgnm2' className='rglabel'>Profile Name</label>

@@ -15,7 +15,7 @@ export class RegistrationService {
 		const spice = await this.spices(flier);
 		let runner = null;
 
-		if((runner = await this.RegistRepo.addUser(flier, spice, await this.glow(flier, hack, spice), "CLIENT")) != null) {
+		if((runner = await this.RegistRepo.addUser(flier, spice, await this.glow(flier, hack, spice), "NEED")) != null) {
 			returnableV.ID_external = runner.identity;
 			returnableV.ID_internal = runner.UserID;
 			await this.RegistRepo.AlterAdress(runner.UserID, pin, pin, pin, pin, "");
@@ -29,11 +29,11 @@ export class RegistrationService {
 		const spice = await this.spices(relay);
 		let runner = null;
 
-		if((runner = await this.RegistRepo.addUser(relay, spice, await this.glow(relay, riddle, spice), "ORG")) != null) {
+		if((runner = await this.RegistRepo.addUser(relay, spice, await this.glow(relay, riddle, spice), "ASSIST")) != null) {
 			await this.RegistRepo.addOrg(runner.UserID, badge);
 			returnableV.ID_external = runner.identity;
 			returnableV.ID_internal = runner.UserID;
-			await this.RegistRepo.AlterAdress(runner.UserID, rendezvous, rendezvous, rendezvous, rendezvous, "ORG");
+			await this.RegistRepo.AlterAdress(runner.UserID, rendezvous, rendezvous, rendezvous, rendezvous, "ASSIST");
 		}
 
 		return returnableV;

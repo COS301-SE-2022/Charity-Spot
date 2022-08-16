@@ -10,7 +10,7 @@ export class ChatResolver {
     async Send(
         @Args("receiverID") to: string,
         @Args("senderID") from: string,
-        @Args("sentBy") sender: "ORG" | "CLIENT",
+        @Args("sentBy") sender: "ASSIST" | "NEED",
         @Args("message") message: string
     ) {
         const date = new Date();
@@ -28,7 +28,7 @@ export class ChatResolver {
     async RetrieveMessages(
         @Args("userID") u_id: string,
         @Args("with_ID") w_id: string,
-        @Args("whois") identification: "ORG" | "CLIENT"
+        @Args("whois") identification: "ASSIST" | "NEED"
     ) {
         return this.ChatService.RetrieveThread(u_id, w_id, identification);
     }
