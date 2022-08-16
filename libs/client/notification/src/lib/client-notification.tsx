@@ -33,13 +33,24 @@ async function fetchNotifications(user_id: string, whois: string) {
     }
   }`;
   const notifications = await APICall(query);
-  for(const thre of notifications.Threads) {
+  for(const thre of notifications.data.notifications.Threads) {
     const userDetails = fetchUser(thre.Reciever);
+    //then you have a message (thread) and the information of the other party that is involved
   }
+
+  return null;
 }
 
 async function fetchUser(receiver_id: string) {
-  const query = ``;
+  const query = `receiver(receiver_id: "${receiver_id}") {
+    ID
+    Name
+    ProfilePicture
+  }`;
+
+  const receiver = await APICall(query);
+  
+  return receiver.data.receiver;
 }
 
 
