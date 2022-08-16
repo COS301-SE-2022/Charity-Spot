@@ -1,0 +1,155 @@
+.notiMain
+{
+    background-color: rgb(224, 224, 224);
+    border-radius: 15px;
+    height: 200px auto;
+    width: 70%;
+  
+
+    margin: 1.5rem auto;
+  
+     display: flex;
+     flex-direction: row;
+     justify-content: space-around;
+     flex-flow: wrap;
+    box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0);
+
+    transition: 1s ease-out;
+  
+}
+.notiLeft{
+  
+    height: 250px;
+    width: 25%;
+    /* background-color: rgb(255, 146, 146); */
+    border-radius: 10px;
+    /* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0); */
+    /* text-align: center; */
+}
+.notiRight{
+   
+    height: 250px;
+    width: 50%;
+    /* background-color: rgb(222, 222, 222); */
+    border-radius: 10px;
+    /* box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0); */
+    /* text-align: center; */
+}
+.noticov{
+        /* box-shadow: 0.5px 0.5px 6px -1px rgba(0, 0, 0, 0.163);  */
+        /* background-color: #dadada; */
+        border-radius: 10px;
+        margin: 1px;
+        border:  #bdbdbd ;
+        border-width: 1px;
+        /* padding: 15px; */
+        height: 300px auto;
+        color: #6d6d6e;
+}
+.noticov2{
+    /* box-shadow: 0.5px 0.5px 6px -1px rgba(0, 0, 0, 0.163);  */
+    /* background-color: #d4d4d4; */
+    border-radius: 10px;
+    margin: 1px;
+    border:  #bdbdbd ;
+    border-width: 1px;
+    padding: 1px;
+    height: 300px auto;
+    color: #1458b3;
+}
+#notiprofile-pic
+{
+    height: 120px;
+    width: 120px;
+   margin: 10px;
+}
+#notiMark{
+    width: 25%;
+    background: #1458b3;
+    color: #ffff;
+    border: none;
+    cursor: pointer;
+    padding: 0.4rem 1rem;
+    transition: all 0.3 ease;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+#notiMark:hover{
+    transition: 0.2s ease-in;
+    box-shadow: 0.5px 0.5px 6px -1px black; 
+    /* transform: translate(-5px); */
+ }
+
+ .messageContent{
+    height:100px;
+    border-radius: 15px;
+    /* background-color: #d7d8da; */
+    margin: 15px;
+    padding: 10px;
+ }
+
+ .load {
+    border: 16px solid #b9b8b871;
+    border-radius: 50%;
+    border-top: 16px solid #1458b3;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+ @media screen and (max-width: 600px) {
+
+    .notiMain
+    {
+
+        height: 200px auto;
+        width: 70%;
+      
+      
+    }
+    .notiLeft{
+      
+        height: 150px;
+        width: 100%;
+
+    }
+    .notiRight{
+       
+        height: 250px;
+        width: 100%;
+
+    }
+    .noticov{
+            border-radius: 10px;
+            margin: 15px;
+            border:  #bdbdbd ;
+            border-width: 1px;
+
+            height: 300px auto;
+
+    }
+
+    #notiprofile-pic
+    {
+        height: 110px;
+        width: 110px;
+       margin: 10px;
+    }
+    #notiMark{
+        width: 135px;
+
+    }
+
+}
