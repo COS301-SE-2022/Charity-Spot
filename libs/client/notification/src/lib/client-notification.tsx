@@ -6,6 +6,34 @@ import "./notifiii.css";
 export interface ClientNotificationProps {}
 
 export function ClientNotification(props: ClientNotificationProps) {
+
+  async function APICall (user_id: string, whois: string) {
+    //may need to be refined - this is just a template
+    let result = null;
+
+    const query = `notifications(user_id: "${user_id}", whois: "${whois}") {
+      ID
+      Threads {
+        Reciever
+      }
+    }`;
+
+    await fetch('http://localhost:3333/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        query
+      })
+    }).then(r => r.json()).then(data => 
+            result = data
+     );
+
+     return JSON.parse(JSON.stringify(result)).Threads;
+  }
+
   return (
     <div>
             <br/>
