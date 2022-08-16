@@ -164,7 +164,7 @@ export function Profile() {
 
       //console.log(Internal);
       
-      //if(Internal == "ORG") {
+      //if(Internal == "ASSIST") {
         setOName(Name);
         setOEmail(Email);
         setODate(Date);
@@ -175,7 +175,7 @@ export function Profile() {
 
       let currType = getCookie("ID_EXT")
 
-      if(currType == "need"){
+      if(currType == "NEED"){
         setdelButton(false);
       }
 

@@ -82,7 +82,7 @@ export class RegistrationRepository {
         }
       });
       
-      if(resort == "ORG") 
+      if(resort == "ASSIST") 
         u = await this.prisma.organisation.update({
         where:
         {
@@ -96,7 +96,7 @@ export class RegistrationRepository {
     }
     else{
 
-      if(resort == "ORG")
+      if(resort == "ASSIST")
         u = await this.prisma.organisation.update({
           where:
           {
