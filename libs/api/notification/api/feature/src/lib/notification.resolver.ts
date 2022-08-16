@@ -7,8 +7,11 @@ export class NotificationResolver {
     constructor(private readonly NotificationService: NotificationService) {}
 
     @Query(() => NotificationEntity)
-    async TestNotification(){
-        return await this.NotificationService.Test();
+    async notifications(
+        @Args("user_id") u_id: string,
+        @Args("whois") id: "ASSIST" | "NEED"
+    ) {
+        return await this.NotificationService.getNotifications(u_id, id);
     }
 
 }

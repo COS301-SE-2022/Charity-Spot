@@ -197,6 +197,7 @@ export class ChatRepository {
       select:
       {
         ClientID :true,
+        AlertOrg: true
       }
     })
 
@@ -214,7 +215,8 @@ export class ChatRepository {
       },
       select:
       {
-        OrgID :true
+        OrgID :true,
+        AlertClient: true
       }
     })
 
