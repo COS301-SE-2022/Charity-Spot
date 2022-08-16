@@ -14,4 +14,11 @@ export class NotificationResolver {
         return await this.NotificationService.getNotifications(u_id, id);
     }
 
+    @Query(() => NotificationEntity)
+    async receiver(
+        @Args("receiver_id") r_id: string
+    ) {
+        return await this.NotificationService.getReceiver(r_id);
+    }
+
 }

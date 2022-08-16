@@ -4,8 +4,14 @@ import { ChatEntity } from '@charity-spot/api/chat/service/feature';
 @ObjectType()
 export class NotificationEntity {
 
-    @Field({ nullable: true})
+    @Field({nullable: true})
     ID: string
+
+    @Field({nullable: true})
+    Name: string
+
+    @Field({nullable: true})
+    ProfilePicture: string
 
     @Field(() => [ChatEntity], {nullable: true})
     Threads: ChatEntity[]

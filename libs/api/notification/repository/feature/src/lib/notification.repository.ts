@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 import { ChatRepository } from '@charity-spot/api/chat/repository/feature';
-import { Console } from 'console';
 
 @Injectable()
 export class NotificationRepository {
@@ -19,6 +18,10 @@ export class NotificationRepository {
     }
     
     return messages;
+  }
+
+  async fetchReceiver(r_id: string) {
+    return await this.ChatRepository.GetThreadList(r_id);
   }
 
   //fetch scheduled deliveries that are not seen

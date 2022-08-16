@@ -39,4 +39,16 @@ export class NotificationService {
         return returnable;
     }
 
+    async getReceiver(r_id: string) {
+        let returnable = null, receiver = null;
+        if((receiver = await this.NotificationRepository.fetchReceiver(r_id)) != null) {
+            returnable = new NotificationEntity();
+            returnable.ID = r_id;
+            returnable.Name = receiver.OrgName;
+            returnable.ProfilePicture = receiver.profilePicture;
+        }
+
+        return returnable
+    }
+
 }

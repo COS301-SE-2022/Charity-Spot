@@ -5,35 +5,45 @@ import "./notifiii.css";
 /* eslint-disable-next-line */
 export interface ClientNotificationProps {}
 
-export function ClientNotification(props: ClientNotificationProps) {
+async function APICall (query_string: string) {
+  //may need to be refined - this is just a template
+  let result = null;
 
-  async function APICall (user_id: string, whois: string) {
-    //may need to be refined - this is just a template
-    let result = null;
+  await fetch('http://localhost:3333/graphql', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+    body: JSON.stringify({
+      query_string
+    })
+  }).then(r => r.json()).then(data => 
+          result = data
+   );
 
-    const query = `notifications(user_id: "${user_id}", whois: "${whois}") {
-      ID
-      Threads {
-        Reciever
-      }
-    }`;
+   return JSON.parse(JSON.stringify(result));
+}
 
-    await fetch('http://localhost:3333/graphql', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      body: JSON.stringify({
-        query
-      })
-    }).then(r => r.json()).then(data => 
-            result = data
-     );
-
-     return JSON.parse(JSON.stringify(result)).Threads;
+async function fetchNotifications(user_id: string, whois: string) {
+  const query = `notifications(user_id: "${user_id}", whois: "${whois}") {
+    ID
+    Threads {
+      Reciever
+    }
+  }`;
+  const notifications = await APICall(query);
+  for(const thre of notifications.Threads) {
+    const userDetails = fetchUser(thre.Reciever);
   }
+}
 
+async function fetchUser(receiver_id: string) {
+  const query = ``;
+}
+
+
+export function ClientNotification(props: ClientNotificationProps) {
   return (
     <div>
             <br/>
