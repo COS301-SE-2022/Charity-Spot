@@ -2,14 +2,18 @@ import { Injectable } from '@nestjs/common';
 import { NotificationEntity } from './notification.entity'
 import { NotificationRepository } from '@charity-spot/api/notification/repository/feature'
 import { ChatEntity } from '@charity-spot/api/chat/service/feature';
+import { ScheduleDeliveryEntity} from '@charity-spot/api/schedule-delivery/service/feature'
 
 @Injectable()
 export class NotificationService {
     constructor(private NotificationRepository: NotificationRepository) {}
 
     async getNotifications(u_id: string, id: string) {
-        const messages = await this.NotificationRepository.fetchNotifications(u_id, id);
+        const noti = await this.NotificationRepository.fetchNotifications(u_id, id);
         const returnable = new NotificationEntity();
+
+        const messages = noti.notM;
+        const del = noti.notD;
 
         if(messages != null) {
             returnable.Threads = [];
@@ -35,7 +39,18 @@ export class NotificationService {
             }
         }
 
-        console.log(returnable);
+        if(del != null){
+            returnable.Delivery = [];
+            for(const d of del){
+                const delN = new ScheduleDeliveryEntity();
+                delN.id_1 = d.OrgID;
+                delN.id_2 = d.ItemID;
+                returnable.Delivery.push(delN);
+            }
+        }
+        else{
+            returnable.Delivery = [];
+        }
 
         returnable.ID = u_id;
         return returnable;

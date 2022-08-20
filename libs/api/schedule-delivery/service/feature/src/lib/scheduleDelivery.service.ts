@@ -15,12 +15,14 @@ export class ScheduleDeliveryService {
     ) {
         // save data in database
 
-        this.ScheduleDeliveryRepository.CreateShedule(ite_id, assis_id, location, date, "1", needing_id)
+        await this.ScheduleDeliveryRepository.CreateShedule(ite_id, assis_id, location, date, "1", needing_id)
 
         const returnableV = new ScheduleDeliveryEntity();
             returnableV.id_1 = assis_id;
             returnableV.id_2 = needing_id;
             returnableV.id_item = ite_id;
+
+        await this.ScheduleDeliveryRepository.alertClient(assis_id, needing_id, ite_id);
 
         return returnableV;
     }
@@ -56,8 +58,6 @@ export class ScheduleDeliveryService {
 
     async getDelSchedule( Userid : string, type : string){
 
-        console.log(Userid);
-
         let schedule = await this.ScheduleDeliveryRepository.getDelSchedule(Userid, type);
 
         let returnSchedule = [];
@@ -71,6 +71,7 @@ export class ScheduleDeliveryService {
             }
             else if(type == "NEED"){
                 temp.id_1 = schedule[i].OrgID;
+                await this.ScheduleDeliveryRepository.negateAlertClient(schedule[i].OrgID, Userid, schedule[i].ItemID)
             }
             //temp.id_1 = schedule[i].ClientID;
             temp.itemID = schedule[i].ItemID;

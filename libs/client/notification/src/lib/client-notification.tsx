@@ -35,6 +35,10 @@ async function fetchNotifications(user_id: any, whois: any) {
       Threads {
         Reciever
       }
+      Delivery{
+        id_1
+        id_2
+      }
     }
   }`;
 
@@ -71,6 +75,7 @@ export function ClientNotification() {
     ID : string = "";
     Name : string = "";
     Picture : string = "";
+    Type : string = "";
   }
 
   async function getActiveNot(){
@@ -79,6 +84,8 @@ export function ClientNotification() {
     const uType = getCookie("ID_EXT");
 
     let notifications = await fetchNotifications(uID, uType);
+
+    //console.log(notifications);
 
     let activeList : any = [];
 
@@ -89,6 +96,20 @@ export function ClientNotification() {
       temp.ID = userDetails.ID;
       temp.Name = userDetails.Name;
       temp.Picture = userDetails.ProfilePicture;
+      temp.Type = "message";
+
+      activeList.push(temp);
+
+    }
+
+    for(const thre of notifications.data.notifications.Delivery) {
+      const userDetails = await fetchUser(thre.id_1);
+
+      let temp = new activeNotC();
+      temp.ID = userDetails.ID;
+      temp.Name = userDetails.Name;
+      temp.Picture = userDetails.ProfilePicture;
+      temp.Type = "delivery";
 
       activeList.push(temp);
 
@@ -124,12 +145,15 @@ export function ClientNotification() {
                   <div > <div className='noticov2'>
                     <div className='messageContent'>
                     <div className='noticov'><h2>{A.Name}</h2></div>
-                    <h5 >{A.Name} sent a message</h5></div>
+                    {A.Type == "message" && <h5 >{A.Name} sent a message</h5>}
+                    {A.Type == "delivery" && <h5 >{A.Name} scheduled a delivery</h5>}
+                    </div>
                     </div>
                     </div>
                   <div><h4></h4></div>
                 {/*<button id='notiMark'>Mark Read <FaCheck/></button>*/}
-                <Link to ='/chat' className='rgLink'><button id='chatHistGo' onClick={()=>{setSelection(A.ID);}}>View <FaBinoculars/></button></Link>
+                {A.Type == "message" &&<Link to ='/chat' className='rgLink'><button id='chatHistGo' onClick={()=>{setSelection(A.ID);}}>View <FaBinoculars/></button></Link>}
+                {A.Type == "delivery" &&<Link to ='/deliverySchedule' className='rgLink'><button id='chatHistGo' onClick={()=>{setSelection(A.ID);}}>View <FaBinoculars/></button></Link>}
                 </div>
               </div>
 
