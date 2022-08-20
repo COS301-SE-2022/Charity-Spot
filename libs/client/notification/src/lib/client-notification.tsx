@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import { FaCheck, FaBinoculars } from 'react-icons/fa';
 import "./notifiii.css";
 
-import {getCookie} from 'typescript-cookie'
+import {getCookie, setCookie} from 'typescript-cookie'
 
 import { useEffect, useState } from 'react';
 
@@ -40,14 +40,7 @@ async function fetchNotifications(user_id: any, whois: any) {
 
   console.log(query);
 
-  const notifications = await APICall(query);
-  for(const thre of notifications.data.notifications.Threads) {
-    const userDetails = await fetchUser(thre.Reciever);
-    //then you have a message (thread) and the information of the other party that is involved
-    console.log(userDetails);
-  }
-
-  return null;
+  return await APICall(query);
 }
 
 async function fetchUser(receiver_id: string) {
@@ -65,6 +58,10 @@ async function fetchUser(receiver_id: string) {
   return receiver.data.receiver;
 }
 
+function setSelection(ID : any){
+  setCookie("foreignID", ID);
+}
+
 
 export function ClientNotification() {
 
@@ -72,6 +69,8 @@ export function ClientNotification() {
 
   class activeNotC{
     ID : string = "";
+    Name : string = "";
+    Picture : string = "";
   }
 
   async function getActiveNot(){
@@ -79,9 +78,23 @@ export function ClientNotification() {
     const uID = getCookie("ID");
     const uType = getCookie("ID_EXT");
 
-    console.log(uID, uType);
+    let notifications = await fetchNotifications(uID, uType);
 
-    let active = await fetchNotifications(uID, uType);
+    let activeList : any = [];
+
+    for(const thre of notifications.data.notifications.Threads) {
+      const userDetails = await fetchUser(thre.Reciever);
+      
+      let temp = new activeNotC();
+      temp.ID = userDetails.ID;
+      temp.Name = userDetails.Name;
+      temp.Picture = userDetails.ProfilePicture;
+
+      activeList.push(temp);
+
+    }
+
+    addactiveNot(activeList);
 
   }
 
@@ -93,6 +106,11 @@ export function ClientNotification() {
     <div>
             <br/>
             <h2 style={{'color':'#1458b3'}}>Notifications</h2>
+
+            {activeNot.map(function(A){
+
+              return(
+
               <div className='notiMain'>
                 <div className='notiLeft'>
                   <br/><br/>
@@ -105,17 +123,20 @@ export function ClientNotification() {
                   
                   <div > <div className='noticov2'>
                     <div className='messageContent'>
-                    <div className='noticov'><h2>Nandos</h2></div>
-                    <h5 >Nandos sent a message</h5></div>
+                    <div className='noticov'><h2>{A.Name}</h2></div>
+                    <h5 >{A.Name} sent a message</h5></div>
                     </div>
                     </div>
                   <div><h4></h4></div>
-                <button id='notiMark'>Mark Read <FaCheck/></button>
-                <button id='chatHistGo'>View <FaBinoculars/></button>
+                {/*<button id='notiMark'>Mark Read <FaCheck/></button>*/}
+                <Link to ='/chat' className='rgLink'><button id='chatHistGo' onClick={()=>{setSelection(A.ID);}}>View <FaBinoculars/></button></Link>
                 </div>
-                
               </div>
+
+            )})}
+
             <br/>
+
     </div>
   );
 }
