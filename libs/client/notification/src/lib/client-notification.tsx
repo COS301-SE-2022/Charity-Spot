@@ -5,6 +5,55 @@ import "./notifiii.css";
 /* eslint-disable-next-line */
 export interface ClientNotificationProps {}
 
+async function APICall (query_string: string) {
+  //may need to be refined - this is just a template
+  let result = null;
+
+  await fetch('http://localhost:3333/graphql', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+    body: JSON.stringify({
+      query_string
+    })
+  }).then(r => r.json()).then(data => 
+          result = data
+   );
+
+   return JSON.parse(JSON.stringify(result));
+}
+
+async function fetchNotifications(user_id: string, whois: string) {
+  const query = `notifications(user_id: "${user_id}", whois: "${whois}") {
+    ID
+    Threads {
+      Reciever
+    }
+  }`;
+  const notifications = await APICall(query);
+  for(const thre of notifications.data.notifications.Threads) {
+    const userDetails = fetchUser(thre.Reciever);
+    //then you have a message (thread) and the information of the other party that is involved
+  }
+
+  return null;
+}
+
+async function fetchUser(receiver_id: string) {
+  const query = `receiver(receiver_id: "${receiver_id}") {
+    ID
+    Name
+    ProfilePicture
+  }`;
+
+  const receiver = await APICall(query);
+  
+  return receiver.data.receiver;
+}
+
+
 export function ClientNotification(props: ClientNotificationProps) {
   return (
     <div>
