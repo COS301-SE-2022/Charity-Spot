@@ -7,44 +7,62 @@ import Bgpic from '../../../shared/assets/Bgpic.png'
 
 import './register.css';
 
-async function APICall(orgName:string, email: string,location:string, password: string, identity: string, picture :any){
+async function APICall(orgName:string, email: string,location:string, password: string, whois: string){
+  let query = null;
 
-  const query = (`query {
-    registerORG(
-      org_Name:"${orgName}",
-      email: "${email}",
-      location: "${location}",
-      password: "${password}",
-      identity: "${identity}",
-      picture: "${picture}"
-    ){
-      ID
-    }
-  }`);
+  switch(whois) {
+    case "NEED":
+      query = (`query {
+        clientRegist(
+          Name:"${orgName}",
+          Email: "${email}",
+          Location: "${location}",
+          Password: "${password}"
+        ){
+          ID_internal
+          ID_external
+        }
+      }`);
+      break;
+    case "ASSIST":
+      query = (`query {
+        orgRegist(
+          OrgName:"${orgName}",
+          OrgEmail: "${email}",
+          OrgLocation: "${location}",
+          OrgPassword: "${password}"
+        ){
+          ID_internal
+          ID_external
+        }
+      }`)
+      break;
 
-  console.log(query);
-    
-       let All_data = "";
+      default:
+          query = '';
+  }
+
+  let All_data = "";
+
+  await fetch('http://localhost:3333/graphql', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          query
+        })
+    }).then(r => r.json()).then(data => 
+      All_data = data
+    );
   
-       await fetch('http://localhost:3333/graphql', {
-             method: 'POST',
-             headers: {
-               'Content-Type': 'application/json',
-               'Accept': 'application/json',
-             },
-             body: JSON.stringify({
-               query
-             })
-          }).then(r => r.json()).then(data => 
-            All_data = data
-            );
-    
-         return JSON.stringify(All_data);
-
+  return JSON.stringify(All_data);
 }
 
+
 export function Register() {
-  const [typeval,setTypeval] = useState('assist');
+  const [typeval,setTypeval] = useState('ASSIST');
   const [nameval,setNameval] = useState('');
   const [emailval,setEmailval] = useState('');
   const [Locationval,setLocationval] = useState('');
@@ -81,9 +99,9 @@ export function Register() {
         return;
       }
       
-      const response = JSON.parse(await APICall(nameval, emailval, Locationval, passval, typeval, imgBase64));
+      const response = JSON.parse(await APICall(nameval, emailval, Locationval, passval, typeval));
       
-      let ID = response.data.registerORG.ID;
+      
   
       //document.cookie = "ID="+ID;
       window.location.href = '/login';
@@ -105,8 +123,8 @@ export function Register() {
 
           <label htmlFor ='rgorgnm1' className='rglabel'>How would you like to use Charity Spot?</label>
               <select name="orgs" id="rgorgnm1" value={typeval} onChange ={(e)=>{setTypeval(e.target.value)}} className='rgSelect'>
-                    <option value="assist">Willing to assist</option>
-                    <option value="need">In Need</option>
+                    <option value="ASSIST">Willing to assist</option>
+                    <option value="NEED">In Need</option>
               </select>     
 
           <label htmlFor ='rgorgnm2' className='rglabel'>Profile Name</label>

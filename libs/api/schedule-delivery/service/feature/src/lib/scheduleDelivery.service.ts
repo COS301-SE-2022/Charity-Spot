@@ -66,10 +66,10 @@ export class ScheduleDeliveryService {
 
             let temp = new ScheduleDeliveryEntity();
 
-            if(type == "assist"){
+            if(type == "ASSIST"){
                 temp.id_1 = schedule[i].ClientID;
             }
-            else if(type == "need"){
+            else if(type == "NEED"){
                 temp.id_1 = schedule[i].OrgID;
             }
             //temp.id_1 = schedule[i].ClientID;

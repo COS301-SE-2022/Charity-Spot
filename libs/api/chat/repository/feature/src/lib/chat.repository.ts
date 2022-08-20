@@ -197,6 +197,7 @@ export class ChatRepository {
       select:
       {
         ClientID :true,
+        AlertOrg: true
       }
     })
 
@@ -214,7 +215,8 @@ export class ChatRepository {
       },
       select:
       {
-        OrgID :true
+        OrgID :true,
+        AlertClient: true
       }
     })
 
@@ -222,34 +224,34 @@ export class ChatRepository {
   }
 
   //misc
-  async GetOrgForThreadList(id: string) {
-    return await this.prisma.organisation.findUnique({
-      where: {
-        UserID: id
-      }, select: {
-        OrgName: true,
-        profilePicture: true
-      }
-    });
-  }
+  async GetThreadList(id: string) {
 
-  async GetUserForThreadList(id: string) {
-    /*return await this.prisma.user.findUnique({
-      where: {
-        UserID: id
-      }, select: {
-        email: true
-      }
-    });*/
-    return await this.prisma.organisation.findUnique({
-      where: {
-        UserID: id
-      }, select: {
-        OrgName: true,
-        profilePicture: true
-      }
-    });
+    //if(table == "org"){
 
+      return await this.prisma.organisation.findUnique({
+        where: {
+          UserID: id
+        }, select: {
+          OrgName: true,
+          profilePicture: true
+        }
+      });
+
+    /*}
+    else if(table == "user"){
+
+      return await this.prisma.user.findUnique({
+        where: {
+          UserID: id
+        }, select: {
+          email: true
+        }
+      });
+
+    }*/
+
+    return null;
+    
   }
 
   //Remove all messages between two participants

@@ -14,7 +14,7 @@ export class OrganisationService {
 
 
         //build up
-        if(user.identity == "ORG") {
+        if(user.identity == "ASSIST") {
             const addr = await this.OrganisationRepository.getAdress(userID);
             const org = await this.OrganisationRepository.getOrg(userID);
             date = (await this.OrganisationRepository.getDateCreated(userID)).dateCreated;
@@ -24,7 +24,7 @@ export class OrganisationService {
             organisationProfile.Date = date.toDateString();
             organisationProfile.Location = 
                 addr.Address;
-            organisationProfile.Internal = "ORG";
+            organisationProfile.Internal = "ASSIST";
         } else {
             organisationProfile.Email = user.email;
             organisationProfile.Internal = user.identity;

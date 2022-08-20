@@ -52,7 +52,7 @@ export class RegistrationRepository {
     return u;
   }
 
-  async AlterAdress(UserID : string,address:string,address2:string,city:string,prov:string)
+  async AlterAdress(UserID : string,address:string,address2:string,city:string,prov:string, resort: string)
   {
     let u = null;
 
@@ -82,29 +82,31 @@ export class RegistrationRepository {
         }
       });
       
-      u = await this.prisma.organisation.update({
-      where:
-      {
-        UserID:UserID
-      },
-      data:
-      {
-        AddressID:a.AddressID
-      }
-    })
+      //if(resort == "ASSIST") 
+        u = await this.prisma.organisation.update({
+          where:
+          {
+            UserID:UserID
+          },
+          data:
+          {
+            AddressID:a.AddressID
+          }
+        })
     }
     else{
 
-    u = await this.prisma.organisation.update({
-      where:
-      {
-        UserID:UserID
-      },
-      data:
-      {
-        AddressID:a.AddressID
-      }
-    });
+      //if(resort == "ASSIST")
+        u = await this.prisma.organisation.update({
+          where:
+          {
+            UserID:UserID
+          },
+          data:
+          {
+            AddressID:a.AddressID
+          }
+        });
 
     }
 

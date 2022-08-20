@@ -3,9 +3,8 @@ import {Link} from 'react-router-dom'
 import {Navbar,Nav} from 'react-bootstrap'
 import CS from '../../../../libs/client/shared/assets/CS.png'
 import './navbarrr.css';
-
+import { FaBell, FaSignOutAlt } from 'react-icons/fa';
 import Button from 'react-bootstrap/Button';
-
 import { getCookie, removeCookie} from 'typescript-cookie'
 
 const ID = getCookie('ID');
@@ -35,10 +34,10 @@ function Navigation() {
   }
 
   const checkID = () => {  
-    if(ID_EXT == "assist"){
+    if(ID_EXT === "ASSIST"){
       setAssist(true)
     }
-    else if(ID_EXT == "need"){
+    else if(ID_EXT === "NEED"){
       setNeed(true);
     }
     return false;
@@ -46,13 +45,22 @@ function Navigation() {
 
   function removeForeignCookie(aLink : string){
 
-    if(getCookie('foreignID') != undefined){
+    //if(document.cookie.split(";").length > 0)
+      //document.cookie.split(";").forEach((c) => {
+        //document.cookie = c
+          //.replace(/^ +/, "")
+          //.replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+      //});*/
+    
+    //REDUNDENT
+    if(getCookie('foreignID') !== undefined){
       removeCookie('foreignID');
-      if(aLink == 'b'){
-        window.location.replace('/profile')
+      if(aLink === 'b'){
+        window.location.replace('/profile'); //NEEDED REGARDLESS OF REDUNDENCY
       }
     }
-    
+
+
   }
 
   useEffect(() => {
@@ -85,6 +93,7 @@ function Navigation() {
         </Nav>
 
         { log && <Nav style={{ backgroundColor: '#dcdfe3'}} className="ms-auto">
+        <Nav.Link as={Link} to={"/notifications"}><Button variant="pills"  style={{ color: '#1458b3'}}><FaBell/></Button></Nav.Link>
           <Nav.Link><Button variant="outline-danger" onClick={()=>{logOut();}}>Log Out</Button></Nav.Link>
         </Nav>}
 

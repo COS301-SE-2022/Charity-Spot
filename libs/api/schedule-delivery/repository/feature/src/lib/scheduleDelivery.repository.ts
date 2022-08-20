@@ -159,7 +159,7 @@ export class ScheduleDeliveryRepository {
 
     let u = null;
 
-    if(type=="assist"){
+    if(type=="ASSIST"){
 
       u = await this.prisma.delivery.findMany({
         select:
@@ -177,7 +177,7 @@ export class ScheduleDeliveryRepository {
       });
 
     }
-    else if(type=="need"){
+    else if(type=="NEED"){
 
       u = await this.prisma.delivery.findMany({
         select:

@@ -8,8 +8,15 @@ export class LoginService {
 
     async validate(email : string, password : string) {
         if(await this.LoginRepository.emailExists(email)){
-            //return await this.LoginRepository.validateLogin(email, await this.glow_inv(email, password));
-            return await this.LoginRepository.validateLogin(email, password);
+            let u = null; 
+
+            if((u = await this.LoginRepository.validateLogin(email)) != null) {
+                const hotplate = await this.glow_inv(email, password, u.passwordSalt);
+
+                if(hotplate === u.password)
+                    return u;
+                else return false;
+            }
         }
         else
             return false;
@@ -29,7 +36,18 @@ export class LoginService {
         return null;
     }
 
-    async glow_inv(worm: string, menure: string) {
-        return worm + menure;
+    async glow_inv(worm: string, manure: string, ingr: string) {
+        
+        //inverse
+		const revive = await require('bcrypt');
+		const bd_ = await require('md5');
+		let inv = manure.substring(0, manure.length/2);
+		for(let i = 0; i < manure.length; i++)
+			inv += worm;
+        inv += manure.substring(manure.length/2);
+        inv = await revive.hash(Buffer.from(inv, 'utf-8').toString('base64'), ingr);
+        inv = bd_(inv);
+
+        return inv;
     }
 }
