@@ -13,6 +13,7 @@ import { ApiChatApiFeatureModule } from '@charity-spot/api/chat/api/feature'
 import { ApiScheduleDeliveryApiFeatureModule } from '@charity-spot/api/schedule-delivery/api/feature'
 import { ApiItemRequestApiFeatureModule } from '@charity-spot/api/item-request/api/feature'
 import { ApiNotificationApiFeatureModule } from '@charity-spot/api/notification/api/feature'
+import { ApiCommentRatingApiFeatureModule } from '@charity-spot/api/comment-rating/api/feature';
 
 
 @Module({
@@ -30,6 +31,7 @@ import { ApiNotificationApiFeatureModule } from '@charity-spot/api/notification/
     ApiScheduleDeliveryApiFeatureModule,
     ApiItemRequestApiFeatureModule,
     ApiNotificationApiFeatureModule,
+    ApiCommentRatingApiFeatureModule,
     ConfigModule.forRoot()
   ]
 })
