@@ -1,1 +1,1 @@
-export * from './lib/api-comment-rating-repository-data-access.module';
+export * from './lib/commentRating.repository'
