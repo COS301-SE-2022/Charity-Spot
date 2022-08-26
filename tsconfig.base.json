@@ -24,6 +24,15 @@
       "@charity-spot/api/chat/service/feature": [
         "libs/api/chat/service/feature/src/index.ts"
       ],
+      "@charity-spot/api/comment-rating/api/feature": [
+        "libs/api/comment-rating/api/feature/src/index.ts"
+      ],
+      "@charity-spot/api/comment-rating/repository/data-access": [
+        "libs/api/comment-rating/repository/data-access/src/index.ts"
+      ],
+      "@charity-spot/api/comment-rating/service/feature": [
+        "libs/api/comment-rating/service/feature/src/index.ts"
+      ],
       "@charity-spot/api/donate/api/feature": [
         "libs/api/donate/api/feature/src/index.ts"
       ],
