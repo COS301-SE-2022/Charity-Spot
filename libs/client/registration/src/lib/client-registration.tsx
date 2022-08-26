@@ -1,11 +1,17 @@
 import React,{useState} from 'react'
 import {Link} from 'react-router-dom'
 
+import Modal from 'react-bootstrap/Modal';
+
 import Sealregister from '../../../shared/assets/Sealregister.png'
 import CS from '../../../shared/assets/CS.png'
 import Bgpic from '../../../shared/assets/Bgpic.png'
 
 import './register.css';
+
+import {ModalMap} from './modal-map';
+
+import Button from 'react-bootstrap/Button';
 
 async function APICall(orgName:string, email: string,location:string, password: string, whois: string){
   let query = null;
@@ -62,6 +68,8 @@ async function APICall(orgName:string, email: string,location:string, password: 
 
 
 export function Register() {
+  const [show, setShow] = useState(false);
+
   const [typeval,setTypeval] = useState('ASSIST');
   const [nameval,setNameval] = useState('');
   const [emailval,setEmailval] = useState('');
@@ -171,8 +179,12 @@ export function Register() {
 
                              }}/>
               
-              
               <br/>
+              <button id='rgsub_butt' onClick={() => {setShow(true);}}>
+                Launch demo modal
+              </button>
+
+              <br/><br/>
               <button type='submit' id='rgsub_butt'>Register</button>
           </form>
           <div className='rgfoot'>
@@ -191,6 +203,14 @@ export function Register() {
         </div>        
 
       </div>
+
+      
+      <Modal show={show} onHide={() => {setShow(false);}}>                   
+        <ModalMap inState={[show, setShow]}></ModalMap>
+      </Modal> 
+
+     
+
     </div>
     
   )
