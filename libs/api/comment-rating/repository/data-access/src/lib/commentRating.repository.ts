@@ -113,4 +113,21 @@ export class CommentRatingRepository {
     return comment;
 
   }
+
+  async removeRating(AssistID, NeedID : string)
+  {
+    const oldRating = await this.prisma.rating.delete({
+      where:
+      {
+        OrgID_ClientID:
+        {
+          OrgID: AssistID,
+          ClientID: NeedID
+        }
+      }
+    });
+
+    return oldRating;
+
+  }
 }
