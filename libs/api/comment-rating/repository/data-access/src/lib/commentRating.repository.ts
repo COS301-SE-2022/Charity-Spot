@@ -19,4 +19,20 @@ export class CommentRatingRepository {
     return rating;
 
   }
+
+  async AddRatingAndComment(AssistID, NeedID, Comment : string, Rating : number)
+  {
+    const rating = await this.prisma.rating.create({
+      data:
+      {
+        OrgID: AssistID,
+        ClientID: NeedID,
+        rating: Rating,
+        Comment: Comment
+      }
+    });
+
+    return rating;
+
+  }
 }
