@@ -53,4 +53,22 @@ export class CommentRatingRepository {
     return rating;
 
   }
+
+  async getComment(AssistID, NeedID : string)
+  {
+    const comment = await this.prisma.rating.findFirst({
+      where:
+      {
+        OrgID: AssistID,
+        ClientID: NeedID
+      },
+      select:
+      {
+        Comment: true
+      }
+    });
+
+    return comment;
+
+  }
 }
