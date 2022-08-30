@@ -6,6 +6,7 @@ export class CommentRatingRepository {
   constructor(private prisma: PrismaService) {}
 
   //Adding a rating to an Assisting Party
+  //Set Comment or Rating to null if they are not added
   async AddRating(AssistID, NeedID, Comment : string, Rating : number)
   {
     const rating = await this.prisma.rating.create({
