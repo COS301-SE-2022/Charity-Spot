@@ -679,7 +679,7 @@ input.in5:hover{
     padding: 10px;
 }
 #logout1{
-    transition: 0.3s ease-in;
+    transition: 0.2s ease-in;
     width: 25%;
     background: #f1f1f1 ;
     color: #1458b3;
@@ -799,4 +799,22 @@ input.in5:hover{
         width: 38%;
         height: 600px;
     }
+}
+
+/* ------------------FUTURE CODE------------------------ */
+@media (max-width: 800px) {
+    /* Smaller Resolution Desktops and Laptops */
+
+}
+@media (max-width: 650px) {
+    /* Smaller devices */
+    [...]
+}
+@media (max-width: 450px) {
+    /* Even Smaller devices */
+    [...]
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    /* Even Smaller devices */
+    [...]
 }
