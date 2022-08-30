@@ -306,3 +306,7 @@ select.req4:hover{
     /* Smaller Resolution Desktops and Laptops */
 
 }
+@media (max-width: 650px) {
+    /* Smaller devices */
+ 
+}
