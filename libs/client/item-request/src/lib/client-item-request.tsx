@@ -73,7 +73,7 @@ export function ClientItemRequest() {
 
                     <div>
                     <label className='labelDel'>Prefered Date of Delivery:</label><br/>
-                     <input className="req2" type ="text" placeholder='Date that you require the item:' onChange ={(e)=>{setDate(e.target.value)}}></input> 
+                     <input className="req2" type ="date" placeholder='Date that you require the item:' onChange ={(e)=>{setDate(e.target.value)}}></input> 
                       <FaPen color='#1458b3'/>
                     </div>  
                     
