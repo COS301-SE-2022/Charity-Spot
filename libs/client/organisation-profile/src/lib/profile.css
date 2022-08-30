@@ -808,13 +808,13 @@ input.in5:hover{
 }
 @media (max-width: 650px) {
     /* Smaller devices */
-    [...]
+ 
 }
 @media (max-width: 450px) {
     /* Even Smaller devices */
-    [...]
+ 
 }
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     /* Even Smaller devices */
-    [...]
+ 
 }
