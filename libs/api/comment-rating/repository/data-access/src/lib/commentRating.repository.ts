@@ -5,6 +5,7 @@ import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 export class CommentRatingRepository {
   constructor(private prisma: PrismaService) {}
 
+  //Adding a rating to an Assisting Party WITHOUT a comment
   async AddRatingNoComment(AssistID, NeedID : string, Rating : number)
   {
     const rating = await this.prisma.rating.create({
@@ -20,6 +21,7 @@ export class CommentRatingRepository {
 
   }
 
+  //Adding a rating to an Assisting Party WITH a comment
   async AddRatingAndComment(AssistID, NeedID, Comment : string, Rating : number)
   {
     const rating = await this.prisma.rating.create({
@@ -36,6 +38,7 @@ export class CommentRatingRepository {
 
   }
 
+  //Retrieve only the Rating given by a person in need to an Assisting Party
   async getRating(AssistID, NeedID : string)
   {
     const rating = await this.prisma.rating.findFirst({
@@ -54,6 +57,8 @@ export class CommentRatingRepository {
 
   }
 
+  //Retrieve only the Commnet given by a person in need to an Assisting Party
+  //Return empty string if none is given
   async getComment(AssistID, NeedID : string)
   {
     const comment = await this.prisma.rating.findFirst({
@@ -72,6 +77,7 @@ export class CommentRatingRepository {
 
   }
 
+  //Change value of rating given
   async editRating(AssistID, NeedID : string, newRating: number)
   {
     const rating = await this.prisma.rating.update({
@@ -93,6 +99,7 @@ export class CommentRatingRepository {
 
   }
 
+  //Edit comment given
   async editComment(AssistID, NeedID, newComment : string)
   {
     const comment = await this.prisma.rating.update({
@@ -114,6 +121,7 @@ export class CommentRatingRepository {
 
   }
 
+  //Remove rating and comment from database
   async removeRating(AssistID, NeedID : string)
   {
     const oldRating = await this.prisma.rating.delete({
