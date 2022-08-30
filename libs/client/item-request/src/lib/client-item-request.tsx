@@ -40,19 +40,20 @@ export function ClientItemRequest() {
                       <input className="req1" type ="text" placeholder='Item Name' onChange ={()=>{}}></input>  
                         <FaPen color='#1458b3'/>
                     </div>
-                    {/*<div className='request-box2'>
+                    <div className='request-box2'>
                       
                       <input className="req2" type ="number" min="1" placeholder=' Item(s) Quantity' onChange ={()=>{}}></input> 
                       <FaPen color='#1458b3'/>
                     </div>*/}   
 
                     <div className='request-box2'>
-                      
+                       <label className='labelDel'>Location:</label><br/>
                       <input className="req2" type ="text" placeholder='Your Location' onChange ={(e)=>{setLocation(e.target.value)}}></input> 
                       <FaPen color='#1458b3'/>
                     </div>   
 
                     <div className='donate-box3'>    
+                    <label className='labelDel'>Item Category:</label><br/>
                       <select name="orgs" className='req3' onChange ={(e)=>{setType(e.target.value)}}>
                             <option value="FOOD">Food Item</option>
                             <option value="CLOTHING">Clothing</option>  
@@ -71,7 +72,7 @@ export function ClientItemRequest() {
                   </div>*/}
 
                     <div>
-
+                    <label className='labelDel'>Prefered Date of Delivery:</label><br/>
                      <input className="req2" type ="text" placeholder='Date that you require the item:' onChange ={(e)=>{setDate(e.target.value)}}></input> 
                       <FaPen color='#1458b3'/>
                     </div>  
