@@ -301,3 +301,8 @@ select.req4:hover{
 .reqHead{
     color: #1458b3;
 }
+/* ------------------FUTURE CODE------------------------ */
+@media (max-width: 800px) {
+    /* Smaller Resolution Desktops and Laptops */
+
+}
