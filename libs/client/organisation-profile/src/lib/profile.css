@@ -779,7 +779,9 @@ input.in5:hover{
        width: 100%;
        height: 100px;
    }
-
+   #logout1{
+    width: 110px;
+}
 }
 
 @media screen and (min-width: 1600px) {
@@ -829,6 +831,8 @@ input.in5:hover{
         width: 100%;
         height: 100px;
     }
- 
+    #logout1{
+        width: 110px;
+    }
  
 }
