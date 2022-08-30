@@ -71,4 +71,25 @@ export class CommentRatingRepository {
     return comment;
 
   }
+
+  async editComment(AssistID, NeedID, newComment : string)
+  {
+    const comment = await this.prisma.rating.update({
+      where:
+      {
+        OrgID_ClientID:
+        {
+          OrgID: AssistID,
+          ClientID: NeedID
+        }
+      },
+      data:
+      {
+        Comment: newComment
+      }
+    });
+
+    return comment;
+
+  }
 }
