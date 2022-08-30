@@ -5,7 +5,7 @@ import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 export class CommentRatingRepository {
   constructor(private prisma: PrismaService) {}
 
-  async AddRatingNoCommnet(AssistID, NeedID : string, Rating : number)
+  async AddRatingNoComment(AssistID, NeedID : string, Rating : number)
   {
     const rating = await this.prisma.rating.create({
       data:
