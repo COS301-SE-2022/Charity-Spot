@@ -5,31 +5,15 @@ import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 export class CommentRatingRepository {
   constructor(private prisma: PrismaService) {}
 
-  //Adding a rating to an Assisting Party WITHOUT a comment
-  async AddRatingNoComment(AssistID, NeedID : string, Rating : number)
+  //Adding a rating to an Assisting Party
+  async AddRating(AssistID, NeedID, Comment : string, Rating : number)
   {
     const rating = await this.prisma.rating.create({
       data:
       {
         OrgID: AssistID,
         ClientID: NeedID,
-        rating: Rating
-      }
-    });
-
-    return rating;
-
-  }
-
-  //Adding a rating to an Assisting Party WITH a comment
-  async AddRatingAndComment(AssistID, NeedID, Comment : string, Rating : number)
-  {
-    const rating = await this.prisma.rating.create({
-      data:
-      {
-        OrgID: AssistID,
-        ClientID: NeedID,
-        rating: Rating,
+        Rating: Rating,
         Comment: Comment
       }
     });

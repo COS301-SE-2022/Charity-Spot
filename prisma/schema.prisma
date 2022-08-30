@@ -43,8 +43,8 @@ model Address {
 model Rating {
   OrgID     String  @map("organisation_id")
   ClientID  String  @map("client_id")
-  rating    Int     @map("rating")
-  Comment   String  @map("comment") @default("")
+  Rating    Int?     @map("rating")
+  Comment   String?  @map("comment")
 
   @@id([OrgID,ClientID])
   @@map("rating")
