@@ -36,3 +36,14 @@ beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: 
       [NotificationService, 
+        NotificationRepository,
+        NotificationEntity, 
+        PrismaService, 
+      ],
+    }).compile();
+    resolver = module.get<NotificationService>(NotificationService);
+  });
+
+  //getNotifications(u_id: string, id: string)
+  it('getNotifications', async () => {
+    jest
