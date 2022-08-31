@@ -47,3 +47,14 @@ beforeEach(async () => {
   //getNotifications(u_id: string, id: string)
   it('getNotifications', async () => {
     jest
+        .spyOn(resolver,'getNotifications')
+        .mockImplementation((): Promise<NotificationEntity> => Promise.resolve(NotificationEntity));
+        expect(resolver.getNotifications).not.toHaveBeenCalled();
+        expect(await resolver.getNotifications("u_id", "id")).toMatchObject(NotificationEntity);
+        expect(resolver.getNotifications).toHaveBeenCalled();
+});
+
+//getReceiver(r_id: string)
+it('Gets the receiver', async () => {
+    jest
+        .spyOn(resolver,'getReceiver')
