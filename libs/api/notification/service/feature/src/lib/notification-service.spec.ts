@@ -78,3 +78,12 @@ export class NotificationServiceMock
                 {
                     let returnable = null, receiver = null;
                     returnable = new NotificationEntity();
+                    returnable.ID = r_id;
+                    returnable.Name = "test1";
+                    returnable.ProfilePicture = "asdaccaxassdad";
+                    return returnable;
+                }
+
+    }
+
+const servicemock = new NotificationServiceMock();
