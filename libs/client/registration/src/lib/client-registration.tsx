@@ -144,9 +144,9 @@ export function Register() {
                onChange ={(e)=>{setEmailval(e.target.value)}}/>
 
             <label htmlFor ='lct11' className='rglabel'>Location</label>
-              {/*<input placeholder='Enter your location...' type ='text' id="lct1"  className='rgInput'
+              <input placeholder='Enter your location...' type ='text' id="lct1"  className='rgInput'
                value={Locationval}
-               onChange ={(e)=>{setLocationval(e.target.value)}}/>*/}
+               onChange ={(e)=>{setLocationval(e.target.value)}}/>
               <button type="button" className="custom-file-upload" onClick={() => {setTimeout(() => setShow(true), 100);}}>
                 Select your location
               </button>
