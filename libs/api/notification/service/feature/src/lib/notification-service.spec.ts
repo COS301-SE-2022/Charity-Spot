@@ -21,3 +21,18 @@ describe ( 'Notification Service', () => {
         const module: TestingModule = await Test.createTestingModule({
           providers: [NotificationService, NotificationRepository,NotificationEntity, PrismaService],
         }).compile();
+
+        service = module.get<NotificationService>(NotificationService);
+
+  });
+  it('Notification service should be defined', () => {
+    expect(service).toBeDefined();
+  });
+});
+
+let resolver: NotificationService;
+
+beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      providers: 
+      [NotificationService, 
