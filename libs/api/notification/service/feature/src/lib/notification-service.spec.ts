@@ -72,3 +72,9 @@ export class NotificationServiceMock
             {
                
             }      
+
+            //getReceiver(r_id: string)
+            getReceiver(r_id: string)
+                {
+                    let returnable = null, receiver = null;
+                    returnable = new NotificationEntity();
