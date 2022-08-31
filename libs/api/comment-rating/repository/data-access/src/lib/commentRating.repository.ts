@@ -34,7 +34,7 @@ export class CommentRatingRepository {
       },
       select:
       {
-        rating: true
+        Rating: true
       }
     });
 
@@ -76,7 +76,7 @@ export class CommentRatingRepository {
       },
       data:
       {
-        rating: newRating
+        Rating: newRating
       }
     });
 
