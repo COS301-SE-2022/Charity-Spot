@@ -64,3 +64,11 @@ it('Gets the receiver', async () => {
         expect(resolver.getReceiver).toHaveBeenCalled();
 });
 
+
+export class NotificationServiceMock
+    {
+          //getNotifications(u_id: string, id: string)
+          getNotifications(u_id: string, id: string)
+            {
+               
+            }      
