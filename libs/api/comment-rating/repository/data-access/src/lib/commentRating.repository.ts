@@ -23,6 +23,22 @@ export class CommentRatingRepository {
 
   }
 
+  async getCommentsForAssist(AssistID: string) {
+    const comments = await this.prisma.rating.findMany({
+      where:
+      {
+        OrgID: AssistID
+      },
+      select:
+      {
+        ClientID: true,
+        Comment: true
+      }
+    });
+
+    return comments;
+  }
+
   //Retrieve only the Rating given by a person in need to an Assisting Party
   async getRating(AssistID, NeedID : string)
   {
