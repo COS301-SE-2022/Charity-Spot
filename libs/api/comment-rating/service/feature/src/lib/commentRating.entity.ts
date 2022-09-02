@@ -9,8 +9,8 @@ export class CommentRatingEntity {
     Clients: string[]
 
     @Field(() => [Number], {nullable: true})
-    Rating: number[]
+    Ratings: number[]
 
     @Field(() => [String], {nullable: true})
-    Comment: string[]
+    Comments: string[]
 }

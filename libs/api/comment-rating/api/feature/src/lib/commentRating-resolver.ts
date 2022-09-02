@@ -6,8 +6,5 @@ import {CommentRatingService} from '@charity-spot/api/comment-rating/service/fea
 export class CommentRatingResolver {
     constructor(private readonly CommentRatingService: CommentRatingService) {}
 
-    @Query(() => CommentRatingEntity)
-    testCommentRating(){
-        return this.CommentRatingService.Test();
-    }
+    
 }
