@@ -6,5 +6,10 @@ import {CommentRatingService} from '@charity-spot/api/comment-rating/service/fea
 export class CommentRatingResolver {
     constructor(private readonly CommentRatingService: CommentRatingService) {}
 
-    
+    @Query(() => CommentRatingEntity)
+    async getAllComments(
+        @Args("id") assistID: string 
+    ) {
+        return await this.CommentRatingService.getAllCommentsOfAssist(assistID);
+    }
 }
