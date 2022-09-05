@@ -6,7 +6,23 @@ import {CommentRatingRepository} from '@charity-spot/api/comment-rating/reposito
 export class CommentRatingService {
     constructor(private CommentRatingRepository: CommentRatingRepository) {}
 
-    
+    async getAllRatingsOfAssist(AssistID: string) {
+        let dataset = null;
+        const returnable = new CommentRatingEntity();
+        if((dataset = await this.CommentRatingRepository.getRatingsForAssist(AssistID)) != null) {
+            returnable.AssistID = AssistID;
+            returnable.Clients = [];
+            returnable.Ratings = [];
+            for(const k of dataset) {
+                returnable.Clients.push(k.ClientID);
+                returnable.Ratings.push(k.Rating);
+            }
+            return returnable;
+        }
+
+        //no data from database
+        return null;
+    }
 
     async getAllCommentsOfAssist(AssistID: string) {
         let dataset = null;
