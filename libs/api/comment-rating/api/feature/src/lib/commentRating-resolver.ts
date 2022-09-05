@@ -14,6 +14,13 @@ export class CommentRatingResolver {
     }
 
     @Query(() => CommentRatingEntity)
+    async getAllRatings(
+        @Args("id") assistID: string 
+    ) {
+        return await this.CommentRatingService.getAllRatingsOfAssist(assistID);
+    }
+
+    @Query(() => CommentRatingEntity)
     async addCommentRating(
         @Args("assist_id") assistID: string,
         @Args("need_id") needid: string,
