@@ -117,7 +117,7 @@ export class OrganisationRepository {
       select:
       {
         ClientID:true,
-        rating:true,
+        Rating:true,
         Comment:true
       }
     })

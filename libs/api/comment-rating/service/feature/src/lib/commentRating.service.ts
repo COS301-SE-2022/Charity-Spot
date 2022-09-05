@@ -6,14 +6,55 @@ import {CommentRatingRepository} from '@charity-spot/api/comment-rating/reposito
 export class CommentRatingService {
     constructor(private CommentRatingRepository: CommentRatingRepository) {}
 
-    async Test(){
+    async getAllRatingsOfAssist(AssistID: string) {
+        let dataset = null;
+        const returnable = new CommentRatingEntity();
+        if((dataset = await this.CommentRatingRepository.getRatingsForAssist(AssistID)) != null) {
+            returnable.AssistID = AssistID;
+            returnable.Clients = [];
+            returnable.Ratings = [];
+            for(const k of dataset) {
+                returnable.Clients.push(k.ClientID);
+                returnable.Ratings.push(k.Rating);
+            }
+            return returnable;
+        }
 
-        let temp = new CommentRatingEntity();
+        //no data from database
+        return null;
+    }
 
-        temp.ID = "Comment/Rating working!";
+    async getAllCommentsOfAssist(AssistID: string) {
+        let dataset = null;
+        const returnable = new CommentRatingEntity();
+        if((dataset = await this.CommentRatingRepository.getCommentsForAssist(AssistID)) != null) {
+            returnable.AssistID = AssistID;
+            returnable.Clients = [];
+            returnable.Comments = [];
+            for(const k of dataset) {
+                returnable.Clients.push(k.ClientID);
+                returnable.Comments.push(k.Comment);
+            }
+            return returnable;
+        }
 
-        return temp;
+        //no data from database
+        return null;
+    }
 
+    async createCommentRating(AssistID: string, NeedID: string, Comment: string, Rating: number) {
+        const returnable = new CommentRatingEntity();
+        let data = null;
+        if((data = await this.CommentRatingRepository.AddRating(AssistID, NeedID, Comment, Rating)) != null) {
+            returnable.AssistID = data.OrgID;
+            returnable.Clients = [data.ClientID];
+            returnable.Ratings = [data.Rating];
+            returnable.Comments = [data.Comment];
+
+            return returnable;
+        }
+        
+        return null;
     }
 
 }
