@@ -10,7 +10,7 @@ import './register.css';
 import {ModalMap} from './modal-map';
 
 
-async function APICall(orgName:string, email: string,location:string, password: string, whois: string){
+async function APICall(orgName:string, email: string,location:string, password: string, whois: string, base64: any){
   let query = null;
 
   switch(whois) {
@@ -20,7 +20,8 @@ async function APICall(orgName:string, email: string,location:string, password: 
           Name:"${orgName}",
           Email: "${email}",
           Location: "${location}",
-          Password: "${password}"
+          Password: "${password}",
+          picture: "${base64}
         ){
           ID_internal
           ID_external
@@ -67,12 +68,12 @@ async function APICall(orgName:string, email: string,location:string, password: 
 export function Register() {
   const [show, setShow] = useState(false);
 
-  const [location, setLocation] = useState({ lat: -26.2041, lng: 28.0473});
+  const [location, setLocation] = useState({ lat: -26.195246, lng: 28.034088});
 
   const [typeval,setTypeval] = useState('ASSIST');
   const [nameval,setNameval] = useState('');
   const [emailval,setEmailval] = useState('');
-  const [Locationval,setLocationval] = useState('');
+  //const [Locationval,setLocationval] = useState('');
   const [passval,setPassval] = useState('');
   const [confpassval,setConfPassval] = useState('');
   const [invalidCredentials, setInvalidCredentials] = useState('');
@@ -95,18 +96,24 @@ export function Register() {
       event.preventDefault();
       setInvalidCredentials('');
 
+      //console.log(location.lat + "," + location.lng);
+
       let imgBase64 = undefined;
 
       if(imageUpload){
         imgBase64 = await getBase64(imageUpload);
       }
 
-      if((nameval === '') || (emailval === '') || (Locationval === '') || (passval === '') || (confpassval === '')){
+      console.log(imgBase64);
+
+      if((nameval === '') || (emailval === '') || ((location.lat === -26.195246) && (location.lng === 28.034088)) || (passval === '') || (confpassval === '')){
         setInvalidCredentials("Fields must not be empty");
         return;
       }
+
+      let Locationval = location.lat + "," + location.lng;
       
-      const response = JSON.parse(await APICall(nameval, emailval, Locationval, passval, typeval));
+      const response = JSON.parse(await APICall(nameval, emailval, Locationval, passval, typeval, imgBase64));
       
       window.location.href = '/login';
     
@@ -144,9 +151,9 @@ export function Register() {
                onChange ={(e)=>{setEmailval(e.target.value)}}/>
 
             <label htmlFor ='lct11' className='rglabel'>Location</label>
-              <input placeholder='Enter your location...' type ='text' id="lct1"  className='rgInput'
+              {/*<input placeholder='Enter your location...' type ='text' id="lct1"  className='rgInput'
                value={Locationval}
-               onChange ={(e)=>{setLocationval(e.target.value)}}/>
+                onChange ={(e)=>{setLocationval(e.target.value)}}/>*/}
               <button type="button" className="custom-file-upload" onClick={() => {setTimeout(() => setShow(true), 100);}}>
                 Select your location
               </button>
