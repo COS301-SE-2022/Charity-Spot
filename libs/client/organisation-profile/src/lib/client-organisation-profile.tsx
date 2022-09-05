@@ -345,7 +345,9 @@ export function Profile() {
                             <br/><br/>
                             <div className='updater'>
                               <form onSubmit={(e) => { e.preventDefault(); handlesumbitUpdate();}}>
+                                
                                 <div className='user-box1'>
+                               
                                   <input className="in1" type ="text" placeholder=' Name'defaultValue={OName} onChange ={(e)=>{setNewOName(e.target.value)}}></input>  
                                   <FaPen color='#1458b3'/>
                                 </div>
