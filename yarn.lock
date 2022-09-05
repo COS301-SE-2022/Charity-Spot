@@ -11509,6 +11509,11 @@ react-dom@18.0.0:
     loose-envify "^1.1.0"
     scheduler "^0.21.0"
 
+react-google-map-picker@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/react-google-map-picker/-/react-google-map-picker-1.2.3.tgz#bfd4efe1e2a1345a66d3250ed05ed37166fc2f33"
+  integrity sha512-XeIj0Eh0vhNToMTebQQrt5O9fdPRDf4KtG8J22xupH7Pu49J1dP5UuhfCM6VmK2nIv5ECyQUpOT6+gZgGaQhJA==
+
 react-icons@^4.3.1:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.4.0.tgz#a13a8a20c254854e1ec9aecef28a95cdf24ef703"

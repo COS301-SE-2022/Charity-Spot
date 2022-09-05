@@ -45,12 +45,12 @@ function Navigation() {
 
   function removeForeignCookie(aLink : string){
 
-    if(document.cookie.split(";").length > 0)
-      document.cookie.split(";").forEach((c) => {
-        document.cookie = c
-          .replace(/^ +/, "")
-          .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
-      }); 
+    //if(document.cookie.split(";").length > 0)
+      //document.cookie.split(";").forEach((c) => {
+        //document.cookie = c
+          //.replace(/^ +/, "")
+          //.replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+      //});*/
     
     //REDUNDENT
     if(getCookie('foreignID') !== undefined){

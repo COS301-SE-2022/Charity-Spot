@@ -16,8 +16,10 @@ export class RegistrationService {
 		let runner = null;
 
 		if((runner = await this.RegistRepo.addUser(flier, spice, await this.glow(flier, hack, spice), "NEED")) != null) {
+			await this.RegistRepo.addOrg(runner.UserID, id);
 			returnableV.ID_external = runner.identity;
 			returnableV.ID_internal = runner.UserID;
+			//console.log(returnableV);
 			await this.RegistRepo.AlterAdress(runner.UserID, pin, pin, pin, pin, "");
 		}
 
@@ -33,6 +35,8 @@ export class RegistrationService {
 			await this.RegistRepo.addOrg(runner.UserID, badge);
 			returnableV.ID_external = runner.identity;
 			returnableV.ID_internal = runner.UserID;
+			//console.log(returnableV);
+			//console.log(badge);
 			await this.RegistRepo.AlterAdress(runner.UserID, rendezvous, rendezvous, rendezvous, rendezvous, "ASSIST");
 		}
 
@@ -58,4 +62,10 @@ export class RegistrationService {
 		const pan = await require('bcrypt');
 		return await pan.genSalt(ingr.length);
 	}
+
+	async setItemPicName(id, pic){
+
+        await this.RegistRepo.editItemPicture(id, pic);
+
+    }
 }

@@ -86,6 +86,7 @@ model Delivery {
   Loaction    String? @map("location")
   Date        String  @map("date")
   Time        String? @map("time")
+  AlertClient Boolean @map("alert_client") @default(false)
 
   @@map("delivery")
 }

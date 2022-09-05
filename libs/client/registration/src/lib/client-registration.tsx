@@ -7,7 +7,10 @@ import Bgpic from '../../../shared/assets/Bgpic.png'
 
 import './register.css';
 
-async function APICall(orgName:string, email: string,location:string, password: string, whois: string){
+import {ModalMap} from './modal-map';
+
+
+async function APICall(orgName:string, email: string,location:string, password: string, whois: string, base64: any){
   let query = null;
 
   switch(whois) {
@@ -17,7 +20,8 @@ async function APICall(orgName:string, email: string,location:string, password: 
           Name:"${orgName}",
           Email: "${email}",
           Location: "${location}",
-          Password: "${password}"
+          Password: "${password}",
+          picture: "${base64}
         ){
           ID_internal
           ID_external
@@ -62,33 +66,62 @@ async function APICall(orgName:string, email: string,location:string, password: 
 
 
 export function Register() {
+  const [show, setShow] = useState(false);
+
+  const [location, setLocation] = useState({ lat: -26.195246, lng: 28.034088});
+
   const [typeval,setTypeval] = useState('ASSIST');
   const [nameval,setNameval] = useState('');
   const [emailval,setEmailval] = useState('');
-  const [Locationval,setLocationval] = useState('');
+  //const [Locationval,setLocationval] = useState('');
   const [passval,setPassval] = useState('');
   const [confpassval,setConfPassval] = useState('');
   const [invalidCredentials, setInvalidCredentials] = useState('');
+
+  const [imageUpload, setImageUpload] = useState<File>();
+  const [imageURL, setImageURL] = useState('');
+
+  async function getBase64(file : File){
+
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
+
+  }
 
   const hanndlesubmit =  async(event: { preventDefault: () => void; }) =>{
       event.preventDefault();
       setInvalidCredentials('');
 
-      if((nameval === '') || (emailval === '') || (Locationval === '') || (passval === '') || (confpassval === '')){
+      //console.log(location.lat + "," + location.lng);
+
+      let imgBase64 = undefined;
+
+      if(imageUpload){
+        imgBase64 = await getBase64(imageUpload);
+      }
+
+      console.log(imgBase64);
+
+      if((nameval === '') || (emailval === '') || ((location.lat === -26.195246) && (location.lng === 28.034088)) || (passval === '') || (confpassval === '')){
         setInvalidCredentials("Fields must not be empty");
         return;
       }
+
+      let Locationval = location.lat + "," + location.lng;
       
-      const response = JSON.parse(await APICall(nameval, emailval, Locationval, passval, typeval));
+      const response = JSON.parse(await APICall(nameval, emailval, Locationval, passval, typeval, imgBase64));
       
-      
-  
-      //document.cookie = "ID="+ID;
       window.location.href = '/login';
     
       setInvalidCredentials('');
            
   }
+
+  
 
   return (
     <div className = "main-register" style ={{backgroundImage:`url(${Bgpic})`}}>
@@ -118,9 +151,31 @@ export function Register() {
                onChange ={(e)=>{setEmailval(e.target.value)}}/>
 
             <label htmlFor ='lct11' className='rglabel'>Location</label>
-              <input placeholder='Enter your location...' type ='text' id="lct1"  className='rgInput'
+              {/*<input placeholder='Enter your location...' type ='text' id="lct1"  className='rgInput'
                value={Locationval}
-               onChange ={(e)=>{setLocationval(e.target.value)}}/>              
+                onChange ={(e)=>{setLocationval(e.target.value)}}/>*/}
+              <button type="button" className="custom-file-upload" onClick={() => {setTimeout(() => setShow(true), 100);}}>
+                Select your location
+              </button>
+
+              <label htmlFor ='pimg1' className='rglabel'>Profile Picture</label><br/>
+                          <label htmlFor="file-upload" className="custom-file-upload">
+                              Select Image
+                          </label>
+                          
+                            <input type="file"
+                              id="file-upload"
+                              onChange={(e) => {
+
+                                console.log("test");
+                                
+                                if(!e.target.files) return;
+                                setImageUpload(e.target.files[0])
+                                setImageURL(URL.createObjectURL(e.target.files[0]));
+
+                                console.log(imageURL);
+
+                             }}/>           
 
             <label htmlFor ='rgpwd1' className='rglabel'>Password</label>              
               <input placeholder='Enter password...' type ='password' id="rgpwd1" className='rgInput'
@@ -130,11 +185,13 @@ export function Register() {
             <label htmlFor ='rgpwd2' className='rglabel'>Confirm Password</label>              
               <input placeholder='Confirm password...' type ='password' id="rgpwd2" className='rgInput'
               value={confpassval}
-              onChange ={(e)=>{setConfPassval(e.target.value)}}/>              
+              onChange ={(e)=>{setConfPassval(e.target.value); console.log("pass test")}}/>
               
               <br/>
+              
               <button type='submit' id='rgsub_butt'>Register</button>
           </form>
+
           <div className='rgfoot'>
             <p>Already have an account?<Link to ='/login' className='rgLink'> click to Login</Link></p>
             <p style={{color:"red"}}>{invalidCredentials}</p>
@@ -151,6 +208,9 @@ export function Register() {
         </div>        
 
       </div>
+                   
+      <ModalMap inState={[show, setShow, setLocation, location]}></ModalMap>                    
+
     </div>
     
   )

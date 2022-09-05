@@ -102,12 +102,11 @@ export class ChatService {
             case "ASSIST":
                 data = await this.ChatRepository.GetAllChatsOrg(userID);
 
-                console.log(data);
-
                 if(data != null)
                     for(const i of data) {
                         const ik = new ChatEntity();
-                        const user = await this.ChatRepository.GetThreadList(i.ClientID);
+                        const user : any = await this.ChatRepository.GetThreadList(i.ClientID);
+                        console.log(user);
                         //ik.Sender = user.email;
                         //ik.Reciever = "";
                         //ik.Message = i.ClientID;
@@ -122,12 +121,11 @@ export class ChatService {
 
             case "NEED":
                 data = await this.ChatRepository.GetAllChatsClient(userID);
-                //console.log(data);
 
                 if( data != null)
                 for(const i of data) {
                     const ik = new ChatEntity();
-                    const user = await this.ChatRepository.GetThreadList(i.OrgID);
+                    const user : any = await this.ChatRepository.GetThreadList(i.OrgID);
                     /*ik.Sender = user.OrgName;
                     ik.Reciever = user.profilePicture;
                     ik.Message = i.OrgID;*/
@@ -151,7 +149,13 @@ export class ChatService {
         const name = await this.ChatRepository.getChatName(u_id);
 
         const temp = new ChatEntity();
-        temp.Message = name.OrgName;
+
+        if(name != null){
+            temp.Message = name.OrgName;
+        }
+        else{
+            temp.Message = "";
+        }
 
         return temp;
 

@@ -1,5 +1,6 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { ChatEntity } from '@charity-spot/api/chat/service/feature';
+import { ScheduleDeliveryEntity} from '@charity-spot/api/schedule-delivery/service/feature'
 
 @ObjectType()
 export class NotificationEntity {
@@ -15,5 +16,8 @@ export class NotificationEntity {
 
     @Field(() => [ChatEntity], {nullable: true})
     Threads: ChatEntity[]
+
+    @Field(() => [ScheduleDeliveryEntity],{nullable: true})
+    Delivery: ScheduleDeliveryEntity[]
 
 }

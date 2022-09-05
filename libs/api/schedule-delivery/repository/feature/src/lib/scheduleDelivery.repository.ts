@@ -217,4 +217,60 @@ export class ScheduleDeliveryRepository {
 
   }
 
+  /////////
+  async alertClient(orgID: string, clientID: string, itemID: string) {
+
+    console.log(orgID + " " + clientID + " " + itemID);
+
+    const u = await this.prisma.delivery.updateMany({
+      where:
+      {
+        OrgID: orgID,
+        ClientID: clientID,
+        ItemID: itemID,
+      },
+      data: {
+        AlertClient : true,
+      },
+    });
+
+    return u;
+  }
+
+  async negateAlertClient(orgID: string, clientID: string, itemID) {
+    
+    const u = await this.prisma.delivery.updateMany({
+      where:
+      {
+        OrgID: orgID,
+        ClientID: clientID,
+        ItemID: itemID,
+      },
+      data: {
+        AlertClient : false,
+      },
+    });
+
+    return u;
+
+  }
+
+  async GetAllDelN(ID : string)
+  {
+    const u = await this.prisma.delivery.findMany({
+      where:
+      {
+        ClientID: ID,
+        AlertClient: true,
+      },
+      select:
+      {
+        OrgID : true,
+        ItemID: true
+      }
+    })
+
+    return u;
+  }
+
 }

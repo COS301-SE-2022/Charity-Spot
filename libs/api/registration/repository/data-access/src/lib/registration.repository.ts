@@ -82,21 +82,21 @@ export class RegistrationRepository {
         }
       });
       
-      if(resort == "ASSIST") 
+      //if(resort == "ASSIST") 
         u = await this.prisma.organisation.update({
-        where:
-        {
-          UserID:UserID
-        },
-        data:
-        {
-          AddressID:a.AddressID
-        }
-      })
+          where:
+          {
+            UserID:UserID
+          },
+          data:
+          {
+            AddressID:a.AddressID
+          }
+        })
     }
     else{
 
-      if(resort == "ASSIST")
+      //if(resort == "ASSIST")
         u = await this.prisma.organisation.update({
           where:
           {
@@ -124,4 +124,19 @@ export class RegistrationRepository {
       }
     })
   }
+
+  async editItemPicture(uID, Picture : string)
+  {
+    return await this.prisma.organisation.update({
+      where:
+      {
+        UserID: uID,
+      },
+      data:
+      {
+        profilePicture: Picture
+      }
+    })
+  }
+
 }

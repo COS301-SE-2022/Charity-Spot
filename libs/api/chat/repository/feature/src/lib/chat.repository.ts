@@ -225,14 +225,33 @@ export class ChatRepository {
 
   //misc
   async GetThreadList(id: string) {
-    return await this.prisma.organisation.findUnique({
-      where: {
-        UserID: id
-      }, select: {
-        OrgName: true,
-        profilePicture: true
-      }
-    });
+
+    //if(table == "org"){
+
+      return await this.prisma.organisation.findUnique({
+        where: {
+          UserID: id
+        }, select: {
+          OrgName: true,
+          profilePicture: true
+        }
+      });
+
+    /*}
+    else if(table == "user"){
+
+      return await this.prisma.user.findUnique({
+        where: {
+          UserID: id
+        }, select: {
+          email: true
+        }
+      });
+
+    }*/
+
+    return null;
+    
   }
 
   //Remove all messages between two participants
