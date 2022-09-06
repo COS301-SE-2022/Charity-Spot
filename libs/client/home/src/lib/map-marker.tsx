@@ -83,6 +83,9 @@ export function MapMarker(props : any){
 
         let newItemss = await APICall();
 
+        console.log(props);
+        console.log(newItemss);
+
         for(let i=0; i< newItemss.length; i++){
 
             if(newItemss[i].Location == "Pretoria"){
