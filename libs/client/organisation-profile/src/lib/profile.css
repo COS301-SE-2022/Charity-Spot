@@ -813,7 +813,22 @@ input.in5:hover{
  
 }
 @media (max-width: 450px) {
-    /* Even Smaller devices */
+    #editor-pic
+    {
+        height: 100px;
+        width: 100px;
+        padding: 15px;
+    }
+    .editor-main{
+        width: 90%;
+    }
+    .editor-left{
+        width: 100%;
+        height: 100px;
+    }
+    #logout1{
+        width: 110px;
+    }
  
 }
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
