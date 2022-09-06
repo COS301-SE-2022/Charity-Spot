@@ -80,7 +80,7 @@
 
  @media screen and (max-width: 600px) {
 
-    chatHist
+    .chatHist
     {
 
         height: 200px auto;
@@ -131,7 +131,46 @@
     /* Smaller devices */
 }
 @media (max-width: 450px) {
-    /* Even Smaller devices */
+    .chatHist
+    {
+
+        height: 200px auto;
+        width: 70%;
+      
+      
+    }
+    .chatHistLeft{
+      
+        height: 150px;
+        width: 100%;
+
+    }
+    .chatHistRight{
+       
+        height: 250px;
+        width: 100%;
+
+    }
+    .chatcov{
+            border-radius: 10px;
+            margin: 15px;
+            border:  #bdbdbd ;
+            border-width: 1px;
+
+            height: 300px auto;
+
+    }
+
+    #chatprofile-pic
+    {
+        height: 110px;
+        width: 110px;
+       margin: 10px;
+    }
+    #chatHistGo{
+        width: 135px;
+
+    }
   
 }
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
