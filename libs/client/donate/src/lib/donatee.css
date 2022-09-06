@@ -677,7 +677,31 @@ max-height: 450px;
   
 }
 @media (max-width: 450px) {
-    /* Even Smaller devices */
+    .collapseleft{
+        width: 100%;
+        height: 200px;
+        border-top-left-radius: 10px ;
+        border-top-right-radius: 10px ; 
+        border-bottom-left-radius: 0px ;
+        border-bottom-right-radius: 0px ;
+    }
+    .collapseright{
+        width: 100%;
+        
+        border-top-left-radius: 0px ;
+        border-top-right-radius: 0px ; 
+        border-bottom-left-radius: 0px ;
+    }
+    .collapsible label{
+        position: relative;
+        font-weight: 600;
+    
+         box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0);
+        /* color: #1458b3; */
+        color: #d7d9da;
+        background: #1458b3;
+
+    }
   
 }
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
