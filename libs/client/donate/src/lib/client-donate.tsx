@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { getCookie, setCookie } from 'typescript-cookie'
 
+import {ModalMap} from './modal-map';
+
 import ItemHistory from './item-history'
 
 let IdCookie = getCookie('ID');
