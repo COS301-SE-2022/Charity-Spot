@@ -192,10 +192,43 @@ label.lgLabel{
   }
   @media (max-width: 650px) {
       /* Smaller devices */
-    
+      .left-side{
+        width: 84%;
+        height: 500px;
+      }
+      .right-side{
+        width: 0%;
+        display: none;
+      }
+      .login-contain{
+        height: 550px;
+        flex-flow: wrap;
+      }
+      #wel-img-id{
+  
+        height: 0px;
+        width: 0%;
+        visibility: hidden;
+        /* object-fit: cover; */
+      }
+      .welcomeNote{
+        visibility: hidden;
+      }
+      #welid{
+        visibility: hidden;
+      }
+      label.lgLabel{
+        margin-bottom: 0.1rem;
+    }
+    input.lgInput{
+      height: 2.2rem;
+      margin-bottom: 0.5rem;
+  
+  } 
   }
   @media (max-width: 450px) {
       /* Even Smaller devices */
+      
     
   }
   @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
