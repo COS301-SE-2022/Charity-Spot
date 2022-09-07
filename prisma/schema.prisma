@@ -53,9 +53,18 @@ model Rate{
 model Comment{
   UserID    String  @map("user_id")
   AssistID  String  @map("assist_id")
-  comment   String  @map("comment")
+  Comment   String  @map("comment")
 
   @@id([UserID,AssistID])
   @@map("comment")
 }
 
+model Item{
+  ItemID    String  @map("Item_id") @id
+  ItemName  String  @map("item_name")
+  Picture   String  @map("picture")
+  Description  String  @map("description")
+  Type   category  @map("type")
+
+  @@map("item")
+}
