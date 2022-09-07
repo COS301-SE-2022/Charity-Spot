@@ -49,3 +49,13 @@ model Rate{
   @@id([UserID,AssistID])
   @@map("rate")
 }
+
+model Comment{
+  UserID    String  @map("user_id")
+  AssistID  String  @map("assist_id")
+  comment   String  @map("comment")
+
+  @@id([UserID,AssistID])
+  @@map("comment")
+}
+
