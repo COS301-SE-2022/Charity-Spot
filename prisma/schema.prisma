@@ -68,3 +68,13 @@ model Item{
 
   @@map("item")
 }
+
+enum catagory {
+  CLOTHING
+  FOOD
+  TECH
+  STATIONARY
+  HYGIENE
+  FURNITURE
+  KITCHEN
+}
