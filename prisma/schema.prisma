@@ -19,13 +19,24 @@ model User {
 }
 
 model Assist{
-  UserID          String @id @map("user_id")
-  NGONum          String? @unique @map("ngo_number")
-  OrgName         String  @map("organisation_id")
-  Description     String?  @map("description")
-  AddressID       String?  @map("address_id")
-  profilePicture  String? @map("profile_picture")
-  dateCreated     DateTime    @map("date_created") @default(now())
+  UserID          String    @id @map("user_id")
+  NGONum          String?   @unique @map("ngo_number")
+  OrgName         String    @map("organisation_id")
+  Description     String?   @map("description")
+  AddressID       String?   @map("address_id")
+  profilePicture  String?   @map("profile_picture")
+  dateCreated     DateTime  @map("date_created") @default(now())
 
   @@map("assist")
+}
+
+model Messages{
+  UserID        String  @map("user_id")
+  AssistID      String  @map("assist_id")
+  PastMessages  String  @map("past_messages")
+  NotifyAssist  Boolean @map("notify_assist")
+  NotifyNeed    Boolean @map("notify_need")
+
+  @@id([UserID,AssistID])
+  @@map("messages")
 }
