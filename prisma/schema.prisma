@@ -40,3 +40,12 @@ model Messages{
   @@id([UserID,AssistID])
   @@map("messages")
 }
+
+model Rate{
+  UserID    String  @map("user_id")
+  AssistID  String  @map("assist_id")
+  Rating    Int     @map("rating")
+
+  @@id([UserID,AssistID])
+  @@map("rate")
+}
