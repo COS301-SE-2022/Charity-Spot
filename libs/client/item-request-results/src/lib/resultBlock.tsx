@@ -43,7 +43,7 @@ export function ResultBlock(props : any){
     const getResultInfo = async () => {
         let OrgInfo = await APICall(props.inState[0].ResultID)
         setOrgName(OrgInfo.OrgName);
-        let prob = "Low Chance";
+        let prob = "Moderate Chance";
         if(props.inState[0].ResultProb > 0.9){
           prob =  "High Chance"
           setProbStyle("probG");
