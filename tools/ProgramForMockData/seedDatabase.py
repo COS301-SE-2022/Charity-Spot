@@ -31,31 +31,88 @@ try:
     connection.commit()
 
     #First add locations to Address table
-    postgres_insert_query = "INSERT INTO public.address (address_id, address, address2, city, province) VALUES (%s,%s,%s,%s,%s);"
+    postgres_insert_query = "INSERT INTO public.address (address_id, address, city, province) VALUES (%s,%s,%s,%s,%s);"
 
-    record_to_insert = ("A1", "Pretoria", "", "", "")
+    record_to_insert = ("A1", "", "Pretoria", "Gauteng")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    record_to_insert = ("A2", "Johannesburg", "", "", "")
+    record_to_insert = ("A2", "", "Johannesburg", "Gauteng")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    record_to_insert = ("A3", "Cape Town", "", "", "")
+    record_to_insert = ("A3", "", "Cape Town", "Western Cape")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    record_to_insert = ("A4", "Bloemfontein", "", "", "")
+    record_to_insert = ("A4", "", "Bloemfontein", "Free State")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    record_to_insert = ("A5", "Polokwane", "", "", "")
+    record_to_insert = ("A5", "", "Polokwane", "Limpopo")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    record_to_insert = ("A6", "Durban", "", "", "")
+    record_to_insert = ("A6", "", "Durban", "KwaZulu-Natal")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
+
+    record_to_insert = ("A7", "", "Alberton", "Gauteng")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    record_to_insert = ("A8", "", "Bronkhorstspruit", "Gauteng")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    record_to_insert = ("A9", "", "Stellenbosch", "Western Cape")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    record_to_insert = ("A10", "", "Upington", "Northen Cape")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    record_to_insert = ("A11", "", "Springbok", "Northen Cape")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    record_to_insert = ("A12", "", "Harrismith", "Free State")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    record_to_insert = ("A13", "", "Brits", "North West")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    record_to_insert = ("A14", "", "Pietermaritzburg", "KwaZulu-Natal")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    record_to_insert = ("A15", "", "East London", "Eastern Cape")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    record_to_insert = ("A16", "", "George", "Western Cape")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    record_to_insert = ("A17", "", "Mossel Bay", "Western Cape")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    record_to_insert = ("A18", "", "Bela-Bela", "Limpopo")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    record_to_insert = ("A19", "", "Heidelberg", "Gauteng")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
+    record_to_insert = ("A20", "", "Soweto", "Gauteng")
+    cursor.execute(postgres_insert_query, record_to_insert)
+    connection.commit()
+
 
 
     #1 Edgars

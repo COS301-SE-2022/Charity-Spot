@@ -75,7 +75,7 @@ export function Home() {
         </div>
         <div className='content content-2'>
 
-        <div className='title'><h1>Filter</h1></div>
+        {/*<div className='title'><h1>Filter</h1></div>*/}
 
           <div className ="filters-contain">
               <div className="left-filt">
@@ -262,7 +262,7 @@ export function Home() {
 
               </div>
 
-              <div className="right-filt">
+              {/*<div className="right-filt">
                 <h3 className='FiltLabels'>Prediction Type</h3><br/><br/><br/>
 
                 <div id = "typeFilters">
@@ -290,7 +290,7 @@ export function Home() {
                           </div>
 
                 </div>
-             </div>     
+  </div>*/}     
               
           </div>
 
