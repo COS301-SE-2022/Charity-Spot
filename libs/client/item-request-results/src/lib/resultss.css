@@ -81,6 +81,12 @@
 .Lead{
     color: #1458b3;   
 }
+.probG{
+  color: green;
+}
+.probR{
+  color: rgb(184, 4, 4);
+}
 #butChoose{
     width: 50%;
     background: #1458b3 ;

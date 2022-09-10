@@ -66,7 +66,7 @@ for i in range(0,len(dayOfWeek_array)):
         f2.write(str(dayOfWeek_array[i]) + "," + str(normalized_dayOfWeek[i]) + '\n')
 
 
-typeOfItem_array = np.array([1,2,3,4,5,6,7])
+typeOfItem_array = np.array([1,2,3,4,5,6])
 normalized_typeOfItem = np.linalg.norm(typeOfItem_array)
 normalized_typeOfItem = typeOfItem_array/normalized_typeOfItem
 

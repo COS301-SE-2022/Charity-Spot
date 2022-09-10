@@ -8,7 +8,7 @@ import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
 
 function getLocation(location : any){
       //let //locations = ["Pretoria", "Johannesburg", "Cape Town", "Bloemfontein", "Polokwane", "Durban"]
-      let locations = ["Gauteng","KwaZulu-Natal","Limpopo","Western Cape","Northern Cape","North West","Eastern Cape","Free State","Mpumalanga"]
+      let locations = ["Gauteng","Kwazulu-Natal","Limpopo","Western Cape","Northern Cape","North West","Eastern Cape","Free State","Mpumalanga"]
 
       for(let i=0; i<location.length; i++){
             if(locations[i] == location){
@@ -73,6 +73,8 @@ async function APICall(){
       
            let resultString = JSON.stringify(result);
            let resultFin = JSON.parse(resultString);
+
+           console.log(resultFin);
 
            return resultFin.data.getAIPredic;
 

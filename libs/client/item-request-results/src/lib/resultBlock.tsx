@@ -36,10 +36,20 @@ export function ResultBlock(props : any){
     const [className, setClassName] = useState<any>();
 
     const [OrgName, setOrgName] = useState<any>();
+    const [OrgProb, setOrgProb] = useState<any>();
+
+    const [probStyle, setProbStyle] = useState<any>("probR");
 
     const getResultInfo = async () => {
         let OrgInfo = await APICall(props.inState[0].ResultID)
         setOrgName(OrgInfo.OrgName);
+        let prob = "Low Chance";
+        if(props.inState[0].ResultProb > 0.9){
+          prob =  "High Chance"
+          setProbStyle("probG");
+        }
+        console.log(prob);
+        setOrgProb(prob);
     }
 
     useEffect(() => {
@@ -80,6 +90,8 @@ export function ResultBlock(props : any){
                       <input type="radio" id="starreq5" name="req0" value="1"  disabled/>
                       <label  htmlFor="starreq6" title="text"></label>
                 </div> 
+
+          <div><h4 className={probStyle}>{OrgProb}</h4></div>
                 <br></br>   
           <button type='submit' id='butChoose'>Choose</button> 
 
