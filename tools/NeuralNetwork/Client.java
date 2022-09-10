@@ -127,8 +127,10 @@ class Client extends Thread{
                 //Vals for location
                 i = 0;
             
-                this.inputLOC = new int[6];
-                this.normLOC = new double[6];
+                //this.inputLOC = new int[6];
+                //this.normLOC = new double[6];
+                this.inputLOC = new int[9];
+                this.normLOC = new double[9];
 
                 brID = new BufferedReader(new FileReader(new File("normalizedLOC.txt")));
 

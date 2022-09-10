@@ -7,7 +7,8 @@ import { useEffect, useState } from 'react';
 import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
 
 function getLocation(location : any){
-      let locations = ["Pretoria", "Johannesburg", "Cape Town", "Bloemfontein", "Polokwane", "Durban"]
+      //let //locations = ["Pretoria", "Johannesburg", "Cape Town", "Bloemfontein", "Polokwane", "Durban"]
+      let locations = ["Gauteng","KwaZulu-Natal","Limpopo","Western Cape","Northern Cape","North West","Eastern Cape","Free State","Mpumalanga"]
 
       for(let i=0; i<location.length; i++){
             if(locations[i] == location){
@@ -40,7 +41,8 @@ async function APICall(){
             }
       }`;*/
 
-      let date = getCookie("date");
+      //let date = getCookie("date");
+      let date = "01-03";
       let itemType = getItem(getCookie("type"));
       let location = getLocation(getCookie("location"));
 
