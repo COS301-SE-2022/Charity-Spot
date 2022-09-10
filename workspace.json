@@ -29,6 +29,7 @@
     "api-schedule-delivery-api-feature": "libs/api/schedule-delivery/api/feature",
     "api-schedule-delivery-repository-feature": "libs/api/schedule-delivery/repository/feature",
     "api-schedule-delivery-service-feature": "libs/api/schedule-delivery/service/feature",
+    "api-shared-auth": "libs/api/shared/auth",
     "client": "apps/client",
     "client-chat": "libs/client/chat",
     "client-chat-history": "libs/client/chat-history",
