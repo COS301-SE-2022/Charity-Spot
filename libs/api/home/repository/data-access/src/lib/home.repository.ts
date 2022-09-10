@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@charity-spot/api/shared/services/prisma';
-import { first } from 'rxjs';
 
 class orgTypeDonation{
-  ID : string
-  Type : string
+  ID : string = ""
+  Name : string = ""
+  Type : string = ""
+  Location : string = ""
 }
 
 @Injectable()
@@ -71,31 +72,40 @@ export class HomeRepository {
 
       
 
-    
-    
-
-    console.log(finalList);
-
     for(let i=0; i< finalList.length; i++){
 
-      let tempInfo = await this.prisma.organisation.findUnique({
+      let tempOrg = await this.prisma.organisation.findUnique({
         where:
         {
           UserID : finalList[i].ID
         },
         select: 
         {
-          OrgName : true
+          OrgName : true,
+          AddressID : true
         }
       });
 
-      console.log(tempInfo);
+      let tempAdd = await this.prisma.address.findUnique({
+        where:
+        {
+          AddressID : tempOrg.AddressID
+        },
+        select:
+        {
+          Address : true
+        }
+      });
 
+      finalList[i].Name = tempOrg.OrgName;
+      finalList[i].Location = tempAdd.Address;
 
     }
 
+    return finalList;
 
-    return await this.prisma.donoItem.findMany({
+
+    /*return await this.prisma.donoItem.findMany({
       select:
       {
         ItemName: true,
@@ -104,7 +114,7 @@ export class HomeRepository {
         DonoLoc: true
       }
 
-    });
+    });*/
 
   }
 
