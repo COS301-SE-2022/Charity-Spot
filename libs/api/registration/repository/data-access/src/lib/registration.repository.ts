@@ -52,7 +52,7 @@ export class RegistrationRepository {
     return u;
   }
 
-  async AlterAdress(UserID : string,address:string,address2:string,city:string,prov:string, resort: string)
+  async AlterAdress(UserID : string,address:string,city:string,prov:string)
   {
     let u = null;
 
@@ -60,7 +60,7 @@ export class RegistrationRepository {
       where:
       {
         Address:address,
-        Address2:address2,
+        //Address2:address2,
         City:city,
         Province:prov
       },
@@ -76,7 +76,7 @@ export class RegistrationRepository {
         data:
         {
           Address:address,
-          Address2:address2,
+          //Address2:address2,
           City:city,
           Province:prov
         }

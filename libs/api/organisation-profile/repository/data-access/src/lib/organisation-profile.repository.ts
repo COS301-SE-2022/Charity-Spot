@@ -72,7 +72,7 @@ export class OrganisationRepository {
       select:
       {
         Address:true,
-        Address2:true,
+        //Address2:true,
         City:true,
         Province:true
       }
@@ -100,7 +100,7 @@ export class OrganisationRepository {
       data:
       {
         Address:address,
-        Address2:address2,
+        //Address2:address2,
         City:city,
         Province:prov
       }
