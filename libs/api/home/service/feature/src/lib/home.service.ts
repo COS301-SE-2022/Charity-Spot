@@ -35,6 +35,8 @@ export class HomeService {
 
         let items = await this.HomeRepository.getAllItems();
 
+        console.log(items);
+
         let retItem : any = []
 
         for(let i=0; i<items.length; i++){
@@ -45,6 +47,8 @@ export class HomeService {
             temp.Name = items[i].Name
             temp.Type = items[i].Type;
             temp.Location = items[i].Location;
+            temp.Province = items[i].Province;
+            temp.City = items[i].City;
             
             retItem.push(temp);
         }

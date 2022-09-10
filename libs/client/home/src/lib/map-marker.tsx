@@ -52,6 +52,8 @@ async function APICall(){
           Name
           Type
           Location
+          Province
+          City
         }
       }`;
   
@@ -99,7 +101,7 @@ export function MapMarker(props : any){
 
         for(let i=0; i< newItemss.length; i++){
 
-            if(newItemss[i].Location == "Pretoria"){
+            /*if(newItemss[i].Location == "Pretoria"){
                 newItemss[i].Coord = pretoria;
             }
             else if(newItemss[i].Location == "Johannesburg"){
@@ -119,7 +121,7 @@ export function MapMarker(props : any){
             }
             else{
                 newItemss[i].Coord = pretoria;
-            }
+            }*/
 
             //console.log(props.state)
 

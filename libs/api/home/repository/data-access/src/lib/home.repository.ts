@@ -6,6 +6,8 @@ class orgTypeDonation{
   Name : string = ""
   Type : string = ""
   Location : string = ""
+  Province : string = ""
+  City : string = ""
 }
 
 @Injectable()
@@ -93,12 +95,16 @@ export class HomeRepository {
         },
         select:
         {
-          Address : true
+          Address : true,
+          City : true,
+          Province : true
         }
       });
 
       finalList[i].Name = tempOrg.OrgName;
       finalList[i].Location = tempAdd.Address;
+      finalList[i].Province = tempAdd.Province;
+      finalList[i].City = tempAdd.City;
 
     }
 
