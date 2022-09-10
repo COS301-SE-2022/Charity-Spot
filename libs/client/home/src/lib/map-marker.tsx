@@ -37,12 +37,23 @@ const markerColoursS = ["https://maps.google.com/mapfiles/kml/paddle/red-circle.
 
 async function APICall(){
   
-    const query = `query{
+    /*const query = `query{
         GetAllItems{
           ItemName
           OrgID
           Location
           Type
+        }
+      }`;*/
+
+      const query = `query{
+        GetAllItems{
+          OrgID
+          Name
+          Type
+          Location
+          Province
+          City
         }
       }`;
   
@@ -64,6 +75,8 @@ async function APICall(){
            let orgString = JSON.stringify(orgs);
            let orgFin = JSON.parse(orgString);
 
+           console.log(orgFin);
+
            console.log(orgFin.data.GetAllItems);
   
            return orgFin.data.GetAllItems;
@@ -83,9 +96,12 @@ export function MapMarker(props : any){
 
         let newItemss = await APICall();
 
+        //console.log(props);
+        //console.log(newItemss);
+
         for(let i=0; i< newItemss.length; i++){
 
-            if(newItemss[i].Location == "Pretoria"){
+            /*if(newItemss[i].Location == "Pretoria"){
                 newItemss[i].Coord = pretoria;
             }
             else if(newItemss[i].Location == "Johannesburg"){
@@ -105,13 +121,13 @@ export function MapMarker(props : any){
             }
             else{
                 newItemss[i].Coord = pretoria;
-            }
+            }*/
 
-            console.log(props.state)
+            //console.log(props.state)
 
             //Location filter
 
-            if(props.state[0][0] == false && newItemss[i].Location == "Pretoria"){
+            /*if(props.state[0][0] == false && newItemss[i].Location == "Pretoria"){
                 continue;
             }
 
@@ -133,11 +149,11 @@ export function MapMarker(props : any){
 
             if(props.state[0][5] == false && newItemss[i].Location == "Bloemfontein"){
                 continue;
-            }
+            }*/
 
             //Type Filter
 
-            if(props.state[1][0] == false && newItemss[i].Type == "CLOTHING"){
+            /*if(props.state[1][0] == false && newItemss[i].Type == "CLOTHING"){
                 continue;
             }
             if(newItemss[i].Type == "CLOTHING"){
@@ -197,12 +213,12 @@ export function MapMarker(props : any){
             }
             
             
-            MarkerL.push(newItemss[i]);
+            MarkerL.push(newItemss[i]);*/
         }
 
-        console.log(newItemss);
+        //console.log(newItemss);
 
-        addMarkerO(MarkerL);
+        //addMarkerO(MarkerL);
 
     }
 
@@ -226,7 +242,7 @@ export function MapMarker(props : any){
 
         <div>
 
-            {MarkerO.map(function(marker){
+            {/*MarkerO.map(function(marker){
                 loopCount = loopCount + getRandomArbitrary(-0.1, 0.1);
                 
                 return(
@@ -239,7 +255,7 @@ export function MapMarker(props : any){
                         title={marker.ItemName}
                     />
 
-            )})}
+                )})*/}
 
         </div>
     )

@@ -16,7 +16,6 @@ export class RegistrationResolver {
 		@Args("picture") picBase64: string
 	) {
 		let returnV = await this.RegistrationService.regClient(name, email, loc, secr);
-		console.log(returnV);
 
 		if(picBase64 != "undefined"){
 

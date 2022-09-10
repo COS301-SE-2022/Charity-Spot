@@ -21,7 +21,7 @@ async function APICall(orgName:string, email: string,location:string, password: 
           Email: "${email}",
           Location: "${location}",
           Password: "${password}",
-          picture: "${base64}
+          picture: "${base64}"
         ){
           ID_internal
           ID_external

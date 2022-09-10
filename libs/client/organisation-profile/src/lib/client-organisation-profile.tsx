@@ -5,12 +5,14 @@ import userprofile from '../../../shared/assets/userprofile.png'
 import 'react-tabs/style/react-tabs.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaUserAlt,FaEdit,FaPen } from 'react-icons/fa'
+import { FaUserAlt,FaEdit,FaPen,FaHistory } from 'react-icons/fa'
 
 import ListGroup from 'react-bootstrap/esm/ListGroup';
 
 import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
 import {Link} from 'react-router-dom'
+
+import ItemHistory from './item-history'
 
 const IdCookie = getCookie('ID');
 
@@ -192,28 +194,18 @@ export function Profile() {
   
   return (
     <div>
-    {/*{
-      (
-        ()=> {
-          if(OName == "DEMO4") {
-            return (
-              <div className='content content-1'>
-                <br/><br/>
-                <h1>YOU ARE NOT AN ASSISTING ORGANISATION<br/>ALL THIS WILL BE DONE IN DEMO 4</h1>
-              </div>
-            )
-          } else {*
-            return (*/}
 
             <div className="wrapperProfile">
                 <br/><br/>
                   <input type ="radio" name="sliderProf" id='profTab' defaultChecked ></input>
                   <input type ="radio" name="sliderProf" id='blog' ></input>
-                  {( editView && <nav>
+                  <input type ="radio" name="sliderProf" id='items' ></input>
+                  <nav>
                     <label htmlFor= "profTab" className='profTab' ><FaUserAlt/> Profile  </label>
-                    <label htmlFor= "blog" className='blog'> <FaEdit/> Edit </label>
+                    {( editView && <label htmlFor= "blog" className='blog'> <FaEdit/> Edit </label> )}
+                    {( !editView && <label htmlFor= "blog" className='blog'> <FaHistory/> Items </label> )}
                     <div className='sliderProf'></div>
-                  </nav>)}
+                  </nav>
             <section>
               
             <div className='content content-1'>
@@ -369,6 +361,11 @@ export function Profile() {
                             </div>  
                           </div>
                       </div>
+                        </div>)}
+
+                        {( !editView && <div className='content content-2'> 
+                          <div className='title'><h1>Test</h1></div>
+                          <ItemHistory></ItemHistory>
                         </div>)}
               </section>
             </div>
