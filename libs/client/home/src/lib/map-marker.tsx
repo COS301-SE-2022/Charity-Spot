@@ -99,11 +99,96 @@ export function MapMarker(props : any){
         await APICall().then(async newItems => {
             //console.log(newItems);
 
+            console.log(props);
+
             for(let i=0; i< newItems.length; i++){
 
                 let coord = newItems[i].Location.split(',');
                 newItems[i].lat = parseFloat(coord[0]);
                 newItems[i].lng = parseFloat(coord[1]);
+
+                //Location filter
+
+                if(props.state[0][0] == false && newItems[i].Province == "Gauteng"){
+                    continue;
+                }
+
+                if(props.state[0][1] == false && newItems[i].Province == "KwaZulu-Natal"){
+                    continue;
+                }
+
+                if(props.state[0][2] == false && newItems[i].Province == "Limpopo"){
+                    continue;
+                }
+
+                if(props.state[0][3] == false && newItems[i].Province == "Western Cape"){
+                    continue;
+                }
+
+                if(props.state[0][4] == false && newItems[i].Province == "Northern Cape"){
+                    continue;
+                }
+
+                if(props.state[0][5] == false && newItems[i].Province == "North West"){
+                    continue;
+                }
+
+                if(props.state[0][6] == false && newItems[i].Province == "Eastern Cape"){
+                    continue;
+                }
+
+                if(props.state[0][7] == false && newItems[i].Province == "Free State"){
+                    continue;
+                }
+
+                if(props.state[0][8] == false && newItems[i].Province == "Mpumalanga"){
+                    continue;
+                }
+
+                //Type Filter
+
+                if(props.state[1][0] == false && newItems[i].Type == "CLOTHING"){
+                    continue;
+                }
+                if(newItems[i].Type == "CLOTHING"){
+                    newItems[i].colour = markerColoursS[0];
+                }
+
+                if(props.state[1][1] == false && newItems[i].Type == "FOOD"){
+                    continue;
+                }
+                if(newItems[i].Type == "FOOD"){
+                newItems[i].colour = markerColoursS[1];
+                }
+
+                if(props.state[1][2] == false && newItems[i].Type == "STATIONARY"){
+                    continue;
+                }
+                if(newItems[i].Type == "STATIONARY"){
+                    newItems[i].colour = markerColoursS[2];
+                }
+
+                if(props.state[1][3] == false && newItems[i].Type == "HYGIENE"){
+                continue;
+                }
+                if(newItems[i].Type == "HYGIENE"){
+                    newItems[i].colour = markerColoursS[3];
+                }
+
+                if(props.state[1][4] == false && newItems[i].Type == "KITCHEN"){
+                    continue;
+                }
+                if(newItems[i].Type == "KITCHEN"){
+                    newItems[i].colour = markerColoursS[4];
+                }
+
+                if(props.state[1][5] == false && newItems[i].Type == "FURNITURE"){
+                    continue;
+                }
+                if(newItems[i].Type == "FURNITURE"){
+                    newItems[i].colour = markerColoursS[5];
+                }
+
                 MarkerL.push(newItems[i]);
 
             }
@@ -277,6 +362,7 @@ export function MapMarker(props : any){
                         onClick = {() => { handleClick(marker.OrgID); }}
                         position = {{ lat: marker.lat, lng:marker.lng}}
                         title={marker.Name}
+                        icon= {marker.colour}
 
 
                     />
