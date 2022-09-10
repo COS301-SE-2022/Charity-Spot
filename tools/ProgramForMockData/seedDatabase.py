@@ -33,6 +33,8 @@ try:
     #First add locations to Address table
     postgres_insert_query = "INSERT INTO public.address (address_id, address, city, province) VALUES (%s,%s,%s,%s);"
 
+    #A1,A6,A2,A5,A7,A3,A14,A8
+
     record_to_insert = ("A1", "-25.7479,28.2293", "Pretoria", "Gauteng")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
@@ -133,7 +135,7 @@ try:
         day = 3
 
         postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc, item_avail) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-        record_to_insert = (f"Clothing item {x} from Edgars. Gauteng", "1", "1", "This is a clothing item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "CLOTHING", f"1{x}", f"{day},{month}", "Pretoria", "true")
+        record_to_insert = (f"Clothing item {x} from Edgars. Gauteng", "1", "1", "This is a clothing item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "CLOTHING", f"1{x}", f"{day},{month}", "Gauteng", "true")
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
@@ -143,7 +145,7 @@ try:
         day = 3
 
         postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc, item_avail) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-        record_to_insert = (f"Clothing item {x} from Edgars. Western Cape", "1", "1", "This is a clothing item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "CLOTHING", f"11{x}", f"{day},{month}", "Cape Town","true")
+        record_to_insert = (f"Clothing item {x} from Edgars. Western Cape", "1", "1", "This is a clothing item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "CLOTHING", f"11{x}", f"{day},{month}", "Western Cape","true")
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
         
@@ -156,18 +158,18 @@ try:
     connection.commit()
 
     postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("2", "Mr Price", "A2")
+    record_to_insert = ("2", "Mr Price", "A6")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    #Mr Price makes all of its donations in Durban. Always clothes
+    #Mr Price makes all of its donations in KwaZulu-Natal. Always clothes
     for x in range(200):
 
         month = 1
         day = 3
 
         postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc, item_avail) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-        record_to_insert = (f"Clothing item {x} from Mr Price. Durban", "2", "1", "This is a clothing item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "CLOTHING", f"2{x}", f"{day},{month}", "Durban","true")
+        record_to_insert = (f"Clothing item {x} from Mr Price. KwaZulu-Natal", "2", "1", "This is a clothing item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "CLOTHING", f"2{x}", f"{day},{month}", "KwaZulu-Natal","true")
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
@@ -180,18 +182,18 @@ try:
     connection.commit()
 
     postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("3", "Scooters Pizza", "A3")
+    record_to_insert = ("3", "Scooters Pizza", "A2")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    #Scooters pizza makes 33% of its donations in Johannesburg, 33% in Bloemfontein and 33% in Polokwane
+    #Scooters pizza makes 33% of its donations in Gauteng, 33% in Free State and 33% in Limpopo
     for x in range(66):
 
         month = 1
         day = 3
 
         postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc, item_avail) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-        record_to_insert = (f"Food item {x} from Scooters Pizza. Johannesburg", "3", "1", "This is a food item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "FOOD", f"3{x}", f"{day},{month}", "Johannesburg","true")
+        record_to_insert = (f"Food item {x} from Scooters Pizza. Gauteng", "3", "1", "This is a food item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "FOOD", f"3{x}", f"{day},{month}", "Gauteng","true")
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
@@ -201,7 +203,7 @@ try:
         day = 3
 
         postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc, item_avail) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-        record_to_insert = (f"Food item {x} from Scooters Pizza. Bloemfontein", "3", "1", "This is a food item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "FOOD", f"333{x}", f"{day},{month}", "Bloemfontein","true")
+        record_to_insert = (f"Food item {x} from Scooters Pizza. Free State", "3", "1", "This is a food item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "FOOD", f"333{x}", f"{day},{month}", "Free State","true")
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
@@ -211,7 +213,7 @@ try:
         day = 3
 
         postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc, item_avail) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-        record_to_insert = (f"Food item {x} from Scooters Pizza. Polokwane", "3", "1", "This is a food item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "FOOD", f"3333{x}", f"{day},{month}", "Polokwane","true")
+        record_to_insert = (f"Food item {x} from Scooters Pizza. Limpopo", "3", "1", "This is a food item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "FOOD", f"3333{x}", f"{day},{month}", "Limpopo","true")
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
@@ -224,18 +226,18 @@ try:
     connection.commit()
 
     postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("4", "Checkers", "A4")
+    record_to_insert = ("4", "Checkers", "A5")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    #Checkers will donate all of their itmes in Polokwane. 33% of their items will be food, 33% will be clothes and 33% will be toiletries
+    #Checkers will donate all of their itmes in Limpopo. 33% of their items will be food, 33% will be clothes and 33% will be toiletries
     for x in range(66):
 
         month = 1
         day = 3
 
         postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc, item_avail) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-        record_to_insert = (f"Food item {x} from Checkers. Polokwane", "4", "1", "This is a food item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "FOOD", f"4{x}", f"{day},{month}", "Polokwane", "true")
+        record_to_insert = (f"Food item {x} from Checkers. Limpopo", "4", "1", "This is a food item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "FOOD", f"4{x}", f"{day},{month}", "Limpopo", "true")
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
@@ -245,7 +247,7 @@ try:
         day = 3
 
         postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc, item_avail) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-        record_to_insert = (f"Clothing item {x} from Checkers. Polokwane", "4", "1", "This is a clothing item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "CLOTHING", f"444{x}", f"{day},{month}", "Polokwane", "true")
+        record_to_insert = (f"Clothing item {x} from Checkers. Limpopo", "4", "1", "This is a clothing item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "CLOTHING", f"444{x}", f"{day},{month}", "Limpopo", "true")
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
@@ -255,7 +257,7 @@ try:
         day = 3
 
         postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc, item_avail) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-        record_to_insert = (f"Hygiene item {x} from Checkers. Polokwane", "4", "1", "This is a hygiene item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "HYGIENE", f"4444{x}", f"{day},{month}", "Polokwane","true")
+        record_to_insert = (f"Hygiene item {x} from Checkers. Limpopo", "4", "1", "This is a hygiene item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "HYGIENE", f"4444{x}", f"{day},{month}", "Limpopo","true")
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
@@ -268,18 +270,18 @@ try:
     connection.commit()
 
     postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("5", "Spar", "A5")
+    record_to_insert = ("5", "Spar", "A7")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    #Spar will donate all of their food items in Pretoria and all of their Hygiene items in Durban
+    #Spar will donate all of their food items in Gauteng and all of their Hygiene items in Kwazulu-Natal
     for x in range(100):
 
         month = 1
         day = 3
 
         postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc, item_avail) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-        record_to_insert = (f"Food item {x} from Spar. Pretoria", "5", "1", "This is a food item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "FOOD", f"5{x}", f"{day},{month}", "Pretoria","true")
+        record_to_insert = (f"Food item {x} from Spar. Gauteng", "5", "1", "This is a food item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "FOOD", f"5{x}", f"{day},{month}", "Gauteng","true")
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
@@ -289,7 +291,7 @@ try:
         day = 3
 
         postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc, item_avail) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-        record_to_insert = (f"Hygiene item {x} from Spar. Durban", "5", "1", "This is a hygiene item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "HYGIENE", f"555{x}", f"{day},{month}", "Durban","true")
+        record_to_insert = (f"Hygiene item {x} from Spar. Kwazulu-Natal", "5", "1", "This is a hygiene item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "HYGIENE", f"555{x}", f"{day},{month}", "Kwazulu-Natal","true")
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
@@ -302,18 +304,18 @@ try:
     connection.commit()
 
     postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("6", "Clicks", "A6")
+    record_to_insert = ("6", "Clicks", "A3")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    #Clicks will donate 50% of their hygiene items in Cape Town and 50% of their hygiene items in Pretoria
+    #Clicks will donate 50% of their hygiene items in Western Cape and 50% of their hygiene items in Gauteng
     for x in range(100):
 
         month = 1
         day = 3
 
         postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc, item_avail) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-        record_to_insert = (f"Hygiene item {x} from Clicks. Cape Town", "6", "1", "This is a hygiene item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "HYGIENE", f"6{x}", f"{day},{month}", "Cape Town","true")
+        record_to_insert = (f"Hygiene item {x} from Clicks. Western Cape", "6", "1", "This is a hygiene item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "HYGIENE", f"6{x}", f"{day},{month}", "Western Cape","true")
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
@@ -323,7 +325,7 @@ try:
         day = 3
 
         postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc, item_avail) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-        record_to_insert = (f"Hygiene item {x} from Clicks. Pretoria", "6", "1", "This is a hygiene item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "HYGIENE", f"6666{x}", f"{day},{month}", "Pretoria","true")
+        record_to_insert = (f"Hygiene item {x} from Clicks. Gauteng", "6", "1", "This is a hygiene item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "HYGIENE", f"6666{x}", f"{day},{month}", "Gauteng","true")
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
@@ -336,18 +338,18 @@ try:
     connection.commit()
 
     postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("7", "The Clothing Store", "A1")
+    record_to_insert = ("7", "The Clothing Store", "A14")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    #The Clothing Store will donate half of their items in Durban and half of their items in Polokwane
+    #The Clothing Store will donate half of their items in Kwazulu-Natal and half of their items in Limpopo
     for x in range(100):
 
         month = 1
         day = 3
 
         postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc, item_avail) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-        record_to_insert = (f"Clothing item {x} from The Clothing Store. Durban", "7", "1", "This is a clothing item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "CLOTHING", f"7{x}", f"{day},{month}", "Durban","true")
+        record_to_insert = (f"Clothing item {x} from The Clothing Store. Kwazulu-Natal", "7", "1", "This is a clothing item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "CLOTHING", f"7{x}", f"{day},{month}", "Kwazulu-Natal","true")
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
@@ -357,7 +359,7 @@ try:
         day = 3
 
         postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc, item_avail) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-        record_to_insert = (f"Clothing item {x} from The Clothing Store. Polokwane", "7", "1", "This is a clothing item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "CLOTHING", f"777{x}", f"{day},{month}", "Polokwane","true")
+        record_to_insert = (f"Clothing item {x} from The Clothing Store. Limpopo", "7", "1", "This is a clothing item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "CLOTHING", f"777{x}", f"{day},{month}", "Limpopo","true")
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
@@ -370,20 +372,20 @@ try:
     connection.commit()
 
     postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("8", "The General Store", "A2")
+    record_to_insert = ("8", "The General Store", "A8")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
     #The General Store will donate 15 items in each of the locations. 33% will be furniture, 33% will be kitchen items and 33% will be clothing items
 
-    #Pretoria
+    #Gauteng
     for x in range(22):
 
         month = 1
         day = 3
 
         postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc, item_avail) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-        record_to_insert = (f"Clothing item {x} from The General Store. Pretoria", "8", "1", "This is a clothing item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "CLOTHING", f"8{x}", f"{day},{month}", "Pretoria","true")
+        record_to_insert = (f"Clothing item {x} from The General Store. Gauteng", "8", "1", "This is a clothing item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "CLOTHING", f"8{x}", f"{day},{month}", "Gauteng","true")
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
@@ -393,7 +395,7 @@ try:
         day = 3
 
         postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc, item_avail) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-        record_to_insert = (f"Furniture item {x} from The General Store. Pretoria", "8", "1", "This is a furniture item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "FURNITURE", f"88{x}", f"{day},{month}", "Pretoria","true")
+        record_to_insert = (f"Furniture item {x} from The General Store. Gauteng", "8", "1", "This is a furniture item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "FURNITURE", f"88{x}", f"{day},{month}", "Gauteng","true")
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
@@ -403,19 +405,19 @@ try:
         day = 3
 
         postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc, item_avail) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-        record_to_insert = (f"Kitchen item {x} from The General Store. Pretoria", "8", "1", "This is a kitchen item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "KITCHEN", f"888{x}", f"{day},{month}", "Pretoria","true")
+        record_to_insert = (f"Kitchen item {x} from The General Store. Gauteng", "8", "1", "This is a kitchen item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "KITCHEN", f"888{x}", f"{day},{month}", "Gauteng","true")
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
     
-    #Johannesburg
+    #KwaZulu-Natal
     for x in range(22):
 
         month = 1
         day = 3
 
         postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc, item_avail) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-        record_to_insert = (f"Clothing item {x} from The General Store. Johannesburg", "8", "1", "This is a clothing item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "CLOTHING", f"8888{x}", f"{day},{month}", "Johannesburg","true")
+        record_to_insert = (f"Clothing item {x} from The General Store. KwaZulu-Natal", "8", "1", "This is a clothing item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "CLOTHING", f"8888{x}", f"{day},{month}", "KwaZulu-Natal","true")
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
@@ -425,7 +427,7 @@ try:
         day = 3
 
         postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc, item_avail) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-        record_to_insert = (f"Furniture item {x} from The General Store. Johannesburg", "8", "1", "This is a furniture item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "FURNITURE", f"88888{x}", f"{day},{month}", "Johannesburg","true")
+        record_to_insert = (f"Furniture item {x} from The General Store. KwaZulu-Natal", "8", "1", "This is a furniture item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "FURNITURE", f"88888{x}", f"{day},{month}", "KwaZulu-Natal","true")
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
@@ -435,7 +437,7 @@ try:
         day = 3
 
         postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc, item_avail) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-        record_to_insert = (f"Kitchen item {x} from The General Store. Johannesburg", "8", "1", "This is a kitchen item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "KITCHEN", f"888888{x}", f"{day},{month}", "Johannesburg","true")
+        record_to_insert = (f"Kitchen item {x} from The General Store. KwaZulu-Natal", "8", "1", "This is a kitchen item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "KITCHEN", f"888888{x}", f"{day},{month}", "KwaZulu-Natal","true")
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
