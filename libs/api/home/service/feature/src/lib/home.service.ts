@@ -42,7 +42,7 @@ export class HomeService {
         const args = {
                params: {
                  key: 'AIzaSyDMc1Ul219yxqzlqQerJBrQ_KdwHnkJnMo',
-                 latlng: '-25.7479, 28.2293',
+                 latlng: '-29.8587, 31.0218',
                  //result_type: addType
                }
              };
@@ -55,14 +55,27 @@ export class HomeService {
 
             let add_comp = nStr.address_components;
 
+            let prov = "";
+            let city = "";
+
             if(add_comp == undefined){
                 
             }
             else{
-                
+
+                for(let i=0; i< add_comp.length; i++){
+
+                    if(add_comp[i].types[0] == 'administrative_area_level_1' &&  add_comp[i].types[1] == 'political'){
+                        prov = add_comp[i].long_name;
+                    }
+
+                    if(add_comp[i].types[0] == 'locality' &&  add_comp[i].types[1] == 'political'){
+                        city = add_comp[i].long_name;
+                    }
+                }
             }
               
-             
+             console.log(prov + " , " + city);
 
             }).catch(e => {console.log("error with reverse geolocation")});
              
@@ -77,7 +90,6 @@ export class HomeService {
 
             let temp = new HomeEntity();
 
-            //temp.ItemName = items[i].ItemName;
             temp.OrgID = items[i].ID;
             temp.Name = items[i].Name
             temp.Type = items[i].Type;
