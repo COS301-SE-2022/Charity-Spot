@@ -157,4 +157,22 @@ export class CommentRatingRepository {
     return oldRating;
 
   }
+
+  async getName(ID : string){
+
+    const name = await this.prisma.organisation.findFirst({
+      select:
+      {
+        OrgName : true
+      },
+      where:
+      {
+        UserID : ID
+      }
+    })
+
+    return name.OrgName;
+        
+  }
+
 }

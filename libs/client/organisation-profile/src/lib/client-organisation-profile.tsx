@@ -88,6 +88,46 @@ async function API_EDIT_Call(id:string, orgName: string, loc: string, picture: s
   return JSON.stringify(act_data);
 }
 
+async function commentRatingAPICall(comment : any, rating : any){
+
+  let ID = getCookie('ID');
+  let foreignID = getCookie('foreignID');
+
+  console.log(ID);
+  console.log(foreignID);
+
+  const query = (`query{
+    addCommentRating(
+      assist_id: "${foreignID}",
+      need_id: "${ID}",
+      comment: "${comment}",
+      rating: ${rating}
+    ) {
+      AssistID
+    }
+    }`);
+
+    let act_data = undefined;
+
+    await fetch('http://localhost:3333/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        query
+  
+      })
+    }).then(r => r.json())
+      .then((data) => 
+        act_data = data
+      );
+
+    console.log(act_data);
+
+}
+
 
 
 
@@ -122,7 +162,7 @@ export function Profile() {
 
   }
 
-  const handlesubmitComment = ((event : any) => {
+  const handlesubmitComment = (async (event : any) => {
 
     event.preventDefault();
 
@@ -130,6 +170,8 @@ export function Profile() {
     console.log(comment);
 
     (document.getElementById("commentForm") as HTMLFormElement).reset();
+
+    await commentRatingAPICall(comment, commentRate);
 
     //if(form != null){
       //form.reset();

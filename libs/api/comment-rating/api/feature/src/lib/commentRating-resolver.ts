@@ -29,4 +29,11 @@ export class CommentRatingResolver {
     ) {
         return await this.CommentRatingService.createCommentRating(assistID, needid, comment, rating);
     }
+
+    @Query(() => CommentRatingEntity)
+    async getAllProfInfo(
+        @Args("id") id: string
+    ){
+        return await this.CommentRatingService.getAllInfo(id);
+    }
 }
