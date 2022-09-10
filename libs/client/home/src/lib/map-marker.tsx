@@ -75,7 +75,7 @@ async function APICall(){
            let orgString = JSON.stringify(orgs);
            let orgFin = JSON.parse(orgString);
 
-           console.log(orgFin);
+           //console.log(orgFin);
 
            console.log(orgFin.data.GetAllItems);
   
@@ -94,12 +94,31 @@ export function MapMarker(props : any){
 
     const updateMarkers = async (props : any) => {
 
-        let newItemss = await APICall();
+        //let newItemss = await APICall();
+
+        await APICall().then(async newItems => {
+            //console.log(newItems);
+
+            for(let i=0; i< newItems.length; i++){
+
+                let coord = newItems[i].Location.split(',');
+                newItems[i].lat = parseFloat(coord[0]);
+                newItems[i].lng = parseFloat(coord[1]);
+                MarkerL.push(newItems[i]);
+
+            }
+
+            console.log(MarkerL);
+            addMarkerO(MarkerL);
+
+            //setTimeout(() => {console.log(MarkerO);}, 2000)
+            
+        })
 
         //console.log(props);
         //console.log(newItemss);
 
-        for(let i=0; i< newItemss.length; i++){
+        //for(let i=0; i< newItemss.length; i++){
 
             /*if(newItemss[i].Location == "Pretoria"){
                 newItemss[i].Coord = pretoria;
@@ -210,15 +229,16 @@ export function MapMarker(props : any){
                 let currentString = newItemss[i].colour;
                 let newString = currentString.substring(0,currentString.length - 10) + "circle.png";
                 newItemss[i].colour = newString;
-            }
+            }*/
             
             
-            MarkerL.push(newItemss[i]);*/
-        }
+            //MarkerL.push(newItemss[i]);
+        //}
 
         //console.log(newItemss);
 
         //addMarkerO(MarkerL);
+        //console.log(MarkerO)
 
     }
 
@@ -242,20 +262,26 @@ export function MapMarker(props : any){
 
         <div>
 
-            {/*MarkerO.map(function(marker){
+            {MarkerO.map(function(marker){
                 loopCount = loopCount + getRandomArbitrary(-0.1, 0.1);
                 
                 return(
 
-                    <Marker key={marker.ID}
-                        icon= {marker.colour}
+                    <Marker key={marker.OrgID}
+                        /*icon= {marker.colour}
 
                         onClick = {() => { handleClick(marker.OrgID); }}
                         position= {{ lat:marker.Coord.lat+getRandomArbitrary(-0.1,0.1), lng:marker.Coord.lng+loopCount}}
-                        title={marker.ItemName}
+                        title={marker.ItemName}*/
+
+                        onClick = {() => { handleClick(marker.OrgID); }}
+                        position = {{ lat: marker.lat, lng:marker.lng}}
+                        title={marker.Name}
+
+
                     />
 
-                )})*/}
+                )})}
 
         </div>
     )
