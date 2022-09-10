@@ -31,85 +31,85 @@ try:
     connection.commit()
 
     #First add locations to Address table
-    postgres_insert_query = "INSERT INTO public.address (address_id, address, city, province) VALUES (%s,%s,%s,%s,%s);"
+    postgres_insert_query = "INSERT INTO public.address (address_id, address, city, province) VALUES (%s,%s,%s,%s);"
 
-    record_to_insert = ("A1", "", "Pretoria", "Gauteng")
+    record_to_insert = ("A1", "-25.7479,28.2293", "Pretoria", "Gauteng")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    record_to_insert = ("A2", "", "Johannesburg", "Gauteng")
+    record_to_insert = ("A2", "-26.2041,28.0473", "Johannesburg", "Gauteng")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    record_to_insert = ("A3", "", "Cape Town", "Western Cape")
+    record_to_insert = ("A3", "-33.9249,18.4241", "Cape Town", "Western Cape")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    record_to_insert = ("A4", "", "Bloemfontein", "Free State")
+    record_to_insert = ("A4", "-29.0852,26.1596", "Bloemfontein", "Free State")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    record_to_insert = ("A5", "", "Polokwane", "Limpopo")
+    record_to_insert = ("A5", "-23.8962,29.4486", "Polokwane", "Limpopo")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    record_to_insert = ("A6", "", "Durban", "KwaZulu-Natal")
+    record_to_insert = ("A6", "-29.8587,31.0218", "Durban", "KwaZulu-Natal")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    record_to_insert = ("A7", "", "Alberton", "Gauteng")
+    record_to_insert = ("A7", "-26.3224,28.1240", "Alberton", "Gauteng")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    record_to_insert = ("A8", "", "Bronkhorstspruit", "Gauteng")
+    record_to_insert = ("A8", "-25.8084,28.7081", "Bronkhorstspruit", "Gauteng")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    record_to_insert = ("A9", "", "Stellenbosch", "Western Cape")
+    record_to_insert = ("A9", "-33.9321,18.8602", "Stellenbosch", "Western Cape")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    record_to_insert = ("A10", "", "Upington", "Northen Cape")
+    record_to_insert = ("A10", "-28.3953,21.2368", "Upington", "Northen Cape")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    record_to_insert = ("A11", "", "Springbok", "Northen Cape")
+    record_to_insert = ("A11", "-29.6655,17.8880", "Springbok", "Northen Cape")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    record_to_insert = ("A12", "", "Harrismith", "Free State")
+    record_to_insert = ("A12", "-28.2750,29.1042", "Harrismith", "Free State")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    record_to_insert = ("A13", "", "Brits", "North West")
+    record_to_insert = ("A13", "-25.6100,27.7960", "Brits", "North West")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    record_to_insert = ("A14", "", "Pietermaritzburg", "KwaZulu-Natal")
+    record_to_insert = ("A14", "-29.6006,30.3794", "Pietermaritzburg", "KwaZulu-Natal")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    record_to_insert = ("A15", "", "East London", "Eastern Cape")
+    record_to_insert = ("A15", "-33.0198,27.9039", "East London", "Eastern Cape")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    record_to_insert = ("A16", "", "George", "Western Cape")
+    record_to_insert = ("A16", "-33.9881,22.4530", "George", "Western Cape")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    record_to_insert = ("A17", "", "Mossel Bay", "Western Cape")
+    record_to_insert = ("A17", "-34.1747,22.0834", "Mossel Bay", "Western Cape")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    record_to_insert = ("A18", "", "Bela-Bela", "Limpopo")
+    record_to_insert = ("A18", "-24.8844,28.3287", "Bela-Bela", "Limpopo")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    record_to_insert = ("A19", "", "Heidelberg", "Gauteng")
+    record_to_insert = ("A19", "-26.4910,28.3842", "Heidelberg", "Gauteng")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    record_to_insert = ("A20", "", "Soweto", "Gauteng")
+    record_to_insert = ("A20", "-26.2485,27.8540", "Soweto", "Gauteng")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -126,14 +126,14 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    #Edgards makes 50% of donations in Cape Town and 50% in Pretoria. Always clothes
+    #Edgards makes 50% of donations in Western Cape and 50% in Gauteng. Always clothes
     for x in range(100):
 
         month = 1
         day = 3
 
         postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc, item_avail) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-        record_to_insert = (f"Clothing item {x} from Edgars. Pretoria", "1", "1", "This is a clothing item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "CLOTHING", f"1{x}", f"{day},{month}", "Pretoria", "true")
+        record_to_insert = (f"Clothing item {x} from Edgars. Gauteng", "1", "1", "This is a clothing item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "CLOTHING", f"1{x}", f"{day},{month}", "Pretoria", "true")
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
 
@@ -143,7 +143,7 @@ try:
         day = 3
 
         postgres_insert_query = "INSERT INTO public.donation_item (item_name, org_id, quantity, descrition, picture, quality, type, item_id, dono_date, dono_loc, item_avail) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-        record_to_insert = (f"Clothing item {x} from Edgars. Cape Town", "1", "1", "This is a clothing item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "CLOTHING", f"11{x}", f"{day},{month}", "Cape Town","true")
+        record_to_insert = (f"Clothing item {x} from Edgars. Western Cape", "1", "1", "This is a clothing item", "DonatedItems/cl5zazk0p00271xchzb79mksy.jpeg", "NEW", "CLOTHING", f"11{x}", f"{day},{month}", "Cape Town","true")
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
         
