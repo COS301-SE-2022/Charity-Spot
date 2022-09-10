@@ -28,6 +28,12 @@ import numpy as np
     # 5 = Polokwane
     # 6 = Durban
 
+#Location of the donation new
+    # 1 = Gauteng
+    # 2 = KwaZulu-Natal
+    # 3 = Limpopo
+    # 4 = Western Cape
+
 #Month = 1,2,3,4,5,6,7,8,9,10,11,12
 
 #Weather
