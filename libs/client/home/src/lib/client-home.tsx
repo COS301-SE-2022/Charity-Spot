@@ -33,7 +33,7 @@ export function Home() {
   );
 
   const [checkedType, setCheckedType] = useState(
-    new Array(6).fill(true)
+    new Array(7).fill(true)
   );
 
   const [checkedAI, setCheckedAI] = useState(
@@ -215,7 +215,7 @@ export function Home() {
                                 checked={checkedType[2]}
                                 onChange={() => {let checked = [...checkedType]; checked[2] = !checked[2]; setCheckedType(checked);}}
                               />
-                            <label htmlFor="i2">Stationary</label>
+                            <label htmlFor="i2">Stationery</label>
                           </div>
 
                           <div className='wrap1'>
@@ -246,6 +246,16 @@ export function Home() {
                                 onChange={() => {let checked = [...checkedType]; checked[5] = !checked[5]; setCheckedType(checked);}}
                               />
                             <label htmlFor="i5">Furniture</label>
+                          </div>
+
+                          <div className='wrap1'>
+                              <input
+                                type="checkbox"
+                                id = "i6"
+                                checked={checkedType[6]}
+                                onChange={() => {let checked = [...checkedType]; checked[6] = !checked[6]; setCheckedType(checked);}}
+                              />
+                            <label htmlFor="i6">Technology</label>
                           </div>
 
                     </div>

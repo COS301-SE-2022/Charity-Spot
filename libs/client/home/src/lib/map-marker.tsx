@@ -33,7 +33,7 @@ const capetown = {
     lng: 18.4241
 }
 
-const markerColoursS = ["https://maps.google.com/mapfiles/kml/paddle/red-circle.png", "https://maps.google.com/mapfiles/kml/paddle/blu-circle.png", "https://maps.google.com/mapfiles/kml/paddle/grn-circle.png", "https://maps.google.com/mapfiles/kml/paddle/ylw-circle.png", "https://maps.google.com/mapfiles/kml/paddle/purple-circle.png","https://maps.google.com/mapfiles/kml/paddle/wht-circle.png"];
+const markerColoursS = ["https://maps.google.com/mapfiles/kml/paddle/red-circle.png", "https://maps.google.com/mapfiles/kml/paddle/blu-circle.png", "https://maps.google.com/mapfiles/kml/paddle/grn-circle.png", "https://maps.google.com/mapfiles/kml/paddle/ylw-circle.png", "https://maps.google.com/mapfiles/kml/paddle/purple-circle.png","https://maps.google.com/mapfiles/kml/paddle/wht-circle.png","https://maps.google.com/mapfiles/kml/paddle/orange-circle.png"];
 
 async function APICall(){
   
@@ -187,6 +187,13 @@ export function MapMarker(props : any){
                 }
                 if(newItems[i].Type == "FURNITURE"){
                     newItems[i].colour = markerColoursS[5];
+                }
+
+                if(props.state[1][6] == false && newItems[i].Type == "TECH"){
+                    continue;
+                }
+                if(newItems[i].Type == "TECH"){
+                    newItems[i].colour = markerColoursS[6];
                 }
 
                 MarkerL.push(newItems[i]);
