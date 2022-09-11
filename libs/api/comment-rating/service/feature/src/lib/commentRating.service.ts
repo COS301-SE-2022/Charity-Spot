@@ -35,7 +35,9 @@ export class CommentRatingService {
             temp.Clients = val1.Clients;
             temp.Ratings = val1.Ratings;
 
-            this.getAverageRatings(val1.Ratings);
+            await this.getAverageRatings(val1.Ratings).then((avg) => {
+                temp.Avg = avg;
+            });
 
             await this.getAllCommentsOfAssist(AssistID).then(async (val2)=>{
                 temp.Comments = val2.Comments;

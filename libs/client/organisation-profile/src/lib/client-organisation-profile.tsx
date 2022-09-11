@@ -12,7 +12,9 @@ import ListGroup from 'react-bootstrap/esm/ListGroup';
 import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
 import {Link} from 'react-router-dom'
 
-import ItemHistory from './item-history'
+import ItemHistory from './item-history';
+
+import CommentBlock from './commentBlock';
 
 const IdCookie = getCookie('ID');
 
@@ -87,6 +89,20 @@ async function API_EDIT_Call(id:string, orgName: string, loc: string, picture: s
 
   return JSON.stringify(act_data);
 }
+
+/*
+
+query{
+  getAllProfInfo(id :"cl7wjsr500032dgchh6vcmzhx"){
+    Clients
+    ClientNames
+    Ratings
+    Comments
+    Avg
+  }
+}
+
+*/
 
 async function commentRatingAPICall(comment : any, rating : any){
 
@@ -357,6 +373,8 @@ export function Profile() {
                   </div>                
         
                 </div>
+
+                <CommentBlock state={"test"}></CommentBlock>
             </div>
 
 
