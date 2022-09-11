@@ -29,11 +29,11 @@ export function Home() {
   let APIKey = APIKEYS.GoogleMapsAPIKey;
 
   const [checkedLocation, setCheckedLocation] = useState(
-    new Array(6).fill(true)
+    new Array(9).fill(true)
   );
 
   const [checkedType, setCheckedType] = useState(
-    new Array(6).fill(true)
+    new Array(7).fill(true)
   );
 
   const [checkedAI, setCheckedAI] = useState(
@@ -75,7 +75,7 @@ export function Home() {
         </div>
         <div className='content content-2'>
 
-        <div className='title'><h1>Filter</h1></div>
+        {/*<div className='title'><h1>Filter</h1></div>*/}
 
           <div className ="filters-contain">
               <div className="left-filt">
@@ -90,7 +90,7 @@ export function Home() {
                                 onChange={() => {let checked = [...checkedLocation]; checked[0] = !checked[0]; setCheckedLocation(checked);}}
                               />
 
-                            <label htmlFor="l0"> Pretoria</label>
+                            <label htmlFor="l0"> Gauteng</label>
                           </div>
 
                           <div className='wrap1'>
@@ -101,7 +101,7 @@ export function Home() {
                                 onChange={() => {let checked = [...checkedLocation]; checked[1] = !checked[1]; setCheckedLocation(checked);}}
                               />
 
-                            <label htmlFor="l1"> Johannesburg</label>
+                            <label htmlFor="l1"> KwaZulu-Natal</label>
                           </div>
 
                           <div className='wrap1'>
@@ -112,7 +112,7 @@ export function Home() {
                                 onChange={() => {let checked = [...checkedLocation]; checked[2] = !checked[2]; setCheckedLocation(checked);}}
                               />
 
-                            <label htmlFor="l2"> Durban</label>
+                            <label htmlFor="l2"> Limpopo</label>
                           </div>
 
                           <div className='wrap1'>
@@ -123,7 +123,7 @@ export function Home() {
                                 onChange={() => {let checked = [...checkedLocation]; checked[3] = !checked[3]; setCheckedLocation(checked);}}
                               />
 
-                            <label htmlFor="l3"> Cape Town</label>
+                            <label htmlFor="l3"> Western Cape</label>
                           </div>
 
                           <div className='wrap1'>
@@ -134,7 +134,7 @@ export function Home() {
                                 onChange={() => {let checked = [...checkedLocation]; checked[4] = !checked[4]; setCheckedLocation(checked);}}
                               />
 
-                            <label htmlFor="l4"> Polokwane</label>
+                            <label htmlFor="l4"> Northern Cape</label>
                           </div>
 
                           <div className='wrap1'>
@@ -145,7 +145,40 @@ export function Home() {
                                 onChange={() => {let checked = [...checkedLocation]; checked[5] = !checked[5]; setCheckedLocation(checked);}}
                               />
 
-                            <label htmlFor="l5"> Bloemfontein</label>
+                            <label htmlFor="l5"> North West</label>
+                          </div>
+
+                          <div className='wrap1'>
+                            <input
+                                type="checkbox"
+                                id = "l6"
+                                checked={checkedLocation[6]}
+                                onChange={() => {let checked = [...checkedLocation]; checked[6] = !checked[6]; setCheckedLocation(checked);}}
+                              />
+
+                            <label htmlFor="l6"> Eastern Cape</label>
+                          </div>
+
+                          <div className='wrap1'>
+                            <input
+                                type="checkbox"
+                                id = "l7"
+                                checked={checkedLocation[7]}
+                                onChange={() => {let checked = [...checkedLocation]; checked[7] = !checked[7]; setCheckedLocation(checked);}}
+                              />
+
+                            <label htmlFor="l7"> Free State</label>
+                          </div>
+
+                          <div className='wrap1'>
+                            <input
+                                type="checkbox"
+                                id = "l8"
+                                checked={checkedLocation[8]}
+                                onChange={() => {let checked = [...checkedLocation]; checked[8] = !checked[8]; setCheckedLocation(checked);}}
+                              />
+
+                            <label htmlFor="l8"> Mpumalanga</label>
                           </div>
 
                       </div>
@@ -182,7 +215,7 @@ export function Home() {
                                 checked={checkedType[2]}
                                 onChange={() => {let checked = [...checkedType]; checked[2] = !checked[2]; setCheckedType(checked);}}
                               />
-                            <label htmlFor="i2">Stationary</label>
+                            <label htmlFor="i2">Stationery</label>
                           </div>
 
                           <div className='wrap1'>
@@ -215,11 +248,21 @@ export function Home() {
                             <label htmlFor="i5">Furniture</label>
                           </div>
 
+                          <div className='wrap1'>
+                              <input
+                                type="checkbox"
+                                id = "i6"
+                                checked={checkedType[6]}
+                                onChange={() => {let checked = [...checkedType]; checked[6] = !checked[6]; setCheckedType(checked);}}
+                              />
+                            <label htmlFor="i6">Technology</label>
+                          </div>
+
                     </div>
 
               </div>
 
-              <div className="right-filt">
+              {/*<div className="right-filt">
                 <h3 className='FiltLabels'>Prediction Type</h3><br/><br/><br/>
 
                 <div id = "typeFilters">
@@ -247,7 +290,7 @@ export function Home() {
                           </div>
 
                 </div>
-             </div>     
+  </div>*/}     
               
           </div>
 

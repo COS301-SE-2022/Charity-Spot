@@ -33,7 +33,7 @@ const capetown = {
     lng: 18.4241
 }
 
-const markerColoursS = ["https://maps.google.com/mapfiles/kml/paddle/red-circle.png", "https://maps.google.com/mapfiles/kml/paddle/blu-circle.png", "https://maps.google.com/mapfiles/kml/paddle/grn-circle.png", "https://maps.google.com/mapfiles/kml/paddle/ylw-circle.png", "https://maps.google.com/mapfiles/kml/paddle/purple-circle.png","https://maps.google.com/mapfiles/kml/paddle/wht-circle.png"];
+const markerColoursS = ["https://maps.google.com/mapfiles/kml/paddle/red-circle.png", "https://maps.google.com/mapfiles/kml/paddle/blu-circle.png", "https://maps.google.com/mapfiles/kml/paddle/grn-circle.png", "https://maps.google.com/mapfiles/kml/paddle/ylw-circle.png", "https://maps.google.com/mapfiles/kml/paddle/purple-circle.png","https://maps.google.com/mapfiles/kml/paddle/wht-circle.png","https://maps.google.com/mapfiles/kml/paddle/orange-circle.png"];
 
 async function APICall(){
   
@@ -75,7 +75,7 @@ async function APICall(){
            let orgString = JSON.stringify(orgs);
            let orgFin = JSON.parse(orgString);
 
-           console.log(orgFin);
+           //console.log(orgFin);
 
            console.log(orgFin.data.GetAllItems);
   
@@ -94,12 +94,123 @@ export function MapMarker(props : any){
 
     const updateMarkers = async (props : any) => {
 
-        let newItemss = await APICall();
+        //let newItemss = await APICall();
+
+        await APICall().then(async newItems => {
+            //console.log(newItems);
+
+            console.log(props);
+
+            for(let i=0; i< newItems.length; i++){
+
+                let coord = newItems[i].Location.split(',');
+                newItems[i].lat = parseFloat(coord[0]);
+                newItems[i].lng = parseFloat(coord[1]);
+
+                //Location filter
+
+                if(props.state[0][0] == false && newItems[i].Province == "Gauteng"){
+                    continue;
+                }
+
+                if(props.state[0][1] == false && newItems[i].Province == "KwaZulu-Natal"){
+                    continue;
+                }
+
+                if(props.state[0][2] == false && newItems[i].Province == "Limpopo"){
+                    continue;
+                }
+
+                if(props.state[0][3] == false && newItems[i].Province == "Western Cape"){
+                    continue;
+                }
+
+                if(props.state[0][4] == false && newItems[i].Province == "Northern Cape"){
+                    continue;
+                }
+
+                if(props.state[0][5] == false && newItems[i].Province == "North West"){
+                    continue;
+                }
+
+                if(props.state[0][6] == false && newItems[i].Province == "Eastern Cape"){
+                    continue;
+                }
+
+                if(props.state[0][7] == false && newItems[i].Province == "Free State"){
+                    continue;
+                }
+
+                if(props.state[0][8] == false && newItems[i].Province == "Mpumalanga"){
+                    continue;
+                }
+
+                //Type Filter
+
+                if(props.state[1][0] == false && newItems[i].Type == "CLOTHING"){
+                    continue;
+                }
+                if(newItems[i].Type == "CLOTHING"){
+                    newItems[i].colour = markerColoursS[0];
+                }
+
+                if(props.state[1][1] == false && newItems[i].Type == "FOOD"){
+                    continue;
+                }
+                if(newItems[i].Type == "FOOD"){
+                newItems[i].colour = markerColoursS[1];
+                }
+
+                if(props.state[1][2] == false && newItems[i].Type == "STATIONARY"){
+                    continue;
+                }
+                if(newItems[i].Type == "STATIONARY"){
+                    newItems[i].colour = markerColoursS[2];
+                }
+
+                if(props.state[1][3] == false && newItems[i].Type == "HYGIENE"){
+                continue;
+                }
+                if(newItems[i].Type == "HYGIENE"){
+                    newItems[i].colour = markerColoursS[3];
+                }
+
+                if(props.state[1][4] == false && newItems[i].Type == "KITCHEN"){
+                    continue;
+                }
+                if(newItems[i].Type == "KITCHEN"){
+                    newItems[i].colour = markerColoursS[4];
+                }
+
+                if(props.state[1][5] == false && newItems[i].Type == "FURNITURE"){
+                    continue;
+                }
+                if(newItems[i].Type == "FURNITURE"){
+                    newItems[i].colour = markerColoursS[5];
+                }
+
+                if(props.state[1][6] == false && newItems[i].Type == "TECH"){
+                    continue;
+                }
+                if(newItems[i].Type == "TECH"){
+                    newItems[i].colour = markerColoursS[6];
+                }
+
+                MarkerL.push(newItems[i]);
+
+            }
+
+            console.log(MarkerL);
+            addMarkerO(MarkerL);
+
+            //setTimeout(() => {console.log(MarkerO);}, 2000)
+            
+        })
 
         //console.log(props);
         //console.log(newItemss);
 
-        for(let i=0; i< newItemss.length; i++){
+        //for(let i=0; i< newItemss.length; i++){
 
             /*if(newItemss[i].Location == "Pretoria"){
                 newItemss[i].Coord = pretoria;
@@ -210,15 +321,16 @@ export function MapMarker(props : any){
                 let currentString = newItemss[i].colour;
                 let newString = currentString.substring(0,currentString.length - 10) + "circle.png";
                 newItemss[i].colour = newString;
-            }
+            }*/
             
             
-            MarkerL.push(newItemss[i]);*/
-        }
+            //MarkerL.push(newItemss[i]);
+        //}
 
         //console.log(newItemss);
 
         //addMarkerO(MarkerL);
+        //console.log(MarkerO)
 
     }
 
@@ -242,20 +354,27 @@ export function MapMarker(props : any){
 
         <div>
 
-            {/*MarkerO.map(function(marker){
+            {MarkerO.map(function(marker){
                 loopCount = loopCount + getRandomArbitrary(-0.1, 0.1);
                 
                 return(
 
-                    <Marker key={marker.ID}
-                        icon= {marker.colour}
+                    <Marker key={marker.OrgID}
+                        /*icon= {marker.colour}
 
                         onClick = {() => { handleClick(marker.OrgID); }}
                         position= {{ lat:marker.Coord.lat+getRandomArbitrary(-0.1,0.1), lng:marker.Coord.lng+loopCount}}
-                        title={marker.ItemName}
+                        title={marker.ItemName}*/
+
+                        onClick = {() => { handleClick(marker.OrgID); }}
+                        position = {{ lat: marker.lat, lng:marker.lng}}
+                        title={marker.Name}
+                        icon= {marker.colour}
+
+
                     />
 
-                )})*/}
+                )})}
 
         </div>
     )

@@ -12,7 +12,9 @@ import ListGroup from 'react-bootstrap/esm/ListGroup';
 import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
 import {Link} from 'react-router-dom'
 
-import ItemHistory from './item-history'
+import ItemHistory from './item-history';
+
+import CommentBlock from './commentBlock';
 
 const IdCookie = getCookie('ID');
 
@@ -88,6 +90,60 @@ async function API_EDIT_Call(id:string, orgName: string, loc: string, picture: s
   return JSON.stringify(act_data);
 }
 
+/*
+
+query{
+  getAllProfInfo(id :"cl7wjsr500032dgchh6vcmzhx"){
+    Clients
+    ClientNames
+    Ratings
+    Comments
+    Avg
+  }
+}
+
+*/
+
+async function commentRatingAPICall(comment : any, rating : any){
+
+  let ID = getCookie('ID');
+  let foreignID = getCookie('foreignID');
+
+  console.log(ID);
+  console.log(foreignID);
+
+  const query = (`query{
+    addCommentRating(
+      assist_id: "${foreignID}",
+      need_id: "${ID}",
+      comment: "${comment}",
+      rating: ${rating}
+    ) {
+      AssistID
+    }
+    }`);
+
+    let act_data = undefined;
+
+    await fetch('http://localhost:3333/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        query
+  
+      })
+    }).then(r => r.json())
+      .then((data) => 
+        act_data = data
+      );
+
+    console.log(act_data);
+
+}
+
 
 
 
@@ -110,6 +166,9 @@ export function Profile() {
   const [delButton, setdelButton] = useState(true);
   const [chatButton, setchatButton] = useState(true);
 
+  const [commentRate, setCommentRate] = useState(1);
+  const [comment, setComment] = useState('');
+
 
   const hanndlesubmit = (event: { preventDefault: () => void; }) =>{
     event.preventDefault();
@@ -118,6 +177,23 @@ export function Profile() {
     window.location.href = '/login'; 
 
   }
+
+  const handlesubmitComment = (async (event : any) => {
+
+    event.preventDefault();
+
+    console.log(commentRate);
+    console.log(comment);
+
+    (document.getElementById("commentForm") as HTMLFormElement).reset();
+
+    await commentRatingAPICall(comment, commentRate);
+
+    //if(form != null){
+      //form.reset();
+    //}
+    
+  });
 
   const handlesumbitUpdate = async () => {
 
@@ -219,9 +295,9 @@ export function Profile() {
                   <img src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo.png?alt=media&token=658a4502-2b08-47bf-8cb2-fe7eacbf8c3e" alt="" id="profile-pic"></img>
                   
                 </div>
-                {( editView &&<form onSubmit={hanndlesubmit}>
+                {/*( editView &&<form onSubmit={hanndlesubmit}>
                     <button type='submit' id='logout1'>Log out</button>
-                </form>)}
+                </form>)*/}
                 <h3 className='headings' >About Us</h3>
                 <div className="cover3">
                   
@@ -230,13 +306,44 @@ export function Profile() {
                 <h3 className='headings' >Reviews</h3>
                 <div className='pcomments'>
 
-                <div className='pcomment'><div className='commentPic'><h4>HF</h4></div><b><p>Helping Foundation</p></b><br></br>
-                  <div className="ratedsmall"> 
-                        <input type="radio" id="star55" checked = {true} name="rate3" value="5" disabled />
+                <div className='pcomment'><b><p>Leave a review!</p></b>
+
+                  <form id="commentForm" onSubmit={handlesubmitComment}>
+
+                    <input type ="text" placeholder='comment' onChange ={(e)=>{setComment(e.target.value)}}></input>
+
+                      <div className="rated">
+                          
+                        <input type="radio" id="star55" name="rate33" value="5" onClick={() => {setCommentRate(5)}}/>
                         <label htmlFor="star55" title="text"></label>
-                        <input type="radio" id="star44"   name="rate3" value="4"  disabled/>
+                        <input type="radio" id="star44" name="rate33" value="4" onClick={() => {setCommentRate(4)}}/>
                         <label htmlFor="star44"title="text"></label>
-                        <input type="radio" id="star33" name="rate3" value="3"  disabled />
+                        <input type="radio" id="star33"  name="rate33" value="3" onClick={() => {setCommentRate(3)}}/>
+                        <label  htmlFor="star33" title="text"></label>
+                        <input type="radio" id="star22" name="rate33" value="2" onClick={() => {setCommentRate(2)}}/>
+                        <label  htmlFor="star22" title="text"></label>
+                        <input type="radio" id="star11" name="rate33" value="1" onClick={() => {setCommentRate(1)}}/>
+                        <label  htmlFor="star11" title="text"></label>
+
+                      </div>
+
+                      <button type='submit' id='upt_but' >Submit Review</button>
+
+                      <br/><br/>
+
+                  </form>
+
+                      {/*<br></br>
+                      <p>This organization is fast and reliable, The delievered the frozen chicken in time</p>*/}
+                </div> 
+
+                {/*<div className='pcomment'><div className='commentPic'><h4>HF</h4></div><b><p>Helping Foundation</p></b><br></br>
+                  <div className="ratedsmall"> 
+                        <input type="radio" id="star55" name="rate3" value="5" disabled />
+                        <label htmlFor="star55" title="text"></label>
+                        <input type="radio" id="star44" name="rate3" value="4"  disabled/>
+                        <label htmlFor="star44"title="text"></label>
+                        <input type="radio" id="star33" checked = {true} name="rate3" value="3"  disabled />
                         <label  htmlFor="star33" title="text"></label>
                         <input type="radio" id="star22" name="rate3" value="2"  disabled/>
                         <label  htmlFor="star22" title="text"></label>
@@ -263,9 +370,11 @@ export function Profile() {
                       </div> 
                       <br></br>
                       <p> Very dissapointed, they delivered rotten chicken breats :(</p>
-                  </div>                
+                    </div>*/}     
         
-                </div>
+                    </div>
+
+                <CommentBlock state={"test"}></CommentBlock>
             </div>
 
 
@@ -294,18 +403,18 @@ export function Profile() {
                     </div> */}
 
                     <p>Average Rating 4.0</p>
-                    <div className="rated"> 
-                      <input type="radio" id="star5" name="rate" value="5" disabled />
+                    <div className="rate"> 
+                      <input type="radio" id="star5" name="rate1" value="5" disabled />
                       <label htmlFor="star5" title="text"></label>
-                      <input type="radio" id="star4"  checked = {true} name="rate" value="4"  disabled/>
+                      <input type="radio" id="star4" name="rate1" value="4" disabled />
                       <label htmlFor="star4"title="text"></label>
-                      <input type="radio" id="star3" name="rate" value="3"  disabled />
+                      <input type="radio" id="star3" name="rate1" value="3" disabled checked={true}/>
                       <label  htmlFor="star3" title="text"></label>
-                      <input type="radio" id="star2" name="rate" value="2"  disabled/>
+                      <input type="radio" id="star2" name="rate1" value="2" disabled />
                       <label  htmlFor="star2" title="text"></label>
-                      <input type="radio" id="star1" name="rate" value="1"  disabled/>
+                      <input type="radio" id="star1" name="rate1" value="1" disabled />
                       <label  htmlFor="star1" title="text"></label>
-                    </div> 
+                  </div>
                 </div>
 
 

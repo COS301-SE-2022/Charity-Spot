@@ -193,7 +193,7 @@ return (
                             <option value="Food">Food Item</option>
                             <option value="Clothes">Clothing</option>  
                             <option value="Tech">Tech (phone,laptop,etc..)</option> 
-                            <option value="Stationery">Stationery (books,pencils,etc..)</option> 
+                            <option value="Stationary">Stationery (books,pencils,etc..)</option> 
                             <option value="Hygiene">Hygiene (soap,pads,etc..)</option> 
                             <option value="Furniture">Furniture (Tv,desk,etc..)</option> 
                             <option value="Kitchen">Kitchen (kettle,toaster,etc..)</option> 
