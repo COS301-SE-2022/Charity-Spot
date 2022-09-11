@@ -39,9 +39,15 @@ async function getCommentsAPI(){
     var CommentsString = JSON.stringify(act_data);
     var Comments = JSON.parse(CommentsString)
   
-    console.log(Comments.data.getAllProfInfo);
-
+    return Comments.data.getAllProfInfo;
     
+}
+
+class commentB {
+    id : string = ""
+    name : string = ""
+    rating : number = 0
+    comment : string = ""
 }
 
 export function CommentBlock(props : any){
@@ -50,7 +56,23 @@ export function CommentBlock(props : any){
     const commentS : any[] = [];
 
     async function getComments(){
-        await getCommentsAPI();
+        let commentR = await getCommentsAPI();
+
+        for(let i=0; i<commentR.ClientNames.length; i++){
+
+            let temp = new commentB();
+
+            temp.id = commentR.Clients[i];
+            temp.name = commentR.ClientNames[i];
+            temp.rating = commentR.Ratings[i];
+            temp.comment = commentR.Comments[i];
+
+            commentS.push(temp);
+
+        }
+
+        addComments(commentS);
+
     }
 
     useEffect(() => {
@@ -60,22 +82,30 @@ export function CommentBlock(props : any){
     return(
         <div>
 
-            <div className='pcomment'><div className='commentPic'><h4>HF</h4></div><b><p>Helping Foundation</p></b><br></br>
-                  <div className="ratedsmall"> 
-                        <input type="radio" id="star55" name="rate3" value="5" disabled />
-                        <label htmlFor="star55" title="text"></label>
-                        <input type="radio" id="star44" name="rate3" value="4"  disabled/>
-                        <label htmlFor="star44"title="text"></label>
-                        <input type="radio" id="star33" checked = {true} name="rate3" value="3"  disabled />
-                        <label  htmlFor="star33" title="text"></label>
-                        <input type="radio" id="star22" name="rate3" value="2"  disabled/>
-                        <label  htmlFor="star22" title="text"></label>
-                        <input type="radio" id="star11" name="rate3" value="1"  disabled/>
-                        <label  htmlFor="star11" title="text"></label>
+            {Comments.map(function(comment){
+                return(
+
+                    <div key={comment.id} className='pcomment'><b><p>{comment.name}</p></b><br></br>
+                        <div className="ratedsmall"> 
+                            <input type="radio" id="star55" name="rate3" value="5" disabled />
+                            <label htmlFor="star55" title="text"></label>
+                            <input type="radio" id="star44" name="rate3" value="4"  disabled/>
+                            <label htmlFor="star44"title="text"></label>
+                            <input type="radio" id="star33" checked = {true} name="rate3" value="3"  disabled />
+                            <label  htmlFor="star33" title="text"></label>
+                            <input type="radio" id="star22" name="rate3" value="2"  disabled/>
+                            <label  htmlFor="star22" title="text"></label>
+                            <input type="radio" id="star11" name="rate3" value="1"  disabled/>
+                            <label  htmlFor="star11" title="text"></label>
                       </div> 
                       <br></br>
                       <p>This organization is fast and reliable, The delievered the frozen chicken in time</p> 
                   </div> 
+
+                )
+            })}
+
+            
 
         </div>
     );

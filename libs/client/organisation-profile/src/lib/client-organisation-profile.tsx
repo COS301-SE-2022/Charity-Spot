@@ -337,7 +337,7 @@ export function Profile() {
                       <p>This organization is fast and reliable, The delievered the frozen chicken in time</p>*/}
                 </div> 
 
-                <div className='pcomment'><div className='commentPic'><h4>HF</h4></div><b><p>Helping Foundation</p></b><br></br>
+                {/*<div className='pcomment'><div className='commentPic'><h4>HF</h4></div><b><p>Helping Foundation</p></b><br></br>
                   <div className="ratedsmall"> 
                         <input type="radio" id="star55" name="rate3" value="5" disabled />
                         <label htmlFor="star55" title="text"></label>
@@ -370,9 +370,9 @@ export function Profile() {
                       </div> 
                       <br></br>
                       <p> Very dissapointed, they delivered rotten chicken breats :(</p>
-                  </div>                
+                    </div>*/}     
         
-                </div>
+                    </div>
 
                 <CommentBlock state={"test"}></CommentBlock>
             </div>
