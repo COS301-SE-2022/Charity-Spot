@@ -115,7 +115,7 @@ section .content{
 }
 .left-filt{
   margin: 2rem;
-  height: 450px;
+  height: 650px;
   width: 25%;
   background-color: rgb(222, 222, 222);
   border-radius: 10px;
@@ -124,7 +124,7 @@ section .content{
 }
 .middle-filt{
   margin: 2rem;
-  height: 450px;
+  height: 650px;
   width: 25%;
   background-color: rgb(222, 222, 222);
   border-radius: 10px;
@@ -133,7 +133,7 @@ section .content{
 }
 .right-filt{
   margin: 2rem;
-  height: 450px;
+  height: 650px;
   width: 25%;
   background-color: rgb(222, 222, 222);
   border-radius: 10px;
@@ -158,10 +158,10 @@ section .content{
 
 
 .wrap1,.wrap2,.wrap3,.wrap4{
-  /* height: 80px; */
+  /*height: 80px; */
   padding: 10px;
   width: 400px;
-align-items: center;
+  align-items: center;
   margin: auto;
   display: flex;
   /* background-color: yellow; */
@@ -225,13 +225,13 @@ input[type="checkbox"]:checked
    /* background-color: #1458b3; */
   }
   .left-filt{
-    height: 480px;
+    height: 650px;
   }
   .right-filt{
-    height: 480px;
+    height: 650px;
   }
   .middle-filt{
-    height: 480px;  
+    height: 650px;  
   }
 }
 

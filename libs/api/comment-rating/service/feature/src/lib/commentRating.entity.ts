@@ -13,4 +13,13 @@ export class CommentRatingEntity {
 
     @Field(() => [String], {nullable: true})
     Comments: string[]
+
+    @Field(() => String, {nullable: true})
+    Name: string
+
+    @Field(() => [String], {nullable: true})
+    ClientNames: string[]
+
+    @Field(() => Number, {nullable: true})
+    Avg: Number
 }

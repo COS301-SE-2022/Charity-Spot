@@ -20,6 +20,7 @@ export class DonateResolver {
         @Args("picture") picBase64: string,
         @Args("pic_format") format: string
     ) {
+        console.log(category);
         const Category = (category) : catagory => {
             switch(category) {
                 case 'Food':

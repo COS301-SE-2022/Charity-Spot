@@ -28,6 +28,17 @@ import numpy as np
     # 5 = Polokwane
     # 6 = Durban
 
+#Location of the donation new
+    # 1 = Gauteng
+    # 2 = KwaZulu-Natal
+    # 3 = Limpopo
+    # 4 = Western Cape
+    # 5 = Northern Cape
+    # 6 = North West
+    # 7 = Eastern Cape
+    # 8 = Free State
+    # 9 = Mpumalanga
+
 #Month = 1,2,3,4,5,6,7,8,9,10,11,12
 
 #Weather
@@ -55,7 +66,7 @@ for i in range(0,len(dayOfWeek_array)):
         f2.write(str(dayOfWeek_array[i]) + "," + str(normalized_dayOfWeek[i]) + '\n')
 
 
-typeOfItem_array = np.array([1,2,3,4,5,6,7])
+typeOfItem_array = np.array([1,2,3,4,5,6])
 normalized_typeOfItem = np.linalg.norm(typeOfItem_array)
 normalized_typeOfItem = typeOfItem_array/normalized_typeOfItem
 
@@ -65,7 +76,7 @@ for i in range(0,len(typeOfItem_array)):
         f3.write(str(typeOfItem_array[i]) + "," + str(normalized_typeOfItem[i]) + '\n')
 
 
-location_array = np.array([1,2,3,4,5,6])
+location_array = np.array([1,2,3,4,5,6,7,8,9])
 normalized_location = np.linalg.norm(location_array)
 normalized_location = location_array/normalized_location
 
@@ -150,7 +161,8 @@ def findDay(date):
 
 def findLoc(loc):
 
-    locations = ["Pretoria", "Johannesburg", "Cape Town", "Bloemfontein", "Polokwane", "Durban"]
+    #locations = ["Pretoria", "Johannesburg", "Cape Town", "Bloemfontein", "Polokwane", "Durban"]
+    locations = ["Gauteng","KwaZulu-Natal","Limpopo","Western Cape","Northern Cape","North West","Eastern Cape","Free State","Mpumalanga"]
 
     for i in range(0, len(locations)):
         if(loc == locations[i]):
@@ -189,9 +201,15 @@ def createFakeDonation(orgID, day_of_week, item_type, location, month):
 
     typeOfItem = str(getNormalizedVal(typeOfItem, "TypeOfI"))
 
-    loc = random.randint(1,6)
+    #loc = random.randint(1,6)
+    #if loc == int(location):
+        #if(loc == 6):
+            #loc -= 1
+        #else:
+            #loc += 1
+    loc = random.randint(1,9)
     if loc == int(location):
-        if(loc == 6):
+        if(loc == 9):
             loc -= 1
         else:
             loc += 1

@@ -108,8 +108,8 @@ class Client extends Thread{
                 //Vals for Type of item
                 i = 0;
             
-                this.inputTOI = new int[7];
-                this.normTOI = new double[7];
+                this.inputTOI = new int[6];
+                this.normTOI = new double[6];
 
                 brID = new BufferedReader(new FileReader(new File("normalizedTOI.txt")));
 
@@ -127,8 +127,10 @@ class Client extends Thread{
                 //Vals for location
                 i = 0;
             
-                this.inputLOC = new int[6];
-                this.normLOC = new double[6];
+                //this.inputLOC = new int[6];
+                //this.normLOC = new double[6];
+                this.inputLOC = new int[9];
+                this.normLOC = new double[9];
 
                 brID = new BufferedReader(new FileReader(new File("normalizedLOC.txt")));
 
