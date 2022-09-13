@@ -7,8 +7,10 @@ import { OrganisationRepository } from '@charity-spot/api/organisation-profile/r
 
 import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 
+import {CommentRatingRepository} from '@charity-spot/api/comment-rating/repository/data-access';
+
 @Module({
   controllers: [],
-  providers: [OrganisationService, OrgResolver, OrganisationRepository, PrismaService],
+  providers: [OrganisationService, OrgResolver, OrganisationRepository, PrismaService, CommentRatingRepository],
 })
 export class ApiOrganisationProfileApiFeatureModule {}

@@ -28,6 +28,7 @@ async function APICall(usrID:string){
       Location
       Picture
       Internal
+      AvgRating
     }
   }`);
     
@@ -47,6 +48,8 @@ async function APICall(usrID:string){
           .then((data) => 
             All_data = data
             );
+
+            console.log(All_data)
             
          return JSON.stringify(All_data);
 
@@ -169,6 +172,9 @@ export function Profile() {
   const [commentRate, setCommentRate] = useState(1);
   const [comment, setComment] = useState('');
 
+  const [avgRating, setAvgRating] = useState(new Array(5).fill(false));
+  const [avgRNum, setAvgRNum] = useState(0);
+
 
   const hanndlesubmit = (event: { preventDefault: () => void; }) =>{
     event.preventDefault();
@@ -240,6 +246,8 @@ export function Profile() {
       const allData = response.data.OrgProfile;
       const {Email,Name,Date,Location,Picture,Internal} = allData;
 
+      console.log(allData);
+
       //console.log(Internal);
       
       //if(Internal == "ASSIST") {
@@ -248,6 +256,11 @@ export function Profile() {
         setODate(Date);
         setOLocation(Location);
         setOPicture(Picture);
+
+        let rating = new Array(5).fill(false);
+        rating[allData.AvgRating-1] = true;
+        setAvgRating(rating);
+        setAvgRNum(allData.AvgRating);
       //} else
         //setOName("DEMO4");
 
@@ -402,17 +415,17 @@ export function Profile() {
                       <label  htmlFor="star1" title="text"></label>
                     </div> */}
 
-                    <p>Average Rating 4.0</p>
+                    <p>Average Rating {avgRNum}</p>
                     <div className="rate"> 
-                      <input type="radio" id="star5" name="rate1" value="5" disabled />
+                      <input type="radio" id="star5" name="rate1" value="5" disabled checked = {avgRating[4]}/>
                       <label htmlFor="star5" title="text"></label>
-                      <input type="radio" id="star4" name="rate1" value="4" disabled />
+                      <input type="radio" id="star4" name="rate1" value="4" disabled checked = {avgRating[3]}/>
                       <label htmlFor="star4"title="text"></label>
-                      <input type="radio" id="star3" name="rate1" value="3" disabled checked={true}/>
+                      <input type="radio" id="star3" name="rate1" value="3" disabled checked = {avgRating[2]}/>
                       <label  htmlFor="star3" title="text"></label>
-                      <input type="radio" id="star2" name="rate1" value="2" disabled />
+                      <input type="radio" id="star2" name="rate1" value="2" disabled checked = {avgRating[1]}/>
                       <label  htmlFor="star2" title="text"></label>
-                      <input type="radio" id="star1" name="rate1" value="1" disabled />
+                      <input type="radio" id="star1" name="rate1" value="1" disabled checked = {avgRating[0]}/>
                       <label  htmlFor="star1" title="text"></label>
                   </div>
                 </div>

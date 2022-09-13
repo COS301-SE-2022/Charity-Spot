@@ -2,15 +2,24 @@ import { Injectable } from '@nestjs/common';
 import { OrganisationEntity } from './organisation.entity';
 import { OrganisationRepository } from '@charity-spot/api/organisation-profile/repository/data-access';
 
+import {CommentRatingRepository} from '@charity-spot/api/comment-rating/repository/data-access';
+
 @Injectable()
 export class OrganisationService {
-    constructor(private OrganisationRepository: OrganisationRepository) {}
+    constructor(private OrganisationRepository: OrganisationRepository, private CommentRatingRepository: CommentRatingRepository) {}
 
     async getOrgProfile(userID: string) {
+
         //helpers
         const organisationProfile = new OrganisationEntity();
         const user = await this.OrganisationRepository.getUser(userID);
         let date = null;
+
+        await this.getAllRatingsOfAssist(userID).then( async (val1) => {
+            await this.getAverageRatings(val1).then((avg) => {
+                organisationProfile.AvgRating = avg;
+            })
+        });
 
 
         //build up
@@ -52,5 +61,40 @@ export class OrganisationService {
 
     async getDonations(id: string) {
         return null;
+    }
+
+    //For Rating
+
+    async getAllRatingsOfAssist(AssistID: string) {
+        let dataset = null;
+        let Ratings = [];
+        //const returnable = new CommentRatingEntity();
+        if((dataset = await this.CommentRatingRepository.getRatingsForAssist(AssistID)) != null) {
+            //returnable.AssistID = AssistID;
+            //returnable.Clients = [];
+            //returnable.Ratings = [];
+            for(const k of dataset) {
+                //returnable.Clients.push(k.ClientID);
+                Ratings.push(k.Rating);
+            }
+            return Ratings;
+        }
+
+        //no data from database
+        return null;
+    }
+
+    async getAverageRatings(ratings : number[]){
+        let total = 0;
+        let count =0;
+
+        for(let i=0; i < ratings.length; i++){
+            total = total + ratings[i];
+            count++;
+        }
+
+        let avg = Number((total/count).toFixed(0));
+
+        return avg;
     }
 }
