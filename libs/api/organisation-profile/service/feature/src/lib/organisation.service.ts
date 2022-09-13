@@ -45,13 +45,17 @@ export class OrganisationService {
     }
 
     async updateDet(id: string, name: string, loc: string, picture: string, password: string) {
-        /*if(name != null)
-            this.OrganisationRepository.editOrgName(id, name);*/
+        const organisationProfile = new OrganisationEntity();
+
+        if(name != null)
+            await this.OrganisationRepository.editOrgName(id, name);
         
         if(loc != null){
 
-            this.getProvCity(loc).then(async tempProvCity => {
+            return this.getProvCity(loc).then(async tempProvCity => {
 				await this.OrganisationRepository.editAddress(id, loc, tempProvCity[1], tempProvCity[0]);
+                organisationProfile.Name = "working";
+                return organisationProfile;
 			});
             //this.OrganisationRepository.editAddress(id, loc, undefined, undefined, undefined);}
         }
@@ -65,8 +69,6 @@ export class OrganisationService {
 
         return this.getOrgProfile(id);*/
 
-        const organisationProfile = new OrganisationEntity();
-        organisationProfile.Name = "working";
         return null;
     }
 

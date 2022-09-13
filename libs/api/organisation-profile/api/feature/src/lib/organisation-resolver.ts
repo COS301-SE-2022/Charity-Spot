@@ -15,7 +15,7 @@ export class OrgResolver {
 
     
     @Query(() => OrganisationEntity)
-    OrgEditProfile(
+    async OrgEditProfile(
         @Args('id') id: string,
         @Args('orgName') name: string,
         @Args('loc') loc: string,
@@ -34,7 +34,7 @@ export class OrgResolver {
             if(password == "undefined")
                 password = null;
 
-            return this.OrganisationService.updateDet(id, name, loc, pic, password);
+            return await this.OrganisationService.updateDet(id, name, loc, pic, password);
         }
 
         return null;

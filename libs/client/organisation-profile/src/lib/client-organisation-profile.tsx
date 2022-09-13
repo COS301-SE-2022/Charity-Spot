@@ -93,7 +93,7 @@ async function API_EDIT_Call(id:any, orgName: string, loc: string, picture: stri
       act_data = data
     );
 
-  return JSON.stringify(act_data);
+  //return JSON.stringify(act_data);
 }
 
 /*
@@ -241,7 +241,9 @@ export function Profile() {
     console.log(NewOPassC);
     console.log(NewDesc);
 
-    await API_EDIT_Call(IdCookie, NewOName, Locationval, "undefined", NewOPass);
+    console.log(commentState);
+
+    await API_EDIT_Call(IdCookie, NewOName, Locationval, "undefined", NewOPass).then(()=>{ console.log("helllooo");setCommentState(commentState+1);});
 
     
   }
