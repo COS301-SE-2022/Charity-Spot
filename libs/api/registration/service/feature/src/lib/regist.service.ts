@@ -78,7 +78,7 @@ export class RegistrationService {
 
 		const args = {
 			params: {
-				key: 'AIzaSyDMc1Ul219yxqzlqQerJBrQ_KdwHnkJnMo',
+				key: 'AIzaSyAiR16bBkUQWf0d783c2MfjGwQUbH72nTw',
 				latlng: coord,
 			}
 		};

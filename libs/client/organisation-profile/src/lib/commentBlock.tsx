@@ -46,7 +46,7 @@ async function getCommentsAPI(){
 class commentB {
     id : string = ""
     name : string = ""
-    rating : number = 0
+    rating : any = []
     comment : string = ""
 }
 
@@ -58,16 +58,25 @@ export function CommentBlock(props : any){
     async function getComments(){
         let commentR = await getCommentsAPI();
 
+        //console.log(commentR);
+
+        let ratingArr = new Array(5).fill(false);
+
         for(let i=0; i<commentR.ClientNames.length; i++){
 
             let temp = new commentB();
 
             temp.id = commentR.Clients[i];
             temp.name = commentR.ClientNames[i];
-            temp.rating = commentR.Ratings[i];
+            ratingArr[commentR.Ratings[i]-1] = true;
+            temp.rating = ratingArr;
             temp.comment = commentR.Comments[i];
 
+            //console.log(ratingArr);
+
             commentS.push(temp);
+
+            ratingArr = new Array(5).fill(false);
 
         }
 
@@ -87,19 +96,19 @@ export function CommentBlock(props : any){
 
                     <div key={comment.id} className='pcomment'><b><p>{comment.name}</p></b><br></br>
                         <div className="ratedsmall"> 
-                            <input type="radio" id="star55" name="rate3" value="5" disabled />
+                            <input type="radio" id="star55" name={comment.id + " 5"} value="5" checked = {comment.rating[4]} disabled />
                             <label htmlFor="star55" title="text"></label>
-                            <input type="radio" id="star44" name="rate3" value="4"  disabled/>
+                            <input type="radio" id="star44" name={comment.id + " 4"} value="4"  checked = {comment.rating[3]} disabled/>
                             <label htmlFor="star44"title="text"></label>
-                            <input type="radio" id="star33" checked = {true} name="rate3" value="3"  disabled />
+                            <input type="radio" id="star33" name={comment.id + " 3"} value="3"  checked = {comment.rating[2]} disabled />
                             <label  htmlFor="star33" title="text"></label>
-                            <input type="radio" id="star22" name="rate3" value="2"  disabled/>
+                            <input type="radio" id="star22" name={comment.id + " 2"} value="2"  checked = {comment.rating[1]} disabled/>
                             <label  htmlFor="star22" title="text"></label>
-                            <input type="radio" id="star11" name="rate3" value="1"  disabled/>
+                            <input type="radio" id="star11" name={comment.id + " 1"} value="1"  checked = {comment.rating[0]} disabled/>
                             <label  htmlFor="star11" title="text"></label>
                       </div> 
                       <br></br>
-                      <p>This organization is fast and reliable, The delievered the frozen chicken in time</p> 
+                      <p>{comment.comment}</p> 
                   </div> 
 
                 )
