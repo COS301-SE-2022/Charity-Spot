@@ -11,6 +11,8 @@ export class CommentRatingRepository {
   {
     //check if a comment already exists
 
+    let rating = null;
+
     let rCount = await this.prisma.rating.count(
       {
         where: {
@@ -20,11 +22,9 @@ export class CommentRatingRepository {
       }
     );
 
-    console.log(rCount);
-
     if(rCount > 0){
 
-      await this.prisma.rating.delete(
+      rating = await this.prisma.rating.delete(
         {
           where: {
             OrgID_ClientID:{
@@ -35,7 +35,7 @@ export class CommentRatingRepository {
         }
       ).then(async ()=>{
 
-        const rating = await this.prisma.rating.create({
+        return await this.prisma.rating.create({
           data:
           {
             OrgID: AssistID,
@@ -44,8 +44,11 @@ export class CommentRatingRepository {
             Comment: Comment
           }
         });
+
+        //console.log(rating);
+        //console.log("r1");
     
-        return rating;
+        //return rating;
 
 
       });
@@ -53,7 +56,7 @@ export class CommentRatingRepository {
     }
     else{
 
-      const rating = await this.prisma.rating.create({
+      rating = await this.prisma.rating.create({
         data:
         {
           OrgID: AssistID,
@@ -65,6 +68,10 @@ export class CommentRatingRepository {
 
       return rating;
     }
+
+    console.log(rating);
+
+    return rating;
 
   }
 

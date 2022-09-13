@@ -175,6 +175,8 @@ export function Profile() {
   const [avgRating, setAvgRating] = useState(new Array(5).fill(false));
   const [avgRNum, setAvgRNum] = useState(0);
 
+  const [commentState, setCommentState] = useState(0);
+
 
   const hanndlesubmit = (event: { preventDefault: () => void; }) =>{
     event.preventDefault();
@@ -188,12 +190,12 @@ export function Profile() {
 
     event.preventDefault();
 
-    console.log(commentRate);
-    console.log(comment);
+    //console.log(commentRate);
+    //console.log(comment);
 
     (document.getElementById("commentForm") as HTMLFormElement).reset();
 
-    await commentRatingAPICall(comment, commentRate);
+    await commentRatingAPICall(comment, commentRate).then(()=>{setCommentState(commentState+1);});
 
     //if(form != null){
       //form.reset();
@@ -279,7 +281,7 @@ export function Profile() {
   useEffect(() => {
     setEditView(true);
     displayData();
-   },[]);
+   },[commentState]);
   
   return (
     <div>
@@ -299,7 +301,7 @@ export function Profile() {
               
             <div className='content content-1'>
 
-            <div className='title'><h1>{OName} Profile</h1></div>
+            <div className='title'><h1>{OName}</h1></div>
 
             <div className="profile-main">
 
@@ -319,7 +321,7 @@ export function Profile() {
                 <h3 className='headings' >Reviews</h3>
                 <div className='pcomments'>
 
-                <div className='pcomment'><b><p>Leave a review!</p></b>
+                { ( !editView &&<div className='pcomment'><b><p>Leave a review!</p></b>
 
                   <form id="commentForm" onSubmit={handlesubmitComment}>
 
@@ -348,7 +350,7 @@ export function Profile() {
 
                       {/*<br></br>
                       <p>This organization is fast and reliable, The delievered the frozen chicken in time</p>*/}
-                </div> 
+                </div>)} 
 
                 {/*<div className='pcomment'><div className='commentPic'><h4>HF</h4></div><b><p>Helping Foundation</p></b><br></br>
                   <div className="ratedsmall"> 
@@ -387,7 +389,7 @@ export function Profile() {
         
                     </div>
 
-                <CommentBlock state={"test"}></CommentBlock>
+                <CommentBlock state={commentState}></CommentBlock>
             </div>
 
 
@@ -486,7 +488,6 @@ export function Profile() {
                         </div>)}
 
                         {( !editView && <div className='content content-2'> 
-                          <div className='title'><h1>Test</h1></div>
                           <ItemHistory></ItemHistory>
                         </div>)}
               </section>

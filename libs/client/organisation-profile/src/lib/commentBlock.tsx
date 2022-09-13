@@ -85,8 +85,11 @@ export function CommentBlock(props : any){
     }
 
     useEffect(() => {
+
+        console.log(props);
         getComments();
-    }, []);
+        //props.state = false;
+    }, [props.state]);
 
     return(
         <div>
