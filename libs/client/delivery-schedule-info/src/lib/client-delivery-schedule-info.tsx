@@ -1,9 +1,11 @@
-import styles from './client-delivery-schedule-info.module.css';
+import './del-info.css';
 import { getCookie } from 'typescript-cookie';
 
 import { useEffect, useState } from 'react';
 
 import { FaHistory,FaDonate,FaPen,FaUserAlt,FaEdit,FaArrowDown,FaArrowUp } from 'react-icons/fa';
+
+//import './client-delivery-schedule-info.module.css'
 
 async function getDelScheduleApi(query : string){
 
@@ -56,6 +58,7 @@ export function ClientDeliveryScheduleInfo() {
     location : string = "";
     date : string = "";
     time : string = "";
+    link : string = "";
   }
 
   const DelScheduleQuery = () => {
@@ -85,6 +88,14 @@ export function ClientDeliveryScheduleInfo() {
       }
     }`
   };
+
+  const itemPicQuery = (itemID : string) => {
+    return `query{
+      getItemPicLink(itemID:"${itemID}"){
+        Name
+      }
+    }`
+  }
 
   
 
@@ -139,6 +150,15 @@ export function ClientDeliveryScheduleInfo() {
       setSchedule(scheduleList);
 
     }
+
+    async function getItemPic(itemID: string, listI: any){
+      let linkT : any= await getDelScheduleApi(itemPicQuery(itemID));
+      let link = linkT.data.getItemPicLink.Name;
+      //listI.link = link;
+      //console.log(listI);
+      (document.getElementById(itemID+"pic") as HTMLImageElement).src = link;
+      //return link;
+    }
   
 
   useEffect(() => {
@@ -146,7 +166,7 @@ export function ClientDeliveryScheduleInfo() {
   }, [])
 
   return (
-    <div className={styles['container']}>
+    <div>
       <br/><br/>
       <div className='title'><h2>Your current delivery schedule:</h2></div>
 
@@ -160,13 +180,13 @@ export function ClientDeliveryScheduleInfo() {
 
                 <div className='collapsible'>
 
-                    <input type ='checkbox' id = {A.itemID}></input>
+                    <input type ='checkbox' id = {A.itemID} onClick={async ()=>{await getItemPic(A.itemID, A)}}></input>
 
                     <label htmlFor={A.itemID}>{A.itemName}:  {A.partyName} on {A.date} </label>
 
                     <div className='collapsible-text'><br/>
                         <div className='collapseleft'>
-                        <img src="" alt="" id="donation-pic2"/>
+                        <img id={A.itemID + "pic"} className="delSched" src="" alt=""/>
                         </div>
 
                         <div className='collapserightDel'>

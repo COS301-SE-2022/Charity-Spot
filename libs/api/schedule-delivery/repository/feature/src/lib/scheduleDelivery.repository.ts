@@ -155,6 +155,22 @@ export class ScheduleDeliveryRepository {
 
   }
 
+  async setItemUnAvail( itemName: string, orgID: string){
+
+    await this.prisma.donoItem.update({
+      data:{
+        ItemAvail: false
+      },
+      where:{
+        ItemName_OrgID:{
+          OrgID: orgID,
+          ItemName: itemName
+        }
+      }
+    });
+
+  }
+
   async getDelSchedule( Userid : string, type : string){
 
     let u = null;

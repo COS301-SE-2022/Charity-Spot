@@ -18,14 +18,16 @@ export class ScheduleDeliveryResolver {
         @Args("donated_for") id_2: string,
         @Args("location") loc: string,
         @Args("dd_mm_yyyy") date: string,
-        @Args("itemID") id_item: string
+        @Args("itemID") id_item: string,
+        @Args("time") time: string
     ) {
         return this.ScheduleDeliveryService.Sched(
             id_1,
             id_2,
             id_item,
             loc,
-            date
+            date,
+            time
         );
     }
 

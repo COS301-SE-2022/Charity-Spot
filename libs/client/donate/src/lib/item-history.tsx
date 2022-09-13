@@ -50,7 +50,7 @@ async function historyData() {
     act_data = "";
     for(let i=0; i< ItemArr.length; i++){
 
-        query = `query{
+        /*query = `query{
           getItemPicLink(itemID: "${ItemArr[i].ItemID}"){
             Name
           }
@@ -80,7 +80,8 @@ async function historyData() {
           }
           else{
             ItemArr[i].PicLink = Items.data.getItemPicLink.Name;
-          }
+          }*/
+          ItemArr[i].PicLink = "";
     }
 
 
