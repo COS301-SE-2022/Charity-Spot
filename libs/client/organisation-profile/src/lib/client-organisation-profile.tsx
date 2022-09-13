@@ -29,6 +29,7 @@ async function APICall(usrID:string){
       Picture
       Internal
       AvgRating
+      Description
     }
   }`);
     
@@ -396,7 +397,8 @@ export function Profile() {
 
               <div className='user-right'>
                 <br/><br/>
-                        
+
+                <div className="cover">Name: { OName}</div>        
                 <div className="cover">Email: { OEmail}</div>
                 <div className="cover">Date Registered: { ODate }</div>
                 <div className="cover">Location: { OLocation}</div>
@@ -445,42 +447,57 @@ export function Profile() {
       
 
               {( editView && <div className='content content-2'>
-                        <div className='title'><h1>Edit</h1></div>
+                        {/*<div className='title'><h1>Edit</h1></div>*/}
 
                         <div className='editor-main'>
 
                           <div className='editor-left'>
+                          <label className='rglabel'>Upload a new profile picture:</label>
+                          <br/><br/><br/>
                           <div className='edit-pic'>
                             <img src={userprofile} alt="" id="editor-pic"/>
                           </div>
-                          <form onSubmit={hanndlesubmit}>
+                          {/*<form onSubmit={hanndlesubmit}>
                               <button type='submit' id='logout1'>Log out</button>
-                          </form>
+                            </form>*/}
+
+                          <label className='rglabel'>Update your description:</label>
+                          <textarea id="nDesc"></textarea>
+
+                          <input id='upt_but'type="submit" value="Update Profile"/>  <FaPen color='transparent'/>  
                           </div>
                           <div className='editor-right'>
-                            <br/><br/>
+                            <label className='rglabel'>Enter the fields you would like to update:</label>
+                            <br/><br/><br/>
                             <div className='updater'>
                               <form onSubmit={(e) => { e.preventDefault(); handlesumbitUpdate();}}>
-                                
+
                                 <div className='user-box1'>
-                               
+                                  <label className='rglabel'>Name</label>
                                   <input className="in1" type ="text" placeholder=' Name'defaultValue={OName} onChange ={(e)=>{setNewOName(e.target.value)}}></input>  
                                   <FaPen color='#1458b3'/>
                                 </div>
                                 
                                 <div className='user-box2'>
+                                  <label className='rglabel'>Location</label>
                                   <input className="in3" type ="text" placeholder=' Address' defaultValue={OLocation} onChange ={(e)=>{setNewOLocation(e.target.value)}}></input> 
                                   <FaPen color='#1458b3'/>
-                                </div>                                
+                                </div>
+
                                 <div className='user-box3'>
+                                  <label className='rglabel'>Password</label>
                                   <input className="in4" type ="password" placeholder=' Password' defaultValue = "" onChange ={(e)=>{setNewOPass(e.target.value)}}></input> 
                                   <FaPen color='#1458b3'/>
-                                </div>      
+                                </div> 
+
                                 <div className='user-box4'>
+                                  <label className='rglabel'>Password</label>
                                   <input className="in5" type ="password" placeholder=' Confirm Password' onChange ={(e)=>{setNewOPassC(e.target.value)}}></input> 
                                   <FaPen color='#1458b3'/>
                                 </div> 
-                                <input id='upt_but'type="submit" value="Update"/>   <FaPen color='transparent'/>                                                                                     
+
+                                {/*<input id='upt_but'type="submit" value="Update"/>  <FaPen color='transparent'/>*/}  
+
                               </form>
                             </div>  
                           </div>

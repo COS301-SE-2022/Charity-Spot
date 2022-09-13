@@ -23,21 +23,21 @@ export class OrganisationService {
 
 
         //build up
-        if(user.identity == "ASSIST") {
+        //if(user.identity == "ASSIST") {
             const addr = await this.OrganisationRepository.getAdress(userID);
             const org = await this.OrganisationRepository.getOrg(userID);
             date = (await this.OrganisationRepository.getDateCreated(userID)).dateCreated;
             organisationProfile.Email = user.email;
             organisationProfile.Name = org.OrgName;
+            organisationProfile.Description = org.Description;
             console.log(date);
             organisationProfile.Date = date.toDateString();
-            organisationProfile.Location = 
-                addr.Address;
+            organisationProfile.Location = addr.City + ", " + addr.Province;
             organisationProfile.Internal = "ASSIST";
-        } else {
+        //} else {
             organisationProfile.Email = user.email;
             organisationProfile.Internal = user.identity;
-        }
+        //}
 
         return organisationProfile;
     }
