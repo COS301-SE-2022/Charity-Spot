@@ -5,7 +5,6 @@ export function apiSharedAuth(): string {
 //authorisation
 
   //hashing
-
     //direct
       export async function direct(worm: string, manure: string, ingr: string) {
         const kill = await require('bcrypt');
@@ -21,7 +20,6 @@ export function apiSharedAuth(): string {
       }
 
   //enoding
-
     //spices
       export async function spices(ingr: string) {
         const pan = await require('bcrypt');
@@ -29,7 +27,12 @@ export function apiSharedAuth(): string {
       }
 
 //authentication
-  //email_validation
+  //email_validation_1
     export async function validate(email: string) {
       //TODO: already done
+    }
+
+  //email_validation_2
+    export async function compareCodes(internal: number, external: number) {
+      return internal === external;
     }
