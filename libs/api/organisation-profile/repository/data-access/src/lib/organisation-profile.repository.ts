@@ -79,7 +79,7 @@ export class OrganisationRepository {
     })
   }
 
-  async editAddress(userID : string, address : string, address2 : string, city : string, prov : string)
+  async editAddress(userID : string, address : string, city : string, prov : string)
   {
     const u = await this.prisma.organisation.findFirst({
       where:
@@ -100,7 +100,6 @@ export class OrganisationRepository {
       data:
       {
         Address:address,
-        //Address2:address2,
         City:city,
         Province:prov
       }

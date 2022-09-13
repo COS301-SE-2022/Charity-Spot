@@ -59,7 +59,7 @@ async function APICall(usrID:string){
 }
 
 //EDIT_PAGE
-async function API_EDIT_Call(id:string, orgName: string, loc: string, picture: string, password: string) {
+async function API_EDIT_Call(id:any, orgName: string, loc: string, picture: string, password: string) {
   const query = (`query{
     OrgEditProfile(
       id: "${id}",
@@ -229,11 +229,19 @@ export function Profile() {
 
     displayData();*/
 
+    let Locationval = "undefined";
+
+    if(!(NewOLocation.lat == -26.195246 && NewOLocation.lng == 28.034088)){
+      Locationval = NewOLocation.lat + "," + NewOLocation.lng;
+    }
+
     console.log(NewOName);
-    console.log(NewOLocation);
+    console.log(Locationval);
     console.log(NewOPass);
     console.log(NewOPassC);
     console.log(NewDesc);
+
+    await API_EDIT_Call(IdCookie, NewOName, Locationval, "undefined", NewOPass);
 
     
   }
