@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { LoginEntity } from './login.entity';
 import { LoginRepository } from '@charity-spot/api/login/repository/data-access';
-import { invert } from '@charity-spot/api/shared/auth';
+import { direct } from '@charity-spot/api/shared/auth';
 
 @Injectable()
 export class LoginService {
@@ -12,7 +12,7 @@ export class LoginService {
             let u = null; 
 
             if((u = await this.LoginRepository.validateLogin(email)) != null) {
-                const hotplate = await invert(email, password, u.passwordSalt);
+                const hotplate = await direct(email, password, u.passwordSalt);
 
                 if(hotplate === u.password)
                     return u;

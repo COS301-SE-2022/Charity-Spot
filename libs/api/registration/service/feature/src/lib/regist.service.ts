@@ -72,9 +72,9 @@ export class RegistrationService {
 			const str = JSON.stringify(gcResponse.data.results[0]);
 			const nStr = JSON.parse(str);
 
-			let add_comp = nStr.address_components;
+			const add_comp = nStr.address_components;
 
-			let returnVal = ["",""]
+			const returnVal = ["",""]
 
 			if(add_comp == undefined){
 				return returnVal;
