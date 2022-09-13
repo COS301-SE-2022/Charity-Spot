@@ -6,9 +6,11 @@ import {CommentRatingRepository} from '@charity-spot/api/comment-rating/reposito
 
 import {Client} from "@googlemaps/google-maps-services-js";
 
+import { RegistrationService } from '@charity-spot/api/registration/service/feature'
+
 @Injectable()
 export class OrganisationService {
-    constructor(private OrganisationRepository: OrganisationRepository, private CommentRatingRepository: CommentRatingRepository) {}
+    constructor(private OrganisationRepository: OrganisationRepository, private CommentRatingRepository: CommentRatingRepository, private RegistrationService: RegistrationService) {}
 
     async getOrgProfile(userID: string) {
 
@@ -44,11 +46,27 @@ export class OrganisationService {
         return organisationProfile;
     }
 
-    async updateDet(id: string, name: string, loc: string, picture: string, password: string) {
+    async updateDet(id: string, name: string, loc: string, picture: string, password: string, description: string, email: string) {
         const organisationProfile = new OrganisationEntity();
+
+        console.log(name, loc, picture, password, description);
 
         if(name != null)
             await this.OrganisationRepository.editOrgName(id, name);
+
+        if(picture != null)
+            await this.OrganisationRepository.editProfilePicture(id, picture);
+
+        if(password != null) {
+            const spice = await this.RegistrationService.spices(email);
+            await this.RegistrationService.glow(email, password, spice).then(async (glow)=>{
+                await this.OrganisationRepository.editPassword(id, glow, spice);
+            })
+        }
+
+        if(description != null){
+            await this.OrganisationRepository.editOrgDesc(id, description);
+        }
         
         if(loc != null){
 
@@ -57,19 +75,8 @@ export class OrganisationService {
                 organisationProfile.Name = "working";
                 return organisationProfile;
 			});
-            //this.OrganisationRepository.editAddress(id, loc, undefined, undefined, undefined);}
         }
 
-        /*if(picture != null)
-            this.OrganisationRepository.editProfilePicture(id, picture);
-
-        if(password != null) {
-            this.OrganisationRepository.editPassword(id, password);
-        }
-
-        return this.getOrgProfile(id);*/
-
-        return null;
     }
 
     async getDonations(id: string) {

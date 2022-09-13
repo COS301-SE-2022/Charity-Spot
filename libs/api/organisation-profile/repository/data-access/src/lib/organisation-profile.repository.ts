@@ -51,6 +51,20 @@ export class OrganisationRepository {
     })
   }
 
+  async editOrgDesc(userID : string, desc : string)
+  {
+    return await this.prisma.organisation.update({
+      where:
+      {
+        UserID:userID
+      },
+      data:
+      {
+        Description:desc
+      }
+    })
+  }
+
   async getAdress(userID : string)
   {
     const u = await this.prisma.organisation.findFirst({
@@ -164,16 +178,17 @@ export class OrganisationRepository {
     })
   }
 
-  async editPassword(userID : string, password : string)
+  async editPassword(userID : string, password : string, salt : string)
   {
     return await this.prisma.user.update({
       where:
       {
-        UserID:userID
+        UserID: userID
       },
       data:
       {
-        password:password
+        password: password,
+        passwordSalt: salt
       }
     })
   }

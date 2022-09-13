@@ -59,14 +59,16 @@ async function APICall(usrID:string){
 }
 
 //EDIT_PAGE
-async function API_EDIT_Call(id:any, orgName: string, loc: string, picture: string, password: string) {
+async function API_EDIT_Call(id:any, orgName: string, loc: string, picture: string, password: string, description: string, email : string) {
   const query = (`query{
     OrgEditProfile(
       id: "${id}",
       orgName: "${orgName}",
       loc: "${loc}",
       picture: "${picture}",
-      password: "${password}"
+      password: "${password}",
+      description: "${description}",
+      email: "${email}"
     ) {
       Email
       Name
@@ -235,6 +237,15 @@ export function Profile() {
       Locationval = NewOLocation.lat + "," + NewOLocation.lng;
     }
 
+    if(NewOPass != NewOPassC){
+      alert("password do not match");
+      return;
+    }
+
+    if(NewOName == "undefined" && Locationval == "undefined" && NewOPass == "undefined" && NewOPassC == "undefined" && NewDesc == "undefined"){
+      return;
+    }
+
     console.log(NewOName);
     console.log(Locationval);
     console.log(NewOPass);
@@ -243,7 +254,10 @@ export function Profile() {
 
     console.log(commentState);
 
-    await API_EDIT_Call(IdCookie, NewOName, Locationval, "undefined", NewOPass).then(()=>{ console.log("helllooo");setCommentState(commentState+1);});
+    await API_EDIT_Call(IdCookie, NewOName, Locationval, "undefined", NewOPass, NewDesc, OEmail).then(()=>{setCommentState(commentState+1);});
+
+    (document.getElementById("edit-Form") as HTMLFormElement).reset();
+    (document.getElementById("nDesc") as HTMLInputElement).value = "";
 
     
   }
@@ -497,7 +511,7 @@ export function Profile() {
                             <label className='rglabel'>Enter the fields you would like to update:</label>
                             <br/><br/><br/>
                             <div className='updater'>
-                              <form /*onSubmit={(e) => { e.preventDefault(); handlesumbitUpdate();}*/>
+                              <form id="edit-Form"/*onSubmit={(e) => { e.preventDefault(); handlesumbitUpdate();}*/>
 
                                 <div className='user-box1'>
                                   <label className='rglabel'>Name</label>

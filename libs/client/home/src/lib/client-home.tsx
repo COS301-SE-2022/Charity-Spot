@@ -8,7 +8,7 @@ import {MapMarker} from './map-marker'
 
 import {APIKEYS} from '../../../../../config';
 
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { GoogleMap, LoadScript,useJsApiLoader } from '@react-google-maps/api';
 import ListGroup from 'react-bootstrap/esm/ListGroup';
 
 import {removeCookie } from 'typescript-cookie'
@@ -24,9 +24,15 @@ const center = {
   lng: 28.0473
 };
 
+
+
 export function Home() {
 
   let APIKey = APIKEYS.GoogleMapsAPIKey;
+
+  const { isLoaded, loadError } = useJsApiLoader({
+    googleMapsApiKey: APIKey
+  })
 
   const [checkedLocation, setCheckedLocation] = useState(
     new Array(9).fill(true)
@@ -57,8 +63,8 @@ export function Home() {
           
           <div className={styles['container']}>
 
-            <LoadScript googleMapsApiKey = {APIKey}>
-              <GoogleMap
+          {/*<LoadScript googleMapsApiKey = {APIKey}>*/}
+              {isLoaded && <GoogleMap
                 
                 mapContainerStyle={containerStyle}
                 center={center}
@@ -67,8 +73,9 @@ export function Home() {
 
                 <MapMarker state={[checkedLocation, checkedType, checkedAI]}></MapMarker>
 
-              </GoogleMap>
-            </LoadScript>
+            </GoogleMap>}
+
+          {/*</LoadScript>*/}
 
           </div>
     
