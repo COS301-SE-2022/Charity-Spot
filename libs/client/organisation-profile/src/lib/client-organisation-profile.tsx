@@ -9,6 +9,8 @@ import { FaUserAlt,FaEdit,FaPen,FaHistory } from 'react-icons/fa'
 
 import ListGroup from 'react-bootstrap/esm/ListGroup';
 
+import {ModalMap} from './modal-map';
+
 import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
 import {Link} from 'react-router-dom'
 
@@ -152,17 +154,23 @@ async function commentRatingAPICall(comment : any, rating : any){
 
 
 export function Profile() {
+  const [show, setShow] = useState(false);
+
+  const [location, setLocation] = useState({ lat: -26.195246, lng: 28.034088});
+
   const [OEmail, setOEmail] = useState('');
   const [OName,setOName] = useState('');
   const [ODate,setODate] = useState('');
   const [OLocation,setOLocation] = useState('');
   const [Picture,setOPicture] = useState('');
+  const [ODesc, setODesc] = useState('');
 
   
   const [NewOName,setNewOName] = useState('undefined');
-  const [NewOLocation,setNewOLocation] = useState('undefined');
+  const [NewOLocation,setNewOLocation] = useState({ lat: -26.195246, lng: 28.034088});
   const [NewOPass,setNewOPass] = useState('undefined');
   const [NewOPassC,setNewOPassC] = useState('undefined');
+  const [NewDesc, setNewDesc] = useState('undefined');
 
   //const [NewPicture,setNewOPicture] = useState('');
   const [editView, setEditView] = useState(true);
@@ -206,7 +214,7 @@ export function Profile() {
 
   const handlesumbitUpdate = async () => {
 
-    if(NewOName == "undefined" && NewOLocation == "undefined" && NewOPass == "undefined" && NewOPassC == "undefined"){
+    /*if(NewOName == "undefined" && NewOLocation == "undefined" && NewOPass == "undefined" && NewOPassC == "undefined"){
       return;
     }
 
@@ -219,7 +227,14 @@ export function Profile() {
       await API_EDIT_Call(IdCookie, NewOName, NewOLocation, "undefined", NewOPass);
     }
 
-    displayData();
+    displayData();*/
+
+    console.log(NewOName);
+    console.log(NewOLocation);
+    console.log(NewOPass);
+    console.log(NewOPassC);
+    console.log(NewDesc);
+
     
   }
 
@@ -247,7 +262,7 @@ export function Profile() {
       }
 
       const allData = response.data.OrgProfile;
-      const {Email,Name,Date,Location,Picture,Internal} = allData;
+      const {Email,Name,Date,Location,Picture,Internal, Description} = allData;
 
       console.log(allData);
 
@@ -259,6 +274,7 @@ export function Profile() {
         setODate(Date);
         setOLocation(Location);
         setOPicture(Picture);
+        setODesc(Description);
 
         let rating = new Array(5).fill(false);
         rating[allData.AvgRating-1] = true;
@@ -317,7 +333,8 @@ export function Profile() {
                 <h3 className='headings' >About Us</h3>
                 <div className="cover3">
                   
-                  <p>We have been in the food business for 10 years, particularly focusing on poultry. We offer Chicken intenstines, feet and breasts</p>
+                  {/*<p>We have been in the food business for 10 years, particularly focusing on poultry. We offer Chicken intenstines, feet and breasts</p>*/}
+                  <p>{ODesc}</p>
                 </div>
                 <h3 className='headings' >Reviews</h3>
                 <div className='pcomments'>
@@ -462,15 +479,15 @@ export function Profile() {
                             </form>*/}
 
                           <label className='rglabel'>Update your description:</label>
-                          <textarea id="nDesc"></textarea>
+                          <textarea id="nDesc" onChange ={(e)=>{setNewDesc(e.target.value)}}></textarea>
 
-                          <input id='upt_but'type="submit" value="Update Profile"/>  <FaPen color='transparent'/>  
+                          <input id='upt_but' type="submit" value="Update Profile" onClick={(e) => { e.preventDefault(); handlesumbitUpdate();}}/>  <FaPen color='transparent'/>  
                           </div>
                           <div className='editor-right'>
                             <label className='rglabel'>Enter the fields you would like to update:</label>
                             <br/><br/><br/>
                             <div className='updater'>
-                              <form onSubmit={(e) => { e.preventDefault(); handlesumbitUpdate();}}>
+                              <form /*onSubmit={(e) => { e.preventDefault(); handlesumbitUpdate();}*/>
 
                                 <div className='user-box1'>
                                   <label className='rglabel'>Name</label>
@@ -478,11 +495,20 @@ export function Profile() {
                                   <FaPen color='#1458b3'/>
                                 </div>
                                 
-                                <div className='user-box2'>
+                                {/*<div className='user-box2'>
                                   <label className='rglabel'>Location</label>
                                   <input className="in3" type ="text" placeholder=' Address' defaultValue={OLocation} onChange ={(e)=>{setNewOLocation(e.target.value)}}></input> 
                                   <FaPen color='#1458b3'/>
+                                </div>*/}
+
+                                <div className='user-box2'>
+                                <label className='rglabel'>Location</label>
+                                  <button type="button" id="locButton" className="custom-file-upload" onClick={() => {setTimeout(() => setShow(true), 100);}}>
+                                    Select your location
+                                  </button>
                                 </div>
+
+
 
                                 <div className='user-box3'>
                                   <label className='rglabel'>Password</label>
@@ -502,6 +528,8 @@ export function Profile() {
                             </div>  
                           </div>
                       </div>
+
+                      <ModalMap inState={[show, setShow, setNewOLocation, NewOLocation]}></ModalMap>
                         </div>)}
 
                         {( !editView && <div className='content content-2'> 
