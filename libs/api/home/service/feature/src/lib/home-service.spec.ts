@@ -28,11 +28,21 @@ describe ( 'Home Service', () => {
   it('Home service should be defined', () => {
     expect(service).toBeDefined();
   });
-                   
-/*describe('getAllOrg()', () => {
-    it('Succesffuly retrieved all organisations', async () => {
-        expect( await service.getAllOrg() ).toMatchObject(te);
-    });
-})*/
+         let resolver: HomeService;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      providers: 
+      [HomeService, 
+        HomeRepository,
+        HomeEntity, 
+        PrismaService, 
+        LoginService, 
+        LoginRepository
+      ],
+    }).compile();
+    resolver = module.get<HomeService>(HomeService);
+  });            
+
 
 });
