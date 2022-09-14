@@ -1,8 +1,6 @@
 import { Resolver, Query, Args } from '@nestjs/graphql';
 import { OrganisationEntity } from '@charity-spot/api/organisation-profile/service/feature';
 import { OrganisationService } from '@charity-spot/api/organisation-profile/service/feature';
-import { Systrace } from 'react-native';
-import { getSystemErrorMap } from 'util';
 
 @Resolver()
 export class OrgResolver {

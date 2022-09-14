@@ -50,7 +50,7 @@ async function historyData() {
     act_data = "";
     for(let i=0; i< ItemArr.length; i++){
 
-        query = `query{
+        /*query = `query{
           getItemPicLink(itemID: "${ItemArr[i].ItemID}"){
             Name
           }
@@ -80,12 +80,42 @@ async function historyData() {
           }
           else{
             ItemArr[i].PicLink = Items.data.getItemPicLink.Name;
-          }
+          }*/
+          ItemArr[i].PicLink = "";
     }
 
 
 
     return ItemArr;
+  }
+
+  async function getPicLink(itemID: string){
+
+    const query = `query{
+      getItemPicLink(itemID:"${itemID}"){
+        Name
+      }
+    }`
+
+    let result = null;
+
+    await fetch('http://localhost:3333/graphql', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          query
+        })
+     }).then(r => r.json()).then(data => 
+            result = data
+       );
+
+    let tempR = JSON.stringify(result);
+    let fResult = JSON.parse(tempR);
+
+    return fResult.data.getItemPicLink.Name;
   }
 
 
@@ -102,6 +132,17 @@ export function ItemHistory(props : any){
 
             addItems(ItemsL);
 
+        }
+
+        async function getItemPic(itemID: string){
+          /*let linkT : any= await getDelScheduleApi(itemPicQuery(itemID));
+          let link = linkT.data.getItemPicLink.Name;
+          //listI.link = link;
+          //console.log(listI);
+          (document.getElementById(itemID+"pic") as HTMLImageElement).src = link;
+          //return link;*/
+          let link = await getPicLink(itemID);
+          (document.getElementById(itemID+"pic") as HTMLImageElement).src = link;
         }
 
         
@@ -125,13 +166,13 @@ export function ItemHistory(props : any){
 
                 <div className='collapsible'>
 
-                    <input type ='checkbox' id = {item.ItemID}></input>
+                    <input type ='checkbox' id = {item.ItemID} onClick={async ()=>{await getItemPic(item.ItemID);}}></input>
 
                     <label htmlFor={item.ItemID}>{item.Name} <FaArrowDown/></label>
 
                     <div className='collapsible-text'><br/>
                         <div className='collapseleft'>
-                        <img src={item.PicLink} alt="" id="donation-pic2"/>
+                        <img alt="" id={item.ItemID + "pic"} className="delSched" src=""/>
                         </div>
 
                         <div className='collapseright'>

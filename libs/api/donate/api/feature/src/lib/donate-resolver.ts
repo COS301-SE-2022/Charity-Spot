@@ -99,6 +99,7 @@ export class DonateResolver {
 
         imgDirec.Name = downLink;
 
+        console.log("testtt");
         console.log(imgDirec.Name);
 
         return imgDirec;
