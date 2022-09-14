@@ -113,4 +113,14 @@ describe('Home Service Mock', () =>
         expect(expectedVal).toBe(val);
       }); 
     });
+  
+  describe('Gets All Items', () => {
+      it('Should get all items', async () => {
+        const expectedVal : any = [];
+        const val = servicemock.getAllItems();
+        expect(expectedVal).toBe(val);
+      }); 
+    });
+)};
+
 });
