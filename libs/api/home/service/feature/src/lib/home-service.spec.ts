@@ -66,4 +66,8 @@ it('Gets all items',async () => {
     expect(resolver.getAllItems).toHaveBeenCalled();
 
 });
+  
+  const testRecordOrg = {testId:"1234",testName:"Org1",testAddress:"271 Francis Street"};
+  
+  
 });
