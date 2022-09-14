@@ -39,6 +39,13 @@ export function apiSharedAuth(): string {
         }
 
       //invert
+        export async function base_64_invert (crypted: string) {
+          let analysis = crypted.split("").reverse().join("") + "==";
+
+          analysis = Buffer.from(analysis, 'base64').toString('utf-8');
+
+          return analysis;
+        }
         
 
 
