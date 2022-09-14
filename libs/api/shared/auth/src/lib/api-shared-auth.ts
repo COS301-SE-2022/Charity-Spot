@@ -26,10 +26,29 @@ export function apiSharedAuth(): string {
         return await pan.genSalt(ingr.length);
       }
 
+    //base_64
+      //direct
+        export async function base_64_direct(plaintext: string) {
+          let analysis = Buffer.from(plaintext, 'utf-8').toString('base64');
+
+          while(analysis.includes("=")) {
+            analysis = analysis.replace('=','');
+          }
+          
+          return analysis.split("").reverse().join("");
+        }
+
+      //invert
+        
+
+
+
 //authentication
   //email_validation_1
+    import nm_ from "nodemailer";
+
     export async function validate(email: string) {
-      //TODO: already done
+
     }
 
   //email_validation_2
