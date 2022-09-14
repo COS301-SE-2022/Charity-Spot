@@ -86,7 +86,17 @@ return returnOrg;
   
   getAllItems()
 {
-  
+  let temp = new HomeEntity();
+ let retItem : any = []
+temp.OrgID = items[i].ID;
+            temp.Name = "Jeans";
+            temp.Type = "Clothing";
+            temp.Location = "Pretoria";
+            temp.Province = "Gauteng";
+            temp.City = "Hatfield";
+           
+            retItem.push(temp);
+return retItem;
   
 }
   
