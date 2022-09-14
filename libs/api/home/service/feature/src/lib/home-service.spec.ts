@@ -70,5 +70,20 @@ it('Gets all items',async () => {
   const testRecordOrg = {testId:"1234",testName:"Org1",testAddress:"271 Francis Street"};
 const testRecordItems = {testId:"1234",testName:"Jeans",testType:"Clothing",testLocation:"Pretoria",testProvince:"Gauteng",testCity:"Hatfield"};
 
+  export class HomeServiceMock
+{
+
+getAllOrg()
+{
+  
+}
+  
+  getAllItems()
+{
+  
+  
+}
+  
+}
   
 });
