@@ -102,4 +102,15 @@ return retItem;
   
 }
   
+  const servicemock = new HomeServiceMock();
+
+describe('Home Service Mock', () => 
+  {
+    describe('Gets All Organisations', () => {
+      it('Should get all organisations', async () => {
+        const expectedVal : any = [];
+        const val = servicemock.getAllOrg();
+        expect(expectedVal).toBe(val);
+      }); 
+    });
 });
