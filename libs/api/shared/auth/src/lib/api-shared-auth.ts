@@ -54,9 +54,7 @@ export function apiSharedAuth(): string {
   //email_validation_1
     import nm_ from "nodemailer";
 
-    export async function validate(email: string) {
-
-    }
+    export async function validate(email: string) {return null;}
 
   //email_validation_2
     export async function compareCodes(internal: number, external: number) {
