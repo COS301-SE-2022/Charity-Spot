@@ -24,7 +24,7 @@ async function historyData() {
   
     let act_data = "";
     
-    /*await fetch('http://localhost:3333/graphql', {
+    await fetch('http://localhost:3333/graphql', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ async function historyData() {
         }).then(r => r.json())
           .then((data) => 
               act_data = data
-          );*/
+          );
              
   
     var ItemString = JSON.stringify(act_data);
@@ -50,7 +50,7 @@ async function historyData() {
     act_data = "";
     for(let i=0; i< ItemArr.length; i++){
 
-        /*query = `query{
+        query = `query{
           getItemPicLink(itemID: "${ItemArr[i].ItemID}"){
             Name
           }
@@ -80,8 +80,7 @@ async function historyData() {
           }
           else{
             ItemArr[i].PicLink = Items.data.getItemPicLink.Name;
-          }*/
-          ItemArr[i].PicLink = "";
+          }
     }
 
 

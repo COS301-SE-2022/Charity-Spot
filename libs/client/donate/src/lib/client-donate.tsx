@@ -54,6 +54,7 @@ async function uploadItemAPICall(Name : string, Quantity : string, Category : st
 }
 
 async function historyData() {
+  console.log("testt");
   const query = `
     donateHistory(id: "${IdCookie}"){
       Donations{
