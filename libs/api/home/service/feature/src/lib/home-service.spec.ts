@@ -44,5 +44,15 @@ describe ( 'Home Service', () => {
     resolver = module.get<HomeService>(HomeService);
   });            
 
+  //getAllOrg()     
+it('Gets All organisations',async () => {
+  jest
+    .spyOn(resolver,'getAllOrg')
+    .mockImplementation( (): Promise<boolean> => Promise.resolve(true));
+    expect(resolver.getAllOrg).not.toHaveBeenCalled();
+    expect(await resolver.getAllOrg()).toBe(Any);
+    expect(resolver.getAllOrg).toHaveBeenCalled();
+
+});
 
 });
