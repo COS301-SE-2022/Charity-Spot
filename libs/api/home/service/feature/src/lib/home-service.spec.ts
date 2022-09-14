@@ -75,7 +75,13 @@ const testRecordItems = {testId:"1234",testName:"Jeans",testType:"Clothing",test
 
 getAllOrg()
 {
-  
+  	let returnOrg = [];
+	let returnEnt = new HomeEntity();
+            returnEnt.ID = "1234";
+            returnEnt.Name = "Org1";
+            returnEnt.Address = "271 Francis Street";
+            returnOrg.push(returnEnt);
+return returnOrg;
 }
   
   getAllItems()
