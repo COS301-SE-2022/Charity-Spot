@@ -55,4 +55,15 @@ it('Gets All organisations',async () => {
 
 });
 
+  
+  //getAllItems()
+it('Gets all items',async () => {
+  jest
+    .spyOn(resolver,'getAllItems')
+    .mockImplementation( (): Promise<boolean> => Promise.resolve(true));
+    expect(resolver.getAllItems).not.toHaveBeenCalled();
+    expect(await resolver.getAllItems()).toBe(Any);
+    expect(resolver.getAllItems).toHaveBeenCalled();
+
+});
 });
