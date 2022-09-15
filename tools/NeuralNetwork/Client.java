@@ -324,6 +324,8 @@ class Client extends Thread{
                 LocalDate dateT = LocalDate.parse(dateString, formatter);
                 double dayOfWeek = dateT.getDayOfWeek().getValue();
 
+                //System.out.println(dateT.toString());
+
                 //Get the item Type
                 double itemType = Double.parseDouble(split[1]);
 
