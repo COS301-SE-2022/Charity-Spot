@@ -14,7 +14,7 @@ import './register.css';
 import {ModalMap} from './modal-map';
 
 
-async function APICall(orgName:string, email: string,location:string, password: string, whois: string, base64: any){
+async function APICall(orgName:string, email: string,location:string, password: string, whois: string, profilePicture: string){
   let query = null;
 
   switch(whois) {
@@ -25,7 +25,7 @@ async function APICall(orgName:string, email: string,location:string, password: 
           Email: "${email}",
           Location: "${location}",
           Password: "${password}",
-          picture: "${base64}"
+          picture: "${profilePicture}"
         ){
           ID_internal
           ID_external
@@ -38,7 +38,8 @@ async function APICall(orgName:string, email: string,location:string, password: 
           OrgName:"${orgName}",
           OrgEmail: "${email}",
           OrgLocation: "${location}",
-          OrgPassword: "${password}"
+          OrgPassword: "${password}",
+          OrgPicture: "${profilePicture}"
         ){
           ID_internal
           ID_external
@@ -103,8 +104,6 @@ export function Register() {
       await uploadBytes(reference, pp);
       const downloadLink = await getDownloadURL(reference);
 
-      console.log(downloadLink);
-
       return downloadLink;
     }
 
@@ -119,14 +118,12 @@ export function Register() {
       (document.getElementById('registerDivM') as HTMLDivElement).style.display = "none";
       (document.getElementById('registerLoad') as HTMLDivElement).style.display = "block";
 
-      let imgBase64 = undefined;
+      let profilePictureLink = '';
 
       if(imageUpload){
         // imgBase64 = await getBase64(imageUpload);
-        uploadProfilePicture(imageUpload);
+        profilePictureLink = `${uploadProfilePicture(imageUpload)}`;
       }
-
-      console.log(imgBase64);
 
       if((nameval === '') || (emailval === '') || ((location.lat === -26.195246) && (location.lng === 28.034088)) || (passval === '') || (confpassval === '')){
         setInvalidCredentials("Fields must not be empty");
@@ -135,7 +132,7 @@ export function Register() {
 
       let Locationval = location.lat + "," + location.lng;
       
-      const response = JSON.parse(await APICall(nameval, emailval, Locationval, passval, typeval, imgBase64));
+      const response = JSON.parse(await APICall(nameval, emailval, Locationval, passval, typeval, profilePictureLink));
       
       window.location.href = '/login';
     
