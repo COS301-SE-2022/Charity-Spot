@@ -205,8 +205,8 @@ return (
                     <div className='donate-box4'>
                       
                       <select name="orgs"   className='din4' onChange ={(e)=>{setICond(e.target.value)}}>
-                            <option value=" New">New</option>
-                            <option value=" Used">Used</option>  
+                            <option value="New">New</option>
+                            <option value="Used">Used</option>  
                         </select>                                       
                       
                       <FaPen color='#1458b3'/>

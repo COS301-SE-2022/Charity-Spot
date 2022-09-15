@@ -68,4 +68,8 @@ export class NotificationService {
         return returnable
     }
 
+    async checkNot(id: string, type: string){
+       return await this.NotificationRepository.checkNot(id, type);
+    }
+
 }

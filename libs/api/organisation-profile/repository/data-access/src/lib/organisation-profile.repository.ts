@@ -30,7 +30,6 @@ export class OrganisationRepository {
       select:
       {
         OrgName:true,
-        NGONum:true,
         Description:true,
         AddressID:true
       }

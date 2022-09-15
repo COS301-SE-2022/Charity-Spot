@@ -10,11 +10,16 @@ export class DonateRepository {
   {
 
     let tempDate = "3,1";
-    let tempLoc = "Pretoria";
+    let tempLoc = "Gauteng";
     let tempAvail = true;
 
+    let dateFirst = new Date(Date.now()).toLocaleString();
+    let dateSecond = dateFirst.split(',');
+    let dateThird = dateSecond[0].split('/');
+
+    let finDate = dateThird[1] + ',' + dateThird[2];
+
     return await this.prisma.donoItem.create({
-      
       data:
       {
         ItemName : itemName,
@@ -22,7 +27,7 @@ export class DonateRepository {
         Quantity : quantity,
         Quality : Quality,
         Type : type,
-        DonoDate: tempDate,
+        DonoDate: finDate,
         DonoLoc: tempLoc,
         ItemAvail: tempAvail
       }

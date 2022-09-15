@@ -55,6 +55,9 @@ export class DonateResolver {
             }
         }
 
+        console.log(condition);
+        console.log(Condition(condition) + "eee");
+
 
         const returnV = await this.DonateService.donate(id, name, quantity, Category(category), Condition(condition), descr);
 
