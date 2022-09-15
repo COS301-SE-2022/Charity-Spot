@@ -179,4 +179,8 @@ export class ScheduleDeliveryService {
         await this.ScheduleDeliveryRepository.deleteDel(itemID);
     }
 
+    async completeDel(itemID: string){
+        await this.ScheduleDeliveryRepository.completeDel(itemID);
+    }
+
 }

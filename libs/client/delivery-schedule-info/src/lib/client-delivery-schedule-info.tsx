@@ -114,6 +114,12 @@ export function ClientDeliveryScheduleInfo() {
             }`
   }
 
+  const completeDelQuery = (itemID : string) => {
+    return `query{
+              completeDelivery(ItemID:"${itemID}")
+            }`
+  }
+
   
 
   async function getDelSchedule(){
@@ -186,6 +192,11 @@ export function ClientDeliveryScheduleInfo() {
       let linkT : any= await getDelScheduleApi(deleteDelQuery(itemID));
       getDelSchedule();
     }
+
+    async function completeDelivery(itemID: string){
+      let linkT : any= await getDelScheduleApi(completeDelQuery(itemID));
+      getDelSchedule();
+    }
   
 
   useEffect(() => {
@@ -228,7 +239,7 @@ export function ClientDeliveryScheduleInfo() {
                             <div className="cov">Date: {A.date}</div>
                             <div className="cov">Time: {A.time}</div>
 
-                            { (uType && <button id='completeButton' onClick={()=>{console.log("Hello");}}>Complete Delivery</button>)}
+                            { (uType && <button id='completeButton' onClick={()=>{completeDelivery(A.itemID);}}>Complete Delivery</button>)}
                             <button id='completeButton' onClick={()=>{deleteDelivery(A.itemID);}}>Cancel Delivery</button>                  
                             
                         </div>

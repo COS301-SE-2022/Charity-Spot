@@ -57,6 +57,12 @@ export class ScheduleDeliveryResolver {
     @Query(() => String)
     async deleteDelivery(@Args("ItemID") ItemID: string){
         await this.ScheduleDeliveryService.deleteDel(ItemID);
-        return "Hello There!";
+        return "Success!";
+    }
+
+    @Query(() => String)
+    async completeDelivery(@Args("ItemID") ItemID: string){
+        await this.ScheduleDeliveryService.completeDel(ItemID);
+        return "Success!";
     }
 }
