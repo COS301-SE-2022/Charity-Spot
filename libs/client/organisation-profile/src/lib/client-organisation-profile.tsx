@@ -583,7 +583,7 @@ export function Profile() {
           {editView && (
             <div className="content content-2">
               <div className="editor-main">
-                <div className="editor-left" id="editLeftDiv">
+                {/*<div className="editor-left" id="editLeftDiv">
                   <label className="rglabel">
                     Upload a new profile picture:
                   </label>
@@ -610,10 +610,10 @@ export function Profile() {
                     }}
                   />{' '}
                   <FaPen color="transparent" />
-                </div>
+                  </div>*/}
                 <div className="editor-right" id="editRightDiv">
                   <label className="rglabel">
-                    Enter the fields you would like to update:
+                    Only Enter the fields you would like to update:
                   </label>
                   <br />
                   <br />
@@ -676,6 +676,35 @@ export function Profile() {
                       </div>
                     </form>
                   </div>
+                </div>
+
+                <div className="editor-left" id="editLeftDiv">
+                  <label className="rglabel">
+                    Upload a new profile picture:
+                  </label>
+                  <br />
+                  <br />
+                  <br />
+                  <div className="edit-pic">
+                    <img src={userprofile} alt="" id="editor-pic" />
+                  </div>
+                  <label className="rglabel">Update your description:</label>
+                  <textarea
+                    id="nDesc"
+                    onChange={(e) => {
+                      setNewDesc(e.target.value);
+                    }}
+                  ></textarea>
+                  <input
+                    id="upt_but"
+                    type="submit"
+                    value="Update Profile"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handlesumbitUpdate();
+                    }}
+                  />{' '}
+                  <FaPen color="transparent" />
                 </div>
 
                 <div id="editLoad" className="loader"></div>
