@@ -1,9 +1,8 @@
 import { Resolver, Args, Query } from '@nestjs/graphql';
 import { RegistrationService, RegistEntity } from '@charity-spot/api/registration/service/feature'
-import { base_64_direct } from '@charity-spot/api/shared/auth';
 @Resolver()
 export class RegistrationResolver {
-    constructor(private readonly RegistrationService: RegistrationService, private readonly FirebaseService: FirebaseService) {}
+    constructor(private readonly RegistrationService: RegistrationService) {}
 	
 	@Query(() => RegistEntity)
 	async clientRegist(
@@ -15,7 +14,7 @@ export class RegistrationResolver {
 	) {
 		let client = null;
 		if((client = await this.RegistrationService.regClient(name, email, loc, secr))!= null) {
-			await this.RegistrationService.setItemPicName(client.ID_external, base_64_direct(picLink));
+			await this.RegistrationService.setItemPicName(client.ID_internal, picLink);
 		}
 
 		return client;
@@ -27,8 +26,13 @@ export class RegistrationResolver {
 		@Args("OrgEmail") o_email: string,
 		@Args("OrgLocation") o_loc: string,
 		@Args("OrgPassword") o_secr: string,
-		@Args("OrgPicture") o_pp: string
+		@Args("OrgPicture") o_picLink: string
 	) {
-		return this.RegistrationService.regOrg(o_name, o_email, o_loc, o_secr);
+		let org = null;
+		if((org = await this.RegistrationService.regOrg(o_name, o_email, o_loc, o_secr))!= null) {
+			await this.RegistrationService.setItemPicName(org.ID_internal, o_picLink);
+		}
+
+		return org;
 	}
 }

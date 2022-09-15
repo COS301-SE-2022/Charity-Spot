@@ -3,6 +3,7 @@ import { RegistrationRepository } from '@charity-spot/api/registration/repositor
 import { RegistEntity } from "./regist-entity";
 import { spices } from "@charity-spot/api/shared/auth";
 import { direct } from "@charity-spot/api/shared/auth";
+import { base_64_direct } from '@charity-spot/api/shared/auth';
 
 import {Client} from "@googlemaps/google-maps-services-js";
 
@@ -21,7 +22,7 @@ export class RegistrationService {
 
 		if((runner = await this.RegistRepo.addUser(flier, spice, await direct(flier, hack, spice), "NEED")) != null) {
 			returnableV = new RegistEntity();
-			
+
 			await this.RegistRepo.addOrg(runner.UserID, id);
 			returnableV.ID_external = runner.identity;
 			returnableV.ID_internal = runner.UserID;
@@ -52,9 +53,9 @@ export class RegistrationService {
 		return returnableV;
 	}
 
-	async setItemPicName(id, pic){
+	async setItemPicName(id, picLink){
 
-        await this.RegistRepo.editItemPicture(id, pic);
+        await this.RegistRepo.editItemPicture(id, await base_64_direct(picLink));
 
     }
 
