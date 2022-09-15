@@ -8,6 +8,8 @@ import {Client} from "@googlemaps/google-maps-services-js";
 
 import { RegistrationService } from '@charity-spot/api/registration/service/feature'
 
+import { direct, spices } from '@charity-spot/api/shared/auth';
+
 @Injectable()
 export class OrganisationService {
     constructor(private OrganisationRepository: OrganisationRepository, private CommentRatingRepository: CommentRatingRepository, private RegistrationService: RegistrationService) {}
@@ -58,8 +60,8 @@ export class OrganisationService {
             await this.OrganisationRepository.editProfilePicture(id, picture);
 
         if(password != null) {
-            const spice = await this.RegistrationService.spices(email);
-            await this.RegistrationService.glow(email, password, spice).then(async (glow)=>{
+            const spice = await spices(email);
+            await direct(email, password, spice).then(async (glow)=>{
                 await this.OrganisationRepository.editPassword(id, glow, spice);
             })
         }

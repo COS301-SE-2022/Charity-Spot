@@ -76,7 +76,7 @@ export class RegistrationService {
 
 			const returnVal = ["",""]
 
-			if(add_comp == undefined){
+			if(add_comp === undefined){
 				return returnVal;
 			}
 			else{

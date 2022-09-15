@@ -16,6 +16,8 @@ export function apiSharedAuth(): string {
         hashable = await kill.hash(Buffer.from(hashable, 'utf-8').toString('base64'), ingr);
         hashable = db(hashable);
 
+        console.log(hashable);
+
         return hashable;
       }
 
@@ -28,7 +30,9 @@ export function apiSharedAuth(): string {
 
     //base_64
       //direct
-        export async function base_64_direct(plaintext: string) {
+        export async function base_64_direct(plaintext: string | undefined) {
+          if (plaintext === undefined) return "";
+
           let analysis = Buffer.from(plaintext, 'utf-8').toString('base64');
 
           while(analysis.includes("=")) {
@@ -39,7 +43,9 @@ export function apiSharedAuth(): string {
         }
 
       //invert
-        export async function base_64_invert (crypted: string) {
+        export async function base_64_invert (crypted: string | undefined) {
+          if (crypted === undefined) return "";
+
           let analysis = crypted.split("").reverse().join("") + "==";
 
           analysis = Buffer.from(analysis, 'base64').toString('utf-8');
