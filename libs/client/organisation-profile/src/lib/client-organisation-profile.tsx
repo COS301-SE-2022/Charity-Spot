@@ -152,6 +152,37 @@ async function commentRatingAPICall(comment : any, rating : any){
 
 }
 
+async function getType(usrID:string){
+    
+  const query = (`query {
+    OrgProfile(userID:"${usrID}"){
+      Internal
+    }
+  }`);
+    
+       let All_data = "";
+  
+       await fetch('http://localhost:3333/graphql', {
+             method: 'POST',
+             headers: {
+               'Content-Type': 'application/json',
+               'Accept': 'application/json',
+             },
+             body: JSON.stringify({
+               query
+
+             })
+          }).then(r => r.json())
+          .then((data) => 
+            All_data = data
+            );
+
+          let val = JSON.parse((JSON.stringify(All_data)));
+            
+         return val.data.OrgProfile.Internal;
+
+}
+
 
 
 
@@ -188,6 +219,8 @@ export function Profile() {
 
   const [commentState, setCommentState] = useState(0);
 
+  const [type, setType] = useState(true);
+
 
   const hanndlesubmit = (event: { preventDefault: () => void; }) =>{
     event.preventDefault();
@@ -201,35 +234,13 @@ export function Profile() {
 
     event.preventDefault();
 
-    //console.log(commentRate);
-    //console.log(comment);
-
     (document.getElementById("commentForm") as HTMLFormElement).reset();
 
     await commentRatingAPICall(comment, commentRate).then(()=>{setCommentState(commentState+1);});
-
-    //if(form != null){
-      //form.reset();
-    //}
     
   });
 
   const handlesumbitUpdate = async () => {
-
-    /*if(NewOName == "undefined" && NewOLocation == "undefined" && NewOPass == "undefined" && NewOPassC == "undefined"){
-      return;
-    }
-
-    if(NewOPass != NewOPassC){
-      alert("password do not match");
-      return;
-    }
-
-    if(IdCookie != undefined){
-      await API_EDIT_Call(IdCookie, NewOName, NewOLocation, "undefined", NewOPass);
-    }
-
-    displayData();*/
 
     (document.getElementById('editLeftDiv') as HTMLDivElement).style.display = "none";
     (document.getElementById('editRightDiv') as HTMLDivElement).style.display = "none";
@@ -250,14 +261,6 @@ export function Profile() {
       return;
     }
 
-    console.log(NewOName);
-    console.log(Locationval);
-    console.log(NewOPass);
-    console.log(NewOPassC);
-    console.log(NewDesc);
-
-    console.log(commentState);
-
     await API_EDIT_Call(IdCookie, NewOName, Locationval, "undefined", NewOPass, NewDesc, OEmail).then(()=>{
       setCommentState(commentState+1);
 
@@ -275,6 +278,8 @@ export function Profile() {
 
   const displayData = async() =>{
 
+    let foreignType = true;
+
     if(IdCookie != undefined){
 
       const foreinCookie = getCookie("foreignID");
@@ -283,6 +288,12 @@ export function Profile() {
       if(foreinCookie != undefined){        
         if(foreinCookie!=IdCookie){
           setEditView(false);
+
+          if(await getType(foreinCookie) == 'ASSIST'){
+            foreignType = false;
+          }
+
+          //typeTemp = false;
         }
         else{
           setchatButton(false);
@@ -324,7 +335,11 @@ export function Profile() {
         setdelButton(false);
       }
 
-      //console.log(currType);
+      //console.log(foreignType);
+
+      if(currType == "ASSIST" && !foreignType){
+        setType(false);
+      }
 
     }
 
@@ -343,12 +358,12 @@ export function Profile() {
                   <input type ="radio" name="sliderProf" id='profTab' defaultChecked ></input>
                   <input type ="radio" name="sliderProf" id='blog' ></input>
                   <input type ="radio" name="sliderProf" id='items' ></input>
-                  <nav>
+                  {(type &&<nav>
                     <label htmlFor= "profTab" className='profTab' ><FaUserAlt/> Profile  </label>
                     {( editView && <label htmlFor= "blog" className='blog'> <FaEdit/> Edit </label> )}
-                    {( !editView && <label htmlFor= "blog" className='blog'> <FaHistory/> Items </label> )}
+                    {(!editView && <label htmlFor= "blog" className='blog'> <FaHistory/> Items </label> )}
                     <div className='sliderProf'></div>
-                  </nav>
+                  </nav>)}
             <section>
               
             <div className='content content-1'>
@@ -374,7 +389,7 @@ export function Profile() {
                 <h3 className='headings' >Reviews</h3>
                 <div className='pcomments'>
 
-                { ( !editView &&<div className='pcomment'><b><p>Leave a review!</p></b>
+                { ( (!editView || type) &&<div className='pcomment'><b><p>Leave a review!</p></b>
 
                   <form id="commentForm" onSubmit={handlesubmitComment}>
 
