@@ -135,12 +135,6 @@ export function ItemHistory(props : any){
         }
 
         async function getItemPic(itemID: string){
-          /*let linkT : any= await getDelScheduleApi(itemPicQuery(itemID));
-          let link = linkT.data.getItemPicLink.Name;
-          //listI.link = link;
-          //console.log(listI);
-          (document.getElementById(itemID+"pic") as HTMLImageElement).src = link;
-          //return link;*/
           let link = await getPicLink(itemID);
           (document.getElementById(itemID+"pic") as HTMLImageElement).src = link;
         }
