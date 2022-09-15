@@ -7,6 +7,7 @@ import Bgpic from '../../../shared/assets/Bgpic.png'
 
 import { storage } from 'libs/api/shared/services/prisma/src/lib/FirebaseRepository.repository';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { randomUUID } from 'crypto'
 
 
 import './register.css';
@@ -86,21 +87,10 @@ export function Register() {
 
   const [imageUpload, setImageUpload] = useState<File>();
   const [imageURL, setImageURL] = useState('');
-
-  async function getBase64(file : File){
-
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = error => reject(error);
-    });
-
-  }
   
   async function uploadProfilePicture(pp: File) {
     if(pp) {
-      const reference = ref(storage, `profilePictures/${pp.name + emailval}_pp`);
+      const reference = ref(storage, `profilePictures/${pp.name + "_" + randomUUID}_pp`);
       await uploadBytes(reference, pp);
       const downloadLink = await getDownloadURL(reference);
 
@@ -121,7 +111,6 @@ export function Register() {
       let profilePictureLink = '';
 
       if(imageUpload){
-        // imgBase64 = await getBase64(imageUpload);
         profilePictureLink = `${uploadProfilePicture(imageUpload)}`;
       }
 
@@ -178,23 +167,20 @@ export function Register() {
               </button>
 
               <label htmlFor ='pimg1' className='rglabel'>Profile Picture</label><br/>
-                          <label htmlFor="file-upload" className="custom-file-upload">
-                              Select Image
-                          </label>
-                          
-                            <input type="file"
-                              id="file-upload"
-                              onChange={(e) => {
+              <label htmlFor="file-upload" className="custom-file-upload">
+                  Select Image
+              </label>
+              
+              <input type="file"
+                id="file-upload"
+                onChange={(e) => {
 
-                                console.log("test");
-                                
-                                if(!e.target.files) return;
-                                setImageUpload(e.target.files[0])
-                                setImageURL(URL.createObjectURL(e.target.files[0]));
-
-                                console.log(imageURL);
-
-                             }}/>           
+                  console.log("test");
+                  
+                  if(!e.target.files) return;
+                  setImageUpload(e.target.files[0]);
+                }}
+              />           
 
             <label htmlFor ='rgpwd1' className='rglabel'>Password</label>              
               <input placeholder='Enter password...' type ='password' id="rgpwd1" className='rgInput'
