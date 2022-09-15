@@ -15,11 +15,13 @@ export class RegistrationService {
 
 	async regClient(id: string, flier: string, pin: string, hack: string) {
 
-		const returnableV = new RegistEntity();
+		let returnableV = null;
 		const spice = await spices(flier);
 		let runner = null;
 
 		if((runner = await this.RegistRepo.addUser(flier, spice, await direct(flier, hack, spice), "NEED")) != null) {
+			returnableV = new RegistEntity();
+			
 			await this.RegistRepo.addOrg(runner.UserID, id);
 			returnableV.ID_external = runner.identity;
 			returnableV.ID_internal = runner.UserID;
