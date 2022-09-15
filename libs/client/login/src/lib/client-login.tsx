@@ -46,6 +46,10 @@ export function ClientLogin() {
   const [invalidCredentials, setInvalidCredentials] = useState('');
 
   const hanndlesubmit = async(event: { preventDefault: () => void; }) =>{
+
+      (document.getElementById('loginDivM') as HTMLDivElement).style.display = "none";
+      (document.getElementById('loginLoad') as HTMLDivElement).style.display = "block";
+      
       event.preventDefault();
       setInvalidCredentials('');
       const response = JSON.parse(await APICall(emailval, passval));
@@ -79,7 +83,7 @@ export function ClientLogin() {
       <br/>
       <h1>Charity-Spot</h1>
       <div className ="login-contain">
-        <div className="left-side">
+        <div className="left-side" id="loginDivM">
           <div className='img-class'>
             <img src={CS} alt='' id='logo-img-id'/>
           </div>
@@ -101,6 +105,8 @@ export function ClientLogin() {
           </div>
         </div>
 
+        <div className="loader" id="loginLoad"></div>
+
         <div className="right-side">
           <div className='welcomeNote'>
             <h3 id='welid'>Welcome</h3>
@@ -108,9 +114,10 @@ export function ClientLogin() {
 
             <img src={Seallogin} alt='' id='wel-img-id'/>
 
-        </div>        
+        </div>    
 
       </div>
+
     </div>
   )
 }

@@ -93,10 +93,12 @@ export function Register() {
   }
 
   const hanndlesubmit =  async(event: { preventDefault: () => void; }) =>{
+
       event.preventDefault();
       setInvalidCredentials('');
 
-      //console.log(location.lat + "," + location.lng);
+      (document.getElementById('registerDivM') as HTMLDivElement).style.display = "none";
+      (document.getElementById('registerLoad') as HTMLDivElement).style.display = "block";
 
       let imgBase64 = undefined;
 
@@ -128,7 +130,7 @@ export function Register() {
       <br/>
       <h1>Charity-Spot</h1>
       <div className ="register-contain">
-        <div className="rgleft-side">
+        <div className="rgleft-side" id="registerDivM">
           <div className='rgimg-class'>
             <img src={CS} alt='' id='rglogo-img-id'/>
           </div>
@@ -196,7 +198,10 @@ export function Register() {
             <p>Already have an account?<Link to ='/login' className='rgLink'> click to Login</Link></p>
             <p style={{color:"red"}}>{invalidCredentials}</p>
           </div>
+
         </div>
+
+        <div className="loader" id="registerLoad"></div>
 
         <div className="rgright-side">
           <div className='welcomeNote'>

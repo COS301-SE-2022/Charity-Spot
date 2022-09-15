@@ -231,6 +231,10 @@ export function Profile() {
 
     displayData();*/
 
+    (document.getElementById('editLeftDiv') as HTMLDivElement).style.display = "none";
+    (document.getElementById('editRightDiv') as HTMLDivElement).style.display = "none";
+    (document.getElementById('editLoad') as HTMLDivElement).style.display = "block";
+
     let Locationval = "undefined";
 
     if(!(NewOLocation.lat == -26.195246 && NewOLocation.lng == 28.034088)){
@@ -254,7 +258,14 @@ export function Profile() {
 
     console.log(commentState);
 
-    await API_EDIT_Call(IdCookie, NewOName, Locationval, "undefined", NewOPass, NewDesc, OEmail).then(()=>{setCommentState(commentState+1);});
+    await API_EDIT_Call(IdCookie, NewOName, Locationval, "undefined", NewOPass, NewDesc, OEmail).then(()=>{
+      setCommentState(commentState+1);
+
+      (document.getElementById('editLeftDiv') as HTMLDivElement).style.display = "block";
+      (document.getElementById('editRightDiv') as HTMLDivElement).style.display = "block";
+      (document.getElementById('editLoad') as HTMLDivElement).style.display = "none";
+      
+    });
 
     (document.getElementById("edit-Form") as HTMLFormElement).reset();
     (document.getElementById("nDesc") as HTMLInputElement).value = "";
@@ -492,7 +503,7 @@ export function Profile() {
 
                         <div className='editor-main'>
 
-                          <div className='editor-left'>
+                          <div className='editor-left' id ="editLeftDiv">
                           <label className='rglabel'>Upload a new profile picture:</label>
                           <br/><br/><br/>
                           <div className='edit-pic'>
@@ -507,7 +518,7 @@ export function Profile() {
 
                           <input id='upt_but' type="submit" value="Update Profile" onClick={(e) => { e.preventDefault(); handlesumbitUpdate();}}/>  <FaPen color='transparent'/>  
                           </div>
-                          <div className='editor-right'>
+                          <div className='editor-right' id ="editRightDiv">
                             <label className='rglabel'>Enter the fields you would like to update:</label>
                             <br/><br/><br/>
                             <div className='updater'>
@@ -551,6 +562,14 @@ export function Profile() {
                               </form>
                             </div>  
                           </div>
+                          
+                          
+                          
+                          <div id="editLoad" className="loader"></div>
+                          
+
+                          
+
                       </div>
 
                       <ModalMap inState={[show, setShow, setNewOLocation, NewOLocation]}></ModalMap>
