@@ -13,7 +13,7 @@ export function ClientItemRequest() {
 
   const [location, setLocation] = useState<any>();
   const [type, setType] = useState<any>("FOOD");
-  const [date, setDate] = useState<any>();
+  const [date, setDate] = useState<any>("Gauteng");
 
   function setCookies(){
     setCookie("location",location);
@@ -48,7 +48,18 @@ export function ClientItemRequest() {
 
                     <div className='request-box2'>
                        <label className='labelDel'>Location:</label><br/>
-                      <input className="req2" type ="text" placeholder='Your Location' onChange ={(e)=>{setLocation(e.target.value)}}></input> 
+                      {/*<input className="req2" type ="text" placeholder='Your Location' onChange ={(e)=>{setLocation(e.target.value)}}></input>*/}
+                      <select name="orgs" className='req2' onChange ={(e)=>{setLocation(e.target.value)}}>
+                            <option value="Gauteng">Gauteng</option>
+                            <option value="KwaZulu-Natal">KwaZulu-Natal</option>  
+                            <option value="Limpopo">Limpopo</option> 
+                            <option value="Western Cape">Western Cape</option> 
+                            <option value="Northern Cape">Northern Cape</option> 
+                            <option value="North West">North West</option>
+                            <option value="Eastern Cape">Eastern Cape</option>
+                            <option value="Free State">Free State</option>
+                            <option value="Mpumalanga">Mpumalanga</option>
+                        </select>  
                       <FaPen color='#1458b3'/>
                     </div>   
 

@@ -269,7 +269,7 @@ try:
         realDono = orgID + "," + dayOfWeek + "," + item_type + "," + location + "," + monthN + ","+weather+",1"
         f.write(realDono + '\n')
 
-        for i in range(0,2):
+        for i in range(0,random.randrange(1,3)):
             fakeDono = createFakeDonation(row[0], findDay(row[1] + ",2022"), findItemType(row[3]), findLoc(row[2]), month)
             f.write(fakeDono + '\n')
 

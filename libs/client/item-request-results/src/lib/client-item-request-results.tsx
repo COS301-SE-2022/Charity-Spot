@@ -42,6 +42,7 @@ async function APICall(){
       }`;*/
 
       //let date = getCookie("date");
+      //month - day
       let date = "01-03";
       let itemType = getItem(getCookie("type"));
       let location = getLocation(getCookie("location"));
