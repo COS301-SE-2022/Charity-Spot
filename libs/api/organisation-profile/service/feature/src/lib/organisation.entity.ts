@@ -20,4 +20,11 @@ export class OrganisationEntity {
 
     @Field({ nullable: true })
     Internal: string;
+
+    @Field({ nullable: true })
+    AvgRating: number;
+
+    @Field({ nullable: true })
+    Description: string;
+
 }

@@ -21,4 +21,10 @@ export class NotificationResolver {
         return await this.NotificationService.getReceiver(r_id);
     }
 
+    @Query(() => Boolean)
+    async checkNotification( @Args("ID") ID: string, @Args("Type") Type: string){
+        return await this.NotificationService.checkNot(ID, Type);
+    }
+    
+
 }

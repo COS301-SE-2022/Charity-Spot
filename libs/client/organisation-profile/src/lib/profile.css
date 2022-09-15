@@ -616,7 +616,7 @@ input.in5:hover{
 
 
 #upt_but{
-    width: 80%;
+    width: 100%;
     background: #1458b3 ;
     color: white;
     border: none;
@@ -624,6 +624,13 @@ input.in5:hover{
     padding: 0.7rem 1rem;
     transition: all 0.3 ease;
     border-radius: 5px;
+    margin-top: 50px;
+}
+
+#locButton{
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 10px;
 }
 
 
@@ -686,6 +693,7 @@ input.in5:hover{
     height: 110px;
     width: 110px;
     padding: 10px;
+    margin-bottom: 100px;
 }
 #logout1{
     transition: 0.2s ease-in;
@@ -844,4 +852,17 @@ input.in5:hover{
         width: 110px;
     }
  
+}
+
+#nDesc{
+    padding: 10px;
+    width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+}
+
+.rglabel{
+    margin-bottom: 10px!important;
 }

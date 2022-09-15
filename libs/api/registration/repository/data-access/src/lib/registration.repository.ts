@@ -20,7 +20,7 @@ export class RegistrationRepository {
     return u;
   }
 
-  async AlterNGONum(UserID : string,NGONum: string)
+  /*async AlterNGONum(UserID : string,NGONum: string)
   {
     const u = await this.prisma.organisation.update({
       where:
@@ -34,7 +34,7 @@ export class RegistrationRepository {
     })
 
     return u;
-  }
+  }*/
 
   async AlterDescription(UserID : string,Description: string)
   {

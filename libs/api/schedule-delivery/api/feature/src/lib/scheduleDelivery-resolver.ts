@@ -18,14 +18,16 @@ export class ScheduleDeliveryResolver {
         @Args("donated_for") id_2: string,
         @Args("location") loc: string,
         @Args("dd_mm_yyyy") date: string,
-        @Args("itemID") id_item: string
+        @Args("itemID") id_item: string,
+        @Args("time") time: string
     ) {
         return this.ScheduleDeliveryService.Sched(
             id_1,
             id_2,
             id_item,
             loc,
-            date
+            date,
+            time
         );
     }
 
@@ -50,5 +52,17 @@ export class ScheduleDeliveryResolver {
     @Query(() => ScheduleDeliveryEntity)
     getItemName(@Args("ItemID") ItemID: string){
         return this.ScheduleDeliveryService.getItemName(ItemID);
+    }
+
+    @Query(() => String)
+    async deleteDelivery(@Args("ItemID") ItemID: string){
+        await this.ScheduleDeliveryService.deleteDel(ItemID);
+        return "Success!";
+    }
+
+    @Query(() => String)
+    async completeDelivery(@Args("ItemID") ItemID: string){
+        await this.ScheduleDeliveryService.completeDel(ItemID);
+        return "Success!";
     }
 }

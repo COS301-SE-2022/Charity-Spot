@@ -155,6 +155,22 @@ export class ScheduleDeliveryRepository {
 
   }
 
+  async setItemUnAvail( itemName: string, orgID: string){
+
+    await this.prisma.donoItem.update({
+      data:{
+        ItemAvail: false
+      },
+      where:{
+        ItemName_OrgID:{
+          OrgID: orgID,
+          ItemName: itemName
+        }
+      }
+    });
+
+  }
+
   async getDelSchedule( Userid : string, type : string){
 
     let u = null;
@@ -271,6 +287,92 @@ export class ScheduleDeliveryRepository {
     })
 
     return u;
+  }
+
+  async deleteDel(itemID: string){
+
+    let item = await this.prisma.donoItem.findFirst({
+      select:{
+        ItemName: true,
+        OrgID: true
+      },
+      where:{
+        ItemID: itemID
+      }
+    })
+
+    await this.prisma.donoItem.update({
+      where:{
+        ItemName_OrgID:{
+          ItemName: item.ItemName,
+          OrgID: item.OrgID
+        }
+      },
+      data:{
+        ItemAvail: true
+      }
+    });
+
+    let del = await this.prisma.delivery.findFirst({
+      select:{
+        DeliveryID: true
+      },
+      where:{
+        ItemID: itemID
+      }
+    });
+
+    await this.prisma.delivery.delete({
+      where:{
+        DeliveryID: del.DeliveryID
+      }
+    });
+
+  }
+
+  async completeDel(itemID: string){
+    
+    let del = await this.prisma.delivery.findFirst({
+      select:{
+        DeliveryID: true
+      },
+      where:{
+        ItemID: itemID
+      }
+    });
+
+    await this.prisma.delivery.delete({
+      where:{
+        DeliveryID: del.DeliveryID
+      }
+    });
+    
+  }
+
+  async updateItemLoc(itemID: string, location: string){
+
+    let item = await this.prisma.donoItem.findFirst({
+      select:{
+        ItemName: true,
+        OrgID: true
+      },
+      where:{
+        ItemID: itemID
+      }
+    });
+
+    await this.prisma.donoItem.update({
+      where:{
+        ItemName_OrgID:{
+          ItemName: item.ItemName,
+          OrgID: item.OrgID
+        }
+      },
+      data:{
+        DonoLoc: location
+      }
+    });
+
   }
 
 }

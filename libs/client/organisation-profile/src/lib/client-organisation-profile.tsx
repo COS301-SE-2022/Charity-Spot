@@ -9,6 +9,8 @@ import { FaUserAlt,FaEdit,FaPen,FaHistory } from 'react-icons/fa'
 
 import ListGroup from 'react-bootstrap/esm/ListGroup';
 
+import {ModalMap} from './modal-map';
+
 import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
 import {Link} from 'react-router-dom'
 
@@ -28,6 +30,8 @@ async function APICall(usrID:string){
       Location
       Picture
       Internal
+      AvgRating
+      Description
     }
   }`);
     
@@ -47,20 +51,24 @@ async function APICall(usrID:string){
           .then((data) => 
             All_data = data
             );
+
+            console.log(All_data)
             
          return JSON.stringify(All_data);
 
 }
 
 //EDIT_PAGE
-async function API_EDIT_Call(id:string, orgName: string, loc: string, picture: string, password: string) {
+async function API_EDIT_Call(id:any, orgName: string, loc: string, picture: string, password: string, description: string, email : string) {
   const query = (`query{
     OrgEditProfile(
       id: "${id}",
       orgName: "${orgName}",
       loc: "${loc}",
       picture: "${picture}",
-      password: "${password}"
+      password: "${password}",
+      description: "${description}",
+      email: "${email}"
     ) {
       Email
       Name
@@ -87,7 +95,7 @@ async function API_EDIT_Call(id:string, orgName: string, loc: string, picture: s
       act_data = data
     );
 
-  return JSON.stringify(act_data);
+  //return JSON.stringify(act_data);
 }
 
 /*
@@ -148,17 +156,23 @@ async function commentRatingAPICall(comment : any, rating : any){
 
 
 export function Profile() {
+  const [show, setShow] = useState(false);
+
+  const [location, setLocation] = useState({ lat: -26.195246, lng: 28.034088});
+
   const [OEmail, setOEmail] = useState('');
   const [OName,setOName] = useState('');
   const [ODate,setODate] = useState('');
   const [OLocation,setOLocation] = useState('');
   const [Picture,setOPicture] = useState('');
+  const [ODesc, setODesc] = useState('');
 
   
   const [NewOName,setNewOName] = useState('undefined');
-  const [NewOLocation,setNewOLocation] = useState('undefined');
+  const [NewOLocation,setNewOLocation] = useState({ lat: -26.195246, lng: 28.034088});
   const [NewOPass,setNewOPass] = useState('undefined');
   const [NewOPassC,setNewOPassC] = useState('undefined');
+  const [NewDesc, setNewDesc] = useState('undefined');
 
   //const [NewPicture,setNewOPicture] = useState('');
   const [editView, setEditView] = useState(true);
@@ -168,6 +182,11 @@ export function Profile() {
 
   const [commentRate, setCommentRate] = useState(1);
   const [comment, setComment] = useState('');
+
+  const [avgRating, setAvgRating] = useState(new Array(5).fill(false));
+  const [avgRNum, setAvgRNum] = useState(0);
+
+  const [commentState, setCommentState] = useState(0);
 
 
   const hanndlesubmit = (event: { preventDefault: () => void; }) =>{
@@ -182,12 +201,12 @@ export function Profile() {
 
     event.preventDefault();
 
-    console.log(commentRate);
-    console.log(comment);
+    //console.log(commentRate);
+    //console.log(comment);
 
     (document.getElementById("commentForm") as HTMLFormElement).reset();
 
-    await commentRatingAPICall(comment, commentRate);
+    await commentRatingAPICall(comment, commentRate).then(()=>{setCommentState(commentState+1);});
 
     //if(form != null){
       //form.reset();
@@ -197,7 +216,7 @@ export function Profile() {
 
   const handlesumbitUpdate = async () => {
 
-    if(NewOName == "undefined" && NewOLocation == "undefined" && NewOPass == "undefined" && NewOPassC == "undefined"){
+    /*if(NewOName == "undefined" && NewOLocation == "undefined" && NewOPass == "undefined" && NewOPassC == "undefined"){
       return;
     }
 
@@ -210,7 +229,36 @@ export function Profile() {
       await API_EDIT_Call(IdCookie, NewOName, NewOLocation, "undefined", NewOPass);
     }
 
-    displayData();
+    displayData();*/
+
+    let Locationval = "undefined";
+
+    if(!(NewOLocation.lat == -26.195246 && NewOLocation.lng == 28.034088)){
+      Locationval = NewOLocation.lat + "," + NewOLocation.lng;
+    }
+
+    if(NewOPass != NewOPassC){
+      alert("password do not match");
+      return;
+    }
+
+    if(NewOName == "undefined" && Locationval == "undefined" && NewOPass == "undefined" && NewOPassC == "undefined" && NewDesc == "undefined"){
+      return;
+    }
+
+    console.log(NewOName);
+    console.log(Locationval);
+    console.log(NewOPass);
+    console.log(NewOPassC);
+    console.log(NewDesc);
+
+    console.log(commentState);
+
+    await API_EDIT_Call(IdCookie, NewOName, Locationval, "undefined", NewOPass, NewDesc, OEmail).then(()=>{setCommentState(commentState+1);});
+
+    (document.getElementById("edit-Form") as HTMLFormElement).reset();
+    (document.getElementById("nDesc") as HTMLInputElement).value = "";
+
     
   }
 
@@ -238,7 +286,9 @@ export function Profile() {
       }
 
       const allData = response.data.OrgProfile;
-      const {Email,Name,Date,Location,Picture,Internal} = allData;
+      const {Email,Name,Date,Location,Picture,Internal, Description} = allData;
+
+      console.log(allData);
 
       //console.log(Internal);
       
@@ -248,6 +298,12 @@ export function Profile() {
         setODate(Date);
         setOLocation(Location);
         setOPicture(Picture);
+        setODesc(Description);
+
+        let rating = new Array(5).fill(false);
+        rating[allData.AvgRating-1] = true;
+        setAvgRating(rating);
+        setAvgRNum(allData.AvgRating);
       //} else
         //setOName("DEMO4");
 
@@ -266,7 +322,7 @@ export function Profile() {
   useEffect(() => {
     setEditView(true);
     displayData();
-   },[]);
+   },[commentState]);
   
   return (
     <div>
@@ -286,7 +342,7 @@ export function Profile() {
               
             <div className='content content-1'>
 
-            <div className='title'><h1>{OName} Profile</h1></div>
+            <div className='title'><h1>{OName}</h1></div>
 
             <div className="profile-main">
 
@@ -301,12 +357,13 @@ export function Profile() {
                 <h3 className='headings' >About Us</h3>
                 <div className="cover3">
                   
-                  <p>We have been in the food business for 10 years, particularly focusing on poultry. We offer Chicken intenstines, feet and breasts</p>
+                  {/*<p>We have been in the food business for 10 years, particularly focusing on poultry. We offer Chicken intenstines, feet and breasts</p>*/}
+                  <p>{ODesc}</p>
                 </div>
                 <h3 className='headings' >Reviews</h3>
                 <div className='pcomments'>
 
-                <div className='pcomment'><b><p>Leave a review!</p></b>
+                { ( !editView &&<div className='pcomment'><b><p>Leave a review!</p></b>
 
                   <form id="commentForm" onSubmit={handlesubmitComment}>
 
@@ -335,7 +392,7 @@ export function Profile() {
 
                       {/*<br></br>
                       <p>This organization is fast and reliable, The delievered the frozen chicken in time</p>*/}
-                </div> 
+                </div>)} 
 
                 {/*<div className='pcomment'><div className='commentPic'><h4>HF</h4></div><b><p>Helping Foundation</p></b><br></br>
                   <div className="ratedsmall"> 
@@ -374,14 +431,15 @@ export function Profile() {
         
                     </div>
 
-                <CommentBlock state={"test"}></CommentBlock>
+                <CommentBlock state={commentState}></CommentBlock>
             </div>
 
 
 
               <div className='user-right'>
                 <br/><br/>
-                        
+
+                <div className="cover">Name: { OName}</div>        
                 <div className="cover">Email: { OEmail}</div>
                 <div className="cover">Date Registered: { ODate }</div>
                 <div className="cover">Location: { OLocation}</div>
@@ -402,17 +460,17 @@ export function Profile() {
                       <label  htmlFor="star1" title="text"></label>
                     </div> */}
 
-                    <p>Average Rating 4.0</p>
+                    <p>Average Rating {avgRNum}</p>
                     <div className="rate"> 
-                      <input type="radio" id="star5" name="rate1" value="5" disabled />
+                      <input type="radio" id="star5" name="rate1" value="5" disabled checked = {avgRating[4]}/>
                       <label htmlFor="star5" title="text"></label>
-                      <input type="radio" id="star4" name="rate1" value="4" disabled />
+                      <input type="radio" id="star4" name="rate1" value="4" disabled checked = {avgRating[3]}/>
                       <label htmlFor="star4"title="text"></label>
-                      <input type="radio" id="star3" name="rate1" value="3" disabled checked={true}/>
+                      <input type="radio" id="star3" name="rate1" value="3" disabled checked = {avgRating[2]}/>
                       <label  htmlFor="star3" title="text"></label>
-                      <input type="radio" id="star2" name="rate1" value="2" disabled />
+                      <input type="radio" id="star2" name="rate1" value="2" disabled checked = {avgRating[1]}/>
                       <label  htmlFor="star2" title="text"></label>
-                      <input type="radio" id="star1" name="rate1" value="1" disabled />
+                      <input type="radio" id="star1" name="rate1" value="1" disabled checked = {avgRating[0]}/>
                       <label  htmlFor="star1" title="text"></label>
                   </div>
                 </div>
@@ -430,50 +488,75 @@ export function Profile() {
       
 
               {( editView && <div className='content content-2'>
-                        <div className='title'><h1>Edit</h1></div>
+                        {/*<div className='title'><h1>Edit</h1></div>*/}
 
                         <div className='editor-main'>
 
                           <div className='editor-left'>
+                          <label className='rglabel'>Upload a new profile picture:</label>
+                          <br/><br/><br/>
                           <div className='edit-pic'>
                             <img src={userprofile} alt="" id="editor-pic"/>
                           </div>
-                          <form onSubmit={hanndlesubmit}>
+                          {/*<form onSubmit={hanndlesubmit}>
                               <button type='submit' id='logout1'>Log out</button>
-                          </form>
+                            </form>*/}
+
+                          <label className='rglabel'>Update your description:</label>
+                          <textarea id="nDesc" onChange ={(e)=>{setNewDesc(e.target.value)}}></textarea>
+
+                          <input id='upt_but' type="submit" value="Update Profile" onClick={(e) => { e.preventDefault(); handlesumbitUpdate();}}/>  <FaPen color='transparent'/>  
                           </div>
                           <div className='editor-right'>
-                            <br/><br/>
+                            <label className='rglabel'>Enter the fields you would like to update:</label>
+                            <br/><br/><br/>
                             <div className='updater'>
-                              <form onSubmit={(e) => { e.preventDefault(); handlesumbitUpdate();}}>
-                                
+                              <form id="edit-Form"/*onSubmit={(e) => { e.preventDefault(); handlesumbitUpdate();}*/>
+
                                 <div className='user-box1'>
-                               
+                                  <label className='rglabel'>Name</label>
                                   <input className="in1" type ="text" placeholder=' Name'defaultValue={OName} onChange ={(e)=>{setNewOName(e.target.value)}}></input>  
                                   <FaPen color='#1458b3'/>
                                 </div>
                                 
-                                <div className='user-box2'>
+                                {/*<div className='user-box2'>
+                                  <label className='rglabel'>Location</label>
                                   <input className="in3" type ="text" placeholder=' Address' defaultValue={OLocation} onChange ={(e)=>{setNewOLocation(e.target.value)}}></input> 
                                   <FaPen color='#1458b3'/>
-                                </div>                                
+                                </div>*/}
+
+                                <div className='user-box2'>
+                                <label className='rglabel'>Location</label>
+                                  <button type="button" id="locButton" className="custom-file-upload" onClick={() => {setTimeout(() => setShow(true), 100);}}>
+                                    Select your location
+                                  </button>
+                                </div>
+
+
+
                                 <div className='user-box3'>
+                                  <label className='rglabel'>Password</label>
                                   <input className="in4" type ="password" placeholder=' Password' defaultValue = "" onChange ={(e)=>{setNewOPass(e.target.value)}}></input> 
                                   <FaPen color='#1458b3'/>
-                                </div>      
+                                </div> 
+
                                 <div className='user-box4'>
+                                  <label className='rglabel'>Password</label>
                                   <input className="in5" type ="password" placeholder=' Confirm Password' onChange ={(e)=>{setNewOPassC(e.target.value)}}></input> 
                                   <FaPen color='#1458b3'/>
                                 </div> 
-                                <input id='upt_but'type="submit" value="Update"/>   <FaPen color='transparent'/>                                                                                     
+
+                                {/*<input id='upt_but'type="submit" value="Update"/>  <FaPen color='transparent'/>*/}  
+
                               </form>
                             </div>  
                           </div>
                       </div>
+
+                      <ModalMap inState={[show, setShow, setNewOLocation, NewOLocation]}></ModalMap>
                         </div>)}
 
                         {( !editView && <div className='content content-2'> 
-                          <div className='title'><h1>Test</h1></div>
                           <ItemHistory></ItemHistory>
                         </div>)}
               </section>

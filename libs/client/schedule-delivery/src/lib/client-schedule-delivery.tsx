@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 
 import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
 
+import {ModalMap} from './modal-map';
+
 async function getItemsApi(){
 
   let ID = getCookie("ID");
@@ -44,7 +46,7 @@ async function setDeliveryApi(location : string, itemID : string, date : string,
   let donateFor = getCookie("foreignID");
 
   const query = `query{
-    Schedule(donated_by:"${donatedBy}",donated_for:"${donateFor}",location:"${location}",dd_mm_yyyy:"${date}",itemID:"${itemID}"){
+    Schedule(donated_by:"${donatedBy}",donated_for:"${donateFor}",location:"${location}",dd_mm_yyyy:"${date}",itemID:"${itemID}",time:"${time}"){
       id_1
     }
   }`;
@@ -74,11 +76,14 @@ async function setDeliveryApi(location : string, itemID : string, date : string,
 
 export function ClientScheduleDelivery() {
 
+  const [show, setShow] = useState(false);
+  const [location, setLocation] = useState({ lat: -26.195246, lng: 28.034088});
+
   const [availItems, addItem] = useState<any[]>([]);
 
   const [delTime, setDelTime] = useState<any>();
   const [delDate, setDelDate] = useState<any>();
-  const [delLocation, setDelLocation] = useState<any>();
+  //const [delLocation, setDelLocation] = useState<any>();
   const [delItem, setDelItem] = useState<any>();
 
   class itemInfo{
@@ -108,18 +113,20 @@ export function ClientScheduleDelivery() {
 
   async function setDelivery(){
 
-    if(delLocation == undefined || delDate == undefined || delItem == undefined || delTime == undefined){
-      alert("Please supply a value for each of the fields");
-      return;
-    }
+    //if(delLocation == undefined || delDate == undefined || delItem == undefined || delTime == undefined){
+      //alert("Please supply a value for each of the fields");
+      //return;
+    //}
 
-    
+    let Locationval = location.lat + "," + location.lng;
+
     console.log(delTime);
     console.log(delDate);
-    console.log(delLocation);
+    console.log(Locationval);
     console.log(delItem);
+    //console.log(location);
 
-    await setDeliveryApi(delLocation, delItem, delDate, delTime)
+    await setDeliveryApi(Locationval, delItem, delDate, delTime).then(() => {getAvailItems();});
 
   }
 
@@ -166,8 +173,13 @@ export function ClientScheduleDelivery() {
 
                     <div className='deliver-box'>
                       
-                      <label className='labelDel'>Location of the delivery:</label><br/>
-                      <input className="del1" type ="text" placeholder=' e.g Pretoria, Hatfield' onChange ={(e)=>{setDelLocation(e.target.value);}}></input>  
+                      {/*<label className='labelDel'>Location of the delivery:</label><br/>
+                      <input className="del1" type ="text" placeholder=' e.g Pretoria, Hatfield' onChange ={(e)=>{setDelLocation(e.target.value);}}></input>*/}
+                                  <label className='labelDel'>Location of the delivery:</label><br/>
+                                  <button type="button" id="locButtonD" className="custom-file-upload" onClick={() => {setTimeout(() => setShow(true), 100);}}>
+                                    Select your location
+                                  </button>
+                                
                       <FaPen color='#1458b3'/>
                   </div>
 
@@ -232,6 +244,7 @@ export function ClientScheduleDelivery() {
     
                   </form>
 
+                  <ModalMap inState={[show, setShow, setLocation, location]}></ModalMap>
                 </div>  
               </div>
           </div>

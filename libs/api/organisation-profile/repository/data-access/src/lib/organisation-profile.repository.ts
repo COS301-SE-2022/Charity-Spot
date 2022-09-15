@@ -30,7 +30,6 @@ export class OrganisationRepository {
       select:
       {
         OrgName:true,
-        NGONum:true,
         Description:true,
         AddressID:true
       }
@@ -47,6 +46,20 @@ export class OrganisationRepository {
       data:
       {
         OrgName:name
+      }
+    })
+  }
+
+  async editOrgDesc(userID : string, desc : string)
+  {
+    return await this.prisma.organisation.update({
+      where:
+      {
+        UserID:userID
+      },
+      data:
+      {
+        Description:desc
       }
     })
   }
@@ -79,7 +92,7 @@ export class OrganisationRepository {
     })
   }
 
-  async editAddress(userID : string, address : string, address2 : string, city : string, prov : string)
+  async editAddress(userID : string, address : string, city : string, prov : string)
   {
     const u = await this.prisma.organisation.findFirst({
       where:
@@ -100,7 +113,6 @@ export class OrganisationRepository {
       data:
       {
         Address:address,
-        //Address2:address2,
         City:city,
         Province:prov
       }
@@ -165,16 +177,17 @@ export class OrganisationRepository {
     })
   }
 
-  async editPassword(userID : string, password : string)
+  async editPassword(userID : string, password : string, salt : string)
   {
     return await this.prisma.user.update({
       where:
       {
-        UserID:userID
+        UserID: userID
       },
       data:
       {
-        password:password
+        password: password,
+        passwordSalt: salt
       }
     })
   }

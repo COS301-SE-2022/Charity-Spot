@@ -1,8 +1,6 @@
 import { Resolver, Query, Args } from '@nestjs/graphql';
 import { OrganisationEntity } from '@charity-spot/api/organisation-profile/service/feature';
 import { OrganisationService } from '@charity-spot/api/organisation-profile/service/feature';
-import { Systrace } from 'react-native';
-import { getSystemErrorMap } from 'util';
 
 @Resolver()
 export class OrgResolver {
@@ -15,12 +13,14 @@ export class OrgResolver {
 
     
     @Query(() => OrganisationEntity)
-    OrgEditProfile(
+    async OrgEditProfile(
         @Args('id') id: string,
         @Args('orgName') name: string,
         @Args('loc') loc: string,
         @Args('picture') pic: string,
-        @Args('password') password: string
+        @Args('password') password: string,
+        @Args('description') description: string,
+        @Args('email') email: string
     ) : Promise<OrganisationEntity> {
 
         if(id != undefined) {
@@ -33,8 +33,10 @@ export class OrgResolver {
                 pic = null;
             if(password == "undefined")
                 password = null;
+            if(description == "undefined")
+                description = null;
 
-            return this.OrganisationService.updateDet(id, name, loc, pic, password);
+            return await this.OrganisationService.updateDet(id, name, loc, pic, password, description, email);
         }
 
         return null;

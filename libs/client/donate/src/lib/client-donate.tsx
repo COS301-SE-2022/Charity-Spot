@@ -54,6 +54,7 @@ async function uploadItemAPICall(Name : string, Quantity : string, Category : st
 }
 
 async function historyData() {
+  console.log("testt");
   const query = `
     donateHistory(id: "${IdCookie}"){
       Donations{
@@ -204,8 +205,8 @@ return (
                     <div className='donate-box4'>
                       
                       <select name="orgs"   className='din4' onChange ={(e)=>{setICond(e.target.value)}}>
-                            <option value=" New">New</option>
-                            <option value=" Used">Used</option>  
+                            <option value="New">New</option>
+                            <option value="Used">Used</option>  
                         </select>                                       
                       
                       <FaPen color='#1458b3'/>
