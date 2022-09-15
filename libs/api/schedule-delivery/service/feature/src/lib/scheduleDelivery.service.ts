@@ -27,6 +27,9 @@ export class ScheduleDeliveryService {
             returnableV.id_2 = needing_id;
             returnableV.id_item = ite_id;
 
+        let cityItem = (await this.getProvCity(location))[0];
+        await this.ScheduleDeliveryRepository.updateItemLoc(ite_id, cityItem);
+
         await this.ScheduleDeliveryRepository.alertClient(assis_id, needing_id, ite_id);
 
         let itemName = await (await this.getItemName(ite_id)).itemName;

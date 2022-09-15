@@ -349,4 +349,30 @@ export class ScheduleDeliveryRepository {
     
   }
 
+  async updateItemLoc(itemID: string, location: string){
+
+    let item = await this.prisma.donoItem.findFirst({
+      select:{
+        ItemName: true,
+        OrgID: true
+      },
+      where:{
+        ItemID: itemID
+      }
+    });
+
+    await this.prisma.donoItem.update({
+      where:{
+        ItemName_OrgID:{
+          ItemName: item.ItemName,
+          OrgID: item.OrgID
+        }
+      },
+      data:{
+        DonoLoc: location
+      }
+    });
+
+  }
+
 }
