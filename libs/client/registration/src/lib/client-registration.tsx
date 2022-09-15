@@ -5,6 +5,10 @@ import Sealregister from '../../../shared/assets/Sealregister.png'
 import CS from '../../../shared/assets/CS.png'
 import Bgpic from '../../../shared/assets/Bgpic.png'
 
+import { storage } from 'libs/api/shared/services/prisma/src/lib/FirebaseRepository.repository';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+
+
 import './register.css';
 
 import {ModalMap} from './modal-map';
@@ -65,6 +69,7 @@ async function APICall(orgName:string, email: string,location:string, password: 
 }
 
 
+
 export function Register() {
   const [show, setShow] = useState(false);
 
@@ -91,6 +96,20 @@ export function Register() {
     });
 
   }
+  
+  async function uploadProfilePicture(pp: File) {
+    if(pp) {
+      const reference = ref(storage, `profilePictures/${pp.name + emailval}_pp`);
+      await uploadBytes(reference, pp);
+      const downloadLink = await getDownloadURL(reference);
+
+      console.log(downloadLink);
+
+      return downloadLink;
+    }
+
+    return null;
+  }
 
   const hanndlesubmit =  async(event: { preventDefault: () => void; }) =>{
 
@@ -103,7 +122,8 @@ export function Register() {
       let imgBase64 = undefined;
 
       if(imageUpload){
-        imgBase64 = await getBase64(imageUpload);
+        // imgBase64 = await getBase64(imageUpload);
+        uploadProfilePicture(imageUpload);
       }
 
       console.log(imgBase64);
