@@ -7,12 +7,15 @@ import Bgpic from '../../../shared/assets/Bgpic.png'
 
 import { storage } from 'libs/api/shared/services/prisma/src/lib/FirebaseRepository.repository';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
-import { randomUUID } from 'crypto'
+import { randomStringGenerator } from '@charity-spot/api/shared/auth' 
+
 
 
 import './register.css';
 
 import {ModalMap} from './modal-map';
+
+var string_random = require('randomstring');
 
 
 async function APICall(orgName:string, email: string,location:string, password: string, whois: string, profilePicture: string){
@@ -90,7 +93,7 @@ export function Register() {
   
   async function uploadProfilePicture(pp: File) {
     if(pp) {
-      const reference = ref(storage, `profilePictures/${pp.name + "_" + randomUUID}_pp`);
+      const reference = ref(storage, `profilePictures/${pp.name + "_" + string_random.generate()}_pp`);
       await uploadBytes(reference, pp);
       const downloadLink = await getDownloadURL(reference);
 
