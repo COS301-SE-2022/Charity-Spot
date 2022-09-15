@@ -35,6 +35,7 @@ export class DonateRepository {
       where:
       {
         OrgID: uID,
+        ItemAvail: true
       },
       select:
       {

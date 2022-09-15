@@ -53,4 +53,10 @@ export class ScheduleDeliveryResolver {
     getItemName(@Args("ItemID") ItemID: string){
         return this.ScheduleDeliveryService.getItemName(ItemID);
     }
+
+    @Query(() => String)
+    async deleteDelivery(@Args("ItemID") ItemID: string){
+        await this.ScheduleDeliveryService.deleteDel(ItemID);
+        return "Hello There!";
+    }
 }

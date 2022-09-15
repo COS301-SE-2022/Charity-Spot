@@ -84,8 +84,10 @@ export class ScheduleDeliveryService {
             }
             //temp.id_1 = schedule[i].ClientID;
 
+            console.log(schedule[i].Loaction);
+
             let locationT = await this.getProvCity(schedule[i].Loaction);
-            let location = locationT[0] + " , " + locationT[1];
+            let location = locationT[0] + "," + locationT[1] + "," + schedule[i].Loaction;
 
             temp.itemID = schedule[i].ItemID;
             temp.location = location;
@@ -172,5 +174,9 @@ export class ScheduleDeliveryService {
 		}).catch(e => {console.log("error with reverse geolocation")});
 
 	}
+
+    async deleteDel(itemID: string){
+        await this.ScheduleDeliveryRepository.deleteDel(itemID);
+    }
 
 }

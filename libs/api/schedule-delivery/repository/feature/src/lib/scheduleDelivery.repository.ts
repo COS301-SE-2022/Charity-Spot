@@ -289,4 +289,45 @@ export class ScheduleDeliveryRepository {
     return u;
   }
 
+  async deleteDel(itemID: string){
+
+    let item = await this.prisma.donoItem.findFirst({
+      select:{
+        ItemName: true,
+        OrgID: true
+      },
+      where:{
+        ItemID: itemID
+      }
+    })
+
+    await this.prisma.donoItem.update({
+      where:{
+        ItemName_OrgID:{
+          ItemName: item.ItemName,
+          OrgID: item.OrgID
+        }
+      },
+      data:{
+        ItemAvail: true
+      }
+    });
+
+    let del = await this.prisma.delivery.findFirst({
+      select:{
+        DeliveryID: true
+      },
+      where:{
+        ItemID: itemID
+      }
+    });
+
+    await this.prisma.delivery.delete({
+      where:{
+        DeliveryID: del.DeliveryID
+      }
+    });
+
+  }
+
 }

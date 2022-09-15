@@ -413,7 +413,7 @@ max-height: 450px;
     border-radius: 10px;
     box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0);
     width: 28%;
-    height: 470px;
+    height: 495px;
 
 
     box-sizing: border-box;
@@ -430,6 +430,7 @@ max-height: 450px;
     justify-content: center;
 
     margin-top: 10px;
+    padding: 10px;
 
 }
 .collapserightDel{
@@ -440,6 +441,7 @@ max-height: 450px;
     box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0);
 
     margin-top: 10px ;
+    padding: 10px;
     /* border: solid 1px rgb(202, 202, 202); */
 }
 .collapsible input:checked ~.collapsible-textDel{
