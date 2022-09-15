@@ -14,9 +14,14 @@ import {ClientChatHistory} from '@charity-spot/client/chat-history'
 import {ClientDeliveryScheduleInfo} from '@charity-spot/client/delivery-schedule-info'
 import {ClientNotification} from '@charity-spot/client/notification'
 
+import {LoadScript} from '@react-google-maps/api';
+
+import {APIKEYS} from '../../../../config';
+
 function App() {
   return (
     <div className="App">
+      {/*<LoadScript googleMapsApiKey = {APIKEYS.GoogleMapsAPIKey}>*/}
       <Router>
       <Navigation/>
         <Routes>
@@ -35,6 +40,7 @@ function App() {
           <Route path = "/notifications" element = {<ClientNotification/>}/>
         </Routes>
       </Router>
+      {/*</LoadScript>*/}
     </div>
   );
 }

@@ -1,9 +1,13 @@
-import styles from './client-delivery-schedule-info.module.css';
+import './del-info.css';
 import { getCookie } from 'typescript-cookie';
 
 import { useEffect, useState } from 'react';
 
 import { FaHistory,FaDonate,FaPen,FaUserAlt,FaEdit,FaArrowDown,FaArrowUp } from 'react-icons/fa';
+
+import {ModalMap} from './modal-map';
+
+//import './client-delivery-schedule-info.module.css'
 
 async function getDelScheduleApi(query : string){
 
@@ -41,11 +45,18 @@ async function getDelScheduleApi(query : string){
 
 }
 
-
+class locCord{
+  lat = -26.195246
+  lng = 28.034088
+}
 
 export function ClientDeliveryScheduleInfo() {
 
   const [schedule, setSchedule] = useState<any[]>([]);
+  const [uType, setuType] = useState<any>(false);
+
+  const [show, setShow] = useState(false);
+  //const [location, setLocation] = useState({ lat: -26.195246, lng: 28.034088});
   
 
   class scheduleItem {
@@ -56,6 +67,9 @@ export function ClientDeliveryScheduleInfo() {
     location : string = "";
     date : string = "";
     time : string = "";
+    link : string = "";
+    lat : number = -26.195246;
+    lng : number = -26.195246;
   }
 
   const DelScheduleQuery = () => {
@@ -85,6 +99,26 @@ export function ClientDeliveryScheduleInfo() {
       }
     }`
   };
+
+  const itemPicQuery = (itemID : string) => {
+    return `query{
+      getItemPicLink(itemID:"${itemID}"){
+        Name
+      }
+    }`
+  }
+
+  const deleteDelQuery = (itemID : string) => {
+    return `query{
+              deleteDelivery(ItemID:"${itemID}")
+            }`
+  }
+
+  const completeDelQuery = (itemID : string) => {
+    return `query{
+              completeDelivery(ItemID:"${itemID}")
+            }`
+  }
 
   
 
@@ -116,7 +150,13 @@ export function ClientDeliveryScheduleInfo() {
 
         itemName = itemName.data.getItemName.itemName;
 
-        let location = finRes[i].location;
+        let locationT = finRes[i].location.split(',');
+        //newItems[i].lat = parseFloat(coord[0]);
+        //newItems[i].lng = parseFloat(coord[1]);
+
+        let location = locationT[0] + " , " + locationT[1];
+
+        console.log(finRes);
 
         let date = finRes[i].date;
 
@@ -131,6 +171,8 @@ export function ClientDeliveryScheduleInfo() {
         temp.location = location;
         temp.date = date;
         temp.time = time;
+        temp.lat = parseFloat(locationT[2]);
+        temp.lng = parseFloat(locationT[3]);
 
         scheduleList.push(temp);
 
@@ -139,14 +181,33 @@ export function ClientDeliveryScheduleInfo() {
       setSchedule(scheduleList);
 
     }
+
+    async function getItemPic(itemID: string, listI: any){
+      let linkT : any= await getDelScheduleApi(itemPicQuery(itemID));
+      let link = linkT.data.getItemPicLink.Name;
+      (document.getElementById(itemID+"pic") as HTMLImageElement).src = link;
+    }
+
+    async function deleteDelivery(itemID: string){
+      let linkT : any= await getDelScheduleApi(deleteDelQuery(itemID));
+      getDelSchedule();
+    }
+
+    async function completeDelivery(itemID: string){
+      let linkT : any= await getDelScheduleApi(completeDelQuery(itemID));
+      getDelSchedule();
+    }
   
 
   useEffect(() => {
+    if(getCookie("ID_EXT") == "ASSIST"){
+      setuType(true);
+    }
     getDelSchedule();
   }, [])
 
   return (
-    <div className={styles['container']}>
+    <div>
       <br/><br/>
       <div className='title'><h2>Your current delivery schedule:</h2></div>
 
@@ -160,13 +221,13 @@ export function ClientDeliveryScheduleInfo() {
 
                 <div className='collapsible'>
 
-                    <input type ='checkbox' id = {A.itemID}></input>
+                    <input type ='checkbox' id = {A.itemID} onClick={async ()=>{await getItemPic(A.itemID, A)}}></input>
 
                     <label htmlFor={A.itemID}>{A.itemName}:  {A.partyName} on {A.date} </label>
 
                     <div className='collapsible-text'><br/>
-                        <div className='collapseleft'>
-                        <img src="" alt="" id="donation-pic2"/>
+                        <div className='collapseleftDel'>
+                        <img id={A.itemID + "pic"} className="delSched" src="" alt=""/>
                         </div>
 
                         <div className='collapserightDel'>
@@ -174,8 +235,12 @@ export function ClientDeliveryScheduleInfo() {
                             <div className="cov">Item Name: {A.itemName}</div>
                             <div className="cov">Organisation Name: {A.partyName}</div>
                             <div className="cov">Location: {A.location}</div>
+                            <button id='completeButton' onClick={()=> {setTimeout(() => setShow(true), 100);}}>View Location</button>
                             <div className="cov">Date: {A.date}</div>
                             <div className="cov">Time: {A.time}</div>
+
+                            { (uType && <button id='completeButton' onClick={()=>{completeDelivery(A.itemID);}}>Complete Delivery</button>)}
+                            <button id='completeButton' onClick={()=>{deleteDelivery(A.itemID);}}>Cancel Delivery</button>                  
                             
                         </div>
                         
@@ -184,6 +249,8 @@ export function ClientDeliveryScheduleInfo() {
                 </div>
 
             </div>
+
+            <ModalMap inState={[show, setShow, A.lat, A.lng]}></ModalMap>
 
             
           </div>

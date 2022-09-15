@@ -102,17 +102,36 @@ export class CommentRatingService {
 
     async createCommentRating(AssistID: string, NeedID: string, Comment: string, Rating: number) {
         const returnable = new CommentRatingEntity();
-        let data = null;
-        if((data = await this.CommentRatingRepository.AddRating(AssistID, NeedID, Comment, Rating)) != null) {
+        //let data = await this.CommentRatingRepository.AddRating(AssistID, NeedID, Comment, Rating);
+
+        //console.log(data);
+
+        return await this.CommentRatingRepository.AddRating(AssistID, NeedID, Comment, Rating).then((data)=>{
+
             returnable.AssistID = data.OrgID;
             returnable.Clients = [data.ClientID];
             returnable.Ratings = [data.Rating];
             returnable.Comments = [data.Comment];
 
             return returnable;
+
+        })
+
+
+        /*if((data = await this.CommentRatingRepository.AddRating(AssistID, NeedID, Comment, Rating)) != null) {
+            returnable.AssistID = data.OrgID;
+            returnable.Clients = [data.ClientID];
+            returnable.Ratings = [data.Rating];
+            returnable.Comments = [data.Comment];
+
+            console.log("cas1");
+
+            return returnable;
         }
+
+        console.log("testttttt");
         
-        return null;
+        return null;*/
     }
 
 }

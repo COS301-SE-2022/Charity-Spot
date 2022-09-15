@@ -10,6 +10,30 @@ import { getCookie, removeCookie} from 'typescript-cookie'
 const ID = getCookie('ID');
 const ID_EXT = getCookie('ID_EXT');
 
+async function APICall () {
+
+    const query = `query{
+      checkNotification(ID: "${ID}", Type: "${ID_EXT}")
+    }`;
+
+  let result = null;
+
+  await fetch('http://localhost:3333/graphql', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+    body: JSON.stringify({
+      query
+    })
+  }).then(r => r.json()).then(data => 
+          result = data
+   );
+
+   return JSON.parse(JSON.stringify(result)).data.checkNotification;
+}
+
 function Navigation() {
 
   const [assist,setAssist] = useState(false);
@@ -45,13 +69,6 @@ function Navigation() {
 
   function removeForeignCookie(aLink : string){
 
-    //if(document.cookie.split(";").length > 0)
-      //document.cookie.split(";").forEach((c) => {
-        //document.cookie = c
-          //.replace(/^ +/, "")
-          //.replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
-      //});*/
-    
     //REDUNDENT
     if(getCookie('foreignID') !== undefined){
       removeCookie('foreignID');
@@ -60,11 +77,35 @@ function Navigation() {
       }
     }
 
+  }
+
+  async function checkNotification(buttonClick: boolean){
+
+    if(buttonClick){
+      (document.getElementById("notButton") as HTMLButtonElement).style.color = "#1458b3";
+      return;
+    }
+
+    if(ID == undefined || ID_EXT == undefined){
+      return;
+    }
+
+    await APICall().then((val) => {
+
+      if(val){
+        (document.getElementById("notButton") as HTMLButtonElement).style.color = "red";
+      }
+      else{
+        (document.getElementById("notButton") as HTMLButtonElement).style.color = "#1458b3";
+      }
+
+    });
+
 
   }
 
   useEffect(() => {
-    console.log("hellob");
+    checkNotification(false);
     checkIfUserLogIn();
     checkID();
   },[]);
@@ -83,17 +124,17 @@ function Navigation() {
         <Nav style={{ backgroundColor: '#dcdfe3'}} className="me-auto" variant="pills" >      
 
           { !log &&<Nav.Link  as={Link} to={"/login"} onClick={()=>{removeForeignCookie('a');}}>Login</Nav.Link>}
-          <Nav.Link as={Link} to={"/home"} onClick={()=>{removeForeignCookie('a');}}>Home</Nav.Link> 
-          { log &&<Nav.Link as={Link} to={"/profile"} onClick={()=>{removeForeignCookie('b');}}>Profile</Nav.Link>}
-          { assist && <Nav.Link as={Link} to={"/donate"} onClick={()=>{removeForeignCookie('a');}}>Donate</Nav.Link>}
-          { need && <Nav.Link as={Link} to={"/itemRequest"} onClick={()=>{removeForeignCookie('a');}}>Ask</Nav.Link>}
-          { log && <Nav.Link as={Link} to={"/chatSessions"}>Chat Sessions</Nav.Link>}
-          { log && <Nav.Link as={Link} to={"/deliverySchedule"}>Delivery Schedule</Nav.Link>}
+          <Nav.Link as={Link} to={"/home"} onClick={()=>{removeForeignCookie('a'); checkNotification(false);}}>Home</Nav.Link> 
+          { log &&<Nav.Link as={Link} to={"/profile"} onClick={()=>{removeForeignCookie('b'); checkNotification(false);}}>Profile</Nav.Link>}
+          { assist && <Nav.Link as={Link} to={"/donate"} onClick={()=>{removeForeignCookie('a'); checkNotification(false);}}>Donate</Nav.Link>}
+          { need && <Nav.Link as={Link} to={"/itemRequest"} onClick={()=>{removeForeignCookie('a'); checkNotification(false);}}>Ask</Nav.Link>}
+          { log && <Nav.Link as={Link} onClick={()=>{checkNotification(false);}} to={"/chatSessions"}>Chat Sessions</Nav.Link>}
+          { log && <Nav.Link as={Link} onClick={()=>{checkNotification(false);}} to={"/deliverySchedule"}>Delivery Schedule</Nav.Link>}
           
         </Nav>
 
         { log && <Nav style={{ backgroundColor: '#dcdfe3'}} className="ms-auto">
-        <Nav.Link as={Link} to={"/notifications"}><Button variant="pills"  style={{ color: '#1458b3'}}><FaBell/></Button></Nav.Link>
+        <Nav.Link as={Link} to={"/notifications"}><Button id="notButton" variant="pills"  style={{ color: '#1458b3'}} onClick={()=>{checkNotification(true);}} ><FaBell/></Button></Nav.Link>
           <Nav.Link><Button variant="outline-danger" onClick={()=>{logOut();}}>Log Out</Button></Nav.Link>
         </Nav>}
 
