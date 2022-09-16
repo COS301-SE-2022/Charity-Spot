@@ -5,7 +5,7 @@ import Sealregister from '../../../shared/assets/Sealregister.png'
 import CS from '../../../shared/assets/CS.png'
 import Bgpic from '../../../shared/assets/Bgpic.png'
 
-import { storage } from 'libs/api/shared/services/prisma/src/lib/FirebaseRepository.repository';
+import { storage, randomStringGenerator } from 'libs/api/shared/services/prisma/src/lib/FirebaseRepository.repository';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 // import { randomStringGenerator } from '@charity-spot/api/shared/auth' 
 
@@ -91,7 +91,7 @@ export function Register() {
   
   async function uploadProfilePicture(pp: File) {
     if(pp) {
-      const reference = ref(storage, `profilePictures/${pp.name + "_" /*+ randomStringGenerator()*/}_pp`);
+      const reference = ref(storage, `profilePictures/${await randomStringGenerator() + '_pp_' + pp.name}`);
       await uploadBytes(reference, pp);
       const downloadLink = await getDownloadURL(reference);
 
