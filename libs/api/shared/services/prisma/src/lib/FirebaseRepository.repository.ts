@@ -12,3 +12,13 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const storage = getStorage(app);
+
+export async function randomStringGenerator() {
+  let text = "";
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (let i = 0; i < 10; i++)
+    text += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+
+  return text;
+}

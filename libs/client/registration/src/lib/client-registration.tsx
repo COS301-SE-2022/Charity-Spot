@@ -7,15 +7,13 @@ import Bgpic from '../../../shared/assets/Bgpic.png'
 
 import { storage } from 'libs/api/shared/services/prisma/src/lib/FirebaseRepository.repository';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
-import { randomStringGenerator } from '@charity-spot/api/shared/auth' 
+// import { randomStringGenerator } from '@charity-spot/api/shared/auth' 
 
 
 
 import './register.css';
 
 import {ModalMap} from './modal-map';
-
-var string_random = require('randomstring');
 
 
 async function APICall(orgName:string, email: string,location:string, password: string, whois: string, profilePicture: string){
@@ -93,7 +91,7 @@ export function Register() {
   
   async function uploadProfilePicture(pp: File) {
     if(pp) {
-      const reference = ref(storage, `profilePictures/${pp.name + "_" + string_random.generate()}_pp`);
+      const reference = ref(storage, `profilePictures/${pp.name + "_" /*+ randomStringGenerator()*/}_pp`);
       await uploadBytes(reference, pp);
       const downloadLink = await getDownloadURL(reference);
 
@@ -114,7 +112,7 @@ export function Register() {
       let profilePictureLink = '';
 
       if(imageUpload){
-        profilePictureLink = `${uploadProfilePicture(imageUpload)}`;
+        profilePictureLink = `${await uploadProfilePicture(imageUpload)}`;
       }
 
       if((nameval === '') || (emailval === '') || ((location.lat === -26.195246) && (location.lng === 28.034088)) || (passval === '') || (confpassval === '')){
