@@ -18,6 +18,12 @@ import ItemHistory from './item-history';
 
 import CommentBlock from './commentBlock';
 
+
+import { storage, randomStringGenerator } from 'libs/api/shared/services/prisma/src/lib/FirebaseRepository.repository';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+
+
+
 const IdCookie = getCookie('ID');
 
 async function APICall(usrID: string) {
@@ -101,7 +107,7 @@ async function API_EDIT_Call(
 /*
 
 query{
-  getAllProfInfo(id :"cl7wjsr500032dgchh6vcmzhx"){
+  getAllProfInfo(id :""){
     Clients
     ClientNames
     Ratings
@@ -184,9 +190,12 @@ export function Profile() {
   const [OName, setOName] = useState('');
   const [ODate, setODate] = useState('');
   const [OLocation, setOLocation] = useState('');
-  const [Picture, setOPicture] = useState('');
+  const [OPicture, setOPicture] = useState('');
+  const [imageUpload, setImageUpload] = useState<File>();
   const [ODesc, setODesc] = useState('');
 
+
+  
   const [NewOName, setNewOName] = useState('undefined');
   const [NewOLocation, setNewOLocation] = useState({
     lat: -26.195246,
@@ -361,6 +370,18 @@ export function Profile() {
     }
   };
 
+  const handleEditProfilePicture = async (pic: File) => {
+    setImageUpload(pic);
+    console.log("test");
+
+    const reference = ref(storage, `profilePictures/${await randomStringGenerator() + '_pp_' + pic.name}`);
+    await uploadBytes(reference, pic);
+    const downloadLink = await getDownloadURL(reference);
+    console.log(downloadLink);
+
+    setOPicture(downloadLink);
+  }
+
   useEffect(() => {
     setEditView(true);
     displayData();
@@ -409,7 +430,7 @@ export function Profile() {
               <div className="user-left">
                 <div className="prof-pic">
                   <img
-                    src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo.png?alt=media&token=658a4502-2b08-47bf-8cb2-fe7eacbf8c3e"
+                    src={OPicture}
                     alt=""
                     id="profile-pic"
                   ></img>
@@ -679,14 +700,26 @@ export function Profile() {
                 </div>
 
                 <div className="editor-left" id="editLeftDiv">
-                  <label className="rglabel">
-                    Upload a new profile picture:
-                  </label>
-                  <br />
-                  <br />
-                  <br />
-                  <div className="edit-pic">
-                    <img src={userprofile} alt="" id="editor-pic" />
+                  <div className="edit_Picture">
+                    <label className="rglabel">
+                      Upload a new profile picture:
+                    </label>
+
+                    <img src={OPicture} alt="" id="editor-pic" />
+                    
+                    <label htmlFor="file-upload" className="custom-file-upload">
+                      Select Image
+                    </label>
+
+                    <input type="file"
+                      id="file-upload"
+                      onChange={(e) => {
+                        if(!e.target.files) return;
+                        handleEditProfilePicture(e.target.files[0]);
+                      }}
+                    /> 
+
+
                   </div>
                   <label className="rglabel">Update your description:</label>
                   <textarea

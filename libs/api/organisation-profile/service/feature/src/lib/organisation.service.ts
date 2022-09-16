@@ -8,7 +8,7 @@ import {Client} from "@googlemaps/google-maps-services-js";
 
 import { RegistrationService } from '@charity-spot/api/registration/service/feature'
 
-import { direct, spices } from '@charity-spot/api/shared/auth';
+import { direct, spices, base_64_direct, base_64_invert } from '@charity-spot/api/shared/auth';
 
 @Injectable()
 export class OrganisationService {
@@ -26,24 +26,16 @@ export class OrganisationService {
                 organisationProfile.AvgRating = avg;
             })
         });
-
-
-        //build up
-        //if(user.identity == "ASSIST") {
             const addr = await this.OrganisationRepository.getAdress(userID);
             const org = await this.OrganisationRepository.getOrg(userID);
             date = (await this.OrganisationRepository.getDateCreated(userID)).dateCreated;
             organisationProfile.Email = user.email;
             organisationProfile.Name = org.OrgName;
             organisationProfile.Description = org.Description;
-            console.log(date);
+            organisationProfile.Picture = await base_64_invert(org.profilePicture);
             organisationProfile.Date = date.toDateString();
             organisationProfile.Location = addr.City + ", " + addr.Province;
-            //organisationProfile.Internal = "ASSIST";
-        //} else {
-            //organisationProfile.Email = user.email;
             organisationProfile.Internal = user.identity;
-        //}
 
         return organisationProfile;
     }
@@ -57,7 +49,7 @@ export class OrganisationService {
             await this.OrganisationRepository.editOrgName(id, name);
 
         if(picture != null)
-            await this.OrganisationRepository.editProfilePicture(id, picture);
+            await this.OrganisationRepository.editProfilePicture(id, await base_64_direct(picture));
 
         if(password != null) {
             const spice = await spices(email);

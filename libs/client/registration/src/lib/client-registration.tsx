@@ -186,9 +186,6 @@ export function Register() {
               <input type="file"
                 id="file-upload"
                 onChange={(e) => {
-
-                  console.log("test");
-                  
                   if(!e.target.files) return;
                   setImageUpload(e.target.files[0]);
                 }}
