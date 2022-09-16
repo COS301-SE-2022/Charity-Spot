@@ -36,11 +36,14 @@ export class RegistrationService {
 	}
 
 	async regOrg(badge: string, relay: string, rendezvous: string, riddle: string) {
-		const returnableV = new RegistEntity();
+		
+		let returnableV = null;
 		const spice = await spices(relay);
 		let runner = null;
 
 		if((runner = await this.RegistRepo.addUser(relay, spice, await direct(relay, riddle, spice), "ASSIST")) != null) {
+			returnableV = new RegistEntity();
+
 			await this.RegistRepo.addOrg(runner.UserID, badge);
 			returnableV.ID_external = runner.identity;
 			returnableV.ID_internal = runner.UserID;

@@ -7,7 +7,6 @@ import Bgpic from '../../../shared/assets/Bgpic.png'
 
 import { storage, randomStringGenerator } from 'libs/api/shared/services/prisma/src/lib/FirebaseRepository.repository';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
-// import { randomStringGenerator } from '@charity-spot/api/shared/auth' 
 
 
 
@@ -68,6 +67,8 @@ async function APICall(orgName:string, email: string,location:string, password: 
       All_data = data
     );
   
+      
+
   return JSON.stringify(All_data);
 }
 
@@ -115,14 +116,19 @@ export function Register() {
         profilePictureLink = `${await uploadProfilePicture(imageUpload)}`;
       }
 
-      if((nameval === '') || (emailval === '') || ((location.lat === -26.195246) && (location.lng === 28.034088)) || (passval === '') || (confpassval === '')){
+      if((nameval === '') || (emailval === '') || (passval === '') || (confpassval === '')){
         setInvalidCredentials("Fields must not be empty");
         return;
       }
 
-      let Locationval = location.lat + "," + location.lng;
+      if(location.lat === -26.195246 && location.lng === 28.034088) {
+        setInvalidCredentials("Select your location");
+        return;
+      }
       
-      const response = JSON.parse(await APICall(nameval, emailval, Locationval, passval, typeval, profilePictureLink));
+      const response = JSON.parse(await APICall(nameval, emailval, `${location.lat},${location.lng}`, passval, typeval, profilePictureLink));
+
+      console.log(response);
       
       window.location.href = '/login';
     
