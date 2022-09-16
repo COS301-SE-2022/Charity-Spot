@@ -67,8 +67,6 @@ async function APICall(orgName:string, email: string,location:string, password: 
       All_data = data
     );
   
-      
-
   return JSON.stringify(All_data);
 }
 
@@ -106,7 +104,6 @@ export function Register() {
 
       event.preventDefault();
       setInvalidCredentials('');
-
       (document.getElementById('registerDivM') as HTMLDivElement).style.display = "none";
       (document.getElementById('registerLoad') as HTMLDivElement).style.display = "block";
 
@@ -126,12 +123,20 @@ export function Register() {
         return;
       }
       
+      //setLoading
+
       const response = JSON.parse(await APICall(nameval, emailval, `${location.lat},${location.lng}`, passval, typeval, profilePictureLink));
 
       console.log(response);
-      
-      window.location.href = '/login';
-    
+
+      if(response.data == null) {
+        //remove the loading
+        setInvalidCredentials("Email already exists in the system, Please log in");
+        return;
+      } else {
+        window.location.href = '/login';
+      }
+
       setInvalidCredentials('');
            
   }
