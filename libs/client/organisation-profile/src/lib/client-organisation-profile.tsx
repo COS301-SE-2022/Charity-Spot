@@ -372,12 +372,10 @@ export function Profile() {
 
   const handleEditProfilePicture = async (pic: File) => {
     setImageUpload(pic);
-    console.log("test");
 
     const reference = ref(storage, `profilePictures/${await randomStringGenerator() + '_pp_' + pic.name}`);
     await uploadBytes(reference, pic);
     const downloadLink = await getDownloadURL(reference);
-    console.log(downloadLink);
 
     setOPicture(downloadLink);
   }
