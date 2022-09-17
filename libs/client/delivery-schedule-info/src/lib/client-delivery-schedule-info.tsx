@@ -60,6 +60,8 @@ export function ClientDeliveryScheduleInfo() {
 
   const [show, setShow] = useState(false);
 
+  const [empty, setEmpty] = useState(false);
+
   class scheduleItem {
     itemName: string = '';
     itemID: string = '';
@@ -134,6 +136,10 @@ export function ClientDeliveryScheduleInfo() {
 
     finRes = resultFin.data.getDelSchedule;
 
+    if(finRes.length == 0){
+      setEmpty(true);
+    }
+
     for (let i = 0; i < finRes.length; i++) {
       let userID = finRes[i].id_1;
 
@@ -206,6 +212,7 @@ export function ClientDeliveryScheduleInfo() {
       <br />
       <div className="title">
         <h2>Your current delivery schedule:</h2>
+        { empty &&<div><br/><h3 style={{'color':'#6d6d6e'}}> You have no scheduled deliveries!</h3></div>}
       </div>
 
       {schedule.map(function (A) {
