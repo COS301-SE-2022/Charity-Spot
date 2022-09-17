@@ -130,7 +130,7 @@ function Navigation() {
           { assist && <Nav.Link eventKey="donate" as={Link} to={"/donate"} onClick={()=>{removeForeignCookie('a'); checkNotification(false);}}>Donate</Nav.Link>}
           { need && <Nav.Link eventKey="itemRequest" as={Link} to={"/itemRequest"} onClick={()=>{removeForeignCookie('a'); checkNotification(false);}}>Find</Nav.Link>}
           { log && <Nav.Link eventKey="chatSession" as={Link} onClick={()=>{checkNotification(false);}} to={"/chatSessions"}>Chat Sessions</Nav.Link>}
-          { log && <Nav.Link eventKey="deliverySchedule" as={Link} onClick={()=>{checkNotification(false);}} to={"/deliverySchedule"}>Delivery Schedule</Nav.Link>}
+          { log && <Nav.Link eventKey="donationSchedule" as={Link} onClick={()=>{checkNotification(false);}} to={"/donationSchedule"}>Donation Schedule</Nav.Link>}
           
         </Nav>
 

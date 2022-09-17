@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 
 import { getCookie } from 'typescript-cookie';
 
+import './chatStyle.css'
+
 
 async function API_link(query: string, id_q: string) {
   let outcome = null;
@@ -98,6 +100,13 @@ export function ClientChat() {
       await API_link(sendMessageQuery(tempB.mess), "");
 
       addBubb(newArr);
+
+      (document.getElementById('inputBoxM') as HTMLInputElement).value = '';
+      setInputVal(undefined);
+
+      //document.getElementById("b1")?.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'start' })
+      setTimeout(() => { document.getElementById("b1")?.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'start' })}, 50);
+
     } else 
       return;
   }
@@ -135,7 +144,7 @@ export function ClientChat() {
 
         addBubb(bubbleMessages);
 
-        setTimeout(() => { botRef?.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'start' })}, 500);
+        setTimeout(() => { botRef?.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'start' })}, 250);
       }
     }
     else{
@@ -169,7 +178,7 @@ export function ClientChat() {
       <br/>
       <div className={styles["topbar"]}>
         <div className={styles["ToFrom"]}>Sending Message To: </div>
-        <div className={styles["senderName"]} onClick={()=>{window.location.href = '/profile';;}}>{chatName}</div>
+        <div id="chatNameP" className={styles["senderName"]} onClick={()=>{window.location.href = '/profile'}}>{chatName}</div>
       </div>
       <br/>
 
@@ -191,7 +200,7 @@ export function ClientChat() {
 
       </div>      
 
-      <input className={styles["myText"]}type="text" name="fname" placeholder='Type a message..' onChange={(e) => {setInputVal(e.target.value)}}/> <button className={styles["sndBT"]} onClick={()=>{sendMessage()}}type="button">Send</button> <br />
+      <input id="inputBoxM" className={styles["myText"]}type="text" name="fname" placeholder='Type a message..' onChange={(e) => {setInputVal(e.target.value)}}/> <button className={styles["sndBT"]} onClick={()=>{sendMessage()}}type="button">Send</button> <br />
 
     </div>
   );
