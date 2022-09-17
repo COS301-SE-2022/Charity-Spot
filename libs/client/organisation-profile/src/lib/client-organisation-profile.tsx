@@ -42,6 +42,8 @@ async function APICall(usrID: string) {
 
   let All_data = '';
 
+  console.log(query);
+
   await fetch('http://localhost:3333/graphql', {
     method: 'POST',
     headers: {
@@ -89,6 +91,8 @@ async function API_EDIT_Call(
   }`;
 
   let act_data = undefined;
+
+  console.log("testtt");
 
   await fetch('http://localhost:3333/graphql', {
     method: 'POST',
@@ -181,6 +185,18 @@ async function getType(usrID: string) {
   return val.data.OrgProfile.Internal;
 }
 
+async function uploadProfilePicture(pp: File) {
+  if(pp) {
+    const reference = ref(storage, `profilePictures/${await randomStringGenerator() + '_pp_' + pp.name}`);
+    await uploadBytes(reference, pp);
+    const downloadLink = await getDownloadURL(reference);
+
+    return downloadLink;
+  }
+
+  return null;
+}
+
 export function Profile() {
   const [show, setShow] = useState(false);
 
@@ -191,8 +207,10 @@ export function Profile() {
   const [ODate, setODate] = useState('');
   const [OLocation, setOLocation] = useState('');
   const [OPicture, setOPicture] = useState('');
-  const [imageUpload, setImageUpload] = useState<File>();
   const [ODesc, setODesc] = useState('');
+
+  const [imageUpload, setImageUpload] = useState<File>();
+  const [imageURL, setImageURL] = useState('');
 
 
   
@@ -256,13 +274,23 @@ export function Profile() {
       return;
     }
 
+    let profilePictureLink = 'undefined';
+
+    if(imageUpload){
+      profilePictureLink = `${await uploadProfilePicture(imageUpload)}`;
+    }
+
+    console.log(profilePictureLink);
+
     if (
       NewOName == 'undefined' &&
       Locationval == 'undefined' &&
       NewOPass == 'undefined' &&
       NewOPassC == 'undefined' &&
-      NewDesc == 'undefined'
+      NewDesc == 'undefined' &&
+      profilePictureLink == 'undefined'
     ) {
+      console.log("testttttttt");
       return;
     }
 
@@ -270,12 +298,15 @@ export function Profile() {
       IdCookie,
       NewOName,
       Locationval,
-      'undefined',
+      profilePictureLink,
       NewOPass,
       NewDesc,
       OEmail
     ).then(() => {
       setCommentState(commentState + 1);
+
+      setImageUpload(undefined);
+      setImageURL('');
 
       (document.getElementById('editLeftDiv') as HTMLDivElement).style.display =
         'block';
@@ -376,6 +407,9 @@ export function Profile() {
     const reference = ref(storage, `profilePictures/${await randomStringGenerator() + '_pp_' + pic.name}`);
     await uploadBytes(reference, pic);
     const downloadLink = await getDownloadURL(reference);
+
+    console.log("eee");
+    console.log(downloadLink);
 
     setOPicture(downloadLink);
   }
@@ -703,7 +737,7 @@ export function Profile() {
                       Upload a new profile picture:
                     </label>
 
-                    <img src={OPicture} alt="" id="editor-pic" />
+                    <img src={imageURL} alt="" id="editor-pic" />
                     
                     <label htmlFor="file-upload" className="custom-file-upload">
                       Select Image
@@ -711,9 +745,21 @@ export function Profile() {
 
                     <input type="file"
                       id="file-upload"
-                      onChange={(e) => {
+                      /*onChange={(e) => {
                         if(!e.target.files) return;
                         handleEditProfilePicture(e.target.files[0]);
+                      }}
+                      /*onChange={(e) => {
+                        if(!e.target.files) return;
+                        setImageUpload(e.target.files[0]);
+                      }}*/
+
+                      onChange={(e) => {
+
+                        if(!e.target.files) return;
+                        setImageUpload(e.target.files[0])
+                        setImageURL(URL.createObjectURL(e.target.files[0]));
+
                       }}
                     /> 
 

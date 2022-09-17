@@ -99,6 +99,11 @@ export class OrganisationService {
     }
 
     async getAverageRatings(ratings : number[]){
+
+        if(ratings.length < 1){
+            return 0;
+        }
+
         let total = 0;
         let count =0;
 

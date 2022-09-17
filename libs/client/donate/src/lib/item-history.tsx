@@ -121,11 +121,17 @@ export function ItemHistory(props : any){
         const [Items, addItems] = useState<any[]>([]);
         const ItemsL : any[] = [];
 
+        const [empty, setEmpty] = useState(false);
+
         const updateItems = async () => {
             let newItems = await historyData();
 
             for(let i=0; i< newItems.length; i++){
                 ItemsL.push(newItems[i]);
+            }
+
+            if(newItems.length == 0){
+              setEmpty(true);
             }
 
             addItems(ItemsL);
@@ -147,6 +153,8 @@ export function ItemHistory(props : any){
         return (
         
                 <div>
+                  { empty &&<h3 style={{'color':'#6d6d6e'}}> You have no available items!</h3>}
+
                 {Items.map(function(item){
                     return (
                             

@@ -25,7 +25,8 @@ export function apiSharedAuth(): string {
     //spices
       export async function spices(ingr: string) {
         const pan = await require('bcrypt');
-        return await pan.genSalt(ingr.length);
+        //return await pan.genSalt(ingr.length);
+        return await pan.genSalt(12);
       }
 
     //base_64

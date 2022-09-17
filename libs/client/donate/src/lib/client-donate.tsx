@@ -34,6 +34,8 @@ async function uploadItemAPICall(Name : string, Quantity : string, Category : st
   }
   `;
 
+  console.log(query);
+
   let All_data = "";
 
   await fetch('http://localhost:3333/graphql', {
@@ -120,6 +122,8 @@ export function ClientDonate() {
     if(imageUpload){
       imgBase64 = await getBase64(imageUpload);
     }
+
+    console.log(imgBase64);
 
     await uploadItemAPICall(IName, IQuan, ICat, ICond, IDesc, imgBase64);
 
