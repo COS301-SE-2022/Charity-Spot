@@ -122,7 +122,7 @@ export function ResultBlock(props : any){
 
           <div><h4 className={probStyle}>{OrgProb}</h4></div>
                 <br></br>   
-          <button type='submit' id='butChoose'onClick={()=>{handleClick(OrgID);}}>Choose</button> 
+          <button type='submit' id='butChoose'onClick={()=>{handleClick(OrgID);}}>View Profile</button> 
 
     </div>
     

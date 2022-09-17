@@ -24,8 +24,7 @@ export function ClientItemRequest() {
 
   return (
     <div>
-      <br/>
-      <h2 className='reqHead'>Request for an item</h2>
+      <h2 className='reqHead'>Use our AI system to find an item!</h2>
       
         <div className='request-main'>
               <div className='request-left'>
@@ -83,7 +82,7 @@ export function ClientItemRequest() {
                   </div>*/}
 
                     <div>
-                    <label className='labelDel'>Prefered Date of Delivery:</label><br/>
+                    <label className='labelDel'>Date that the item is required:</label><br/>
                      <input className="req2" type ="date" placeholder='Date that you require the item:' onChange ={(e)=>{setDate(e.target.value)}}></input> 
                       <FaPen color='#1458b3'/>
                     </div>  
@@ -92,7 +91,7 @@ export function ClientItemRequest() {
                   
                     <br></br>
 
-                    <Link to ='/itemRequestResults' className='rgLink'><input id='req_but'type="button" value="Request" onClick={()=>{setCookies()}}/></Link>   
+                    <Link to ='/itemRequestResults' className='rgLink'><input id='req_but'type="button" value="Find" onClick={()=>{setCookies()}}/></Link>   
                     <input id='reqclr_but'type="button"
                       value="Clear"/>                                                                                    
                   </form>

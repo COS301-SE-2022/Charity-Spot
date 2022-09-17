@@ -209,10 +209,9 @@ export function ClientDeliveryScheduleInfo() {
   return (
     <div>
       <br />
-      <br />
       <div className="title">
         <h2>Your current delivery schedule:</h2>
-        { empty &&<div><br/><h3 style={{'color':'#6d6d6e'}}> You have no scheduled deliveries!</h3></div>}
+        { empty &&<h3 style={{'color':'#6d6d6e'}}> You have no scheduled deliveries!</h3>}
       </div>
 
       {schedule.map(function (A) {

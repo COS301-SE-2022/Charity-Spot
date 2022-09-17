@@ -98,7 +98,7 @@ export function ClientChatHistory() {
 
   return (
     <div >
-      <br/><br/>
+      <br/>
       <div className='title'><h2>Your active chat sessions:</h2></div>
 
       {activeChats.map(function(A){
