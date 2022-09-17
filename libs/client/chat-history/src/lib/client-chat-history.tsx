@@ -22,9 +22,12 @@ async function getActiveChatsAPI(){
             Reciever
             Sender
             Message
+            ProfilePic
           }
         }
       }`;
+
+      console.log(query);
 
 
       await fetch('http://localhost:3333/graphql', {
@@ -43,6 +46,8 @@ async function getActiveChatsAPI(){
       const resultString = JSON.stringify(result);
       const resultFin = JSON.parse(resultString);
 
+      console.log(resultFin);
+
       return resultFin.data.RetrieveThreads.Threads;
 
 }
@@ -60,6 +65,7 @@ export function ClientChatHistory() {
   class activeChatC{
     orgID : string = "";
     orgName : string = "";
+    orgPic : string = "";
   }
 
   async function getActiveChats(){
@@ -75,6 +81,7 @@ export function ClientChatHistory() {
       let temp = new activeChatC();
       temp.orgID = active[i].Reciever;
       temp.orgName = active[i].Message;
+      temp.orgPic = active[i].ProfilePic;
 
       activeList.push(temp);
 
@@ -101,8 +108,7 @@ export function ClientChatHistory() {
             <br/>
               <div className='chatHist'>
                 <div className='chatHistLeft'>
-                  <br/><br/>
-                <img src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo.png?alt=media&token=658a4502-2b08-47bf-8cb2-fe7eacbf8c3e" alt="" id="chatprofile-pic"></img>
+                <img src={A.orgPic} className="delSched"></img>
                 
                 </div>
                 <div className='chatHistRight'>
