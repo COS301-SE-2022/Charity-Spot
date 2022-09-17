@@ -650,6 +650,7 @@ input.in5:hover{
 
 
 
+
 /*------------------------------------- For the EDIT TAB CONTENT---------------------------------------------------------------------*/
 .editor-main{
     height: 510px auto;
@@ -680,6 +681,14 @@ input.in5:hover{
     /* background-color: #1458b3; */
    
 }
+
+.edit-pic {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    
+}
+
 .editor-right{
     /* background-color: rgb(162, 0, 255); */
     height: 450px;
@@ -693,8 +702,10 @@ input.in5:hover{
     height: 110px;
     width: 110px;
     padding: 10px;
-    margin-bottom: 100px;
+    margin-bottom: 1.5em;
 }
+
+
 #logout1{
     transition: 0.2s ease-in;
     width: 25%;

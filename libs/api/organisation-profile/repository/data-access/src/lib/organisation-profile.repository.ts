@@ -31,7 +31,8 @@ export class OrganisationRepository {
       {
         OrgName:true,
         Description:true,
-        AddressID:true
+        AddressID:true,
+        profilePicture: true
       }
     })
   }

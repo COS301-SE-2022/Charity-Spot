@@ -5,12 +5,17 @@ import Sealregister from '../../../shared/assets/Sealregister.png'
 import CS from '../../../shared/assets/CS.png'
 import Bgpic from '../../../shared/assets/Bgpic.png'
 
+import { storage, randomStringGenerator } from 'libs/api/shared/services/prisma/src/lib/FirebaseRepository.repository';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+
+
+
 import './register.css';
 
 import {ModalMap} from './modal-map';
 
 
-async function APICall(orgName:string, email: string,location:string, password: string, whois: string, base64: any){
+async function APICall(orgName:string, email: string,location:string, password: string, whois: string, profilePicture: string){
   let query = null;
 
   switch(whois) {
@@ -21,7 +26,7 @@ async function APICall(orgName:string, email: string,location:string, password: 
           Email: "${email}",
           Location: "${location}",
           Password: "${password}",
-          picture: "${base64}"
+          picture: "${profilePicture}"
         ){
           ID_internal
           ID_external
@@ -34,7 +39,8 @@ async function APICall(orgName:string, email: string,location:string, password: 
           OrgName:"${orgName}",
           OrgEmail: "${email}",
           OrgLocation: "${location}",
-          OrgPassword: "${password}"
+          OrgPassword: "${password}",
+          OrgPicture: "${profilePicture}"
         ){
           ID_internal
           ID_external
@@ -65,6 +71,7 @@ async function APICall(orgName:string, email: string,location:string, password: 
 }
 
 
+
 export function Register() {
   const [show, setShow] = useState(false);
 
@@ -80,45 +87,56 @@ export function Register() {
 
   const [imageUpload, setImageUpload] = useState<File>();
   const [imageURL, setImageURL] = useState('');
+  
+  async function uploadProfilePicture(pp: File) {
+    if(pp) {
+      const reference = ref(storage, `profilePictures/${await randomStringGenerator() + '_pp_' + pp.name}`);
+      await uploadBytes(reference, pp);
+      const downloadLink = await getDownloadURL(reference);
 
-  async function getBase64(file : File){
+      return downloadLink;
+    }
 
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = error => reject(error);
-    });
-
+    return null;
   }
 
   const hanndlesubmit =  async(event: { preventDefault: () => void; }) =>{
 
       event.preventDefault();
       setInvalidCredentials('');
-
       (document.getElementById('registerDivM') as HTMLDivElement).style.display = "none";
       (document.getElementById('registerLoad') as HTMLDivElement).style.display = "block";
 
-      let imgBase64 = undefined;
+      let profilePictureLink = '';
 
       if(imageUpload){
-        imgBase64 = await getBase64(imageUpload);
+        profilePictureLink = `${await uploadProfilePicture(imageUpload)}`;
       }
 
-      console.log(imgBase64);
-
-      if((nameval === '') || (emailval === '') || ((location.lat === -26.195246) && (location.lng === 28.034088)) || (passval === '') || (confpassval === '')){
+      if((nameval === '') || (emailval === '') || (passval === '') || (confpassval === '')){
         setInvalidCredentials("Fields must not be empty");
         return;
       }
 
-      let Locationval = location.lat + "," + location.lng;
+      if(location.lat === -26.195246 && location.lng === 28.034088) {
+        setInvalidCredentials("Select your location");
+        return;
+      }
       
-      const response = JSON.parse(await APICall(nameval, emailval, Locationval, passval, typeval, imgBase64));
-      
-      window.location.href = '/login';
-    
+      //setLoading
+
+      const response = JSON.parse(await APICall(nameval, emailval, `${location.lat},${location.lng}`, passval, typeval, profilePictureLink));
+
+      console.log(response);
+
+      if(response.data == null) {
+        //remove the loading
+        setInvalidCredentials("Email already exists in the system, Please log in");
+        return;
+      } else {
+        window.location.href = '/login';
+      }
+
       setInvalidCredentials('');
            
   }
@@ -161,23 +179,17 @@ export function Register() {
               </button>
 
               <label htmlFor ='pimg1' className='rglabel'>Profile Picture</label><br/>
-                          <label htmlFor="file-upload" className="custom-file-upload">
-                              Select Image
-                          </label>
-                          
-                            <input type="file"
-                              id="file-upload"
-                              onChange={(e) => {
-
-                                console.log("test");
-                                
-                                if(!e.target.files) return;
-                                setImageUpload(e.target.files[0])
-                                setImageURL(URL.createObjectURL(e.target.files[0]));
-
-                                console.log(imageURL);
-
-                             }}/>           
+              <label htmlFor="file-upload" className="custom-file-upload">
+                  Select Image
+              </label>
+              
+              <input type="file"
+                id="file-upload"
+                onChange={(e) => {
+                  if(!e.target.files) return;
+                  setImageUpload(e.target.files[0]);
+                }}
+              />           
 
             <label htmlFor ='rgpwd1' className='rglabel'>Password</label>              
               <input placeholder='Enter password...' type ='password' id="rgpwd1" className='rgInput'
