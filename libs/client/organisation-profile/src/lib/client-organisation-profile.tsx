@@ -5,7 +5,7 @@ import userprofile from '../../../shared/assets/userprofile.png';
 import 'react-tabs/style/react-tabs.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaUserAlt, FaEdit, FaPen, FaHistory } from 'react-icons/fa';
+import { FaUserAlt, FaEdit, FaPen, FaHistory, FaListAlt } from 'react-icons/fa';
 
 import ListGroup from 'react-bootstrap/esm/ListGroup';
 
@@ -200,7 +200,7 @@ async function uploadProfilePicture(pp: File) {
 export function Profile() {
   const [show, setShow] = useState(false);
 
-  const [location, setLocation] = useState({ lat: -26.195246, lng: 28.034088 });
+  //const [location, setLocation] = useState({ lat: -26.195246, lng: 28.034088 });
 
   const [OEmail, setOEmail] = useState('');
   const [OName, setOName] = useState('');
@@ -238,6 +238,8 @@ export function Profile() {
 
   const [commentState, setCommentState] = useState(0);
 
+  const [invalidUpdate, setInvalidUpate] = useState('');
+
   const hanndlesubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
 
@@ -256,6 +258,8 @@ export function Profile() {
   };
 
   const handlesumbitUpdate = async () => {
+    setInvalidUpate("");
+
     (document.getElementById('editLeftDiv') as HTMLDivElement).style.display =
       'none';
     (document.getElementById('editRightDiv') as HTMLDivElement).style.display =
@@ -270,7 +274,14 @@ export function Profile() {
     }
 
     if (NewOPass != NewOPassC) {
-      alert('password do not match');
+      setInvalidUpate("Passwords do not match");
+
+      (document.getElementById('editLeftDiv') as HTMLDivElement).style.display =
+      'block';
+      (document.getElementById('editRightDiv') as HTMLDivElement).style.display =
+      'block';
+      (document.getElementById('editLoad') as HTMLDivElement).style.display =
+      'none';
       return;
     }
 
@@ -290,7 +301,15 @@ export function Profile() {
       NewDesc == 'undefined' &&
       profilePictureLink == 'undefined'
     ) {
-      console.log("testttttttt");
+
+      (document.getElementById('editLeftDiv') as HTMLDivElement).style.display =
+        'block';
+      (
+        document.getElementById('editRightDiv') as HTMLDivElement
+      ).style.display = 'block';
+      (document.getElementById('editLoad') as HTMLDivElement).style.display =
+        'none';
+
       return;
     }
 
@@ -315,6 +334,15 @@ export function Profile() {
       ).style.display = 'block';
       (document.getElementById('editLoad') as HTMLDivElement).style.display =
         'none';
+
+      setNewOName('undefined');
+      setNewOPass('undefined');
+      setNewOPassC('undefined');
+      setNewDesc('undefined');
+      setNewOLocation({
+        lat: -26.195246,
+        lng: 28.034088 });
+
     });
 
     (document.getElementById('edit-Form') as HTMLFormElement).reset();
@@ -446,7 +474,7 @@ export function Profile() {
             {!editView && (
               <label htmlFor="blog" className="blog">
                 {' '}
-                <FaHistory /> Items{' '}
+                <FaListAlt /> Items{' '}
               </label>
             )}
             <div className="sliderProf"></div>
@@ -635,6 +663,7 @@ export function Profile() {
 
           {editView && (
             <div className="content content-2">
+              <p style={{ color: 'red' }}>{invalidUpdate}</p>
               <div className="editor-main">
                 {/*<div className="editor-left" id="editLeftDiv">
                   <label className="rglabel">

@@ -62,6 +62,8 @@ export function ClientChatHistory() {
 
   const [activeChats, addactiveChat] = useState<any[]>([]);
 
+  const [empty, setEmpty] = useState(false);
+
   class activeChatC{
     orgID : string = "";
     orgName : string = "";
@@ -73,6 +75,10 @@ export function ClientChatHistory() {
     let active = await getActiveChatsAPI();
 
     console.log(active);
+
+    if(active.length == 0){
+      setEmpty(true);
+    }
 
     let activeList : any = [];
 
@@ -98,8 +104,11 @@ export function ClientChatHistory() {
 
   return (
     <div >
-      <br/><br/>
-      <div className='title'><h2>Your active chat sessions:</h2></div>
+      <br/>
+      <div className='title'>
+        <h2>Your active chat sessions:</h2>
+        { empty &&<h3 style={{'color':'#6d6d6e'}}> You have no active chats!</h3>}
+      </div>
 
       {activeChats.map(function(A){
 

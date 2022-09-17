@@ -108,6 +108,7 @@ function Navigation() {
     checkNotification(false);
     checkIfUserLogIn();
     checkID();
+    
   },[]);
 
   
@@ -121,15 +122,15 @@ function Navigation() {
       <Navbar.Brand style={{ color: '#1458b3', }} as={Link} to = '#'>Charity-Spot</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav style={{ backgroundColor: '#dcdfe3'}} className="me-auto" variant="pills" >      
+        <Nav defaultActiveKey={"home"} style={{ backgroundColor: '#dcdfe3'}} className="me-auto" variant="pills" >      
 
-          { !log &&<Nav.Link  as={Link} to={"/login"} onClick={()=>{removeForeignCookie('a');}}>Login</Nav.Link>}
-          <Nav.Link as={Link} to={"/home"} onClick={()=>{removeForeignCookie('a'); checkNotification(false);}}>Home</Nav.Link> 
-          { log &&<Nav.Link as={Link} to={"/profile"} onClick={()=>{removeForeignCookie('b'); checkNotification(false);}}>Profile</Nav.Link>}
-          { assist && <Nav.Link as={Link} to={"/donate"} onClick={()=>{removeForeignCookie('a'); checkNotification(false);}}>Donate</Nav.Link>}
-          { need && <Nav.Link as={Link} to={"/itemRequest"} onClick={()=>{removeForeignCookie('a'); checkNotification(false);}}>Ask</Nav.Link>}
-          { log && <Nav.Link as={Link} onClick={()=>{checkNotification(false);}} to={"/chatSessions"}>Chat Sessions</Nav.Link>}
-          { log && <Nav.Link as={Link} onClick={()=>{checkNotification(false);}} to={"/deliverySchedule"}>Delivery Schedule</Nav.Link>}
+          { !log &&<Nav.Link style={{color: "#1458b3", fontWeight: "425"}} eventKey="login" as={Link} to={"/login"} onClick={()=>{removeForeignCookie('a');}}>Login</Nav.Link>}
+          { log && <Nav.Link eventKey="home" as={Link} to={"/home"} onClick={()=>{removeForeignCookie('a'); checkNotification(false);}}>Home</Nav.Link>}
+          { log &&<Nav.Link eventKey="profile" as={Link} to={"/profile"} onClick={()=>{removeForeignCookie('b'); checkNotification(false);}}>Profile</Nav.Link>}
+          { assist && <Nav.Link eventKey="donate" as={Link} to={"/donate"} onClick={()=>{removeForeignCookie('a'); checkNotification(false);}}>Donate</Nav.Link>}
+          { need && <Nav.Link eventKey="itemRequest" as={Link} to={"/itemRequest"} onClick={()=>{removeForeignCookie('a'); checkNotification(false);}}>Find</Nav.Link>}
+          { log && <Nav.Link eventKey="chatSession" as={Link} onClick={()=>{checkNotification(false);}} to={"/chatSessions"}>Chat Sessions</Nav.Link>}
+          { log && <Nav.Link eventKey="donationSchedule" as={Link} onClick={()=>{checkNotification(false);}} to={"/donationSchedule"}>Donation Schedule</Nav.Link>}
           
         </Nav>
 

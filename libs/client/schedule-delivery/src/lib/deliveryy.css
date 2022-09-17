@@ -21,7 +21,7 @@
     100% {opacity:1 ;}
   }
 .deliver-main{
-    height: 500px auto;
+    height: 300px auto;
     width: 100%;
 
     
@@ -36,13 +36,15 @@
      justify-content: space-around;
      flex-flow: wrap;
 
-     background-color: transparent;
+     /*background-color: transparent;*/
+     background-color: rgb(228, 229, 230);
+     padding: 10px; 
 
 }
 
 .deliver-cent{
     background-color: rgb(228, 229, 230); 
-    height: 450px;
+    height: 250px;
     width: 100%;
     box-sizing: border-box;
     border-radius: 10px;
@@ -301,7 +303,8 @@ label.labelDel{
 }
 
 #deliv_but{
-    width: 35%;
+    display: block;
+    width: 25%;
     background: #1458b3 ;
     color: white;
     border: none;
@@ -310,6 +313,8 @@ label.labelDel{
     transition: all 0.3 ease;
     border-radius: 5px;
     margin-right: 4px;
+    margin-top: 20px;
+    text-align: center;
 
 }
 #clr_but{
@@ -522,17 +527,17 @@ max-height: 450px;
  }
  @media screen and (min-width: 1600px) {
     #deliv_but{
-        width: 150px;
+        /*width: 150px;*/
     }
     .deliver-cent{
         /* margin-top: 10px; */
         width: 100%;
-        height: 500px;
+        /*height: 500px;*/
     }
     .deliver-main{
         margin-top: 50px;
         width: 80%;
-        height: 500px;
+        /*height: 500px;*/
     }
   }
 

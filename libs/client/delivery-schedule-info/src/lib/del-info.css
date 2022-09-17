@@ -20,8 +20,8 @@
 
 #cancelButton{
     width: 25%;
-    background: #b31914;
-    color: #ffff;
+    background: #cecece;
+    color: #1458b3;
     border: none;
     cursor: pointer;
     padding: 0.4rem 1rem;
@@ -35,3 +35,7 @@
     box-shadow: 0.5px 0.5px 6px -1px black; 
     /* transform: translate(-5px); */
  }
+
+.senderName:hover{
+    cursor: pointer !important;
+}

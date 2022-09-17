@@ -163,7 +163,7 @@ export function ClientNotification() {
                   <div><h4></h4></div>
                 {/*<button id='notiMark'>Mark Read <FaCheck/></button>*/}
                 {A.Type == "message" &&<Link to ='/chat' className='rgLink'><button id='chatHistGo' onClick={()=>{setSelection(A.ID);}}>View <FaBinoculars/></button></Link>}
-                {A.Type == "delivery" &&<Link to ='/deliverySchedule' className='rgLink'><button id='chatHistGo' onClick={()=>{setSelection(A.ID);}}>View <FaBinoculars/></button></Link>}
+                {A.Type == "delivery" &&<Link to ='/donationSchedule' className='rgLink'><button id='chatHistGo' onClick={()=>{setSelection(A.ID);}}>View <FaBinoculars/></button></Link>}
                 </div>
               </div>
 

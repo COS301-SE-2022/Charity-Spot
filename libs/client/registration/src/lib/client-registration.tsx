@@ -1,26 +1,33 @@
-import React,{useState} from 'react'
-import {Link} from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import Sealregister from '../../../shared/assets/Sealregister.png'
-import CS from '../../../shared/assets/CS.png'
-import Bgpic from '../../../shared/assets/Bgpic.png'
+import Sealregister from '../../../shared/assets/Sealregister.png';
+import CS from '../../../shared/assets/CS.png';
+import Bgpic from '../../../shared/assets/Bgpic.png';
 
-import { storage, randomStringGenerator } from 'libs/api/shared/services/prisma/src/lib/FirebaseRepository.repository';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
-
-
+import {
+  storage,
+  randomStringGenerator,
+} from 'libs/api/shared/services/prisma/src/lib/FirebaseRepository.repository';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 import './register.css';
 
-import {ModalMap} from './modal-map';
+import { ModalMap } from './modal-map';
 
-
-async function APICall(orgName:string, email: string,location:string, password: string, whois: string, profilePicture: string){
+async function APICall(
+  orgName: string,
+  email: string,
+  location: string,
+  password: string,
+  whois: string,
+  profilePicture: string
+) {
   let query = null;
 
-  switch(whois) {
-    case "NEED":
-      query = (`query {
+  switch (whois) {
+    case 'NEED':
+      query = `query {
         clientRegist(
           Name:"${orgName}",
           Email: "${email}",
@@ -31,10 +38,10 @@ async function APICall(orgName:string, email: string,location:string, password: 
           ID_internal
           ID_external
         }
-      }`);
+      }`;
       break;
-    case "ASSIST":
-      query = (`query {
+    case 'ASSIST':
+      query = `query {
         orgRegist(
           OrgName:"${orgName}",
           OrgEmail: "${email}",
@@ -45,52 +52,53 @@ async function APICall(orgName:string, email: string,location:string, password: 
           ID_internal
           ID_external
         }
-      }`)
+      }`;
       break;
 
-      default:
-          query = '';
+    default:
+      query = '';
   }
 
-  let All_data = "";
+  let All_data = '';
 
   await fetch('http://localhost:3333/graphql', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({
-          query
-        })
-    }).then(r => r.json()).then(data => 
-      All_data = data
-    );
-  
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({
+      query,
+    }),
+  })
+    .then((r) => r.json())
+    .then((data) => (All_data = data));
+
   return JSON.stringify(All_data);
 }
-
-
 
 export function Register() {
   const [show, setShow] = useState(false);
 
-  const [location, setLocation] = useState({ lat: -26.195246, lng: 28.034088});
+  const [location, setLocation] = useState({ lat: -26.195246, lng: 28.034088 });
 
-  const [typeval,setTypeval] = useState('ASSIST');
-  const [nameval,setNameval] = useState('');
-  const [emailval,setEmailval] = useState('');
+  const [typeval, setTypeval] = useState('ASSIST');
+  const [nameval, setNameval] = useState('');
+  const [emailval, setEmailval] = useState('');
   //const [Locationval,setLocationval] = useState('');
-  const [passval,setPassval] = useState('');
-  const [confpassval,setConfPassval] = useState('');
+  const [passval, setPassval] = useState('');
+  const [confpassval, setConfPassval] = useState('');
   const [invalidCredentials, setInvalidCredentials] = useState('');
 
   const [imageUpload, setImageUpload] = useState<File>();
   const [imageURL, setImageURL] = useState('');
-  
+
   async function uploadProfilePicture(pp: File) {
-    if(pp) {
-      const reference = ref(storage, `profilePictures/${await randomStringGenerator() + '_pp_' + pp.name}`);
+    if (pp) {
+      const reference = ref(
+        storage,
+        `profilePictures/${(await randomStringGenerator()) + '_pp_' + pp.name}`
+      );
       await uploadBytes(reference, pp);
       const downloadLink = await getDownloadURL(reference);
 
@@ -100,137 +108,251 @@ export function Register() {
     return null;
   }
 
-  const hanndlesubmit =  async(event: { preventDefault: () => void; }) =>{
+  const hanndlesubmit = async (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    setInvalidCredentials('');
+    (document.getElementById('registerDivM') as HTMLDivElement).style.display =
+      'none';
+    (document.getElementById('registerLoad') as HTMLDivElement).style.display =
+      'block';
 
-      event.preventDefault();
-      setInvalidCredentials('');
-      (document.getElementById('registerDivM') as HTMLDivElement).style.display = "none";
-      (document.getElementById('registerLoad') as HTMLDivElement).style.display = "block";
+    let profilePictureLink = '';
 
-      let profilePictureLink = '';
+    if (imageUpload) {
+      profilePictureLink = `${await uploadProfilePicture(imageUpload)}`;
+    }
 
-      if(imageUpload){
-        profilePictureLink = `${await uploadProfilePicture(imageUpload)}`;
-      }
+    if (
+      nameval === '' ||
+      emailval === '' ||
+      passval === '' ||
+      confpassval === ''
+    ) {
+      setInvalidCredentials('Fields may not be empty');
 
-      if((nameval === '') || (emailval === '') || (passval === '') || (confpassval === '')){
-        setInvalidCredentials("Fields must not be empty");
-        return;
-      }
+      (
+        document.getElementById('registerDivM') as HTMLDivElement
+      ).style.display = 'block';
+      (
+        document.getElementById('registerLoad') as HTMLDivElement
+      ).style.display = 'none';
+      return;
+    }
 
-      if(location.lat === -26.195246 && location.lng === 28.034088) {
-        setInvalidCredentials("Select your location");
-        return;
-      }
-      
-      //setLoading
+    if (passval != confpassval) {
+      setInvalidCredentials('Passwords do not match');
 
-      const response = JSON.parse(await APICall(nameval, emailval, `${location.lat},${location.lng}`, passval, typeval, profilePictureLink));
+      (
+        document.getElementById('registerDivM') as HTMLDivElement
+      ).style.display = 'block';
+      (
+        document.getElementById('registerLoad') as HTMLDivElement
+      ).style.display = 'none';
 
-      console.log(response);
+      return;
+    }
 
-      if(response.data == null) {
-        //remove the loading
-        setInvalidCredentials("Email already exists in the system, Please log in");
-        return;
-      } else {
-        window.location.href = '/login';
-      }
+    if (location.lat === -26.195246 && location.lng === 28.034088) {
+      setInvalidCredentials('Location not selected');
 
-      setInvalidCredentials('');
-           
-  }
+      (
+        document.getElementById('registerDivM') as HTMLDivElement
+      ).style.display = 'block';
+      (
+        document.getElementById('registerLoad') as HTMLDivElement
+      ).style.display = 'none';
 
-  
+      return;
+    }
+
+    //setLoading
+
+    const response = JSON.parse(
+      await APICall(
+        nameval,
+        emailval,
+        `${location.lat},${location.lng}`,
+        passval,
+        typeval,
+        profilePictureLink
+      )
+    );
+
+    console.log(response);
+
+    if (response.data == null) {
+      //remove the loading
+      setInvalidCredentials('Invalid Email Provided');
+
+      (
+        document.getElementById('registerDivM') as HTMLDivElement
+      ).style.display = 'block';
+      (
+        document.getElementById('registerLoad') as HTMLDivElement
+      ).style.display = 'none';
+
+      return;
+    } else {
+      window.location.href = '/login';
+    }
+
+    setInvalidCredentials('');
+  };
 
   return (
-    <div className = "main-register" style ={{backgroundImage:`url(${Bgpic})`}}>
-      <br/>
+    <div className="main-register" style={{ backgroundImage: `url(${Bgpic})` }}>
+      <br />
       <h1>Charity-Spot</h1>
-      <div className ="register-contain">
-        <div className="rgleft-side" id="registerDivM">
-          <div className='rgimg-class'>
-            <img src={CS} alt='' id='rglogo-img-id'/>
-          </div>
-          <form onSubmit={hanndlesubmit}>
+      <div className="register-contain">
+        <div className="rgleft-side">
+          <div id="registerDivM">
+            <div className="rgimg-class">
+              <img src={CS} alt="" id="rglogo-img-id" />
+            </div>
+            <form onSubmit={hanndlesubmit}>
+              <p style={{ color: 'red' }}>{invalidCredentials}</p>
 
-          <label htmlFor ='rgorgnm1' className='rglabel'>How would you like to use Charity Spot?</label>
-              <select name="orgs" id="rgorgnm1" value={typeval} onChange ={(e)=>{setTypeval(e.target.value)}} className='rgSelect'>
-                    <option value="ASSIST">Willing to assist</option>
-                    <option value="NEED">In Need</option>
-              </select>     
+              <label htmlFor="rgorgnm1" className="rglabel">
+                How would you like to use Charity Spot?
+              </label>
+              <select
+                name="orgs"
+                id="rgorgnm1"
+                value={typeval}
+                onChange={(e) => {
+                  setTypeval(e.target.value);
+                }}
+                className="rgSelect"
+              >
+                <option value="ASSIST">Willing to assist</option>
+                <option value="NEED">In Need</option>
+              </select>
 
-          <label htmlFor ='rgorgnm2' className='rglabel'>Profile Name</label>
-              <input placeholder='Profile Name' type ='text' id="rgorgnm2" className='rgInput'
-               value={nameval}
-               onChange ={(e)=>{setNameval(e.target.value)}}/>
+              <label htmlFor="rgorgnm2" className="rglabel">
+                Profile Name
+              </label>
+              <input
+                placeholder="Profile Name"
+                type="text"
+                id="rgorgnm2"
+                className="rgInput"
+                value={nameval}
+                onChange={(e) => {
+                  setNameval(e.target.value);
+                }}
+              />
 
-            <label htmlFor ='emil1' className='rglabel'>Email</label>
-              <input placeholder='Enter your email...' type ='email' id="emil1"  className='rgInput'
-               value={emailval}
-               onChange ={(e)=>{setEmailval(e.target.value)}}/>
+              <label htmlFor="emil1" className="rglabel">
+                Email
+              </label>
+              <input
+                placeholder="Enter your email..."
+                type="email"
+                id="emil1"
+                className="rgInput"
+                value={emailval}
+                onChange={(e) => {
+                  setEmailval(e.target.value);
+                }}
+              />
 
-            <label htmlFor ='lct11' className='rglabel'>Location</label>
+              <label htmlFor="lct11" className="rglabel">
+                Location
+              </label>
               {/*<input placeholder='Enter your location...' type ='text' id="lct1"  className='rgInput'
                value={Locationval}
                 onChange ={(e)=>{setLocationval(e.target.value)}}/>*/}
-              <button type="button" className="custom-file-upload" onClick={() => {setTimeout(() => setShow(true), 100);}}>
+              <button
+                type="button"
+                className="custom-file-upload"
+                onClick={() => {
+                  setTimeout(() => setShow(true), 100);
+                }}
+              >
                 Select your location
               </button>
 
-              <label htmlFor ='pimg1' className='rglabel'>Profile Picture</label><br/>
-              <label htmlFor="file-upload" className="custom-file-upload">
-                  Select Image
+              <label htmlFor="pimg1" className="rglabel">
+                Profile Picture
               </label>
-              
-              <input type="file"
+              <br />
+              <label htmlFor="file-upload" className="custom-file-upload">
+                Select Image
+              </label>
+
+              <input
+                type="file"
                 id="file-upload"
                 onChange={(e) => {
-                  if(!e.target.files) return;
+                  if (!e.target.files) return;
                   setImageUpload(e.target.files[0]);
                 }}
-              />           
+              />
 
-            <label htmlFor ='rgpwd1' className='rglabel'>Password</label>              
-              <input placeholder='Enter password...' type ='password' id="rgpwd1" className='rgInput'
-              value={passval}
-              onChange ={(e)=>{setPassval(e.target.value)}}/>
+              <label htmlFor="rgpwd1" className="rglabel">
+                Password
+              </label>
+              <input
+                placeholder="Enter password..."
+                type="password"
+                id="rgpwd1"
+                className="rgInput"
+                value={passval}
+                onChange={(e) => {
+                  setPassval(e.target.value);
+                }}
+              />
 
-            <label htmlFor ='rgpwd2' className='rglabel'>Confirm Password</label>              
-              <input placeholder='Confirm password...' type ='password' id="rgpwd2" className='rgInput'
-              value={confpassval}
-              onChange ={(e)=>{setConfPassval(e.target.value); console.log("pass test")}}/>
-              
-              <br/>
-              
-              <button type='submit' id='rgsub_butt'>Register</button>
-          </form>
+              <label htmlFor="rgpwd2" className="rglabel">
+                Confirm Password
+              </label>
+              <input
+                placeholder="Confirm password..."
+                type="password"
+                id="rgpwd2"
+                className="rgInput"
+                value={confpassval}
+                onChange={(e) => {
+                  setConfPassval(e.target.value);
+                  console.log('pass test');
+                }}
+              />
 
-          <div className='rgfoot'>
-            <p>Already have an account?<Link to ='/login' className='rgLink'> click to Login</Link></p>
-            <p style={{color:"red"}}>{invalidCredentials}</p>
+              <br />
+
+              <button type="submit" id="rgsub_butt">
+                Register
+              </button>
+            </form>
+
+            <div className="rgfoot">
+              <p>
+                Already have an account?
+                <Link to="/login" className="rgLink">
+                  {' '}
+                  click to Login
+                </Link>
+              </p>
+              {/*<p style={{color:"red"}}>{invalidCredentials}</p>*/}
+            </div>
           </div>
-
+          <div className="loader" id="registerLoad"></div>
         </div>
 
-        <div className="loader" id="registerLoad"></div>
+        
 
         <div className="rgright-side">
-          <div className='welcomeNote'>
-            <h3 id='welid'>New here? welcome.</h3>
+          <div className="welcomeNote">
+            <h3 id="welid">New here? welcome.</h3>
           </div>
 
-            <img src={Sealregister} alt='' id='rgwel-img-id'/>
-
-        </div>        
-
+          <img src={Sealregister} alt="" id="rgwel-img-id" />
+        </div>
       </div>
-                   
-      <ModalMap inState={[show, setShow, setLocation, location]}></ModalMap>                    
 
+      <ModalMap inState={[show, setShow, setLocation, location]}></ModalMap>
     </div>
-    
-  )
+  );
 }
 
-export default Register
+export default Register;

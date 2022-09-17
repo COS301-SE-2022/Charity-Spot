@@ -1,7 +1,9 @@
 import './del-info.css';
-import { getCookie } from 'typescript-cookie';
+import { getCookie, setCookie } from 'typescript-cookie';
 
 import { useEffect, useState } from 'react';
+
+import {Link} from 'react-router-dom'
 
 import {
   FaHistory,
@@ -206,13 +208,16 @@ export function ClientDeliveryScheduleInfo() {
     getDelSchedule();
   }, []);
 
+  function setSelection(ID : any){
+    setCookie("foreignID", ID);
+  }
+
   return (
     <div>
       <br />
-      <br />
       <div className="title">
-        <h2>Your current delivery schedule:</h2>
-        { empty &&<div><br/><h3 style={{'color':'#6d6d6e'}}> You have no scheduled deliveries!</h3></div>}
+        <h2>Your current donation schedule:</h2>
+        { empty &&<h3 style={{'color':'#6d6d6e'}}> You have no scheduled donations!</h3>}
       </div>
 
       {schedule.map(function (A) {
@@ -231,7 +236,7 @@ export function ClientDeliveryScheduleInfo() {
                 ></input>
 
                 <label htmlFor={A.itemID}>
-                  {A.itemName}: {A.partyName} on {A.date}{' '}
+                  Donation scheduled with {A.partyName} for {A.date}{' '}
                 </label>
 
                 <div className="collapsible-text">
@@ -246,8 +251,9 @@ export function ClientDeliveryScheduleInfo() {
                   </div>
 
                   <div className="collapserightDel">
+                    {/*<div className="cov">Item Name: {A.itemName}</div>*/}
                     <div className="cov">Item Name: {A.itemName}</div>
-                    <div className="cov">Organisation Name: {A.partyName}</div>
+                    <div className="cov senderName" onClick={()=>{setSelection(A.partyID);}}><Link to ='/profile' className='rgLink'>Name of Participant: {A.partyName}</Link></div>
                     <div className="cov">Location: {A.location}</div>
                     <button
                       id="completeButton"
@@ -262,24 +268,26 @@ export function ClientDeliveryScheduleInfo() {
 
                     {uType && (
                       <button
+                        id="cancelButton"
+                        onClick={() => {
+                          deleteDelivery(A.itemID);
+                        }}
+                      >
+                        Cancel Donation
+                      </button>
+                    )}
+
+                    {uType && (
+                      <button
                         id="completeButton"
                         onClick={() => {
                           completeDelivery(A.itemID);
                         }}
                       >
-                        Complete Delivery
+                        Complete Donation
                       </button>
                     )}
-                    {uType && (
-                      <button
-                        id="completeButton"
-                        onClick={() => {
-                          deleteDelivery(A.itemID);
-                        }}
-                      >
-                        Cancel Delivery
-                      </button>
-                    )}
+                    
                   </div>
                 </div>
               </div>

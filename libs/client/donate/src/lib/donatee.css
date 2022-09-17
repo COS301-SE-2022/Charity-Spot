@@ -31,7 +31,8 @@
      justify-content: space-around;
      flex-flow: wrap;
 
-     background-color: transparent;
+     /*background-color: transparent;*/
+     background-color: rgb(228, 229, 230)
 
 }
 .donate-left{

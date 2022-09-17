@@ -37,6 +37,8 @@ async function APICall(email: string, password: string) {
     .then((r) => r.json())
     .then((data) => (initial_students = data));
 
+  console.log(initial_students);
+
   return JSON.stringify(initial_students);
 }
 
@@ -55,81 +57,81 @@ export function ClientLogin() {
     setInvalidCredentials('');
     const response = JSON.parse(await APICall(emailval, passval));
 
-    if (response.data.login.length == 0) {
-      setInvalidCredentials('Invalid credentials, please try again');
-    } else {
-      const ID = response.data.login.ID,
-        ID_EXT = response.data.login.ID_EXT;
-
-      if (ID == null) {
-        setInvalidCredentials('Invalid credentials, please try again');
-        return;
-      }
+    if (response.data != null) {
+      const ID = response.data.login.ID;
+      const ID_EXT = response.data.login.ID_EXT;
 
       document.cookie = `ID=${ID}`;
       document.cookie = `ID_EXT=${ID_EXT}`;
       window.location.href = '/home';
       setInvalidCredentials('');
+    } else {
+      setInvalidCredentials('Invalid login, please try again');
+      (document.getElementById('loginDivM') as HTMLDivElement).style.display =
+        'block';
+      (document.getElementById('loginLoad') as HTMLDivElement).style.display =
+        'none';
     }
   };
-
-  /*if(getCookie('ID') !== undefined)
-    window.location.href = '/login';*/
 
   return (
     <div className="main-login" style={{ backgroundImage: `url(${Bgpic})` }}>
       <br />
       <h1>Charity-Spot</h1>
       <div className="login-contain">
-        <div className="left-side" id="loginDivM">
-          <div className="img-class">
-            <img src={CS} alt="" id="logo-img-id" />
+        <div className="left-side">
+          <div id="loginDivM">
+            <div className="img-class">
+              <img src={CS} alt="" id="logo-img-id" />
+            </div>
+            <form onSubmit={hanndlesubmit}>
+              <p style={{ color: 'red' }}>{invalidCredentials}</p>
+              <label htmlFor="emil1" className="lgLabel">
+                Email
+              </label>
+              <input
+                placeholder="Enter your email..."
+                type="email"
+                id="emil1"
+                className="lgInput"
+                value={emailval}
+                onChange={(e) => {
+                  setEmailval(e.target.value);
+                }}
+              />
+              <label htmlFor="pwd1" className="lgLabel">
+                Password
+              </label>
+              <input
+                placeholder="Enter password..."
+                type="password"
+                id="pwd1"
+                className="lgInput"
+                value={passval}
+                onChange={(e) => {
+                  setPassval(e.target.value);
+                }}
+              />
+              <br />
+              <button type="submit" id="sub_butt">
+                Log in
+              </button>
+            </form>
+            <div className="foot">
+              <p>
+                Dont have an account yet?
+                <Link to="/register" className="Link">
+                  {' '}
+                  click to Register
+                </Link>
+              </p>
+            </div>
           </div>
-          <form onSubmit={hanndlesubmit}>
-            <p style={{ color: 'red' }}>{invalidCredentials}</p>
-            <label htmlFor="emil1" className="lgLabel">
-              Email
-            </label>
-            <input
-              placeholder="Enter your email..."
-              type="email"
-              id="emil1"
-              className="lgInput"
-              value={emailval}
-              onChange={(e) => {
-                setEmailval(e.target.value);
-              }}
-            />
-            <label htmlFor="pwd1" className="lgLabel">
-              Password
-            </label>
-            <input
-              placeholder="Enter password..."
-              type="password"
-              id="pwd1"
-              className="lgInput"
-              value={passval}
-              onChange={(e) => {
-                setPassval(e.target.value);
-              }}
-            />
-            <br />
-            <button type="submit" id="sub_butt">
-              Log in
-            </button>
-          </form>
-          <div className="foot">
-            <p>
-              Dont have an account yet?
-              <Link to="/register" className="Link">
-                {' '}
-                click to Register
-              </Link>
-            </p>
-          </div>
+
+          <div className="loader" id="loginLoad"></div>
         </div>
 
-        <div className="loader" id="loginLoad"></div>
+        
 
         <div className="right-side">
           <div className="welcomeNote">
