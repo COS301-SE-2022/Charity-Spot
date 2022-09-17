@@ -4,6 +4,8 @@ import { NotificationRepository } from '@charity-spot/api/notification/repositor
 import { ChatEntity } from '@charity-spot/api/chat/service/feature';
 import { ScheduleDeliveryEntity} from '@charity-spot/api/schedule-delivery/service/feature'
 
+import { base_64_invert } from '@charity-spot/api/shared/auth';
+
 @Injectable()
 export class NotificationService {
     constructor(private NotificationRepository: NotificationRepository) {}
@@ -62,7 +64,7 @@ export class NotificationService {
             returnable = new NotificationEntity();
             returnable.ID = r_id;
             returnable.Name = receiver.OrgName;
-            returnable.ProfilePicture = receiver.profilePicture;
+            returnable.ProfilePicture = await base_64_invert(receiver.profilePicture);
         }
 
         return returnable

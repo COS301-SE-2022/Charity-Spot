@@ -58,6 +58,8 @@ async function fetchUser(receiver_id: string) {
     }`;
 
   const receiver = await APICall(query);
+
+  console.log(receiver);
   
   return receiver.data.receiver;
 }
@@ -136,7 +138,7 @@ export function ClientNotification() {
                 <div className='notiLeft'>
                   <br/><br/>
                   {/* <div className="load"></div> */}
-                <img src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo.png?alt=media&token=658a4502-2b08-47bf-8cb2-fe7eacbf8c3e" alt="" id="notiprofile-pic"></img>
+                <img src={A.Picture} alt="" id="notiprofile-pic"></img>
                 
                 </div>
                 <div className='notiRight'>
