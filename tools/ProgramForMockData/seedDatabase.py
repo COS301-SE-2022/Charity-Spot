@@ -119,12 +119,12 @@ try:
 
     #1 Edgars
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("1", "edgars@email.com", "685d0cb67e922d99275137d7b04d492a", "$2b$14$aLP01PFf90j./Cd86iVDiu", "ASSIST")
+    record_to_insert = ("1", "edgars@email.com", "dd0055b11ab0d137a2cf6c87d771e998", "$2b$12$gcb/WPx.3VHAmjt7E5v13.", "ASSIST")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
     postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s, %s);"
-    record_to_insert = ("1", "Edgars", "A1", "wNlBzN2AjZ2UTMjhTL4UGN40SNwkDNtkTNmJTL2QmMjhTYzQTPuV2avRnJhlGZl1WP0xWY")
+    record_to_insert = ("1", "Edgars", "A1", "wNlBzN2AjZ2UTMjhTL4UGN40SNwkDNtkTNmJTL2QmMjhTYzQTPuV2avRnJhlGZl1WP0xWY/cGcq5ycyF2ZkV2XwB3XXt2cxxkR6dTazZkMlMXZyVHdjlGUlxWam9mcw9ybv02bj5CdvB3cwBXYuQ3bwNXL5RXayFGaj9iYvAjdv02bj5ycpBXYlx2Zv92ZuU2ZhJ3b0NXZzFmYlJXam9yL6MHc0RHa")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -153,7 +153,7 @@ try:
 
     #2 Mr Price
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("2", "mr_price@email.com", "685d0cb67e922d99275137d7b04d492a", "$2b$14$aLP01PFf90j./Cd86iVDiu", "ASSIST")
+    record_to_insert = ("2", "mr_price@email.com", "dd0055b11ab0d137a2cf6c87d771e998", "$2b$12$gcb/WPx.3VHAmjt7E5v13.", "ASSIST")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -177,7 +177,7 @@ try:
 
     #3 Scooters Pizza
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("3", "scooters_pizza@email.com", "685d0cb67e922d99275137d7b04d492a", "$2b$14$aLP01PFf90j./Cd86iVDiu", "ASSIST")
+    record_to_insert = ("3", "scooters_pizza@email.com", "dd0055b11ab0d137a2cf6c87d771e998", "$2b$12$gcb/WPx.3VHAmjt7E5v13.", "ASSIST")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -221,7 +221,7 @@ try:
 
     #4 Checkers
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("4", "checkers@email.com", "685d0cb67e922d99275137d7b04d492a", "$2b$14$aLP01PFf90j./Cd86iVDiu", "ASSIST")
+    record_to_insert = ("4", "checkers@email.com", "dd0055b11ab0d137a2cf6c87d771e998", "$2b$12$gcb/WPx.3VHAmjt7E5v13.", "ASSIST")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -265,7 +265,7 @@ try:
 
     #5 Spar
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("5", "spar@email.com", "685d0cb67e922d99275137d7b04d492a", "$2b$14$aLP01PFf90j./Cd86iVDiu", "ASSIST")
+    record_to_insert = ("5", "spar@email.com", "dd0055b11ab0d137a2cf6c87d771e998", "$2b$12$gcb/WPx.3VHAmjt7E5v13.", "ASSIST")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -299,12 +299,12 @@ try:
 
     #6 Clicks
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("6", "clicks@email.com", "685d0cb67e922d99275137d7b04d492a", "$2b$14$aLP01PFf90j./Cd86iVDiu", "ASSIST")
+    record_to_insert = ("6", "clicks@email.com", "dd0055b11ab0d137a2cf6c87d771e998", "$2b$12$gcb/WPx.3VHAmjt7E5v13.", "ASSIST")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
     postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s,%s);"
-    record_to_insert = ("6", "Clicks", "A3", "AZyEmNkJWM0YzMlRWLykzYi1SNxQDNtYGNjVWLyMmMxM2NwEWPuV2avRnJhlGZl1WP0xWY")
+    record_to_insert = ("6", "Clicks", "A3", "AZyEmNkJWM0YzMlRWLykzYi1SNxQDNtYGNjVWLyMmMxM2NwEWPuV2avRnJhlGZl1WP0xWY/cGcq5ycrNWasN2XwB3X410MBlWZyEkN5ZkMlMXZyVHdjlGUlxWam9mcw9ybv02bj5CdvB3cwBXYuQ3bwNXL5RXayFGaj9iYvAjdv02bj5ycpBXYlx2Zv92ZuU2ZhJ3b0NXZzFmYlJXam9yL6MHc0RHa")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -333,7 +333,7 @@ try:
 
     #7 The Clothing Store
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("7", "the_clothing_store@email.com", "685d0cb67e922d99275137d7b04d492a", "$2b$14$aLP01PFf90j./Cd86iVDiu", "ASSIST")
+    record_to_insert = ("7", "the_clothing_store@email.com", "dd0055b11ab0d137a2cf6c87d771e998", "$2b$12$gcb/WPx.3VHAmjt7E5v13.", "ASSIST")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -367,7 +367,7 @@ try:
 
     #8 The General Store
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("8", "the_general_store@email.com", "685d0cb67e922d99275137d7b04d492a", "$2b$14$aLP01PFf90j./Cd86iVDiu", "ASSIST")
+    record_to_insert = ("8", "the_general_store@email.com", "dd0055b11ab0d137a2cf6c87d771e998", "$2b$12$gcb/WPx.3VHAmjt7E5v13.", "ASSIST")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -573,7 +573,7 @@ try:
 
     #9 Pretoria Restaurant
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("9", "pretoria_restaurant@email.com", "685d0cb67e922d99275137d7b04d492a", "$2b$14$aLP01PFf90j./Cd86iVDiu", "ASSIST")
+    record_to_insert = ("9", "pretoria_restaurant@email.com", "dd0055b11ab0d137a2cf6c87d771e998", "$2b$12$gcb/WPx.3VHAmjt7E5v13.", "ASSIST")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -597,7 +597,7 @@ try:
 
     #10 Cape Town Restaurant
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("10", "cape_town_restaurant@email.com", "685d0cb67e922d99275137d7b04d492a", "$2b$14$aLP01PFf90j./Cd86iVDiu", "ASSIST")
+    record_to_insert = ("10", "cape_town_restaurant@email.com", "dd0055b11ab0d137a2cf6c87d771e998", "$2b$12$gcb/WPx.3VHAmjt7E5v13.", "ASSIST")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -621,7 +621,7 @@ try:
 
     #11 Durban Clothing Store
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("11", "durban_clothing_store@email.com", "685d0cb67e922d99275137d7b04d492a", "$2b$14$aLP01PFf90j./Cd86iVDiu", "ASSIST")
+    record_to_insert = ("11", "durban_clothing_store@email.com", "dd0055b11ab0d137a2cf6c87d771e998", "$2b$12$gcb/WPx.3VHAmjt7E5v13.", "ASSIST")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -645,7 +645,7 @@ try:
 
     #12 Woolworths
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("12", "woolworths@email.com", "685d0cb67e922d99275137d7b04d492a", "$2b$14$aLP01PFf90j./Cd86iVDiu", "ASSIST")
+    record_to_insert = ("12", "woolworths@email.com", "dd0055b11ab0d137a2cf6c87d771e998", "$2b$12$gcb/WPx.3VHAmjt7E5v13.", "ASSIST")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -690,12 +690,12 @@ try:
 
     #13 PEP
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("13", "pep@email.com", "685d0cb67e922d99275137d7b04d492a", "$2b$14$aLP01PFf90j./Cd86iVDiu", "ASSIST")
+    record_to_insert = ("13", "pep@email.com", "dd0055b11ab0d137a2cf6c87d771e998", "$2b$12$gcb/WPx.3VHAmjt7E5v13.", "ASSIST")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
     postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s,%s);"
-    record_to_insert = ("13", "PEP", "A4", "gM1Y2Y0U2YiFDZwQWLmJmZ40SNhRDNtQWO5MTLzEjMkZWZ4ATPuV2avRnJhlGZl1WP0xWY")
+    record_to_insert = ("13", "PEP", "A4", "gM1Y2Y0U2YiFDZwQWLmJmZ40SNhRDNtQWO5MTLzEjMkZWZ4ATPuV2avRnJhlGZl1WP0xWY/cmbw5CclB3XwB3XCpkdOd2QMhFa0YkMlMXZyVHdjlGUlxWam9mcw9ybv02bj5CdvB3cwBXYuQ3bwNXL5RXayFGaj9iYvAjdv02bj5ycpBXYlx2Zv92ZuU2ZhJ3b0NXZzFmYlJXam9yL6MHc0RHa")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -733,7 +733,7 @@ try:
 
     #14 Discount Clothing Store
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("14", "discount_clothing_store@email.com", "685d0cb67e922d99275137d7b04d492a", "$2b$14$aLP01PFf90j./Cd86iVDiu", "ASSIST")
+    record_to_insert = ("14", "discount_clothing_store@email.com", "dd0055b11ab0d137a2cf6c87d771e998", "$2b$12$gcb/WPx.3VHAmjt7E5v13.", "ASSIST")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -777,12 +777,12 @@ try:
 
     #15 Pick n Pay
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("15", "pick_n_pay@email.com", "685d0cb67e922d99275137d7b04d492a", "$2b$14$aLP01PFf90j./Cd86iVDiu", "ASSIST")
+    record_to_insert = ("15", "pick_n_pay@email.com", "dd0055b11ab0d137a2cf6c87d771e998", "$2b$12$gcb/WPx.3VHAmjt7E5v13.", "ASSIST")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
     postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s,%s);"
-    record_to_insert = ("15", "Pick n Pay", "A11", "AMxgzY0MWZ4gTNkFWLyQDZ40iZwgDNtY2NkBTLwEjNmFTYmJWPuV2avRnJhlGZl1WP0xWY")
+    record_to_insert = ("15", "Pick n Pay", "A11", "AMxgzY0MWZ4gTNkFWLyQDZ40iZwgDNtY2NkBTLwEjNmFTYmJWPuV2avRnJhlGZl1WP0xWY/cGcq5CcuB3XwB3XhJkVlpmQYdXYDZkMlMXZyVHdjlGUlxWam9mcw9ybv02bj5CdvB3cwBXYuQ3bwNXL5RXayFGaj9iYvAjdv02bj5ycpBXYlx2Zv92ZuU2ZhJ3b0NXZzFmYlJXam9yL6MHc0RHa")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -819,12 +819,12 @@ try:
 
     #16 Ackermans
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("16", "ackermans@email.com", "685d0cb67e922d99275137d7b04d492a", "$2b$14$aLP01PFf90j./Cd86iVDiu", "ASSIST")
+    record_to_insert = ("16", "ackermans@email.com", "dd0055b11ab0d137a2cf6c87d771e998", "$2b$12$gcb/WPx.3VHAmjt7E5v13.", "ASSIST")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
     postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s,%s);"
-    record_to_insert = ("16", "Ackermans", "A12", "gYhJGMxUmZhF2YjJWLkdTOi1iZwIDNtYWMidTLwUjZilDMlFTPuV2avRnJhlGZl1WP0xWY")
+    record_to_insert = ("16", "Ackermans", "A12", "gYhJGMxUmZhF2YjJWLkdTOi1iZwIDNtYWMidTLwUjZilDMlFTPuV2avRnJhlGZl1WP0xWY/cmbw5ycuFWbyV2ajF2XwB3X250Q2gWQyYzNQZkMlMXZyVHdjlGUlxWam9mcw9ybv02bj5CdvB3cwBXYuQ3bwNXL5RXayFGaj9iYvAjdv02bj5ycpBXYlx2Zv92ZuU2ZhJ3b0NXZzFmYlJXam9yL6MHc0RHa")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -861,7 +861,7 @@ try:
 
     #17 Shoprite
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("17", "shoprite@email.com", "685d0cb67e922d99275137d7b04d492a", "$2b$14$aLP01PFf90j./Cd86iVDiu", "ASSIST")
+    record_to_insert = ("17", "shoprite@email.com", "dd0055b11ab0d137a2cf6c87d771e998", "$2b$12$gcb/WPx.3VHAmjt7E5v13.", "ASSIST")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -895,7 +895,7 @@ try:
 
     #18 Dischem
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("18", "dischem@email.com", "685d0cb67e922d99275137d7b04d492a", "$2b$14$aLP01PFf90j./Cd86iVDiu", "ASSIST")
+    record_to_insert = ("18", "dischem@email.com", "dd0055b11ab0d137a2cf6c87d771e998", "$2b$12$gcb/WPx.3VHAmjt7E5v13.", "ASSIST")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -927,12 +927,12 @@ try:
 
     #19 West Pack
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("19", "west_pack@email.com", "685d0cb67e922d99275137d7b04d492a", "$2b$14$aLP01PFf90j./Cd86iVDiu", "ASSIST")
+    record_to_insert = ("19", "west_pack@email.com", "dd0055b11ab0d137a2cf6c87d771e998", "$2b$12$gcb/WPx.3VHAmjt7E5v13.", "ASSIST")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
     postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s,%s);"
-    record_to_insert = ("19", "West Pack", "A18", "QO2czN0IjZmNWMwQTLjNWZh1SZ5cDNtkDNzYWLiJTMwEmMmdTPuV2avRnJhlGZl1WP0xWY")
+    record_to_insert = ("19", "West Pack", "A18", "QO2czN0IjZmNWMwQTLjNWZh1SZ5cDNtkDNzYWLiJTMwEmMmdTPuV2avRnJhlGZl1WP0xWY/cGcq5yajFGctQ3cld3XwB3XPp1bPJURyQnbSZkMlMXZyVHdjlGUlxWam9mcw9ybv02bj5CdvB3cwBXYuQ3bwNXL5RXayFGaj9iYvAjdv02bj5ycpBXYlx2Zv92ZuU2ZhJ3b0NXZzFmYlJXam9yL6MHc0RHa")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -969,12 +969,12 @@ try:
 
     #20 OK Furniture
     postgres_insert_query = "INSERT INTO public.user (user_id, email, password, password_salt, identity) VALUES (%s,%s,%s,%s,%s);"
-    record_to_insert = ("20", "ok_furniture@email.com", "685d0cb67e922d99275137d7b04d492a", "$2b$14$aLP01PFf90j./Cd86iVDiu", "ASSIST")
+    record_to_insert = ("20", "ok_furniture@email.com", "dd0055b11ab0d137a2cf6c87d771e998", "$2b$12$gcb/WPx.3VHAmjt7E5v13.", "ASSIST")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
     postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s,%s);"
-    record_to_insert = ("20", "OK Furniture", "A20", "gMwU2M4YWNkFGNyITLlRGM50CN5MGNtEDNwMTLlJmY1MmY1kTPuV2avRnJhlGZl1WP0xWY")
+    record_to_insert = ("20", "OK Furniture", "A20", "gMwU2M4YWNkFGNyITLlRGM50CN5MGNtEDNwMTLlJmY1MmY1kTPuV2avRnJhlGZl1WP0xWY/cmbw5SZyVHdp5mc1Z2Xr92XwB3XyNGOuJ0V0gkRLZkMlMXZyVHdjlGUlxWam9mcw9ybv02bj5CdvB3cwBXYuQ3bwNXL5RXayFGaj9iYvAjdv02bj5ycpBXYlx2Zv92ZuU2ZhJ3b0NXZzFmYlJXam9yL6MHc0RHa")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 

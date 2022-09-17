@@ -73,6 +73,8 @@ export function ClientNotification() {
 
   const [activeNot, addactiveNot] = useState<any[]>([]);
 
+  const [empty, setEmpty] = useState(false);
+
   class activeNotC{
     ID : string = "";
     Name : string = "";
@@ -87,7 +89,7 @@ export function ClientNotification() {
 
     let notifications = await fetchNotifications(uID, uType);
 
-    //console.log(notifications);
+    console.log(notifications);
 
     let activeList : any = [];
 
@@ -117,6 +119,10 @@ export function ClientNotification() {
 
     }
 
+    if(notifications.data.notifications.Threads.length == 0 && notifications.data.notifications.Delivery.length == 0){
+      setEmpty(true);
+    }
+
     addactiveNot(activeList);
 
   }
@@ -129,6 +135,8 @@ export function ClientNotification() {
     <div>
             <br/>
             <h2 style={{'color':'#1458b3'}}>Notifications</h2>
+
+            { empty &&<h3 style={{'color':'#6d6d6e'}}> You have no new notifications!</h3>}
 
             {activeNot.map(function(A){
 

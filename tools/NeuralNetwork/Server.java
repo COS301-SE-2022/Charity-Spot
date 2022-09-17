@@ -55,9 +55,9 @@ public class Server{
 
     public static double[][] getTrainData(){
 
-        double[][] trainData= new double[10440][];
+        double[][] trainData= new double[12534][];
 
-	    double[][] correctOutput= new double[10440][];
+	    double[][] correctOutput= new double[12534][];
 
         //Read in the donations from a file
 
