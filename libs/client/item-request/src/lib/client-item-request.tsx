@@ -7,15 +7,31 @@ import { useEffect, useState } from 'react';
 
 import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
 
+import { useNavigate } from "react-router-dom";
+
 
 
 export function ClientItemRequest() {
 
-  const [location, setLocation] = useState<any>();
+  const [location, setLocation] = useState<any>("Gauteng");
   const [type, setType] = useState<any>("FOOD");
-  const [date, setDate] = useState<any>("Gauteng");
+  const [date, setDate] = useState<any>();
+
+  const [invalidDate, setinvalidDate] = useState('');
+
+  let navigate = useNavigate();
 
   function setCookies(){
+
+    setinvalidDate("");
+
+    if(date == undefined){
+      setinvalidDate("No date selected");
+      return;
+    }
+
+    navigate("/itemRequestResults");
+    
     setCookie("location",location);
     setCookie("type",type);
     setCookie("date",date);
@@ -25,6 +41,7 @@ export function ClientItemRequest() {
   return (
     <div>
       <h2 className='reqHead'>Use our AI system to find an item!</h2>
+      <p style={{ color: 'red' }}>{invalidDate}</p>
       
         <div className='request-main'>
               <div className='request-left'>
@@ -91,7 +108,8 @@ export function ClientItemRequest() {
                   
                     <br></br>
 
-                    <Link to ='/itemRequestResults' className='rgLink'><input id='req_but'type="button" value="Find" onClick={()=>{setCookies()}}/></Link>   
+                    {/*<Link to ='/itemRequestResults' className='rgLink'><input id='req_but'type="button" value="Find" onClick={()=>{setCookies()}}/></Link>*/}
+                    <input id='req_but'type="button" value="Find" onClick={()=>{setCookies()}}/>  
                     <input id='reqclr_but'type="button"
                       value="Clear"/>                                                                                    
                   </form>

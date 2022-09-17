@@ -77,7 +77,7 @@ async function APICall(){
 
            console.log(resultFin);
 
-           return resultFin.data.getAIPredic;
+           return resultFin;
 
 }
 
@@ -87,13 +87,25 @@ export function ClientItemRequestResults() {
 
       const [result, addResult] = useState<any[]>([]);
 
+      const [AIoffLine, setAIoffLine] = useState('');
+
       class ResultV {
             ResultID : string = "";
             ResultProb: string = "";
       }
 
       const updateResult = async () => {
-            let resultArr = await APICall();
+
+            setAIoffLine('');
+
+            let resultTemp = await APICall();
+
+            if(resultTemp.data == null){
+                  setAIoffLine('AI currently offline!');
+                  return;
+            }
+
+            let resultArr = resultTemp.data.getAIPredic;
 
             console.log(resultArr);
 
@@ -122,6 +134,9 @@ export function ClientItemRequestResults() {
     <div className='motherHolder'>
       <br/>
       <h2 className='rqq'>Suggested Organizations</h2>
+
+      <h3 style={{'color':'#6d6d6e'}}> {AIoffLine}</h3>
+
       <div className='HoldAll'>
 
 
