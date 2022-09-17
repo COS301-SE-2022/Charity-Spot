@@ -7,6 +7,7 @@ import {
   FaEdit,
   FaArrowRight,
   FaCloudDownloadAlt,
+  FaListAlt
 } from 'react-icons/fa';
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -173,7 +174,7 @@ export function ClientDonate() {
           </label>
           <label htmlFor="history1" className="history1">
             {' '}
-            <FaHistory /> History{' '}
+            <FaListAlt/> Items{' '}
           </label>
           <div className="slider"></div>
         </nav>

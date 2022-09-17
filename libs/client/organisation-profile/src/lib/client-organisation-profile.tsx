@@ -5,7 +5,7 @@ import userprofile from '../../../shared/assets/userprofile.png';
 import 'react-tabs/style/react-tabs.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaUserAlt, FaEdit, FaPen, FaHistory } from 'react-icons/fa';
+import { FaUserAlt, FaEdit, FaPen, FaHistory, FaListAlt } from 'react-icons/fa';
 
 import ListGroup from 'react-bootstrap/esm/ListGroup';
 
@@ -446,7 +446,7 @@ export function Profile() {
             {!editView && (
               <label htmlFor="blog" className="blog">
                 {' '}
-                <FaHistory /> Items{' '}
+                <FaListAlt /> Items{' '}
               </label>
             )}
             <div className="sliderProf"></div>

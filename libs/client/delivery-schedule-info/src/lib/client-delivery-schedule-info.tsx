@@ -230,7 +230,7 @@ export function ClientDeliveryScheduleInfo() {
                 ></input>
 
                 <label htmlFor={A.itemID}>
-                  {A.itemName}: {A.partyName} on {A.date}{' '}
+                  Delivery Scheduled with {A.partyName} for {A.date}{' '}
                 </label>
 
                 <div className="collapsible-text">
@@ -246,7 +246,7 @@ export function ClientDeliveryScheduleInfo() {
 
                   <div className="collapserightDel">
                     <div className="cov">Item Name: {A.itemName}</div>
-                    <div className="cov">Organisation Name: {A.partyName}</div>
+                    <div className="cov">Name of Participant: {A.partyName}</div>
                     <div className="cov">Location: {A.location}</div>
                     <button
                       id="completeButton"
