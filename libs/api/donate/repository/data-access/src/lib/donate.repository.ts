@@ -36,6 +36,7 @@ export class DonateRepository {
 
   async getItemList(uID : string)
   {
+    console.log("tg");
     return await this.prisma.donoItem.findMany({
       where:
       {

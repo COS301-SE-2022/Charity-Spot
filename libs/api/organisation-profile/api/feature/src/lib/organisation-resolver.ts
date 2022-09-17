@@ -23,6 +23,8 @@ export class OrgResolver {
         @Args('email') email: string
     ) : Promise<OrganisationEntity> {
 
+        console.log("helloooo");
+
         if(id != undefined) {
 
             if(name == "undefined")
@@ -35,6 +37,9 @@ export class OrgResolver {
                 password = null;
             if(description == "undefined")
                 description = null;
+
+            console.log(pic);
+            console.log(loc);
 
             return await this.OrganisationService.updateDet(id, name, loc, pic, password, description, email);
         }

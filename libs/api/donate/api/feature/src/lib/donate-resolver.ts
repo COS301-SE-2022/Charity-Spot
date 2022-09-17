@@ -2,9 +2,12 @@ import { Resolver, Query, Args } from '@nestjs/graphql';
 import { DonateEntity } from '@charity-spot/api/donate/service/feature';
 import { DonateService } from '@charity-spot/api/donate/service/feature';
 import { catagory, quality } from '@prisma/client';
+
+import { FirebaseService } from '@charity-spot/api/shared/services/prisma';
+
 @Resolver()
 export class DonateResolver {
-    constructor(private readonly DonateService: DonateService) {}
+    constructor(private readonly DonateService: DonateService, private readonly FirebaseService: FirebaseService) {}
 
     @Query(() => DonateEntity)
     async donate(
@@ -58,27 +61,27 @@ export class DonateResolver {
 
         const returnV = await this.DonateService.donate(id, name, quantity, Category(category), Condition(condition), descr);
 
-        // if(picBase64 != "undefined"){
+        if(picBase64 != "undefined"){
 
-        //     var imgType = picBase64.substring(
-        //         picBase64.indexOf("/") + 1, 
-        //         picBase64.lastIndexOf(";")
-        //     );
+            var imgType = picBase64.substring(
+                picBase64.indexOf("/") + 1, 
+                picBase64.lastIndexOf(";")
+            );
 
-        //     let imgName = "DonatedItems/" + returnV.ItemID + '.' + imgType;
+             let imgName = "DonatedItems/" + returnV.ItemID + '.' + imgType;
 
-        //     await this.DonateService.setItemPicName(id, name, imgName);
+             await this.DonateService.setItemPicName(id, name, imgName);
 
-        //     await this.FirebaseService.uploadFile(picBase64, imgName);
+             await this.FirebaseService.uploadFile(picBase64, imgName);
 
-        //     let downLink = await this.FirebaseService.getURLByFilePath(imgName);
+             let downLink = await this.FirebaseService.getURLByFilePath(imgName);
 
-        //     console.log(downLink);
+             console.log(downLink);
 
-        // }
-        // else{
-        //     await this.DonateService.setItemPicName(id, name, "undefined");
-        // }
+         }
+         else{
+             await this.DonateService.setItemPicName(id, name, "undefined");
+         }
 
         return returnV;
         
@@ -89,22 +92,21 @@ export class DonateResolver {
         @Args("itemID") itemID: string
     ) {
 
-        // let imgDirec = await this.DonateService.getItemPicDirec(itemID);
+        let imgDirec = await this.DonateService.getItemPicDirec(itemID);
 
-        // if(imgDirec.Name == "undefined"){
-        //     return imgDirec;
-        // }
+        if(imgDirec.Name == "undefined"){
+             return imgDirec;
+         }
 
-        // let downLink = await this.FirebaseService.getURLByFilePath(imgDirec.Name);
+        let downLink = await this.FirebaseService.getURLByFilePath(imgDirec.Name);
 
-        // imgDirec.Name = downLink;
+        imgDirec.Name = downLink;
 
-        // console.log("testtt");
-        // console.log(imgDirec.Name);
+        console.log("testtt");
+        console.log(imgDirec.Name);
 
-        // return imgDirec;
+        return imgDirec;
 
-        return null;
     }
 
     @Query(() => DonateEntity)
