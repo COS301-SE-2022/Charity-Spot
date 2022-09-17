@@ -3,7 +3,7 @@ import { ChatEntity } from './chat.entity'
 import { ChatRepository } from '@charity-spot/api/chat/repository/feature'
 import { ok } from 'assert';
 
-import { direct, spices, base_64_direct, base_64_invert } from '@charity-spot/api/shared/auth';
+import { base_64_invert } from '@charity-spot/api/shared/auth';
 
 @Injectable()
 export class ChatService {
