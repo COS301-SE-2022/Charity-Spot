@@ -123,8 +123,8 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("1", "Edgars", "A1")
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s, %s);"
+    record_to_insert = ("1", "Edgars", "A1", "wNlBzN2AjZ2UTMjhTL4UGN40SNwkDNtkTNmJTL2QmMjhTYzQTPuV2avRnJhlGZl1WP0xWY")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -157,8 +157,8 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("2", "Mr Price", "A15")
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s,%s);"
+    record_to_insert = ("2", "Mr Price", "A15", "hJGZzQTN4UTY0U2MtETZwIWLwYmZ00COxYGNtQWY5kjNhNmZ94WZr9GdmEWakVWb9QHbh9zZwpmLlNWayB3Xy12XwB3XUJETJNzY1BlR0YkMlMXZyVHdjlGUlxWam9mcw9ybv02bj5CdvB3cwBXYuQ3bwNXL5RXayFGaj9iYvAjdv02bj5ycpBXYlx2Zv92ZuU2ZhJ3b0NXZzFmYlJXam9yL6MHc0RHa")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -181,8 +181,8 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("3", "Scooters Pizza", "A2")
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s,%s);"
+    record_to_insert = ("3", "Scooters Pizza", "A2", "kRTMmJDNyUzMmVWNtE2M0IWLmlzN00yNlN2MtIGZ3QWOwU2M94WZr9GdmEWakVWb9QHbh9zZwpmLhpnepB3XzJXZ092bjN3XwB3XVFWNyJ0cIFzVzZkMlMXZyVHdjlGUlxWam9mcw9ybv02bj5CdvB3cwBXYuQ3bwNXL5RXayFGaj9iYvAjdv02bj5ycpBXYlx2Zv92ZuU2ZhJ3b0NXZzFmYlJXam9yL6MHc0RHa")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -225,8 +225,8 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("4", "Checkers", "A5")
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s,%s);"
+    record_to_insert = ("4", "Checkers", "A5", "mZzY2UDN1EGN4EmNtQmMykTLyYGN00yMkFDMtcjZhRmYzkDN94WZr9GdmEWakVWb9QHbh9zZuBnLzJXZrNWZoN2XwB3XZJWbzATOIlWSUZkMlMXZyVHdjlGUlxWam9mcw9ybv02bj5CdvB3cwBXYuQ3bwNXL5RXayFGaj9iYvAjdv02bj5ycpBXYlx2Zv92ZuU2ZhJ3b0NXZzFmYlJXam9yL6MHc0RHa")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -269,8 +269,8 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("5", "Spar", "A7")
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s, %s);"
+    record_to_insert = ("5", "Spar", "A7", "IDNhJjZyMjN0ETO50CO5QWOtAzM1QTLhBDZj1yYlRmY2MzM30jblt2b0ZSYpRWZt1DdsF2Pn5GcuIXYwN3XwB3XTFjQuR3QnlXOvZkMlMXZyVHdjlGUlxWam9mcw9ybv02bj5CdvB3cwBXYuQ3bwNXL5RXayFGaj9iYvAjdv02bj5ycpBXYlx2Zv92ZuU2ZhJ3b0NXZzFmYlJXam9yL6MHc0RHa")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -303,8 +303,8 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("6", "Clicks", "A3")
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s,%s);"
+    record_to_insert = ("6", "Clicks", "A3", "AZyEmNkJWM0YzMlRWLykzYi1SNxQDNtYGNjVWLyMmMxM2NwEWPuV2avRnJhlGZl1WP0xWY")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -337,8 +337,8 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("7", "The Clothing Store", "A14")
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s,%s);"
+    record_to_insert = ("7", "The Clothing Store", "A14", "MDZzYWM3IzNlZWOy0SYmBTOtYWZ4QTLjBjNl1iMzIDM1MjZm1jblt2b0ZSYpRWZt1DdsF2Pn5GcuAXblR3XwB3X2tWePhkTTFEaXZkMlMXZyVHdjlGUlxWam9mcw9ybv02bj5CdvB3cwBXYuQ3bwNXL5RXayFGaj9iYvAjdv02bj5ycpBXYlx2Zv92ZuU2ZhJ3b0NXZzFmYlJXam9yL6MHc0RHa")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -371,8 +371,8 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("8", "The General Store", "A8")
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s, %s);"
+    record_to_insert = ("8", "The General Store", "A8", "MDZzYWM3IzNlZWOy0SYmBTOtYWZ4QTLjBjNl1iMzIDM1MjZm1jblt2b0ZSYpRWZt1DdsF2Pn5GcuAXblR3XwB3X2tWePhkTTFEaXZkMlMXZyVHdjlGUlxWam9mcw9ybv02bj5CdvB3cwBXYuQ3bwNXL5RXayFGaj9iYvAjdv02bj5ycpBXYlx2Zv92ZuU2ZhJ3b0NXZzFmYlJXam9yL6MHc0RHa")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -577,8 +577,8 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("9", "Pretoria Restaurant", "A19")
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s, %s);"
+    record_to_insert = ("9", "Pretoria Restaurant", "A19", "MDZzYWM3IzNlZWOy0SYmBTOtYWZ4QTLjBjNl1iMzIDM1MjZm1jblt2b0ZSYpRWZt1DdsF2Pn5GcuAXblR3XwB3X2tWePhkTTFEaXZkMlMXZyVHdjlGUlxWam9mcw9ybv02bj5CdvB3cwBXYuQ3bwNXL5RXayFGaj9iYvAjdv02bj5ycpBXYlx2Zv92ZuU2ZhJ3b0NXZzFmYlJXam9yL6MHc0RHa")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -601,8 +601,8 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("10", "Cape Town Restaurant", "A9")
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s, %s);"
+    record_to_insert = ("10", "Cape Town Restaurant", "A9", "MDZzYWM3IzNlZWOy0SYmBTOtYWZ4QTLjBjNl1iMzIDM1MjZm1jblt2b0ZSYpRWZt1DdsF2Pn5GcuAXblR3XwB3X2tWePhkTTFEaXZkMlMXZyVHdjlGUlxWam9mcw9ybv02bj5CdvB3cwBXYuQ3bwNXL5RXayFGaj9iYvAjdv02bj5ycpBXYlx2Zv92ZuU2ZhJ3b0NXZzFmYlJXam9yL6MHc0RHa")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -625,8 +625,8 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("11", "Durban Clothing Store", "A6")
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s, %s);"
+    record_to_insert = ("11", "Durban Clothing Store", "A6", "MDZzYWM3IzNlZWOy0SYmBTOtYWZ4QTLjBjNl1iMzIDM1MjZm1jblt2b0ZSYpRWZt1DdsF2Pn5GcuAXblR3XwB3X2tWePhkTTFEaXZkMlMXZyVHdjlGUlxWam9mcw9ybv02bj5CdvB3cwBXYuQ3bwNXL5RXayFGaj9iYvAjdv02bj5ycpBXYlx2Zv92ZuU2ZhJ3b0NXZzFmYlJXam9yL6MHc0RHa")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -649,8 +649,8 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("12", "Woolworths", "A13")
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s,%s);"
+    record_to_insert = ("12", "Woolworths", "A13", "YWM3IDZkVmN5AjMi1CN5gDOtITM5QTL1gzNi1iYwM2N5IjN40jblt2b0ZSYpRWZt1DdsF2PnBnauMHa0J3b3x2bvd3XwB3X11kb1Q3QORUTyYkMlMXZyVHdjlGUlxWam9mcw9ybv02bj5CdvB3cwBXYuQ3bwNXL5RXayFGaj9iYvAjdv02bj5ycpBXYlx2Zv92ZuU2ZhJ3b0NXZzFmYlJXam9yL6MHc0RHa")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -694,8 +694,8 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("13", "PEP", "A4")
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s,%s);"
+    record_to_insert = ("13", "PEP", "A4", "gM1Y2Y0U2YiFDZwQWLmJmZ40SNhRDNtQWO5MTLzEjMkZWZ4ATPuV2avRnJhlGZl1WP0xWY")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -737,8 +737,8 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("14", "Discount Clothing Store", "A10")
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s,%s);"
+    record_to_insert = ("14", "Discount Clothing Store", "A10", "MDZzYWM3IzNlZWOy0SYmBTOtYWZ4QTLjBjNl1iMzIDM1MjZm1jblt2b0ZSYpRWZt1DdsF2Pn5GcuAXblR3XwB3X2tWePhkTTFEaXZkMlMXZyVHdjlGUlxWam9mcw9ybv02bj5CdvB3cwBXYuQ3bwNXL5RXayFGaj9iYvAjdv02bj5ycpBXYlx2Zv92ZuU2ZhJ3b0NXZzFmYlJXam9yL6MHc0RHa")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -781,8 +781,8 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("15", "Pick n Pay", "A11")
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s,%s);"
+    record_to_insert = ("15", "Pick n Pay", "A11", "AMxgzY0MWZ4gTNkFWLyQDZ40iZwgDNtY2NkBTLwEjNmFTYmJWPuV2avRnJhlGZl1WP0xWY")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -823,8 +823,8 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("16", "Ackermans", "A12")
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s,%s);"
+    record_to_insert = ("16", "Ackermans", "A12", "gYhJGMxUmZhF2YjJWLkdTOi1iZwIDNtYWMidTLwUjZilDMlFTPuV2avRnJhlGZl1WP0xWY")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -865,8 +865,8 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("17", "Shoprite", "A16")
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s,%s);"
+    record_to_insert = ("17", "Shoprite", "A16", "mJTZjZWM4YWZzEjYtUjMilTLkNWO00yMkVGZtQjMiVmNhZGZ94WZr9GdmEWakVWb9QHbh9zZwpmLlRXayB3boN3XwB3XkpGd04mS3dWN0YkMlMXZyVHdjlGUlxWam9mcw9ybv02bj5CdvB3cwBXYuQ3bwNXL5RXayFGaj9iYvAjdv02bj5ycpBXYlx2Zv92ZuU2ZhJ3b0NXZzFmYlJXam9yL6MHc0RHa")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -899,8 +899,8 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("18", "Dischem", "A17")
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s, %s);"
+    record_to_insert = ("18", "Dischem", "A17", "gjZwEDN5IzM4QDNh1SNxMWOtETO1QTLxEDZl1SMmNjZ5kzN50jblt2b0ZSYpRWZt1DdsF2Pn5Gcu0WZoN2cpR2XwB3XkpkTwUFSqtGZmZkMlMXZyVHdjlGUlxWam9mcw9ybv02bj5CdvB3cwBXYuQ3bwNXL5RXayFGaj9iYvAjdv02bj5ycpBXYlx2Zv92ZuU2ZhJ3b0NXZzFmYlJXam9yL6MHc0RHa")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -931,8 +931,8 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("19", "West Pack", "A18")
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s,%s);"
+    record_to_insert = ("19", "West Pack", "A18", "QO2czN0IjZmNWMwQTLjNWZh1SZ5cDNtkDNzYWLiJTMwEmMmdTPuV2avRnJhlGZl1WP0xWY")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
@@ -973,8 +973,8 @@ try:
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
-    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID) VALUES (%s,%s,%s);"
-    record_to_insert = ("20", "OK Furniture", "A20")
+    postgres_insert_query = "INSERT INTO public.organisation (user_id, organisation_id, address_ID, profile_picture) VALUES (%s,%s,%s,%s);"
+    record_to_insert = ("20", "OK Furniture", "A20", "gMwU2M4YWNkFGNyITLlRGM50CN5MGNtEDNwMTLlJmY1MmY1kTPuV2avRnJhlGZl1WP0xWY")
     cursor.execute(postgres_insert_query, record_to_insert)
     connection.commit()
 
