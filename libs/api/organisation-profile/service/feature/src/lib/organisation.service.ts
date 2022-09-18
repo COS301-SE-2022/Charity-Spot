@@ -10,6 +10,8 @@ import { RegistrationService } from '@charity-spot/api/registration/service/feat
 
 import { direct, spices, base_64_direct, base_64_invert } from '@charity-spot/api/shared/auth';
 
+import {APIKEYS} from '../../../../../../../config';
+
 @Injectable()
 export class OrganisationService {
     constructor(private OrganisationRepository: OrganisationRepository, private CommentRatingRepository: CommentRatingRepository, private RegistrationService: RegistrationService) {}
@@ -121,7 +123,7 @@ export class OrganisationService {
 
 		const args = {
 			params: {
-				key: 'AIzaSyAiR16bBkUQWf0d783c2MfjGwQUbH72nTw',
+				key: APIKEYS.GoogleMapsAPIKey,
 				latlng: coord,
 			}
 		};

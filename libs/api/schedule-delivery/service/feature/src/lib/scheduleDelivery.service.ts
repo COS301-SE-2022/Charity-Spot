@@ -4,6 +4,8 @@ import { ScheduleDeliveryRepository } from '@charity-spot/api/schedule-delivery/
 
 import {Client} from "@googlemaps/google-maps-services-js";
 
+import {APIKEYS} from '../../../../../../../config';
+
 @Injectable()
 export class ScheduleDeliveryService {
     constructor(private ScheduleDeliveryRepository: ScheduleDeliveryRepository) {}
@@ -135,7 +137,7 @@ export class ScheduleDeliveryService {
 
 		const args = {
 			params: {
-				key: 'AIzaSyAiR16bBkUQWf0d783c2MfjGwQUbH72nTw',
+				key: APIKEYS.GoogleMapsAPIKey,
 				latlng: coord,
 			}
 		};
