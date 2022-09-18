@@ -7,6 +7,8 @@ import { base_64_direct } from '@charity-spot/api/shared/auth';
 
 import {Client} from "@googlemaps/google-maps-services-js";
 
+import {APIKEYS} from '../../../../../../../config';
+
  
 @Injectable()
 export class RegistrationService {
@@ -66,7 +68,7 @@ export class RegistrationService {
 
 		const args = {
 			params: {
-				key: 'AIzaSyAiR16bBkUQWf0d783c2MfjGwQUbH72nTw',
+				key: APIKEYS.GoogleMapsAPIKey,
 				latlng: coord,
 			}
 		};
