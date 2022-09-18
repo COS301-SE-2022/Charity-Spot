@@ -13,4 +13,7 @@ export class ChatEntity {
 
     @Field(() => [ChatEntity], {nullable: true})
     Threads: ChatEntity[]
+
+    @Field({nullable: true})
+    ProfilePic: string
 }

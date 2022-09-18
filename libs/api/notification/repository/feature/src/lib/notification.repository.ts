@@ -50,5 +50,44 @@ export class NotificationRepository {
     return await this.ChatRepository.GetThreadList(r_id);
   }
 
+  async checkNot(id: string, type: string){
+    let notRet = false;
+
+    const noti = await this.fetchNotifications(id, type);
+
+    const messages = noti.notM;
+    const del = noti.notD;
+
+    console.log("///");
+    console.log(messages);
+    console.log(del);
+
+    if(messages != null) {
+
+      switch(type) {
+        case "ASSIST":
+            for(const mess of messages) {
+                if(mess.AlertOrg) {
+                   notRet = true;
+                }
+            }
+            break;
+        case "NEED":
+            for(const mess of messages) {
+                if(mess.AlertClient) {
+                  notRet = true;
+                }
+            }
+            break;
+        }
+    }
+
+    if(del != null){
+      notRet = true;
+    }
+
+    return notRet;
+  }
+
   //fetch scheduled deliveries that are not seen
 }

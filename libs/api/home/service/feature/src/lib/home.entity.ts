@@ -23,4 +23,10 @@ export class HomeEntity {
     @Field({ nullable: true})
     Location: string
 
+    @Field({ nullable: true})
+    Province: string
+
+    @Field({ nullable: true})
+    City: string
+
 }

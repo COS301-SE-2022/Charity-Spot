@@ -105,6 +105,7 @@
       "@charity-spot/api/schedule-delivery/service/feature": [
         "libs/api/schedule-delivery/service/feature/src/index.ts"
       ],
+      "@charity-spot/api/shared/auth": ["libs/api/shared/auth/src/index.ts"],
       "@charity-spot/api/shared/services/prisma": [
         "libs/api/shared/services/prisma/src/index.ts"
       ],

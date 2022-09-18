@@ -4,6 +4,8 @@ import { itemRequestRepository } from '@charity-spot/api/item-request/repository
 
 import fetch from 'node-fetch';
 
+import { base_64_invert } from '@charity-spot/api/shared/auth';
+
 @Injectable()
 export class itemRequestService {
     constructor(private itemRequestRepository: itemRequestRepository) {}
@@ -15,6 +17,9 @@ export class itemRequestService {
         let temp = new itemRequestEntity();
 
         temp.OrgName = returnV[0].OrgName;
+        temp.Rating = await this.getAverageRatings(await this.getAllRating(OrgID));
+        temp.ProfilePic = await base_64_invert(returnV[0].profilePicture);
+        temp.Description = returnV[0].Description;
         
         return temp;
 
@@ -50,6 +55,40 @@ export class itemRequestService {
 
         return retList;
 
+    }
+
+    async getAllRating(ID: string) {
+        let dataset = null;
+        let Ratings = [];
+        
+        if((dataset = await this.itemRequestRepository.getRating(ID)) != null) {
+            
+            for(const k of dataset) {
+                Ratings.push(k.Rating);
+            }
+            return Ratings;
+        }
+        
+        return null;
+    }
+
+    async getAverageRatings(ratings : number[]){
+
+        if(ratings.length < 1){
+            return 0;
+        }
+
+        let total = 0;
+        let count =0;
+
+        for(let i=0; i < ratings.length; i++){
+            total = total + ratings[i];
+            count++;
+        }
+
+        let avg = Number((total/count).toFixed(0));
+
+        return avg;
     }
 
 }

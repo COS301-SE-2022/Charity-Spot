@@ -7,7 +7,8 @@ import { useEffect, useState } from 'react';
 import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
 
 function getLocation(location : any){
-      let locations = ["Pretoria", "Johannesburg", "Cape Town", "Bloemfontein", "Polokwane", "Durban"]
+      //let //locations = ["Pretoria", "Johannesburg", "Cape Town", "Bloemfontein", "Polokwane", "Durban"]
+      let locations = ["Gauteng","Kwazulu-Natal","Limpopo","Western Cape","Northern Cape","North West","Eastern Cape","Free State","Mpumalanga"]
 
       for(let i=0; i<location.length; i++){
             if(locations[i] == location){
@@ -40,7 +41,9 @@ async function APICall(){
             }
       }`;*/
 
-      let date = getCookie("date");
+      //let date = getCookie("date");
+      //month - day
+      let date = "01-03";
       let itemType = getItem(getCookie("type"));
       let location = getLocation(getCookie("location"));
 
@@ -72,7 +75,9 @@ async function APICall(){
            let resultString = JSON.stringify(result);
            let resultFin = JSON.parse(resultString);
 
-           return resultFin.data.getAIPredic;
+           console.log(resultFin);
+
+           return resultFin;
 
 }
 
@@ -82,13 +87,25 @@ export function ClientItemRequestResults() {
 
       const [result, addResult] = useState<any[]>([]);
 
+      const [AIoffLine, setAIoffLine] = useState('');
+
       class ResultV {
             ResultID : string = "";
             ResultProb: string = "";
       }
 
       const updateResult = async () => {
-            let resultArr = await APICall();
+
+            setAIoffLine('');
+
+            let resultTemp = await APICall();
+
+            if(resultTemp.data == null){
+                  setAIoffLine('AI currently offline!');
+                  return;
+            }
+
+            let resultArr = resultTemp.data.getAIPredic;
 
             console.log(resultArr);
 
@@ -117,6 +134,9 @@ export function ClientItemRequestResults() {
     <div className='motherHolder'>
       <br/>
       <h2 className='rqq'>Suggested Organizations</h2>
+
+      <h3 style={{'color':'#6d6d6e'}}> {AIoffLine}</h3>
+
       <div className='HoldAll'>
 
 

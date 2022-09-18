@@ -1,6 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { ChatEntity } from './chat.entity'
 import { ChatRepository } from '@charity-spot/api/chat/repository/feature'
+import { ok } from 'assert';
+
+import { base_64_invert } from '@charity-spot/api/shared/auth';
 
 @Injectable()
 export class ChatService {
@@ -112,7 +115,8 @@ export class ChatService {
                         //ik.Message = i.ClientID;
                         ik.Sender = userID;
                         ik.Reciever = i.ClientID;
-                        ik.Message = user.OrgName; 
+                        ik.Message = user.OrgName;
+                        ik.ProfilePic = await base_64_invert(user.profilePicture);
 
                         returnableV.Threads.push(ik);
                     }
@@ -132,6 +136,7 @@ export class ChatService {
                     ik.Sender = userID;
                     ik.Reciever = i.OrgID;
                     ik.Message = user.OrgName;  
+                    ik.ProfilePic = await base_64_invert(user.profilePicture);
 
                     returnableV.Threads.push(ik);
                 }
@@ -152,9 +157,11 @@ export class ChatService {
 
         if(name != null){
             temp.Message = name.OrgName;
+            temp.ProfilePic = name.profilePicture
         }
         else{
             temp.Message = "";
+            temp.ProfilePic = "";
         }
 
         return temp;

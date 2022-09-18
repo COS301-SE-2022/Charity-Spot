@@ -58,6 +58,8 @@ async function fetchUser(receiver_id: string) {
     }`;
 
   const receiver = await APICall(query);
+
+  console.log(receiver);
   
   return receiver.data.receiver;
 }
@@ -70,6 +72,8 @@ function setSelection(ID : any){
 export function ClientNotification() {
 
   const [activeNot, addactiveNot] = useState<any[]>([]);
+
+  const [empty, setEmpty] = useState(false);
 
   class activeNotC{
     ID : string = "";
@@ -85,7 +89,7 @@ export function ClientNotification() {
 
     let notifications = await fetchNotifications(uID, uType);
 
-    //console.log(notifications);
+    console.log(notifications);
 
     let activeList : any = [];
 
@@ -115,6 +119,10 @@ export function ClientNotification() {
 
     }
 
+    if(notifications.data.notifications.Threads.length == 0 && notifications.data.notifications.Delivery.length == 0){
+      setEmpty(true);
+    }
+
     addactiveNot(activeList);
 
   }
@@ -128,6 +136,8 @@ export function ClientNotification() {
             <br/>
             <h2 style={{'color':'#1458b3'}}>Notifications</h2>
 
+            { empty &&<h3 style={{'color':'#6d6d6e'}}> You have no new notifications!</h3>}
+
             {activeNot.map(function(A){
 
               return(
@@ -136,7 +146,7 @@ export function ClientNotification() {
                 <div className='notiLeft'>
                   <br/><br/>
                   {/* <div className="load"></div> */}
-                <img src="https://firebasestorage.googleapis.com/v0/b/cos301-storage-test.appspot.com/o/logo.png?alt=media&token=658a4502-2b08-47bf-8cb2-fe7eacbf8c3e" alt="" id="notiprofile-pic"></img>
+                <img src={A.Picture} alt="" id="notiprofile-pic"></img>
                 
                 </div>
                 <div className='notiRight'>
@@ -153,7 +163,7 @@ export function ClientNotification() {
                   <div><h4></h4></div>
                 {/*<button id='notiMark'>Mark Read <FaCheck/></button>*/}
                 {A.Type == "message" &&<Link to ='/chat' className='rgLink'><button id='chatHistGo' onClick={()=>{setSelection(A.ID);}}>View <FaBinoculars/></button></Link>}
-                {A.Type == "delivery" &&<Link to ='/deliverySchedule' className='rgLink'><button id='chatHistGo' onClick={()=>{setSelection(A.ID);}}>View <FaBinoculars/></button></Link>}
+                {A.Type == "delivery" &&<Link to ='/donationSchedule' className='rgLink'><button id='chatHistGo' onClick={()=>{setSelection(A.ID);}}>View <FaBinoculars/></button></Link>}
                 </div>
               </div>
 

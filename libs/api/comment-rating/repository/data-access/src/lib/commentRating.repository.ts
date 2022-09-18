@@ -9,15 +9,67 @@ export class CommentRatingRepository {
   //Set Comment or Rating to null if they are not added
   async AddRating(AssistID, NeedID, Comment : string, Rating : number)
   {
-    const rating = await this.prisma.rating.create({
-      data:
+    //check if a comment already exists
+
+    let rating = null;
+
+    let rCount = await this.prisma.rating.count(
       {
-        OrgID: AssistID,
-        ClientID: NeedID,
-        Rating: Rating,
-        Comment: Comment
+        where: {
+          OrgID: AssistID,
+          ClientID: NeedID
+        }
       }
-    });
+    );
+
+    if(rCount > 0){
+
+      rating = await this.prisma.rating.delete(
+        {
+          where: {
+            OrgID_ClientID:{
+              OrgID: AssistID,
+              ClientID: NeedID
+            }
+          },
+        }
+      ).then(async ()=>{
+
+        return await this.prisma.rating.create({
+          data:
+          {
+            OrgID: AssistID,
+            ClientID: NeedID,
+            Rating: Rating,
+            Comment: Comment
+          }
+        });
+
+        //console.log(rating);
+        //console.log("r1");
+    
+        //return rating;
+
+
+      });
+
+    }
+    else{
+
+      rating = await this.prisma.rating.create({
+        data:
+        {
+          OrgID: AssistID,
+          ClientID: NeedID,
+          Rating: Rating,
+          Comment: Comment
+        }
+      });
+
+      return rating;
+    }
+
+    console.log(rating);
 
     return rating;
 
@@ -157,4 +209,22 @@ export class CommentRatingRepository {
     return oldRating;
 
   }
+
+  async getName(ID : string){
+
+    const name = await this.prisma.organisation.findFirst({
+      select:
+      {
+        OrgName : true
+      },
+      where:
+      {
+        UserID : ID
+      }
+    })
+
+    return name.OrgName;
+        
+  }
+
 }

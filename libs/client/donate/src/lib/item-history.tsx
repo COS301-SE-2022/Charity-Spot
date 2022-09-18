@@ -50,7 +50,7 @@ async function historyData() {
     act_data = "";
     for(let i=0; i< ItemArr.length; i++){
 
-        query = `query{
+        /*query = `query{
           getItemPicLink(itemID: "${ItemArr[i].ItemID}"){
             Name
           }
@@ -80,18 +80,48 @@ async function historyData() {
           }
           else{
             ItemArr[i].PicLink = Items.data.getItemPicLink.Name;
-          }
+          }*/
+          ItemArr[i].PicLink = "";
     }
 
-
-
     return ItemArr;
+  }
+
+  async function getPicLink(itemID: string){
+
+    const query = `query{
+      getItemPicLink(itemID:"${itemID}"){
+        Name
+      }
+    }`
+
+    let result = null;
+
+    await fetch('http://localhost:3333/graphql', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          query
+        })
+     }).then(r => r.json()).then(data => 
+            result = data
+       );
+
+    let tempR = JSON.stringify(result);
+    let fResult = JSON.parse(tempR);
+
+    return fResult.data.getItemPicLink.Name;
   }
 
 
 export function ItemHistory(props : any){
         const [Items, addItems] = useState<any[]>([]);
         const ItemsL : any[] = [];
+
+        const [empty, setEmpty] = useState(false);
 
         const updateItems = async () => {
             let newItems = await historyData();
@@ -100,8 +130,17 @@ export function ItemHistory(props : any){
                 ItemsL.push(newItems[i]);
             }
 
+            if(newItems.length == 0){
+              setEmpty(true);
+            }
+
             addItems(ItemsL);
 
+        }
+
+        async function getItemPic(itemID: string){
+          let link = await getPicLink(itemID);
+          (document.getElementById(itemID+"pic") as HTMLImageElement).src = link;
         }
 
         
@@ -114,6 +153,8 @@ export function ItemHistory(props : any){
         return (
         
                 <div>
+                  { empty &&<h3 style={{'color':'#6d6d6e'}}> You have no available items!</h3>}
+
                 {Items.map(function(item){
                     return (
                             
@@ -125,13 +166,13 @@ export function ItemHistory(props : any){
 
                 <div className='collapsible'>
 
-                    <input type ='checkbox' id = {item.ItemID}></input>
+                    <input type ='checkbox' id = {item.ItemID} onClick={async ()=>{await getItemPic(item.ItemID);}}></input>
 
                     <label htmlFor={item.ItemID}>{item.Name} <FaArrowDown/></label>
 
                     <div className='collapsible-text'><br/>
                         <div className='collapseleft'>
-                        <img src={item.PicLink} alt="" id="donation-pic2"/>
+                        <img src="" alt="" id={item.ItemID + "pic"} className="delSched"/>
                         </div>
 
                         <div className='collapseright'>

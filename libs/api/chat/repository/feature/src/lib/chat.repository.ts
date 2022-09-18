@@ -278,6 +278,7 @@ export class ChatRepository {
         UserID: u_id
       }, select: {
         OrgName: true,
+        profilePicture: true
       }
     })
 

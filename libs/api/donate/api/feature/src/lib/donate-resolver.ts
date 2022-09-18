@@ -20,6 +20,7 @@ export class DonateResolver {
         @Args("picture") picBase64: string,
         @Args("pic_format") format: string
     ) {
+        console.log(category);
         const Category = (category) : catagory => {
             switch(category) {
                 case 'Food':
@@ -54,6 +55,9 @@ export class DonateResolver {
             }
         }
 
+        console.log(condition);
+        console.log(Condition(condition) + "eee");
+
 
         const returnV = await this.DonateService.donate(id, name, quantity, Category(category), Condition(condition), descr);
 
@@ -64,20 +68,20 @@ export class DonateResolver {
                 picBase64.lastIndexOf(";")
             );
 
-            let imgName = "DonatedItems/" + returnV.ItemID + '.' + imgType;
+             let imgName = "DonatedItems/" + returnV.ItemID + '.' + imgType;
 
-            await this.DonateService.setItemPicName(id, name, imgName);
+             await this.DonateService.setItemPicName(id, name, imgName);
 
-            await this.FirebaseService.uploadFile(picBase64, imgName);
+             await this.FirebaseService.uploadFile(picBase64, imgName);
 
-            let downLink = await this.FirebaseService.getURLByFilePath(imgName);
+             let downLink = await this.FirebaseService.getURLByFilePath(imgName);
 
-            console.log(downLink);
+             console.log(downLink);
 
-        }
-        else{
-            await this.DonateService.setItemPicName(id, name, "undefined");
-        }
+         }
+         else{
+             await this.DonateService.setItemPicName(id, name, "undefined");
+         }
 
         return returnV;
         
@@ -91,16 +95,18 @@ export class DonateResolver {
         let imgDirec = await this.DonateService.getItemPicDirec(itemID);
 
         if(imgDirec.Name == "undefined"){
-            return imgDirec;
-        }
+             return imgDirec;
+         }
 
         let downLink = await this.FirebaseService.getURLByFilePath(imgDirec.Name);
 
         imgDirec.Name = downLink;
 
+        console.log("testtt");
         console.log(imgDirec.Name);
 
         return imgDirec;
+
     }
 
     @Query(() => DonateEntity)
