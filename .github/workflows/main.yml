@@ -27,14 +27,15 @@ jobs:
         
   redeploy:
   
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
+    needs: [build]
     
     steps:
     
-    - name: Deploy docker container webhook
-      uses: joelwmale/webhook-action@master
-      env: 
-        WEBHOOK: ${{ secrets.DEPLOY_WEBHOOK_URL }}
+      - name: Deploy docker container webhook
+        uses: joelwmale/webhook-action@master
+        env: 
+          WEBHOOK: ${{ secrets.DEPLOY_WEBHOOK_URL }}
       
   
         
