@@ -15,11 +15,7 @@ services:
       - postgres-data:/var/lib/postgresql/data/pgdata
     ports:
       - 5432:5432
-    networks:
-      - main-private
+    network_mode: bridge
 
 volumes:
   postgres-data:
-
-networks:
-  main-private:
