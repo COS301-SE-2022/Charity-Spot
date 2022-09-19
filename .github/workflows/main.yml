@@ -21,4 +21,4 @@ jobs:
 
  
       - name: build api
-        run: echo Hello, world!
+        run: nx build api
