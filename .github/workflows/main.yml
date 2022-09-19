@@ -21,4 +21,4 @@ jobs:
 
  
       - name: build api
-        run: yarn nx build api
+        run: npx nx build api
