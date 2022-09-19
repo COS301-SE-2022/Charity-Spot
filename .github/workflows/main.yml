@@ -31,11 +31,10 @@ jobs:
     
     steps:
     
-      - name: Deploy docker container webhook
-        uses: joelwmale/webhook-action@master
-        env: 
-          WEBHOOK: ${{ secrets.DEPLOY_WEBHOOK_URL }}
-          data: "{}"
+      - name: Webhook
+        uses: distributhor/workflow-webhook@v2
+        with:
+          url: ${{ secrets.DEPLOY_WEBHOOK_URL }}
       
   
         
