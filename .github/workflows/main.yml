@@ -18,7 +18,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - uses: nrwl/nx-set-shas@v3
+      - uses: MansaGroup/nrwl-nx-action@v2
 
  
       - name: build api
