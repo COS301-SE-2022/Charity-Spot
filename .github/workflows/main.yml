@@ -28,12 +28,11 @@ jobs:
   redeploy:
   
     runs-on: ubuntu-latest
-    needs: [build]
     
     steps:
     
       - name: Deploy docker container webhook
-        uses: joelwmale/webhook-action@master
+        uses: distributhor/workflow-webhook@v2
         env: 
           WEBHOOK: ${{ secrets.DEPLOY_WEBHOOK_URL }}
       
