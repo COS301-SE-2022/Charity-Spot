@@ -19,6 +19,8 @@ jobs:
         with:
           node-version: 16
 
+      - name: install dep
+        run: yarn install
  
       - name: build api
-        run: nx build api
+        run: npx nx build api
