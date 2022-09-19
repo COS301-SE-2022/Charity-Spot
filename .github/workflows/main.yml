@@ -32,9 +32,10 @@ jobs:
     steps:
     
       - name: Deploy docker container webhook
-        uses: distributhor/workflow-webhook@v2
+        uses: joelwmale/webhook-action@master
         env: 
           WEBHOOK: ${{ secrets.DEPLOY_WEBHOOK_URL }}
+          data: "{}"
       
   
         
