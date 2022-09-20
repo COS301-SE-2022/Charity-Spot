@@ -763,10 +763,10 @@ export function Profile() {
                 <div className="editor-left" id="editLeftDiv">
                   <div className="edit_Picture">
                     <label className="rglabel">
-                      Upload a new profile picture:
+                      {/* Upload a new profile picture: */}
                     </label>
 
-                    <img src={imageURL} alt="Your Profile picture" id="editor-pic" />
+                    <img src={imageURL} alt="" id="editor-pic" />
                     
                     <label htmlFor="file-upload" className="custom-file-upload">
                       Select Image

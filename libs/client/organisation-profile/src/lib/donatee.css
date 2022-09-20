@@ -507,6 +507,11 @@ textarea.din5:hover{
     width: 100%;
 
 }
+.collapsible label:hover{
+
+    transition: 0.2s ease-in;
+    background-color: #cacccf;
+}
 .collapsible label:after{
 content: '';
 position: absolute;
