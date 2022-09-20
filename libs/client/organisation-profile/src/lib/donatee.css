@@ -220,7 +220,7 @@ img#donation-pic2{
        padding: 15px;
    }
    .donate-main{
-       width: 90%;
+       width: 100%;
    }
    .donate-left{
        width: 100%;
@@ -228,6 +228,13 @@ img#donation-pic2{
        border-top-left-radius: 10px ;
        border-top-right-radius: 10px ;  
        border-bottom-left-radius: 0px ;
+   }
+   .donate-right{
+    background-color: #1458b3;
+    width: 100%;
+   }
+   #donateDivM{
+    width: 100%;
    }
    .imgWrap{
     width: 100%;
