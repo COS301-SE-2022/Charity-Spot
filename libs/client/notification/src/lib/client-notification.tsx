@@ -1,6 +1,6 @@
 import styles from './client-notification.module.css';
 import {Link} from 'react-router-dom';
-import { FaCheck, FaBinoculars } from 'react-icons/fa';
+import { FaCheck, FaBinoculars,FaBellSlash } from 'react-icons/fa';
 import "./notifiii.css";
 
 import {getCookie, setCookie} from 'typescript-cookie'
@@ -136,7 +136,7 @@ export function ClientNotification() {
             <br/>
             <h2 style={{'color':'#1458b3'}}>Notifications</h2>
 
-            { empty &&<h3 style={{'color':'#6d6d6e'}}> You have no new notifications!</h3>}
+            { empty &&<h1 style={{'color':'#6d6d6e'}}><br/><br/> No notifications to show<FaBellSlash/></h1>}
 
             {activeNot.map(function(A){
 
