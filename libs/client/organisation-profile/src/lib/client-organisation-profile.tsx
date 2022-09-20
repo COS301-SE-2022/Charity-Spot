@@ -696,7 +696,7 @@ export function Profile() {
                   </div>*/}
                 <div className="editor-right" id="editRightDiv">
                   <label className="rglabel">
-                    <b>Only Enter the fields you would like to update:</b>
+                    {/* <b>Only Enter the fields you would like to update:</b> */}
                   </label>
                   <br />
                   <br />
@@ -704,7 +704,7 @@ export function Profile() {
                   <div className="updater">
                     <form id="edit-Form">
                       <div className="user-box1">
-                        <label className="rglabel">Name</label>
+                        <label className="rglabel">Update Name</label>
                         <input
                           className="in1"
                           type="text"
@@ -718,7 +718,7 @@ export function Profile() {
                       </div>
 
                       <div className="user-box2">
-                        <label className="rglabel">Location</label>
+                        <label className="rglabel">Update Location</label>
                         <button
                           type="button"
                           id="locButton"
@@ -732,7 +732,7 @@ export function Profile() {
                       </div>
 
                       <div className="user-box3">
-                        <label className="rglabel">Password</label>
+                        <label className="rglabel">Update Password</label>
                         <input
                           className="in4"
                           type="password"
@@ -746,7 +746,7 @@ export function Profile() {
                       </div>
 
                       <div className="user-box4">
-                        <label className="rglabel">Password</label>
+                        <label className="rglabel">Confirm Updated Password</label>
                         <input
                           className="in5"
                           type="password"

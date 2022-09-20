@@ -236,7 +236,7 @@ export function ClientDeliveryScheduleInfo() {
                 ></input>
 
                 <label htmlFor={A.itemID}>
-                  Donation scheduled with {A.partyName} for {A.date}{' '}
+                  Donation scheduled with {A.partyName} for <b>{A.date}</b>{' '}
                 </label>
 
                 <div className="collapsible-text">
