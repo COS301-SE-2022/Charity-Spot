@@ -7,6 +7,8 @@ import Bgpic from '../../../shared/assets/Bgpic.png';
 import './login.css';
 import { getCookie } from 'typescript-cookie';
 
+import { host } from '../../../../../config'
+
 async function APICall(email: string, password: string) {
   const query =
     `query{
@@ -24,7 +26,7 @@ async function APICall(email: string, password: string) {
 
   let initial_students = '';
 
-  await fetch('http://localhost:3333/graphql', {
+  await fetch(`http://${host.host}:3333/graphql`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
