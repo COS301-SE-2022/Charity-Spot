@@ -56,5 +56,7 @@ export class HomeService {
         return retItem;
     }
 
-    
+    async getKey() {
+        return "";
+    }
 }
