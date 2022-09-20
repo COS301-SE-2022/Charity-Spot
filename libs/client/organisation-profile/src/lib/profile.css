@@ -35,6 +35,9 @@
 
 
 }
+textarea {
+    max-height: 150px;
+  }
 .user-left{
 
     /* background-color: rgb(228, 229, 230);  */
@@ -43,6 +46,7 @@
     box-sizing: border-box; 
     overflow-y: scroll;
 }
+
 .user-right{
 
     /* background-color: rgb(228, 229, 230);  */

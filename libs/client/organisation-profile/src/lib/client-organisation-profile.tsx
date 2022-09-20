@@ -695,7 +695,7 @@ export function Profile() {
                   </div>*/}
                 <div className="editor-right" id="editRightDiv">
                   <label className="rglabel">
-                    Only Enter the fields you would like to update:
+                    <b>Only Enter the fields you would like to update:</b>
                   </label>
                   <br />
                   <br />
