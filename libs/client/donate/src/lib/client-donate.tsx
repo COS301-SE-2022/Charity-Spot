@@ -185,7 +185,7 @@ export function ClientDonate() {
               <p style={{ color: 'red' }}>{invalidDonate}</p>
             </div>
             <div className='donate-main'>
-            <div className="loader" id="donateLoad"></div>
+              <div className="loader" id="donateLoad"></div>
               {/* <div id = 'donateDivM' style={{display:"flex", width: "100%", backgroundColor: "rgb(228, 229, 230)" }}> */}
                 <div className="donate-left">
                   <br />
