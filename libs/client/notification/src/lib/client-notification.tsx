@@ -136,7 +136,7 @@ export function ClientNotification() {
             <br/>
             <h2 style={{'color':'#1458b3'}}>Notifications</h2>
 
-            { empty &&<h1 style={{'color':'#6d6d6e'}}><br/><br/><br/>Yoy have no notifications <FaBellSlash/></h1>}
+            { empty &&<h1 style={{'color':'#6d6d6e'}}><br/><br/><br/>You have no notifications <FaBellSlash/></h1>}
 
             {activeNot.map(function(A){
 

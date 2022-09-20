@@ -101,7 +101,7 @@ export function ClientItemRequestResults() {
             let resultTemp = await APICall();
 
             if(resultTemp.data == null){
-                  setAIoffLine('AI currently offline!');
+                  setAIoffLine('AI currently offline');
                   return;
             }
 

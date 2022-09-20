@@ -782,8 +782,8 @@ input.in5:hover{
 @media screen and (max-width: 900px) {
     #editor-pic
    {
-       height: 110px;
-       width: 110px;
+       height: 160px;
+       width: 160px;
    }
    .editor-main{
        width: 90%;
@@ -808,8 +808,8 @@ input.in5:hover{
 @media screen and (max-width: 750px) {
      #editor-pic
     {
-        height: 110px;
-        width: 110px;
+        height: 150px;
+        width: 150px;
         padding: 15px;
     }
     .profile-main{
@@ -834,8 +834,8 @@ input.in5:hover{
 @media screen and (max-width: 600px) {
     #editor-pic
    {
-       height: 100px;
-       width: 100px;
+       height: 150px;
+       width: 150px;
        padding: 15px;
    }
    .editor-main{
@@ -884,8 +884,8 @@ input.in5:hover{
 @media screen and (min-width: 1600px) {
     #editor-pic
     {
-        height: 120px;
-        width: 120px;
+        height: 180px;
+        width: 180px;
     }        
     .editor-main{
         width: 80%;
@@ -912,8 +912,8 @@ input.in5:hover{
 @media (max-width: 450px) {
     #editor-pic
     {
-        height: 100px;
-        width: 100px;
+        height: 150px;
+        width: 150px;
         padding: 15px;
     }
     .editor-main{
@@ -980,8 +980,8 @@ input.in5:hover{
     /* Even Smaller devices */
     #editor-pic
     {
-        height: 100px;
-        width: 100px;
+        height: 150px;
+        width: 150px;
         padding: 15px;
     }
     .editor-main{
