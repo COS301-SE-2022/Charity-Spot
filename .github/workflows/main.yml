@@ -32,7 +32,25 @@ jobs:
         run: docker-compose up -d
         
       - name : assign tag to db
-        run : docker tag postgres:13 timovdm/charity_spot:db
+        run : docker tag postgres:13 {{ secrets.DOCKER_REPO }}:db
+        
+      - name : build api docker image
+        run : docker build -f Dockerfile.api --tag {{ secrets.DOCKER_REPO }}:api .
+        
+      - name : build client docker image
+        run : sudo docker build -f Dockerfile.client --tag {{ secrets.DOCKER_REPO }}:client .
+        
+      - name : login to Docker Hub
+        run : docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
+        
+      - name : push api to docker
+        run : docker push ${{ secrets.DOCKER_REPO }}:api
+        
+      - name : push client to docker
+        run : docker push ${{ secrets.DOCKER_REPO }}:client
+        
+      - name : push db to docker
+        run : docker push ${{ secrets.DOCKER_REPO }}:db
         
         
         
