@@ -766,7 +766,7 @@ export function Profile() {
                       Upload a new profile picture:
                     </label>
 
-                    <img src={imageURL} alt="" id="editor-pic" />
+                    <img src={imageURL} alt="Your Profile picture" id="editor-pic" />
                     
                     <label htmlFor="file-upload" className="custom-file-upload">
                       Select Image

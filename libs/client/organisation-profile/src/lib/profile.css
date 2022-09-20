@@ -809,10 +809,15 @@ input.in5:hover{
    }
    .editor-main{
        width: 90%;
+      
    }
+   .editor-right{
+   
+    height: auto;
+}
    .editor-left{
        width: 100%;
-       height: 100px;
+       height: auto;
    }
    #logout1{
     width: 110px;
