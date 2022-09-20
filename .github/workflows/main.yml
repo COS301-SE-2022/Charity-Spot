@@ -61,7 +61,7 @@ jobs:
     
     steps:
     
-      - name: Webhook Test
+      - name: Webhook
         uses: distributhor/workflow-webhook@v2
         env:
           webhook_url: ${{ secrets.WEBHOOK_URL }}
