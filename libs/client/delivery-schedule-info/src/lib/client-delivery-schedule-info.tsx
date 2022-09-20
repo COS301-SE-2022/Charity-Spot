@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 
 import {Link} from 'react-router-dom'
 
+
 import {
   FaHistory,
   FaDonate,
@@ -217,7 +218,7 @@ export function ClientDeliveryScheduleInfo() {
       <br />
       <div className="title">
         <h2>Your current donation schedule:</h2>
-        { empty &&<h3 style={{'color':'#6d6d6e'}}> You have no scheduled donations!</h3>}
+        { empty &&<h1 style={{'color':'#6d6d6e'}}> <br/><br/><br/>You have no scheduled donations <FaDonate/></h1>}
       </div>
 
       {schedule.map(function (A) {
