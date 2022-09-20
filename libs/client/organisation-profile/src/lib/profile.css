@@ -452,6 +452,10 @@ textarea {
    .user-right{
     height: 470px;
    }
+   .rate:not(:checked) > label {
+    width:1.3em;
+    font-size:30px;   
+}
 
 }
 
@@ -827,6 +831,32 @@ input.in5:hover{
    #logout1{
     width: 110px;
 }
+.rated > input:checked ~ label {
+    transition: 0.3s ease-in;
+    /*color: rgb(184, 181, 90);*/
+    color: #c59b08;    
+    font-size: 40px;
+}
+
+/**/
+.rated:not(:checked) > label:hover,
+.rated:not(:checked) > label:hover ~ label {
+    transition: 0.3s ease-in;
+    /*color: #deb217;*/
+    color: #c59b08;  
+    font-size: 40px;
+}
+
+.rated:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:40px;
+    color:rgb(196, 196, 196);
+
+}
 }
 
 @media screen and (min-width: 1600px) {
@@ -876,6 +906,38 @@ input.in5:hover{
     }
     #logout1{
         width: 110px;
+    }
+    .rate:not(:checked) > label {
+        width:1.3em;
+        font-size:30px;   
+    }
+
+
+    .rated > input:checked ~ label {
+        transition: 0.3s ease-in;
+        /*color: rgb(184, 181, 90);*/
+        color: #c59b08;    
+        font-size: 40px;
+    }
+    
+    /**/
+    .rated:not(:checked) > label:hover,
+    .rated:not(:checked) > label:hover ~ label {
+        transition: 0.3s ease-in;
+        /*color: #deb217;*/
+        color: #c59b08;  
+        font-size: 40px;
+    }
+    
+    .rated:not(:checked) > label {
+        float:right;
+        width:1em;
+        overflow:hidden;
+        white-space:nowrap;
+        cursor:pointer;
+        font-size:40px;
+        color:rgb(196, 196, 196);
+    
     }
  
 }
