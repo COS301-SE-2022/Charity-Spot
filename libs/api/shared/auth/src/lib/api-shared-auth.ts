@@ -2,68 +2,75 @@ export function apiSharedAuth(): string {
   return 'api-shared-auth';
 }
 
-// //authorisation
+//authorisation
 
-//   //hashing
-//     //direct
-//       export async function direct(worm: string, manure: string, ingr: string) {
-//         const kill = await require('bcrypt');
-//         const db = await require('md5');
-//         let hashable = manure.substring(0, manure.length/2);
-//         for(let i = 0; i < manure.length; i++)
-//           hashable += worm;
-//         hashable += manure.substring(manure.length/2);
-//         hashable = await kill.hash(Buffer.from(hashable, 'utf-8').toString('base64'), ingr);
-//         hashable = db(hashable);
+  //hashing
+    //direct
+      export async function direct(worm: string, manure: string, ingr: string) {
+        const kill = await require('bcrypt');
+        const db = await require('md5');
+        let hashable = manure.substring(0, manure.length/2);
+        for(let i = 0; i < manure.length; i++)
+          hashable += worm;
+        hashable += manure.substring(manure.length/2);
+        hashable = await kill.hash(Buffer.from(hashable, 'utf-8').toString('base64'), ingr);
+        hashable = db(hashable);
 
-//         console.log(hashable);
+        console.log(hashable);
 
-//         return hashable;
-//       }
+        return hashable;
+      }
 
-//   //enoding
-//     //spices
-//       export async function spices(ingr: string) {
-//         const pan = await require('bcrypt');
-//         //return await pan.genSalt(ingr.length);
-//         return await pan.genSalt(12);
-//       }
+  //enoding
+    //spices
+      export async function spices(ingr: string) {
+        const pan = await require('bcrypt');
+        //return await pan.genSalt(ingr.length);
+        return await pan.genSalt(12);
+      }
 
-//     //base_64
-//       //direct
-//         export async function base_64_direct(plaintext: string | undefined) {
-//           if (plaintext === undefined) return "";
+    //base_64
+      //direct
+        export async function base_64_direct(plaintext: string | undefined) {
+          if (plaintext === undefined) return "";
 
-//           let analysis = Buffer.from(plaintext, 'utf-8').toString('base64');
+          let analysis = Buffer.from(plaintext, 'utf-8').toString('base64');
 
-//           while(analysis.includes("=")) {
-//             analysis = analysis.replace('=','');
-//           }
+          while(analysis.includes("=")) {
+            analysis = analysis.replace('=','');
+          }
           
-//           return analysis.split("").reverse().join("");
-//         }
+          return analysis.split("").reverse().join("");
+        }
 
-//       //invert
-//         export async function base_64_invert (crypted: string | undefined) {
-//           if (crypted === undefined) return "";
+      //invert
+        export async function base_64_invert (crypted: string | undefined) {
+          if (crypted === undefined) return "";
 
-//           let analysis = crypted.split("").reverse().join("") + "==";
+          let analysis = crypted.split("").reverse().join("") + "==";
 
-//           analysis = Buffer.from(analysis, 'base64').toString('utf-8');
+          analysis = Buffer.from(analysis, 'base64').toString('utf-8');
 
-//           return analysis;
-//         }
+          return analysis;
+        }
+
+  //Secrete Keys
+    export const SECRETEKEYS = {
+      APP_EMAIL: "t92YuwWah12ZAlXYsVmcuQ3bwNXe0lmchh2YuMnbvlGdhNWauVXbt92Y",
+      APP_EMAIL_SEC: "gYl9Wc1F2Y3VmeppXajlXY",
+      GOOGLE_API_KEY: "3RlbycDSiVVU3dkam1kMjNDO3QGMmdVUVtmQiZTMSlWQ5NVY6lUQ"
+    }
         
 
 
 
-// //authentication
-//   //email_validation_1
-//     import nm_ from "nodemailer";
+//authentication
+  //email_validation_1
+    import nm_ from "nodemailer";
 
-//     export async function validate(email: string) {return null;}
+    export async function validate(email: string) {return null;}
 
-//   //email_validation_2
-//     export async function compareCodes(internal: number, external: number) {
-//       return internal === external;
-//     }
+  //email_validation_2
+    export async function compareCodes(internal: number, external: number) {
+      return internal === external;
+    }
