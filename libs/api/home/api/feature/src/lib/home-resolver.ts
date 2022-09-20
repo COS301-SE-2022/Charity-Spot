@@ -16,6 +16,5 @@ export class HomeResolver {
     GetAllItems(){
 
         return this.HomeService.getAllItems();
-
     }
 }
