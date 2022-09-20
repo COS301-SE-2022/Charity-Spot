@@ -31,7 +31,7 @@
 }
 .chatHistRight{
    
-    height: 250px;
+    height: 300px;
     width: 50%;
     /* background-color: rgb(222, 222, 222); */
     border-radius: 10px;
@@ -89,19 +89,19 @@
     {
 
         height: 200px auto;
-        width: 70%;
+        width:90%;
       
       
     }
     .chatHistLeft{
       
-        height: 150px;
+        height: 200px;
         width: 100%;
 
     }
     .chatHistRight{
        
-        height: 250px;
+        height: 300px;
         width: 100%;
 
     }
@@ -140,19 +140,19 @@
     {
 
         height: 200px auto;
-        width: 70%;
+        width:90%;
       
       
     }
     .chatHistLeft{
       
-        height: 150px;
+        height: 200px;
         width: 100%;
 
     }
     .chatHistRight{
        
-        height: 250px;
+        height: 300px;
         width: 100%;
 
     }
