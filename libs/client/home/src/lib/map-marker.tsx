@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 
 import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
 
+import { host } from '../../../../../config'
+
 const joburg = {
     lat: -26.2041,
     lng: 28.0473
@@ -59,7 +61,7 @@ async function APICall(){
   
          let orgs = "";
     
-         await fetch('http://localhost:3333/graphql', {
+         await fetch(`http://${host.host}:3333/graphql`, {
                method: 'POST',
                headers: {
                  'Content-Type': 'application/json',

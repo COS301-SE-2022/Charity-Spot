@@ -8,6 +8,8 @@ import {Link} from 'react-router-dom'
 
 import {setCookie} from 'typescript-cookie'
 
+import { host } from '../../../../../config'
+
 async function getActiveChatsAPI(){
 
   let result = null;
@@ -30,7 +32,7 @@ async function getActiveChatsAPI(){
       console.log(query);
 
 
-      await fetch('http://localhost:3333/graphql', {
+      await fetch(`http://${host.host}:3333/graphql`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

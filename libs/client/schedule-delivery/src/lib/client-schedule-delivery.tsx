@@ -16,6 +16,8 @@ import { getCookie, setCookie, removeCookie } from 'typescript-cookie';
 
 import { ModalMap } from './modal-map';
 
+import { host } from '../../../../../config'
+
 async function getItemsApi() {
   let ID = getCookie('ID');
 
@@ -28,7 +30,7 @@ async function getItemsApi() {
 
   let result = '';
 
-  await fetch('http://localhost:3333/graphql', {
+  await fetch(`http://${host.host}:3333/graphql`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -64,7 +66,7 @@ async function setDeliveryApi(
 
   let result = '';
 
-  await fetch('http://localhost:3333/graphql', {
+  await fetch(`http://${host.host}:3333/graphql`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

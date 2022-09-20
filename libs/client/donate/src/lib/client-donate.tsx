@@ -18,6 +18,8 @@ import { ModalMap } from './modal-map';
 
 import ItemHistory from './item-history';
 
+import { host } from '../../../../../config'
+
 let IdCookie = getCookie('ID');
 
 async function uploadItemAPICall(
@@ -52,7 +54,7 @@ async function uploadItemAPICall(
 
   let All_data = '';
 
-  await fetch('http://localhost:3333/graphql', {
+  await fetch(`http://${host.host}:3333/graphql`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -83,7 +85,7 @@ async function historyData() {
 
   let act_data = '';
 
-  await fetch('http://localhost:3333/graphql', {
+  await fetch(`http://${host.host}:3333/graphql`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

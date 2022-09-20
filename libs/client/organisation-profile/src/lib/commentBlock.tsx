@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { getCookie } from 'typescript-cookie';
 
+import { host } from '../../../../../config'
+
 async function getCommentsAPI(){
 
     let IDCookie = getCookie('foreignID');
@@ -21,7 +23,7 @@ async function getCommentsAPI(){
 
     let act_data = "";
 
-    await fetch('http://localhost:3333/graphql', {
+    await fetch(`http://${host.host}:3333/graphql`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

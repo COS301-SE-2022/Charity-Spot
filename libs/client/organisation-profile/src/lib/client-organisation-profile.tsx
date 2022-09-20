@@ -22,6 +22,8 @@ import CommentBlock from './commentBlock';
 import { storage, randomStringGenerator } from 'libs/api/shared/services/prisma/src/lib/FirebaseRepository.repository';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 
+import { host } from '../../../../../config'
+
 
 
 const IdCookie = getCookie('ID');
@@ -44,7 +46,7 @@ async function APICall(usrID: string) {
 
   console.log(query);
 
-  await fetch('http://localhost:3333/graphql', {
+  await fetch(`http://${host.host}:3333/graphql`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -94,7 +96,7 @@ async function API_EDIT_Call(
 
   console.log("testtt");
 
-  await fetch('http://localhost:3333/graphql', {
+  await fetch(`http://${host.host}:3333/graphql`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -142,7 +144,7 @@ async function commentRatingAPICall(comment: any, rating: any) {
 
   let act_data = undefined;
 
-  await fetch('http://localhost:3333/graphql', {
+  await fetch(`http://${host.host}:3333/graphql`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -167,7 +169,7 @@ async function getType(usrID: string) {
 
   let All_data = '';
 
-  await fetch('http://localhost:3333/graphql', {
+  await fetch(`http://${host.host}:3333/graphql`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

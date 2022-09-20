@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 
 import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
 
+import { host } from '../../../../../config'
+
 function getLocation(location : any){
       //let //locations = ["Pretoria", "Johannesburg", "Cape Town", "Bloemfontein", "Polokwane", "Durban"]
       let locations = ["Gauteng","Kwazulu-Natal","Limpopo","Western Cape","Northern Cape","North West","Eastern Cape","Free State","Mpumalanga"]
@@ -59,7 +61,7 @@ async function APICall(){
 
       let result = "";
 
-      await fetch('http://localhost:3333/graphql', {
+      await fetch(`http://${host.host}:3333/graphql`, {
                method: 'POST',
                headers: {
                  'Content-Type': 'application/json',

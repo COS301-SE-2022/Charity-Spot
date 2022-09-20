@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 
 import {Link} from 'react-router-dom'
 
+import { host } from '../../../../../config'
+
 import {
   FaHistory,
   FaDonate,
@@ -33,7 +35,7 @@ async function getDelScheduleApi(query: string) {
 
   console.log(query);
 
-  await fetch('http://localhost:3333/graphql', {
+  await fetch(`http://${host.host}:3333/graphql`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

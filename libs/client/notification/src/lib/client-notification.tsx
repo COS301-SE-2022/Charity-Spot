@@ -7,11 +7,13 @@ import {getCookie, setCookie} from 'typescript-cookie'
 
 import { useEffect, useState } from 'react';
 
+import { host } from '../../../../../config'
+
 async function APICall (query: string) {
   //may need to be refined - this is just a template
   let result = null;
 
-  await fetch('http://localhost:3333/graphql', {
+  await fetch(`http://${host.host}:3333/graphql`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

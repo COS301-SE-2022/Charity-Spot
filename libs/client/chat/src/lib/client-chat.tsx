@@ -7,12 +7,14 @@ import { getCookie } from 'typescript-cookie';
 
 import './chatStyle.css'
 
+import { host } from '../../../../../config'
+
 
 async function API_link(query: string, id_q: string) {
   let outcome = null;
 
   await fetch(
-    'http://localhost:3333/graphql', {
+    `http://${host.host}:3333/graphql`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

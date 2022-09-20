@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import './donatee.css'
 import { getCookie, setCookie } from 'typescript-cookie'
 
+import { host } from '../../../../../config'
+
 let IdCookie = getCookie('ID');
 
 async function historyData() {
@@ -24,7 +26,7 @@ async function historyData() {
   
     let act_data = "";
     
-    await fetch('http://localhost:3333/graphql', {
+    await fetch(`http://${host.host}:3333/graphql`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -57,7 +59,7 @@ async function historyData() {
         }
         `;
 
-        await fetch('http://localhost:3333/graphql', {
+        await fetch(`http://${host.host}:3333/graphql`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -97,7 +99,7 @@ async function historyData() {
 
     let result = null;
 
-    await fetch('http://localhost:3333/graphql', {
+    await fetch(`http://${host.host}:3333/graphql`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
