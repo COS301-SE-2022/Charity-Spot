@@ -28,18 +28,12 @@ jobs:
       - name: build client
         run: npx nx build client
         
-  push_docker:
-  
-      runs-on: ubuntu-latest
-      needs: [build]
-      
-      steps:
-      
-       - name: build image for db
-         run: docker-compose up -d
-         
-       - name : assign tag to db
-         run : docker tag postgres:13 timovdm/charity_spot:db
+      - name: build image for db
+        run: docker-compose up -d
+        
+      - name : assign tag to db
+        run : docker tag postgres:13 timovdm/charity_spot:db
+        
         
         
   redeploy:
