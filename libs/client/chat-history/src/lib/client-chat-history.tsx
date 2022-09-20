@@ -117,7 +117,7 @@ export function ClientChatHistory() {
             <br/>
               <div className='chatHist'>
                 <div className='chatHistLeft'>
-                <img src={A.orgPic} className="delSched"></img>
+                <img id ="profChat"src={A.orgPic} className="delSched"></img>
                 
                 </div>
                 <div className='chatHistRight'>

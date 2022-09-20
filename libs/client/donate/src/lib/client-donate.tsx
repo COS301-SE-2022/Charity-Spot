@@ -125,7 +125,7 @@ export function ClientDonate() {
 
     let imgBase64 = undefined;
 
-    // (document.getElementById('donateDivM') as HTMLDivElement).style.display = 'none';
+    (document.getElementById('donateDivM') as HTMLDivElement).style.display = 'none';
     (document.getElementById('donateLoad') as HTMLDivElement).style.display = 'block';
 
     
@@ -140,7 +140,7 @@ export function ClientDonate() {
 
       setInvalidDonate("You must provide a name and a quantity");
 
-      // (document.getElementById('donateDivM') as HTMLDivElement).style.display = 'flex';
+      (document.getElementById('donateDivM') as HTMLDivElement).style.display = 'flex';
       (document.getElementById('donateLoad') as HTMLDivElement).style.display = 'none';
 
       return;
@@ -156,7 +156,7 @@ export function ClientDonate() {
 
     (document.getElementById('file-upload') as HTMLInputElement)!.value = '';
 
-    // (document.getElementById('donateDivM') as HTMLDivElement).style.display = 'flex';
+    (document.getElementById('donateDivM') as HTMLDivElement).style.display = 'flex';
     (document.getElementById('donateLoad') as HTMLDivElement).style.display = 'none';
   };
 
@@ -185,8 +185,7 @@ export function ClientDonate() {
               <p style={{ color: 'red' }}>{invalidDonate}</p>
             </div>
             <div className='donate-main'>
-              <div className="loader" id="donateLoad"></div>
-              {/* <div id = 'donateDivM' style={{display:"flex", width: "100%", backgroundColor: "rgb(228, 229, 230)" }}> */}
+              <div id = 'donateDivM' style={{display:"flex", width: "100%", backgroundColor: "rgb(228, 229, 230)" }}>
                 <div className="donate-left">
                   <br />
                   <br />
@@ -341,9 +340,9 @@ export function ClientDonate() {
                     </form>
                   </div>
                 </div>
-              {/* </div> */}
+              </div>
 
-              {/* <div className="loader" id="donateLoad"></div> */}
+              <div className="loader" id="donateLoad"></div>
 
             </div>
           
