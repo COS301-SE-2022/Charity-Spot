@@ -78,6 +78,17 @@ model Inventory{
   @@map("inventory")
 }
 
+model Donation{
+  ItemID    String  @map("item_id")
+  UserID    String  @map("user_id")
+  Quantity  Int     @map("quantity")
+  Date      String  @map("date")
+  Location  String  @map("location")
+
+  @@id([ItemID,UserID])
+  @@map("donation")
+}
+
 enum category {
   CLOTHING
   FOOD
