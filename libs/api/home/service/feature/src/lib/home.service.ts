@@ -29,11 +29,13 @@ export class HomeService {
         return returnOrg;
     }
 
-    async getAllItems(){
+    async getAllItems(){             
 
         let temp = new HomeEntity();
 
         let items = await this.HomeRepository.getAllItems();
+
+        console.log(items);
 
         let retItem : any = []
 
@@ -41,10 +43,12 @@ export class HomeService {
 
             let temp = new HomeEntity();
 
-            temp.ItemName = items[i].ItemName;
-            temp.OrgID = items[i].OrgID;
+            temp.OrgID = items[i].ID;
+            temp.Name = items[i].Name
             temp.Type = items[i].Type;
-            temp.Location = items[i].DonoLoc;
+            temp.Location = items[i].Location;
+            temp.Province = items[i].Province;
+            temp.City = items[i].City;
             
             retItem.push(temp);
         }

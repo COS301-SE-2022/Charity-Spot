@@ -5,10 +5,11 @@ import { NotificationRepository } from '@charity-spot/api/notification/repositor
 import { PrismaService } from '@charity-spot/api/shared/services/prisma'
 import { NotificationResolver} from './notification.resolver'
 import { ChatRepository } from '@charity-spot/api/chat/repository/feature';
+import { ScheduleDeliveryRepository } from '@charity-spot/api/schedule-delivery/repository/feature';
 
 @Module({
   controllers: [],
   imports: [ApiNotificationServiceFeatureModule],
-  providers: [NotificationResolver, NotificationService, NotificationRepository, ChatRepository, PrismaService],
+  providers: [NotificationResolver, NotificationService, NotificationRepository, ChatRepository, PrismaService, ScheduleDeliveryRepository],
 })
 export class ApiNotificationApiFeatureModule {}

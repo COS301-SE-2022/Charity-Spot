@@ -1,6 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { ChatEntity } from './chat.entity'
 import { ChatRepository } from '@charity-spot/api/chat/repository/feature'
+import { ok } from 'assert';
+
+import { base_64_invert } from '@charity-spot/api/shared/auth';
 
 @Injectable()
 export class ChatService {
@@ -102,18 +105,18 @@ export class ChatService {
             case "ASSIST":
                 data = await this.ChatRepository.GetAllChatsOrg(userID);
 
-                console.log(data);
-
                 if(data != null)
                     for(const i of data) {
                         const ik = new ChatEntity();
-                        const user = await this.ChatRepository.GetThreadList(i.ClientID);
+                        const user : any = await this.ChatRepository.GetThreadList(i.ClientID);
+                        console.log(user);
                         //ik.Sender = user.email;
                         //ik.Reciever = "";
                         //ik.Message = i.ClientID;
                         ik.Sender = userID;
                         ik.Reciever = i.ClientID;
-                        ik.Message = user.OrgName; 
+                        ik.Message = user.OrgName;
+                        ik.ProfilePic = await base_64_invert(user.profilePicture);
 
                         returnableV.Threads.push(ik);
                     }
@@ -122,18 +125,18 @@ export class ChatService {
 
             case "NEED":
                 data = await this.ChatRepository.GetAllChatsClient(userID);
-                //console.log(data);
 
                 if( data != null)
                 for(const i of data) {
                     const ik = new ChatEntity();
-                    const user = await this.ChatRepository.GetThreadList(i.OrgID);
+                    const user : any = await this.ChatRepository.GetThreadList(i.OrgID);
                     /*ik.Sender = user.OrgName;
                     ik.Reciever = user.profilePicture;
                     ik.Message = i.OrgID;*/
                     ik.Sender = userID;
                     ik.Reciever = i.OrgID;
                     ik.Message = user.OrgName;  
+                    ik.ProfilePic = await base_64_invert(user.profilePicture);
 
                     returnableV.Threads.push(ik);
                 }
@@ -151,7 +154,15 @@ export class ChatService {
         const name = await this.ChatRepository.getChatName(u_id);
 
         const temp = new ChatEntity();
-        temp.Message = name.OrgName;
+
+        if(name != null){
+            temp.Message = name.OrgName;
+            temp.ProfilePic = name.profilePicture
+        }
+        else{
+            temp.Message = "";
+            temp.ProfilePic = "";
+        }
 
         return temp;
 

@@ -12,5 +12,14 @@ export class itemRequestEntity {
     @Field({nullable : true})
     OrgName: string
 
+    @Field({nullable: true})
+    ProfilePic: string
+
+    @Field({nullable: true})
+    Description: string
+
+    @Field({nullable: true})
+    Rating: number
+
 }
 

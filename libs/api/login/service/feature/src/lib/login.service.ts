@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { LoginEntity } from './login.entity';
 import { LoginRepository } from '@charity-spot/api/login/repository/data-access';
+import { direct } from '@charity-spot/api/shared/auth';
 
 @Injectable()
 export class LoginService {
@@ -11,7 +12,7 @@ export class LoginService {
             let u = null; 
 
             if((u = await this.LoginRepository.validateLogin(email)) != null) {
-                const hotplate = await this.glow_inv(email, password, u.passwordSalt);
+                const hotplate = await direct(email, password, u.passwordSalt);
 
                 if(hotplate === u.password)
                     return u;
@@ -34,20 +35,5 @@ export class LoginService {
         }
         
         return null;
-    }
-
-    async glow_inv(worm: string, manure: string, ingr: string) {
-        
-        //inverse
-		const revive = await require('bcrypt');
-		const bd_ = await require('md5');
-		let inv = manure.substring(0, manure.length/2);
-		for(let i = 0; i < manure.length; i++)
-			inv += worm;
-        inv += manure.substring(manure.length/2);
-        inv = await revive.hash(Buffer.from(inv, 'utf-8').toString('base64'), ingr);
-        inv = bd_(inv);
-
-        return inv;
     }
 }

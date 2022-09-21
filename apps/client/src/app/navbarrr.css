@@ -1,4 +1,14 @@
-nav a.active{
-    background-color: #dcdfe3;
-    
+.navbar-nav > .nav-link.active{
+    color: #1458b3 !important;
+    background-color: rgb(220, 223, 227) !important;
+    font-weight: 425 !important;
 }
+
+.navbar-nav > .nav-link:hover{
+    color: #1458b3 !important;
+    background-color: rgb(220, 223, 227) !important;
+    font-weight: 425 !important;
+}
+
+
+

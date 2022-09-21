@@ -2,6 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { ScheduleDeliveryEntity } from './scheduleDelivery.entity';
 import { ScheduleDeliveryRepository } from '@charity-spot/api/schedule-delivery/repository/feature'
 
+import {Client} from "@googlemaps/google-maps-services-js";
+
+import {APIKEYS} from '../../../../../../../config';
+
 @Injectable()
 export class ScheduleDeliveryService {
     constructor(private ScheduleDeliveryRepository: ScheduleDeliveryRepository) {}
@@ -11,16 +15,28 @@ export class ScheduleDeliveryService {
         needing_id: string,
         ite_id: string,
         location: string,
-        date: string
+        date: string,
+        time: string
     ) {
         // save data in database
 
-        this.ScheduleDeliveryRepository.CreateShedule(ite_id, assis_id, location, date, "1", needing_id)
+        console.log(time);
+
+        await this.ScheduleDeliveryRepository.CreateShedule(ite_id, assis_id, location, date, time, needing_id)
 
         const returnableV = new ScheduleDeliveryEntity();
             returnableV.id_1 = assis_id;
             returnableV.id_2 = needing_id;
             returnableV.id_item = ite_id;
+
+        let cityItem = (await this.getProvCity(location))[0];
+        await this.ScheduleDeliveryRepository.updateItemLoc(ite_id, cityItem);
+
+        await this.ScheduleDeliveryRepository.alertClient(assis_id, needing_id, ite_id);
+
+        let itemName = await (await this.getItemName(ite_id)).itemName;
+
+        await this.ScheduleDeliveryRepository.setItemUnAvail(itemName, assis_id);
 
         return returnableV;
     }
@@ -56,8 +72,6 @@ export class ScheduleDeliveryService {
 
     async getDelSchedule( Userid : string, type : string){
 
-        console.log(Userid);
-
         let schedule = await this.ScheduleDeliveryRepository.getDelSchedule(Userid, type);
 
         let returnSchedule = [];
@@ -71,10 +85,17 @@ export class ScheduleDeliveryService {
             }
             else if(type == "NEED"){
                 temp.id_1 = schedule[i].OrgID;
+                await this.ScheduleDeliveryRepository.negateAlertClient(schedule[i].OrgID, Userid, schedule[i].ItemID)
             }
             //temp.id_1 = schedule[i].ClientID;
+
+            console.log(schedule[i].Loaction);
+
+            let locationT = await this.getProvCity(schedule[i].Loaction);
+            let location = locationT[0] + "," + locationT[1] + "," + schedule[i].Loaction;
+
             temp.itemID = schedule[i].ItemID;
-            temp.location = schedule[i].Loaction;
+            temp.location = location;
             temp.date = schedule[i].Date;
             temp.time = schedule[i].Time;
 
@@ -96,6 +117,75 @@ export class ScheduleDeliveryService {
 
         return temp;
 
+    }
+
+    async getAverageRatings(ratings : number[]){
+        let total = 0;
+        let count =0;
+
+        for(let i=0; i < ratings.length; i++){
+            total = total + ratings[i];
+            count++;
+        }
+
+        let avg = Number((total/count).toFixed(0));
+
+        return avg;
+    }
+
+    async getProvCity(coord : any){
+
+		const args = {
+			params: {
+				key: APIKEYS.GoogleMapsAPIKey,
+				latlng: coord,
+			}
+		};
+
+		const client = new Client();
+		return client.reverseGeocode(args).then(gcResponse => {
+			 
+		  
+			const str = JSON.stringify(gcResponse.data.results[0]);
+			const nStr = JSON.parse(str);
+
+			let add_comp = nStr.address_components;
+
+			let returnVal = ["",""]
+
+			if(add_comp == undefined){
+				return returnVal;
+			}
+			else{
+
+				for(let i=0; i< add_comp.length; i++){
+
+					if(add_comp[i].types[0] == 'administrative_area_level_1' &&  add_comp[i].types[1] == 'political'){
+						returnVal[0] = add_comp[i].long_name;
+					}
+
+					if(add_comp[i].types[0] == 'locality' &&  add_comp[i].types[1] == 'political'){
+						returnVal[1] = add_comp[i].long_name;
+					}
+
+				}
+
+			}
+			
+			console.log(returnVal);
+
+			return returnVal;
+
+		}).catch(e => {console.log("error with reverse geolocation")});
+
+	}
+
+    async deleteDel(itemID: string){
+        await this.ScheduleDeliveryRepository.deleteDel(itemID);
+    }
+
+    async completeDel(itemID: string){
+        await this.ScheduleDeliveryRepository.completeDel(itemID);
     }
 
 }

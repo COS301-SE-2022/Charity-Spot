@@ -243,6 +243,8 @@
          /* CENTERING STUFF*/ 
          display: table;
          margin: 0 auto;
+
+    
       
 }
 .rate:not(:checked) > input {
@@ -254,7 +256,7 @@
     width:1em;
     overflow:hidden;
     white-space:nowrap;
-    cursor:pointer;
+    cursor:default;
     font-size:50px;
     color:rgb(196, 196, 196);
 
@@ -264,12 +266,14 @@
 }
 .rate > input:checked ~ label {
     transition: 0.3s ease-in;
-    color: #dab73a;    
+    /*color: #dab73a;*/
+    color: #c59b08;     
 }
-.rate:not(:checked) > label:hover,
+/*.rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
     transition: 0.3s ease-in;
-    color: #deb217;  
+    /*color: #deb217;*/
+    /*color: #c59b08;   
 }
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,
@@ -277,7 +281,7 @@
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
     color: #c59b08;
-}
+}*/
 /*---------------------END OF RATING CODE----------------*/
 
 
@@ -302,7 +306,7 @@
     width:1em;
     overflow:hidden;
     white-space:nowrap;
-    cursor:default;
+    cursor:pointer;
     font-size:50px;
     color:rgb(196, 196, 196);
 
@@ -312,12 +316,16 @@
 }
 .rated > input:checked ~ label {
     transition: 0.3s ease-in;
-    color: rgb(184, 181, 90);    
+    /*color: rgb(184, 181, 90);*/
+    color: #c59b08;    
 }
-/* .rated:not(:checked) > label:hover,
+
+/**/
+.rated:not(:checked) > label:hover,
 .rated:not(:checked) > label:hover ~ label {
     transition: 0.3s ease-in;
-    color: #deb217;  
+    /*color: #deb217;*/
+    color: #c59b08;  
 }
 .rated > input:checked + label:hover,
 .rated > input:checked + label:hover ~ label,
@@ -325,7 +333,7 @@
 .rated > input:checked ~ label:hover ~ label,
 .rated > label:hover ~ input:checked ~ label {
     color: #c59b08;
-} */
+}
 /*---------------------END OF RATED CODE----------------*/
 
 
@@ -364,7 +372,8 @@
 }
 .ratedsmall > input:checked ~ label {
     transition: 0.3s ease-in;
-    color: rgb(184, 181, 90);    
+    /*color: rgb(184, 181, 90);  */
+    color: #c59b08;  
 }
 /* .ratedsmall:not(:checked) > label:hover,
 .ratedsmall:not(:checked) > label:hover ~ label {
@@ -607,7 +616,7 @@ input.in5:hover{
 
 
 #upt_but{
-    width: 80%;
+    width: 100%;
     background: #1458b3 ;
     color: white;
     border: none;
@@ -615,7 +624,15 @@ input.in5:hover{
     padding: 0.7rem 1rem;
     transition: all 0.3 ease;
     border-radius: 5px;
+    margin-top: 50px;
 }
+
+#locButton{
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 10px;
+}
+
 
 
 
@@ -664,6 +681,14 @@ input.in5:hover{
     /* background-color: #1458b3; */
    
 }
+
+.edit-pic {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    
+}
+
 .editor-right{
     /* background-color: rgb(162, 0, 255); */
     height: 450px;
@@ -677,7 +702,10 @@ input.in5:hover{
     height: 110px;
     width: 110px;
     padding: 10px;
+    margin-bottom: 1.5em;
 }
+
+
 #logout1{
     transition: 0.2s ease-in;
     width: 25%;
@@ -835,4 +863,17 @@ input.in5:hover{
         width: 110px;
     }
  
+}
+
+#nDesc{
+    padding: 10px;
+    width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+}
+
+.rglabel{
+    margin-bottom: 10px!important;
 }

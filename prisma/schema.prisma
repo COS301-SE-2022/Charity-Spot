@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  previewFeatures = ["filterJson"]
+  previewFeatures = ["filteredRelationCount"]
 }
 
 datasource db {
@@ -20,7 +20,6 @@ model User {
 
 model Assist{
   UserID          String    @id @map("user_id")
-  NGONum          String?   @unique @map("ngo_number")
   OrgName         String    @map("organisation_id")
   Description     String?   @map("description")
   AddressID       String?   @map("address_id")
@@ -39,8 +38,17 @@ model Messages{
 
   @@id([UserID,AssistID])
   @@map("messages")
+
 }
 
+model Address {
+  AddressID   String  @id @default(cuid()) @map("address_id")
+  Address     String  @map("address")
+  City        String  @map("city")
+  Province    String  @map("province")
+  
+  @@map("address")
+}
 model Rate{
   UserID    String  @map("user_id")
   AssistID  String  @map("assist_id")

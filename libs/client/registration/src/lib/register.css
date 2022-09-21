@@ -5,7 +5,7 @@
     /* background: linear-gradient(to right, #ffff 50%,#4dd6b6); */
 }
 .register-contain{
-    height: 650px auto;
+    height: 750px auto;
     width: 90%;
 
     background: linear-gradient(to right bottom, rgba(228, 228, 228, 0.7),rgba(191, 190, 190, 0.4));
@@ -13,6 +13,7 @@
     margin: 2rem auto;
     box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0);
 
+    padding: 20px;
 
      /* text-align: center; */
      display: flex;
@@ -22,7 +23,7 @@
 }
 .rgleft-side{
     margin: 2rem;
-    height: 550px;
+    height: 750px;
     width: 45%;    
     /* background-color: rgba(207, 207, 207, 0.4); */
 
@@ -35,10 +36,11 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    
 }
 .rgright-side{
     margin: 2rem;
-    height: 550px;
+    height: 750px;
     width: 45%;
 
 
@@ -182,10 +184,10 @@ label.rglabel{
       /* object-fit: cover; */
     }
     .rgright-side{
-      height: 670px;
+      height: 700px;
     }
     .rgleft-side{
-      height: 670px;
+      height: 700px;
     }
     input.rgInput{
       height: 2.5rem;

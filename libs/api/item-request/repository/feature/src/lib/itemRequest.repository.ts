@@ -11,7 +11,9 @@ export class itemRequestRepository {
       select:
       {
         UserID: true,
-        OrgName: true
+        OrgName: true,
+        profilePicture: true,
+        Description: true
       },
       where:
       {
@@ -21,6 +23,22 @@ export class itemRequestRepository {
 
     return list;
 
+  }
+
+  async getRating(OrgID : string)
+  {
+    return await this.prisma.rating.findMany({
+      where:
+      {
+        OrgID:OrgID
+      },
+      select:
+      {
+        ClientID:true,
+        Rating:true,
+        Comment:true
+      }
+    })
   }
 
 }
