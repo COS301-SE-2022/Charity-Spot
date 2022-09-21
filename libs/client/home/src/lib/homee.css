@@ -245,7 +245,19 @@ input[type="checkbox"]:checked
   
 }
 @media (max-width: 450px) {
-    /* Even Smaller devices */
+  .filters-contain{
+    width: 100%;
+  
+  }
+  .left-filt{
+    width: 100%;
+  }
+  .right-filt{
+    width: 100%;
+  }
+  .middle-filt{
+    width: 100%;
+  }
   
 }
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {

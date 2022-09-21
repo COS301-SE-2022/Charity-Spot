@@ -1,13 +1,13 @@
 .delSched{
     height: 250px;
-    width: 65%;
+    width: 50%;
     border-radius: 100%;
     /* padding-bottom: 5px; */
     color: #1458b3;
 }
 
 #completeButton{
-    width: 25%;
+    width: 180px;
     background: #1458b3;
     color: #ffff;
     border: none;
@@ -19,7 +19,7 @@
 }
 
 #cancelButton{
-    width: 25%;
+    width: 180px;
     background: #cecece;
     color: #1458b3;
     border: none;
@@ -38,4 +38,23 @@
 
 .senderName:hover{
     cursor: pointer !important;
+}
+
+@media (max-width: 650px) {
+
+
+    #completeButton{
+        width: 50%;
+
+    }
+    
+    #cancelButton{
+        width: 50%;
+
+    }
+  
+}
+@media (max-width: 450px) {
+ 
+  
 }
