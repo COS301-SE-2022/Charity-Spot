@@ -41,18 +41,18 @@ export class ChatRepository {
   }
   
   async updateThread(orgID: string, clientID: string, text: string) {
-    const u = await this.prisma.chatHistory.update({
+    const u = await this.prisma.messages.update({
       where:
       {
-        OrgID_ClientID:
+        UserID_AssistID:
         {
-          OrgID: orgID,
-          ClientID:clientID,
+          AssistID: orgID,
+          UserID:clientID
         }
       },
       data:
       {
-        Messages: text
+        PastMessages: text
       }
     })
 
