@@ -60,11 +60,11 @@ model Comment{
 }
 
 model Item{
-  ItemID    String  @map("Item_id") @id
-  ItemName  String  @map("item_name")
-  Picture   String  @map("picture")
-  Description  String  @map("description")
-  Type   category  @map("type")
+  ItemID      String  @map("Item_id") @id
+  ItemName    String  @map("item_name")
+  Picture     String  @map("picture")
+  Description String  @map("description")
+  Type        category  @map("type")
 
   @@map("item")
 }
