@@ -89,6 +89,19 @@ model Donation{
   @@map("donation")
 }
 
+model Delivery{
+  ItemID    String  @map("item_id")
+  UserID    String  @map("user_id")
+  AssistID  String  @map("assist_id")
+  Quantity  Int     @map("quantity")
+  Time      String  @map("time")
+  Date      String  @map("date")
+  Location  String  @map("location")
+
+  @@id([ItemID,UserID,AssistID])
+  @@map("delivery")
+}
+
 enum category {
   CLOTHING
   FOOD
