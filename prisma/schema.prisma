@@ -69,6 +69,15 @@ model Item{
   @@map("item")
 }
 
+model Invetory{
+  ItemID    String  @map("item_id")
+  UserID    String  @map("user_id")
+  Quantity  Int     @map("quantity")
+
+  @@id([ItemID,UserID])
+  @@map("invetory")
+}
+
 enum category {
   CLOTHING
   FOOD
