@@ -8,11 +8,14 @@ export class ChatRepository {
   //create an empty thread for messages
   async createThread(orgID: string, clientID : string)
   {
-    const u = await this.prisma.chatHistory.create({
+    const u = await this.prisma.messages.create({
       data:
       {
-        OrgID: orgID,
-        ClientID:clientID
+        UserID:clientID,
+        AssistID: orgID,
+        NotifyAssist:false,
+        NotifyNeed:false,
+        PastMessages: ""
       }
     })
 

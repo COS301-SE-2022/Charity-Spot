@@ -33,7 +33,7 @@ model Assist{
 model Messages{
   UserID        String  @map("user_id")
   AssistID      String  @map("assist_id")
-  PastMessages  String  @map("past_messages")
+  PastMessages  String? @map("past_messages")
   NotifyAssist  Boolean @map("notify_assist")
   NotifyNeed    Boolean @map("notify_need")
 
