@@ -26,13 +26,13 @@ export class ChatRepository {
 
   async getThread(orgID: string, clientID : string)
   {
-    const u = await this.prisma.chatHistory.findUnique({
+    const u = await this.prisma.messages.findUnique({
       where:
       {
-        OrgID_ClientID:
+        UserID_AssistID:
         {
-          OrgID: orgID,
-          ClientID:clientID,
+          AssistID: orgID,
+          UserID:clientID
         }
       }
     })
