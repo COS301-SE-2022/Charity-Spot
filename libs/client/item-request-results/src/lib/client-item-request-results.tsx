@@ -1,7 +1,7 @@
 import styles from './client-item-request-results.module.css';
 import "./resultss.css";
 import {ResultBlock} from './resultBlock'
-
+import {FaPowerOff } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 
 import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
@@ -101,7 +101,7 @@ export function ClientItemRequestResults() {
             let resultTemp = await APICall();
 
             if(resultTemp.data == null){
-                  setAIoffLine('AI currently offline!');
+                  setAIoffLine('AI currently offline');
                   return;
             }
 
@@ -135,7 +135,7 @@ export function ClientItemRequestResults() {
       <br/>
       <h2 className='rqq'>Suggested Organizations</h2>
 
-      <h3 style={{'color':'#6d6d6e'}}> {AIoffLine}</h3>
+      <h1 style={{'color':'#6d6d6e'}}><br/> <br/><br/>{AIoffLine} <FaPowerOff/></h1>
 
       <div className='HoldAll'>
 

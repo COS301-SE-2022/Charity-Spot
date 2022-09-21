@@ -345,6 +345,7 @@ export function ClientDonate() {
               <div className="loader" id="donateLoad"></div>
 
             </div>
+          
 
           </div>
 

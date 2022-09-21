@@ -248,7 +248,18 @@
   
 }
 @media (max-width: 450px) {
-    /* Even Smaller devices */
+  .HoldAll{
+    width: 100%;     
+  }
+  .leftHolda{
+    width: 85%;    
+  }
+  .middleHolda{
+    width: 85%; 
+  }
+  .righttHolda{
+    width: 85%; 
+  }
   
 }
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {

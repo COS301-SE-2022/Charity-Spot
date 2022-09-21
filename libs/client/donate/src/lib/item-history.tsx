@@ -168,7 +168,7 @@ export function ItemHistory(props : any){
 
                     <input type ='checkbox' id = {item.ItemID} onClick={async ()=>{await getItemPic(item.ItemID);}}></input>
 
-                    <label htmlFor={item.ItemID}>{item.Name} <FaArrowDown/></label>
+                    <label htmlFor={item.ItemID}><b>{item.Name}</b>, <i>Quantity: {item.Quantity}</i> </label>
 
                     <div className='collapsible-text'><br/>
                         <div className='collapseleft'>
