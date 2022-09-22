@@ -180,7 +180,6 @@ export function Register() {
       )
     );
 
-    console.log(response);
 
     if (response.data == null) {
       //remove the loading
@@ -316,7 +315,6 @@ export function Register() {
                 value={confpassval}
                 onChange={(e) => {
                   setConfPassval(e.target.value);
-                  console.log('pass test');
                 }}
               />
 

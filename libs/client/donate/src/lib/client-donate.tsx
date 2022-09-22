@@ -50,8 +50,6 @@ async function uploadItemAPICall(
   }
   `;
 
-  console.log(query);
-
   let All_data = '';
 
   await fetch(`http://${host.host}:3333/graphql`, {
@@ -69,7 +67,7 @@ async function uploadItemAPICall(
 }
 
 async function historyData() {
-  console.log('testt');
+
   const query = `
     donateHistory(id: "${IdCookie}"){
       Donations{
@@ -98,7 +96,6 @@ async function historyData() {
     .then((r) => r.json())
     .then((data) => (act_data = data));
 
-  console.log(JSON.stringify(act_data));
 }
 
 export function ClientDonate() {
@@ -213,7 +210,6 @@ export function ClientDonate() {
                         id="file-upload"
                         onChange={(e) => {
                           if (!e.target.files) return;
-                          console.log("testtt");
                           setImageUpload(e.target.files[0]);
                           setImageURL(URL.createObjectURL(e.target.files[0]));
                         }}

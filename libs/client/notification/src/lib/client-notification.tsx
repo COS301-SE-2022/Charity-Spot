@@ -44,8 +44,6 @@ async function fetchNotifications(user_id: any, whois: any) {
     }
   }`;
 
-  console.log(query);
-
   return await APICall(query);
 }
 
@@ -60,8 +58,6 @@ async function fetchUser(receiver_id: string) {
     }`;
 
   const receiver = await APICall(query);
-
-  console.log(receiver);
   
   return receiver.data.receiver;
 }
@@ -90,8 +86,6 @@ export function ClientNotification() {
     const uType = getCookie("ID_EXT");
 
     let notifications = await fetchNotifications(uID, uType);
-
-    console.log(notifications);
 
     let activeList : any = [];
 

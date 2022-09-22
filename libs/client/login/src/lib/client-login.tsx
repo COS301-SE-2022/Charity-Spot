@@ -22,8 +22,6 @@ async function APICall(email: string, password: string) {
     }
   }`;
 
-  console.log(query);
-
   let initial_students = '';
 
   await fetch(`http://${host.host}:3333/graphql`, {
@@ -39,7 +37,6 @@ async function APICall(email: string, password: string) {
     .then((r) => r.json())
     .then((data) => (initial_students = data));
 
-  console.log(initial_students);
 
   return JSON.stringify(initial_students);
 }

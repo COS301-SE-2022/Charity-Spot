@@ -56,8 +56,6 @@ async function APICall(){
             }
       }`;
 
-      console.log(query);
-
 
       let result = "";
 
@@ -76,8 +74,6 @@ async function APICall(){
       
            let resultString = JSON.stringify(result);
            let resultFin = JSON.parse(resultString);
-
-           console.log(resultFin);
 
            return resultFin;
 
@@ -109,8 +105,6 @@ export function ClientItemRequestResults() {
             }
 
             let resultArr = resultTemp.data.getAIPredic;
-
-            console.log(resultArr);
 
             let results : any = [];
 

@@ -60,8 +60,6 @@ export function CommentBlock(props : any){
     async function getComments(){
         let commentR = await getCommentsAPI();
 
-        //console.log(commentR);
-
         let ratingArr = new Array(5).fill(false);
 
         for(let i=0; i<commentR.ClientNames.length; i++){
@@ -73,8 +71,6 @@ export function CommentBlock(props : any){
             ratingArr[commentR.Ratings[i]-1] = true;
             temp.rating = ratingArr;
             temp.comment = commentR.Comments[i];
-
-            //console.log(ratingArr);
 
             commentS.push(temp);
 
@@ -88,9 +84,8 @@ export function CommentBlock(props : any){
 
     useEffect(() => {
 
-        console.log(props);
         getComments();
-        //props.state = false;
+        
     }, [props.state]);
 
     return(

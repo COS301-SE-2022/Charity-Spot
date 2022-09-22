@@ -34,8 +34,6 @@ async function APICall(ID : any){
          let resultString = JSON.stringify(result);
          let resultFin = JSON.parse(resultString);
 
-         console.log(resultFin);
-
          return resultFin.data.getOrgInfo;
 
 }
@@ -74,15 +72,13 @@ export function ResultBlock(props : any){
           prob =  "High Chance"
           setProbStyle("probG");
         }
-        console.log(prob);
+  
         setOrgProb(prob);
     }
 
     useEffect(() => {
         
         getResultInfo();
-
-        //console.log(props.inState[0].ResultID);
 
         if(props.inState[1]%3 == 0){
             setClassName("leftHolda");

@@ -44,8 +44,6 @@ async function APICall(usrID: string) {
 
   let All_data = '';
 
-  console.log(query);
-
   await fetch(`http://${host.host}:3333/graphql`, {
     method: 'POST',
     headers: {
@@ -58,8 +56,6 @@ async function APICall(usrID: string) {
   })
     .then((r) => r.json())
     .then((data) => (All_data = data));
-
-  console.log(All_data);
 
   return JSON.stringify(All_data);
 }
@@ -94,8 +90,6 @@ async function API_EDIT_Call(
 
   let act_data = undefined;
 
-  console.log("testtt");
-
   await fetch(`http://${host.host}:3333/graphql`, {
     method: 'POST',
     headers: {
@@ -128,9 +122,6 @@ async function commentRatingAPICall(comment: any, rating: any) {
   let ID = getCookie('ID');
   let foreignID = getCookie('foreignID');
 
-  console.log(ID);
-  console.log(foreignID);
-
   const query = `query{
     addCommentRating(
       assist_id: "${foreignID}",
@@ -157,7 +148,6 @@ async function commentRatingAPICall(comment: any, rating: any) {
     .then((r) => r.json())
     .then((data) => (act_data = data));
 
-  console.log(act_data);
 }
 
 async function getType(usrID: string) {
@@ -292,8 +282,6 @@ export function Profile() {
     if(imageUpload){
       profilePictureLink = `${await uploadProfilePicture(imageUpload)}`;
     }
-
-    console.log(profilePictureLink);
 
     if (
       NewOName == 'undefined' &&
@@ -437,9 +425,6 @@ export function Profile() {
     const reference = ref(storage, `profilePictures/${await randomStringGenerator() + '_pp_' + pic.name}`);
     await uploadBytes(reference, pic);
     const downloadLink = await getDownloadURL(reference);
-
-    console.log("eee");
-    console.log(downloadLink);
 
     setOPicture(downloadLink);
   }

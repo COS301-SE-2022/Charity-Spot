@@ -46,8 +46,6 @@ async function historyData() {
 
     const ItemArr = Items.data.donateHistory.Donations;
 
-    console.log(ItemArr[0]);
-
     
     act_data = "";
     for(let i=0; i< ItemArr.length; i++){
