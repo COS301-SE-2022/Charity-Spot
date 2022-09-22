@@ -266,6 +266,19 @@ class Client extends Thread{
                 Collections.sort(outputList);
                 Collections.reverse(outputList);
 
+                if(outputList.size() == 0){
+
+                    String returnStr = "{" + '"' + "results" + '"' + " : [\n" + "\n]\n}";
+
+                    outS.println("HTTP/1.1 200 OK\n"+
+                    "Content-Type: application/json\n\n"+ returnStr);
+
+                    clientSocket.close();
+
+                    return;
+
+                }
+
                 double topScore = outputList.get(0).OrgScore;
 
                 List<OrgInfo> retList = new ArrayList<OrgInfo>();
@@ -282,12 +295,17 @@ class Client extends Thread{
 
                 String returnStr = "{" + '"' + "results" + '"' + " : [\n";
 
+                boolean run = false;
+
                 for(int i=0; i<retList.size(); i++){
+                    run = true;
                     String oID = retList.get(i).OrgID;
                     returnStr = returnStr + "{" + '"' + "OrgID" + '"'+" : " + '"' + oID + '"'+", " + '"' + "Result" + '"' +" : " + '"' + retList.get(i).OrgScore + '"' + " },\n";
                 }
 
-                returnStr = returnStr.substring(0, returnStr.length() - 2);
+                if(run){
+                    returnStr = returnStr.substring(0, returnStr.length() - 2);
+                }
 
                 returnStr = returnStr + "\n]\n}";
 

@@ -13,7 +13,7 @@ RUN npm -y install --global yarn
 
 WORKDIR /
 
-COPY ["./prisma/schema.prisma", "./"]
+COPY ["./prisma/*", "./"]
 
 COPY ["./dist/apps/api/main.js", "./dist/apps/api/package.json", ".env", "./"]
 
@@ -25,4 +25,4 @@ RUN yarn prisma generate
 
 COPY . .
 
-CMD ["node", "main.js"]
+CMD yarn prisma migrate reset --force && yarn prisma migrate dev && node main.js

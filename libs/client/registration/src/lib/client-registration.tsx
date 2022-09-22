@@ -5,6 +5,8 @@ import Sealregister from '../../../shared/assets/Sealregister.png';
 import CS from '../../../shared/assets/CS.png';
 import Bgpic from '../../../shared/assets/Bgpic.png';
 
+import { host } from '../../../../../config'
+
 import {
   storage,
   randomStringGenerator,
@@ -61,7 +63,7 @@ async function APICall(
 
   let All_data = '';
 
-  await fetch('http://localhost:3333/graphql', {
+  await fetch(`http://${host.host}:3333/graphql`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -178,7 +180,6 @@ export function Register() {
       )
     );
 
-    console.log(response);
 
     if (response.data == null) {
       //remove the loading
@@ -314,7 +315,6 @@ export function Register() {
                 value={confpassval}
                 onChange={(e) => {
                   setConfPassval(e.target.value);
-                  console.log('pass test');
                 }}
               />
 

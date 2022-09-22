@@ -44,9 +44,6 @@ export class CommentRatingRepository {
             Comment: Comment
           }
         });
-
-        //console.log(rating);
-        //console.log("r1");
     
         //return rating;
 
@@ -68,8 +65,6 @@ export class CommentRatingRepository {
 
       return rating;
     }
-
-    console.log(rating);
 
     return rating;
 

@@ -1,0 +1,28 @@
+FROM ubuntu
+
+RUN apt -y update
+
+RUN apt -y install default-jre
+
+RUN apt -y install default-jdk
+
+RUN apt -y install make
+
+RUN apt -y install python3
+
+RUN apt -y install python3-pip
+
+RUN pip install psycopg2-binary
+
+RUN pip install -U scikit-learn
+
+WORKDIR /
+
+COPY ["/tools/NeuralNetwork", "/NeuralNetwork"]
+COPY ["/tools/ProgramForMockData", "/ProgramForMockData"]
+
+WORKDIR /ProgramForMockData
+
+COPY . .
+
+CMD python3 createDataFile.py && cd .. && cd NeuralNetwork && make && make run
