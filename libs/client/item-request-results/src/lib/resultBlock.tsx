@@ -67,8 +67,11 @@ export function ResultBlock(props : any){
         rating[OrgInfo.Rating - 1] = true;
         setAvgRating(rating);
 
+
         let prob = "Moderate Chance";
-        if(props.inState[0].ResultProb > 0.9){
+        setProbStyle("probR");
+
+        if(props.inState[1] < 3){
           prob =  "High Chance"
           setProbStyle("probG");
         }

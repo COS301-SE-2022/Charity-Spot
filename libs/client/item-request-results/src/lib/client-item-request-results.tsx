@@ -9,7 +9,7 @@ import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
 import { host } from '../../../../../config'
 
 function getLocation(location : any){
-      //let //locations = ["Pretoria", "Johannesburg", "Cape Town", "Bloemfontein", "Polokwane", "Durban"]
+
       let locations = ["Gauteng","Kwazulu-Natal","Limpopo","Western Cape","Northern Cape","North West","Eastern Cape","Free State","Mpumalanga"]
 
       for(let i=0; i<location.length; i++){
@@ -43,9 +43,8 @@ async function APICall(){
             }
       }`;*/
 
-      //let date = getCookie("date");
-      //month - day
-      let date = "01-03";
+      
+      let date = "03-01";
       let itemType = getItem(getCookie("type"));
       let location = getLocation(getCookie("location"));
 
@@ -87,6 +86,7 @@ export function ClientItemRequestResults() {
 
       const [AIoffLine, setAIoffLine] = useState(false);
 
+      const [notFound, setnotFound] = useState(false);
 
 
       class ResultV {
@@ -105,6 +105,11 @@ export function ClientItemRequestResults() {
             }
 
             let resultArr = resultTemp.data.getAIPredic;
+
+            if(resultArr.length == 0){
+                  setnotFound(true);
+                  return;
+            }
 
             let results : any = [];
 
@@ -133,6 +138,7 @@ export function ClientItemRequestResults() {
       <h2 className='rqq'>Suggested Organizations</h2>
 
       { AIoffLine &&<h1 style={{'color':'#6d6d6e'}}><br/> <br/><br/>AI currently offline <FaPowerOff/></h1>}
+      { notFound &&<h1 style={{'color':'#6d6d6e'}}><br/> <br/><br/>The AI was unable to find a charity able to help :(</h1>}
 
       <div className='HoldAll'>
 
