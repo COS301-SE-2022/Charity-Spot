@@ -2,6 +2,7 @@
 
 #misc
 # config.ts
+*.java
 
 # compiled output
 /dist

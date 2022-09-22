@@ -3,5 +3,6 @@ export var APIKEYS = {
 }
 
 export var host = {
-    host : "3.7.189.9"
+    //host : "3.7.189.9"
+    host : "localhost"
 }

@@ -30,9 +30,6 @@ async function getActiveChatsAPI(){
         }
       }`;
 
-      console.log(query);
-
-
       await fetch(`http://${host.host}:3333/graphql`, {
         method: 'POST',
         headers: {
@@ -48,8 +45,6 @@ async function getActiveChatsAPI(){
 
       const resultString = JSON.stringify(result);
       const resultFin = JSON.parse(resultString);
-
-      console.log(resultFin);
 
       return resultFin.data.RetrieveThreads.Threads;
 
@@ -76,8 +71,6 @@ export function ClientChatHistory() {
   async function getActiveChats(){
 
     let active = await getActiveChatsAPI();
-
-    console.log(active);
 
     if(active.length == 0){
       setEmpty(true);

@@ -121,8 +121,6 @@ export function ClientChat() {
 
       let result = await API_link(threadQuery(), "");
 
-      console.log(result);
-
       const thread = JSON.parse(result).data.RetrieveMessages.Message;
 
       if(thread != null){

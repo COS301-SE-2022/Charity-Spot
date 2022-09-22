@@ -89,7 +89,9 @@ export function ClientItemRequestResults() {
 
       const [result, addResult] = useState<any[]>([]);
 
-      const [AIoffLine, setAIoffLine] = useState('');
+      const [AIoffLine, setAIoffLine] = useState(false);
+
+
 
       class ResultV {
             ResultID : string = "";
@@ -98,12 +100,11 @@ export function ClientItemRequestResults() {
 
       const updateResult = async () => {
 
-            setAIoffLine('');
 
             let resultTemp = await APICall();
 
             if(resultTemp.data == null){
-                  setAIoffLine('AI currently offline');
+                  setAIoffLine(true);
                   return;
             }
 
@@ -137,7 +138,7 @@ export function ClientItemRequestResults() {
       <br/>
       <h2 className='rqq'>Suggested Organizations</h2>
 
-      <h1 style={{'color':'#6d6d6e'}}><br/> <br/><br/>{AIoffLine} <FaPowerOff/></h1>
+      { AIoffLine &&<h1 style={{'color':'#6d6d6e'}}><br/> <br/><br/>AI currently offline <FaPowerOff/></h1>}
 
       <div className='HoldAll'>
 
