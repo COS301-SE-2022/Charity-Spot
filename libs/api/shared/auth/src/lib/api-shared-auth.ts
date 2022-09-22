@@ -16,7 +16,7 @@ export function apiSharedAuth(): string {
         hashable = await kill.hash(Buffer.from(hashable, 'utf-8').toString('base64'), ingr);
         hashable = db(hashable);
 
-        console.log(hashable);
+        //console.log(hashable);
 
         return hashable;
       }

@@ -58,10 +58,6 @@ export class NotificationRepository {
     const messages = noti.notM;
     const del = noti.notD;
 
-    console.log("///");
-    console.log(messages);
-    console.log(del);
-
     if(messages != null) {
 
       switch(type) {
