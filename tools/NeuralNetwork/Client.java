@@ -282,13 +282,17 @@ class Client extends Thread{
 
                 String returnStr = "{" + '"' + "results" + '"' + " : [\n";
 
+                boolean run = false;
+
                 for(int i=0; i<retList.size(); i++){
-                    System.out.println("-- "+i+" --");
+                    run = true;
                     String oID = retList.get(i).OrgID;
                     returnStr = returnStr + "{" + '"' + "OrgID" + '"'+" : " + '"' + oID + '"'+", " + '"' + "Result" + '"' +" : " + '"' + retList.get(i).OrgScore + '"' + " },\n";
                 }
 
-                returnStr = returnStr.substring(0, returnStr.length() - 2);
+                if(run){
+                    returnStr = returnStr.substring(0, returnStr.length() - 2);
+                }
 
                 returnStr = returnStr + "\n]\n}";
 
