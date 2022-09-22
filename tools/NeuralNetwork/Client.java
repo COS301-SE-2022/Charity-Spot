@@ -266,6 +266,19 @@ class Client extends Thread{
                 Collections.sort(outputList);
                 Collections.reverse(outputList);
 
+                if(outputList.size() == 0){
+
+                    String returnStr = "{" + '"' + "results" + '"' + " : [\n" + "\n]\n}";
+
+                    outS.println("HTTP/1.1 200 OK\n"+
+                    "Content-Type: application/json\n\n"+ returnStr);
+
+                    clientSocket.close();
+
+                    return;
+
+                }
+
                 double topScore = outputList.get(0).OrgScore;
 
                 List<OrgInfo> retList = new ArrayList<OrgInfo>();

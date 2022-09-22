@@ -39,6 +39,9 @@ jobs:
         
       - name : build client docker image
         run : sudo docker build -f Dockerfile.client --tag ${{ secrets.DOCKER_REPO }}:client .
+
+      - name : build ai docker image
+        run : sudo docker build -f Dockerfile.ai --tag ${{ secrets.DOCKER_REPO }}:ai .
         
       - name : login to Docker Hub
         run : docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
@@ -48,6 +51,9 @@ jobs:
         
       - name : push client to docker
         run : docker push ${{ secrets.DOCKER_REPO }}:client
+
+      - name : push ai to docker
+        run : docker push ${{ secrets.DOCKER_REPO }}:ai
         
       - name : push db to docker
         run : docker push ${{ secrets.DOCKER_REPO }}:db
