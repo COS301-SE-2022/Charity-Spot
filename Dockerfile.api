@@ -25,4 +25,4 @@ RUN yarn prisma generate
 
 COPY . .
 
-CMD yarn prisma migrate reset --force && yarn prisma migrate dev && node main.js
+CMD yarn prisma migrate reset --force && yarn prisma migrate dev && node --insecure-http-parser main.js

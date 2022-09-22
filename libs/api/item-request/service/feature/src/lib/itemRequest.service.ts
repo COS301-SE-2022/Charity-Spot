@@ -34,7 +34,7 @@ export class itemRequestService {
     */
     async getAIPredic(Date : string, itemType : string, location : string){
 
-        const response = await fetch(`http://localhost:7777/${Date},${itemType},${location}`, { extraHttpOptions: { insecureHTTPParser: true } });
+        const response = await fetch(`http://localhost:7777/${Date},${itemType},${location}`);
         const data = await response.json();
 
         let retList = [];
