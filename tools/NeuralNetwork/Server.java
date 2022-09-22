@@ -14,13 +14,19 @@ public class Server{
 
     public void start(int port){
 
+        System.out.println("\u001b[32m\nStarting AI\n\u001b[37m");
+
         double[][] trainData = getTrainData();
 
         List<Double> list = getListOfCharities(trainData);
 
-        List<NeuralNetwork> neuralNetworks = getListOfNetworks(list,trainData); 
+        List<String> listID = getListOfCharitiesID(trainData);
 
-        System.out.println(list.toString());
+        List<NeuralNetwork> neuralNetworks = getListOfNetworks(list,trainData);
+
+        System.out.println("\u001b[32m\nAI Finished Training\n\u001b[37m"); 
+
+        //System.out.println(listID.toString());
 
         try{
 
@@ -28,13 +34,13 @@ public class Server{
 
             //create thread that will train the nn. Run every x amount of time
 
-            System.out.println("Waiting for a clients...");
+            System.out.println("Waiting for a clients...\n");
 
             while(true){
 
                 clientSocket = serverSocket.accept();
 
-                System.out.println("Client connected at " + clientSocket.getRemoteSocketAddress().toString());
+                System.out.println("\u001B[31mClient connected at " + clientSocket.getRemoteSocketAddress().toString() + "\u001B[37m\n");
 
                 //Reader for the socket
                 s_in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
@@ -42,7 +48,7 @@ public class Server{
                 //Writer for the socket
                 s_out = new PrintWriter(clientSocket.getOutputStream(), true);
 
-                Thread clientThread = new Client(clientSocket, s_in, s_out, neuralNetworks, list);
+                Thread clientThread = new Client(clientSocket, s_in, s_out, neuralNetworks, listID);
 
                 clientThread.start();
 
@@ -55,9 +61,28 @@ public class Server{
 
     public static double[][] getTrainData(){
 
-        double[][] trainData= new double[12534][];
+        int donoCount = 0;
 
-	    double[][] correctOutput= new double[12534][];
+        try{
+
+            BufferedReader brCount = new BufferedReader(new FileReader(new File("donationsData.txt")));
+
+            String line;
+
+            //Count the number of donations
+
+            while((line = brCount.readLine()) != null){
+
+                donoCount++;
+
+            }
+
+        }
+        catch(Exception e){}
+
+        double[][] trainData= new double[donoCount][];
+
+	    double[][] correctOutput= new double[donoCount][];
 
         //Read in the donations from a file
 
@@ -70,28 +95,6 @@ public class Server{
 			int j = 0;
 
 			while((line = br.readLine()) != null){
-
-				/*trainData[j] = new double[6];
-				correctOutput[j] = new double[1];
-				int k = 0;
-
-				String[] split = line.split(",");
-
-				for(int i=0; i<split.length; i++){
-
-					double val = Double.parseDouble(split[i]);
-
-					if(i == split.length-1){
-						correctOutput[j][0] = val;
-						continue;
-					}
-
-					trainData[j][k] = val;
-
-    				k++;
-				}
-
-				j++;*/
 
                 trainData[j] = new double[7];
 
@@ -119,85 +122,6 @@ public class Server{
 
         return trainData;
 
-        /*//Two loops that can be used to check that the data has been read correctly
-
-        for(int i=0; i<trainData.length; i++){
-
-			for(int jj=0; jj<trainData[i].length; jj++){
-
-				System.out.print(trainData[i][jj] + ", ");
-
-			}
-
-			System.out.println();
-
-		}
-
-		for(int i=0; i<correctOutput.length; i++){
-
-			for(int jj=0; jj<correctOutput[i].length; jj++){
-
-				System.out.print(correctOutput[i][jj] + ", ");
-
-			}
-
-			System.out.println();
-
-		}
-
-        //Create and train the new nn
-        NeuralNetwork nn = new NeuralNetwork(6,25,1);
-        nn.fit(trainData, correctOutput, 50000);
-
-        return nn;*/
-
-        /*List<Double> list = getListOfCharities(trainData);
-
-        System.out.println(list.toString());
-
-        double[][] matForChar = getMatrixForCharity(20,trainData);
-
-        double[][] corrMatForChar = getCorrOutForCharity(20,trainData);
-
-        /*for(int i=0; i<matForChar.length; i++){
-
-			for(int jj=0; jj<matForChar[i].length; jj++){
-
-				System.out.print(matForChar[i][jj] + ", ");
-
-			}
-
-			System.out.println();
-
-		}
-
-        for(int i=0; i<corrMatForChar.length; i++){
-
-			for(int jj=0; jj<corrMatForChar[i].length; jj++){
-
-				System.out.print(corrMatForChar[i][jj] + ", ");
-
-			}
-
-			System.out.println();
-
-		}*/
-
-        /*List<NeuralNetwork> neuralNetworks = new ArrayList<NeuralNetwork>();
-
-        for(int i=0; i<list.size(); i++){
-
-            double[][] matForChar = getMatrixForCharity(i,trainData);
-            double[][] corrMatForChar = getCorrOutForCharity(i,trainData);
-
-            NeuralNetwork newNetwork = new NeuralNetwork(5,25,1);
-            newNetwork.fit(matForChar, corrMatForChar, 500000);
-
-            neuralNetworks.add(newNetwork);
-        } 
-
-        return neuralNetworks;*/
-
     }
 
     static List<NeuralNetwork> getListOfNetworks(List<Double> list, double[][] trainData){
@@ -210,6 +134,8 @@ public class Server{
 
             double[][] matForChar = getMatrixForCharity(list.get(i),trainData);
             double[][] corrMatForChar = getCorrOutForCharity(list.get(i),trainData);
+
+            //System.out.println(matForChar[0].length + " , " + corrMatForChar[0].length);
 
             NeuralNetwork newNetwork = new NeuralNetwork(5,20,1);
             newNetwork.fit(matForChar, corrMatForChar, 2500000);
@@ -225,23 +151,54 @@ public class Server{
 
         List<Double> list = new ArrayList<Double>(); 
 
-        for(int i=0; i<Data.length; i++){
+        try{
+			
+		    BufferedReader br = new BufferedReader(new FileReader(new File("charID.txt")));
+			
+		    String line;
 
-            boolean found = false;
+		    int j = 0;
 
-			for(int j=0; j<list.size(); j++){
-                if(list.get(j)==Data[i][0]){
-                    found = true;
-                }
+		    while((line = br.readLine()) != null){
+
+                String[] split = line.split(",");
+
+                list.add(Double.parseDouble(split[1]));
+
             }
 
-            if(found==false){
-                list.add(Data[i][0]);
-            }
-
-		}
+        }
+        catch(Exception e){}
 
         return list;
+
+    }
+
+    static List<String> getListOfCharitiesID(double[][] Data){
+
+        List<String> list = new ArrayList<String>(); 
+
+        try{
+			
+		    BufferedReader br = new BufferedReader(new FileReader(new File("charID.txt")));
+			
+		    String line;
+
+		    int j = 0;
+
+		    while((line = br.readLine()) != null){
+
+                String[] split = line.split(",");
+
+                list.add(split[0]);
+
+            }
+
+        }
+        catch(Exception e){}
+
+        return list;
+
     }
 
     static double[][] getMatrixForCharity(double ID, double[][] Data){

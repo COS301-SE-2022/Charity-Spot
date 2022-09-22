@@ -1,9 +1,9 @@
 class OrgInfo implements Comparable<OrgInfo>{
 
-    public double OrgID;
+    public String OrgID;
     public Double OrgScore;
 
-    OrgInfo(double OrgID, double OrgScore){
+    OrgInfo(String OrgID, double OrgScore){
         this.OrgID = OrgID;
         this.OrgScore = OrgScore;
     }

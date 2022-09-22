@@ -208,18 +208,119 @@ label.rglabel{
 
     /* --------FUTURE RESPONSIVNESS------ */
     @media (max-width: 800px) {
-      /* Smaller Resolution Desktops and Laptops */
+      .rgright-side{
+        width: 0%;
+        display: none;
+      }
+      .rgleft-side{
+        width: 84%;
+        height: 850px;
+      }
+      .register-contain{
+        height: auto;
+        flex-flow: wrap;
+      }
+      #rgwel-img-id{
+  
+        height: 0px;
+        width: 0%;
+        visibility: hidden;
+        /* object-fit: cover; */
+      }
+      .welcomeNote{
+        visibility: hidden;
+      }
+      #welid{
+        visibility: hidden;
+      }
   
   }
+  @media (max-width: 900px) {
+    .rgright-side{
+      width: 0%;
+      display: none;
+    }
+    .rgleft-side{
+      width: 84%;
+      height: 850px;
+    }
+    .register-contain{
+      height: auto;
+      flex-flow: wrap;
+    }
+    #rgwel-img-id{
+
+      height: 0px;
+      width: 0%;
+      visibility: hidden;
+      /* object-fit: cover; */
+    }
+    .welcomeNote{
+      visibility: hidden;
+    }
+    #welid{
+      visibility: hidden;
+    }
+
+}
   @media (max-width: 650px) {
-      /* Smaller devices */
+
+    .rgright-side{
+      width: 0%;
+      display: none;
+    }
+    .rgleft-side{
+      width: 84%;
+      height: 750px;
+    }
+    .register-contain{
+      height: auto;
+      flex-flow: wrap;
+    }
+    #rgwel-img-id{
+
+      height: 0px;
+      width: 0%;
+      visibility: hidden;
+      /* object-fit: cover; */
+    }
+    .welcomeNote{
+      visibility: hidden;
+    }
+    #welid{
+      visibility: hidden;
+    }
     
   }
   @media (max-width: 450px) {
-      /* Even Smaller devices */
+    .rgright-side{
+      width: 0%;
+      display: none;
+    }
+    .rgleft-side{
+      width: 84%;
+      height: 750px;
+    }
+    .register-contain{
+      height: auto;
+      flex-flow: wrap;
+    }
+    #rgwel-img-id{
+
+      height: 0px;
+      width: 0%;
+      visibility: hidden;
+      /* object-fit: cover; */
+    }
+    .welcomeNote{
+      visibility: hidden;
+    }
+    #welid{
+      visibility: hidden;
+    }
     
   }
   @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-      /* Even Smaller devices */
+      
   
   }

@@ -15,6 +15,11 @@
     box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0);
   
 }
+#profChat{
+    margin-top: 15px;
+    height: 200px;
+    width: 200px;
+}
 .chatHistLeft{
   
     height: 250px;
@@ -26,7 +31,7 @@
 }
 .chatHistRight{
    
-    height: 250px;
+    height: 300px;
     width: 50%;
     /* background-color: rgb(222, 222, 222); */
     border-radius: 10px;
@@ -62,7 +67,7 @@
    margin: 10px;
 }
 #chatHistGo{
-    width: 25%;
+    width: 130px;
     background: #1458b3;
     color: #ffff;
     border: none;
@@ -80,23 +85,23 @@
 
  @media screen and (max-width: 600px) {
 
-    chatHist
+    .chatHist
     {
 
         height: 200px auto;
-        width: 70%;
+        width:90%;
       
       
     }
     .chatHistLeft{
       
-        height: 150px;
+        height: 200px;
         width: 100%;
 
     }
     .chatHistRight{
        
-        height: 250px;
+        height: 300px;
         width: 100%;
 
     }
@@ -122,7 +127,7 @@
     }
 
 }
-
+  /* --------FUTURE RESPONSIVNESS------ */
 @media (max-width: 800px) {
     /* Smaller Resolution Desktops and Laptops */
   
@@ -131,7 +136,46 @@
     /* Smaller devices */
 }
 @media (max-width: 450px) {
-    /* Even Smaller devices */
+    .chatHist
+    {
+
+        height: 200px auto;
+        width:90%;
+      
+      
+    }
+    .chatHistLeft{
+      
+        height: 200px;
+        width: 100%;
+
+    }
+    .chatHistRight{
+       
+        height: 300px;
+        width: 100%;
+
+    }
+    .chatcov{
+            border-radius: 10px;
+            margin: 15px;
+            border:  #bdbdbd ;
+            border-width: 1px;
+
+            height: 300px auto;
+
+    }
+
+    #chatprofile-pic
+    {
+        height: 110px;
+        width: 110px;
+       margin: 10px;
+    }
+    #chatHistGo{
+        width: 135px;
+
+    }
   
 }
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
@@ -139,20 +183,3 @@
  
 }
 
-  /* --------FUTURE RESPONSIVNESS------ */
-  @media (max-width: 800px) {
-    /* Smaller Resolution Desktops and Laptops */
-
-}
-@media (max-width: 650px) {
-    /* Smaller devices */
-  
-}
-@media (max-width: 450px) {
-    /* Even Smaller devices */
-  
-}
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    /* Even Smaller devices */
-
-}

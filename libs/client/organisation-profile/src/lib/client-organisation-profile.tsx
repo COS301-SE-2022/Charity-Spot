@@ -513,6 +513,7 @@ export function Profile() {
                         <input
                           type="text"
                           placeholder="comment"
+                          id ="commenter"
                           onChange={(e) => {
                             setComment(e.target.value);
                           }}
@@ -697,7 +698,7 @@ export function Profile() {
                   </div>*/}
                 <div className="editor-right" id="editRightDiv">
                   <label className="rglabel">
-                    Only Enter the fields you would like to update:
+                    {/* <b>Only Enter the fields you would like to update:</b> */}
                   </label>
                   <br />
                   <br />
@@ -705,7 +706,7 @@ export function Profile() {
                   <div className="updater">
                     <form id="edit-Form">
                       <div className="user-box1">
-                        <label className="rglabel">Name</label>
+                        <label className="rglabel">Update Name</label>
                         <input
                           className="in1"
                           type="text"
@@ -719,7 +720,7 @@ export function Profile() {
                       </div>
 
                       <div className="user-box2">
-                        <label className="rglabel">Location</label>
+                        <label className="rglabel">Update Location</label>
                         <button
                           type="button"
                           id="locButton"
@@ -733,7 +734,7 @@ export function Profile() {
                       </div>
 
                       <div className="user-box3">
-                        <label className="rglabel">Password</label>
+                        <label className="rglabel">Update Password</label>
                         <input
                           className="in4"
                           type="password"
@@ -747,7 +748,7 @@ export function Profile() {
                       </div>
 
                       <div className="user-box4">
-                        <label className="rglabel">Password</label>
+                        <label className="rglabel">Confirm Updated Password</label>
                         <input
                           className="in5"
                           type="password"
@@ -765,7 +766,7 @@ export function Profile() {
                 <div className="editor-left" id="editLeftDiv">
                   <div className="edit_Picture">
                     <label className="rglabel">
-                      Upload a new profile picture:
+                      {/* Upload a new profile picture: */}
                     </label>
 
                     <img src={imageURL} alt="" id="editor-pic" />

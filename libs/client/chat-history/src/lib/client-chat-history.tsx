@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom'
 
 import {setCookie} from 'typescript-cookie'
+import {FaInbox} from 'react-icons/fa';
 
 import { host } from '../../../../../config'
 
@@ -109,7 +110,7 @@ export function ClientChatHistory() {
       <br/>
       <div className='title'>
         <h2>Your active chat sessions:</h2>
-        { empty &&<h3 style={{'color':'#6d6d6e'}}> You have no active chats!</h3>}
+        { empty &&<h1 style={{'color':'#6d6d6e'}}><br/><br/><br/> You have no active chats <FaInbox/></h1>}
       </div>
 
       {activeChats.map(function(A){
@@ -119,7 +120,7 @@ export function ClientChatHistory() {
             <br/>
               <div className='chatHist'>
                 <div className='chatHistLeft'>
-                <img src={A.orgPic} className="delSched"></img>
+                <img id ="profChat"src={A.orgPic} className="delSched"></img>
                 
                 </div>
                 <div className='chatHistRight'>
