@@ -12,13 +12,10 @@ class Client extends Thread{
     private BufferedReader inputS;
     private PrintWriter outS;
     private List<NeuralNetwork> nn;
-    private List<Double> Charities;
+    private List<String> Charities;
 
     private int NumOfCharities;
 
-    //Arrays for values and corresponding normalized value
-    private int[] inputID;
-    private double[] normID;
 
     private int[] inputDOW;
     private double[] normDOW;
@@ -36,12 +33,7 @@ class Client extends Thread{
     private double[] normWEA;
 
 
-
-    //randomly generated id's for charities
-    private int[] charID;
-    private double[] charIDR;
-
-    Client(Socket clientSocket, BufferedReader inputS,  PrintWriter outS, List<NeuralNetwork> nn, List<Double> Charities){
+    Client(Socket clientSocket, BufferedReader inputS,  PrintWriter outS, List<NeuralNetwork> nn, List<String> Charities){
 
         this.clientSocket = clientSocket;
         this.inputS = inputS;
@@ -65,29 +57,8 @@ class Client extends Thread{
 
             }
 
-
-                //Vals for ID
-                this.inputID = new int[this.NumOfCharities];
-                this.normID = new double[this.NumOfCharities];
-
-                int i = 0;
-
-                BufferedReader br = new BufferedReader(new FileReader(new File("normalizedOrgID.txt")));
-
-                while((line = br.readLine()) != null){
-
-                    String[] split = line.split(",");
-
-                    this.inputID[i] = Integer.parseInt(split[0]);
-                    this.normID[i] = Double.parseDouble(split[1]);
-
-                    i++;
-
-                }
-
-
                 //Vals for Day of week
-                i = 0;
+                int i = 0;
             
                 this.inputDOW = new int[7];
                 this.normDOW = new double[7];
@@ -127,8 +98,6 @@ class Client extends Thread{
                 //Vals for location
                 i = 0;
             
-                //this.inputLOC = new int[6];
-                //this.normLOC = new double[6];
                 this.inputLOC = new int[9];
                 this.normLOC = new double[9];
 
@@ -183,27 +152,6 @@ class Client extends Thread{
 
                 }
 
-                //Random id's generated for charities
-                i = 0;
-            
-                this.charID = new int[20];
-                this.charIDR = new double[20];
-
-                brID = new BufferedReader(new FileReader(new File("charID.txt")));
-
-                while((line = brID.readLine()) != null){
-
-                    String[] split = line.split(",");
-
-                    this.charID[i] = Integer.parseInt(split[0]);
-                    this.charIDR[i] = Double.parseDouble(split[1]);
-
-                    i++;
-
-                }
-
-
-
         }
         catch(Exception e){e.printStackTrace();}
 
@@ -213,13 +161,6 @@ class Client extends Thread{
     double getNormVal(int input, char type){
 
         switch(type){
-            case 'a':
-                for(int i=0; i<inputID.length; i++){
-                    if(inputID[i] == input){
-                        return this.normID[i];
-                    }
-                }
-                break;
 
             case 'b':
                 for(int i=0; i<inputDOW.length; i++){
@@ -261,14 +202,6 @@ class Client extends Thread{
                 }
                 break;
 
-            case 'g':
-                for(int i=0; i<charID.length; i++){
-                    if(charID[i] == input){
-                        return this.charIDR[i];
-                    }
-                }
-                break;
-
             default:
                 return 0;
             
@@ -277,21 +210,7 @@ class Client extends Thread{
 
         return 0;
 
-    }
-
-    double getCharRID(int input){
-
-        for(int i=0; i<this.NumOfCharities; i++){
-
-            if(this.charID[i] == input){
-                return this.charIDR[i];
-            }
-        }
-
-        return 0;
-    }
-
-        
+    }        
     
 
     @Override
@@ -299,7 +218,7 @@ class Client extends Thread{
 
             try{
 
-                System.out.println("New thread created");
+                System.out.println("New thread created\n");
 
                 //Client will send date, type of item, location of donation
 
@@ -324,7 +243,6 @@ class Client extends Thread{
                 LocalDate dateT = LocalDate.parse(dateString, formatter);
                 double dayOfWeek = dateT.getDayOfWeek().getValue();
 
-                //System.out.println(dateT.toString());
 
                 //Get the item Type
                 double itemType = Double.parseDouble(split[1]);
@@ -333,9 +251,6 @@ class Client extends Thread{
                 double location = Double.parseDouble(split[2]);
 
 
-                
-
-                //System.out.println(getNormVal((int)dayOfWeek,'b')+","+getNormVal((int)itemType,'c')+","+getNormVal((int)location,'d')+","+getNormVal(1,'e')+","+getNormVal(1,'f'));
                 double[] inVals = new double[]{getNormVal((int)dayOfWeek,'b'),getNormVal((int)itemType,'c'),getNormVal((int)location,'d'),getNormVal(1,'e'),getNormVal(1,'f')};
 
                 List<OrgInfo> outputList = new ArrayList<OrgInfo>();
@@ -353,23 +268,23 @@ class Client extends Thread{
 
                 double topScore = outputList.get(0).OrgScore;
 
+                List<OrgInfo> retList = new ArrayList<OrgInfo>();
+
                 for(int i=0; i<outputList.size(); i++){
-                    if((topScore - outputList.get(i).OrgScore) > 0.2){
-                        outputList.remove(i);
+                    if(((topScore - outputList.get(i).OrgScore) < 0.3) && (outputList.get(i).OrgScore > 0.05)){
+                        retList.add(outputList.get(i));
                     }
                 }
 
-                for(int i=0; i<outputList.size(); i++){
-                    outputList.get(i).OrgScore = Math.round(outputList.get(i).OrgScore*100.0)/100.0;
+                for(int i=0; i<retList.size(); i++){
+                    retList.get(i).OrgScore = Math.round(retList.get(i).OrgScore*100.0)/100.0;
                 }
 
                 String returnStr = "{" + '"' + "results" + '"' + " : [\n";
 
-                //outputList.get(i).OrgScore 
-
-                for(int i=0; i<outputList.size(); i++){
-                    int oID = (int)outputList.get(i).OrgID;
-                    returnStr = returnStr + "{" + '"' + "OrgID" + '"'+" : " + '"' + oID + '"'+", " + '"' + "Result" + '"' +" : " + '"' + outputList.get(i).OrgScore + '"' + " },\n";
+                for(int i=0; i<retList.size(); i++){
+                    String oID = retList.get(i).OrgID;
+                    returnStr = returnStr + "{" + '"' + "OrgID" + '"'+" : " + '"' + oID + '"'+", " + '"' + "Result" + '"' +" : " + '"' + retList.get(i).OrgScore + '"' + " },\n";
                 }
 
                 returnStr = returnStr.substring(0, returnStr.length() - 2);
@@ -377,12 +292,11 @@ class Client extends Thread{
                 returnStr = returnStr + "\n]\n}";
 
                 System.out.println("HTTP/1.1 200 OK\n"+
-                        "Content-Type: application/json\n\n"+ returnStr);
+                        "Content-Type: application/json\n\n"+ returnStr + "\n");
                 
 
                 outS.println("HTTP/1.1 200 OK\n"+
                         "Content-Type: application/json\n\n"+ returnStr);
-                        //"{"+'"'+"success"+'"'+":" + '"'+"true"+'"'+"}");
 
                 clientSocket.close();
 
@@ -392,4 +306,5 @@ class Client extends Thread{
             return;
 
     }
+    
 }
