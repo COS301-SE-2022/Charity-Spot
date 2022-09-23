@@ -22,6 +22,8 @@ import CommentBlock from './commentBlock';
 import { storage, randomStringGenerator } from 'libs/api/shared/services/prisma/src/lib/FirebaseRepository.repository';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 
+import { host } from '../../../../../config'
+
 
 
 const IdCookie = getCookie('ID');
@@ -42,9 +44,7 @@ async function APICall(usrID: string) {
 
   let All_data = '';
 
-  console.log(query);
-
-  await fetch('http://localhost:3333/graphql', {
+  await fetch(`http://${host.host}:3333/graphql`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -56,8 +56,6 @@ async function APICall(usrID: string) {
   })
     .then((r) => r.json())
     .then((data) => (All_data = data));
-
-  console.log(All_data);
 
   return JSON.stringify(All_data);
 }
@@ -92,9 +90,7 @@ async function API_EDIT_Call(
 
   let act_data = undefined;
 
-  console.log("testtt");
-
-  await fetch('http://localhost:3333/graphql', {
+  await fetch(`http://${host.host}:3333/graphql`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -126,9 +122,6 @@ async function commentRatingAPICall(comment: any, rating: any) {
   let ID = getCookie('ID');
   let foreignID = getCookie('foreignID');
 
-  console.log(ID);
-  console.log(foreignID);
-
   const query = `query{
     addCommentRating(
       assist_id: "${foreignID}",
@@ -142,7 +135,7 @@ async function commentRatingAPICall(comment: any, rating: any) {
 
   let act_data = undefined;
 
-  await fetch('http://localhost:3333/graphql', {
+  await fetch(`http://${host.host}:3333/graphql`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -155,7 +148,6 @@ async function commentRatingAPICall(comment: any, rating: any) {
     .then((r) => r.json())
     .then((data) => (act_data = data));
 
-  console.log(act_data);
 }
 
 async function getType(usrID: string) {
@@ -167,7 +159,7 @@ async function getType(usrID: string) {
 
   let All_data = '';
 
-  await fetch('http://localhost:3333/graphql', {
+  await fetch(`http://${host.host}:3333/graphql`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -290,8 +282,6 @@ export function Profile() {
     if(imageUpload){
       profilePictureLink = `${await uploadProfilePicture(imageUpload)}`;
     }
-
-    console.log(profilePictureLink);
 
     if (
       NewOName == 'undefined' &&
@@ -435,9 +425,6 @@ export function Profile() {
     const reference = ref(storage, `profilePictures/${await randomStringGenerator() + '_pp_' + pic.name}`);
     await uploadBytes(reference, pic);
     const downloadLink = await getDownloadURL(reference);
-
-    console.log("eee");
-    console.log(downloadLink);
 
     setOPicture(downloadLink);
   }

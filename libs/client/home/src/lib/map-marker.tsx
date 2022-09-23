@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 
 import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
 
+import { host } from '../../../../../config'
+
 const joburg = {
     lat: -26.2041,
     lng: 28.0473
@@ -59,7 +61,7 @@ async function APICall(){
   
          let orgs = "";
     
-         await fetch('http://localhost:3333/graphql', {
+         await fetch(`http://${host.host}:3333/graphql`, {
                method: 'POST',
                headers: {
                  'Content-Type': 'application/json',
@@ -75,9 +77,6 @@ async function APICall(){
            let orgString = JSON.stringify(orgs);
            let orgFin = JSON.parse(orgString);
 
-           //console.log(orgFin);
-
-           console.log(orgFin.data.GetAllItems);
   
            return orgFin.data.GetAllItems;
   
@@ -97,9 +96,6 @@ export function MapMarker(props : any){
         //let newItemss = await APICall();
 
         await APICall().then(async newItems => {
-            //console.log(newItems);
-
-            console.log(props);
 
             for(let i=0; i< newItems.length; i++){
 
@@ -200,137 +196,10 @@ export function MapMarker(props : any){
 
             }
 
-            console.log(MarkerL);
             addMarkerO(MarkerL);
-
-            //setTimeout(() => {console.log(MarkerO);}, 2000)
             
         })
 
-        //console.log(props);
-        //console.log(newItemss);
-
-        //for(let i=0; i< newItemss.length; i++){
-
-            /*if(newItemss[i].Location == "Pretoria"){
-                newItemss[i].Coord = pretoria;
-            }
-            else if(newItemss[i].Location == "Johannesburg"){
-                newItemss[i].Coord = joburg;
-            }
-            else if(newItemss[i].Location == "Cape Town"){
-                newItemss[i].Coord = capetown;
-            }
-            else if(newItemss[i].Location == "Bloemfontein"){
-                newItemss[i].Coord = bloemfontein;
-            }
-            else if(newItemss[i].Location == "Polokwane"){
-                newItemss[i].Coord = polokwane;
-            }
-            else if(newItemss[i].Location == "Durban"){
-                newItemss[i].Coord = durban;
-            }
-            else{
-                newItemss[i].Coord = pretoria;
-            }*/
-
-            //console.log(props.state)
-
-            //Location filter
-
-            /*if(props.state[0][0] == false && newItemss[i].Location == "Pretoria"){
-                continue;
-            }
-
-            if(props.state[0][1] == false && newItemss[i].Location == "Johannesburg"){
-                continue;
-            }
-
-            if(props.state[0][2] == false && newItemss[i].Location == "Durban"){
-                continue;
-            }
-
-            if(props.state[0][3] == false && newItemss[i].Location == "Cape Town"){
-                continue;
-            }
-
-            if(props.state[0][4] == false && newItemss[i].Location == "Polokwane"){
-                continue;
-            }
-
-            if(props.state[0][5] == false && newItemss[i].Location == "Bloemfontein"){
-                continue;
-            }*/
-
-            //Type Filter
-
-            /*if(props.state[1][0] == false && newItemss[i].Type == "CLOTHING"){
-                continue;
-            }
-            if(newItemss[i].Type == "CLOTHING"){
-                newItemss[i].colour = markerColoursS[0];
-
-            }
-
-            if(props.state[1][1] == false && newItemss[i].Type == "FOOD"){
-                continue;
-            }
-            if(newItemss[i].Type == "FOOD"){
-                newItemss[i].colour = markerColoursS[1];
-            }
-
-            if(props.state[1][2] == false && newItemss[i].Type == "STATIONARY"){
-                continue;
-            }
-            if(newItemss[i].Type == "STATIONARY"){
-                newItemss[i].colour = markerColoursS[2];
-            }
-
-            if(props.state[1][3] == false && newItemss[i].Type == "HYGIENE"){
-                continue;
-            }
-            if(newItemss[i].Type == "HYGIENE"){
-                newItemss[i].colour = markerColoursS[3];
-            }
-
-            if(props.state[1][4] == false && newItemss[i].Type == "KITCHEN"){
-                continue;
-            }
-            if(newItemss[i].Type == "KITCHEN"){
-                newItemss[i].colour = markerColoursS[4];
-            }
-
-            if(props.state[1][5] == false && newItemss[i].Type == "FURNITURE"){
-                continue;
-            }
-            if(newItemss[i].Type == "FURNITURE"){
-                newItemss[i].colour = markerColoursS[5];
-            }
-
-            //Prediction Filter
-
-            if(props.state[2][0] == false ){//&& newItemss[i].Type == "CLOTHING"){
-                let currentString = newItemss[i].colour;
-                let newString = currentString.substring(0,currentString.length - 10) + "blank.png";
-                newItemss[i].colour = newString;
-                //continue;
-            }
-
-            if(props.state[2][1] == false ){//&& newItemss[i].Type == "FOOD"){
-                //continue;
-                let currentString = newItemss[i].colour;
-                let newString = currentString.substring(0,currentString.length - 10) + "circle.png";
-                newItemss[i].colour = newString;
-            }*/
-            
-            
-            //MarkerL.push(newItemss[i]);
-        //}
-
-        //console.log(newItemss);
-
-        //addMarkerO(MarkerL);
-        //console.log(MarkerO)
 
     }
 

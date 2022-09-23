@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 
 import {Link} from 'react-router-dom'
 
+import { host } from '../../../../../config'
 
 import {
   FaHistory,
@@ -32,9 +33,7 @@ async function getDelScheduleApi(query: string) {
         }
       }`;*/
 
-  console.log(query);
-
-  await fetch('http://localhost:3333/graphql', {
+  await fetch(`http://${host.host}:3333/graphql`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -46,8 +45,6 @@ async function getDelScheduleApi(query: string) {
   })
     .then((r) => r.json())
     .then((data) => (result = data));
-
-  console.log(result);
 
   return result;
 }
@@ -148,8 +145,6 @@ export function ClientDeliveryScheduleInfo() {
 
       let userName: any = await getDelScheduleApi(NameQuery(finRes[i].id_1));
 
-      console.log(userName);
-
       userName = userName.data.getChatName.Message;
 
       let itemID = finRes[i].itemID;
@@ -161,8 +156,6 @@ export function ClientDeliveryScheduleInfo() {
       let locationT = finRes[i].location.split(',');
 
       let location = locationT[0] + ' , ' + locationT[1];
-
-      console.log(finRes);
 
       let date = finRes[i].date;
 

@@ -6,8 +6,10 @@ import { useEffect, useState } from 'react';
 
 import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
 
+import { host } from '../../../../../config'
+
 function getLocation(location : any){
-      //let //locations = ["Pretoria", "Johannesburg", "Cape Town", "Bloemfontein", "Polokwane", "Durban"]
+
       let locations = ["Gauteng","Kwazulu-Natal","Limpopo","Western Cape","Northern Cape","North West","Eastern Cape","Free State","Mpumalanga"]
 
       for(let i=0; i<location.length; i++){
@@ -41,9 +43,8 @@ async function APICall(){
             }
       }`;*/
 
-      //let date = getCookie("date");
-      //month - day
-      let date = "01-03";
+      
+      let date = "03-01";
       let itemType = getItem(getCookie("type"));
       let location = getLocation(getCookie("location"));
 
@@ -54,12 +55,10 @@ async function APICall(){
             }
       }`;
 
-      console.log(query);
-
 
       let result = "";
 
-      await fetch('http://localhost:3333/graphql', {
+      await fetch(`http://${host.host}:3333/graphql`, {
                method: 'POST',
                headers: {
                  'Content-Type': 'application/json',
@@ -75,8 +74,6 @@ async function APICall(){
            let resultString = JSON.stringify(result);
            let resultFin = JSON.parse(resultString);
 
-           console.log(resultFin);
-
            return resultFin;
 
 }
@@ -87,7 +84,10 @@ export function ClientItemRequestResults() {
 
       const [result, addResult] = useState<any[]>([]);
 
-      const [AIoffLine, setAIoffLine] = useState('');
+      const [AIoffLine, setAIoffLine] = useState(false);
+
+      const [notFound, setnotFound] = useState(false);
+
 
       class ResultV {
             ResultID : string = "";
@@ -96,18 +96,20 @@ export function ClientItemRequestResults() {
 
       const updateResult = async () => {
 
-            setAIoffLine('');
 
             let resultTemp = await APICall();
 
             if(resultTemp.data == null){
-                  setAIoffLine('AI currently offline');
+                  setAIoffLine(true);
                   return;
             }
 
             let resultArr = resultTemp.data.getAIPredic;
 
-            console.log(resultArr);
+            if(resultArr.length == 0){
+                  setnotFound(true);
+                  return;
+            }
 
             let results : any = [];
 
@@ -135,7 +137,8 @@ export function ClientItemRequestResults() {
       <br/>
       <h2 className='rqq'>Suggested Organizations</h2>
 
-      <h1 style={{'color':'#6d6d6e'}}><br/> <br/><br/>{AIoffLine} <FaPowerOff/></h1>
+      { AIoffLine &&<h1 style={{'color':'#6d6d6e'}}><br/> <br/><br/>AI currently offline <FaPowerOff/></h1>}
+      { notFound &&<h1 style={{'color':'#6d6d6e'}}><br/> <br/><br/>The AI was unable to find a charity able to help :(</h1>}
 
       <div className='HoldAll'>
 

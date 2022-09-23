@@ -1,0 +1,22 @@
+FROM ubuntu
+
+RUN apt -y update
+
+RUN apt -y install curl
+
+RUN apt -y install npm
+RUN npm cache clean -f
+RUN npm install -g n
+RUN n stable
+
+COPY ["/dist/apps/client", "/apps/client"]
+
+COPY ["/tools/client_server/server.js", "/apps"]
+
+WORKDIR /apps
+
+RUN npm install express && npm install path
+
+COPY . .
+
+CMD node server.js

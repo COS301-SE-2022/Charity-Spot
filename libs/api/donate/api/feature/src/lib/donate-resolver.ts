@@ -20,7 +20,7 @@ export class DonateResolver {
         @Args("picture") picBase64: string,
         @Args("pic_format") format: string
     ) {
-        console.log(category);
+        
         const Category = (category) : catagory => {
             switch(category) {
                 case 'Food':
@@ -73,8 +73,6 @@ export class DonateResolver {
 
              let downLink = await this.FirebaseService.getURLByFilePath(imgName);
 
-             console.log(downLink);
-
          }
          else{
              await this.DonateService.setItemPicName(id, name, "undefined");
@@ -98,9 +96,6 @@ export class DonateResolver {
         let downLink = await this.FirebaseService.getURLByFilePath(imgDirec.Name);
 
         imgDirec.Name = downLink;
-
-        console.log("testtt");
-        console.log(imgDirec.Name);
 
         return imgDirec;
 

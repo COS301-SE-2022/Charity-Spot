@@ -1,0 +1,28 @@
+FROM ubuntu
+
+RUN apt -y update
+
+RUN apt -y install curl
+
+RUN apt -y install npm
+RUN npm cache clean -f
+RUN npm install -g n
+RUN n stable
+
+RUN npm -y install --global yarn
+
+WORKDIR /
+
+COPY ["./prisma/*", "./"]
+
+COPY ["./dist/apps/api/main.js", "./dist/apps/api/package.json", ".env", "./"]
+
+RUN yarn add prisma && yarn add @nestjs/config && yarn add @nestjs/graphql && yarn add @nestjs/apollo
+
+RUN yarn install
+
+RUN yarn prisma generate
+
+COPY . .
+
+CMD yarn prisma migrate reset --force && yarn prisma migrate dev && node main.js
