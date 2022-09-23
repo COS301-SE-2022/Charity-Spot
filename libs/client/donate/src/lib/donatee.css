@@ -622,7 +622,7 @@ max-height: 450px;
     }
     .collapseright{
         width: 100%;
-        
+        overflow-y: scroll;
         border-top-left-radius: 0px ;
         border-top-right-radius: 0px ; 
         border-bottom-left-radius: 0px ;
@@ -687,7 +687,7 @@ max-height: 450px;
     }
     .collapseright{
         width: 100%;
-        
+        overflow-y: scroll;
         border-top-left-radius: 0px ;
         border-top-right-radius: 0px ; 
         border-bottom-left-radius: 0px ;

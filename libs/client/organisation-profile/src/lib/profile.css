@@ -592,6 +592,7 @@ textarea {
     .wrapperProfile nav{
         width: 100%;
     }
+    
 
 }
   
@@ -832,6 +833,14 @@ input.in5:hover{
     }
 }
 @media screen and (max-width: 600px) {
+    .wrapperProfile{
+        /* max-width: 1200px; */
+        width: 95%;
+        margin: 1px auto;
+        padding: 1px;
+      
+      
+      }
     #editor-pic
    {
        height: 150px;
@@ -857,7 +866,7 @@ input.in5:hover{
     transition: 0.3s ease-in;
     /*color: rgb(184, 181, 90);*/
     color: #c59b08;    
-    font-size: 40px;
+    font-size: 25px;
 }
 
 /**/
@@ -910,6 +919,14 @@ input.in5:hover{
  
 }
 @media (max-width: 450px) {
+    .wrapperProfile{
+        /* max-width: 1200px; */
+        width: 85%;
+        margin: 1px auto;
+        padding: 1px;
+      
+      
+      }
     #editor-pic
     {
         height: 150px;
@@ -939,7 +956,7 @@ input.in5:hover{
         transition: 0.3s ease-in;
         /*color: rgb(184, 181, 90);*/
         color: #c59b08;    
-        font-size: 40px;
+        font-size: 25px;
     }
     
     /**/
