@@ -199,9 +199,9 @@ export function ClientChat() {
         <div id="b1" />
 
       </div>      
-
+    <div>
       <input id="inputBoxM" className={styles["myText"]}type="text" name="fname" placeholder='Type a message..' onChange={(e) => {setInputVal(e.target.value)}}/> <button className={styles["sndBT"]} onClick={()=>{sendMessage()}}type="button">Send</button> <br />
-
+      </div>
     </div>
   );
 }
