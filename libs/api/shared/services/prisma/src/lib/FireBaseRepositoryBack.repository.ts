@@ -23,10 +23,6 @@ export class FirebaseService {
 
         const fileRef = ref(this.storage, idOfItem);
 
-        console.log(idOfItem);
-
-        console.log(base64);
-
         await uploadString(fileRef, base64.split(',')[1], 'base64').then( async (snapshot) => {
             console.log('Successful upload');
           }).catch( (err) =>{

@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 
 import {setCookie} from 'typescript-cookie';
 
+import { host } from '../../../../../config'
+
 async function APICall(ID : any){
 
     const query = `query{ 
@@ -16,7 +18,7 @@ async function APICall(ID : any){
 
     let result = "";
 
-    await fetch('http://localhost:3333/graphql', {
+    await fetch(`http://${host.host}:3333/graphql`, {
              method: 'POST',
              headers: {
                'Content-Type': 'application/json',
@@ -31,8 +33,6 @@ async function APICall(ID : any){
     
          let resultString = JSON.stringify(result);
          let resultFin = JSON.parse(resultString);
-
-         console.log(resultFin);
 
          return resultFin.data.getOrgInfo;
 
@@ -67,20 +67,21 @@ export function ResultBlock(props : any){
         rating[OrgInfo.Rating - 1] = true;
         setAvgRating(rating);
 
+
         let prob = "Moderate Chance";
-        if(props.inState[0].ResultProb > 0.9){
+        setProbStyle("probR");
+
+        if(props.inState[1] < 3){
           prob =  "High Chance"
           setProbStyle("probG");
         }
-        console.log(prob);
+  
         setOrgProb(prob);
     }
 
     useEffect(() => {
         
         getResultInfo();
-
-        //console.log(props.inState[0].ResultID);
 
         if(props.inState[1]%3 == 0){
             setClassName("leftHolda");

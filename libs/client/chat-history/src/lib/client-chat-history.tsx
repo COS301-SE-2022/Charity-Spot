@@ -9,6 +9,8 @@ import {Link} from 'react-router-dom'
 import {setCookie} from 'typescript-cookie'
 import {FaInbox} from 'react-icons/fa';
 
+import { host } from '../../../../../config'
+
 async function getActiveChatsAPI(){
 
   let result = null;
@@ -28,10 +30,7 @@ async function getActiveChatsAPI(){
         }
       }`;
 
-      console.log(query);
-
-
-      await fetch('http://localhost:3333/graphql', {
+      await fetch(`http://${host.host}:3333/graphql`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -46,8 +45,6 @@ async function getActiveChatsAPI(){
 
       const resultString = JSON.stringify(result);
       const resultFin = JSON.parse(resultString);
-
-      console.log(resultFin);
 
       return resultFin.data.RetrieveThreads.Threads;
 
@@ -74,8 +71,6 @@ export function ClientChatHistory() {
   async function getActiveChats(){
 
     let active = await getActiveChatsAPI();
-
-    console.log(active);
 
     if(active.length == 0){
       setEmpty(true);

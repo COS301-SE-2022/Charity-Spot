@@ -7,6 +7,8 @@ import { FaBell, FaSignOutAlt } from 'react-icons/fa';
 import Button from 'react-bootstrap/Button';
 import { getCookie, removeCookie} from 'typescript-cookie'
 
+import { host } from '../../../../config'
+
 const ID = getCookie('ID');
 const ID_EXT = getCookie('ID_EXT');
 
@@ -18,7 +20,7 @@ async function APICall () {
 
   let result = null;
 
-  await fetch('http://localhost:3333/graphql', {
+  await fetch(`http://${host.host}:3333/graphql`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

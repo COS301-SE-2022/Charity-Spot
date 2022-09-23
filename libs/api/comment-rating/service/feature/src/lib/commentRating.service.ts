@@ -44,8 +44,6 @@ export class CommentRatingService {
             });
 
         });
-
-        console.log(temp);
         
         return temp;
     }
@@ -104,8 +102,6 @@ export class CommentRatingService {
         const returnable = new CommentRatingEntity();
         //let data = await this.CommentRatingRepository.AddRating(AssistID, NeedID, Comment, Rating);
 
-        //console.log(data);
-
         return await this.CommentRatingRepository.AddRating(AssistID, NeedID, Comment, Rating).then((data)=>{
 
             returnable.AssistID = data.OrgID;
@@ -124,12 +120,8 @@ export class CommentRatingService {
             returnable.Ratings = [data.Rating];
             returnable.Comments = [data.Comment];
 
-            console.log("cas1");
-
             return returnable;
         }
-
-        console.log("testttttt");
         
         return null;*/
     }

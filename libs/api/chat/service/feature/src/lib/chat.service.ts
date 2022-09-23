@@ -109,7 +109,6 @@ export class ChatService {
                     for(const i of data) {
                         const ik = new ChatEntity();
                         const user : any = await this.ChatRepository.GetThreadList(i.ClientID);
-                        console.log(user);
                         //ik.Sender = user.email;
                         //ik.Reciever = "";
                         //ik.Message = i.ClientID;
@@ -143,8 +142,6 @@ export class ChatService {
 
                 break;
         }
-
-        //console.log(returnableV);
 
         return returnableV
     }

@@ -30,6 +30,18 @@ try:
     cursor.execute(postgres_delete_query)
     connection.commit()
 
+    postgres_delete_query = "DELETE FROM public.rating;"
+    cursor.execute(postgres_delete_query)
+    connection.commit()
+
+    postgres_delete_query = "DELETE FROM public.chat_history;"
+    cursor.execute(postgres_delete_query)
+    connection.commit()
+
+    postgres_delete_query = "DELETE FROM public.delivery;"
+    cursor.execute(postgres_delete_query)
+    connection.commit()
+
     #First add locations to Address table
     postgres_insert_query = "INSERT INTO public.address (address_id, address, city, province) VALUES (%s,%s,%s,%s);"
 

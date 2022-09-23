@@ -1,5 +1,6 @@
 import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
 import Navigation from './Navigation';
+import {useEffect} from 'react'
 
 import {ClientLogin} from '@charity-spot/client/login';
 import {Register} from '@charity-spot/client/registration';
@@ -14,30 +15,43 @@ import {ClientChatHistory} from '@charity-spot/client/chat-history'
 import {ClientDeliveryScheduleInfo} from '@charity-spot/client/delivery-schedule-info'
 import {ClientNotification} from '@charity-spot/client/notification'
 
-import {LoadScript} from '@react-google-maps/api';
+import { Navigate } from 'react-router-dom';
 
-import {APIKEYS} from '../../../../config';
+import { getCookie } from 'typescript-cookie'
 
 function App() {
+
+  function checkIfUserLogIn(){
+
+    const ID = getCookie('ID');
+
+    if(ID == undefined){
+      return false;
+    }
+
+    return true;
+  }
+
+  
   return (
     <div className="App">
       {/*<LoadScript googleMapsApiKey = {APIKEYS.GoogleMapsAPIKey}>*/}
       <Router>
       <Navigation/>
         <Routes>
-          <Route path ="/" element = { <ClientLogin/>}/>
+          <Route path ="/" element = {<ClientLogin/>} />
           <Route path = "/login" element = {<ClientLogin/>}/>
           <Route path = "/register" element ={<Register/>}/>
-          <Route path = "/profile" element ={<Profile/>}/>
-          <Route path = "/home" element ={<Home/>}/>
-          <Route path = "/donate" element = {<ClientDonate/>}/>
-          <Route path = "/chat" element = {<ClientChat/>}/>
-          <Route path = "/scheduleDelivery" element = {<ClientScheduleDelivery/>}/>
-          <Route path = "/itemRequest" element = {<ClientItemRequest/>}/>
-          <Route path = "/itemRequestResults" element = {<ClientItemRequestResults/>}/>
-          <Route path = "/chatSessions" element = {<ClientChatHistory/>}/>
-          <Route path = "/donationSchedule" element = {<ClientDeliveryScheduleInfo/>}/>
-          <Route path = "/notifications" element = {<ClientNotification/>}/>
+          <Route path = "/profile" element ={checkIfUserLogIn() ?<Profile/> : <Navigate replace to={'/login'}/>}/>
+          <Route path = "/home" element ={checkIfUserLogIn() ?<Home/> : <Navigate replace to={'/login'}/>}/>
+          <Route path = "/donate" element = {checkIfUserLogIn() ?<ClientDonate/> : <Navigate replace to={'/login'}/>}/>
+          <Route path = "/chat" element = {checkIfUserLogIn() ?<ClientChat/> : <Navigate replace to={'/login'}/>}/>
+          <Route path = "/scheduleDelivery" element = {checkIfUserLogIn() ?<ClientScheduleDelivery/> : <Navigate replace to={'/login'}/>}/>
+          <Route path = "/itemRequest" element = {checkIfUserLogIn() ?<ClientItemRequest/> : <Navigate replace to={'/login'}/>}/>
+          <Route path = "/itemRequestResults" element = {checkIfUserLogIn() ?<ClientItemRequestResults/> : <Navigate replace to={'/login'}/>}/>
+          <Route path = "/chatSessions" element = {checkIfUserLogIn() ?<ClientChatHistory/> : <Navigate replace to={'/login'}/>}/>
+          <Route path = "/donationSchedule" element = {checkIfUserLogIn() ?<ClientDeliveryScheduleInfo/> : <Navigate replace to={'/login'}/>}/>
+          <Route path = "/notifications" element = {checkIfUserLogIn() ?<ClientNotification/> : <Navigate replace to={'/login'}/>}/>
         </Routes>
       </Router>
       {/*</LoadScript>*/}

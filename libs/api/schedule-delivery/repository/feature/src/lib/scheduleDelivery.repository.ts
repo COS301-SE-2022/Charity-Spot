@@ -236,8 +236,6 @@ export class ScheduleDeliveryRepository {
   /////////
   async alertClient(orgID: string, clientID: string, itemID: string) {
 
-    console.log(orgID + " " + clientID + " " + itemID);
-
     const u = await this.prisma.delivery.updateMany({
       where:
       {
