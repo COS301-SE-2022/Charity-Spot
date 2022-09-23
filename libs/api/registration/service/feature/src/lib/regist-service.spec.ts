@@ -33,7 +33,7 @@ describe ( 'Registration Service', () => {
   });
 });
 
-  let resolver: RegistrationService;
+  /*let resolver: RegistrationService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -61,7 +61,7 @@ it('',async () => {
 });
 */
 
-it('Org does not exist',async () => {
+/*it('Org does not exist',async () => {
   jest
     .spyOn(resolver,'doesNotExist')
     .mockImplementation( (): Promise<boolean> => Promise.resolve(true));
@@ -98,7 +98,7 @@ it('Alter NGO Num',async () => {
 
 });*/
 
-it('Adds an org',async () => {
+/*it('Adds an org',async () => {
   jest
     .spyOn(resolver,'addOrg')
     //.mockImplementation( () => true);
@@ -274,5 +274,5 @@ describe('Adding a new picture', () => {
   });
 });
 
-  });
+  });*/
 
