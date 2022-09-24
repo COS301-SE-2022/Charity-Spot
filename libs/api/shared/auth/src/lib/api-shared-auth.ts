@@ -66,13 +66,13 @@ export function apiSharedAuth(): string {
     export async function validate(email: string) {
       const appEmail = await base_64_invert(process.env.APP_EMAIL);
       const appEmailPass = await base_64_invert(process.env.APP_EMAIL_PASSWORD);
-      let returnable: boolean;
+      const internal = await randomCode();
 
       const linker = nodemailer.createTransport({
         service: "gmail",
         auth: {
-          user: await base_64_invert(appEmail),
-          pass: await base_64_invert(appEmailPass)
+          user: appEmail,
+          pass: appEmailPass
         }
       });
 
@@ -80,25 +80,36 @@ export function apiSharedAuth(): string {
         from: appEmail,
         to: email,
         subject: `AUTHENTICATION - EMAIL VALIDATION PROCESS`,
-        text: `Requested code: ${await randomCode()}`
+        text: `Requested code: ${internal}`,
+        html: 
+          `<p>
+            <h1>DO NOT REPLY</h1>
+          </p>
+          <p style='font-size:1.3em'>
+            Requested code: <b>${internal}</b>
+          </p>
+          <p>
+            You have 5 minutes to return to the registration page and enter the above code, otherwise you will need to restart the registration process and request another code.
+          </p>
+          `
       };
 
-      linker.sendMail(actualEmail, (err) => {
-        if(err) {
-          console.log("THERE IS AN ERROR\n\n\n: " + err.message);
-          returnable = false;
-        } else {
-          console.log(`Email Sent Successfully`);
-          returnable = true;
-        }
-      });
-
-      return returnable;
+      return new Promise((resolve, reject)=>{
+        linker.sendMail(actualEmail, function (error, info){
+          if(error) {
+            console.log(`${error}: ${error.message}`);
+            resolve(false);
+          } else {
+            console.log(`Success: ${info.response}`);
+            resolve(true);
+          }
+        });
+      })
     }
 
   //email code
     async function randomCode() {
-      return internal;
+      return `0000000`;
     }
 
   //email_validation_2

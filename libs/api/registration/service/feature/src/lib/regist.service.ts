@@ -109,10 +109,10 @@ export class RegistrationService {
 	}
 
 	async validateEmail(email: string) {
-		return await validate(email);
+		return Boolean(await validate(email));
 	}
 
 	async checkCode(code: string) {
-		return await compareCodes(code);
+		return Boolean(await compareCodes(code));
 	}
 }
