@@ -35,6 +35,30 @@
 
 
 }
+
+input#commenter{
+    display: block;
+    border: none;
+    height: 2.5rem;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 1.5rem;
+    padding: 0.2rem 1rem;
+    color: gray;
+    transition: all 0.2s ease-in-out;
+    border-radius: 5px;
+}
+input#commenter:focus{
+    outline: none;
+    border: none;
+}
+input#commenter:hover{
+    box-shadow: 2px 2px 6px -1px black;    
+    outline: 0.5px solid #1458b3; 
+}
+textarea {
+    max-height: 150px;
+  }
 .user-left{
 
     /* background-color: rgb(228, 229, 230);  */
@@ -43,6 +67,7 @@
     box-sizing: border-box; 
     overflow-y: scroll;
 }
+
 .user-right{
 
     /* background-color: rgb(228, 229, 230);  */
@@ -53,9 +78,11 @@
 
 #profile-pic
 {
-    height: 110px;
-    width: 110px;
+    height: 140px;
+    width: 140px;
     padding: 15px;
+    border-radius: 50%;
+  
 }
 #logout1{
     width: 25%;
@@ -217,6 +244,7 @@
     display: inline-block;
 
     border: 2px solid #b0cbef;
+    
 }
 .headings{
     color: #1458b3;
@@ -396,6 +424,7 @@
    {
        height: 110px;
        width: 110px;
+       border-radius: 50%;
        /* border-top-left-radius: 10px;
        border-top-right-radius: 10px; */
    
@@ -428,12 +457,14 @@
 @media screen and (max-width: 600px) {
     #profile-pic
    {
-       height: 100px;
-       width: 100px;
+       height: 120px;
+       width: 120px;
        padding: 15px;
+       border-radius: 50%;
    }
    .profile-main{
        width: 90%;
+       height: auto;
    }
    .user-left{
        width: 100%;
@@ -441,16 +472,22 @@
        height: 370px;
    }
    .user-right{
-    height: 470px;
+    height: 570px;
    }
+   .rate:not(:checked) > label {
+    width:1.3em;
+    font-size:30px;   
+}
 
 }
 
 @media screen and (min-width: 1600px) {
     #profile-pic
     {
-        height: 120px;
-        width: 120px;
+        height: 180px;
+        width: 180px;
+        border-radius: 50%;
+        
     }        
     .profile-main{
         width: 100%;
@@ -555,6 +592,7 @@
     .wrapperProfile nav{
         width: 100%;
     }
+    
 
 }
   
@@ -699,10 +737,11 @@ input.in5:hover{
 
 #editor-pic
 {
-    height: 110px;
-    width: 110px;
+    height: 140px;
+    width: 140px;
     padding: 10px;
     margin-bottom: 1.5em;
+    border-radius: 50%;
 }
 
 
@@ -724,8 +763,8 @@ input.in5:hover{
 @media screen and (max-width: 1200px) {
     #editor-pic
     {
-        height: 110px;
-        width: 110px;
+        height: 140px;
+        width: 140px;
     }
     .editor-main{
         width: 90%;
@@ -744,18 +783,18 @@ input.in5:hover{
 @media screen and (max-width: 900px) {
     #editor-pic
    {
-       height: 110px;
-       width: 110px;
+       height: 160px;
+       width: 160px;
    }
    .editor-main{
        width: 90%;
    }
    .editor-left{
        width: 100%;
-       height: 270px;
+       height: auto;
    }
    .editor-right{
-       height: 450px;
+    height: auto;
        width: 100%;
    
        box-sizing: border-box;
@@ -770,8 +809,8 @@ input.in5:hover{
 @media screen and (max-width: 750px) {
      #editor-pic
     {
-        height: 110px;
-        width: 110px;
+        height: 150px;
+        width: 150px;
         padding: 15px;
     }
     .profile-main{
@@ -779,10 +818,10 @@ input.in5:hover{
     }
     .editor-left{
         width: 100%;
-        height: 200px;
+        height: auto;
     }
     .editor-right{
-        height: 450px;
+        height: auto;
         width: 100%;
     
         box-sizing: border-box;
@@ -794,29 +833,68 @@ input.in5:hover{
     }
 }
 @media screen and (max-width: 600px) {
+    .wrapperProfile{
+        /* max-width: 1200px; */
+        width: 95%;
+        margin: 1px auto;
+        padding: 1px;
+      
+      
+      }
     #editor-pic
    {
-       height: 100px;
-       width: 100px;
+       height: 150px;
+       width: 150px;
        padding: 15px;
    }
    .editor-main{
        width: 90%;
+      
    }
+   .editor-right{
+   
+    height: auto;
+}
    .editor-left{
        width: 100%;
-       height: 100px;
+       height: auto;
    }
    #logout1{
     width: 110px;
+}
+.rated > input:checked ~ label {
+    transition: 0.3s ease-in;
+    /*color: rgb(184, 181, 90);*/
+    color: #c59b08;    
+    font-size: 25px;
+}
+
+/**/
+.rated:not(:checked) > label:hover,
+.rated:not(:checked) > label:hover ~ label {
+    transition: 0.3s ease-in;
+    /*color: #deb217;*/
+    color: #c59b08;  
+    font-size: 40px;
+}
+
+.rated:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:40px;
+    color:rgb(196, 196, 196);
+
 }
 }
 
 @media screen and (min-width: 1600px) {
     #editor-pic
     {
-        height: 120px;
-        width: 120px;
+        height: 180px;
+        width: 180px;
     }        
     .editor-main{
         width: 80%;
@@ -841,15 +919,86 @@ input.in5:hover{
  
 }
 @media (max-width: 450px) {
-    /* Even Smaller devices */
+    .wrapperProfile{
+        /* max-width: 1200px; */
+        width: 85%;
+        margin: 1px auto;
+        padding: 1px;
+      
+      
+      }
+    #editor-pic
+    {
+        height: 150px;
+        width: 150px;
+        padding: 15px;
+    }
+    .editor-main{
+        width: 90%;
+    }
+    .editor-left{
+        width: 100%;
+        height: auto;
+    }
+    .editor-right{
+        height: auto;
+    }
+    #logout1{
+        width: 110px;
+    }
+    .rate:not(:checked) > label {
+        width:1.3em;
+        font-size:30px;   
+    }
+
+
+    .rated > input:checked ~ label {
+        transition: 0.3s ease-in;
+        /*color: rgb(184, 181, 90);*/
+        color: #c59b08;    
+        font-size: 25px;
+    }
+    
+    /**/
+    .rated:not(:checked) > label:hover,
+    .rated:not(:checked) > label:hover ~ label {
+        transition: 0.3s ease-in;
+        /*color: #deb217;*/
+        color: #c59b08;  
+        font-size: 40px;
+    }
+    
+    .rated:not(:checked) > label {
+        float:right;
+        width:1em;
+        overflow:hidden;
+        white-space:nowrap;
+        cursor:pointer;
+        font-size:40px;
+        color:rgb(196, 196, 196);
+    
+    }
+
+    .profile-main{
+        width: 90%;
+        height: auto;
+    }
+    .user-left{
+        width: 100%;
+        height: 100px;
+        height: 370px;
+    }
+    .user-right{
+     height: 570px;
+    }
  
 }
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     /* Even Smaller devices */
     #editor-pic
     {
-        height: 100px;
-        width: 100px;
+        height: 150px;
+        width: 150px;
         padding: 15px;
     }
     .editor-main{

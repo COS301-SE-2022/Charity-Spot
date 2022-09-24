@@ -45,8 +45,6 @@ export class OrganisationService {
     async updateDet(id: string, name: string, loc: string, picture: string, password: string, description: string, email: string) {
         const organisationProfile = new OrganisationEntity();
 
-        console.log(name, loc, picture, password, description);
-
         if(name != null)
             await this.OrganisationRepository.editOrgName(id, name);
 
@@ -158,7 +156,6 @@ export class OrganisationService {
 
 			}
 			
-			console.log(returnVal);
 
 			return returnVal;
 

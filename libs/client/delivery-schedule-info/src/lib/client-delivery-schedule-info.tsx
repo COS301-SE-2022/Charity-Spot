@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 
 import {Link} from 'react-router-dom'
 
+import { host } from '../../../../../config'
+
 import {
   FaHistory,
   FaDonate,
@@ -31,9 +33,7 @@ async function getDelScheduleApi(query: string) {
         }
       }`;*/
 
-  console.log(query);
-
-  await fetch('http://localhost:3333/graphql', {
+  await fetch(`http://${host.host}:3333/graphql`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -45,8 +45,6 @@ async function getDelScheduleApi(query: string) {
   })
     .then((r) => r.json())
     .then((data) => (result = data));
-
-  console.log(result);
 
   return result;
 }
@@ -147,8 +145,6 @@ export function ClientDeliveryScheduleInfo() {
 
       let userName: any = await getDelScheduleApi(NameQuery(finRes[i].id_1));
 
-      console.log(userName);
-
       userName = userName.data.getChatName.Message;
 
       let itemID = finRes[i].itemID;
@@ -160,8 +156,6 @@ export function ClientDeliveryScheduleInfo() {
       let locationT = finRes[i].location.split(',');
 
       let location = locationT[0] + ' , ' + locationT[1];
-
-      console.log(finRes);
 
       let date = finRes[i].date;
 
@@ -217,7 +211,7 @@ export function ClientDeliveryScheduleInfo() {
       <br />
       <div className="title">
         <h2>Your current donation schedule:</h2>
-        { empty &&<h3 style={{'color':'#6d6d6e'}}> You have no scheduled donations!</h3>}
+        { empty &&<h1 style={{'color':'#6d6d6e'}}> <br/><br/><br/>You have no scheduled donations <FaDonate/></h1>}
       </div>
 
       {schedule.map(function (A) {
@@ -236,7 +230,7 @@ export function ClientDeliveryScheduleInfo() {
                 ></input>
 
                 <label htmlFor={A.itemID}>
-                  Donation scheduled with {A.partyName} for {A.date}{' '}
+                  Donation scheduled with {A.partyName} for <b>{A.date}</b>{' '}
                 </label>
 
                 <div className="collapsible-text">

@@ -1,8 +1,10 @@
 import ListGroup from 'react-bootstrap/esm/ListGroup';
-import { FaHistory,FaDonate,FaPen,FaUserAlt,FaEdit,FaArrowDown,FaArrowUp } from 'react-icons/fa';
+import { FaHistory,FaDonate,FaPen,FaUserAlt,FaEdit,FaArrowDown,FaArrowUp, FaList } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import './donatee.css'
 import { getCookie, setCookie } from 'typescript-cookie'
+
+import { host } from '../../../../../config'
 
 let IdCookie = getCookie('foreignID');
 
@@ -24,7 +26,7 @@ async function historyData() {
   
     let act_data = "";
     
-    await fetch('http://localhost:3333/graphql', {
+    await fetch(`http://${host.host}:3333/graphql`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -43,9 +45,6 @@ async function historyData() {
     var Items = JSON.parse(ItemString);
 
     const ItemArr = Items.data.donateHistory.Donations;
-
-    console.log(ItemArr[0]);
-
     
     act_data = "";
     for(let i=0; i< ItemArr.length; i++){
@@ -57,7 +56,7 @@ async function historyData() {
         }
         `;
 
-        await fetch('http://localhost:3333/graphql', {
+        await fetch(`http://${host.host}:3333/graphql`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -99,7 +98,7 @@ async function historyData() {
 
     let result = null;
 
-    await fetch('http://localhost:3333/graphql', {
+    await fetch(`http://${host.host}:3333/graphql`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -155,7 +154,7 @@ export function ItemHistory(props : any){
         return (
         
                 <div>
-                { empty &&<h3 style={{'color':'#6d6d6e'}}> This user has no available items!</h3>}
+                { empty &&<h3 style={{'color':'#6d6d6e'}}><h1>This user has no available items</h1> <FaList/></h3>}
                 {Items.map(function(item){
                     return (
                             
@@ -169,7 +168,7 @@ export function ItemHistory(props : any){
 
                     <input type ='checkbox' id = {item.ItemID} onClick={async ()=>{await getItemPic(item.ItemID);}}></input>
 
-                    <label htmlFor={item.ItemID}>{item.Name} <FaArrowDown/></label>
+                    <label htmlFor={item.ItemID}>{item.Name} </label>
 
                     <div className='collapsible-text'><br/>
                         <div className='collapseleft'>

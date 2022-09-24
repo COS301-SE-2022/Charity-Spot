@@ -20,8 +20,6 @@ export class ScheduleDeliveryService {
     ) {
         // save data in database
 
-        console.log(time);
-
         await this.ScheduleDeliveryRepository.CreateShedule(ite_id, assis_id, location, date, time, needing_id)
 
         const returnableV = new ScheduleDeliveryEntity();
@@ -88,8 +86,6 @@ export class ScheduleDeliveryService {
                 await this.ScheduleDeliveryRepository.negateAlertClient(schedule[i].OrgID, Userid, schedule[i].ItemID)
             }
             //temp.id_1 = schedule[i].ClientID;
-
-            console.log(schedule[i].Loaction);
 
             let locationT = await this.getProvCity(schedule[i].Loaction);
             let location = locationT[0] + "," + locationT[1] + "," + schedule[i].Loaction;
@@ -172,7 +168,6 @@ export class ScheduleDeliveryService {
 
 			}
 			
-			console.log(returnVal);
 
 			return returnVal;
 

@@ -103,7 +103,6 @@ export class RegistrationService {
 
 			}
 			
-			console.log(returnVal);
 
 			return returnVal;
 

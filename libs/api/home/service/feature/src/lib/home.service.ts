@@ -35,8 +35,6 @@ export class HomeService {
 
         let items = await this.HomeRepository.getAllItems();
 
-        console.log(items);
-
         let retItem : any = []
 
         for(let i=0; i<items.length; i++){

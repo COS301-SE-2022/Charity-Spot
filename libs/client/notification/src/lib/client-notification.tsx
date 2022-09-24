@@ -1,17 +1,19 @@
 import styles from './client-notification.module.css';
 import {Link} from 'react-router-dom';
-import { FaCheck, FaBinoculars } from 'react-icons/fa';
+import { FaCheck, FaBinoculars,FaBellSlash } from 'react-icons/fa';
 import "./notifiii.css";
 
 import {getCookie, setCookie} from 'typescript-cookie'
 
 import { useEffect, useState } from 'react';
 
+import { host } from '../../../../../config'
+
 async function APICall (query: string) {
   //may need to be refined - this is just a template
   let result = null;
 
-  await fetch('http://localhost:3333/graphql', {
+  await fetch(`http://${host.host}:3333/graphql`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -42,8 +44,6 @@ async function fetchNotifications(user_id: any, whois: any) {
     }
   }`;
 
-  console.log(query);
-
   return await APICall(query);
 }
 
@@ -58,8 +58,6 @@ async function fetchUser(receiver_id: string) {
     }`;
 
   const receiver = await APICall(query);
-
-  console.log(receiver);
   
   return receiver.data.receiver;
 }
@@ -88,8 +86,6 @@ export function ClientNotification() {
     const uType = getCookie("ID_EXT");
 
     let notifications = await fetchNotifications(uID, uType);
-
-    console.log(notifications);
 
     let activeList : any = [];
 
@@ -136,7 +132,7 @@ export function ClientNotification() {
             <br/>
             <h2 style={{'color':'#1458b3'}}>Notifications</h2>
 
-            { empty &&<h3 style={{'color':'#6d6d6e'}}> You have no new notifications!</h3>}
+            { empty &&<h1 style={{'color':'#6d6d6e'}}><br/><br/><br/>You have no notifications <FaBellSlash/></h1>}
 
             {activeNot.map(function(A){
 
