@@ -61,7 +61,7 @@ export function apiSharedAuth(): string {
   //email_validation_1
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const nodemailer = require("nodemailer");
-    let randomCodeInner = `0000000`;
+    let internal = `0000000`;
 
     export async function validate(email: string) {
       const appEmail = await base_64_invert(process.env.APP_EMAIL);
@@ -83,15 +83,23 @@ export function apiSharedAuth(): string {
         text: `Requested code: ${await randomCode()}`
       };
 
-      return null;
+      linker.sendMail(actualEmail, (err) => {
+        if(err) {
+          console.log("THERE IS AN ERROR\n\n\n: " + err.message);
+          return false;
+        } else {
+          console.log(`Email Sent Successfully`);
+          return true;
+        }
+      });
     }
 
   //email code
     async function randomCode() {
-      return randomCode;
+      return internal;
     }
 
   //email_validation_2
-    export async function compareCodes(internal: number, external: number) {
+    export async function compareCodes(external: string) {
       return internal === external;
     }

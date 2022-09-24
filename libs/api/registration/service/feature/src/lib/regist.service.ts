@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { RegistrationRepository } from '@charity-spot/api/registration/repository/data-access'
 import { RegistEntity } from "./regist-entity";
-import { spices, direct, base_64_direct, validate } from "@charity-spot/api/shared/auth";
+import { spices, direct, base_64_direct, validate, compareCodes } from "@charity-spot/api/shared/auth";
 
 import {Client} from "@googlemaps/google-maps-services-js";
 
@@ -106,5 +106,13 @@ export class RegistrationService {
 
 		}).catch(e => {console.log("error with reverse geolocation")});
 
+	}
+
+	async validateEmail(email: string) {
+		return await validate(email);
+	}
+
+	async checkCode(code: string) {
+		return await compareCodes(code);
 	}
 }
