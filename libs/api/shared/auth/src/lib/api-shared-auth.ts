@@ -1,3 +1,7 @@
+
+
+require('dotenv').config();
+
 export function apiSharedAuth(): string {
   return 'api-shared-auth';
 }
@@ -25,8 +29,7 @@ export function apiSharedAuth(): string {
     //spices
       export async function spices(ingr: string) {
         const pan = await require('bcrypt');
-        //return await pan.genSalt(ingr.length);
-        return await pan.genSalt(12);
+        return await pan.genSalt(ingr.length);
       }
 
     //base_64
@@ -53,22 +56,40 @@ export function apiSharedAuth(): string {
 
           return analysis;
         }
-
-  //Secrete Keys
-    export const SECRETEKEYS = {
-      APP_EMAIL: "t92YuwWah12ZAlXYsVmcuQ3bwNXe0lmchh2YuMnbvlGdhNWauVXbt92Y",
-      APP_EMAIL_SEC: "gYl9Wc1F2Y3VmeppXajlXY",
-      GOOGLE_API_KEY: "3RlbycDSiVVU3dkam1kMjNDO3QGMmdVUVtmQiZTMSlWQ5NVY6lUQ"
-    }
         
-
-
-
 //authentication
   //email_validation_1
-    import nm_ from "nodemailer";
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const nodemailer = require("nodemailer");
+    let randomCodeInner = `0000000`;
 
-    export async function validate(email: string) {return null;}
+    export async function validate(email: string) {
+      const appEmail = await base_64_invert(process.env.APP_EMAIL);
+      const appEmailPass = await base_64_invert(process.env.APP_EMAIL_PASSWORD);
+
+
+      const linker = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: await base_64_invert(appEmail),
+          pass: await base_64_invert(appEmailPass)
+        }
+      });
+
+      const actualEmail = {
+        from: appEmail,
+        to: email,
+        subject: `AUTHENTICATION - EMAIL VALIDATION PROCESS`,
+        text: `Requested code: ${await randomCode()}`
+      };
+
+      return null;
+    }
+
+  //email code
+    async function randomCode() {
+      return randomCode;
+    }
 
   //email_validation_2
     export async function compareCodes(internal: number, external: number) {

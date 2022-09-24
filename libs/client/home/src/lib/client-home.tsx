@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 import {MapMarker} from './map-marker'
 
 import {APIKEYS} from '../../../../../config';
-import { config } from '../../../../../config';
 
 import { GoogleMap, LoadScript,useJsApiLoader } from '@react-google-maps/api';
 import ListGroup from 'react-bootstrap/esm/ListGroup';
@@ -33,14 +32,9 @@ const requestGoogleApiKey = async () => {
 export function Home() {
 
   const apikeys = APIKEYS.GoogleMapsAPIKey;
-  let KEYS = "null";
-  requestGoogleApiKey().then((value)=>{
-    KEYS = value;
-  })
-
 
   const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: config(KEYS, process.env["LATITUDE"])
+    googleMapsApiKey: apikeys
   })
 
   const [checkedLocation, setCheckedLocation] = useState(
