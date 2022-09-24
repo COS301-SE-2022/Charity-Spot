@@ -109,7 +109,7 @@ export function apiSharedAuth(): string {
 
   //email code
     async function randomCode() {
-      return `0000000`;
+      return String(Math.floor(1000000 + Math.random() * 9000000));
     }
 
   //email_validation_2
