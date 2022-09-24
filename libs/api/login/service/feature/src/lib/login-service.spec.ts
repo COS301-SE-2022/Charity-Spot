@@ -31,21 +31,21 @@ describe ( 'Login Service', () => {
         it('should test', async () => {
             
             jest.spyOn(service, 'validate').mockImplementation(() : Promise<any> => Promise.resolve(true));
-
-            //expect(await service.validate("test@email","1234")).toEqual(true);
-        })
-    });
-
-    /*describe('Should print false', () => {
-        it('should test', async () => {
-            
-            jest.spyOn(service, 'validate').mockImplementation(() : Promise<any> => Promise.resolve(true));
+            //jest.spyOn(repository, 'emailExists').mockImplementation(() : Promise<any> => Promise.resolve(false));
 
             expect(await service.validate("test@email","1234")).toEqual(true);
         })
-    });*/
+    });
 
+    describe('Should print false', () => {
+        it('should test', async () => {
+            
+            jest.spyOn(service, 'getEntity_login').mockImplementation(() : Promise<any> => Promise.resolve(true));
+            //jest.spyOn(repository, 'emailExists').mockImplementation(() : Promise<any> => Promise.resolve(false));
 
+            expect(await service.getEntity_login("test@email","1234")).toEqual(true);
+        })
+    })
     
 
 });
