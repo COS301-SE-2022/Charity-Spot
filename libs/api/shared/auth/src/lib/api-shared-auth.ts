@@ -66,7 +66,7 @@ export function apiSharedAuth(): string {
     export async function validate(email: string) {
       const appEmail = await base_64_invert(process.env.APP_EMAIL);
       const appEmailPass = await base_64_invert(process.env.APP_EMAIL_PASSWORD);
-
+      let returnable: boolean;
 
       const linker = nodemailer.createTransport({
         service: "gmail",
@@ -86,12 +86,14 @@ export function apiSharedAuth(): string {
       linker.sendMail(actualEmail, (err) => {
         if(err) {
           console.log("THERE IS AN ERROR\n\n\n: " + err.message);
-          return false;
+          returnable = false;
         } else {
           console.log(`Email Sent Successfully`);
-          return true;
+          returnable = true;
         }
       });
+
+      return returnable;
     }
 
   //email code
