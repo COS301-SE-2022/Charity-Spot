@@ -43,3 +43,15 @@ describe('getReceiver', () => {
       expect(await service.getReceiver("wda445d")).toEqual(true);
   })
 });
+
+//checkNot(id: string, type: string)
+describe('checkNot', () => {
+  it('', async () => {
+      jest.spyOn(service, 'checkNot').mockImplementation(() : Promise<any> => Promise.resolve(true));
+      expect(await service.checkNot("wadadw1","dfg454f")).toEqual(true);
+  })
+});
+ 
+
+
+});
