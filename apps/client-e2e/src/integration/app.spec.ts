@@ -1,6 +1,59 @@
-describe('client', () => {
+describe('testing client', () => {
 
-    //registration page
+    Cypress.Cookies.defaults({
+        preserve: ['ID', 'ID_EXT', 'foreignID'],
+      });
+
+    //login page
+    it('should direct to the right url', () => {
+        cy.visit('http://3.7.189.9:8082/login');
+        cy.url().should('include','login');
+    })
+
+    it('The user should be able to login', () =>{
+
+        cy.get('input[type=email]').type("client1@email.com");
+        cy.get('input[type=password]').type("1234");
+
+        cy.contains('Log in').click();
+    })
+
+
+    //home page
+    it('should direct to the right url', () => {
+        cy.url().should('include','home');
+    })
+
+    it('should be taken to profile page of org', () => {
+
+        cy.get('[title="PEP"] > img').click();
+
+    });
+
+
+    //profile page
+    it('should direct to the right url', () => {
+        cy.url().should('include','profile');
+    })
+
+    it('should be taken to profile page of org', () => {
+
+        cy.get('.blog').click();
+
+    });
+
+    it('should be able to view item', () => {
+        cy.get(':nth-child(1) > .rapper > .collapsible > label').click();
+
+        cy.get('#P10pic').should('be.visible');
+        
+    })
+
+    
+
+});
+
+    /*//registration page
     describe('registration testing', () => {
         beforeEach(() =>cy.visit('http://localhost:4200/register'));
         it('should direct to the right url', () => {
@@ -67,7 +120,7 @@ describe('client', () => {
     /* ADDED FOR DEMO 3*/
 
     //profile page
-    describe('profile page testing', () => {
+    /*describe('profile page testing', () => {
         beforeEach(() => cy.visit('http://localhost:4200/profile'));
         it('should direct you to the right url', () => {
             cy.url().should('include','profile');
@@ -134,4 +187,4 @@ describe('client', () => {
 cy.get('.id') - by class 
 cy.get('#id')- by id*/
 
-});
+//});
