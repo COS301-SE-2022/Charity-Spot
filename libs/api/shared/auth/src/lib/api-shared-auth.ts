@@ -19,10 +19,7 @@ export function apiSharedAuth(): string {
           hashable += worm;
         hashable += manure.substring(manure.length/2);
         hashable = await kill.hash(Buffer.from(hashable, 'utf-8').toString('base64'), ingr);
-        console.log(worm);
         hashable = db(hashable);
-
-        //console.log(hashable);
 
         return hashable;
       }
