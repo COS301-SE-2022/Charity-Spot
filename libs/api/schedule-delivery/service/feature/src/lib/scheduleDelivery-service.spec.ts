@@ -45,3 +45,39 @@ describe( 'ScheduleDelivery Service', () => {
             expect(await service.History("awdwd2145")).toEqual(true);
         })
     });
+
+
+    //getAvailItems( userid: string)
+    describe('getAvailItems', () => {
+        it('Gets all available items', async () => {
+            jest.spyOn(service, 'getAvailItems').mockImplementation(() : Promise<any> => Promise.resolve(true));
+            expect(await service.getAvailItems("rfrg2356")).toEqual(true);
+        })
+    });
+
+    
+    //getDelSchedule( Userid : string, type : string)
+    describe('getDelSchedule', () => {
+        it('Gets a delivery schedule', async () => {
+            jest.spyOn(service, 'getDelSchedule').mockImplementation(() : Promise<any> => Promise.resolve(true));
+            expect(await service.getDelSchedule("11wad457","Clothing")).toEqual(true);
+        })
+    });
+
+    //getItemName( itemID : string)
+    describe('getItemName', () => {
+        it('Gets an items name', async () => {
+            jest.spyOn(service, 'getItemName').mockImplementation(() : Promise<any> => Promise.resolve(true));
+            expect(await service.getItemName("12rgd4g5")).toEqual(true);
+        })
+    });
+
+
+    //getAverageRatings(ratings : number[])
+    describe('getAverageRatings', () => {
+        it('Gets the average ratings', async () => {
+            jest.spyOn(service, 'getAverageRatings').mockImplementation(() : Promise<any> => Promise.resolve(true));
+            const val = [2,3,1,4,5];
+            expect(await service.getAverageRatings(val)).toEqual(true);
+        })
+    });
