@@ -748,7 +748,7 @@ export function Profile() {
                   </div>
                 </div>
 
-                <div className="editor-left" id="editLeftDiv">
+                <div className="editor-right" id="editLeftDiv">
                   <div className="edit_Picture">
                     <label className="rglabel">
                       {/* Upload a new profile picture: */}

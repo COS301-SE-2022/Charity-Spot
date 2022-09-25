@@ -22,7 +22,7 @@
   }
 .deliver-main{
     height: 300px auto;
-    width: 100%;
+    width: 90%;
 
     
     border-radius: 1rem;
@@ -44,7 +44,7 @@
 
 .deliver-cent{
     background-color: rgb(228, 229, 230); 
-    height: 250px;
+    height: 300px;
     width: 100%;
     box-sizing: border-box;
     border-radius: 10px;
@@ -146,6 +146,11 @@ input[type="file"] {
     /* height: 50px; */
     
   }
+.deliver-box
+{
+    float: left;
+    width: 100%;
+}
 
 }
 
@@ -304,7 +309,7 @@ label.labelDel{
 
 #deliv_but{
     display: block;
-    width: 25%;
+    width: 150px;
     background: #1458b3 ;
     color: white;
     border: none;
@@ -531,7 +536,7 @@ max-height: 450px;
  }
  @media screen and (min-width: 1600px) {
     #deliv_but{
-        /*width: 150px;*/
+        width: 150px;
     }
     .deliver-cent{
         /* margin-top: 10px; */
@@ -541,7 +546,7 @@ max-height: 450px;
     .deliver-main{
         margin-top: 50px;
         width: 80%;
-        /*height: 500px;*/
+        height: auto;
     }
   }
 
@@ -579,6 +584,11 @@ max-height: 450px;
     #deliv_but{
         width: 150px;
     }
+    .deliver-cent{
+        /* margin-top: 10px; */
+        width: 100%;
+        height: auto;
+    }
 
   
 }
@@ -610,6 +620,17 @@ max-height: 450px;
     }
     #deliv_but{
         width: 150px;
+    }
+    .deliver-box
+    {
+        float: left;
+        width: 50%;
+
+    }
+    .deliver-cent{
+       
+        width: 100%;
+        height: auto;
     }
 
   

@@ -692,7 +692,7 @@ input.in5:hover{
 /*------------------------------------- For the EDIT TAB CONTENT---------------------------------------------------------------------*/
 .editor-main{
     height: 510px auto;
-    width: 70%;
+    width: 80%;
 
     /* background: linear-gradient(to right bottom, rgba(221, 216, 216, 0.849),rgba(255, 255, 255, 0.863)); */
     border-radius: 1rem;
@@ -831,6 +831,7 @@ input.in5:hover{
         width: 25%;
 
     }
+    
 }
 @media screen and (max-width: 600px) {
     .wrapperProfile{
@@ -875,16 +876,16 @@ input.in5:hover{
     transition: 0.3s ease-in;
     /*color: #deb217;*/
     color: #c59b08;  
-    font-size: 40px;
+    font-size: 30px;
 }
 
 .rated:not(:checked) > label {
     float:right;
-    width:1em;
+    width:1.3em;
     overflow:hidden;
     white-space:nowrap;
     cursor:pointer;
-    font-size:40px;
+    font-size:30px;
     color:rgb(196, 196, 196);
 
 }
@@ -921,7 +922,7 @@ input.in5:hover{
 @media (max-width: 450px) {
     .wrapperProfile{
         /* max-width: 1200px; */
-        width: 85%;
+        width: 95%;
         margin: 1px auto;
         padding: 1px;
       
