@@ -81,3 +81,29 @@ describe( 'ScheduleDelivery Service', () => {
             expect(await service.getAverageRatings(val)).toEqual(true);
         })
     });
+
+    //getProvCity(coord : any)
+    describe('getProvCity', () => {
+        it('Gets the citys Province', async () => {
+            jest.spyOn(service, 'getProvCity').mockImplementation(() : Promise<any> => Promise.resolve(true));
+            expect(await service.getProvCity("1452 Pret Street")).toEqual(true);
+        })
+    });
+
+    //deleteDel(itemID: string)
+    describe('deleteDel', () => {
+        it('Deletes a delivery', async () => {
+            jest.spyOn(service, 'deleteDel').mockImplementation(() : Promise<any> => Promise.resolve(true));
+            expect(await service.deleteDel("wdad2415")).toEqual(true);
+        })
+    });
+
+    //completeDel(itemID: string)
+    describe('completeDel', () => {
+        it('Completes a delivery', async () => {
+            jest.spyOn(service, 'completeDel').mockImplementation(() : Promise<any> => Promise.resolve(true));
+            expect(await service.completeDel("1wda426")).toEqual(true);
+        })
+    });
+
+});
