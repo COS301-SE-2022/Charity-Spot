@@ -24,11 +24,6 @@ const center = {
   lng: 28.0473
 };
 
-const requestGoogleApiKey = async () => {
-  return "";
-}
-
-
 export function Home() {
 
   const apikeys = APIKEYS.GoogleMapsAPIKey;
