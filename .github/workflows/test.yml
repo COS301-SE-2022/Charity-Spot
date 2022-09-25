@@ -29,10 +29,7 @@ jobs:
         
       - name: start api
         run: yarn start api > /dev/null &
-      
-      - name: wait for api to start
-        run: sleep 20
         
       - name: start integration test
-        run: nx e2e client-e2e --spec apps/client-e2e/src/integration/app.spec.ts
+        run: npx nx e2e client-e2e --spec apps/client-e2e/src/integration/app.spec.ts
 
