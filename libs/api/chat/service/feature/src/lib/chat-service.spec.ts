@@ -38,3 +38,32 @@ describe( 'Chat Service', () => {
             expect(await service.RetrieveThread("f2x1d36f","w2d4w56","w1w4a2s4")).toEqual(true);
         })
     });
+
+    //RetrieveThreads(userID: string, id: string)
+    describe('RetrieveThreads', () => {
+        it('Retrieves threads', async () => {
+            jest.spyOn(service, 'RetrieveThreads').mockImplementation(() : Promise<any> => Promise.resolve(true));
+            expect(await service.RetrieveThreads("f2x1d36f","w2d4w56")).toEqual(true);
+        })
+    });
+
+
+    //getChatName(u_id: string)
+    describe('getChatName', () => {
+        it('gets the name of the chat', async () => {
+            jest.spyOn(service, 'getChatName').mockImplementation(() : Promise<any> => Promise.resolve(true));
+            expect(await service.getChatName("f2x1d36f")).toEqual(true);
+        })
+    });
+
+    /*
+    describe('', () => {
+        it('', async () => {
+            jest.spyOn(service, '').mockImplementation(() : Promise<any> => Promise.resolve(true));
+            expect(await service.()).toEqual(true);
+        })
+    });
+
+    */
+
+});
