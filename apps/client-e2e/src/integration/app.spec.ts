@@ -6,12 +6,43 @@ describe('Charity-Spot Integration Test', () => {
         preserve: ['ID', 'ID_EXT', 'foreignID'],
       });
 
+    //register charity
+
+    it('should navigate to register page', () => {
+        cy.visit('http://localhost:4200/register');
+        cy.url().should('include','register');
+    })
+
+    it('should register charity', () => {
+        cy.get('#rgorgnm1').select("Willing to assist");
+        cy.get('#rgorgnm2').type("Charity 1");
+        cy.get('#emil1').type("charity1@email.com");
+        cy.get('button.custom-file-upload').click().then(() => { cy.wait(2000).then(() => { 
+
+            cy.get('.modal').trigger('pointerdown', {clientX: 300, clientY: 600})
+            cy.get('.modal').trigger('pointerup', {clientX: 300,clientY: 600})
+        
+            }); 
+        });
+
+        cy.get('.btn-close').click();
+
+        cy.get('#rgpwd1').type('1234');
+        cy.get('#rgpwd2').type('1234');
+
+        cy.get('#rgsub_butt').click();
+
+
+    })
+
+
+
     
     //client test
 
         //login page
-        it('should direct to the right url', () => {
-            cy.visit('http://3.7.189.9:8082/login');
+        /*it('should direct to the right url', () => {
+            cy.visit('http://localhost:4200/login');
             cy.url().should('include','login');
         })
 
@@ -85,7 +116,7 @@ describe('Charity-Spot Integration Test', () => {
 
         it('should be logged out of client profile', () =>{
 
-            cy.visit('http://3.7.189.9:8082/login');
+            cy.visit('http://localhost:4200/login');
             cy.url().should('include','login');
 
         });
@@ -154,6 +185,6 @@ describe('Charity-Spot Integration Test', () => {
 
         it('should direct to the right url', () => {
             cy.url().should('include','home');
-        })
+        })*/
 
 });

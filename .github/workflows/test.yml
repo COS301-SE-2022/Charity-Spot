@@ -21,3 +21,6 @@ jobs:
       - name: install dep
         run: yarn install
 
+      - name: build image for db
+        run: docker-compose up -d
+
