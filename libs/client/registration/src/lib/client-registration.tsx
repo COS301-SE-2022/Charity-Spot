@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Countdown from "react-countdown";
 
 import Sealregister from '../../../shared/assets/Sealregister.png';
 import CS from '../../../shared/assets/CS.png';
@@ -131,7 +132,12 @@ async function validate(_incoming: string, what: string) {
 
 export function Register() {
   const [show, setShow] = useState(false);
+
+  //email modal
+  
   const [emailValidation, setEmailvalidation] = useState(false);
+  const [userCode, setUserCode] = useState(''); 
+  //end of email modal
 
   const [location, setLocation] = useState({ lat: -26.195246, lng: 28.034088 });
 
@@ -161,38 +167,33 @@ export function Register() {
     return null;
   }
 
+  const renderer = ({ minutes, seconds, completed }: {minutes: number, seconds: number, completed: boolean}) => {
+    if (completed) {
+        const blur = document.getElementById('main');
+        if(blur != null) {
+        blur.classList.toggle('active');
+        }
+        setEmailvalidation(false);
+
+        return;
+    } else {
+      return (
+        <span>
+          {minutes<10?`0`+minutes:minutes} : {seconds<10?`0`+seconds:seconds}
+        </span>
+      );
+    }
+  };
+
   const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
     setInvalidCredentials('');
-
-    
-    const blur = document.getElementById('main');
-    if(blur != null) {
-      blur.classList.toggle('active');
-    }
-    setEmailvalidation(true);
-
-    //send email to user
-  }
-
-  const checkCode = async (event: { preventDefault: () => void }) => {
-    event.preventDefault();
-    setEmailvalidation(false);
-    //check the code
-    //set green tick then push to api if code pass
-  }
-
-  const pushtoapi = async () => {
-
-    (document.getElementById('registerDivM') as HTMLDivElement).style.display =
-      'none';
-    (document.getElementById('registerLoad') as HTMLDivElement).style.display =
-      'block';
 
     let profilePictureLink = '';
 
     if (imageUpload) {
       profilePictureLink = `${await uploadProfilePicture(imageUpload)}`;
+      setImageURL(profilePictureLink);
     }
 
     if (
@@ -238,6 +239,32 @@ export function Register() {
       return;
     }
 
+
+    const blur = document.getElementById('main');
+    if(blur != null) {
+      blur.classList.toggle('active');
+    }
+    setEmailvalidation(true);
+
+    //send email to user
+  }
+
+  const checkCode = async (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    setEmailvalidation(false);
+    //check the code
+    //set green tick then push to api if code pass
+  }
+
+  const pushtoapi = async () => {
+
+    (document.getElementById('registerDivM') as HTMLDivElement).style.display =
+      'none';
+    (document.getElementById('registerLoad') as HTMLDivElement).style.display =
+      'block';
+
+    
+
     //setLoading
 
     const response = JSON.parse(
@@ -247,7 +274,7 @@ export function Register() {
         `${location.lat},${location.lng}`,
         passval,
         typeval,
-        profilePictureLink
+        imageURL
       )
     );
 
@@ -434,11 +461,17 @@ export function Register() {
             <MDBCardBody>
               <MDBCardTitle>Please enter the secrete code</MDBCardTitle>
               <MDBCardText>
-              <MDBInput label='' id='emailcodeinput' type='text' />
+              <MDBInput label='' id='emailcodeinput' type='text' style={{width: "50%", margin: "auto", textAlign: "center"}}
+                onChange={(e)=>{
+                  setUserCode(e.target.value);
+                }}
+              />
               </MDBCardText>
-              <MDBBtn onClick={checkCode}>Go somewhere</MDBBtn>
+              <MDBBtn onClick={checkCode}>Check Code</MDBBtn>
             </MDBCardBody>
-            <MDBCardFooter>2 days ago</MDBCardFooter>
+            <MDBCardFooter>
+              <Countdown date={Date.now() + 60000 * 5} renderer={renderer} />
+            </MDBCardFooter>
             </MDBCard>			
           </div>
         </div>
