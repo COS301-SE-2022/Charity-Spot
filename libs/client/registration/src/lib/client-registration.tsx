@@ -267,7 +267,7 @@ export function Register() {
   const checkCode = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
     //check the code
-    const response = JSON.parse(
+    let response = JSON.parse(
       await validate(userCode, 'code')
     );
 
@@ -281,56 +281,51 @@ export function Register() {
       }
       setEmailvalidation(false);
 
-      return await pushtoapi();
+      (document.getElementById('registerDivM') as HTMLDivElement).style.display =
+        'none';
+      (document.getElementById('registerLoad') as HTMLDivElement).style.display =
+        'block';
+
+      response = JSON.parse(
+        await APICall(
+          nameval,
+          emailval,
+          `${location.lat},${location.lng}`,
+          passval,
+          typeval,
+          imageURL
+        )
+      );
+
+      if (response.data == null) {
+        //remove the loading
+        setInvalidCredentials('Email provided already exists');
+
+        (
+          document.getElementById('registerDivM') as HTMLDivElement
+        ).style.display = 'block';
+        (
+          document.getElementById('registerLoad') as HTMLDivElement
+        ).style.display = 'none';
+
+        return;
+      } else {
+        window.location.href = '/login';
+      }
+  
+      setInvalidCredentials('');
+
+
     } else {
       setWrongCode(true);
       setProblem("Code provide is incorrect<br>Please check the code again");
       return;
     }
 
-    //set green tick then push to api if code pass
   }
 
   const pushtoapi = async () => {
-
-    (document.getElementById('registerDivM') as HTMLDivElement).style.display =
-      'none';
-    (document.getElementById('registerLoad') as HTMLDivElement).style.display =
-      'block';
-
-    
-
-    //setLoading
-
-    const response = JSON.parse(
-      await APICall(
-        nameval,
-        emailval,
-        `${location.lat},${location.lng}`,
-        passval,
-        typeval,
-        imageURL
-      )
-    );
-
-
-    if (response.data == null) {
-      //remove the loading
-      setInvalidCredentials('Invalid Email Provided');
-
-      (
-        document.getElementById('registerDivM') as HTMLDivElement
-      ).style.display = 'block';
-      (
-        document.getElementById('registerLoad') as HTMLDivElement
-      ).style.display = 'none';
-
-      return;
-    } else {
-      window.location.href = '/login';
-    }
-
-    setInvalidCredentials('');
+    //
   };
 
   return (
