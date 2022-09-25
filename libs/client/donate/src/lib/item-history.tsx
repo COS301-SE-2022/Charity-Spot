@@ -1,5 +1,5 @@
 import ListGroup from 'react-bootstrap/esm/ListGroup';
-import { FaHistory,FaDonate,FaPen,FaUserAlt,FaEdit,FaArrowDown,FaArrowUp } from 'react-icons/fa';
+import { FaHistory,FaDonate,FaPen,FaUserAlt,FaEdit,FaArrowDown,FaArrowUp, FaThermometerEmpty } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import './donatee.css'
 import { getCookie, setCookie } from 'typescript-cookie'
@@ -153,7 +153,7 @@ export function ItemHistory(props : any){
         return (
         
                 <div>
-                  { empty &&<h3 style={{'color':'#6d6d6e'}}> You have no available items!</h3>}
+                  { empty &&<h1 style={{'color':'#6d6d6e'}}><br/><br/> You have no available items <FaThermometerEmpty/></h1>}
 
                 {Items.map(function(item){
                     return (
