@@ -46,3 +46,6 @@ describe( 'Chat Service', () => {
             expect(await service.RetrieveThreads("f2x1d36f","w2d4w56")).toEqual(true);
         })
     });
+  
+  });
+
