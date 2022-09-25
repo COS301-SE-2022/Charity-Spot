@@ -30,7 +30,7 @@ async function uploadItemAPICall(
   Description: string,
   Base64Img: any
 ) {
-  if (Base64Img == undefined) {
+  if (Base64Img == undefined || Base64Img.length == 0) {
     Base64Img = 'undefined';
   }
 
