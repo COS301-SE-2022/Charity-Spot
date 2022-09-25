@@ -2,12 +2,16 @@ describe('testing client', () => {
 
     //save cookies between tests
 
-      beforeEach(function () {
+      /*beforeEach(function () {
         cy.getCookies().then(cookies => {
           const namesOfCookies = cookies.map(c => c.name)
           Cypress.Cookies.preserveOnce(...namesOfCookies)
         })
-      })
+      })*/
+
+      Cypress.Cookies.defaults({
+        preserve: ['ID', 'ID_EXT', 'foreignID'],
+      });
 
     
     //client test
@@ -17,6 +21,7 @@ describe('testing client', () => {
             cy.visit('http://3.7.189.9:8082/login');
             cy.url().should('include','login');
         })
+
 
         it('The user should be able to login', () =>{
 
@@ -29,6 +34,7 @@ describe('testing client', () => {
 
         //home page
         it('should direct to the right url', () => {
+            
             cy.url().should('include','home');
         })
 
@@ -145,6 +151,16 @@ describe('testing client', () => {
 
         it('should direct to the right url', () => {
             cy.url().should('include','donationSchedule');
+        })
+
+        //return to home page
+
+        it('should be able to navigate to home', () => {
+            cy.get('[data-rr-ui-event-key="home"]').click();
+        })
+
+        it('should direct to the right url', () => {
+            cy.url().should('include','home');
         })
 
 });
