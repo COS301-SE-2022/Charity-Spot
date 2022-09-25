@@ -55,3 +55,24 @@ describe( 'Organisation Service', () => {
           expect(await service.getAllRatingsOfAssist("wdad2w5da4")).toEqual(true);
       })
   });
+  
+    //getAverageRatings(ratings : number[])
+    describe('getAverageRatings', () => {
+      it('Gets Averate Ratings', async () => {
+          jest.spyOn(service, 'getAverageRatings').mockImplementation(() : Promise<any> => Promise.resolve(true));
+          const val = [2,4,1,5];
+          expect(await service.getAverageRatings(val)).toEqual(true);
+      })
+  });
+
+    //getProvCity(coord : any)
+    describe('getProvCity', () => {
+      it('Gets Province city', async () => {
+          jest.spyOn(service, 'getProvCity').mockImplementation(() : Promise<any> => Promise.resolve(true));
+          expect(await service.getProvCity("12541255697556")).toEqual(true);
+      })
+  });
+    
+
+
+  });
