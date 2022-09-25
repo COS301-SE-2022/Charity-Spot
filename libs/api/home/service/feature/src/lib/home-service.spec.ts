@@ -30,3 +30,14 @@ describe( 'Home Service', () => {
           expect(await service.getAllOrg()).toEqual(true);
       })
   });
+
+    //getAllItems()
+    describe('getAllItems', () => {
+      it('Gets all items', async () => {
+          jest.spyOn(service, 'getAllItems').mockImplementation(() : Promise<any> => Promise.resolve(true));
+          expect(await service.getAllItems()).toEqual(true);
+      })
+  });
+
+
+  });
