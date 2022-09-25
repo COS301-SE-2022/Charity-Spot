@@ -22,7 +22,7 @@
   }
 .deliver-main{
     height: 300px auto;
-    width: 100%;
+    width: 90%;
 
     
     border-radius: 1rem;
@@ -146,11 +146,10 @@ input[type="file"] {
     /* height: 50px; */
     
   }
-  .deliver-box
+.deliver-box
 {
     float: left;
     width: 100%;
-
 }
 
 }
@@ -585,6 +584,11 @@ max-height: 450px;
     #deliv_but{
         width: 150px;
     }
+    .deliver-cent{
+        /* margin-top: 10px; */
+        width: 100%;
+        height: auto;
+    }
 
   
 }
@@ -616,6 +620,17 @@ max-height: 450px;
     }
     #deliv_but{
         width: 150px;
+    }
+    .deliver-box
+    {
+        float: left;
+        width: 50%;
+
+    }
+    .deliver-cent{
+       
+        width: 100%;
+        height: auto;
     }
 
   
