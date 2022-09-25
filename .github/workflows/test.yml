@@ -3,7 +3,7 @@ name: Test
 on:
 
   push:
-    branches: ["TimosBranch"]
+    branches: ["develop", "TimosBranch"]
 
 jobs:
 
@@ -21,6 +21,15 @@ jobs:
       - name: install dep
         run: yarn install
 
-      - name: build image for db
+      - name: build container for db
         run: docker-compose up -d
+        
+      - name: apply db schema
+        run: yarn prisma migrate dev && yarn prisma generate
+        
+      - name: start api
+        run: yarn start api > /dev/null &
+        
+      - name: start integration test
+        run: npx nx e2e client-e2e --spec apps/client-e2e/src/integration/app.spec.ts
 
