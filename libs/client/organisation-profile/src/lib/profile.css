@@ -875,16 +875,16 @@ input.in5:hover{
     transition: 0.3s ease-in;
     /*color: #deb217;*/
     color: #c59b08;  
-    font-size: 40px;
+    font-size: 30px;
 }
 
 .rated:not(:checked) > label {
     float:right;
-    width:1em;
+    width:1.3em;
     overflow:hidden;
     white-space:nowrap;
     cursor:pointer;
-    font-size:40px;
+    font-size:30px;
     color:rgb(196, 196, 196);
 
 }
