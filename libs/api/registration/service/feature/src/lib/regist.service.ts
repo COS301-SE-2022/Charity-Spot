@@ -62,6 +62,7 @@ export class RegistrationService {
 
     }
 
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	async getProvCity(coord : any){
 
 		const args = {

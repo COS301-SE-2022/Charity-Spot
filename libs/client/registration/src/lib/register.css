@@ -1,3 +1,26 @@
+.main-register#main.active{
+  filter: blur(20px);
+  overflow: hidden;
+}
+
+.email-modal{
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  z-index: 1; 
+  padding-top: 20em;
+  top: 0;
+}
+
+.email-modal-content{
+  width: 40em;
+  /* align-self: center; */
+}
+
 .main-register{
     min-height: 100vh;
     min-width: 100vw;

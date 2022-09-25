@@ -1,5 +1,6 @@
 
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config();
 
 export function apiSharedAuth(): string {
@@ -94,7 +95,7 @@ export function apiSharedAuth(): string {
           `
       };
 
-      return new Promise((resolve, reject)=>{
+      return new Promise((resolve)=>{
         linker.sendMail(actualEmail, function (error, info){
           if(error) {
             console.log(`${error}: ${error.message}`);
@@ -109,7 +110,8 @@ export function apiSharedAuth(): string {
 
   //email code
     async function randomCode() {
-      return String(Math.floor(1000000 + Math.random() * 9000000));
+      internal = String(Math.floor(1000000 + Math.random() * 9000000));
+      return internal;
     }
 
   //email_validation_2

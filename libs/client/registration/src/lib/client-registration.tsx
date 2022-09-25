@@ -7,6 +7,7 @@ import Bgpic from '../../../shared/assets/Bgpic.png';
 
 import { host } from '../../../../../config'
 
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import {
   storage,
   randomStringGenerator,
@@ -16,6 +17,17 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import './register.css';
 
 import { ModalMap } from './modal-map';
+
+import {
+	MDBCard,
+	MDBCardHeader,
+	MDBCardBody,
+	MDBCardTitle,
+	MDBCardText,
+	MDBCardFooter,
+	MDBBtn,
+  MDBInput
+  } from 'mdb-react-ui-kit';
 
 async function APICall(
   orgName: string,
@@ -79,8 +91,47 @@ async function APICall(
   return JSON.stringify(All_data);
 }
 
+async function validate(_incoming: string, what: string) {
+  let query = '';
+
+  switch(what) {
+    case 'email':
+      query = `
+        query {
+          validateEmail(email: "${_incoming})
+        }
+      `;
+      break;
+    case 'code':
+      query = `
+        query {
+          checkCode(code: "${_incoming}")
+        }
+      `;
+      break;
+  }
+
+  let result = undefined;
+
+  await fetch(`http://${host.host}:3333/graphql`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({
+      query,
+    }),
+  })
+    .then((r) => r.json())
+    .then((data) => (result = data));
+
+  return result;
+}
+
 export function Register() {
   const [show, setShow] = useState(false);
+  const [emailValidation, setEmailvalidation] = useState(false);
 
   const [location, setLocation] = useState({ lat: -26.195246, lng: 28.034088 });
 
@@ -110,9 +161,29 @@ export function Register() {
     return null;
   }
 
-  const hanndlesubmit = async (event: { preventDefault: () => void }) => {
+  const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
     setInvalidCredentials('');
+
+    
+    const blur = document.getElementById('main');
+    if(blur != null) {
+      blur.classList.toggle('active');
+    }
+    setEmailvalidation(true);
+
+    //send email to user
+  }
+
+  const checkCode = async (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    setEmailvalidation(false);
+    //check the code
+    //set green tick then push to api if code pass
+  }
+
+  const pushtoapi = async () => {
+
     (document.getElementById('registerDivM') as HTMLDivElement).style.display =
       'none';
     (document.getElementById('registerLoad') as HTMLDivElement).style.display =
@@ -141,7 +212,7 @@ export function Register() {
       return;
     }
 
-    if (passval != confpassval) {
+    if (passval !== confpassval) {
       setInvalidCredentials('Passwords do not match');
 
       (
@@ -201,157 +272,178 @@ export function Register() {
   };
 
   return (
-    <div className="main-register" style={{ backgroundImage: `url(${Bgpic})` }}>
-      <br />
-      <h1>Charity-Spot</h1>
-      <div className="register-contain">
-        <div className="rgleft-side">
-          <div id="registerDivM">
-            <div className="rgimg-class">
-              <img src={CS} alt="" id="rglogo-img-id" />
+    <>
+      <div id="main" className="main-register" style={{ backgroundImage: `url(${Bgpic})` }}>
+        <br />
+        <h1>Charity-Spot</h1>
+        <div className="register-contain">
+          <div className="rgleft-side">
+            <div id="registerDivM">
+              <div className="rgimg-class">
+                <img src={CS} alt="" id="rglogo-img-id" />
+              </div>
+              <form onSubmit={handleSubmit}>
+                <p style={{ color: 'red' }}>{invalidCredentials}</p>
+
+                <label htmlFor="rgorgnm1" className="rglabel">
+                  How would you like to use Charity Spot?
+                </label>
+                <select
+                  name="orgs"
+                  id="rgorgnm1"
+                  value={typeval}
+                  onChange={(e) => {
+                    setTypeval(e.target.value);
+                  }}
+                  className="rgSelect"
+                >
+                  <option value="ASSIST">Willing to assist</option>
+                  <option value="NEED">In Need</option>
+                </select>
+
+                <label htmlFor="rgorgnm2" className="rglabel">
+                  Profile Name
+                </label>
+                <input
+                  placeholder="Profile Name"
+                  type="text"
+                  id="rgorgnm2"
+                  className="rgInput"
+                  value={nameval}
+                  onChange={(e) => {
+                    setNameval(e.target.value);
+                  }}
+                />
+
+                <label htmlFor="emil1" className="rglabel">
+                  Email
+                </label>
+                <input
+                  placeholder="Enter your email..."
+                  type="email"
+                  id="emil1"
+                  className="rgInput"
+                  value={emailval}
+                  onChange={(e) => {
+                    setEmailval(e.target.value);
+                  }}
+                />
+
+                <label htmlFor="lct11" className="rglabel">
+                  Location
+                </label>
+                {/*<input placeholder='Enter your location...' type ='text' id="lct1"  className='rgInput'
+                value={Locationval}
+                  onChange ={(e)=>{setLocationval(e.target.value)}}/>*/}
+                <button
+                  type="button"
+                  className="custom-file-upload"
+                  onClick={() => {
+                    setTimeout(() => setShow(true), 100);
+                  }}
+                >
+                  Select your location
+                </button>
+
+                <label htmlFor="pimg1" className="rglabel">
+                  Profile Picture
+                </label>
+                <br />
+                <label htmlFor="file-upload" className="custom-file-upload">
+                  Select Image
+                </label>
+
+                <input
+                  type="file"
+                  id="file-upload"
+                  onChange={(e) => {
+                    if (!e.target.files) return;
+                    setImageUpload(e.target.files[0]);
+                  }}
+                />
+
+                <label htmlFor="rgpwd1" className="rglabel">
+                  Password
+                </label>
+                <input
+                  placeholder="Enter password..."
+                  type="password"
+                  id="rgpwd1"
+                  className="rgInput"
+                  value={passval}
+                  onChange={(e) => {
+                    setPassval(e.target.value);
+                  }}
+                />
+
+                <label htmlFor="rgpwd2" className="rglabel">
+                  Confirm Password
+                </label>
+                <input
+                  placeholder="Confirm password..."
+                  type="password"
+                  id="rgpwd2"
+                  className="rgInput"
+                  value={confpassval}
+                  onChange={(e) => {
+                    setConfPassval(e.target.value);
+                  }}
+                />
+
+                <br />
+
+                <button type="submit" id="rgsub_butt">
+                  Register
+                </button>
+              </form>
+
+              <div className="rgfoot">
+                <p>
+                  Already have an account?
+                  <Link to="/login" className="rgLink">
+                    {' '}
+                    click to Login
+                  </Link>
+                </p>
+                {/*<p style={{color:"red"}}>{invalidCredentials}</p>*/}
+              </div>
             </div>
-            <form onSubmit={hanndlesubmit}>
-              <p style={{ color: 'red' }}>{invalidCredentials}</p>
-
-              <label htmlFor="rgorgnm1" className="rglabel">
-                How would you like to use Charity Spot?
-              </label>
-              <select
-                name="orgs"
-                id="rgorgnm1"
-                value={typeval}
-                onChange={(e) => {
-                  setTypeval(e.target.value);
-                }}
-                className="rgSelect"
-              >
-                <option value="ASSIST">Willing to assist</option>
-                <option value="NEED">In Need</option>
-              </select>
-
-              <label htmlFor="rgorgnm2" className="rglabel">
-                Profile Name
-              </label>
-              <input
-                placeholder="Profile Name"
-                type="text"
-                id="rgorgnm2"
-                className="rgInput"
-                value={nameval}
-                onChange={(e) => {
-                  setNameval(e.target.value);
-                }}
-              />
-
-              <label htmlFor="emil1" className="rglabel">
-                Email
-              </label>
-              <input
-                placeholder="Enter your email..."
-                type="email"
-                id="emil1"
-                className="rgInput"
-                value={emailval}
-                onChange={(e) => {
-                  setEmailval(e.target.value);
-                }}
-              />
-
-              <label htmlFor="lct11" className="rglabel">
-                Location
-              </label>
-              {/*<input placeholder='Enter your location...' type ='text' id="lct1"  className='rgInput'
-               value={Locationval}
-                onChange ={(e)=>{setLocationval(e.target.value)}}/>*/}
-              <button
-                type="button"
-                className="custom-file-upload"
-                onClick={() => {
-                  setTimeout(() => setShow(true), 100);
-                }}
-              >
-                Select your location
-              </button>
-
-              <label htmlFor="pimg1" className="rglabel">
-                Profile Picture
-              </label>
-              <br />
-              <label htmlFor="file-upload" className="custom-file-upload">
-                Select Image
-              </label>
-
-              <input
-                type="file"
-                id="file-upload"
-                onChange={(e) => {
-                  if (!e.target.files) return;
-                  setImageUpload(e.target.files[0]);
-                }}
-              />
-
-              <label htmlFor="rgpwd1" className="rglabel">
-                Password
-              </label>
-              <input
-                placeholder="Enter password..."
-                type="password"
-                id="rgpwd1"
-                className="rgInput"
-                value={passval}
-                onChange={(e) => {
-                  setPassval(e.target.value);
-                }}
-              />
-
-              <label htmlFor="rgpwd2" className="rglabel">
-                Confirm Password
-              </label>
-              <input
-                placeholder="Confirm password..."
-                type="password"
-                id="rgpwd2"
-                className="rgInput"
-                value={confpassval}
-                onChange={(e) => {
-                  setConfPassval(e.target.value);
-                }}
-              />
-
-              <br />
-
-              <button type="submit" id="rgsub_butt">
-                Register
-              </button>
-            </form>
-
-            <div className="rgfoot">
-              <p>
-                Already have an account?
-                <Link to="/login" className="rgLink">
-                  {' '}
-                  click to Login
-                </Link>
-              </p>
-              {/*<p style={{color:"red"}}>{invalidCredentials}</p>*/}
-            </div>
-          </div>
-          <div className="loader" id="registerLoad"></div>
-        </div>
-
-        
-
-        <div className="rgright-side">
-          <div className="welcomeNote">
-            <h3 id="welid">New here? welcome.</h3>
+            <div className="loader" id="registerLoad"></div>
           </div>
 
-          <img src={Sealregister} alt="" id="rgwel-img-id" />
+          
+
+          <div className="rgright-side">
+            <div className="welcomeNote">
+              <h3 id="welid">New here? welcome.</h3>
+            </div>
+
+            <img src={Sealregister} alt="" id="rgwel-img-id" />
+          </div>
         </div>
+
+        <ModalMap inState={[show, setShow, setLocation, location]}></ModalMap>
       </div>
 
-      <ModalMap inState={[show, setShow, setLocation, location]}></ModalMap>
-    </div>
+      {
+        emailValidation && 
+        <div className="email-modal">
+          <div className="email-modal-content">
+            <MDBCard alignment='center'>
+            <MDBCardHeader>Email Verification</MDBCardHeader>
+            <MDBCardBody>
+              <MDBCardTitle>Please enter the secrete code</MDBCardTitle>
+              <MDBCardText>
+              <MDBInput label='' id='emailcodeinput' type='text' />
+              </MDBCardText>
+              <MDBBtn onClick={checkCode}>Go somewhere</MDBBtn>
+            </MDBCardBody>
+            <MDBCardFooter>2 days ago</MDBCardFooter>
+            </MDBCard>			
+          </div>
+        </div>
+      }
+    </>
   );
 }
 
