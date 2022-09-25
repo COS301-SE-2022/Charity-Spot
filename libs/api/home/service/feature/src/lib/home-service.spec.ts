@@ -6,33 +6,27 @@ import { HomeEntity } from './home.entity';
 import { HomeRepository } from '@charity-spot/api/home/repository/data-access';
 import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 
+import { direct } from '@charity-spot/api/shared/auth';
 
+describe( 'Home Service', () => {
 
-const homeEntity = new HomeEntity();
-let te : HomeEntity [] = [new HomeEntity];
+    let service : HomeService;
+    let repository : HomeRepository;
 
-describe ( 'Home Service', () => {
-    let service: HomeService;
-    let repository: HomeRepository;
-    let prisma: PrismaService;
-    let entity: HomeEntity;
 
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
-          providers: [HomeService, HomeRepository, PrismaService, HomeEntity],
+          providers: [HomeService, PrismaService, HomeRepository],
         }).compile();
 
         service = module.get<HomeService>(HomeService);
-
-  });
-  it('Home service should be defined', () => {
-    expect(service).toBeDefined();
-  });
-                   
-/*describe('getAllOrg()', () => {
-    it('Succesffuly retrieved all organisations', async () => {
-        expect( await service.getAllOrg() ).toMatchObject(te);
+        repository = module.get<HomeRepository>(HomeRepository);
     });
-})*/
-
-});
+    
+    //getAllOrg()
+    describe('getAllOrg', () => {
+      it('Gets all organisations', async () => {
+          jest.spyOn(service, 'getAllOrg').mockImplementation(() : Promise<any> => Promise.resolve(true));
+          expect(await service.getAllOrg()).toEqual(true);
+      })
+  });
