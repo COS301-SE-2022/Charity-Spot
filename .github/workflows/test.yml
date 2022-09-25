@@ -23,4 +23,7 @@ jobs:
 
       - name: build image for db
         run: docker-compose up -d
+        
+      - name: create db schema
+        run: yarn prisma migrate dev && yarn prisma generate
 
