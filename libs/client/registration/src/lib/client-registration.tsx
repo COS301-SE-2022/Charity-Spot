@@ -297,7 +297,7 @@ export function Register() {
         )
       );
 
-      if (response.data == null) {
+      if (response.data == null) { 
         //remove the loading
         setInvalidCredentials('Email provided already exists');
 
