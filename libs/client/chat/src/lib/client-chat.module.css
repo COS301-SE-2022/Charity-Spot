@@ -163,13 +163,13 @@ select:focus{
 
 
 
-@media screen and (max-width: 600px) {
+@media (max-width: 650px) {
  .messages{
 	width: 95%;
 	
  }
  input.myText{
-	width: 75%;
+	width: 100%;
  }
  .topbar{
 	margin-top: 10px;
@@ -180,17 +180,21 @@ select:focus{
 
  }
  .sndBT{
-	width: 65px;
- }
- 
+	width: 10%;
+}
   }
+@media (max-width: 450px) {
+	.sndBT{
+		width: 15%;
+	}
+}
   @media screen and (max-width: 900px) {
 	.messages{
 		width: 95%;
 		
 	 }
 	 .sndBT{
-		width: 120px;
+		width: 15%;
 	 }
 	 input.myText{
 		width: 75%;

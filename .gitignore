@@ -3,6 +3,7 @@
 #misc
 # config.ts
 *.java
+.env
 
 # compiled output
 /dist
