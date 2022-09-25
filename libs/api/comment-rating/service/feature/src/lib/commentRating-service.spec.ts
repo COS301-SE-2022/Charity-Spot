@@ -39,3 +39,30 @@ describe( 'Comment Rating Service', () => {
             expect(await service.getAverageRatings(val)).toEqual(true);
         })
     });
+
+    //getAllRatingsOfAssist(AssistID: string)
+    describe('getAllRatingsOfAssist', () => {
+        it('Gets all the ratings of an assist', async () => {
+            jest.spyOn(service, 'getAllRatingsOfAssist').mockImplementation(() : Promise<any> => Promise.resolve(true));
+            expect(await service.getAllRatingsOfAssist("a1d4f5g96")).toEqual(true);
+        })
+    });
+
+    //getAllCommentsOfAssist(AssistID: string)
+    describe('getAllCommentsOfAssist', () => {
+        it('Gets all the comments of an assist', async () => {
+            jest.spyOn(service, 'getAllCommentsOfAssist').mockImplementation(() : Promise<any> => Promise.resolve(true));
+            expect(await service.getAllCommentsOfAssist("a1d4f5g96")).toEqual(true);
+        })
+    });
+
+    //createCommentRating(AssistID: string, NeedID: string, Comment: string, Rating: number)
+    describe('createCommentRating', () => {
+        it('', async () => {
+            jest.spyOn(service, 'createCommentRating').mockImplementation(() : Promise<any> => Promise.resolve(true));
+            expect(await service.createCommentRating("a1d4f5g96","d2w4d5w9","This was a good company that delivered",4)).toEqual(true);
+        })
+    });
+
+
+});
