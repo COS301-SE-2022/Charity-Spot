@@ -33,6 +33,45 @@ describe('Charity-Spot Integration Test', () => {
         cy.get('#rgsub_butt').click();
 
 
+    });
+
+    it('should direct to the login page', () => {
+            
+        cy.url().should('include','login');
+    })
+
+    it('The user should be able to login', () =>{
+
+        cy.get('input[type=email]').type("charity1@email.com");
+        cy.get('input[type=password]').type("1234");
+
+        cy.contains('Log in').click();
+    })
+
+    it('should direct to the home page', () => {
+            
+        cy.url().should('include','home');
+    })
+
+    //Donate item
+    it("Do to donate page", () => {
+
+        cy.get('[data-rr-ui-event-key="donate"]').click();
+
+    });
+
+    it('should direct to the donate page', () => {
+            
+        cy.url().should('include','donate');
+    })
+
+    it("donate item", () => {
+
+        cy.get('.din1').type("apples");
+        cy.get('.din2').type("1");
+        cy.get('.din5').type("This is an apple");
+
+        cy.get('#dnt_but').click();
     })
 
 
