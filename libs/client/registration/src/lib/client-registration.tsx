@@ -6,6 +6,7 @@ import Sealregister from '../../../shared/assets/Sealregister.png';
 import CS from '../../../shared/assets/CS.png';
 import Bgpic from '../../../shared/assets/Bgpic.png';
 
+
 import { host } from '../../../../../config'
 
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
@@ -99,7 +100,7 @@ async function validate(_incoming: string, what: string) {
     case 'email':
       query = `
         query {
-          validateEmail(email: "${_incoming})
+          validateEmail(email: "${_incoming}")
         }
       `;
       break;
@@ -127,14 +128,16 @@ async function validate(_incoming: string, what: string) {
     .then((r) => r.json())
     .then((data) => (result = data));
 
-  return result;
+  return JSON.stringify(result);
 }
 
 export function Register() {
   const [show, setShow] = useState(false);
 
   //email modal
-  
+  const [successEmail, setSuccessEmail] = useState(false);
+  const [problem, setProblem] = useState('');
+  const [wrongCode, setWrongCode] = useState(false);
   const [emailValidation, setEmailvalidation] = useState(false);
   const [userCode, setUserCode] = useState(''); 
   //end of email modal
@@ -174,6 +177,7 @@ export function Register() {
         blur.classList.toggle('active');
         }
         setEmailvalidation(false);
+        setInvalidCredentials("Either we could not reach your email address or You could not enter the code in time. Please reload the page");
 
         return;
     } else {
@@ -262,14 +266,26 @@ export function Register() {
 
   const checkCode = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    setEmailvalidation(false);
     //check the code
     const response = JSON.parse(
       await validate(userCode, 'code')
     );
 
     if(response.data.checkCode) {
-      //respond
+      setSuccessEmail(true);
+      await new Promise(resolve => setTimeout(resolve, 5000));
+
+      const blur = document.getElementById('main');
+      if(blur != null) {
+        blur.classList.toggle('active');
+      }
+      setEmailvalidation(false);
+
+      return await pushtoapi();
+    } else {
+      setWrongCode(true);
+      setProblem("Code provide is incorrect<br>Please check the code again");
+      return;
     }
 
     //set green tick then push to api if code pass
@@ -477,21 +493,21 @@ export function Register() {
           <div className="email-modal-content">
             <MDBCard alignment='center'>
             <MDBCardHeader>Email Verification</MDBCardHeader>
-            <MDBCardBody>
-              <MDBCardTitle>Please enter the secrete code</MDBCardTitle>
+            {!successEmail && <MDBCardBody>
+              {!wrongCode && <MDBCardTitle>Please enter the requested code</MDBCardTitle>}
+              {wrongCode && <MDBCardTitle>{problem}</MDBCardTitle>}
               <MDBCardText>
-                {<MDBInput label='' id='emailcodeinput' type='text' style={{width: "50%", margin: "auto", textAlign: "center"}}
+                 <MDBInput label='' id='emailcodeinput' type='text' style={{width: "50%", margin: "auto", textAlign: "center"}}
                   onChange={(e)=>{
                     setUserCode(e.target.value);
                   }}
-                />}
-                {}
+                />
               </MDBCardText>
               <MDBBtn onClick={checkCode}>Check Code</MDBBtn>
-            </MDBCardBody>
+            </MDBCardBody>}
             <MDBCardFooter>
-              {<Countdown date={Date.now() + 60000 * 5} renderer={renderer} />}
-              {}
+              {!successEmail && <Countdown date={Date.now() + 60000 * 5} renderer={renderer} />}
+              {successEmail && <MDBCardText>SUCCESSFUL</MDBCardText>}
             </MDBCardFooter>
             </MDBCard>			
           </div>
