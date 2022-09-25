@@ -40,3 +40,22 @@ describe( 'Comment Rating Service', () => {
           expect(await service.setItemPicName("sad1w4d5","awdwd.jpg","asdawdnadwad5d1ad5wad45")).toEqual(true);
       })
   });
+
+    //getItemPicDirec(itemID : string)
+    describe('getItemPicDirec', () => {
+      it('Gets the item pictures directory', async () => {
+          jest.spyOn(service, 'getItemPicDirec').mockImplementation(() : Promise<any> => Promise.resolve(true));
+          expect(await service.getItemPicDirec("sdaw54a5")).toEqual(true);
+      })
+  });
+
+    //history(id: string)
+    describe('history', () => {
+      it('Gets the history', async () => {
+          jest.spyOn(service, 'history').mockImplementation(() : Promise<any> => Promise.resolve(true));
+          expect(await service.history("awda4d4a5")).toEqual(true);
+      })
+  });
+
+
+  });
