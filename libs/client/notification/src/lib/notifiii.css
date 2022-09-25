@@ -59,9 +59,8 @@
 }
 #notiprofile-pic
 {
-    height: 140px;
-    width: 140px;
-   margin: 10px;
+    height: 160px;
+    width: 160px;
    border-radius: 100%;
 }
 #notiMark{
@@ -144,8 +143,8 @@
 
     #notiprofile-pic
     {
-        height: 110px;
-        width: 110px;
+        height: 140px;
+        width: 140px;
        margin: 10px;
     }
     #notiMark{
