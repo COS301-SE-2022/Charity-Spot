@@ -39,3 +39,19 @@ describe( 'Organisation Service', () => {
           expect(await service.updateDet("wd41a4wd","awd45awd4","1234 Pretoria street","asdkmawkdmakwmdadwkd","1234","We are a restaurant","test@email.com")).toEqual(true);
       })
   });
+
+    //getDonations(id: string)
+    describe('getDonations', () => {
+      it('Gets all donations', async () => {
+          jest.spyOn(service, 'getDonations').mockImplementation(() : Promise<any> => Promise.resolve(true));
+          expect(await service.getDonations("adswwa45")).toEqual(true);
+      })
+  });
+
+    //getAllRatingsOfAssist(AssistID: string)
+    describe('getAllRatingsOfAssist', () => {
+      it('Gets All Ratings of an assist', async () => {
+          jest.spyOn(service, 'getAllRatingsOfAssist').mockImplementation(() : Promise<any> => Promise.resolve(true));
+          expect(await service.getAllRatingsOfAssist("wdad2w5da4")).toEqual(true);
+      })
+  });
