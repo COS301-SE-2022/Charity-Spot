@@ -12,78 +12,34 @@ import { async } from '@firebase/util';
 
 const notificationEntity = new NotificationEntity();
 
-describe ( 'Notification Service', () => {
-    let service: NotificationService;
-    let repository: NotificationRepository;
-    let prisma: PrismaService;
 
-    beforeEach(async () => {
-        const module: TestingModule = await Test.createTestingModule({
-          providers: [NotificationService, NotificationRepository,NotificationEntity, PrismaService],
-        }).compile();
+describe( 'Comment Rating Service', () => {
 
-        service = module.get<NotificationService>(NotificationService);
+  let service : NotificationService;
+  let repository : NotificationRepository;
 
-  });
-  it('Notification service should be defined', () => {
-    expect(service).toBeDefined();
-  });
-});
 
-let resolver: NotificationService;
+  beforeEach(async () => {
+      const module: TestingModule = await Test.createTestingModule({
+        providers: [NotificationService, PrismaService, NotificationRepository],
+      }).compile();
 
-beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      providers: 
-      [NotificationService, 
-        NotificationRepository,
-        NotificationEntity, 
-        PrismaService, 
-      ],
-    }).compile();
-    resolver = module.get<NotificationService>(NotificationService);
+      service = module.get<NotificationService>(NotificationService);
+      repository = module.get<NotificationRepository>(NotificationRepository);
   });
 
-  //getNotifications(u_id: string, id: string)
-  it('getNotifications', async () => {
-    jest
-        .spyOn(resolver,'getNotifications')
-        .mockImplementation((): Promise<NotificationEntity> => Promise.resolve(NotificationEntity));
-        expect(resolver.getNotifications).not.toHaveBeenCalled();
-        expect(await resolver.getNotifications("u_id", "id")).toMatchObject(NotificationEntity);
-        expect(resolver.getNotifications).toHaveBeenCalled();
+//getNotifications(u_id: string, id: string)
+describe('getNotifications', () => {
+  it('Gets notifications', async () => {
+      jest.spyOn(service, 'getNotifications').mockImplementation(() : Promise<any> => Promise.resolve(true));
+      expect(await service.getNotifications("awdad4754","4wad4a5")).toEqual(true);
+  })
 });
 
 //getReceiver(r_id: string)
-it('Gets the receiver', async () => {
-    jest
-        .spyOn(resolver,'getReceiver')
-        .mockImplementation((): Promise<NotificationEntity> => Promise.resolve(NotificationEntity));
-        expect(resolver.getReceiver).not.toHaveBeenCalled();
-        expect(await resolver.getReceiver("r_id")).toMatchObject(NotificationEntity);
-        expect(resolver.getReceiver).toHaveBeenCalled();
+describe('getReceiver', () => {
+  it('', async () => {
+      jest.spyOn(service, 'getReceiver').mockImplementation(() : Promise<any> => Promise.resolve(true));
+      expect(await service.getReceiver("wda445d")).toEqual(true);
+  })
 });
-
-
-export class NotificationServiceMock
-    {
-          //getNotifications(u_id: string, id: string)
-          getNotifications(u_id: string, id: string)
-            {
-               
-            }      
-
-            //getReceiver(r_id: string)
-            getReceiver(r_id: string)
-                {
-                    let returnable = null, receiver = null;
-                    returnable = new NotificationEntity();
-                    returnable.ID = r_id;
-                    returnable.Name = "test1";
-                    returnable.ProfilePicture = "asdaccaxassdad";
-                    return returnable;
-                }
-
-    }
-
-const servicemock = new NotificationServiceMock();
