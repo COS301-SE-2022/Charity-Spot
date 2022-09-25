@@ -634,8 +634,12 @@ max-height: 450px;
          box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0);
         /* color: #1458b3; */
        
-      
-
+    }
+    #clr_but{
+        width: 100px;
+    }
+    #dnt_but{
+        width: 100px;
     }
 
 }
@@ -698,10 +702,13 @@ max-height: 450px;
     
          box-shadow: 0.2rem 0.4rem 1.1rem -1rem rgb(0, 0, 0);
         /* color: #1458b3; */
-
-
     }
-  
+    #clr_but{
+        width: 100px;
+    }
+    #dnt_but{
+        width: 100px;
+    }
 }
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     /* Even Smaller devices */
