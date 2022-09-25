@@ -692,7 +692,7 @@ input.in5:hover{
 /*------------------------------------- For the EDIT TAB CONTENT---------------------------------------------------------------------*/
 .editor-main{
     height: 510px auto;
-    width: 70%;
+    width: 80%;
 
     /* background: linear-gradient(to right bottom, rgba(221, 216, 216, 0.849),rgba(255, 255, 255, 0.863)); */
     border-radius: 1rem;
@@ -831,6 +831,7 @@ input.in5:hover{
         width: 25%;
 
     }
+    
 }
 @media screen and (max-width: 600px) {
     .wrapperProfile{
