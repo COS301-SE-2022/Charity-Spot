@@ -74,6 +74,54 @@ describe('Charity-Spot Integration Test', () => {
         cy.get('#dnt_but').click();
     })
 
+    //register client
+
+
+    it('should navigate to register page', () => {
+        cy.visit('http://localhost:4200/register');
+        cy.url().should('include','register');
+    })
+
+    it('should register charity', () => {
+        cy.get('#rgorgnm1').select("In Need");
+        cy.get('#rgorgnm2').type("Client 1");
+        cy.get('#emil1').type("client1@email.com");
+        cy.get('button.custom-file-upload').click().then(() => { cy.wait(2000).then(() => { 
+
+            cy.get('.modal').trigger('pointerdown', {clientX: 300, clientY: 600})
+            cy.get('.modal').trigger('pointerup', {clientX: 300,clientY: 600})
+        
+            }); 
+        });
+
+        cy.get('.btn-close').click();
+
+        cy.get('#rgpwd1').type('1234');
+        cy.get('#rgpwd2').type('1234');
+
+        cy.get('#rgsub_butt').click();
+
+
+    });
+
+    it('should direct to the login page', () => {
+            
+        cy.url().should('include','login');
+    })
+
+    it('The user should be able to login', () =>{
+
+        cy.get('input[type=email]').type("client1@email.com");
+        cy.get('input[type=password]').type("1234");
+
+        cy.contains('Log in').click();
+    })
+
+    it('should direct to the home page', () => {
+            
+        cy.url().should('include','home');
+
+    })
 
 
     
@@ -99,11 +147,11 @@ describe('Charity-Spot Integration Test', () => {
         it('should direct to the right url', () => {
             
             cy.url().should('include','home');
-        })
+        })*/
 
         it('should be taken to profile page of org', () => {
 
-            cy.get('[title="charity1"] > img').click();
+            cy.get('[title="Charity 1"] > img').click();
 
         });
 
@@ -224,6 +272,6 @@ describe('Charity-Spot Integration Test', () => {
 
         it('should direct to the right url', () => {
             cy.url().should('include','home');
-        })*/
+        })
 
 });
