@@ -21,14 +21,17 @@ jobs:
       - name: install dep
         run: yarn install
 
-      - name: build image for db
+      - name: build container for db
         run: docker-compose up -d
         
-      - name: create db schema
+      - name: apply db schema
         run: yarn prisma migrate dev && yarn prisma generate
         
       - name: start api
-        run: yarn start api > /dev/null & && sleep 20
+        run: yarn start api > /dev/null &
+      
+      - name: wait for api to start
+        run: sleep 20
         
       - name: start integration test
         run: nx e2e client-e2e --spec apps/client-e2e/src/integration/app.spec.ts
