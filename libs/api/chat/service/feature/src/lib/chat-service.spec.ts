@@ -38,14 +38,3 @@ describe( 'Chat Service', () => {
             expect(await service.RetrieveThread("f2x1d36f","w2d4w56","w1w4a2s4")).toEqual(true);
         })
     });
-
-    //RetrieveThreads(userID: string, id: string)
-    describe('RetrieveThreads', () => {
-        it('Retrieves threads', async () => {
-            jest.spyOn(service, 'RetrieveThreads').mockImplementation(() : Promise<any> => Promise.resolve(true));
-            expect(await service.RetrieveThreads("f2x1d36f","w2d4w56")).toEqual(true);
-        })
-    });
-  
-  });
-
