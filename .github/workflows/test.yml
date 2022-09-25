@@ -28,7 +28,7 @@ jobs:
         run: yarn prisma migrate dev && yarn prisma generate
         
       - name: start api
-        run: yarn start api
+        run: yarn start api > /dev/null & && sleep 20
         
       - name: start integration test
         run: nx e2e client-e2e --spec apps/client-e2e/src/integration/app.spec.ts
