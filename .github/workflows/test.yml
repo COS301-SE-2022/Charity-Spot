@@ -1,0 +1,35 @@
+name: Test
+
+on:
+
+  push:
+    branches: ["develop", "TimosBranch"]
+
+jobs:
+
+  integration_test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: install dep
+        run: yarn install
+
+      - name: build container for db
+        run: docker-compose up -d
+        
+      - name: apply db schema
+        run: yarn prisma migrate dev && yarn prisma generate
+        
+      - name: start api
+        run: yarn start api > /dev/null &
+        
+      - name: start integration test
+        run: npx nx e2e client-e2e --spec apps/client-e2e/src/integration/app.spec.ts
+

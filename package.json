@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test api-chat-service-feature --skip-nx-cache && nx test api-donate-service-feature --skip-nx-cache && nx test api-item-request-service-feature --skip-nx-cache && nx test api-organisation-profile-service-feature --skip-nx-cache && nx test api-registration-service-feature --skip-nx-cache && nx test api-schedule-delivery-service-feature --skip-nx-cache",
+    "test": "nx test login-service-feature --skip-nx-cache && nx test api-registration-service-feature --skip-nx-cache",
+    "test-all": "nx run-many --target=test --codeCoverage --skip-nx-cache",
     "test-client": "nx e2e client-e2e --watch"
   },
   "private": true,

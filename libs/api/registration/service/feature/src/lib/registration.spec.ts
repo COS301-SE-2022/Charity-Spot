@@ -43,7 +43,7 @@ describe('', () => {
 */
 
 //doesNotExist("lk@gmail.com", "acdvdf")
-describe('Org does not exist', () => {
+/*describe('Org does not exist', () => {
   it('The Organisation should not already exist', async () => {
       expect(await service.doesNotExist("lk@gmail.com", "acdvdf")).toEqual(true);
   }); 
@@ -82,6 +82,6 @@ describe('Adding a new organisation', () => {
   it('Successfully added a new organisation', async () => {
     expect(await service.addOrg("5","An incredible Org")).toEqual("SUCCESS");
   }); 
-})
+})*/
 
 })
