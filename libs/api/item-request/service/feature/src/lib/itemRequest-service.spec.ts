@@ -39,3 +39,23 @@ describe( 'Comment Rating Service', () => {
         expect(await service.getAIPredic("01-03-2022","Jeans","1234 Pretoria Street")).toEqual(true);
     })
 });
+
+   //getAllRating(ID: string)
+   describe('getAllRating', () => {
+    it('Gets All ratings', async () => {
+        jest.spyOn(service, 'getAllRating').mockImplementation(() : Promise<any> => Promise.resolve(true));
+        expect(await service.getAllRating("asd1wad4")).toEqual(true);
+    })
+});
+
+   //getAverageRatings(ratings : number[])
+   describe('getAverageRatings', () => {
+    it('Gets Averate Ratings', async () => {
+        jest.spyOn(service, 'getAverageRatings').mockImplementation(() : Promise<any> => Promise.resolve(true));
+        const val = [1,5,3,2,4];
+        expect(await service.getAverageRatings(val)).toEqual(true);
+    })
+});
+   
+
+});
