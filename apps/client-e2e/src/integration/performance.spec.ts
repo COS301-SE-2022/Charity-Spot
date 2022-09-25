@@ -1,13 +1,8 @@
-describe('testing client', () => {
+describe('Charity-Spot performance test', () => {
+
+    console.log("Performance test on live Charity-Spot!")
 
     //save cookies between tests
-
-      /*beforeEach(function () {
-        cy.getCookies().then(cookies => {
-          const namesOfCookies = cookies.map(c => c.name)
-          Cypress.Cookies.preserveOnce(...namesOfCookies)
-        })
-      })*/
 
       Cypress.Cookies.defaults({
         preserve: ['ID', 'ID_EXT', 'foreignID'],
