@@ -41,3 +41,21 @@ describe( 'Registration Service', () => {
         expect(await service.regOrg("awdadawda4a4","1254","5454544s","wda455wd45w")).toEqual(true);
     })
 });
+	
+  //setItemPicName(id, picLink)
+  describe('setItemPicName', () => {
+    it('Sets the name of the items picture', async () => {
+        jest.spyOn(service, 'setItemPicName').mockImplementation(() : Promise<any> => Promise.resolve(true));
+        expect(await service.setItemPicName("adw2458","wdadsxsasdas")).toEqual(true);
+    })
+});
+	
+  //getProvCity(coord : any)
+  describe('getProvCity', () => {
+    it('Gets the Province city', async () => {
+        jest.spyOn(service, 'getProvCity').mockImplementation(() : Promise<any> => Promise.resolve(true));
+        expect(await service.getProvCity("14254 Pretorius Street")).toEqual(true);
+    })
+});
+
+});
