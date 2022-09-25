@@ -1,0 +1,6 @@
+DATABASE_URL="postgresql://seal_team:seal_team@localhost:5432/main"
+APP_EMAIL="t92YuwWah12ZAlXYsVmcuQ3bwNXe0lmchh2YuMnbvlGdhNWauVXbt92Y"
+APP_EMAIL_PASSWORD="gYl9Wc1F2Y3VmeppXajlXY"
+GOOGLE_API_KEY="3RlbycDSiVVU3dkam1kMjNDO3QGMmdVUVtmQiZTMSlWQ5NVY6lUQ"
+
+LATITUDE_SECRETE="3NcrYpt3D"

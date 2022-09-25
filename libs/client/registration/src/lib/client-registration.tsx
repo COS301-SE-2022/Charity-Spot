@@ -112,7 +112,7 @@ async function validate(_incoming: string, what: string) {
       break;
   }
 
-  let result = undefined;
+  let result = '';
 
   await fetch(`http://${host.host}:3333/graphql`, {
     method: 'POST',
@@ -239,20 +239,39 @@ export function Register() {
       return;
     }
 
+    //send email to user
+    const response = JSON.parse(
+      await validate(emailval, 'email')
+    );
+
+    if(response.data.validateEmail) {
+      console.log("Verification Code Is Sent");
+    } else {
+      console.log("Email Verification Failed");
+      setInvalidCredentials("Email provided could not be reached");
+      return;
+    }
 
     const blur = document.getElementById('main');
     if(blur != null) {
       blur.classList.toggle('active');
     }
     setEmailvalidation(true);
-
-    //send email to user
+    return;
   }
 
   const checkCode = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
     setEmailvalidation(false);
     //check the code
+    const response = JSON.parse(
+      await validate(userCode, 'code')
+    );
+
+    if(response.data.checkCode) {
+      //respond
+    }
+
     //set green tick then push to api if code pass
   }
 
@@ -461,16 +480,18 @@ export function Register() {
             <MDBCardBody>
               <MDBCardTitle>Please enter the secrete code</MDBCardTitle>
               <MDBCardText>
-              <MDBInput label='' id='emailcodeinput' type='text' style={{width: "50%", margin: "auto", textAlign: "center"}}
-                onChange={(e)=>{
-                  setUserCode(e.target.value);
-                }}
-              />
+                {<MDBInput label='' id='emailcodeinput' type='text' style={{width: "50%", margin: "auto", textAlign: "center"}}
+                  onChange={(e)=>{
+                    setUserCode(e.target.value);
+                  }}
+                />}
+                {}
               </MDBCardText>
               <MDBBtn onClick={checkCode}>Check Code</MDBBtn>
             </MDBCardBody>
             <MDBCardFooter>
-              <Countdown date={Date.now() + 60000 * 5} renderer={renderer} />
+              {<Countdown date={Date.now() + 60000 * 5} renderer={renderer} />}
+              {}
             </MDBCardFooter>
             </MDBCard>			
           </div>
