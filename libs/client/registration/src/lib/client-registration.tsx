@@ -318,7 +318,7 @@ export function Register() {
 
     } else {
       setWrongCode(true);
-      setProblem("Code provide is incorrect<br>Please check the code again");
+      setProblem("Code provide is incorrect - Please check the code again");
       return;
     }
 
