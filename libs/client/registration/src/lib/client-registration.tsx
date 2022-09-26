@@ -193,6 +193,11 @@ export function Register() {
     event.preventDefault();
     setInvalidCredentials('');
 
+    (document.getElementById('registerDivM') as HTMLDivElement).style.display =
+        'none';
+      (document.getElementById('registerLoad') as HTMLDivElement).style.display =
+        'block';
+
     let profilePictureLink = '';
 
     if (imageUpload) {
@@ -281,10 +286,10 @@ export function Register() {
       }
       setEmailvalidation(false);
 
-      (document.getElementById('registerDivM') as HTMLDivElement).style.display =
+      /*(document.getElementById('registerDivM') as HTMLDivElement).style.display =
         'none';
       (document.getElementById('registerLoad') as HTMLDivElement).style.display =
-        'block';
+        'block';*/
 
       response = JSON.parse(
         await APICall(
