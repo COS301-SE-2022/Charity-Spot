@@ -1,3 +1,5 @@
+import { waitForDebugger } from "inspector";
+
 describe('Charity-Spot Integration Test', () => {
 
     //save cookies between tests
@@ -16,7 +18,7 @@ describe('Charity-Spot Integration Test', () => {
     it('should register charity', () => {
         cy.get('#rgorgnm1').select("Willing to assist");
         cy.get('#rgorgnm2').type("Charity 1");
-        cy.get('#emil1').type("charity1@email.com");
+        cy.get('#emil1').type("charity1@email.comm");
         cy.get('button.custom-file-upload').click().then(() => { cy.wait(2000).then(() => { 
 
             cy.get('.modal').trigger('pointerdown', {clientX: 300, clientY: 600})
@@ -35,6 +37,12 @@ describe('Charity-Spot Integration Test', () => {
 
     });
 
+    it('should enter email verification', () => {
+
+        cy.get('#emailcodeinput').type('demo');
+        cy.get('.ripple').click().then(() => { cy.wait(10000);});
+    })
+
     it('should direct to the login page', () => {
             
         cy.url().should('include','login');
@@ -42,7 +50,7 @@ describe('Charity-Spot Integration Test', () => {
 
     it('The user should be able to login', () =>{
 
-        cy.get('input[type=email]').type("charity1@email.com");
+        cy.get('input[type=email]').type("charity1@email.comm");
         cy.get('input[type=password]').type("1234");
 
         cy.contains('Log in').click();
@@ -82,10 +90,10 @@ describe('Charity-Spot Integration Test', () => {
         cy.url().should('include','register');
     })
 
-    it('should register charity', () => {
+    it('should register client', () => {
         cy.get('#rgorgnm1').select("In Need");
         cy.get('#rgorgnm2').type("Client 1");
-        cy.get('#emil1').type("client1@email.com");
+        cy.get('#emil1').type("client1@email.comm");
         cy.get('button.custom-file-upload').click().then(() => { cy.wait(2000).then(() => { 
 
             cy.get('.modal').trigger('pointerdown', {clientX: 300, clientY: 600})
@@ -104,6 +112,12 @@ describe('Charity-Spot Integration Test', () => {
 
     });
 
+    it('should enter email verification', () => {
+
+        cy.get('#emailcodeinput').type('demo');
+        cy.get('.ripple').click().then(() => { cy.wait(10000);});
+    })
+
     it('should direct to the login page', () => {
             
         cy.url().should('include','login');
@@ -111,7 +125,7 @@ describe('Charity-Spot Integration Test', () => {
 
     it('The user should be able to login', () =>{
 
-        cy.get('input[type=email]').type("client1@email.com");
+        cy.get('input[type=email]').type("client1@email.comm");
         cy.get('input[type=password]').type("1234");
 
         cy.contains('Log in').click();
@@ -210,7 +224,7 @@ describe('Charity-Spot Integration Test', () => {
 
         it('charity should be able to login', () =>{
 
-            cy.get('input[type=email]').type("charity1@email.com");
+            cy.get('input[type=email]').type("charity1@email.comm");
             cy.get('input[type=password]').type("1234");
 
             cy.contains('Log in').click();

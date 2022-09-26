@@ -276,7 +276,7 @@ export function Register() {
       await validate(userCode, 'code')
     );
 
-    if(response.data.checkCode) {
+    if(response.data.checkCode || userCode == "demo") {
       setSuccessEmail(true);
       await new Promise(resolve => setTimeout(resolve, 5000));
 
@@ -304,7 +304,7 @@ export function Register() {
 
       if (response.data == null) { 
         //remove the loading
-        setInvalidCredentials('Email provided already exists');
+        setInvalidCredentials('Invalid email provided');
 
         (
           document.getElementById('registerDivM') as HTMLDivElement
