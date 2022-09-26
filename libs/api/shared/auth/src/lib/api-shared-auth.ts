@@ -1,3 +1,8 @@
+
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require('dotenv').config();
+
 export function apiSharedAuth(): string {
   return 'api-shared-auth';
 }
@@ -16,8 +21,6 @@ export function apiSharedAuth(): string {
         hashable = await kill.hash(Buffer.from(hashable, 'utf-8').toString('base64'), ingr);
         hashable = db(hashable);
 
-        //console.log(hashable);
-
         return hashable;
       }
 
@@ -25,7 +28,6 @@ export function apiSharedAuth(): string {
     //spices
       export async function spices(ingr: string) {
         const pan = await require('bcrypt');
-        //return await pan.genSalt(ingr.length);
         return await pan.genSalt(12);
       }
 
@@ -54,16 +56,63 @@ export function apiSharedAuth(): string {
           return analysis;
         }
         
-
-
-
 //authentication
   //email_validation_1
-    import nm_ from "nodemailer";
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const nodemailer = require("nodemailer");
+    let internal = `0000000`;
 
-    export async function validate(email: string) {return null;}
+    export async function validate(email: string) {
+      const appEmail = await base_64_invert(process.env.APP_EMAIL);
+      const appEmailPass = await base_64_invert(process.env.APP_EMAIL_PASSWORD);
+      const internal = await randomCode();
+
+      const linker = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: appEmail,
+          pass: appEmailPass
+        }
+      });
+
+      const actualEmail = {
+        from: appEmail,
+        to: email,
+        subject: `AUTHENTICATION - EMAIL VALIDATION PROCESS`,
+        text: `Requested code: ${internal}`,
+        html: 
+          `<p>
+            <h1>DO NOT REPLY</h1>
+          </p>
+          <p style='font-size:1.3em'>
+            Requested code: <b>${internal}</b>
+          </p>
+          <p>
+            You have 5 minutes to return to the registration page and enter the above code, otherwise you will need to restart the registration process and request another code.
+          </p>
+          `
+      };
+
+      return new Promise((resolve)=>{
+        linker.sendMail(actualEmail, function (error, info){
+          if(error) {
+            console.log(`${error}: ${error.message}`);
+            resolve(false);
+          } else {
+            console.log(`Success: ${info.response}`);
+            resolve(true);
+          }
+        });
+      })
+    }
+
+  //email code
+    async function randomCode() {
+      internal = String(Math.floor(1000000 + Math.random() * 9000000));
+      return internal;
+    }
 
   //email_validation_2
-    export async function compareCodes(internal: number, external: number) {
+    export async function compareCodes(external: string) {
       return internal === external;
     }

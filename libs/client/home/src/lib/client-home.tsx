@@ -24,14 +24,12 @@ const center = {
   lng: 28.0473
 };
 
-
-
 export function Home() {
 
-  let APIKey = APIKEYS.GoogleMapsAPIKey;
+  const apikeys = APIKEYS.GoogleMapsAPIKey;
 
   const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: APIKey
+    googleMapsApiKey: apikeys
   })
 
   const [checkedLocation, setCheckedLocation] = useState(
