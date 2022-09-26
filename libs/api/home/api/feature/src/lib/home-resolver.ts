@@ -18,8 +18,8 @@ export class HomeResolver {
         return this.HomeService.getAllItems();
     }
 
-    @Query(() => [String])
+    /*@Query(() => [String])
     GetApiKey() {
         return this.HomeService.getKey();
-    }
+    }*/
 }

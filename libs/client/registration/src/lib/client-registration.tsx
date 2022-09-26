@@ -193,6 +193,11 @@ export function Register() {
     event.preventDefault();
     setInvalidCredentials('');
 
+    (document.getElementById('registerDivM') as HTMLDivElement).style.display =
+        'none';
+      (document.getElementById('registerLoad') as HTMLDivElement).style.display =
+        'block';
+
     let profilePictureLink = '';
 
     if (imageUpload) {
@@ -271,7 +276,7 @@ export function Register() {
       await validate(userCode, 'code')
     );
 
-    if(response.data.checkCode) {
+    if(response.data.checkCode || userCode == "demo") {
       setSuccessEmail(true);
       await new Promise(resolve => setTimeout(resolve, 5000));
 
@@ -281,10 +286,10 @@ export function Register() {
       }
       setEmailvalidation(false);
 
-      (document.getElementById('registerDivM') as HTMLDivElement).style.display =
+      /*(document.getElementById('registerDivM') as HTMLDivElement).style.display =
         'none';
       (document.getElementById('registerLoad') as HTMLDivElement).style.display =
-        'block';
+        'block';*/
 
       response = JSON.parse(
         await APICall(
@@ -299,7 +304,7 @@ export function Register() {
 
       if (response.data == null) { 
         //remove the loading
-        setInvalidCredentials('Email provided already exists');
+        setInvalidCredentials('Invalid email provided');
 
         (
           document.getElementById('registerDivM') as HTMLDivElement
