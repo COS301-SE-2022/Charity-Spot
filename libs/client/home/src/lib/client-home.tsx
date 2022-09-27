@@ -200,7 +200,7 @@ export function Home() {
                                 checked={checkedType[0]}
                                 onChange={() => {let checked = [...checkedType]; checked[0] = !checked[0]; setCheckedType(checked);}}
                               />
-                            <label htmlFor="i0">Clothing</label>
+                            <label htmlFor="i0" style={{color:'red'}}>Clothing(red)</label>
                           </div>
 
                           <div className='wrap1'>
@@ -210,7 +210,7 @@ export function Home() {
                                 checked={checkedType[1]}
                                 onChange={() => {let checked = [...checkedType]; checked[1] = !checked[1]; setCheckedType(checked);}}
                               />
-                            <label htmlFor="i1">Food</label>
+                            <label htmlFor="i1" style={{color:'blue'}}>Food(blue)</label>
                           </div>
 
                           <div className='wrap1'>
@@ -220,7 +220,7 @@ export function Home() {
                                 checked={checkedType[2]}
                                 onChange={() => {let checked = [...checkedType]; checked[2] = !checked[2]; setCheckedType(checked);}}
                               />
-                            <label htmlFor="i2">Stationery</label>
+                            <label htmlFor="i2" style={{color:'green'}}>Stationery(green)</label>
                           </div>
 
                           <div className='wrap1'>
@@ -230,7 +230,7 @@ export function Home() {
                                 checked={checkedType[3]}
                                 onChange={() => {let checked = [...checkedType]; checked[3] = !checked[3]; setCheckedType(checked);}}
                               />
-                            <label htmlFor="i3">Hygiene</label>
+                            <label htmlFor="i3">Hygiene(yellow)</label>
                           </div>
 
                           <div className='wrap1'>
@@ -240,7 +240,7 @@ export function Home() {
                                 checked={checkedType[4]}
                                 onChange={() => {let checked = [...checkedType]; checked[4] = !checked[4]; setCheckedType(checked);}}
                               />
-                            <label htmlFor="i4">Kitchen</label>
+                            <label htmlFor="i4" style={{color:'purple'}}>Kitchen(purple)</label>
                           </div>
 
                           <div className='wrap1'>
@@ -250,7 +250,7 @@ export function Home() {
                                 checked={checkedType[5]}
                                 onChange={() => {let checked = [...checkedType]; checked[5] = !checked[5]; setCheckedType(checked);}}
                               />
-                            <label htmlFor="i5">Furniture</label>
+                            <label htmlFor="i5">Furniture(white)</label>
                           </div>
 
                           <div className='wrap1'>
@@ -260,7 +260,7 @@ export function Home() {
                                 checked={checkedType[6]}
                                 onChange={() => {let checked = [...checkedType]; checked[6] = !checked[6]; setCheckedType(checked);}}
                               />
-                            <label htmlFor="i6">Technology</label>
+                            <label htmlFor="i6">Technology(organge)</label>
                           </div>
 
                     </div>

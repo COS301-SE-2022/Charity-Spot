@@ -12,10 +12,10 @@ import { AppModule } from './app/app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  /*app.enableCors({
+  app.enableCors({
     origin: ['http://localhost:4200', 'http://charity-spot.co.za'],
     methods: ["GET", "POST"]
-  });*/
+  });
 
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
