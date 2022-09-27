@@ -27,8 +27,10 @@ export function ModalMap(props : any){
             <div>
 
                 <Modal show={props.inState[0]} onHide={() => {props.inState[1](false);}}> 
-
-                    <label className='rglabel'>Please place the marker at your location:</label>
+                    
+                    <Modal.Header closeButton>
+                        <label className='rglabel'>Please place the marker at your location:</label>
+                    </Modal.Header>
                     {/*<label className='rglabel'>Lat: {Number((props.inState[3].lat).toFixed(3))} , Lng: {Number((props.inState[3].lng).toFixed(3))}</label>*/}
             
                     <MapPicker defaultLocation={props.inState[3]}

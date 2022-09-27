@@ -34,7 +34,7 @@ export function ModalMap(props : any){
             <div>
 
                 <Modal show={props.inState[0]} onHide={() => {props.inState[1](false);}}> 
-
+                    <Modal.Header closeButton/>
                     {isLoaded && 
 
                     <GoogleMap

@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 80;
+const port = 443;
 const path = require('path');
 
 app.use('/', express.static('client'));

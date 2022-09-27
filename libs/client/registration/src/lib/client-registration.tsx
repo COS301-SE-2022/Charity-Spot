@@ -323,7 +323,7 @@ export function Register() {
 
     } else {
       setWrongCode(true);
-      setProblem("Code provide is incorrect - Please check the code again");
+      setProblem("Code provided is incorrect - Please try again");
       return;
     }
 
@@ -338,7 +338,6 @@ export function Register() {
       <div id="main" className="main-register" style={{ backgroundImage: `url(${Bgpic})` }}>
         <br />
         {/*<h1>Charity-Spot</h1>*/}
-        <br />
         <br />
         <div className="register-contain">
           <div className="rgleft-side">
@@ -497,7 +496,7 @@ export function Register() {
             <MDBCard alignment='center'>
             <MDBCardHeader>Email Verification</MDBCardHeader>
             {!successEmail && <MDBCardBody>
-              {!wrongCode && <MDBCardTitle>Please enter the requested code</MDBCardTitle>}
+              {!wrongCode && <MDBCardTitle>Please enter your email authentication code</MDBCardTitle>}
               {wrongCode && <MDBCardTitle>{problem}</MDBCardTitle>}
               <MDBCardText>
                  <MDBInput label='' id='emailcodeinput' type='text' style={{width: "50%", margin: "auto", textAlign: "center"}}
@@ -506,11 +505,11 @@ export function Register() {
                   }}
                 />
               </MDBCardText>
-              <MDBBtn onClick={checkCode}>Check Code</MDBBtn>
+              <MDBBtn onClick={checkCode} style={{maxHeight: '37px', maxWidth: '112px'}}>Check Code</MDBBtn>
             </MDBCardBody>}
             <MDBCardFooter>
               {!successEmail && <Countdown date={Date.now() + 60000 * 5} renderer={renderer} />}
-              {successEmail && <MDBCardText>SUCCESSFUL</MDBCardText>}
+              {successEmail && <MDBCardText>SUCCESS</MDBCardText>}
             </MDBCardFooter>
             </MDBCard>			
           </div>

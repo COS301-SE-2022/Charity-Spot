@@ -78,7 +78,6 @@ export function ClientLogin() {
       <br />
       {/*<h1 style={{color: '#0000FF'}}>Charity-Spot</h1>*/}
       <br/>
-      <br/>
       <div className="login-contain">
         <div className="left-side">
           <div id="loginDivM">
