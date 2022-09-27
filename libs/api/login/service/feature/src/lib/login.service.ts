@@ -13,7 +13,6 @@ export class LoginService {
 
             if((u = await this.LoginRepository.validateLogin(email)) != null) {
                 const hotplate = await direct(email, password, u.passwordSalt);
-
                 if(hotplate === u.password)
                     return u;
                 else return false;

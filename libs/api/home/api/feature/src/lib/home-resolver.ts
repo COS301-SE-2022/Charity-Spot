@@ -16,6 +16,10 @@ export class HomeResolver {
     GetAllItems(){
 
         return this.HomeService.getAllItems();
-
     }
+
+    /*@Query(() => [String])
+    GetApiKey() {
+        return this.HomeService.getKey();
+    }*/
 }

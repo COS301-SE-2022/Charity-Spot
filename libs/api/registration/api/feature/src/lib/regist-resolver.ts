@@ -17,9 +17,9 @@ export class RegistrationResolver {
 			await this.RegistrationService.setItemPicName(client.ID_internal, picLink);
 		}
 
+		
 		return client;
 	}
-
 	@Query(() => RegistEntity)
 	async orgRegist(
 		@Args("OrgName") o_name: string,
@@ -34,5 +34,19 @@ export class RegistrationResolver {
 		}
 
 		return org;
+	}
+
+	@Query(() => Boolean)
+	async validateEmail(
+		@Args("email") email: string
+	) {
+		return await this.RegistrationService.validateEmail(email);
+	}
+
+	@Query(() => Boolean)
+	async checkCode(
+		@Args("code") code: string
+	) {
+		return await this.RegistrationService.checkCode(code);
 	}
 }
