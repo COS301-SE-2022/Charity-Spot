@@ -76,7 +76,9 @@ export function ClientLogin() {
   return (
     <div className="main-login" style={{ backgroundImage: `url(${Bgpic})` }}>
       <br />
-      <h1>Charity-Spot</h1>
+      {/*<h1 style={{color: '#0000FF'}}>Charity-Spot</h1>*/}
+      <br/>
+      <br/>
       <div className="login-contain">
         <div className="left-side">
           <div id="loginDivM">

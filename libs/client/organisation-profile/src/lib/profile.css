@@ -176,7 +176,8 @@ textarea {
     background-color: #dadada;
     border-radius: 10px;
     padding: 15px;
-    margin: 15px;
+    /*margin: 15px;*/
+    margin: 0 auto;
     /* border:  #d6d6d6 solid 1px ; */
     border-width: 1px;
     /* padding: 15px; */
@@ -202,7 +203,7 @@ textarea {
  
  height:auto;
  
- float: left;
+ /*float: left;*/
  border-radius: 10px;
 
  background-color: #dddddd;
@@ -214,7 +215,7 @@ textarea {
  box-shadow: 0 3px 3px rgba(0,0,0,0.2);
  transition: 0.5s;
  animation: speech .7s linear 1;
- margin: 15px;
+ margin: 0 auto;
  
  word-wrap: break-word;	
  max-width: 90%;
@@ -443,7 +444,7 @@ textarea {
        border-top-right-radius: 15px;
    }
    .user-right{
-       height: 650px;
+       height: 500px;
        width: 100%;
    
        box-sizing: border-box;
@@ -472,7 +473,7 @@ textarea {
        height: 370px;
    }
    .user-right{
-    height: 570px;
+    height: 500px;
    }
    .rate:not(:checked) > label {
     width:1.3em;
@@ -765,6 +766,7 @@ input.in5:hover{
     {
         height: 140px;
         width: 140px;
+        margin-bottom: 1.5em;
     }
     .editor-main{
         width: 90%;
@@ -812,6 +814,7 @@ input.in5:hover{
         height: 150px;
         width: 150px;
         padding: 15px;
+        margin-bottom: 1.5em;
     }
     .profile-main{
         width: 90%;
@@ -846,7 +849,8 @@ input.in5:hover{
    {
        height: 150px;
        width: 150px;
-       padding: 15px;
+       
+       margin-bottom: 1.5em;
    }
    .editor-main{
        width: 90%;
@@ -896,6 +900,7 @@ input.in5:hover{
     {
         height: 180px;
         width: 180px;
+        margin-bottom: 1.5em;
     }        
     .editor-main{
         width: 80%;
@@ -932,7 +937,8 @@ input.in5:hover{
     {
         height: 150px;
         width: 150px;
-        padding: 15px;
+        
+        margin-bottom: 1.5em;
     }
     .editor-main{
         width: 90%;

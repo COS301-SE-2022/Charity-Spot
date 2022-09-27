@@ -206,6 +206,11 @@ img#donation-pic2{
     /* height: 50px; */
     
   }
+
+  #donateDivM{
+    flex-direction: column;
+}
+
 }
 @media screen and (max-width: 600px) {
     #donation-pic
@@ -253,6 +258,10 @@ img#donation-pic2{
     
   }
 
+  #donateDivM{
+    flex-direction: column;
+}
+
 }
 
 @media screen and (min-width: 1600px) {
@@ -282,8 +291,6 @@ img#donation-pic2{
 body{
     background-color: #f0f0f0;
 }
-
-
 
 
 

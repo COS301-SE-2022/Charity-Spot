@@ -36,7 +36,7 @@
     margin: 2rem auto;
     box-shadow: 0.5rem 0.5rem 2rem -1rem rgb(0, 0, 0);
 
-    padding: 20px;
+    padding: 40px;
 
      /* text-align: center; */
      display: flex;
@@ -137,7 +137,7 @@ label.rglabel{
     color:#1458b3;
     text-align: left;
     width: 78%;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem !important;
 }
 #rgsub_butt{
     width: 100%;
@@ -165,7 +165,7 @@ label.rglabel{
 }
 
 
-  @media screen and (max-width: 1000px) {
+  /*@media screen and (max-width: 1000px) {
     .rgright-side{
       width: 0%;
       display: none;
@@ -184,17 +184,17 @@ label.rglabel{
       width: 0%;
       visibility: hidden;
       /* object-fit: cover; */
-    }
+    /*}
     .welcomeNote{
       visibility: hidden;
     }
     #welid{
       visibility: hidden;
     }
-  }
+  }*/
 
 
-  @media screen and (min-width: 1600px) {
+  @media screen and (min-width: 200px) {
     .register-contain{
     height: 700px auto;
       flex-flow: wrap;
@@ -230,7 +230,7 @@ label.rglabel{
 
 
     /* --------FUTURE RESPONSIVNESS------ */
-    @media (max-width: 800px) {
+    /*@media (max-width: 800px) {
       .rgright-side{
         width: 0%;
         display: none;
@@ -249,7 +249,7 @@ label.rglabel{
         width: 0%;
         visibility: hidden;
         /* object-fit: cover; */
-      }
+      /*}
       .welcomeNote{
         visibility: hidden;
       }
@@ -257,8 +257,8 @@ label.rglabel{
         visibility: hidden;
       }
   
-  }
-  @media (max-width: 900px) {
+  }*/
+  /*@media (max-width: 900px) {
     .rgright-side{
       width: 0%;
       display: none;
@@ -277,7 +277,7 @@ label.rglabel{
       width: 0%;
       visibility: hidden;
       /* object-fit: cover; */
-    }
+    /*}
     .welcomeNote{
       visibility: hidden;
     }
@@ -285,8 +285,8 @@ label.rglabel{
       visibility: hidden;
     }
 
-}
-  @media (max-width: 650px) {
+}*/
+  @media (max-width: 1399px) {
 
     .rgright-side{
       width: 0%;
@@ -315,7 +315,7 @@ label.rglabel{
     }
     
   }
-  @media (max-width: 450px) {
+  /*@media (max-width: 450px) {
     .rgright-side{
       width: 0%;
       display: none;
@@ -334,7 +334,7 @@ label.rglabel{
       width: 0%;
       visibility: hidden;
       /* object-fit: cover; */
-    }
+    /*}
     .welcomeNote{
       visibility: hidden;
     }
@@ -346,4 +346,4 @@ label.rglabel{
   @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
       
   
-  }
+  }*/

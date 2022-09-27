@@ -683,11 +683,11 @@ export function Profile() {
                   </div>*/}
                 <div className="editor-right" id="editRightDiv">
                   <label className="rglabel">
-                    {/* <b>Only Enter the fields you would like to update:</b> */}
+                     Update Profile:
                   </label>
                   <br />
                   <br />
-                  <br />
+                <br />
                   <div className="updater">
                     <form id="edit-Form">
                       <div className="user-box1">
@@ -751,12 +751,12 @@ export function Profile() {
                 <div className="editor-right" id="editLeftDiv">
                   <div className="edit_Picture">
                     <label className="rglabel">
-                      {/* Upload a new profile picture: */}
+                       Upload a new profile picture:
                     </label>
 
                     <img src={imageURL} alt="" id="editor-pic" />
                     
-                    <label htmlFor="file-upload" className="custom-file-upload">
+                    <label htmlFor="file-upload" className="custom-file-upload" style={{width: '80%', marginLeft: '10%', marginBottom: '10px'}}>
                       Select Image
                     </label>
 

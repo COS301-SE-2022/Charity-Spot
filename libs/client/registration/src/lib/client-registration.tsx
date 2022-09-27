@@ -337,7 +337,9 @@ export function Register() {
     <>
       <div id="main" className="main-register" style={{ backgroundImage: `url(${Bgpic})` }}>
         <br />
-        <h1>Charity-Spot</h1>
+        {/*<h1>Charity-Spot</h1>*/}
+        <br />
+        <br />
         <div className="register-contain">
           <div className="rgleft-side">
             <div id="registerDivM">
@@ -400,6 +402,7 @@ export function Register() {
                 <button
                   type="button"
                   className="custom-file-upload"
+                  style={{marginBottom: '0.5rem'}}
                   onClick={() => {
                     setTimeout(() => setShow(true), 100);
                   }}
@@ -411,7 +414,7 @@ export function Register() {
                   Profile Picture
                 </label>
                 <br />
-                <label htmlFor="file-upload" className="custom-file-upload">
+                <label htmlFor="file-upload" className="custom-file-upload" style={{marginBottom: '0.5rem'}}>
                   Select Image
                 </label>
 
@@ -477,7 +480,7 @@ export function Register() {
 
           <div className="rgright-side">
             <div className="welcomeNote">
-              <h3 id="welid">New here? welcome.</h3>
+              <h3 id="welid">New here? Welcome.</h3>
             </div>
 
             <img src={Sealregister} alt="" id="rgwel-img-id" />
