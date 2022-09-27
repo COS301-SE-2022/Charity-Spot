@@ -13,7 +13,7 @@ RUN npm -y install --global yarn
 
 WORKDIR /
 
-COPY ["./prisma/*", "./"]
+COPY ["./prisma", "./"]
 
 COPY ["./dist/apps/api/main.js", "./dist/apps/api/package.json", ".env", "./"]
 
