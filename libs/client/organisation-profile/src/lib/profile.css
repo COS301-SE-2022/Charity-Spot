@@ -14,7 +14,7 @@
   }
 .profile-main{
 
-    height: 650px auto;
+    height: auto;
     width: 100%;
 
     
@@ -189,11 +189,12 @@ textarea {
 .pcomments{
     /* background-color: rgb(230, 230, 230); */
     border-radius: 10px;
-    height: 600px auto  ;
+    height: auto;
     color: #1458b3;
     width: 100%;
     overflow: hidden; /* add this to contain floated children */
-    padding-right: 15px;
+    /*padding-right: 15px;*/
+    /*min-width: 350px;*/
 }
 .pcomment{
     
@@ -217,9 +218,12 @@ textarea {
  animation: speech .7s linear 1;
  margin: 0 auto;
  
+ margin-top: 15px;
+ /*padding-right: 15px;*/
+
  word-wrap: break-word;	
  max-width: 90%;
- min-width: 90%;
+ min-width: 350px;
 }
 /* .pcomment::after{
 	content: '';
@@ -434,6 +438,7 @@ textarea {
    .profile-main{
     
        width: 100%;
+       height: 950px;
    }
    .user-left{
        width: 100%;
@@ -444,7 +449,7 @@ textarea {
        border-top-right-radius: 15px;
    }
    .user-right{
-       height: 500px;
+       height: auto;
        width: 100%;
    
        box-sizing: border-box;
@@ -465,7 +470,7 @@ textarea {
    }
    .profile-main{
        width: 90%;
-       height: auto;
+       height: 900px;
    }
    .user-left{
        width: 100%;
@@ -473,7 +478,7 @@ textarea {
        height: 370px;
    }
    .user-right{
-    height: 500px;
+    height: auto;
    }
    .rate:not(:checked) > label {
     width:1.3em;

@@ -40,6 +40,7 @@ export function ClientItemRequest() {
 
   return (
     <div>
+      <br/>
       <h2 className='reqHead'>Use our AI system to find an item!</h2>
       <p style={{ color: 'red' }}>{invalidDate}</p>
       

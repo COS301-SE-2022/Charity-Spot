@@ -16,7 +16,7 @@
     100% {opacity:1 ;}
   }
 .request-main{
-    height: 550px auto;
+    height: 450px;
     width: 75%;
 
     
@@ -55,7 +55,7 @@
 }
 .request-right{
     background-color: rgb(228, 229, 230); 
-    height: 550px;
+    height: 450px;
     width: 100%;
     box-sizing: border-box;
     border-radius: 10px;
@@ -139,7 +139,6 @@ input[type="file"] {
        height: 0px;
    }
    .request-right{
-       height: 550px;
        width:100%;
    
        box-sizing: border-box;
@@ -171,7 +170,6 @@ input[type="file"] {
    .request-right{
     padding: 10px;
     width: 100%;
-    height: 600px;
 }
    .imgWrap{
     width: 100%;

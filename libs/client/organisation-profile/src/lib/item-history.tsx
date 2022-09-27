@@ -154,7 +154,7 @@ export function ItemHistory(props : any){
         return (
         
                 <div>
-                { empty &&<h3 style={{'color':'#6d6d6e'}}><h1>This user has no available items</h1> <FaList/></h3>}
+                { empty &&<h3 style={{'color':'#6d6d6e'}}><h1>This user has no available items <FaList/></h1></h3>}
                 {Items.map(function(item){
                     return (
                             
