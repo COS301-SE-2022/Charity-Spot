@@ -120,7 +120,8 @@ export class RegistrationRepository {
       data:
       {
         UserID: userID,
-        OrgName:OrgName
+        OrgName:OrgName,
+        Description: "This is a default description!"
       }
     })
   }
