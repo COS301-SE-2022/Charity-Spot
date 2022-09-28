@@ -113,18 +113,18 @@ export class ChatRepository {
   
   //Notify Organisation || Negate
   async alertOrg(orgID: string, clientID: string) {
-    const u = await this.prisma.chatHistory.update({
+    const u = await this.prisma.messages.update({
       where:
       {
-        OrgID_ClientID:
+        UserID_AssistID:
         {
-          OrgID: orgID,
-          ClientID:clientID,
+          AssistID: orgID,
+          UserID:clientID,
         }
       },
       data:
       {
-        AlertOrg: true
+        NotifyAssist: true
       }
     })
 
