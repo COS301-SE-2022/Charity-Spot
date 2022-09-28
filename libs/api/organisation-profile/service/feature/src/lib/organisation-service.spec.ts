@@ -8,6 +8,13 @@ import { OrganisationRepository } from '@charity-spot/api/organisation-profile/r
 import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 import { identity } from 'rxjs';
 
+//added
+import { RegistrationService } from '@charity-spot/api/registration/service/feature';
+import { CommentRatingRepository } from '@charity-spot/api/comment-rating/repository/data-access';
+import { RegistrationRepository } from '@charity-spot/api/registration/repository/data-access';
+//import { LoginService } from '@charity-spot/api/login/service/feature';
+//added
+
 describe( 'Organisation Service', () => {
 
   let service : OrganisationService;
@@ -16,7 +23,7 @@ describe( 'Organisation Service', () => {
 
   beforeEach(async () => {
       const module: TestingModule = await Test.createTestingModule({
-        providers: [OrganisationService, PrismaService, OrganisationRepository],
+        providers: [OrganisationService, PrismaService, OrganisationRepository,RegistrationService,CommentRatingRepository,RegistrationRepository],
       }).compile();
 
       service = module.get<OrganisationService>(OrganisationService);
@@ -55,7 +62,7 @@ describe( 'Organisation Service', () => {
           expect(await service.getAllRatingsOfAssist("wdad2w5da4")).toEqual(true);
       })
   });
-  
+
     //getAverageRatings(ratings : number[])
     describe('getAverageRatings', () => {
       it('Gets Averate Ratings', async () => {
