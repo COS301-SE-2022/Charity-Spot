@@ -8,6 +8,12 @@ import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 
 import { direct } from '@charity-spot/api/shared/auth';
 
+//added
+import { OrganisationRepository } from '@charity-spot/api/organisation-profile/repository/data-access';
+import { RegistrationService } from '@charity-spot/api/registration/service/feature';
+import { RegistrationRepository } from '@charity-spot/api/registration/repository/data-access';
+//import { LoginService } from '@charity-spot/api/login/service/feature';
+//added
 describe( 'Comment Rating Service', () => {
 
     let service : CommentRatingService;
@@ -16,7 +22,7 @@ describe( 'Comment Rating Service', () => {
 
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
-          providers: [CommentRatingService, PrismaService, CommentRatingRepository],
+          providers: [CommentRatingService, PrismaService, CommentRatingRepository,OrganisationRepository,RegistrationService,RegistrationRepository],
         }).compile();
 
         service = module.get<CommentRatingService>(CommentRatingService);
