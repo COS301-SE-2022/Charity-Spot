@@ -13,7 +13,7 @@ export class CommentRatingRepository {
 
     let rating = null;
 
-    let rCount = await this.prisma.rate.count(
+    const rCount = await this.prisma.rate.count(
       {
         where: {
           AssistID:AssistID,
@@ -59,7 +59,7 @@ export class CommentRatingRepository {
       return rating;
     }
 
-    let cCount = await this.prisma.comment.count(
+    const cCount = await this.prisma.comment.count(
       {
         where: {
           AssistID:AssistID,
@@ -164,11 +164,11 @@ export class CommentRatingRepository {
   //Return empty string if none is given
   async getComment(AssistID, NeedID : string)
   {
-    const comment = await this.prisma.rating.findFirst({
+    const comment = await this.prisma.comment.findFirst({
       where:
       {
-        OrgID: AssistID,
-        ClientID: NeedID
+        AssistID: AssistID,
+        UserID: NeedID
       },
       select:
       {
@@ -183,13 +183,13 @@ export class CommentRatingRepository {
   //Change value of rating given
   async editRating(AssistID, NeedID : string, newRating: number)
   {
-    const rating = await this.prisma.rating.update({
+    const rating = await this.prisma.rate.update({
       where:
       {
-        OrgID_ClientID:
+        UserID_AssistID:
         {
-          OrgID: AssistID,
-          ClientID: NeedID
+          AssistID: AssistID,
+          UserID: NeedID
         }
       },
       data:
