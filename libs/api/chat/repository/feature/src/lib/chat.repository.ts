@@ -192,15 +192,15 @@ export class ChatRepository {
 
   async GetAllChatsOrg(orgID : string)
   {
-    const u = await this.prisma.chatHistory.findMany({
+    const u = await this.prisma.messages.findMany({
       where:
       {
-        OrgID: orgID
+        AssistID: orgID
       },
       select:
       {
-        ClientID :true,
-        AlertOrg: true
+        UserID :true,
+        NotifyAssist: true
       }
     })
 
