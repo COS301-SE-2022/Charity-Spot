@@ -244,7 +244,7 @@ export class CommentRatingRepository {
 
   async getName(ID : string){
 
-    const name = await this.prisma.organisation.findFirst({
+    const name = await this.prisma.assist.findFirst({
       select:
       {
         OrgName : true
