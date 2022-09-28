@@ -13,65 +13,97 @@ export class CommentRatingRepository {
 
     let rating = null;
 
-    let rCount = await this.prisma.rating.count(
+    let rCount = await this.prisma.rate.count(
       {
         where: {
-          OrgID: AssistID,
-          ClientID: NeedID
+          AssistID:AssistID,
+          UserID:NeedID
         }
       }
     );
 
     if(rCount > 0){
-
-      rating = await this.prisma.rating.delete(
+      rating = await this.prisma.rate.delete(
         {
           where: {
-            OrgID_ClientID:{
-              OrgID: AssistID,
-              ClientID: NeedID
+            UserID_AssistID:{
+              AssistID:AssistID,
+              UserID:NeedID
             }
-          },
-        }
+            }
+          }
       ).then(async ()=>{
 
-        return await this.prisma.rating.create({
+        await this.prisma.rate.create({
           data:
           {
-            OrgID: AssistID,
-            ClientID: NeedID,
-            Rating: Rating,
-            Comment: Comment
+            AssistID: AssistID,
+            UserID: NeedID,
+            Rating: Rating
           }
         });
-
-        //console.log(rating);
-        //console.log("r1");
-    
-        //return rating;
-
-
       });
 
     }
     else{
 
-      rating = await this.prisma.rating.create({
+      rating = await this.prisma.rate.create({
         data:
         {
-          OrgID: AssistID,
-          ClientID: NeedID,
-          Rating: Rating,
-          Comment: Comment
+          AssistID: AssistID,
+          UserID: NeedID,
+          Rating: Rating
         }
       });
 
       return rating;
     }
 
-    console.log(rating);
+    let cCount = await this.prisma.comment.count(
+      {
+        where: {
+          AssistID:AssistID,
+          UserID:NeedID
+        }
+      }
+    );
 
-    return rating;
+    if(cCount > 0){
+      rating = await this.prisma.comment.delete(
+        {
+          where: {
+            UserID_AssistID:{
+              AssistID:AssistID,
+              UserID:NeedID
+            }
+            }
+          }
+      ).then(async ()=>{
+
+        await this.prisma.comment.create({
+          data:
+          {
+            AssistID: AssistID,
+            UserID: NeedID,
+            Comment: Comment
+          }
+        });
+      });
+
+    }
+    else{
+
+      await this.prisma.comment.create({
+        data:
+        {
+          AssistID: AssistID,
+          UserID: NeedID,
+          Comment: Comment
+        }
+      });
+    }
+
+    return this.prisma.$queryRaw`SELECT * FROM Rating FULL JOIN Comment ON Rating.UserID_AssistID = Comment.UserID_AssistID WHERE AssistID = ${AssistID} AND UserID = ${NeedID};`;
 
   }
 
