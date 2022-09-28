@@ -229,31 +229,17 @@ export class ChatRepository {
   //misc
   async GetThreadList(id: string) {
 
-    //if(table == "org"){
-
-      return await this.prisma.organisation.findUnique({
-        where: {
+      return await this.prisma.assist.findUnique({
+        where:
+        {
           UserID: id
-        }, select: {
+        },
+        select:
+        {
           OrgName: true,
           profilePicture: true
         }
       });
-
-    /*}
-    else if(table == "user"){
-
-      return await this.prisma.user.findUnique({
-        where: {
-          UserID: id
-        }, select: {
-          email: true
-        }
-      });
-
-    }*/
-
-    return null;
     
   }
 
