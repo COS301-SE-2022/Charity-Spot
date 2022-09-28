@@ -9,8 +9,9 @@ import { NotificationRepository } from '@charity-spot/api/notification/repositor
 import { PrismaService } from '@charity-spot/api/shared/services/prisma';
 import { async } from '@firebase/util';
 
+import { ChatRepository } from '@charity-spot/api/chat/repository/feature'
+import { ScheduleDeliveryRepository } from '@charity-spot/api/schedule-delivery/repository/feature';
 
-const notificationEntity = new NotificationEntity();
 
 
 describe( 'Comment Rating Service', () => {
@@ -21,7 +22,7 @@ describe( 'Comment Rating Service', () => {
 
   beforeEach(async () => {
       const module: TestingModule = await Test.createTestingModule({
-        providers: [NotificationService, PrismaService, NotificationRepository],
+        providers: [NotificationService, PrismaService, NotificationRepository,ChatRepository,ScheduleDeliveryRepository],
       }).compile();
 
       service = module.get<NotificationService>(NotificationService);
@@ -38,7 +39,7 @@ describe('getNotifications', () => {
 
 //getReceiver(r_id: string)
 describe('getReceiver', () => {
-  it('', async () => {
+  it('Gets the receiver', async () => {
       jest.spyOn(service, 'getReceiver').mockImplementation(() : Promise<any> => Promise.resolve(true));
       expect(await service.getReceiver("wda445d")).toEqual(true);
   })
@@ -46,7 +47,7 @@ describe('getReceiver', () => {
 
 //checkNot(id: string, type: string)
 describe('checkNot', () => {
-  it('', async () => {
+  it('Checks if id matches type', async () => {
       jest.spyOn(service, 'checkNot').mockImplementation(() : Promise<any> => Promise.resolve(true));
       expect(await service.checkNot("wadadw1","dfg454f")).toEqual(true);
   })
