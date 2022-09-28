@@ -112,11 +112,11 @@ export class CommentRatingRepository {
   //Retrieve only the Rating given by a person in need to an Assisting Party
   async getRating(AssistID, NeedID : string)
   {
-    const rating = await this.prisma.rating.findFirst({
+    const rating = await this.prisma.rate.findFirst({
       where:
       {
-        OrgID: AssistID,
-        ClientID: NeedID
+        AssistID: AssistID,
+        UserID: NeedID
       },
       select:
       {
