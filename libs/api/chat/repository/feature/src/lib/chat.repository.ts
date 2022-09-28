@@ -262,10 +262,13 @@ export class ChatRepository {
   }
 
   async getChatName(u_id: string){
-    const u = await this.prisma.organisation.findUnique({
-      where: {
+    const u = await this.prisma.assist.findUnique({
+      where:
+      {
         UserID: u_id
-      }, select: {
+      },
+      select:
+      {
         OrgName: true,
         profilePicture: true
       }
