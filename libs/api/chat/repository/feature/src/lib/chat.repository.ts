@@ -142,7 +142,7 @@ export class ChatRepository {
       },
       data:
       {
-        NotifyNeed: true
+        NotifyAssist: false
       }
     })
 
