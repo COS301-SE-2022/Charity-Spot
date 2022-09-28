@@ -211,15 +211,15 @@ export class ChatRepository {
 
   async GetAllChatsClient(ClientID : string)
   {
-    const u = await this.prisma.chatHistory.findMany({
+    const u = await this.prisma.messages.findMany({
       where:
       {
-        ClientID: ClientID
+        UserID: ClientID
       },
       select:
       {
-        OrgID :true,
-        AlertClient: true
+        AssistID :true,
+        NotifyNeed: true
       }
     })
 
