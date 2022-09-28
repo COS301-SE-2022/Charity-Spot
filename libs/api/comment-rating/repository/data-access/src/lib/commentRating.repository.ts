@@ -205,13 +205,13 @@ export class CommentRatingRepository {
   //Edit comment given
   async editComment(AssistID, NeedID, newComment : string)
   {
-    const comment = await this.prisma.rating.update({
+    const comment = await this.prisma.comment.update({
       where:
       {
-        OrgID_ClientID:
+        UserID_AssistID:
         {
-          OrgID: AssistID,
-          ClientID: NeedID
+          AssistID: AssistID,
+          UserID: NeedID
         }
       },
       data:
