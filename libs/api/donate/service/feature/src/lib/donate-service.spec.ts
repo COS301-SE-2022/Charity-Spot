@@ -43,7 +43,7 @@ describe( 'Comment Rating Service', () => {
 
     //getItemPicDirec(itemID : string)
     describe('getItemPicDirec', () => {
-      it('Gets the item pictures directory', async () => {
+      it('Gets the directory of the items picture', async () => {
           jest.spyOn(service, 'getItemPicDirec').mockImplementation(() : Promise<any> => Promise.resolve(true));
           expect(await service.getItemPicDirec("sdaw54a5")).toEqual(true);
       })
@@ -51,7 +51,7 @@ describe( 'Comment Rating Service', () => {
 
     //history(id: string)
     describe('history', () => {
-      it('Gets the history', async () => {
+      it('Gets the history of an organisation', async () => {
           jest.spyOn(service, 'history').mockImplementation(() : Promise<any> => Promise.resolve(true));
           expect(await service.history("awda4d4a5")).toEqual(true);
       })
