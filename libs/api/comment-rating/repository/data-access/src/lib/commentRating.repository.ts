@@ -227,13 +227,13 @@ export class CommentRatingRepository {
   //Remove rating and comment from database
   async removeRating(AssistID, NeedID : string)
   {
-    const oldRating = await this.prisma.rating.delete({
+    const oldRating = await this.prisma.rate.delete({
       where:
       {
-        OrgID_ClientID:
+        UserID_AssistID:
         {
-          OrgID: AssistID,
-          ClientID: NeedID
+          AssistID: AssistID,
+          UserID: NeedID
         }
       }
     });
