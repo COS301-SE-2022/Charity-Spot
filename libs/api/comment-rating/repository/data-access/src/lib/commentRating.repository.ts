@@ -77,14 +77,14 @@ export class CommentRatingRepository {
 
   //Retrieve all of the comments that were left for a user given their ID
   async getCommentsForAssist(AssistID: string) {
-    const comments = await this.prisma.rating.findMany({
+    const comments = await this.prisma.comment.findMany({
       where:
       {
-        OrgID: AssistID
+        AssistID: AssistID
       },
       select:
       {
-        ClientID: true,
+        UserID: true,
         Comment: true
       }
     });
