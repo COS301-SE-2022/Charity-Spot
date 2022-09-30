@@ -3,8 +3,8 @@
     <img align="center"src="https://firebasestorage.googleapis.com/v0/b/charityspotdemo1.appspot.com/o/logo1.png?alt=media&token=b54104ac-a595-46f9-ab28-6069195143b4"></img>
     <div align="center">---</div>
     <div>
-        <p><b>Charity-Spot</b> is intended to serve as a platform for organisations who would like to donate charitable items to those in need, and to assist people in need to find the items that they require.</p>
-        <p>An interactive map with a set of filters can be used to find items that have been donated. The system also has an AI component that can be used to predict when donations will be made before anything has been donated. We use this information to inform people in need of organisations that are most likely able to assist them if the items they need are not available</p>
+        <p><b>Charity-Spot</b> is intended to serve as a platform for organisations who would like to donate items to those in need, and to assist people in need to find the items that they require.</p>
+        <p>An interactive map with a set of filters can be used to find items that have been donated. The system has an AI component that can be used to predict when items will be donated by assisting organisations. We use this information to inform people in need of organisations that are most likely able to assist them if the items they need are not available</p>
     </div>
     <div align="center">---</div>
 
