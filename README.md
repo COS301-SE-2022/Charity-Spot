@@ -21,6 +21,10 @@
 
 [Coding Standards](https://drive.google.com/file/d/1xRKx2Yfjq_bR1Ypq29d7nMF7J3GcRP96/view?usp=sharing)
 
+[Architectural Design](https://drive.google.com/file/d/1i6uL7VRFpR8lHNyQsHqhbYNGj7AfONvW/view?usp=sharing)
+
+[Deployment Model](https://drive.google.com/file/d/1ZadHcBt__dYyPTfGgt7WImZ_fNZsrjdi/view?usp=sharing)
+
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/COS301-SE-2022/Charity-Spot)
 
 ![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/COS301-SE-2022/Charity-Spot)
