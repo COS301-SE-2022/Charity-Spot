@@ -11,15 +11,15 @@
 <div align="center">
 <h2 align="center">Documentation and Info</h2>
 
-[SRS Demo 1](https://drive.google.com/file/d/1PB11ctS5-gHrR4uCKGpD1R9AEKioBgaX/view?usp=sharing)
+[SRS Final](https://drive.google.com/file/d/1G0idE29ORYzXntQOijQp4ElNcnYTfErm/view?usp=sharing)
 
-[SealTeam301-Demo1](https://drive.google.com/file/d/1NorrmnBr6aDn9ovl26_EOgvQ-I2dzZOf/view?usp=sharing)
+[User Manual](https://drive.google.com/file/d/13UZqvDJ2Lna-sQxVaY1hRAtnCum0EtSA/view?usp=sharing)
 
-[SRS Demo 2](https://drive.google.com/file/d/1x9V5Q9cslBw2WyzMVTkBBWh6nYkTVkOY/view?usp=sharing)
+[Technical Installation Manual](https://drive.google.com/file/d/1EMmhUMsIvzSD9HJQSMxk5zSvbNXdHKhy/view?usp=sharing)
 
-[User Manual](https://drive.google.com/file/d/1nfuax5BIQE3qRWe6ASYoTe_7m-Mz4h46/view?usp=sharing)
+[Testing Policy](https://drive.google.com/file/d/1dS93QiFJyyYlns4ovDa6fHrhvj2LCXjt/view?usp=sharing)
 
-[Technical Installation Manual](https://drive.google.com/file/d/1Pil3PRXTYTbhpU21-ZJpw83V-NokXw4I/view?usp=sharing)
+[Coding Standards](https://drive.google.com/file/d/1xRKx2Yfjq_bR1Ypq29d7nMF7J3GcRP96/view?usp=sharing)
 
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/COS301-SE-2022/Charity-Spot)
 
