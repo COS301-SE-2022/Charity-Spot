@@ -135,7 +135,7 @@ able to overcome any technical requirement of the project at hand.</p>
 
 [<h2>Lindinkosi Kunene(DevOps & Tester)</h2>](https://github.com/lindzik)
 
-[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)]()
+[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lindinkosi-kunene-913940209)
 
 </div>  
 
