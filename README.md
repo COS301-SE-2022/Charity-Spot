@@ -13,7 +13,7 @@
 
 [Capstone Video Demo](https://drive.google.com/file/d/1Byx3ti38nuK4ZYTacu3_7S1YPFscwLWy/view?usp=sharing)
 
-[Capsotne Demo Slides](https://docs.google.com/presentation/d/1QdbJ3wKV-a2uzmmG3G7tToMu047Qe8K9u1QTp8rISMg/edit?usp=sharing)
+[Capstone Demo Slides](https://docs.google.com/presentation/d/1QdbJ3wKV-a2uzmmG3G7tToMu047Qe8K9u1QTp8rISMg/edit?usp=sharing)
 
 [SRS Final](https://drive.google.com/file/d/1G0idE29ORYzXntQOijQp4ElNcnYTfErm/view?usp=sharing)
 
