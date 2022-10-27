@@ -112,7 +112,7 @@ responsible, skilled and capable of leading and organising a team.</p>
 
 [<h2>Elphus Malope (Backend-Engineer & API Engineer)</h2>](https://github.com/nimGaluu)
 
-[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)]()
+[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/elphus-malope-96a022197)
 
 </div>         
 <p>I am interested in Backend Engineering on the Webdev Stack (the full stack), thee Backend Engineer. So be it Api, Cloud admin, technical like configuring network or handling the equipment. I do data Structures and Algorithms as a hobby hoping to make a breakthrough one day of something no one ever thought it existed in these known algorithms nowadays</p>
