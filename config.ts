@@ -2,7 +2,7 @@ import { env } from "process";
 
 
 export var APIKEYS = {
-    GoogleMapsAPIKey : "AIzaSyAiR16bBkUQWf0d783c2MfjGwQUbH72nTw"
+    GoogleMapsAPIKey : "AIzaSyDjJ0-NMIHBEZ3Zmmjec4XAztj6IgcqMjw"
 }
 
 export var host = {
