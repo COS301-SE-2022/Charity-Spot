@@ -11,6 +11,10 @@
 <div align="center">
 <h2 align="center">Documentation and Info</h2>
 
+[Capstone Video Demo](https://drive.google.com/file/d/1Byx3ti38nuK4ZYTacu3_7S1YPFscwLWy/view?usp=sharing)
+
+[Capsotne Demo Slides](https://docs.google.com/presentation/d/1QdbJ3wKV-a2uzmmG3G7tToMu047Qe8K9u1QTp8rISMg/edit?usp=sharing)
+
 [SRS Final](https://drive.google.com/file/d/1G0idE29ORYzXntQOijQp4ElNcnYTfErm/view?usp=sharing)
 
 [User Manual](https://drive.google.com/file/d/13UZqvDJ2Lna-sQxVaY1hRAtnCum0EtSA/view?usp=sharing)
@@ -82,6 +86,8 @@
 
 [<h2>Timo van der Merwe (Group Leader & Project Manager)</h2>](https://github.com/TimovdMerwe-18)
 
+[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://za.linkedin.com/in/timo-van-der-merwe-9010451a8)
+
 </div>
 <br>
  <p>I am a third year Computer Science student. I love programming and
@@ -96,6 +102,8 @@ responsible, skilled and capable of leading and organising a team.</p>
 
 [<h2>Moloko Magwai (Front-End Engineer)</h2>](https://github.com/MoloTheSniper)
 
+[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/moloko-magwai-7b52b7237)
+
 </div>        
 <p>I am a Front-end developer and i love working with React JS, Javascript,HTML and CSS. In my free time i make games in Unity using C# and i make 3D Models in Blender, essentially i like making things look beautiful.</p>
     <img align="center"src="https://drive.google.com/thumbnail?id=1gRHsFtHkVBzXrLYTx2GuXlmVGiaixDOQ"></img><br>
@@ -104,6 +112,8 @@ responsible, skilled and capable of leading and organising a team.</p>
 
 [<h2>Elphus Malope (Backend-Engineer & API Engineer)</h2>](https://github.com/nimGaluu)
 
+[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)]()
+
 </div>         
 <p>I am interested in Backend Engineering on the Webdev Stack (the full stack), thee Backend Engineer. So be it Api, Cloud admin, technical like configuring network or handling the equipment. I do data Structures and Algorithms as a hobby hoping to make a breakthrough one day of something no one ever thought it existed in these known algorithms nowadays</p>
      <img align="center"src="https://drive.google.com/thumbnail?id=18CHF7DDWnRt3i2sbzF3Sw6l1xCw1K0Uc"></img><br>
@@ -111,6 +121,8 @@ responsible, skilled and capable of leading and organising a team.</p>
 <div>
 
 [<h2>David Roodt(Data-Engineer)</h2>](https://github.com/David-Roodt)
+
+[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)]()
 
 </div>      
 <p>I am in my third year of Computer Science. I switched over from BIT to
@@ -123,6 +135,8 @@ able to overcome any technical requirement of the project at hand.</p>
 <div>
 
 [<h2>Lindinkosi Kunene(DevOps & Tester)</h2>](https://github.com/lindzik)
+
+[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)]()
 
 </div>  
 
