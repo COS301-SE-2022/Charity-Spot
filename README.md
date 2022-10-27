@@ -89,8 +89,7 @@
 [![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://za.linkedin.com/in/timo-van-der-merwe-9010451a8)
 
 </div>
-<br>
- <p>I am a third year Computer Science student. I love programming and
+<p>I am a third year Computer Science student. I love programming and
 software development. I have successfully led various group projects
 during my degree. Including our JCP community service project, our COS
 214 software modelling assignment, and various others. I believe I am
@@ -122,7 +121,7 @@ responsible, skilled and capable of leading and organising a team.</p>
 
 [<h2>David Roodt(Data-Engineer)</h2>](https://github.com/David-Roodt)
 
-[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)]()
+[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/david-roodt-aa157718b/)
 
 </div>      
 <p>I am in my third year of Computer Science. I switched over from BIT to
